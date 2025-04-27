@@ -15,7 +15,7 @@ export default defineConfig({
       '@routes': path.resolve(__dirname, './src/routes'),
       '@styles': path.resolve(__dirname, './src/styles'),
       '@utils': path.resolve(__dirname, './src/utils'),
-    }
+    },
   },
   build: {
     outDir: 'dist',
@@ -23,5 +23,5 @@ export default defineConfig({
   },
   server: {
     hmr: true, // Asegura reemplazo en caliente
-  }
+  },
 })

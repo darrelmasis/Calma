@@ -1,5 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import {About,Booking,Contact,Gallery,History,Home,NotFound,Packages,Services} from "../pages/Index";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { About, Booking, Contact, Gallery, History, Home, NotFound, Packages, Services } from '../pages/Index'
 
 const AppRoutes = () => {
   return (
@@ -16,7 +16,7 @@ const AppRoutes = () => {
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
-  );
+  )
 }
 
-export default AppRoutes;
+export default AppRoutes

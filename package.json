@@ -1,21 +1,17 @@
 {
-  "name": "calma",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "devDependencies": {
-    "@eslint/js": "^9.25.1",
-    "eslint": "^9.25.1",
-    "eslint-config-prettier": "^10.1.1",
-    "eslint-plugin-react": "^7.37.5",
-    "globals": "^16.0.0",
-    "prettier": "3.5.3"
-  }
+    "name": "calma",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "format": "prettier --write --list-different \"{client,server}/**/*.{js,jsx,ts,tsx,css,md,json}\"",
+        "format:check": "prettier --check \"{client,server}/**/*.{js,jsx,ts,tsx}\""
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "type": "commonjs",
+    "devDependencies": {
+        "prettier": "3.5.3"
+    }
 }
