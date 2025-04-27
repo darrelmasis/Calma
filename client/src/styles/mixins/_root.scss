@@ -1,0 +1,6 @@
+@mixin inject-css-variables($map, $prefix: "") {
+  @each $key, $value in $map {
+    $name: if($prefix == "", "--#{$key}", "--#{$prefix}-#{$key}");
+    #{$name}: #{$value};
+  }
+}

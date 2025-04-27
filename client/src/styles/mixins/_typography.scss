@@ -1,0 +1,80 @@
+@use "sass:math";
+@use "../functions/" as *;
+@use "../config/" as *;
+// -----------------------------------------------------------------------------
+// Typography Utilities
+// -----------------------------------------------------------------------------
+
+/**
+ * Mixin base para crear una clase de tamaño de fuente
+ * @param {string} $class - Nombre de clase
+ * @param {number} $size - Tamaño de fuente (en rem, em, etc.)
+ * @param {boolean} $important - Si se agrega !important
+ */
+@mixin font-size-class($class, $size, $important: false) {
+  $imp: if($important, ' !important', '');
+  .#{$class} {
+    font-size: #{$size}#{$imp};
+  }
+}
+
+/**
+ * Mixin para generar clases utilitarias simbólicas (ej: .fs-h1, .fs-small)
+ * @param {boolean} $responsive - Si se generan versiones responsivas
+ * @param {boolean} $important - Si se agrega !important
+ * @param {map} $sizes - Mapa de tamaños (por defecto usa $font-sizes)
+ */
+@mixin generate-font-size-utilities($responsive: true, $important: false, $sizes: $font-sizes) {
+  // Clases base
+  @each $name, $size in $sizes {
+    @include font-size-class('fs-#{$name}', $size, $important);
+  }
+
+  // Responsivas si existen breakpoints
+  @if $responsive and global-variable-exists(breakpoints) {
+    @if type-of($breakpoints) == 'map' {
+      @each $bp, $bp-value in $breakpoints {
+        @media (min-width: #{$bp-value}) {
+          @each $name, $size in $sizes {
+            @include font-size-class('fs-#{$bp}-#{$name}', $size, $important);
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Mixin para generar clases utilitarias numéricas escaladas
+ * (ej: .fs-1, .fs--1)
+ * @param {number} $levels - Niveles positivos (1 a n)
+ * @param {number} $neg-levels - Niveles negativos opcionales (ej: 3 = .fs--1 a .fs--3)
+ * @param {boolean} $important - Si se agrega !important
+ */
+@mixin generate-scaled-font-utilities($levels: 6, $neg-levels: 3, $important: false) {
+  $imp: if($important, ' !important', '');
+
+  // Positivos (fs-1, fs-2...)
+  @for $i from 1 through $levels {
+    $size: math.pow($fs-ratio, $i) * $fs-base;
+    .fs-#{$i} {
+      font-size: #{$size}#{$imp};
+    }
+  }
+
+  // Negativos (fs--1, fs--2...)
+  @if $neg-levels > 0 {
+    @for $i from 1 through $neg-levels {
+      $size: math.div($fs-base, math.pow($fs-ratio, $i));
+      .fs--#{$i} {
+        font-size: #{$size}#{$imp};
+      }
+    }
+  }
+}
+
+// Aplica tamaño de fuente desde el mapa $font-sizes
+// @param {string} $key - clave del mapa (ej: h1, small)
+@mixin font-size($key) {
+  font-size: size($key);
+}

@@ -1,0 +1,23 @@
+@use "mediaqueries" as *;
+@use "../config/" as *;
+
+// Mixin para generar utilidades de columna o fila
+@mixin generate-grid-utilities($property, $prefix) {
+  @for $i from 1 through $grid-columns {
+    .#{$prefix}-#{$i} {
+      #{$property}: span $i;
+    }
+  }
+
+  // Responsive
+  @each $breakpoint, $width in $breakpoints {
+    @include screen('min', $breakpoint) {
+      @for $i from 1 through $grid-columns {
+        .#{$breakpoint}\:#{$prefix}-#{$i} {
+          #{$property}: span $i;
+        }
+      }
+    }
+  }
+}
+

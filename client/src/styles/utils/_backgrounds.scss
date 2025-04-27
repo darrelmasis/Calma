@@ -1,0 +1,36 @@
+@use "../config/" as *;
+@use "../mixins/" as *;
+@use "../functions/" as *;
+
+$bg-colors-light: (
+  "primary":      $primary,
+  "secondary":    $secondary,
+  "tertiary":     $tertiary,
+  "danger":       $danger,
+  "warning":      $warning,
+  "success":      $success,
+  "info":         $info,
+  "light":        $light,
+  "dark":         $dark,
+  "white":        getColor($light-theme-colors, "white"),
+  "container":    $container-bg,
+  "transparent":  "transparent"
+);
+
+@each $color, $value in $bg-colors-light {
+  // Clase base (siempre aplica)
+  .bg-#{$color} {
+    --bg-#{$color}: #{$value};
+    background-color: var(--bg-#{$color});
+  }
+
+  // Versiones responsive (usando tu mixin 'screen')
+  @each $breakpoint, $breakpoint-value in $breakpoints {
+    @include screen('min', $breakpoint) {
+      .bg-#{$color}-#{$breakpoint} {
+        --bg-#{$color}: #{$value};
+        background-color: var(--bg-#{$color});
+      }
+    }
+  }
+}

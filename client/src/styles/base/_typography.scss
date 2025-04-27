@@ -1,0 +1,35 @@
+@use "../config" as *;
+@use "../mixins/" as *;
+@use "../functions/" as *;
+
+// Encabezados
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-heading;
+  font-weight: $titles-font-weight;
+  line-height: $titles-line-height;
+  margin-bottom: $title-margin-bottom;
+}
+
+// Aplicación de tamaños escalados
+h1 { @include font-size(h1); }
+h2 { @include font-size(h2); }
+h3 { @include font-size(h3); }
+h4 { @include font-size(h4); }
+h5 { @include font-size(h5); }
+h6 { @include font-size(h6); }
+
+// Texto base y variaciones
+p {
+  font-size: size(normal);
+  line-height: $line-height-base;
+  margin-bottom: $paragraph-margin-bottom;
+}
+
+small,
+.small {
+  font-size: size(small);
+}
+
+.smaller {
+  font-size: size(smaller);
+}

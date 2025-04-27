@@ -1,0 +1,209 @@
+// Variables para el sistema de color para Calma
+
+@use "../functions" as *;
+
+$golds: (
+  "50"  : #f5f2ed,
+  "100" : #e1d8c8,
+  "200" : #d3c5ad,
+  "300" : #bfab88,
+  "400" : #b29a71,
+  "500" : #9f814d,
+  "600" : #917546,
+  "700" : #715c37,
+  "800" : #57472a,
+  "900" : #433620
+);
+
+$wines: (
+  "50"  : #f1e8eb,
+  "100" : #d2b9c0,
+  "200" : #bc97a2,
+  "300" : #9e6777,
+  "400" : #8b495d,
+  "500" : #6e1c34,
+  "600" : #64192f,
+  "700" : #4e1425,
+  "800" : #3d0f1d,
+  "900" : #2e0c16
+);
+
+$purples: (
+  "50": #f9eef9,
+  "100": #eccbec,
+  "200": #e0b1e0,
+  "300": #ce8ece,
+  "400": #c178c1,
+  "500": #ad56ad,
+  "600": #9c4e9c,
+  "700": #793d79,
+  "800": #5d2f5d,
+  "900": #462446
+);
+
+$blues: (
+  "50"  : #e7f4fd,
+  "100" : #b5ddfa,
+  "200" : #92cdf7,
+  "300" : #60b6f4,
+  "400" : #41a8f1,
+  "500" : #1192ee,
+  "600" : #0f85d9,
+  "700" : #0c68a9,
+  "800" : #095083,
+  "900" : #073d64
+);
+
+$greens: (
+  "50"  : #e8faf2,
+  "100" : #b8f0d8,
+  "200" : #96e8c5,
+  "300" : #66deab,
+  "400" : #48d79a,
+  "500" : #1acd81,
+  "600" : #18bb75,
+  "700" : #12925c,
+  "800" : #0e7147,
+  "900" : #0b5636
+);
+
+$yellows: (
+  "50"  : #faf3ec,
+  "100" : #f1dbc3,
+  "200" : #eac9a6,
+  "300" : #e0b17d,
+  "400" : #daa164,
+  "500" : #d18a3d,
+  "600" : #be7e38,
+  "700" : #94622b,
+  "800" : #734c22,
+  "900" : #583a1a
+);
+
+$reds: (
+  "50"  : #fdeeee,
+  "100" : #f9cbcb,
+  "200" : #f6b1b1,
+  "300" : #f28e8e,
+  "400" : #ef7878,
+  "500" : #eb5656,
+  "600" : #d64e4e,
+  "700" : #a73d3d,
+  "800" : #812f2f,
+  "900" : #632424
+);
+
+
+
+$grays: (
+  "50"  : #f2f0eb,
+  "100" : #e0ded8,
+  "200" : #c7c2bb,
+  "300" : #afa9a1,
+  "400" : #9a938a,
+  "500" : #8a847d,
+  "600" : #6e6a63,
+  "700" : #53504a,
+  "800" : #37342f,
+  "900" : #2a2320
+);
+
+$lights: (
+  "50"  : #f6f5f2,
+  "100" : #f0edea,
+  "200" : #d4d8d3,
+  "300" : #b8c0bb,
+  "400" : #94a09a,
+  "500" : #74847d,
+  "600" : #5d6a6e,
+  "700" : #4a5755,
+  "800" : #394542,
+  "900" : #33403a
+);
+
+$darks: (
+  "50"  : #f5f4f2,
+  "100" : #e5e3e0,
+  "200" : #cdc9c3,
+  "300" : #aba59d,
+  "400" : #847e76,
+  "500" : #656059,
+  "600" : #57534d,
+  "700" : #4a4640,
+  "800" : #413d37,
+  "900" : #3a3632
+);
+
+$neutrals: (
+  "50"  : #ffffff,
+  "100" : #f7f7f7,
+  "200" : #ededed,
+  "300" : #dadada,
+  "400" : #c4c4c4,
+  "500" : #a6a6a6,
+  "600" : #7f7f7f,
+  "700" : #595959,
+  "800" : #3d3d3d,
+  "900" : #000000
+);
+
+/*
+  Variables de color para el tema claro
+  ---------------------
+  Definir las variables de color para el tema claro.
+  Estas variables se utilizarán en toda la aplicación.
+*/
+
+$light-theme-colors: (
+"primary"               : getColor($golds,     "500"),
+"secondary"             : getColor($wines,     "500"),
+"tertiary"              : getColor($purples,   "500"),
+"danger"                : getColor($reds,      "500"),
+"warning"               : getColor($yellows,   "300"),
+"success"               : getColor($greens,    "500"),
+"info"                  : getColor($blues,     "500"),
+"light"                 : getColor($lights,    "300"),
+"dark"                  : getColor($darks,     "800"),
+"text-color"            : getColor($darks,     "800"),
+"text-color-muted"      : getColor($darks,     "500"),
+"body-bg"               : getColor($golds,     "50" ),
+"border-color"          : getColor($grays,     "100"),
+"container-bg"          : getColor($neutrals,  "50"  ),
+);
+
+$dark-theme-colors: (
+"primary"               : getColor($golds,     "300"),
+"secondary"             : getColor($wines,     "300"),
+"tertiary"              : getColor($purples,   "300"),
+"danger"                : getColor($reds,      "300"),
+"warning"               : getColor($yellows,   "100"),
+"success"               : getColor($greens,    "300"),
+"info"                  : getColor($blues,     "300"),
+"light"                 : getColor($lights,    "100"),
+"dark"                  : getColor($darks,     "900"),
+"text-color"            : getColor($lights,    "900"),
+"text-color-muted"      : getColor($lights,    "600"),
+"body-bg"               : getColor($darks,     "800"),
+"border-color"          : getColor($grays,     "600"),
+"container-bg"          : getColor($darks,     "700"),
+);
+
+
+$primary                : getColor($light-theme-colors, "primary"); // Color corporativo usado en botones principales
+$secondary              : getColor($light-theme-colors, "secondary"); // Color corporativo secundario, utilizado en botones secundarios
+$tertiary               : getColor($light-theme-colors, "tertiary"); // Color corporativo terciario, utilizado en botones terciarios
+$danger                 : getColor($light-theme-colors, "danger");
+$warning                : getColor($light-theme-colors, "warning");
+$success                : getColor($light-theme-colors, "success");
+$info                   : getColor($light-theme-colors, "info");
+$light                  : getColor($light-theme-colors, "light");
+$dark                   : getColor($light-theme-colors, "dark");
+$text-color             : getColor($light-theme-colors, "text-color");
+$text-color-muted       : getColor($light-theme-colors, "text-color-muted");
+$body-bg                : getColor($light-theme-colors, "body-bg");
+$border-color           : getColor($light-theme-colors, "border-color");
+$container-bg           : getColor($light-theme-colors, "container-bg");
+
+$min-contrast-ratio: 2;
+$color-contrast-light   : getColor($neutrals, "50");
+$color-contrast-dark    : getColor($neutrals, "900");

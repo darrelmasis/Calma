@@ -1,0 +1,6 @@
+@use "../mixins/" as *;
+@use "../config/" as *;
+
+:root {
+  @include inject-css-variables($light-theme-colors)
+}

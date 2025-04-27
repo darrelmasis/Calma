@@ -1,0 +1,83 @@
+// Generador de utilidades de espaciado responsive
+@use "../config/" as *;
+/**
+ * Mapeo de direcciones
+ * ---------------------------------- */
+ $spacer-directions: (
+  't': 'top',
+  'b': 'bottom',
+  's': 'left',    // start (ltr)
+  'e': 'right',   // end (ltr)
+  'x': 'inline',  // eje horizontal (left/right)
+  'y': 'block',   // eje vertical (top/bottom)
+  'a': 'all',     // todas las direcciones
+  'auto': 'auto'  // margen automático
+) !default;
+
+/**
+ * Propiedades aplicables
+ * ---------------------------------- */
+$spacer-properties: (
+  'margin': 'm',
+  'padding': 'p'
+) !default;
+
+/**
+ * Mixin principal para generar utilidades de espaciado
+ * @param $important: boolean - Agrega !important a las reglas
+ * ---------------------------------- */
+@mixin generate-spacers($important: false) {
+  $imp: if($important, '!important', '');
+
+  @each $property, $prefix in $spacer-properties {
+    @each $dir, $dir-value in $spacer-directions {
+      @each $size, $value in $spacers {
+
+        // Genera el nombre de la clase
+        $class: if($dir == 'a',
+                 '#{$prefix}-#{$size}',
+                 '#{$prefix}#{$dir}-#{$size}');
+
+        // Genera las reglas CSS
+        .#{$class} {
+          @if $dir == 'x' {
+            #{$property}-left: #{$value}#{$imp};
+            #{$property}-right: #{$value}#{$imp};
+          } @else if $dir == 'y' {
+            #{$property}-top: #{$value}#{$imp};
+            #{$property}-bottom: #{$value}#{$imp};
+          } @else if $dir == 'a' {
+            #{$property}: #{$value}#{$imp};
+          } @else if $dir == 'auto' {
+            #{$property}: auto#{$imp};
+          } @else {
+            #{$property}-#{$dir-value}: #{$value}#{$imp};
+          }
+        }
+
+        // Versiones responsivas
+        @each $bp-name, $bp-value in $breakpoints {
+          $responsive-class: '#{$prefix}#{$dir}-#{$bp-name}-#{$size}';
+
+          @media (min-width: $bp-value) {
+            .#{$responsive-class} {
+              @if $dir == 'x' {
+                #{$property}-left: #{$value}#{$imp};
+                #{$property}-right: #{$value}#{$imp};
+              } @else if $dir == 'y' {
+                #{$property}-top: #{$value}#{$imp};
+                #{$property}-bottom: #{$value}#{$imp};
+              } @else if $dir == 'a' {
+                #{$property}: #{$value}#{$imp};
+              } @else if $dir == 'auto' {
+                #{$property}: auto#{$imp};
+              } @else {
+                #{$property}-#{$dir-value}: #{$value}#{$imp};
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

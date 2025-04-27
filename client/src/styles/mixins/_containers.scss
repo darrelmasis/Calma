@@ -1,0 +1,25 @@
+@use "mediaqueries" as *;
+@use "../config/" as *;
+@use "sass:map";
+
+// Mixin base para el contenedor
+@mixin container-base($gutter: $container-padding-x) {
+  --gutter-x: #{$gutter};
+  width: 100%;
+  padding-left: calc(var(--gutter-x) / 2);
+  padding-right: calc(var(--gutter-x) / 2);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Mixin para el container responsivo
+@mixin container {
+  // Lo que haces es recorrer todos los breakpoints y asignar el max-width correspondiente
+  @each $breakpoint, $container-width in $containers {
+    @if $container-width != 100% {
+      @include screen('min', $breakpoint) {
+        max-width: $container-width;
+      }
+    }
+  }
+}

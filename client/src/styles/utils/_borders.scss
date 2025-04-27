@@ -1,0 +1,44 @@
+@use "../config/" as *;
+@use "../mixins/borders" as *;
+
+$borders-directions: top, right, bottom, left, all, none;
+$borders-radius-corners: top-left, top-right, bottom-left, bottom-right, top, bottom, left, right, pill, circle, all;
+
+$border-style: $border-width $border-style var(--border-color);
+$border-radius-base: $border-radius;
+
+@each $direction in $borders-directions {
+  @if $direction =='all' {
+    .border {
+      @include border($direction, $border-style)
+    }
+  } @else if $direction == 'none' {
+    .border-none {
+      border: none;
+    }
+  } @else {
+    .border-#{$direction} {
+      @include border($direction, $border-style)
+    }
+  }
+}
+
+@each $corner in $borders-radius-corners {
+  @if $corner =='all' {
+    .rounded {
+      @include border-radius($corner, $border-radius-base)
+    }
+  }
+
+  @else if $corner == 'pill' {
+    .rounded-#{$corner} {
+      @include border-radius($corner, $border-radius-base * 3)
+    }
+  }
+
+  @else {
+    .rounded-#{$corner} {
+      @include border-radius($corner, $border-radius-base)
+    }
+  }
+}
