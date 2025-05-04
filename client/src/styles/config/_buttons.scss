@@ -1,7 +1,7 @@
 @use 'colors' as c;
 
 // Buttons configuration
-$btn-padding-y: 0.359375rem; // 5.75px
+$btn-padding-y: .375rem; // 5.75px
 $btn-padding-x: 1rem; // 16px
 $btn-normal-fs: 1rem;
 $btn-line-height: 1.75;
@@ -138,7 +138,7 @@ $buttons-sizes: (
     14px,
     $btn-line-height,
     $btn-min-width,
-    $btn-square-size, // 28px
+    $btn-square-size, // 24.5px
   ),
   large: (
     calc($btn-padding-y * 1.5),
