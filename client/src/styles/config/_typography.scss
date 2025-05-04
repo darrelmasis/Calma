@@ -1,20 +1,28 @@
+@use 'sass:math';
+@use 'sass:map';
+@use 'spacing' as s;
 // Sistema tipográfico para Calma
-@use "spacing" as *;
-@use "sass:math";
-@use "sass:map";
+
 /**
  * Tipografía
  * ---------------------------------- */
 @font-face {
-  font-family: "Varela";
-  src: url("../assets/fonts/Varela/Varela-Regular.ttf") format("truetype");
+  font-family: 'Varela';
+  src: url('../assets/fonts/Varela/Varela-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Abril Fatface";
-  src: url("../assets/fonts/Abril Fatface/AbrilFatface-Regular.ttf") format("truetype");
+  font-family: 'Abril Fatface';
+  src: url('../assets/fonts/Abril Fatface/AbrilFatface-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Berkshire Swash';
+  src: url('../assets/fonts/Berkshire Swash/BerkshireSwash-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -22,76 +30,84 @@
 /**
  * Familia tipográfica
  * ---------------------------------- */
- $font-family-base: 'Varela', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !default;
- $font-family-alt: sans-serif !default; // Opcional: fuente secundaria
- $font-family-heading: 'Abril Fatface', serif !default; // Opcional: fuente para encabezados
- /**
+$font-family-base: 'Varela', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !default;
+$font-family-alt: sans-serif !default; // Opcional: fuente secundaria
+$font-family-heading: 'Abril Fatface', serif !default; // Opcional: fuente para encabezados
+/**
   * Tamaño base y escala modular
   * ---------------------------------- */
- $fs-base: 1rem !default;              // 16px (base HTML estándar)
- $fs-ratio: 1.250 !default;            // Ratio de escala (Major Third)
+$fs-base: 1rem !default; // 16px (base HTML estándar)
+$fs-ratio: 1.25 !default; // Ratio de escala (Major Third)
 
- /**
+/**
   * Escala tipográfica
   * ---------------------------------- */
- $font-sizes: (
-   'h1': $fs-base * pow($fs-ratio, 5), // 3.052rem ≈ 48.83px
-   'h2': $fs-base * pow($fs-ratio, 4), // 2.441rem ≈ 39.06px
-   'h3': $fs-base * pow($fs-ratio, 3), // 1.953rem ≈ 31.25px
-   'h4': $fs-base * pow($fs-ratio, 2), // 1.563rem ≈ 25.00px
-   'h5': $fs-base * $fs-ratio,         // 1.250rem ≈ 20.00px
-   'h6': $fs-base,                     // 1rem ≈ 16.00px (base)
-   'normal': $fs-base,                 // 1rem
-   'small': math.div($fs-base, $fs-ratio),      // 0.8rem ≈ 12.80px
-   'smaller': math.div($fs-base, pow($fs-ratio, 2)) // 0.64rem ≈ 10.24px
- ) !default;
+$font-sizes: (
+  'h1': $fs-base * pow($fs-ratio, 5),
+  // 3.052rem ≈ 48.83px
+  'h2': $fs-base * pow($fs-ratio, 4),
+  // 2.441rem ≈ 39.06px
+  'h3': $fs-base * pow($fs-ratio, 3),
+  // 1.953rem ≈ 31.25px
+  'h4': $fs-base * pow($fs-ratio, 2),
+  // 1.563rem ≈ 25.00px
+  'h5': $fs-base * $fs-ratio,
+  // 1.250rem ≈ 20.00px
+  'h6': $fs-base,
+  // 1rem ≈ 16.00px (base)
+  'normal': $fs-base,
+  // 1rem
+  'small': math.div($fs-base, $fs-ratio),
+  // 0.8rem ≈ 12.80px
+  'smaller': math.div($fs-base, pow($fs-ratio, 2)), // 0.64rem ≈ 10.24px
+) !default;
 
- /**
+/**
   * Pesos de fuente
   * ---------------------------------- */
- $font-weights: (
-   'lighter': lighter,
-   'light': 300,
-   'normal': 400,
-   'medium': 500,
-   'semibold': 600,
-   'bold': 700,
-   'bolder': bolder
- ) !default;
+$font-weights: (
+  'lighter': lighter,
+  'light': 300,
+  'normal': 400,
+  'medium': 500,
+  'semibold': 600,
+  'bold': 700,
+  'bolder': bolder,
+) !default;
 
- /**
+/**
   * Altura de línea
   * ---------------------------------- */
- $line-heights: (
-   'none': 1,
-   'tight': 1.2,
-   'normal': 1.5,
-   'loose': 1.8
- ) !default;
+$line-heights: (
+  'none': 1,
+  'tight': 1.2,
+  'normal': 1.5,
+  'loose': 1.8,
+) !default;
 
- /**
+/**
   * Variables aplicadas
   * ---------------------------------- */
- // Texto base
- $line-height-base: map.get($line-heights, 'normal') !default;
- $paragraph-margin-bottom: map.get($spacers, 3) !default; // 1rem
+// Texto base
+$line-height-base: map.get($line-heights, 'normal') !default;
+$paragraph-margin-bottom: map.get(s.$spacers, 3) !default; // 1rem
 
- // Títulos
- $title-margin-bottom: map.get($spacers, 2) !default; // 0.5rem
- $titles-line-height: map.get($line-heights, 'tight') !default;
- $titles-font-weight: map.get($font-weights, 'medium') !default;
+// Títulos
+$title-margin-bottom: map.get(s.$spacers, 2) !default; // 0.5rem
+$titles-line-height: map.get($line-heights, 'tight') !default;
+$titles-font-weight: map.get($font-weights, 'medium') !default;
 
- /**
+/**
   * Tipografía responsiva
   * ---------------------------------- */
- $responsive-type-ratios: (
-   'sm': 1.2,
-   'lg': 1.333
- ) !default;
+$responsive-type-ratios: (
+  'sm': 1.2,
+  'lg': 1.333,
+) !default;
 
- /**
+/**
   * Longitud óptima de línea
   * ---------------------------------- */
- $measure-base: 65ch !default; // Ideal para lectura
- $measure-short: 45ch !default; // Para sidebars
- $measure-long: 75ch !default; // Para artículos largos
+$measure-base: 65ch !default; // Ideal para lectura
+$measure-short: 45ch !default; // Para sidebars
+$measure-long: 75ch !default; // Para artículos largos

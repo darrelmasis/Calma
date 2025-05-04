@@ -1,0 +1,62 @@
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:color';
+@use '../config/buttons' as btns;
+
+@mixin button-initial($color-map, $bg, $hover, $active, $text) {
+  --btn-bg: #{map.get($color-map, $bg)};
+  --btn-bg-hover: #{map.get($color-map, $hover)};
+  --btn-bg-active: #{map.get($color-map, $active)};
+  --btn-color: #{map.get($color-map, $text)};
+  --btn-color-hover: #{map.get($color-map, $text)};
+}
+
+@mixin button-variant($color-map, $bg, $hover, $active, $text) {
+  --btn-bg: #{map.get($color-map, $bg)};
+  --btn-bg-hover: #{map.get($color-map, $hover)};
+  --btn-bg-active: #{map.get($color-map, $active)};
+  --btn-color: #{map.get($color-map, $text)};
+  --btn-color-hover: #{map.get($color-map, $text)};
+
+  $bg: map.get($color-map, $bg);
+  $outline-color: color.change($bg, $alpha: 0.4);
+  --btn-outline: #{$outline-color};
+
+  &:focus {
+    box-shadow: 0 0 0 0.25rem var(--btn-outline);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--dark);
+  }
+}
+
+@mixin button-ghost-variant($color-map, $bg, $hover, $active, $text, $text-hover) {
+  --btn-bg: transparent;
+  --btn-bg-hover: #{map.get($color-map, $hover)};
+  --btn-bg-active: #{map.get($color-map, $active)};
+  --btn-color: #{map.get($color-map, $text)};
+  --btn-color-hover: #{map.get($color-map, $text-hover)};
+  --btn-border: 1px solid #{map.get($color-map, $bg)};
+  --btn-padding: calc(#{btns.$btn-padding-y} - 1px) calc(#{btns.$btn-padding-x} - 1px);
+
+  $bg: map.get($color-map, $bg);
+  $outline-color: color.change($bg, $alpha: 0.4);
+  --btn-outline: #{$outline-color};
+
+  &:focus {
+    box-shadow: 0 0 0 0.25rem var(--btn-outline);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--dark);
+  }
+}
+
+@mixin button-text-variant($color-map, $bg, $hover, $active, $text) {
+  --btn-bg: transparent;
+  --btn-bg-hover: #{map.get($color-map, $hover)};
+  --btn-bg-active: #{map.get($color-map, $active)};
+  --btn-color: #{map.get($color-map, $text)};
+  --btn-color-hover: #{map.get($color-map, $text)};
+}

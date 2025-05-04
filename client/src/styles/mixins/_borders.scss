@@ -1,51 +1,37 @@
 @mixin border($direction, $style) {
-  @if $direction =='all' {
+  @if $direction == 'all' {
     border: $style;
-  }
-
-  @else {
+  } @else {
     border-#{$direction}: $style;
   }
 }
 
 @mixin border-radius($corner, $radius) {
-  @if $corner =='all' {
+  @if $corner == 'all' {
     border-radius: $radius;
-  }
-
-  @else if $corner =='top' {
+  } @else if $corner == 'top' {
     border-top-left-radius: $radius;
     border-top-right-radius: $radius;
-  }
-
-  @else if $corner =='bottom' {
+  } @else if $corner == 'bottom' {
     border-bottom-left-radius: $radius;
     border-bottom-right-radius: $radius;
-  }
-
-  @else if $corner =='left' {
+  } @else if $corner == 'left' {
     border-top-left-radius: $radius;
     border-bottom-left-radius: $radius;
-  }
-
-  @else if $corner =='right' {
+  } @else if $corner == 'right' {
     border-top-right-radius: $radius;
     border-bottom-right-radius: $radius;
   }
   // TODO agregar raidius del pill y circle
 
-  @else if $corner =='pill' {
+  @else if $corner == 'pill' {
     border-top-right-radius: $radius;
     border-bottom-right-radius: $radius;
     border-top-left-radius: $radius;
     border-bottom-left-radius: $radius;
-  }
-
-  @else if $corner =='circle' {
+  } @else if $corner == 'circle' {
     border-radius: 50%;
-  }
-
-  @else {
+  } @else {
     border-#{$corner}-radius: $radius;
   }
 }

@@ -1,14 +1,13 @@
-@use "../config/" as *;
-
+@use '../config/grid' as grid;
 // Base Grid
 .grid {
   display: grid;
-  grid-template-columns: repeat($grid-columns, 1fr);
-  gap: $grid-gap;
+  grid-template-columns: repeat(grid.$grid-columns, 1fr);
+  gap: grid.$grid-gap;
 }
 
 // Opcional: grid-x clases rápidas
-@for $i from 1 through $grid-columns {
+@for $i from 1 through grid.$grid-columns {
   .grid-#{$i} {
     grid-template-columns: repeat($i, 1fr);
   }

@@ -1,10 +1,14 @@
+@use 'spacing' as s;
+@use 'sass:map';
 
 // Containers max-widths
 $containers: (
-  xs: 100%, // ocupa el 100% de la pantalla
+  xs: 100%,
   sm: 540px,
   md: 720px,
   lg: 960px,
   xl: 1200px,
-  xxl: 1320px
+  xxl: 1320px,
 );
+
+$container-padding-x: map.get(s.$spacers, 3); // 1rem

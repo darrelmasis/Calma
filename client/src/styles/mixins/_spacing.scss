@@ -1,17 +1,25 @@
+@use '../config/spacing' as s;
+@use '../config/breakpoints' as bp;
+
 // Generador de utilidades de espaciado responsive
-@use "../config/" as *;
+
 /**
  * Mapeo de direcciones
  * ---------------------------------- */
- $spacer-directions: (
+$spacer-directions: (
   't': 'top',
   'b': 'bottom',
-  's': 'left',    // start (ltr)
-  'e': 'right',   // end (ltr)
-  'x': 'inline',  // eje horizontal (left/right)
-  'y': 'block',   // eje vertical (top/bottom)
-  'a': 'all',     // todas las direcciones
-  'auto': 'auto'  // margen automático
+  's': 'left',
+  // start (ltr)
+  'e': 'right',
+  // end (ltr)
+  'x': 'inline',
+  // eje horizontal (left/right)
+  'y': 'block',
+  // eje vertical (top/bottom)
+  'a': 'all',
+  // todas las direcciones
+  'auto': 'auto', // margen automático
 ) !default;
 
 /**
@@ -19,7 +27,7 @@
  * ---------------------------------- */
 $spacer-properties: (
   'margin': 'm',
-  'padding': 'p'
+  'padding': 'p',
 ) !default;
 
 /**
@@ -31,12 +39,9 @@ $spacer-properties: (
 
   @each $property, $prefix in $spacer-properties {
     @each $dir, $dir-value in $spacer-directions {
-      @each $size, $value in $spacers {
-
+      @each $size, $value in s.$spacers {
         // Genera el nombre de la clase
-        $class: if($dir == 'a',
-                 '#{$prefix}-#{$size}',
-                 '#{$prefix}#{$dir}-#{$size}');
+        $class: if($dir == 'a', '#{$prefix}-#{$size}', '#{$prefix}#{$dir}-#{$size}');
 
         // Genera las reglas CSS
         .#{$class} {
@@ -56,7 +61,7 @@ $spacer-properties: (
         }
 
         // Versiones responsivas
-        @each $bp-name, $bp-value in $breakpoints {
+        @each $bp-name, $bp-value in bp.$breakpoints {
           $responsive-class: '#{$prefix}#{$dir}-#{$bp-name}-#{$size}';
 
           @media (min-width: $bp-value) {

@@ -1,18 +1,19 @@
-@use "mediaqueries" as *;
-@use "../config/" as *;
+@use '../config/grid' as grid;
+@use '../config/breakpoints' as bp;
+@use '../mixins/mediaqueries' as mq;
 
 // Mixin para generar utilidades de columna o fila
 @mixin generate-grid-utilities($property, $prefix) {
-  @for $i from 1 through $grid-columns {
+  @for $i from 1 through grid.$grid-columns {
     .#{$prefix}-#{$i} {
       #{$property}: span $i;
     }
   }
 
   // Responsive
-  @each $breakpoint, $width in $breakpoints {
-    @include screen('min', $breakpoint) {
-      @for $i from 1 through $grid-columns {
+  @each $breakpoint, $width in bp.$breakpoints {
+    @include mq.screen('min', $breakpoint) {
+      @for $i from 1 through grid.$grid-columns {
         .#{$breakpoint}\:#{$prefix}-#{$i} {
           #{$property}: span $i;
         }
@@ -20,4 +21,3 @@
     }
   }
 }
-

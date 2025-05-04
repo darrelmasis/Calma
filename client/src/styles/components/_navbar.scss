@@ -1,0 +1,106 @@
+@use '../config/colors_map' as c;
+@use '../config/typography' as typo;
+@use '../mixins/mediaqueries' as mq;
+@use '../config/breakpoints' as bp;
+@use 'sass:map';
+
+.navbar {
+  height: 80px;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  &-left,
+  &-right {
+    flex: 1;
+  }
+
+  &-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    align-items: center;
+    font-family: 'Berkshire Swash';
+
+    & a {
+      text-decoration: none;
+      color: c.$text-color;
+      font-size: typo.$fs-base;
+      font-weight: map.get(typo.$font-weights, 'normal');
+      transition: color 0.3s;
+      user-select: none;
+
+      &:hover {
+        color: c.$primary;
+      }
+
+      &.active {
+        color: c.$primary;
+        text-decoration-line: underline;
+        text-decoration-style: wavy;
+        text-decoration-color: c.$primary;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 4px;
+      }
+    }
+  }
+
+  &-logo {
+    width: 64px;
+    height: 64px;
+  }
+
+  &-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 2rem;
+    color: c.$text-color;
+    background-color: transparent;
+    border: none;
+    transition: color 0.3s;
+
+    &:hover {
+      color: c.$primary;
+    }
+  }
+}
+
+@include mq.screen('max', map.get(bp.$breakpoints, 'md')) {
+  .navbar {
+    &-links {
+      display: none;
+    }
+  }
+}
+
+// @media (max-width: 768px) {
+//   .navbar {
+//     background-color: var(--bg-container);
+
+//     &-links {
+//       display: none;
+//       position: fixed;
+//       top: 0;
+//       right: -100%; // fuera de la pantalla inicialmente
+//       width: 250px;
+//       height: 100vh;
+//       background-color: white;
+//       box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
+//       transition: right 0.3s ease-in-out;
+//       z-index: 1000;
+//       padding: 2rem 1rem;
+
+//       &.active {
+//         display: flex;
+//         flex-direction: column;
+//         position: absolute;
+//         right: 0;
+//         background-color: var(--container-bg);
+//       }
+//     }
+
+//     &-toggle {
+//       display: block;
+//     }
+//   }
+// }

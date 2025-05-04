@@ -1,16 +1,17 @@
-@use "../config/" as *;
-@use "../mixins/borders" as *;
+@use '../config/borders' as borders;
+@use '../mixins/borders' as borders_mixins;
+@use 'sass:map';
 
 $borders-directions: top, right, bottom, left, all, none;
 $borders-radius-corners: top-left, top-right, bottom-left, bottom-right, top, bottom, left, right, pill, circle, all;
 
-$border-style: $border-width $border-style var(--border-color);
-$border-radius-base: $border-radius;
+$border-style: borders.$border-width borders.$border-style var(--border-color);
+$border-radius-base: borders.$border-radius;
 
 @each $direction in $borders-directions {
-  @if $direction =='all' {
+  @if $direction == 'all' {
     .border {
-      @include border($direction, $border-style)
+      @include borders_mixins.border($direction, $border-style);
     }
   } @else if $direction == 'none' {
     .border-none {
@@ -18,27 +19,23 @@ $border-radius-base: $border-radius;
     }
   } @else {
     .border-#{$direction} {
-      @include border($direction, $border-style)
+      @include borders_mixins.border($direction, $border-style);
     }
   }
 }
 
 @each $corner in $borders-radius-corners {
-  @if $corner =='all' {
+  @if $corner == 'all' {
     .rounded {
-      @include border-radius($corner, $border-radius-base)
+      @include borders_mixins.border-radius($corner, $border-radius-base);
     }
-  }
-
-  @else if $corner == 'pill' {
+  } @else if $corner == 'pill' {
     .rounded-#{$corner} {
-      @include border-radius($corner, $border-radius-base * 3)
+      @include borders_mixins.border-radius($corner, $border-radius-base * 3);
     }
-  }
-
-  @else {
+  } @else {
     .rounded-#{$corner} {
-      @include border-radius($corner, $border-radius-base)
+      @include borders_mixins.border-radius($corner, $border-radius-base);
     }
   }
 }

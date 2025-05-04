@@ -1,70 +1,80 @@
-@use "../config" as *;
-@use "sass:map";
+@use 'sass:map';
+@use '../config/breakpoints' as bp;
 
 $flexbox-classes: (
-  "display": (
+  'display': (
     property: display,
     class: d,
-    values: inline inline-block block grid inline-grid flex inline-flex none
+    values: inline inline-block block grid inline-grid flex inline-flex none,
   ),
-  "align-items": (
+  'align-items': (
     property: align-items,
     class: align-items,
-    values: flex-start flex-end center baseline stretch
+    values: flex-start flex-end center baseline stretch,
   ),
-  "justify-content": (
+  'justify-content': (
     property: justify-content,
     class: justify-content,
-    values: flex-start flex-end center space-between space-around space-evenly
+    values: flex-start flex-end center space-between space-around space-evenly,
   ),
-  "flex-direction": (
+  'flex-direction': (
     property: flex-direction,
     class: flex-direction,
-    values: row row-reverse column column-reverse
+    values: row row-reverse column column-reverse,
   ),
-  "text-center": (
+  'text-center': (
     property: text-align,
     class: text,
-    values: start end center justify
+    values: start end center justify,
   ),
-  "position": (
+  'position': (
     property: position,
     class: position,
-    values: static relative absolute fixed sticky
+    values: static relative absolute fixed sticky,
   ),
-  "z-index": (
+  'z-index': (
     property: z-index,
     class: z-index,
-    values: 1 2 3 4 5 6 7 8 9 10 11 12
+    values: 1 2 3 4 5 6 7 8 9 10 11 12,
   ),
-  "width": (
+  'right': (
+    property: right,
+    class: right,
+    values: 0 auto,
+  ),
+  'left': (
+    property: left,
+    class: left,
+    values: 0 auto,
+  ),
+  'width': (
     property: width,
     class: w,
     values: 25 50 75 100 auto,
-    measurement: '%'
+    measurement: '%',
   ),
-  "height": (
+  'height': (
     property: height,
     class: h,
     values: 25 50 75 100 auto,
-    measurement: '%'
+    measurement: '%',
   ),
-  "white-space": (
+  'white-space': (
     property: white-space,
     class: white-space,
-    values: normal nowrap pre pre-wrap pre-line
+    values: normal nowrap pre pre-wrap pre-line,
   ),
-  "overflow": (
+  'overflow': (
     property: overflow,
     class: overflow,
-    values: visible hidden clip scroll auto
+    values: visible hidden clip scroll auto,
   ),
-  "grid-gap": (
+  'grid-gap': (
     property: gap,
     class: gap,
     values: 1 2 3 4 5,
-    measurement: 'rem'
-  )
+    measurement: 'rem',
+  ),
 );
 
 @each $property-name, $property-values in $flexbox-classes {
@@ -83,7 +93,7 @@ $flexbox-classes: (
     }
 
     // Clases responsivas
-    @each $breakpoint, $breakpoint-value in $breakpoints {
+    @each $breakpoint, $breakpoint-value in bp.$breakpoints {
       $responsive-class-name: #{$property-class}-#{$breakpoint}-#{$value};
       @media (min-width: $breakpoint-value) {
         .#{$responsive-class-name} {

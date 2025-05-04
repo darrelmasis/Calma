@@ -1,10 +1,19 @@
-@use "../mixins/" as *;
+@use '../mixins/containers' as container_mixins;
 
 .container-fluid {
-  @include container-base()
+  @include container_mixins.container-base();
 }
 
 .container {
-  @extend .container-fluid;
-  @include container()
+  @include container_mixins.container-base();
+  @include container_mixins.container-responsive();
+}
+
+.container-full {
+  @include container_mixins.container-base();
+  width: 100vw;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: auto;
+  margin-right: auto;
 }

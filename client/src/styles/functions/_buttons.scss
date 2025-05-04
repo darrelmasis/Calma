@@ -1,0 +1,6 @@
+@use 'sass:map';
+@use '../config/buttons' as c;
+
+@function get-button-state($theme, $state) {
+  @return map.get(map.get(c.$buttons-colors, $theme), $state);
+}

@@ -1,4 +1,4 @@
-@use "../config" as *;
+@use '../config/typography' as typho;
 
 /*!
  * Base styles
@@ -7,7 +7,7 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
@@ -18,18 +18,20 @@ html {
 }
 
 body {
-  font-family: $font-family-base;
+  font-family: typho.$font-family-base;
   background-color: var(--body-bg);
   color: var(--text-color);
-  font-size: $fs-base;
+  font-size: typho.$fs-base;
 }
 
 a {
   &:link {
-    color: var(--info);      /* Enlaces no visitados */
+    color: var(--info);
+    /* Enlaces no visitados */
   }
 
   &:visited {
-    color: var(--tertiary);  /* Enlaces visitados */
+    color: var(--tertiary);
+    /* Enlaces visitados */
   }
 }

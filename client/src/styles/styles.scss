@@ -1,6 +1,9 @@
-@use "base";
-@use "components";
-@use "layout";
-@use "pages";
-@use "utils";
-
+@use 'config' as config;
+@use 'functions' as fn;
+@use 'mixins' as mixin;
+@use 'base';
+@use 'layout';
+@use 'components';
+@use 'utils';
+@use 'pages';
+@use 'vendors';

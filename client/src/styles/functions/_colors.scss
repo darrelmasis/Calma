@@ -1,0 +1,6 @@
+// This file contains functions to retrieve colors from the color palette.
+@use 'sass:map';
+
+@function getColor($palette, $shade) {
+  @return map.get($palette, $shade);
+}

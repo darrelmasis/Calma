@@ -1,28 +1,49 @@
-@use "../config" as *;
-@use "../mixins/" as *;
-@use "../functions/" as *;
+@use '../config/typography' as typho;
+@use '../mixins/typography' as typho_mixins;
 
 // Encabezados
-h1, h2, h3, h4, h5, h6 {
-  font-family: $font-family-heading;
-  font-weight: $titles-font-weight;
-  line-height: $titles-line-height;
-  margin-bottom: $title-margin-bottom;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: typho.$font-family-heading;
+  font-weight: typho.$titles-font-weight;
+  line-height: typho.$titles-line-height;
+  margin-bottom: typho.$title-margin-bottom;
 }
 
 // Aplicación de tamaños escalados
-h1 { @include font-size(h1); }
-h2 { @include font-size(h2); }
-h3 { @include font-size(h3); }
-h4 { @include font-size(h4); }
-h5 { @include font-size(h5); }
-h6 { @include font-size(h6); }
+h1 {
+  @include typho_mixins.font-size(h1);
+}
+
+h2 {
+  @include typho_mixins.font-size(h2);
+}
+
+h3 {
+  @include typho_mixins.font-size(h3);
+}
+
+h4 {
+  @include typho_mixins.font-size(h4);
+}
+
+h5 {
+  @include typho_mixins.font-size(h5);
+}
+
+h6 {
+  @include typho_mixins.font-size(h6);
+}
 
 // Texto base y variaciones
 p {
   font-size: size(normal);
-  line-height: $line-height-base;
-  margin-bottom: $paragraph-margin-bottom;
+  line-height: typho.$line-height-base;
+  margin-bottom: typho.$paragraph-margin-bottom;
 }
 
 small,

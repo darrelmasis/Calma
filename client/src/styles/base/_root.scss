@@ -1,6 +1,6 @@
-@use "../mixins/" as *;
-@use "../config/" as *;
+@use '../mixins/root' as mixins;
+@use '../config/colors_map' as colors_map;
 
 :root {
-  @include inject-css-variables($light-theme-colors)
+  @include mixins.inject-css-variables(colors_map.$light-theme-colors);
 }

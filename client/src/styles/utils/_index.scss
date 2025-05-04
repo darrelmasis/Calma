@@ -1,34 +1,34 @@
-@forward "backgrounds";
-@forward "borders";
-@forward "colors";
-@forward "shadows";
-@forward "utils";
-
-@use "../config/" as *;
-@use "../mixins/" as *;
+@forward 'backgrounds';
+@forward 'borders';
+@forward 'colors';
+@forward 'shadows';
+@forward 'utils';
+@use '../config/typography' as typo;
+@use '../mixins/typography' as typo_mixins;
+@use '../mixins/spacing' as spacing_mixins;
+@use '../mixins/grid' as grid_mixins;
 
 // Genera clases útiles para el tamaño de fuente
 // @param $name: Nombre de la clase
 // @param $size: Tamaño de fuente
-@each $name, $size in $font-sizes {
-  @include font-size-class('fs-#{$name}', $size);
+@each $name, $size in typo.$font-sizes {
+  @include typo_mixins.font-size-class('fs-#{$name}', $size);
 }
 
 // Genera clases útiles para el tamaño de fuente escalado
 // @param $levels: Niveles de escalado (1 a n)
 // @param $neg-levels: Niveles negativos opcionales (ej: 3 = .fs--1 a .fs--3)
-@include generate-scaled-font-utilities();
+@include typo_mixins.generate-scaled-font-utilities();
 
 // Genera clases útiles para el espaciado
 // @param $name: Nombre de la clase
 // @param $size: Tamaño de espaciado
-@include generate-spacers();
-
+@include spacing_mixins.generate-spacers();
 
 // Generar todas las utilidades de la grilla
 
 // Columnas
-@include generate-grid-utilities('grid-column', 'grid-col');
+@include grid_mixins.generate-grid-utilities('grid-column', 'grid-col');
 
 // Filas (opcional)
-@include generate-grid-utilities('grid-row', 'grid-row');
+@include grid_mixins.generate-grid-utilities('grid-row', 'grid-row');

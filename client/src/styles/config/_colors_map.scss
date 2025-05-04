@@ -1,0 +1,45 @@
+@use '../functions/' as fn;
+@use 'colors' as c;
+
+/*
+  Variables de color para el tema claro
+  ---------------------
+  Definir las variables de color para el tema claro.
+  Estas variables se utilizarán en toda la aplicación.
+*/
+
+$light-theme-colors: (
+  'primary': fn.getColor(c.$golds, '500'),
+  'secondary': fn.getColor(c.$wines, '500'),
+  'tertiary': fn.getColor(c.$purples, '500'),
+  'danger': fn.getColor(c.$reds, '500'),
+  'warning': fn.getColor(c.$yellows, '300'),
+  'success': fn.getColor(c.$greens, '500'),
+  'info': fn.getColor(c.$blues, '500'),
+  'light': fn.getColor(c.$lights, '300'),
+  'dark': fn.getColor(c.$darks, '800'),
+  'text-color': fn.getColor(c.$darks, '800'),
+  'text-color-muted': fn.getColor(c.$darks, '500'),
+  'body-bg': fn.getColor(c.$golds, '50'),
+  'border-color': fn.getColor(c.$grays, '100'),
+  'container-bg': fn.getColor(c.$neutrals, '50'),
+  'white': fn.getColor(c.$neutrals, '50'),
+);
+
+$primary: fn.getColor($light-theme-colors, 'primary'); // Color corporativo usado en botones principales
+$secondary: fn.getColor($light-theme-colors, 'secondary'); // Color corporativo secundario, utilizado en botones secundarios
+$tertiary: fn.getColor($light-theme-colors, 'tertiary'); // Color corporativo terciario, utilizado en botones terciarios
+$danger: fn.getColor($light-theme-colors, 'danger');
+$warning: fn.getColor($light-theme-colors, 'warning');
+$success: fn.getColor($light-theme-colors, 'success');
+$info: fn.getColor($light-theme-colors, 'info');
+$light: fn.getColor($light-theme-colors, 'light');
+$dark: fn.getColor($light-theme-colors, 'dark');
+$text-color: fn.getColor($light-theme-colors, 'text-color');
+$text-color-muted: fn.getColor($light-theme-colors, 'text-color-muted');
+$body-bg: fn.getColor($light-theme-colors, 'body-bg');
+$border-color: fn.getColor($light-theme-colors, 'border-color');
+$container-bg: fn.getColor($light-theme-colors, 'container-bg');
+
+$min-contrast-ratio: 2;
+$color-contrast-light: fn.getColor(c.$neutrals, '50');

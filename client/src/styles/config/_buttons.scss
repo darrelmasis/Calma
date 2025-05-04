@@ -1,0 +1,151 @@
+@use 'colors' as c;
+
+// Buttons configuration
+$btn-padding-y: 0.359375rem; // 5.75px
+$btn-padding-x: 1rem; // 16px
+$btn-normal-fs: 1rem;
+$btn-line-height: 1.75;
+$btn-border-radius: 0.25rem; // 4px
+$btn-width: auto;
+$btn-ratio: 1.5;
+$btn-min-width: 4rem; // 64px
+$btn-square-size: 24.5px;
+
+$button-theme-colors: (
+  primary: c.$golds,
+  secondary: c.$wines,
+  tertiary: c.$purples,
+  danger: c.$reds,
+  warning: c.$yellows,
+  success: c.$greens,
+  info: c.$blues,
+  light: c.$lights,
+  dark: c.$darks,
+);
+
+$buttons-colors: (
+  primary: (
+    main: '500',
+    main-hover: '600',
+    main-hover-ghost: '500',
+    main-active: '700',
+    main-active-ghost: '700',
+    text-color: '0',
+    text-color-ghost: '500',
+    text-color-ghost-hover: '0',
+  ),
+  secondary: (
+    main: '500',
+    main-hover: '600',
+    main-hover-ghost: '500',
+    main-active: '700',
+    main-active-ghost: '700',
+    text-color: '0',
+    text-color-ghost: '500',
+    text-color-ghost-hover: '0',
+  ),
+  tertiary: (
+    main: '500',
+    main-hover: '600',
+    main-hover-ghost: '500',
+    main-active: '700',
+    main-active-ghost: '700',
+    text-color: '0',
+    text-color-ghost: '500',
+    text-color-ghost-hover: '0',
+  ),
+  danger: (
+    main: '500',
+    main-hover: '600',
+    main-hover-ghost: '500',
+    main-active: '700',
+    main-active-ghost: '700',
+    text-color: '0',
+    text-color-ghost: '500',
+    text-color-ghost-hover: '0',
+  ),
+  warning: (
+    main: '500',
+    main-hover: '600',
+    main-hover-ghost: '500',
+    main-active: '700',
+    main-active-ghost: '700',
+    text-color: '0',
+    text-color-ghost: '500',
+    text-color-ghost-hover: '0',
+  ),
+  success: (
+    main: '500',
+    main-hover: '600',
+    main-hover-ghost: '500',
+    main-active: '700',
+    main-active-ghost: '700',
+    text-color: '0',
+    text-color-ghost: '500',
+    text-color-ghost-hover: '0',
+  ),
+  info: (
+    main: '500',
+    main-hover: '600',
+    main-hover-ghost: '500',
+    main-active: '700',
+    main-active-ghost: '700',
+    text-color: '0',
+    text-color-ghost: '500',
+    text-color-ghost-hover: '0',
+  ),
+  light: (
+    main: '500',
+    main-hover: '600',
+    main-hover-ghost: '500',
+    main-active: '700',
+    main-active-ghost: '700',
+    text-color: '0',
+    text-color-ghost: '500',
+    text-color-ghost-hover: '0',
+  ),
+  dark: (
+    main: '800',
+    main-hover: '600',
+    main-hover-ghost: '500',
+    main-active: '700',
+    main-active-ghost: '700',
+    text-color: '0',
+    text-color-ghost: '500',
+    text-color-ghost-hover: '0',
+  ),
+  initial: (
+    main: '100',
+    main-hover: '200',
+    main-active: '300',
+    text-color: '900',
+  ),
+);
+
+//Padding-y, padding-x, font-size, line-height, min-width, square-size
+$buttons-sizes: (
+  small: (
+    calc($btn-padding-y / 2),
+    calc($btn-padding-x / 2),
+    12px,
+    $btn-line-height,
+    $btn-min-width,
+    21px,
+  ),
+  medium: (
+    $btn-padding-y,
+    $btn-padding-x,
+    14px,
+    $btn-line-height,
+    $btn-min-width,
+    $btn-square-size, // 28px
+  ),
+  large: (
+    calc($btn-padding-y * 1.5),
+    calc($btn-padding-x * 1.5),
+    16px,
+    $btn-line-height,
+    $btn-min-width,
+    28px,
+  ),
+);

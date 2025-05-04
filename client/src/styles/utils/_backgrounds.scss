@@ -1,20 +1,22 @@
-@use "../config/" as *;
-@use "../mixins/" as *;
-@use "../functions/" as *;
+@use '../config/colors_map' as c;
+@use '../functions/colors' as fn;
+@use '../config/breakpoints' as bp;
+@use '../mixins/mediaqueries' as mq;
 
+// Importar variables y mixins necesarios
 $bg-colors-light: (
-  "primary":      $primary,
-  "secondary":    $secondary,
-  "tertiary":     $tertiary,
-  "danger":       $danger,
-  "warning":      $warning,
-  "success":      $success,
-  "info":         $info,
-  "light":        $light,
-  "dark":         $dark,
-  "white":        getColor($light-theme-colors, "white"),
-  "container":    $container-bg,
-  "transparent":  "transparent"
+  'primary': c.$primary,
+  'secondary': c.$secondary,
+  'tertiary': c.$tertiary,
+  'danger': c.$danger,
+  'warning': c.$warning,
+  'success': c.$success,
+  'info': c.$info,
+  'light': c.$light,
+  'dark': c.$dark,
+  'white': fn.getColor(c.$light-theme-colors, 'white'),
+  'container': c.$container-bg,
+  'transparent': 'transparent',
 );
 
 @each $color, $value in $bg-colors-light {
@@ -25,8 +27,8 @@ $bg-colors-light: (
   }
 
   // Versiones responsive (usando tu mixin 'screen')
-  @each $breakpoint, $breakpoint-value in $breakpoints {
-    @include screen('min', $breakpoint) {
+  @each $breakpoint, $breakpoint-value in bp.$breakpoints {
+    @include mq.screen('min', $breakpoint) {
       .bg-#{$color}-#{$breakpoint} {
         --bg-#{$color}: #{$value};
         background-color: var(--bg-#{$color});
