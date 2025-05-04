@@ -4,8 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "format": "prettier --write --list-different \"{client,server}/**/*.{js,jsx,ts,tsx,css,md,json}\"",
-        "format:check": "prettier --check \"{client,server}/**/*.{js,jsx,ts,tsx}\""
+        "format": "prettier --write --list-different \"{client,server}/**/*.{js,jsx,ts,tsx,css,scss,md,json}\"",
+        "format:check": "prettier --check \"{client,server}/**/*.{js,jsx,ts,tsx,scss}\""
     },
     "keywords": [],
     "author": "",
