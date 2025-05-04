@@ -16,7 +16,6 @@ export const Button = ({
   type = 'button',
   ...rest
 }) => {
-
   const sizeValidate = size || 'medium'
 
   const hasChildren = React.Children.count(children) > 0
