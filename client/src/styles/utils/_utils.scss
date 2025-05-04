@@ -22,6 +22,11 @@ $flexbox-classes: (
     class: flex-direction,
     values: row row-reverse column column-reverse,
   ),
+  'flex-wrap': (
+    property: flex-wrap,
+    class: flex-wrap,
+    values: nowrap wrap wrap-reverse,
+  ),
   'text-center': (
     property: text-align,
     class: text,
@@ -36,6 +41,11 @@ $flexbox-classes: (
     property: z-index,
     class: z-index,
     values: 1 2 3 4 5 6 7 8 9 10 11 12,
+  ),
+  'top': (
+    property: top,
+    class: top,
+    values: 0 auto,
   ),
   'right': (
     property: right,
