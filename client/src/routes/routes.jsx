@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { Contact, History, Home, NotFound, Packages, Services } from '../pages/Index'
+import { Booking, Contact, History, Home, NotFound, Packages, Services, Privacy } from '../pages/Index'
 
 const AppRoutes = () => {
   return (
@@ -11,6 +11,8 @@ const AppRoutes = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/packages" element={<Packages />} />
         <Route path="/services" element={<Services />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/booking" element={<Booking />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
