@@ -1,0 +1,32 @@
+// mixins/_form.scss
+
+@use 'sass:map';
+@use 'sass:color';
+@use '../config/forms' as forms;
+@use '../functions/forms' as f;
+
+@mixin form-variant($state) {
+  $palette: map.get(forms.$form-theme-colors, $state);
+
+  $border: map.get($palette, f.get-form-state($state, 'border'));
+  $bg: map.get($palette, f.get-form-state($state, 'background'));
+  $text: map.get($palette, f.get-form-state($state, 'text'));
+
+  --form-border-color: #{$border};
+  --form-bg-color: #{$bg};
+  --form-text-color: #{$text};
+
+  border-color: var(--form-border-color);
+  background-color: var(--form-bg-color);
+  color: var(--form-text-color);
+
+  $outline-color: color.change($border, $alpha: 0.4);
+
+  &:focus {
+    box-shadow: 0 0 0 0.25rem #{$outline-color};
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--form-border-color);
+  }
+}

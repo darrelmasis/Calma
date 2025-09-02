@@ -1,0 +1,8 @@
+// functions/_form.scss
+
+@use 'sass:map';
+@use '../config/forms' as c;
+
+@function get-form-state($state, $property) {
+  @return map.get(map.get(c.$form-colors, $state), $property);
+}

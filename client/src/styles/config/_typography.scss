@@ -7,10 +7,35 @@
  * Tipografía
  * ---------------------------------- */
 @font-face {
-  font-family: 'Varela';
-  src: url('../assets/fonts/Varela/Varela-Regular.ttf') format('truetype');
-  font-weight: normal;
+  font-family: 'Lato Light';
+  src: url('../assets/fonts/Lato/Lato-Light.ttf') format('truetype');
+  font-weight: 300;
   font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('../assets/fonts/Lato/Lato-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lato Bold';
+  src: url('../assets/fonts/Lato/Lato-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lato Black';
+  src: url('../assets/fonts/Lato/Lato-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -27,12 +52,25 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Paytone One';
+  src: url('../assets/fonts/Paytone One/paytone-one-v16-latin-regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Outfit';
+  src: url('../assets/fonts/Outfit/Outfit-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 /**
  * Familia tipográfica
  * ---------------------------------- */
-$font-family-base: 'Varela', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !default;
+$font-family-base: 'Outfit', sans-serif, Tahoma, Geneva, Verdana, sans-serif !default;
 $font-family-alt: sans-serif !default; // Opcional: fuente secundaria
-$font-family-heading: 'Abril Fatface', serif !default; // Opcional: fuente para encabezados
+$font-family-heading: 'Paytone One', 'Abril Fatface', serif !default; // Opcional: fuente para encabezados
 /**
   * Tamaño base y escala modular
   * ---------------------------------- */
@@ -44,22 +82,14 @@ $fs-ratio: 1.25 !default; // Ratio de escala (Major Third)
   * ---------------------------------- */
 $font-sizes: (
   'h1': $fs-base * pow($fs-ratio, 5),
-  // 3.052rem ≈ 48.83px
   'h2': $fs-base * pow($fs-ratio, 4),
-  // 2.441rem ≈ 39.06px
   'h3': $fs-base * pow($fs-ratio, 3),
-  // 1.953rem ≈ 31.25px
   'h4': $fs-base * pow($fs-ratio, 2),
-  // 1.563rem ≈ 25.00px
   'h5': $fs-base * $fs-ratio,
-  // 1.250rem ≈ 20.00px
   'h6': $fs-base,
-  // 1rem ≈ 16.00px (base)
   'normal': $fs-base,
-  // 1rem
   'small': math.div($fs-base, $fs-ratio),
-  // 0.8rem ≈ 12.80px
-  'smaller': math.div($fs-base, pow($fs-ratio, 2)), // 0.64rem ≈ 10.24px
+  'smaller': math.div($fs-base, pow($fs-ratio, 2)),
 ) !default;
 
 /**
@@ -95,7 +125,7 @@ $paragraph-margin-bottom: map.get(s.$spacers, 3) !default; // 1rem
 // Títulos
 $title-margin-bottom: map.get(s.$spacers, 2) !default; // 0.5rem
 $titles-line-height: map.get($line-heights, 'tight') !default;
-$titles-font-weight: map.get($font-weights, 'medium') !default;
+$titles-font-weight: map.get($font-weights, 'lighter') !default;
 
 /**
   * Tipografía responsiva

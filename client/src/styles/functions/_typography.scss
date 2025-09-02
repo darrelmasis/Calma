@@ -1,9 +1,24 @@
+@use 'sass:math';
+@use 'sass:map';
+
 // Devuelve el tamaño de fuente desde el mapa $font-sizes
-@function size($key) {
+@function size($key, $font-sizes) {
   @if map.has-key($font-sizes, $key) {
     @return map.get($font-sizes, $key);
   } @else {
     @warn "El tamaño de fuente '#{$key}' no está definido en el mapa.";
     @return null;
   }
+}
+
+/// Calcula un tamaño de fuente fluido usando clamp()
+/// @param {Number} $min - tamaño mínimo (en rem)
+/// @param {Number} $max - tamaño máximo (en rem)
+/// @param {Number} $min-vw - ancho mínimo del viewport (en px)
+/// @param {Number} $max-vw - ancho máximo del viewport (en px)
+@function fluid-size($min, $max, $min-vw: 320, $max-vw: 1200) {
+  $slope: ($max - $min) / ($max-vw - $min-vw);
+  $base: $min - $slope * $min-vw;
+
+  @return clamp(#{$min}rem, #{$base}rem + #{$slope * 100}vw, #{$max}rem);
 }

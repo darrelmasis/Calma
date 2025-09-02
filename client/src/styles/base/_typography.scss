@@ -1,5 +1,6 @@
-@use '../config/typography' as typho;
-@use '../mixins/typography' as typho_mixins;
+@use '../config/typography' as typo;
+@use '../mixins/typography' as typo_mixins;
+@use '../functions/typography' as typo_functions;
 
 // Encabezados
 h1,
@@ -8,49 +9,49 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: typho.$font-family-heading;
-  font-weight: typho.$titles-font-weight;
-  line-height: typho.$titles-line-height;
-  margin-bottom: typho.$title-margin-bottom;
+  font-family: typo.$font-family-heading;
+  font-weight: typo.$titles-font-weight;
+  line-height: typo.$titles-line-height;
+  margin-bottom: typo.$title-margin-bottom;
 }
 
 // Aplicación de tamaños escalados
 h1 {
-  @include typho_mixins.font-size(h1);
+  @include typo_mixins.fluid-font-size(h1);
 }
 
 h2 {
-  @include typho_mixins.font-size(h2);
+  @include typo_mixins.fluid-font-size(h2);
 }
 
 h3 {
-  @include typho_mixins.font-size(h3);
+  @include typo_mixins.fluid-font-size(h3);
 }
 
 h4 {
-  @include typho_mixins.font-size(h4);
+  @include typo_mixins.fluid-font-size(h4);
 }
 
 h5 {
-  @include typho_mixins.font-size(h5);
+  @include typo_mixins.fluid-font-size(h5);
 }
 
 h6 {
-  @include typho_mixins.font-size(h6);
+  @include typo_mixins.fluid-font-size(h6);
 }
 
 // Texto base y variaciones
 p {
-  font-size: size(normal);
-  line-height: typho.$line-height-base;
-  margin-bottom: typho.$paragraph-margin-bottom;
+  font-size: typo_functions.size(normal, typo.$font-sizes);
+  line-height: typo.$line-height-base;
+  margin-bottom: typo.$paragraph-margin-bottom;
 }
 
 small,
 .small {
-  font-size: size(small);
+  font-size: typo_functions.size(small, typo.$font-sizes);
 }
 
 .smaller {
-  font-size: size(smaller);
+  font-size: typo_functions.size(smaller, typo.$font-sizes);
 }

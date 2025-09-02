@@ -1,0 +1,53 @@
+@use '../mixins/mediaqueries' as mq;
+
+.package-card-group {
+
+  .package-header, .package-description {
+    transition: .3s ease-in-out;
+  }
+  .package-card {
+    transition:  0.3s ease-in-out;
+    @include mq.screen('min', 'lg') {
+
+      &:hover {
+        transform: scale(1.05);
+        transition: transform 0.3s ease-in-out;
+        cursor: pointer;
+      }
+      &:hover .package-header{
+        background-color: var(--primary);
+      }
+      &:hover .package-description{
+        color: var(--primary-100);
+      }
+    }
+  }
+
+  @include mq.screen('min', 'lg') {
+    &:has(.package-card:hover) .package-card:not(:hover) {
+    opacity: 0.8;
+    transition: opacity,transform 0.3s ease-in-out;
+    transform: scale(0.95);
+
+  }
+  }
+}
+
+
+.faq-item {
+  cursor: pointer;
+  transition: .3s ease-in-out;
+  &:hover {
+    background-color: var(--neutral-100);
+  }
+
+  &.active {
+    background-color: var(--neutral-100);
+  }
+  .faq-card {
+    transition: all 0.3s ease;
+    &:hover {
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+    }
+  }
+}

@@ -1,0 +1,86 @@
+@use '../config/colors_map' as c;
+@use '../config/colors' as color;
+@use '../functions/colors' as fn;
+@use '../config/breakpoints' as bp;
+@use '../mixins/mediaqueries' as mq;
+@use 'sass:map';
+
+// Importar variables y mixins necesarios
+$text-colors-light: (
+  'primary': c.$primary,
+  'secondary': c.$secondary,
+  'tertiary': c.$tertiary,
+  'danger': c.$danger,
+  'warning': c.$warning,
+  'success': c.$success,
+  'info': c.$info,
+  'light': c.$light,
+  'dark': c.$dark,
+  'white': fn.getColor(c.$light-theme-colors, 'white'),
+  'container': c.$container-bg,
+  'transparent': 'transparent',
+  'muted': c.$text-color-muted,
+);
+
+$color-palettes: (
+  'primary': color.$golds,
+  'secondary': color.$wines,
+  'tertiary': color.$purples,
+  'info': color.$blues,
+  'success': color.$greens,
+  'warning': color.$yellows,
+  'danger': color.$reds,
+  'muted': color.$grays,
+  'light': color.$lights,
+  'dark': color.$darks,
+  'neutral': color.$neutrals,
+);
+
+
+@each $color, $value in $text-colors-light {
+  // Clase base (siempre aplica)
+  .text-#{$color} {
+    --text-#{$color}: #{$value};
+    color: var(--text-#{$color});
+  }
+
+  // Versiones responsive (usando tu mixin 'screen')
+  @each $breakpoint, $breakpoint-value in bp.$breakpoints {
+    @include mq.screen('min', $breakpoint) {
+      .bg-#{$color}-#{$breakpoint} {
+        --text-#{$color}: #{$value};
+        color: var(--text-#{$color});
+      }
+    }
+  }
+}
+
+$default-tone: 500;
+
+@each $color-name, $palette in $color-palettes {
+  // Clase base por defecto (si aún no está en $text-colors-light)
+  @if not map.has-key($text-colors-light, $color-name) {
+    .text-#{$color-name} {
+      --text-#{$color-name}: map.get($palette, $default-tone);
+      color: var(--text-#{$color-name});
+    }
+  }
+
+  // Generar clases por tono
+  @each $tone, $hex in $palette {
+    .text-#{$color-name}-#{$tone} {
+      --text-#{$color-name}-#{$tone}: #{$hex};
+      color: var(--text-#{$color-name}-#{$tone});
+    }
+
+    // Responsive para cada tono
+    @each $breakpoint, $breakpoint-value in bp.$breakpoints {
+      @include mq.screen('min', $breakpoint) {
+        .text-#{$color-name}-#{$tone}-#{$breakpoint} {
+          --text-#{$color-name}-#{$tone}: #{$hex};
+          color: var(--text-#{$color-name}-#{$tone});
+        }
+      }
+    }
+  }
+}

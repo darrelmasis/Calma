@@ -1,5 +1,7 @@
 @use '../config/typography' as typho;
 
+@use '../config/colors_map' as color;
+@use 'sass:color' as clr;
 /*!
  * Base styles
  * ========================================================================== */
@@ -26,12 +28,24 @@ body {
 
 a {
   &:link {
-    color: var(--info);
+    color: var(--primary);
     /* Enlaces no visitados */
+
+    &:hover,
+    &:focus {
+     color: clr.adjust(color.$primary, $lightness: -20%);
+      /* Enlaces visitados al pasar el ratón o al enfocar */
+    }
   }
 
   &:visited {
     color: var(--tertiary);
     /* Enlaces visitados */
+
+    &:hover,
+    &:focus {
+     color: clr.adjust(color.$tertiary, $lightness: -20%);
+      /* Enlaces visitados al pasar el ratón o al enfocar */
+    }
   }
 }

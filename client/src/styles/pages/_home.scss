@@ -1,0 +1,23 @@
+.card {
+  &-icon {
+    background-color: #e3e1dc;
+    font-size: 1.5rem;
+  }
+}
+
+#why {
+  min-height: 550px;
+}
+
+#how {
+  min-height: 550px;
+}
+
+
+.special-section {
+
+ background-color: rgba(#ffffff, 0.5);
+ backdrop-filter: blur(10px);
+//  z-index: 1;
+//  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}

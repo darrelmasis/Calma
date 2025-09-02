@@ -1,6 +1,24 @@
 @use '../mixins/root' as mixins;
 @use '../config/colors_map' as colors_map;
+@use '../config/colors' as color;
+
+$color-palettes_root: (
+  'primary': color.$golds,
+  'secondary': color.$wines,
+  'tertiary': color.$purples,
+  'info': color.$blues,
+  'success': color.$greens,
+  'warning': color.$yellows,
+  'danger': color.$reds,
+  'muted': color.$grays,
+  'light': color.$lights,
+  'dark': color.$darks,
+  'neutral': color.$neutrals,
+);
+
+
 
 :root {
   @include mixins.inject-css-variables(colors_map.$light-theme-colors);
+  @include mixins.inject-nested-css-variables($color-palettes_root);
 }

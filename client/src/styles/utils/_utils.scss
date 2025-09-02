@@ -27,7 +27,7 @@ $flexbox-classes: (
     class: flex-wrap,
     values: nowrap wrap wrap-reverse,
   ),
-  'text-center': (
+  'text-align': (
     property: text-align,
     class: text,
     values: start end center justify,
@@ -45,7 +45,8 @@ $flexbox-classes: (
   'top': (
     property: top,
     class: top,
-    values: 0 auto,
+    values: 0 1 2 3 4 auto,
+    measurement: 'rem',
   ),
   'right': (
     property: right,
@@ -63,11 +64,23 @@ $flexbox-classes: (
     values: 25 50 75 100 auto,
     measurement: '%',
   ),
+  'max-width': (
+    property: max-width,
+    class: mw,
+    values: 300 500 800 1000,
+    measurement: 'px',
+  ),
   'height': (
     property: height,
     class: h,
     values: 25 50 75 100 auto,
     measurement: '%',
+  ),
+  'height-dvh': (
+    property: height,
+    class: vh,
+    values: 25 50 75 100 auto,
+    measurement: 'dvh',
   ),
   'white-space': (
     property: white-space,
@@ -84,6 +97,11 @@ $flexbox-classes: (
     class: gap,
     values: 1 2 3 4 5,
     measurement: 'rem',
+  ),
+  'order': (
+    property: order,
+    class: order,
+    values: 0 1 2 3 4 5 6 7 8 9 10,
   ),
 );
 

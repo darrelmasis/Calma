@@ -46,10 +46,18 @@
   &:hover {
     background-color: var(--btn-bg-hover);
     color: var(--btn-color-hover);
+    // transform: scale(1.02);
   }
 
   &:active {
     background-color: var(--btn-bg-active);
+    // transform: scale(1);
+  }
+
+  &.ghost-active {
+    background-color: var(--btn-ghost-bg-active);
+    color: var(--btn-ghost-color-active);
+     border: var(--btn-border);
   }
 
   &:disabled {
@@ -89,6 +97,7 @@
     --btn-line-height: #{list.nth($values, 4)};
     --btn-min-width: #{list.nth($values, 5)};
     --btn-square-size: #{list.nth($values, 6)};
+    --btn-border-radius: #{list.nth($values, 7)};
   }
 }
 

@@ -1,0 +1,8 @@
+@use '../config/typography' as typo;
+
+// Utilidades de peso de fuente
+@each $name, $weight in typo.$font-weights {
+  .fw-#{$name} {
+    font-weight: #{$weight};
+  }
+}

@@ -1,0 +1,98 @@
+@import '../config/_colors';
+@import '../config/_typography';
+
+.custom-select {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  font-family: inherit;
+
+  &__button {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: map-get($grays, '800');
+    background-color: map-get($grays, '50');
+    border: 1px solid map-get($grays, '300');
+    border-radius: 4px;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &:hover {
+      background-color: map-get($grays, '100');
+    }
+
+    &:disabled {
+      background-color: map-get($grays, '200');
+      color: map-get($grays, '500');
+      cursor: not-allowed;
+    }
+  }
+
+  &__arrow {
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+    color: map-get($grays, '600');
+  }
+
+  &__list {
+    position: absolute;
+    list-style: none;
+    padding: 0;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: map-get($grays, '50');
+    border: 1px solid map-get($grays, '300');
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+  }
+
+  &__option {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: map-get($grays, '800');
+    cursor: pointer;
+
+    &:hover {
+      background-color: map-get($blues, '50');
+      color: map-get($blues, '700');
+    }
+
+    &.is-selected {
+      background-color: map-get($blues, '100');
+      color: map-get($blues, '800');
+      font-weight: bold;
+    }
+  }
+
+  &.is-open {
+    &__button {
+      border-color: map-get($blues, '500');
+    }
+  }
+
+  &.is-disabled {
+    &__button {
+      background-color: map-get($grays, '200');
+      color: map-get($grays, '500');
+      cursor: not-allowed;
+    }
+  }
+
+  &.has-error {
+    &__button {
+      border-color: map-get($reds, '500');
+    }
+
+    &__list {
+      border-color: map-get($reds, '500');
+    }
+  }
+}

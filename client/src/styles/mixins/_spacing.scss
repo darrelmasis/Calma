@@ -1,11 +1,8 @@
+// utils/_spacers.scss
 @use '../config/spacing' as s;
 @use '../config/breakpoints' as bp;
 
-// Generador de utilidades de espaciado responsive
-
-/**
- * Mapeo de direcciones
- * ---------------------------------- */
+// Mapeo de direcciones
 $spacer-directions: (
   't': 'top',
   'b': 'bottom',
@@ -22,18 +19,13 @@ $spacer-directions: (
   'auto': 'auto', // margen automático
 ) !default;
 
-/**
- * Propiedades aplicables
- * ---------------------------------- */
+// Propiedades aplicables
 $spacer-properties: (
   'margin': 'm',
   'padding': 'p',
 ) !default;
 
-/**
- * Mixin principal para generar utilidades de espaciado
- * @param $important: boolean - Agrega !important a las reglas
- * ---------------------------------- */
+// Mixin principal para generar utilidades de espaciado
 @mixin generate-spacers($important: false) {
   $imp: if($important, '!important', '');
 

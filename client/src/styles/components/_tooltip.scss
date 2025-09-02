@@ -1,0 +1,23 @@
+@use "../config/colors_map" as colors;
+
+.tooltip {
+  background-color: rgba(colors.$dark, 0.8);
+  color: white;
+  font-size: 90%;
+  padding: 4px 8px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  width: max-content;
+  max-width: calc(100vw - 10px);
+  backdrop-filter: blur(2px);
+
+
+  &-arrow {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: var(--dark);
+    transform: rotate(45deg);
+    border-bottom-right-radius: 2.5px;
+  }
+}

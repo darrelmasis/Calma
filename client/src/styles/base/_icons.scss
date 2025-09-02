@@ -1,6 +1,28 @@
-.icon {
-  width: 1.15em; // se ajusta el tamaño un 0.15em más grande que el texto para que se vea más grande y mas cómodo a la vista
-  aspect-ratio: 1;
-  fill: currentColor;
+.icon-wrapper {
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1em; // Hereda del contexto (ideal)
+  line-height: 1;
+  width: 1.15em;
+  height: 1.15em;
+
+  .icon {
+    width: 100%;
+    height: 100%;
+    display: block;
+    fill: currentColor;
+  }
+
+  &--sm {
+    font-size: 0.875em; // ≈14px si el root es 16px
+    width: 1em;
+    height: 1em;
+  }
+
+  &--xs {
+    font-size: 0.75em; // ≈12px
+    width: 0.875em;
+    height: 0.875em;
+  }
 }

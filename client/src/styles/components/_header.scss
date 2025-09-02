@@ -1,0 +1,9 @@
+.header {
+  top: 0;
+  transition: transform 0.3s ease-in-out;
+  z-index: 100;
+
+  &.hide {
+    transform: translateY(-100%);
+  }
+}

@@ -5,7 +5,7 @@ $btn-padding-y: 0.375rem; // 5.75px
 $btn-padding-x: 1rem; // 16px
 $btn-normal-fs: 1rem;
 $btn-line-height: 1.75;
-$btn-border-radius: 0.25rem; // 4px
+$btn-border-radius: 0.5rem; // 4px
 $btn-width: auto;
 $btn-ratio: 1.5;
 $btn-min-width: 4rem; // 64px
@@ -127,26 +127,28 @@ $buttons-sizes: (
   small: (
     calc($btn-padding-y / 2),
     calc($btn-padding-x / 2),
-    12px,
+    calc($btn-normal-fs - 2px),
     $btn-line-height,
     $btn-min-width,
     21px,
+    calc($btn-border-radius * 0.75)
   ),
   medium: (
     $btn-padding-y,
     $btn-padding-x,
-    14px,
+    $btn-normal-fs,
     $btn-line-height,
     $btn-min-width,
     $btn-square-size,
-    // 24.5px
+    $btn-border-radius
   ),
   large: (
     calc($btn-padding-y * 1.5),
     calc($btn-padding-x * 1.5),
-    16px,
+   calc($btn-normal-fs + 2px),
     $btn-line-height,
     $btn-min-width,
     28px,
+    calc($btn-border-radius * 1.25)
   ),
 );

@@ -1,4 +1,5 @@
 @use 'sass:math';
+@use 'sass:map';
 @use '../config/typography' as typo;
 // -----------------------------------------------------------------------------
 // Typography Utilities
@@ -14,6 +15,14 @@
   $imp: if($important, ' !important', '');
   .#{$class} {
     font-size: #{$size}#{$imp};
+  }
+}
+
+@mixin generate-font-weight-utilities($font-weights) {
+  @each $name, $weight in $font-weights {
+    .fw-#{$name} {
+      font-weight: #{$weight};
+    }
   }
 }
 
@@ -76,4 +85,18 @@
 // @param {string} $key - clave del mapa (ej: h1, small)
 @mixin font-size($key) {
   font-size: size($key);
+}
+
+/// Mixin para aplicar tamaño fluido entre breakpoints
+/// @param {String} $key - clave como 'h1', 'h2'
+/// @param {Map} $ratios - mapa de ratios responsivos
+@mixin fluid-font-size($key, $ratios: typo.$responsive-type-ratios) {
+  $base-size: map.get(typo.$font-sizes, $key);
+  $sm-ratio: map.get($ratios, 'sm');
+  $lg-ratio: map.get($ratios, 'lg');
+
+  $min-size: math.div($base-size, $lg-ratio); // tamaño para sm
+  $max-size: $base-size * $lg-ratio; // tamaño para lg
+
+  font-size: fluid-size($min-size, $max-size);
 }

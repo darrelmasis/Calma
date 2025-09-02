@@ -1,7 +1,9 @@
 @use '../config/colors_map' as c;
+@use '../config/colors' as color_bg;
 @use '../functions/colors' as fn;
 @use '../config/breakpoints' as bp;
 @use '../mixins/mediaqueries' as mq;
+@use 'sass:map';
 
 // Importar variables y mixins necesarios
 $bg-colors-light: (
@@ -16,7 +18,22 @@ $bg-colors-light: (
   'dark': c.$dark,
   'white': fn.getColor(c.$light-theme-colors, 'white'),
   'container': c.$container-bg,
+  'body': c.$body-bg,
   'transparent': 'transparent',
+);
+
+$color-palettes_bg: (
+  'primary': color_bg.$golds,
+  'secondary': color_bg.$wines,
+  'tertiary': color_bg.$purples,
+  'info': color_bg.$blues,
+  'success': color_bg.$greens,
+  'warning': color_bg.$yellows,
+  'danger': color_bg.$reds,
+  'muted': color_bg.$grays,
+  'light': color_bg.$lights,
+  'dark': color_bg.$darks,
+  'neutral': color_bg.$neutrals,
 );
 
 @each $color, $value in $bg-colors-light {
@@ -32,6 +49,37 @@ $bg-colors-light: (
       .bg-#{$color}-#{$breakpoint} {
         --bg-#{$color}: #{$value};
         background-color: var(--bg-#{$color});
+      }
+    }
+  }
+}
+
+
+$default-tone_bg: 500;
+
+@each $color-name, $palette in $color-palettes_bg {
+  // Clase base por defecto (si aún no está en $bg-colors-light)
+  @if not map.has-key($bg-colors-light, $color-name) {
+    .bg-#{$color-name} {
+      --bg-#{$color-name}: map.get($palette, $default-tone_bg);
+      background-color: var(--bg-#{$color-name});
+    }
+  }
+
+  // Generar clases por tono
+  @each $tone, $hex in $palette {
+    .bg-#{$color-name}-#{$tone} {
+      --bg-#{$color-name}-#{$tone}: #{$hex};
+      background-color: var(--bg-#{$color-name}-#{$tone});
+    }
+
+    // Versiones responsive por breakpoint
+    @each $breakpoint, $breakpoint-value in bp.$breakpoints {
+      @include mq.screen('min', $breakpoint) {
+        .bg-#{$color-name}-#{$tone}-#{$breakpoint} {
+          --bg-#{$color-name}-#{$tone}: #{$hex};
+          background-color: var(--bg-#{$color-name}-#{$tone});
+        }
       }
     }
   }

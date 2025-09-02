@@ -1,9 +1,7 @@
 @use 'spacing' as s;
 @use 'sass:map';
 
-// Grid settings
 $grid-columns: 12 !default;
 $grid-gap: map.get(s.$spacers, 3) !default; // 1rem
 
-// Variants for gaps
 $grid-gap-variants: (0, 0.5, 2) !default;

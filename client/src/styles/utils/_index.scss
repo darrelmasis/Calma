@@ -3,10 +3,14 @@
 @forward 'colors';
 @forward 'shadows';
 @forward 'utils';
+@forward 'typography';
+
 @use '../config/typography' as typo;
 @use '../mixins/typography' as typo_mixins;
-@use '../mixins/spacing' as spacing_mixins;
 @use '../mixins/grid' as grid_mixins;
+@use '../mixins/spacing' as spacing_mixins;
+
+@include typo_mixins.generate-font-weight-utilities(typo.$font-weights);
 
 // Genera clases útiles para el tamaño de fuente
 // @param $name: Nombre de la clase
@@ -23,12 +27,12 @@
 // Genera clases útiles para el espaciado
 // @param $name: Nombre de la clase
 // @param $size: Tamaño de espaciado
+// Importa las configuraciones
+
+// Genera las clases de espaciado
 @include spacing_mixins.generate-spacers();
 
 // Generar todas las utilidades de la grilla
 
-// Columnas
-@include grid_mixins.generate-grid-utilities('grid-column', 'grid-col');
-
-// Filas (opcional)
-@include grid_mixins.generate-grid-utilities('grid-row', 'grid-row');
+// Generar utilidades de columnas
+@include grid_mixins.generate-grid-cols('grid-column', 'grid-col');

@@ -1,0 +1,53 @@
+@use '../mixins/forms' as form_mixins;
+@use '../config/forms' as vars;
+@use '../functions/forms' as ff;
+@use 'sass:map';
+@use 'sass:list';
+
+.form-control {
+  --form-padding: #{vars.$form-padding-y} #{vars.$form-padding-x};
+  --form-font-size: #{vars.$form-font-size};
+  --form-line-height: #{vars.$form-line-height};
+  --form-border-radius: #{vars.$form-border-radius};
+
+  display: block;
+  width: 100%;
+  padding: var(--form-padding);
+  font-size: var(--form-font-size);
+  line-height: var(--form-line-height);
+  color: var(--form-text-color, var(--body-color));
+  background-color: var(--form-bg-color, var(--body-bg));
+  border: 1px solid var(--form-border-color, var(--border-color));
+  border-radius: var(--form-border-radius);
+  transition: all 0.2s;
+  box-sizing: border-box;
+  outline: none;
+
+  &::placeholder {
+    color: var(--form-placeholder-color, #999);
+  }
+
+  &:focus {
+    border-color: var(--form-border-color);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+    background-color: var(--form-bg-color-disabled, #f9f9f9);
+  }
+
+  // Validación
+  &.is-normal {
+    @include form_mixins.form-variant(primary);
+  }
+
+  &.is-success {
+    @include form_mixins.form-variant(success);
+  }
+
+  &.is-danger {
+    @include form_mixins.form-variant(danger);
+  }
+}
