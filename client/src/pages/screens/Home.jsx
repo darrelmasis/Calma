@@ -20,7 +20,7 @@ const Home = () => {
 
   return (
     <>
-      <FloatingButton phoneNumber="83275144" message="¡Hola! Me gustaría más información." />
+      <FloatingButton/>
       <Header />
       <Hero />
       <section id="why" className="py-5 bg-body d-flex align-items-center">

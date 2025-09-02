@@ -11,7 +11,7 @@ const History = () => {
   usePageTitle(t('history.pageTitle'))
   return (
     <div>
-      <FloatingButton phoneNumber="83275144" message="¡Hola! Me gustaría más información." />
+      <FloatingButton/>
       <Header />
 
       <section className="py-4 body-bg">

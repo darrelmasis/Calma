@@ -1,16 +1,20 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import whatsappLogo from '../../assets/whatsapp_logo.svg';
 import { Button } from '../ui/Button';
 
-const FloatingButton = ({ phoneNumber, defaultMessage = '¡Hola! Me gustaría más información.', countryCode = '505' }) => {
+
+const FloatingButton = () => {
+  // Configuración local
+  const phoneNumber = '83275144';
+  const defaultMessage = '¡Hola Equipo de Calma! Me gustaría más información.';
+  const countryCode = '505';
+
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [message, setMessage] = useState(defaultMessage);
   const popupRef = useRef(null);
 
-  // Asegura que el número tenga el código de país (ejemplo: 52 para México)
   const formatPhoneNumber = (num) => {
     let cleanNum = num.replace(/\D/g, '');
-    // Si no empieza con el código de país, lo agrega
     if (!cleanNum.startsWith(countryCode)) {
       cleanNum = countryCode + cleanNum;
     }

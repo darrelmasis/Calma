@@ -17,7 +17,7 @@ const Packages = () => {
 
   return (
     <div>
-      <FloatingButton phoneNumber="83275144" message="¡Hola! Me gustaría más información." />
+      <FloatingButton/>
 
       <Header />
 
