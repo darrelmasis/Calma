@@ -22,6 +22,23 @@
     },
 
     {
+      "src": "/assets/(.*)",
+      "dest": "/client/assets/$1"
+    },
+    {
+      "src": "/logo-calma.svg",
+      "dest": "/client/logo-calma.svg"
+    },
+    {
+      "src": "/logo-calma-bold.svg",
+      "dest": "/client/logo-calma-bold.svg"
+    },
+    {
+      "src": "/whatsapp_logo.svg",
+      "dest": "/client/whatsapp_logo.svg"
+    },
+
+    {
       "src": "/(.*)",
       "dest": "/client/$1"
     },
