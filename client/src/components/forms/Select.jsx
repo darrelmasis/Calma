@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import classNames from 'classnames'
-import {Icon} from '../commons/Icons'
+import { Icon } from '../commons/Icons'
+import { Button } from '../ui/Button'
 
 export const Select = ({
   label,
@@ -47,19 +48,12 @@ export const Select = ({
         })}
         onClick={toggleDropdown}
       >
-        <button
-          type="button"
-          className="custom-select__button"
-          disabled={disabled}
-        >
+        <Button variant='primary-ghost' classes='' icon={isOpen ? 'chevron-up' : 'chevron-down'} iconPosition='right'>
           {selectedOption ? selectedOption.label : placeholder}
-          <span className="custom-select__arrow">
-            <Icon name="chevron-down" size={16} />
-          </span>
-        </button>
+        </Button>
 
         {isOpen && (
-          <ul className="custom-select__list">
+          <ul className="custom-select__list border text-dark">
             {options.map((opt) => (
               <li
                 key={opt.value}
