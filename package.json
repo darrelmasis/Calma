@@ -5,7 +5,10 @@
     "main": "index.js",
     "scripts": {
         "format": "prettier --write --list-different \"{client,server}/**/*.{js,jsx,ts,tsx,css,scss,md,json}\"",
-        "format:check": "prettier --check \"{client,server}/**/*.{js,jsx,ts,tsx,scss}\""
+        "format:check": "prettier --check \"{client,server}/**/*.{js,jsx,ts,tsx,scss,css}\"",
+        "build": "npm run build --prefix client",
+        "start": "npm run build && npm run start --prefix server",
+        "start:dev": "concurrently \"npm run start --prefix server\" \"npm start --prefix client\""
     },
     "keywords": [],
     "author": "",

@@ -10,9 +10,11 @@
   "overrides": [
     {
       "files": "*.scss",
-      "options": {
-        "parser": "scss"
-      }
+      "options": { "parser": "scss" }
+    },
+    {
+      "files": ["*.json", "*.md", "*.html", "*.css"],
+      "options": { "tabWidth": 2 }
     }
   ]
 }
