@@ -4,6 +4,7 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [react()],
+  base: './',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -36,6 +37,6 @@ export default defineConfig({
     },
   },
   server: {
-    hmr: true, // Asegura reemplazo en caliente
+    hmr: true,
   },
 })
