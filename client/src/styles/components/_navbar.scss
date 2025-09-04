@@ -1,11 +1,13 @@
 @use '../config/colors_map' as c;
+@use '../config/colors' as pallette;
+@use '../functions/' as fn;
 @use '../config/typography' as typo;
 @use '../mixins/mediaqueries' as mq;
 @use '../config/breakpoints' as bp;
 @use 'sass:map';
 
 .navbar {
-  height: 80px;
+  height:100px;
   top: 0;
   left: 0;
   z-index: 1000;
@@ -20,6 +22,7 @@
     gap: 2rem;
     list-style: none;
     align-items: center;
+    justify-content: center;
     // font-family: 'Berkshire Swash';
 
     & a {
@@ -30,26 +33,30 @@
       transition: color 0.3s;
       user-select: none;
     font-weight: 600;
+    padding: 0.5rem 0.75rem;
+    transition: all 0.3s ease-in-out;
+    border-radius: .375rem;
+    display: flex;
+    align-items: center;
 
 
       &:hover {
-        color: c.$primary;
+        color: c.$text-color;
+        background-color: fn.getColor(pallette.$grays, '100');
       }
 
       &.active {
         color: c.$primary;
-        text-decoration-line: underline;
-        text-decoration-style: wavy;
-        text-decoration-color: c.$primary;
         text-decoration-thickness: 2px;
         text-underline-offset: 4px;
+        background-color: fn.getColor(pallette.$golds, '50');
       }
     }
   }
 
   &-logo {
-    width: 64px;
-    height: 64px;
+    width: 80px;
+    height: 80px;
   }
 }
 

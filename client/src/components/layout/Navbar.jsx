@@ -14,10 +14,10 @@ export const Navbar = () => {
   const navigate = useNavigate()
 
   const navLinks = [
-    { path: '/', label: t('header.links.home'), position: 'left' },
-    { path: '/history', label: t('header.links.history'), position: 'left' },
-    { path: '/services', label: t('header.links.services'), position: 'right' },
-    { path: '/packages', label: t('header.links.packages'), position: 'right' },
+    { path: '/', label: t('header.links.home'), position: 'left', icon: 'house' },
+    { path: '/history', label: t('header.links.history'), position: 'left', icon: 'book-sparkles' },
+    { path: '/services', label: t('header.links.services'), position: 'right', icon: 'hand-holding-heart' },
+    { path: '/packages', label: t('header.links.packages'), position: 'right', icon: 'hand-holding-box' },
   ]
 
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -31,34 +31,35 @@ export const Navbar = () => {
     <nav className="navbar d-flex container align-items-center justify-content-center position-relative">
       {/* Contenido de navegación centrado */}
 
-      <div className="position-absolute left-0">
-        {/* <button onClick={() => changeLanguage(lang === 'es' ? 'en' : 'es')}>
-        {lang === 'es' ? 'EN' : 'ES'}
-      </button> */}
-        <LanguageSwitcher className='ms-3' />
+      <div className="position-absolute left-0 d-none d-lg-block">
+        <LanguageSwitcher />
       </div>
 
       <NavbarNav links={leftLinks} className="d-none w-100 d-lg-flex flex-direction-lg-row justify-content-flex-end" />
 
       {/* Logo centrado */}
-      <NavLink className="px-4 w-auto d-flex justify-content-center align-items-center" to="/">
+      <NavLink className="w-auto d-flex justify-content-center align-items-center" to="/">
         <Tooltip content={t('header.links.logoTooltip')} placement="bottom">
-          <img src="/logo-calma.svg" alt="Logo" className="navbar-logo" />
+          <img src="/logo-calma.svg" alt="Logo" className="navbar-logo mx-4" />
         </Tooltip>
       </NavLink>
       <NavbarNav links={rightLinks} className="d-none w-100 d-lg-flex flex-direction-lg-row justify-content-flex-start" />
 
       {/* Menu móvil */}
       <div
-        className={`d-none d-flex flex-direction-column flex-wrap-wrap gap-3 align-items-center navbar-mobile-menu position-fixed py-3 w-100 ${isMenuOpen ? 'open' : ''}`}
+        className={`d-flex d-lg-none flex-direction-column flex-wrap-wrap gap-3 align-items-center navbar-mobile-menu position-fixed py-3 w-100 ${isMenuOpen ? 'open d-flex' : ''}`}
       >
+
         <NavbarNav links={navLinks} />
         {CTA}
+        <LanguageSwitcher className='' />
       </div>
 
       {/* Botón de reserva y Menu a la derecha */}
       <div className="position-absolute right-0">
-        <div className="d-none d-lg-inline-flex">{CTA}</div>
+      </div>
+      <div className="position-absolute right-0 d-flex flex-direction-column">
+        <Button onClick={() => navigate('/booking')} variant="primary" classes="d-none d-lg-flex" size="" icon="calendar-check" label={t('header.headerButton.book')} />
         <Button variant="primary" classes="d-lg-none me-3" icon="bars" size="large" onClick={() => setIsMenuOpen(!isMenuOpen)}></Button>
       </div>
     </nav>
