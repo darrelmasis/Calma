@@ -4,6 +4,7 @@ import { dictionary } from './dictionary'
 const LanguageContext = createContext()
 
 const getInitialLang = () => {
+  if (typeof window === 'undefined') return 'es' // Seguridad SSR
   const stored = localStorage.getItem('lang')
   if (stored) return stored
 
@@ -20,9 +21,13 @@ export const LanguageProvider = ({ children }) => {
 
   const changeLanguage = (newLang) => setLang(newLang)
 
-  const t = (key) => {
+  const t = (key, options = {}) => {
     const keys = key.split('.')
-    return keys.reduce((acc, curr) => acc?.[curr], dictionary[lang]) || key
+    const result = keys.reduce((acc, curr) => acc?.[curr], dictionary[lang])
+    if (result === undefined) return key
+    if (options.returnObjects) return result
+    if (typeof result === 'string') return result
+    return JSON.stringify(result) // fallback si es objeto
   }
 
   return (
