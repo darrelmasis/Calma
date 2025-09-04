@@ -27,7 +27,7 @@ export const Navbar = () => {
 
   const CTA = <Button onClick={() => navigate('/booking')} variant="primary" classes="me-lg-3" size="" icon="calendar-check" label={t('header.headerButton.book')} />
 
-  // Bloquear scroll cuando el menú móvil está abierto
+
   useEffect(() => {
     if (isMenuOpen) {
       document.body.classList.add('overflow-hidden')
