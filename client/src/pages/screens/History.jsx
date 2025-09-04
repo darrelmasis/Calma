@@ -25,27 +25,27 @@ const History = () => {
             <div className="grid-row gap-lg-4">
               <div className="grid-col-12 grid-col-md-6 text-justify">
                 <Fade>
-                  <p className=" mt-0">
+                  <p className="fs-1 mt-0">
                     {t('history.section_1.history_p1')}
                   </p>
                 </Fade>
                 <Fade>
-                  <p className="">{t('history.section_1.history_p2')}</p>
+                  <p className="fs-1">{t('history.section_1.history_p2')}</p>
                 </Fade>
                 <Fade>
-                  <p className="">{t('history.section_1.history_p3')}</p>
+                  <p className="fs-1">{t('history.section_1.history_p3')}</p>
                 </Fade>
                 <Fade>
-                  <p className="">{t('history.section_1.history_p4')}</p>
+                  <p className="fs-1">{t('history.section_1.history_p4')}</p>
                 </Fade>
                 <Fade>
-                  <p className="">{t('history.section_1.history_p5')}</p>
+                  <p className="fs-1">{t('history.section_1.history_p5')}</p>
                 </Fade>
                 <Fade>
-                  <p className="">{t('history.section_1.history_p6')}</p>
+                  <p className="fs-1">{t('history.section_1.history_p6')}</p>
                 </Fade>
                 <Fade>
-                  <p className="">{t('history.section_1.end_tag')}</p>
+                  <p className="fs-1">{t('history.section_1.end_tag')}</p>
                 </Fade>
                 <Fade>
                   <span className="text-primary fs-1">{t('history.section_1.owners')}</span>
@@ -76,7 +76,7 @@ const History = () => {
               <div className="grid-col-12 grid-col-md-6">
                 <h2 className="fs-2 text-primary">{t('history.section_2.visionTitle')}</h2>
                 <Fade>
-                  <p className="mt-0  text-justify">
+                  <p className="mt-0  text-justify fs-1">
                     {t('history.section_2.visionDescription')}
                   </p>
                 </Fade>
@@ -91,7 +91,7 @@ const History = () => {
               <div className="grid-col-12 grid-col-md-6 order-1 order-md-2">
                 <h2 className="fs-2 text-primary">{t('history.section_2.missionTitle')}</h2>
                 <Fade>
-                  <p className="text-justify mt-0">
+                  <p className="text-justify mt-0 fs-1">
                     {t('history.section_2.missionDescription')}
                   </p>
                 </Fade>
