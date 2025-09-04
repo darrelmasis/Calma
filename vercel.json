@@ -20,31 +20,20 @@
       "methods": ["POST"],
       "dest": "/server/src/api/booking-send-mail.js"
     },
-
     {
       "src": "/assets/(.*)",
       "dest": "/client/assets/$1"
     },
     {
-      "src": "/logo-calma.svg",
-      "dest": "/client/logo-calma.svg"
-    },
-    {
-      "src": "/logo-calma-bold.svg",
-      "dest": "/client/logo-calma-bold.svg"
-    },
-    {
-      "src": "/whatsapp_logo.svg",
-      "dest": "/client/whatsapp_logo.svg"
-    },
-
-    {
-      "src": "/(.*)",
+      "src": "/(.*\\.(svg|css|js|png|jpg|ttf|woff2))",
       "dest": "/client/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "/client/index.html"
+      "dest": "/client/index.html",
+      "headers": {
+        "Cache-Control": "public, max-age=0, must-revalidate"
+      }
     }
   ]
 }
