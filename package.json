@@ -8,13 +8,14 @@
         "format:check": "prettier --check \"{client,server}/**/*.{js,jsx,ts,tsx,scss,css}\"",
         "build": "npm run build --prefix client",
         "start": "npm run build && npm run start --prefix server",
-        "start:dev": "concurrently \"npm run start --prefix server\" \"npm start --prefix client\""
+        "start:dev": "concurrently \"npm start --prefix server\" \"npm run dev --prefix client\""
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "type": "commonjs",
     "devDependencies": {
+        "concurrently": "^9.2.1",
         "prettier": "3.5.3"
     }
 }
