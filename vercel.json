@@ -1,20 +1,18 @@
 {
   "version": 2,
+  "framework": "vite",
   "builds": [
     {
       "src": "client/package.json",
       "use": "@vercel/static-build",
       "config": {
         "distDir": "dist",
-        "buildCommand": "cd client && npm install && npm run build"
+        "buildCommand": "cd client && npm run build"
       }
     },
     {
       "src": "server/src/api/booking-send-mail.js",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": ["server/**"]
-      }
+      "use": "@vercel/node"
     }
   ],
   "routes": [
@@ -27,5 +25,7 @@
       "src": "/(.*)",
       "dest": "client/dist/$1"
     }
-  ]
+  ],
+  "installCommand": "npm install",
+  "outputDirectory": "client/dist"
 }
