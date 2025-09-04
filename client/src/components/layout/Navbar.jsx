@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Button } from '../ui/Button'
 import { NavbarNav } from './NavbarNav'
@@ -26,6 +26,18 @@ export const Navbar = () => {
   const rightLinks = navLinks.filter(link => link.position === 'right')
 
   const CTA = <Button onClick={() => navigate('/booking')} variant="primary" classes="me-lg-3" size="" icon="calendar-check" label={t('header.headerButton.book')} />
+
+  // Bloquear scroll cuando el menú móvil está abierto
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.classList.add('overflow-hidden')
+    } else {
+      document.body.classList.remove('overflow-hidden')
+    }
+    return () => {
+      document.body.classList.remove('overflow-hidden')
+    }
+  }, [isMenuOpen])
 
   return (
     <nav className="navbar d-flex container align-items-center justify-content-center position-relative">
