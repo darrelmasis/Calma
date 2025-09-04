@@ -9,6 +9,9 @@ import Footer from '../../components/layout/Footer'
 import { useLang } from '../../i18n/LanguageContext'
 import FloatingButton from '../../components/commons/FloatingButton'
 
+import { image01, image02, image03 } from '../../assets/assets';
+
+
 const Home = () => {
   const { t } = useLang()
   usePageTitle(t('home.pageTitle'))
@@ -20,7 +23,7 @@ const Home = () => {
 
   return (
     <>
-      <FloatingButton/>
+      <FloatingButton />
       <Header />
       <Hero />
       <section id="why" className="py-5 bg-body d-flex align-items-center">
@@ -48,7 +51,7 @@ const Home = () => {
                     <p className="text-muted">{t('home.section_2.points.p1.description')}</p>
                   </Fade>
                   <Fade>
-                    <img className='w-100 rounded border' src="/image-01.png" alt="" />
+                    <img className='w-100 rounded border' src={image01} alt="" />
                   </Fade>
                 </div>
               </div>
@@ -66,8 +69,8 @@ const Home = () => {
                   <Fade>
                     <p className="text-muted">{t('home.section_2.points.p2.description')}</p>
                   </Fade>
-                   <Fade>
-                    <img className='w-100 rounded border' src="/image-02.png" alt="" />
+                  <Fade>
+                    <img className='w-100 rounded border' src={image02} alt="" />
                   </Fade>
                 </div>
               </div>
@@ -85,8 +88,8 @@ const Home = () => {
                   <Fade>
                     <p className="text-muted">{t('home.section_2.points.p3.description')}</p>
                   </Fade>
-                   <Fade>
-                    <img className='w-100 rounded border' src="/image-03.png" alt="" />
+                  <Fade>
+                    <img className='w-100 rounded border' src={image03} alt="" />
                   </Fade>
                 </div>
               </div>
@@ -94,7 +97,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-      { /* Special Section */ }
+      { /* Special Section */}
       <section id="how" className="py-5 bg-container d-flex align-items-center hero-gradient">
         <div className="container text-center">
           <div className=" rounded p-5 special-section">

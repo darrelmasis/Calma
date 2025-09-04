@@ -1,11 +1,16 @@
 import express from 'express';
 import nodemailer from 'nodemailer';
 import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
+// 📧 Endpoint para correos
 app.post('/booking/send-mail', async (req, res) => {
   const { name, phone, email, service, date, time, notes } = req.body;
 
@@ -13,17 +18,17 @@ app.post('/booking/send-mail', async (req, res) => {
     const transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
       port: 465,
+      secure: true,
       auth: {
-        user: 'dmasistab@gmail.com',
-        pass: 'eykv sykw jqlo ufdc'
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASS
       }
     });
 
     await transporter.sendMail({
-      from: `"Reserva Web" <dmasistab@gmail.com>`,
+      from: `"Reserva Web" <${process.env.MAIL_USER}>`,
       to: 'dmasis@monisa.com',
       subject: `Nueva reserva de ${name}`,
-      text: 'Hola, buen día',
       html: `
         <h3>Datos de la reserva</h3>
         <p><strong>Nombre:</strong> ${name}</p>
@@ -43,4 +48,17 @@ app.post('/booking/send-mail', async (req, res) => {
   }
 });
 
-app.listen(5000, () => console.log('Servidor corriendo en puerto 5000'));
+// 🌐 Servir el frontend en producción
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const clientPath = path.join(__dirname, '../../client/dist');
+
+app.use(express.static(clientPath));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(clientPath, 'index.html'));
+});
+
+// 🚀 Levantar server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Servidor corriendo en http://localhost:${PORT}`));

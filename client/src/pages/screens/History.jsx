@@ -5,13 +5,14 @@ import Footer from '../../components/layout/Footer'
 import { FadeInWhenVisible as Fade } from '../../components/commons/animations/FadeInWhenVisible'
 import { useLang } from '../../i18n/LanguageContext'
 import FloatingButton from '../../components/commons/FloatingButton'
+import { historyRight, mission, vission } from '../../assets/assets'
 
 const History = () => {
   const { t } = useLang()
   usePageTitle(t('history.pageTitle'))
   return (
     <div>
-      <FloatingButton/>
+      <FloatingButton />
       <Header />
 
       <section className="py-4 body-bg">
@@ -53,7 +54,7 @@ const History = () => {
               </div>
               <div className="grid-col-12 grid-col-md-6 text-end">
                 <Fade className='position-sticky top-1 mb-3'>
-                  <img className='rounded w-100' src="/history-right.png" alt="" />
+                  <img className='rounded w-100' src={historyRight} alt="" />
                 </Fade>
               </div>
             </div>
@@ -83,7 +84,7 @@ const History = () => {
               </div>
               <div className="grid-col-12 grid-col-md-6 text-end">
                 <Fade>
-                  <img className='rounded w-100 position-md-sticky top-md-1 mb-3' src="/vission.png" alt="" />
+                  <img className='rounded w-100 position-md-sticky top-md-1 mb-3' src={vission} alt="" />
                 </Fade>
               </div>
             </div>
@@ -98,7 +99,7 @@ const History = () => {
               </div>
               <div className="grid-col-12 grid-col-md-6 text-end order-2 order-md-1">
                 <Fade>
-                  <img className='rounded w-100 position-md-sticky top-md-1 mb-3' src="/mission.png" alt="" />
+                  <img className='rounded w-100 position-md-sticky top-md-1 mb-3' src={mission} alt="" />
                 </Fade>
               </div>
             </div>

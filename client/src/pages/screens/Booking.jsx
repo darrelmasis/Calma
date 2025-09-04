@@ -56,7 +56,7 @@ const Booking = () => {
 
     if (Object.keys(newErrors).length === 0) {
       try {
-        const res = await axios.post('http://localhost:5000/booking/send-mail', formData)
+        const res = await axios.post('/booking/send-mail', formData)
 
         if (res.data.ok) {
           alert('Reserva enviada con éxito ✅')

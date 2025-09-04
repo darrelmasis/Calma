@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import whatsappLogo from '../../assets/whatsapp_logo.svg';
+import whatsappLogo from '/whatsapp_logo.svg';
 import { Button } from '../ui/Button';
 
 
