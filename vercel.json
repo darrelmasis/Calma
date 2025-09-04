@@ -20,9 +20,16 @@
       "methods": ["POST"],
       "dest": "/server/src/api/booking-send-mail.js"
     },
+
     {
       "src": "/(.*)",
       "dest": "/client/$1"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/client/index.html"
     }
   ]
 }

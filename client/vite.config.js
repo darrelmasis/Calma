@@ -20,6 +20,8 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
+    emptyOutDir: true,
+    base: process.env.NODE_ENV === 'production' ? '/' : '/',
     sourcemap: false,
     cssCodeSplit: true,
     rollupOptions: {
@@ -38,5 +40,6 @@ export default defineConfig({
   },
   server: {
     hmr: true,
+    port: 3000,
   },
 })
