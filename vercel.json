@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "framework": "vite",
   "builds": [
     {
       "src": "client/package.json",
@@ -23,9 +22,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "client/dist/$1"
+      "dest": "/client/$1"
     }
-  ],
-  "installCommand": "npm install",
-  "outputDirectory": "client/dist"
+  ]
 }
