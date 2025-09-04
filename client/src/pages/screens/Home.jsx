@@ -48,7 +48,7 @@ const Home = () => {
                     <p className="text-muted">{t('home.section_2.points.p1.description')}</p>
                   </Fade>
                   <Fade>
-                    <img className='w-100 rounded border' src="./public/image-01.png" alt="" />
+                    <img className='w-100 rounded border' src="/image-01.png" alt="" />
                   </Fade>
                 </div>
               </div>
@@ -67,7 +67,7 @@ const Home = () => {
                     <p className="text-muted">{t('home.section_2.points.p2.description')}</p>
                   </Fade>
                    <Fade>
-                    <img className='w-100 rounded border' src="./public/image-02.png" alt="" />
+                    <img className='w-100 rounded border' src="/image-02.png" alt="" />
                   </Fade>
                 </div>
               </div>
@@ -86,7 +86,7 @@ const Home = () => {
                     <p className="text-muted">{t('home.section_2.points.p3.description')}</p>
                   </Fade>
                    <Fade>
-                    <img className='w-100 rounded border' src="./public/image-03.png" alt="" />
+                    <img className='w-100 rounded border' src="/image-03.png" alt="" />
                   </Fade>
                 </div>
               </div>
