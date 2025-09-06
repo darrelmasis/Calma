@@ -1,17 +1,41 @@
 import { useState, useEffect } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { Button } from '../ui/Button'
 import { NavbarNav } from './NavbarNav'
 import { Tooltip } from '../ui/Tooltip'
 import { useLang } from '../../i18n/LanguageContext'
 import { LanguageSwitcher } from '../commons/LanguageSwitcher'
-import { useNavigate } from 'react-router-dom'
 
-
-export const Navbar = () => {
-
+const NavbarCTA = ({ visibleOn }) => {
   const { t } = useLang()
   const navigate = useNavigate()
+
+  const classes =
+    visibleOn === 'desktop'
+      ? 'd-none d-lg-flex w-100'
+      : visibleOn === 'mobile'
+      ? 'd-lg-none'
+      : ''
+
+  return (
+    <Button
+      onClick={() => navigate('/booking')}
+      variant="primary"
+      classes={classes}
+      size=""
+      icon="calendar-check"
+      label={t('header.headerButton.book')}
+    />
+  )
+}
+
+export const Navbar = () => {
+  const { t } = useLang()
+  const navigate = useNavigate()
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isAnimatingOpen, setIsAnimatingOpen] = useState(false)
+  const [isClosing, setIsClosing] = useState(false)
 
   const navLinks = [
     { path: '/', label: t('header.links.home'), position: 'left', icon: 'house' },
@@ -20,59 +44,102 @@ export const Navbar = () => {
     { path: '/packages', label: t('header.links.packages'), position: 'right', icon: 'hand-holding-box' },
   ]
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-
   const leftLinks = navLinks.filter(link => link.position === 'left')
   const rightLinks = navLinks.filter(link => link.position === 'right')
 
-  const CTA = <Button onClick={() => navigate('/booking')} variant="primary" classes="me-lg-3" size="" icon="calendar-check" label={t('header.headerButton.book')} />
-
-
+  // Bloquear scroll cuando el menú está abierto
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.classList.add('overflow-hidden')
-    } else {
-      document.body.classList.remove('overflow-hidden')
-    }
-    return () => {
-      document.body.classList.remove('overflow-hidden')
-    }
+    document.body.classList.toggle('overflow-hidden', isMenuOpen)
+    return () => document.body.classList.remove('overflow-hidden')
   }, [isMenuOpen])
+
+  const handleLinkClick = (path) => {
+    if (isMenuOpen) {
+      handleCloseMenu()
+      setTimeout(() => navigate(path), 300) // navegar cuando termina animación
+    } else {
+      navigate(path)
+    }
+  }
+
+  const handleOpenMenu = () => {
+    setIsMenuOpen(true) // montar
+    setTimeout(() => setIsAnimatingOpen(true), 10) // disparar animación
+  }
+
+  const handleCloseMenu = () => {
+    setIsClosing(true)
+    setIsAnimatingOpen(false) // desactivar animación de entrada
+    setTimeout(() => {
+      setIsMenuOpen(false)
+      setIsClosing(false)
+    }, 300)
+  }
 
   return (
     <nav className="navbar d-flex container align-items-center justify-content-center position-relative">
-      {/* Contenido de navegación centrado */}
-
-      <div className="position-absolute left-0 d-none d-lg-block">
+      {/* Idioma */}
+      <div className="position-absolute left-0 d-lg-block">
         <LanguageSwitcher />
       </div>
 
-      <NavbarNav links={leftLinks} className="d-none w-100 d-lg-flex flex-direction-lg-row justify-content-flex-end" />
+      {/* Links izquierda */}
+      <NavbarNav
+        links={leftLinks}
+        className="d-none w-100 d-lg-flex flex-direction-lg-row justify-content-flex-end"
+      />
 
-      {/* Logo centrado */}
-      <NavLink className="w-auto d-flex justify-content-center align-items-center" to="/">
+      {/* Logo */}
+      <NavLink
+        className="w-auto d-flex justify-content-center align-items-center"
+        to="/"
+        aria-label={t('header.links.logoTooltip')}
+      >
         <Tooltip content={t('header.links.logoTooltip')} placement="bottom">
-          <img src="/logo-calma.svg" alt="Logo" className="navbar-logo mx-4" />
+          <img src="/logo-calma.svg" alt="Logo Calma" className="navbar-logo mx-4" />
         </Tooltip>
       </NavLink>
-      <NavbarNav links={rightLinks} className="d-none w-100 d-lg-flex flex-direction-lg-row justify-content-flex-start" />
 
-      {/* Menu móvil */}
-      <div
-        className={`d-flex d-lg-none flex-direction-column flex-wrap-wrap gap-3 align-items-center navbar-mobile-menu position-fixed py-3 w-100 ${isMenuOpen ? 'open d-flex' : ''}`}
-      >
+      {/* Links derecha */}
+      <NavbarNav
+        links={rightLinks}
+        className="d-none w-100 d-lg-flex flex-direction-lg-row justify-content-flex-start"
+      />
 
-        <NavbarNav links={navLinks} />
-        {CTA}
-        <LanguageSwitcher className='' />
-      </div>
+      {/* Menú móvil */}
+      {isMenuOpen && (
+        <div
+          className={`navbar-mobile-menu
+            ${isAnimatingOpen ? 'open' : ''}
+            ${isClosing ? 'closing' : ''}`}
+          id="mobile-menu"
+          aria-hidden={!isMenuOpen}
+        >
+          <NavbarNav links={navLinks} onLinkClick={handleLinkClick} />
+          <NavbarCTA visibleOn="mobile" />
+        </div>
+      )}
 
-      {/* Botón de reserva y Menu a la derecha */}
-      <div className="position-absolute right-0">
-      </div>
+      {/* CTA desktop + toggle móvil */}
       <div className="position-absolute right-0 d-flex flex-direction-column">
-        <Button onClick={() => navigate('/booking')} variant="primary" classes="d-none d-lg-flex" size="" icon="calendar-check" label={t('header.headerButton.book')} />
-        <Button variant="primary" classes="d-lg-none me-3" icon="bars" size="large" onClick={() => setIsMenuOpen(!isMenuOpen)}></Button>
+        <NavbarCTA visibleOn="desktop" />
+
+        <Button
+          variant="primary"
+          classes="d-lg-none me-3"
+          icon={isMenuOpen ? 'xmark' : 'bars'}
+          size="large"
+          aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-menu"
+          onClick={() => {
+            if (isMenuOpen) {
+              handleCloseMenu()
+            } else {
+              handleOpenMenu()
+            }
+          }}
+        />
       </div>
     </nav>
   )
