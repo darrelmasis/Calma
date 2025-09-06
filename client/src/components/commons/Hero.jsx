@@ -9,11 +9,6 @@ export const Hero = () => {
   const goToServices = () => {
     navigate('/services')
   }
-
-  const goToPackages = () => {
-    navigate('/packages')
-  }
-
   const { t } = useLang()
 
   return (
@@ -34,9 +29,6 @@ export const Hero = () => {
                 <div className="grid-col-12 grid-col-md-5">
                   <Button onClick={goToServices} classes="" variant="primary-ghost" label={t('home.heroSection.button_1')} size="large" icon="spa" />
                 </div>
-                {/* <div className="grid-col-12 grid-col-md-5">
-                  <Button onClick={goToPackages} classes="" variant="primary-ghost" label={t('home.heroSection.button_2')} size="large" icon="hands-holding-diamond" />
-                </div> */}
               </div>
 
             </div>
