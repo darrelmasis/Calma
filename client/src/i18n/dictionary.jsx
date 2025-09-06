@@ -10,7 +10,7 @@ export const dictionary = {
         logoTooltip: 'Ir a la página de inicio'
       },
       headerButton: {
-        book: 'Reservar'
+        book: 'Reservar una cita'
       },
 
     },
@@ -23,10 +23,8 @@ export const dictionary = {
       columns: {
         contact: {
           title: 'Contacto',
-          phone: '+505 8765 1234',
           address: 'Iglesia La Merced, 1C N, 10v O, Granada',
           addressTooltip: 'Ver ubicación en Google Maps',
-          email: 'info@calma.salon'
         },
         nav: {
           title: 'Navegación',
@@ -391,7 +389,7 @@ export const dictionary = {
         logoTooltip: 'Go to homepage'
       },
       headerButton: {
-        book: 'Book' // Mayúscula para consistencia en botones
+        book: 'Book an appoiment' // Mayúscula para consistencia en botones
       },
 
     },
@@ -404,10 +402,8 @@ export const dictionary = {
       columns: {
         contact: {
           title: 'Contact',
-          phone: '+505 8765 1234',
-          address: 'Iglesia La Merced, 1C N, 10v O, Granada',
+          address: '1 block N & 10m W of La Merced Church, Granada',
           addressTooltip: 'View location on Google Maps',
-          email: 'info@calma.salon'
         },
         nav: {
           title: 'Navigation',
