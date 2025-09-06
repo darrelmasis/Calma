@@ -1,13 +1,13 @@
 @use '../config/colors_map' as c;
-@use '../config/colors' as pallette;
-@use '../functions/' as fn;
+@use '../config/colors' as palette;
+@use '../functions' as fn;
 @use '../config/typography' as typo;
 @use '../mixins/mediaqueries' as mq;
 @use '../config/breakpoints' as bp;
 @use 'sass:map';
 
 .navbar {
-  height:100px;
+  height: 100px;
   top: 0;
   left: 0;
   z-index: 1000;
@@ -23,33 +23,28 @@
     list-style: none;
     align-items: center;
     justify-content: center;
-    // font-family: 'Berkshire Swash';
 
-    & a {
+    a {
       text-decoration: none;
       color: c.$text-color;
       font-size: typo.$fs-base;
-      font-weight: map.get(typo.$font-weights, 'normal');
-      transition: color 0.3s;
+      font-weight: map.get(typo.$font-weights, 'medium');
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.375rem;
+      display: flex;
+      align-items: center;
+      transition: all 0.3s ease-in-out;
       user-select: none;
-    font-weight: 600;
-    padding: 0.5rem 0.75rem;
-    transition: all 0.3s ease-in-out;
-    border-radius: .375rem;
-    display: flex;
-    align-items: center;
-
 
       &:hover {
         color: c.$text-color;
-        background-color: fn.getColor(pallette.$grays, '100');
+        background-color: fn.getColor(palette.$grays, '100');
       }
 
       &.active {
         color: c.$primary;
-        text-decoration-thickness: 2px;
-        text-underline-offset: 4px;
-        background-color: fn.getColor(pallette.$golds, '50');
+        background-color: fn.getColor(palette.$golds, '50');
+        font-weight: bolder;
       }
     }
   }
@@ -60,40 +55,63 @@
   }
 }
 
+// Menú móvil
 .navbar-mobile-menu {
-  top: 81px;
-  height: 100vh;
+  position: fixed;
+  top: 100px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 100px);
+  background-color: rgba(#fff, 0.9);
+  backdrop-filter: blur(5px);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
   transform: translateX(100%);
   transition: transform 0.3s ease-in-out;
-  background-color: rgba($color: #fff, $alpha: 0.8);
-  backdrop-filter: blur(5px);
 
   &.open {
     transform: translateX(0);
   }
 
-  & .navbar-links {
+  &.closing {
+    transform: translateX(100%);
+  }
+
+  .navbar-links {
+    // flex: 1;
     width: 100%;
     text-align: center;
     gap: 0;
+    justify-content: center;
 
-    & li,
-    & a {
+    li,
+    a {
       width: 100%;
-      display: block;
     }
 
-    & a {
+    a {
       padding: 1.5rem 0;
-      font-size: calc(typo.$fs-base * 1.3);
+      font-size: calc(typo.$fs-base * 1.2);
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.75;
+
+      &.active {
+        font-weight: bold;
+        background-color: #f5f2ed;
+        background-image: radial-gradient(circle, fn.getColor(palette.$golds, '50') 10%, fn.getColor(palette.$golds, '200') 90%);
+      }
     }
   }
 
-  & a {
-    &.active {
-      text-decoration: none;
-      background-color: c.$primary;
-      color: var(--white);
-    }
+  & > button {
+    width: 100%;
+    padding: 1.5rem 0;
+    font-size: 1.2rem;
   }
 }
