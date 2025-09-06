@@ -4,9 +4,12 @@ import { FadeInWhenVisible as Fade } from '../../components/commons/animations/F
 import { Tooltip } from '../../components/ui/Tooltip'
 import { useLang } from '../../i18n/LanguageContext'
 import { useNavigate } from 'react-router-dom'
+import { formatPhone } from '../../utils/utils'
+
 
 const Footer = () => {
-
+  const phoneNumber = import.meta.env.VITE_CALMA_PHONE_NUMBER
+  const email = import.meta.env.VITE_CALMA_EMAIL
   const { t } = useLang()
   const navigate = useNavigate()
 
@@ -43,7 +46,13 @@ const Footer = () => {
                 <ul className="list-unstyled text-muted">
                   <li className="mb-1">
                     <Icon name="mobile" className="me-2" />
-                    {t('footer.columns.contact.phone')}
+                    <a
+                      target="_blank"
+                      href={`https://wa.me/${phoneNumber}`}
+                    >
+                      {formatPhone(phoneNumber)}
+                      <Icon name="arrow-up-right-from-square" className="ms-1" size="xs" />
+                    </a>
                   </li>
                   <li className="mb-1">
                     <Icon name="location-dot" className="me-2" />
@@ -55,7 +64,7 @@ const Footer = () => {
                     </Tooltip>
                   </li>
                   <li>
-                    <Icon name='envelope' className='me-2' />{t('footer.columns.contact.email')}
+                    <Icon name='envelope' className='me-2' />{email}
                   </li>
                 </ul>
               </div>
@@ -113,7 +122,7 @@ const Footer = () => {
                   <li>
                     <Tooltip content={t('footer.columns.social.facebookTooltip')}>
                       <a href="https://www.facebook.com/p/calma_nailsalonnic-100064921292457/" target="_blank" className="text-muted d-flex align-items-center">
-                        <Icon name="square-facebook" className="me-2" />
+                        <Icon name="square-facebook" variant='brands' className="me-2" />
                         {t('footer.columns.social.facebook')}
                         <Icon name="arrow-up-right-from-square" className="ms-1" size="xs" />
                       </a>
@@ -122,7 +131,7 @@ const Footer = () => {
                   <li>
                     <Tooltip content={t('footer.columns.social.instagramTooltip')}>
                       <a href="https://www.instagram.com/calma_nailsalonnic/" target="_blank" className="text-muted d-flex align-items-center">
-                        <Icon name="square-instagram" className="me-2" />
+                        <Icon name="square-instagram" variant='brands' className="me-2" />
                         {t('footer.columns.social.instagram')}
                         <Icon name="arrow-up-right-from-square" className="ms-1" size="xs" />
                       </a>
@@ -138,19 +147,6 @@ const Footer = () => {
         <div className="grid border-top py-6">
           <div className="grid-row justify-content-center align-items-center text-muted">
             <div className="grid-col-12 text-center text-md-start grid-col-md-6">© {new Date().getFullYear()} {t('footer.legal.copyright')}</div>
-            {/* <div className="grid-col-12 grid-col-md-6 text-center text-md-end">
-              <Tooltip content={ t('footer.legal.privacyTooltip') }>
-                  <a href="/privacy" className="me-3 text-muted">
-                   { t('footer.legal.privacy') }
-                  </a>
-
-              </Tooltip>
-              <Tooltip content={ t('footer.legal.termsTooltip') }>
-                  <a href="/terminos" className="text-muted">
-                { t('footer.legal.terms') }
-              </a>
-              </Tooltip>
-            </div> */}
           </div>
         </div>
       </div>
