@@ -6,7 +6,6 @@ const Header = () => {
   const lastScrollY = useRef(0)
 
   useEffect(() => {
-    if (window.innerWidth <= 768) return // Solo aplica en móviles
     const handleScroll = () => {
       const currentScrollY = window.scrollY
 
