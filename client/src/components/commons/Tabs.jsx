@@ -42,7 +42,7 @@ export const Tabs = ({ tabs }) => {
                 <Button
                   variant="primary-ghost"
                   label={viewAllButtonText}
-                  icon={<Icon name="table-column" />}
+                  icon={<Icon name="table-columns" />}
                   key="all"
                   size="small"
                   classes={classNames('m-2 fw-bold', {
