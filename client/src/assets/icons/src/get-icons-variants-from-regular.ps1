@@ -1,7 +1,7 @@
 # Definir rutas de las carpetas
 $src = "C:\Users\ADATOS\OneDrive - MONISA\Escritorio\DM\Proyectos\Calma\client\src\assets\icons\src\regular"
-$target = "C:\Users\ADATOS\OneDrive - MONISA\Recursos\svgs\solid"
-$dest = "C:\Users\ADATOS\OneDrive - MONISA\Escritorio\DM\Proyectos\Calma\client\src\assets\icons\src\solid"
+$target = "C:\Users\ADATOS\OneDrive - MONISA\Recursos\svgs\duotone-regular"
+$dest = "C:\Users\ADATOS\OneDrive - MONISA\Escritorio\DM\Proyectos\Calma\client\src\assets\icons\src\duotones\regular"
 
 # Crear la carpeta destino si no existe
 if (-not (Test-Path -Path $dest)) {

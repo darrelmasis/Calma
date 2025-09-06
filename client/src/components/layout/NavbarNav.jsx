@@ -17,7 +17,8 @@ export const NavbarNav = ({ links = [], className = '', onLinkClick }) => (
                 <Icon
                   name={link.icon}
                   className="me-2"
-                  variant={isActive ? 'solid' : 'regular'} // ✅ variante según active
+                  duotone='regular'
+                  variant={isActive ? 'duotones' : 'regular'}
                 />
               )}
               {link.label}

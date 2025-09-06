@@ -2,21 +2,36 @@ import classNames from 'classnames'
 import * as RegularIcons from '../../assets/icons/processed/regular/index'
 import * as SolidIcons from '../../assets/icons/processed/solid/index'
 import * as BrandsIcons from '../../assets/icons/processed/brands/index'
+import * as DuotonesRegularIcons from '../../assets/icons/processed/duotone/regular/index'
+import * as DuotonesSolidIcons from '../../assets/icons/processed/duotone/solid/index'
 
 export const Icons = {
   regular: RegularIcons,
   solid: SolidIcons,
   brands: BrandsIcons,
+  duotones: {
+    regular: DuotonesRegularIcons,
+    solid: DuotonesSolidIcons
+  }
 }
 
-
-export const Icon = ({ name, variant = 'regular', className, size = 'md' }) => {
+export const Icon = ({ name, variant = 'regular', duotone = 'regular', className, size = 'md' }) => {
   const nameCleanaed = name
     .split('-')
     .map(w => w.charAt(0).toUpperCase() + w.slice(1))
-    .join('');
+    .join('')
 
-  const IconComponent = Icons[variant]?.[nameCleanaed] || Icons['regular']?.CircleQuestion
+  let IconComponent
+
+  if (variant === 'duotones') {
+    // Si es duotone, usar el sub-variant (solid o regular)
+    IconComponent = Icons.duotones?.[duotone]?.[nameCleanaed]
+  } else {
+    IconComponent = Icons[variant]?.[nameCleanaed]
+  }
+
+  // fallback al icono CircleQuestion de regular si no existe
+  if (!IconComponent) IconComponent = Icons['regular']?.CircleQuestion
 
   if (!IconComponent) return null
 
@@ -32,7 +47,3 @@ export const Icon = ({ name, variant = 'regular', className, size = 'md' }) => {
     </span>
   )
 }
-
-// puedes llamar al componente Icon de la siguiente manera
-// <Icon name="nombre-del-icono" classes="clase-1 clase-2" [fixedWidth]/>
-// la props fixedWidth es opcional
