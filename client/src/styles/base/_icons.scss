@@ -25,4 +25,25 @@
     width: 0.875em;
     height: 0.875em;
   }
+
+  /* Aplicar la animación a los SVG deseados */
+  & > svg[data-icon-name='circle-question'] {
+    animation: notFoundIconAnimation 1s infinite; /* 2s de duración, infinito */
+  }
+}
+
+/* ANIMACIÓN FADE*/
+@keyframes notFoundIconAnimation {
+  0% {
+    opacity: 1;
+    transform: rotateY(0deg);
+  }
+  50% {
+    opacity: 0.3;
+    transform: rotateY(180deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateY(360deg);
+  }
 }
