@@ -13,4 +13,13 @@ const usePageTitle = pageTitle => {
   }, [pageTitle, appName])
 }
 
+// formatea un número de teléfono a formato internacional +CCC XXXX XXXX
+export const formatPhone = (phone) => {
+  const cleaned = phone.replace(/[^\d+]/g, '');
+  const match = cleaned.match(/^(\+\d{3})(\d{4})(\d{4})$/);
+  if (!match) return phone;
+  return `${match[1]} ${match[2]} ${match[3]}`;
+};
+
+
 export { usePageTitle }
