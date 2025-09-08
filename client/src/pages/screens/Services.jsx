@@ -36,7 +36,7 @@ const Services = () => {
               // Estructura normal para otras subcategorías
               return (
                 <Fade key={subcategoryId} className="grid-col-12 grid-col-lg-6 menu-card">
-                  <div key={subcategoryId} className=' bg-white border rounded p-3 grid'>
+                  <div className=' bg-white border rounded p-3 grid'>
                     <div className="menu-card-header image-overlay">
                       <img className='logo-calma' src='/logo-calma.svg' alt="logo-calma" />
                       <img className='w-100 service-img' src={serviceData.image} alt="calma_img" />
@@ -57,8 +57,8 @@ const Services = () => {
 
                             return (
 
-                              <Fade>
-                                < div key={index}>
+                              <Fade key={serviceItemId}>
+                                < div>
                                   <div className="d-flex align-items-center justify-content-space-between">
                                     <h4 className="m-0 text-primary fs-1">
                                       {serviceItem.name}
