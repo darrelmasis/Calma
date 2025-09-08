@@ -5,7 +5,7 @@ import { Tooltip } from '../../components/ui/Tooltip'
 import { useLang } from '../../i18n/LanguageContext'
 import { useNavigate } from 'react-router-dom'
 import { formatPhone } from '../../utils/utils'
-
+import { LogoCalma } from '../ui/LogoCalma'
 
 const Footer = () => {
   const phoneNumber = import.meta.env.VITE_CALMA_PHONE_NUMBER
@@ -15,14 +15,14 @@ const Footer = () => {
 
 
   return (
-    <footer className="pt-6 border-top">
-      <div className="container">
+    <footer className="mt-5">
+      <div className="container border-top pt-6 ">
         {/* Bloque CTA */}
         <div className="grid">
           <div className="grid-row justify-content-center text-center mb-6">
             <div className="grid-col-12">
               <Fade>
-                <img src="/logo-calma.svg" alt="Logo Calma" className="mb-3" width="100px" />
+                <LogoCalma className="mb-3" alt="Logo de Calma" width="68px" />
               </Fade>
               <Fade>
                 <h2 className="text-dark">{t('footer.cta.title')}</h2>
@@ -40,7 +40,7 @@ const Footer = () => {
         {/* Footer con columnas */}
         <Fade>
           <div className="grid mt-8">
-            <div className="grid-row d-md-flex flex-direction-column flex-direction-md-row justify-content-space-around align-items-start mb-3 px-3">
+            <div className="grid-row d-md-flex flex-direction-column flex-direction-md-row justify-content-space-between align-items-start mb-3 px-3">
               <div className="grid-col-12 grid-col-md-3 text-md-start">
                 <h4 className="text-dark">{t('footer.columns.contact.title')}</h4>
                 <ul className="list-unstyled text-muted">
