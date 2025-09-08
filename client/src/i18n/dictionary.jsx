@@ -182,6 +182,7 @@ export const dictionary = {
     },
     services: {
       pageTitle: 'Nuestros Servicios',
+      fromBadge: 'Desde',
       section_1: {
         title: 'Servicios Disponibles',
         description: 'Explora nuestra variedad de servicios diseñados para tu bienestar, belleza y relajación, cada experiencia ha sido cuidadosamente pensada para armonizar cuerpo y mente.',
@@ -558,6 +559,7 @@ export const dictionary = {
     },
     services: {
       pageTitle: 'Our Services',
+      fromBadge: 'From',
       section_1: {
         title: 'Available Services',
         description: 'Explore our variety of services designed for your well-being, beauty, and relaxation. Each experience has been carefully crafted to harmonize body and mind.',
