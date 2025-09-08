@@ -1,30 +1,47 @@
-import { useState, useEffect } from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { useState, useEffect, useRef } from 'react'
+import { NavLink, useNavigate, useLocation } from 'react-router-dom'
 import { Button } from '../ui/Button'
-import { NavbarNav } from './NavbarNav'
 import { Tooltip } from '../ui/Tooltip'
 import { useLang } from '../../i18n/LanguageContext'
 import { LanguageSwitcher } from '../commons/LanguageSwitcher'
+import { LogoCalma } from '../ui/LogoCalma'
+import { Icon } from '../commons/Icons'
+import classNames from 'classnames'
+import { useMediaQuery } from '../../hooks/useMediaQuery'
+import { CSSTransition } from 'react-transition-group'
+import { HoverSoundWrapper } from '../commons/HoverSoundFx'
 
-const NavbarCTA = ({ visibleOn }) => {
+
+const NavbarCTA = ({ onClick, className }) => {
   const { t } = useLang()
-  const navigate = useNavigate()
 
-  const classes =
-    visibleOn === 'desktop'
-      ? 'd-none d-lg-flex w-100'
-      : visibleOn === 'mobile'
-      ? 'd-lg-none'
-      : ''
+  const classes = classNames(className)
 
   return (
     <Button
-      onClick={() => navigate('/booking')}
+      onClick={onClick}
       variant="primary"
       classes={classes}
-      size=""
-      icon="calendar-check"
+      size="medium"
+      icon="bell-concierge"
       label={t('header.headerButton.book')}
+    />
+  )
+}
+
+const MenuControlBtn = ({ isMenuOpen, handleCloseMenu, handleOpenMenu }) => {
+
+  return (
+
+    <Button
+      variant="primary"
+      classes='navbar-toggle-btn'
+      icon={isMenuOpen ? 'xmark' : 'bars'}
+      size="large"
+      aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
+      aria-expanded={isMenuOpen}
+      aria-controls="mobile-menu"
+      onClick={isMenuOpen ? handleCloseMenu : handleOpenMenu}
     />
   )
 }
@@ -32,10 +49,12 @@ const NavbarCTA = ({ visibleOn }) => {
 export const Navbar = () => {
   const { t } = useLang()
   const navigate = useNavigate()
-
+  const location = useLocation()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isAnimatingOpen, setIsAnimatingOpen] = useState(false)
-  const [isClosing, setIsClosing] = useState(false)
+  const overlayRef = useRef(null)
+  const contentRef = useRef(null)
+  const prevPath = useRef(location.pathname);
+  const [CTAClicked, setCTAClicked] = useState(false);
 
   const navLinks = [
     { path: '/', label: t('header.links.home'), position: 'left', icon: 'house' },
@@ -49,98 +68,311 @@ export const Navbar = () => {
 
   // Bloquear scroll cuando el menú está abierto
   useEffect(() => {
-    document.body.classList.toggle('overflow-hidden', isMenuOpen)
-    return () => document.body.classList.remove('overflow-hidden')
+    document.body.classList.toggle('navbar-open', isMenuOpen)
+    return () => document.body.classList.remove('navbar-open')
   }, [isMenuOpen])
 
-  const handleLinkClick = (path) => {
+
+  // cerrar el menú al cambiar de ruta
+  useEffect(() => {
+    if (isMenuOpen && location.pathname !== prevPath.current) {
+      handleCloseMenu();
+    }
+    prevPath.current = location.pathname;
+  }, [location.pathname, isMenuOpen]);
+
+
+  const handleLinkClick = path => {
+    navigate(path)
+    if (!isDesktop) handleCloseMenu()
+  }
+
+  const handleCTAClick = () => {
+    setTimeout(() => {
+      navigate('/booking')
+    }, 300);
     if (isMenuOpen) {
       handleCloseMenu()
-      setTimeout(() => navigate(path), 300) // navegar cuando termina animación
-    } else {
-      navigate(path)
     }
+    setCTAClicked(true)
+    setTimeout(() => setCTAClicked(false), 500); // quitamos la clase luego de la animación
   }
 
-  const handleOpenMenu = () => {
-    setIsMenuOpen(true) // montar
-    setTimeout(() => setIsAnimatingOpen(true), 10) // disparar animación
+  const handleOpenMenu = () => setIsMenuOpen(true)
+
+  const handleCloseMenu = () => setIsMenuOpen(false)
+
+  const handleLogoClick = () => {
+    if (isMenuOpen) {
+      handleCloseMenu()
+    }
+    navigate('/')
   }
 
-  const handleCloseMenu = () => {
-    setIsClosing(true)
-    setIsAnimatingOpen(false) // desactivar animación de entrada
-    setTimeout(() => {
-      setIsMenuOpen(false)
-      setIsClosing(false)
-    }, 300)
-  }
+  const isDesktop = useMediaQuery('xl')
 
   return (
-    <nav className="navbar d-flex container align-items-center justify-content-center position-relative">
-      {/* Idioma */}
-      <div className="position-absolute left-0 d-lg-block">
-        <LanguageSwitcher />
-      </div>
 
-      {/* Links izquierda */}
-      <NavbarNav
-        links={leftLinks}
-        className="d-none w-100 d-lg-flex flex-direction-lg-row justify-content-flex-end"
-      />
+    <nav className='navbar'>
 
-      {/* Logo */}
-      <NavLink
-        className="w-auto d-flex justify-content-center align-items-center"
-        to="/"
-        aria-label={t('header.links.logoTooltip')}
-      >
-        <Tooltip content={t('header.links.logoTooltip')} placement="bottom">
-          <img src="/logo-calma.svg" alt="Logo Calma" className="navbar-logo mx-4" />
-        </Tooltip>
-      </NavLink>
+      {/* Menú Desktop */}
+      {isDesktop && (
+        <div className='navbar-desktop d-none d-xl-flex'>
+          <div className="container d-flex">
+            {/* Logotipo de Calma */}
+            <div className="navbar-brand">
+              <Tooltip content={t('header.links.logoTooltip')} placement="bottom">
+                <Button
+                  variant=''
+                  size='medium'
+                  classes="p-0 m-0 rounded-circle navbar-brand-btn"
+                  onClick={handleLogoClick}
+                >
+                  <LogoCalma className="navbar-brand-logo" />
+                </Button>
+              </Tooltip>
+            </div>
 
-      {/* Links derecha */}
-      <NavbarNav
-        links={rightLinks}
-        className="d-none w-100 d-lg-flex flex-direction-lg-row justify-content-flex-start"
-      />
+            {/* Links desktop - izquierda */}
+            <div className="navbar-section navbar-section-left">
+              <ul className='navbar-links'>
+                {
+                  leftLinks.map(link => {
+                    const isActive = link.path === location.pathname
+                    const activeClass = classNames({ 'active': isActive })
+                    return (
+                      <li key={link.path} className={activeClass}>
+                        <NavLink
+                          className='navbar-link'
+                          to={link.path}
+                          onClick={() => handleLinkClick(link.path)}>
+                          {link.icon && (
+                            <Icon
+                              name={link.icon}
+                              className="me-2"
+                              duotone="regular"
+                              variant={isActive ? 'duotones' : 'regular'}
+                            />
+                          )}
+                          <span className="navbar-link-label">
+                            {link.label}
+                          </span>
+                        </NavLink>
+                      </li>
+                    )
 
-      {/* Menú móvil */}
-      {isMenuOpen && (
-        <div
-          className={`navbar-mobile-menu
-            ${isAnimatingOpen ? 'open' : ''}
-            ${isClosing ? 'closing' : ''}`}
-          id="mobile-menu"
-          aria-hidden={!isMenuOpen}
-        >
-          <NavbarNav links={navLinks} onLinkClick={handleLinkClick} />
-          <NavbarCTA visibleOn="mobile" />
+                  })
+                }
+                < li >
+                  <LanguageSwitcher />
+                </li>
+              </ul>
+            </div>
+
+            {/* Links desktop - derecha */}
+            <div className="navbar-section navbar-section-right">
+              <ul className='navbar-links'>
+                {
+                  rightLinks.map(link => {
+                    const isActive = link.path === location.pathname
+                    const activeClass = classNames({ 'active': isActive })
+                    return (
+                      <li key={link.path} className={activeClass}>
+                        <NavLink
+                          className='navbar-link'
+                          to={link.path}
+                          onClick={() => handleLinkClick(link.path)}>
+                          {link.icon && (
+                            <Icon
+                              name={link.icon}
+                              className="me-2"
+                              duotone="regular"
+                              variant={isActive ? 'duotones' : 'regular'}
+                            />
+                          )}
+                          <span className='navbar-link-label'>
+                            {link.label}
+                          </span>
+                        </NavLink>
+                      </li>
+                    )
+
+                  })
+
+                }
+                < li >
+                  <HoverSoundWrapper route={'/booking'}>
+                    <NavbarCTA onClick={handleCTAClick} className={classNames({ 'bounce-animation': CTAClicked }, 'navbar-desktop-cta-button')} />
+                  </HoverSoundWrapper>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       )}
 
-      {/* CTA desktop + toggle móvil */}
-      <div className="position-absolute right-0 d-flex flex-direction-column">
-        <NavbarCTA visibleOn="desktop" />
+      {/* Menú móvil */}
+      {!isDesktop && (
+        <div className='navbar-mobile d-flex d-xl-none justify-content-center'>
+          <div className="container d-flex">
+            {/* Logotipo de Calma */}
+            <div className="navbar-brand">
+              <Tooltip content={t('header.links.logoTooltip')} placement="bottom">
+                <Button
+                  variant=''
+                  size='medium'
+                  classes="p-0 m-0 rounded-circle navbar-brand-btn"
+                  onClick={handleLogoClick}
+                >
+                  <LogoCalma className="navbar-brand-logo" />
+                </Button>
+              </Tooltip>
+            </div>
+            <div className="navbar-mobile-ghost"></div> {/* Se utiliza para completar el área del lado izquierdo del menú, para que el logo quede en el centro */}
 
-        <Button
-          variant="primary"
-          classes="d-lg-none me-3"
-          icon={isMenuOpen ? 'xmark' : 'bars'}
-          size="large"
-          aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
-          aria-expanded={isMenuOpen}
-          aria-controls="mobile-menu"
-          onClick={() => {
-            if (isMenuOpen) {
-              handleCloseMenu()
-            } else {
-              handleOpenMenu()
-            }
-          }}
-        />
-      </div>
-    </nav>
+
+            {/* Controles móviles */}
+            <div className="navbar-mobile-controls">
+              <MenuControlBtn isMenuOpen={isMenuOpen} handleCloseMenu={handleCloseMenu} handleOpenMenu={handleOpenMenu} />
+            </div>
+
+            {/* Overlay */}
+
+
+
+            <CSSTransition in={isMenuOpen} timeout={300} classNames='navbar-mobile-overlay' unmountOnExit nodeRef={overlayRef}>
+              <div ref={overlayRef} className="navbar-mobile-overlay" onClick={handleCloseMenu} />
+            </CSSTransition>
+
+            <CSSTransition in={isMenuOpen} timeout={300} classNames='navbar-mobile-content' unmountOnExit nodeRef={contentRef}>
+
+              <div ref={contentRef} className="navbar-mobile-content" >
+                <div className="container px-5">
+                  <div className="navbar-mobile-content-controls container px-0 border-bottom py-3 mb-3">
+
+                    <LanguageSwitcher />
+
+                    <MenuControlBtn isMenuOpen={isMenuOpen} handleCloseMenu={handleCloseMenu} handleOpenMenu={handleOpenMenu} />
+                  </div>
+
+                  <div className="navbar-mobile-content-links border-top border-bottom pb-3">
+                    <ul className='navbar-links'>
+                      {
+                        navLinks.map(link => {
+                          const isActive = link.path === location.pathname
+                          const activeClass = classNames({ 'active': isActive })
+                          return (
+                            <li key={link.path} className={activeClass}>
+                              <NavLink
+                                className='navbar-link'
+                                to={link.path}
+                                onClick={() => handleLinkClick(link.path)}>
+                                {link.icon && (
+                                  <Icon
+                                    name={link.icon}
+                                    className="me-2"
+                                    duotone="regular"
+                                    variant={isActive ? 'duotones' : 'regular'}
+                                  />
+                                )}
+                                <span className='navbar-link-label'>
+                                  {link.label}
+                                </span>
+                              </NavLink>
+                            </li>
+                          )
+
+                        })
+
+                      }
+                    </ul>
+                  </div>
+
+                  <div className="navbar-mobile-content-cta">
+                    <HoverSoundWrapper route={'/booking'}>
+
+
+                      <NavbarCTA onClick={handleCTAClick} className={classNames({ 'bounce-animation': CTAClicked }, 'w-100', 'navbar-mobile-content-cta-button')} />
+                    </HoverSoundWrapper>
+                  </div>
+                </div>
+
+              </div>
+
+            </CSSTransition>
+
+
+
+          </div>
+
+        </div >
+      )}
+    </nav >
+    // <nav className="navbar d-flex container align-items-center justify-content-center position-relative">
+    //   {/* Idioma */}
+    //   <div className="position-absolute left-0 d-lg-block">
+    //     <LanguageSwitcher />
+    //   </div>
+
+    //   {/* Links izquierda */}
+    //   <NavbarNav
+    //     links={leftLinks}
+    //     className="d-none w-100 d-lg-flex flex-direction-lg-row justify-content-flex-end"
+    //     currentPath={location.pathname}
+    //     onLinkClick={handleLinkClick}
+    //   />
+
+    //   {/* Logo */}
+    //   <NavLink
+    //     className="w-auto d-flex justify-content-center align-items-center"
+    //     to="/"
+    //     aria-label={t('header.links.logoTooltip')}
+    //     onClick={handleCloseMenu}
+    //   >
+    //     <Tooltip content={t('header.links.logoTooltip')} placement="bottom">
+    //       <img src="/logo-calma.svg" alt="Logo Calma" className="navbar-logo mx-4" />
+    //     </Tooltip>
+    //   </NavLink>
+
+    //   {/* Links derecha */}
+    //   <NavbarNav
+    //     links={rightLinks}
+    //     className="d-none w-100 d-lg-flex flex-direction-lg-row justify-content-flex-start"
+    //     currentPath={location.pathname}
+    //     onLinkClick={handleLinkClick}
+    //   />
+
+    //   {/* Menú móvil */}
+    //   {isMenuOpen && (
+    //     <div
+    //       className="navbar-mobile-menu open"
+    //       id="mobile-menu"
+    //       aria-hidden={!isMenuOpen}
+    //     >
+    //       <NavbarNav
+    //         links={navLinks}
+    //         onLinkClick={handleLinkClick}
+    //         currentPath={location.pathname}
+    //       />
+    //       <NavbarCTA visibleOn="mobile" />
+    //     </div>
+    //   )}
+
+    //   {/* CTA desktop + toggle móvil */}
+    //   <div className="position-absolute right-0 d-flex flex-direction-column">
+    //     <NavbarCTA visibleOn="desktop" />
+
+    //     <Button
+    //       variant="primary"
+    //       classes="d-lg-none me-3"
+    //       icon={isMenuOpen ? 'xmark' : 'bars'}
+    //       size="large"
+    //       aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
+    //       aria-expanded={isMenuOpen}
+    //       aria-controls="mobile-menu"
+    //       onClick={toggleMenu}
+    //     />
+    //   </div>
+    // </nav>
   )
 }
