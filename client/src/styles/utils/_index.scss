@@ -4,6 +4,7 @@
 @forward 'shadows';
 @forward 'utils';
 @forward 'typography';
+@forward 'animations';
 
 @use '../config/typography' as typo;
 @use '../mixins/typography' as typo_mixins;
