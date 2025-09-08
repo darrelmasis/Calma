@@ -58,16 +58,16 @@ export const ServicesData = {
       retiroAcrilico: { from: 8 }
     }
   },
-  cejasPestanas: {// FALTA PRECIO EN DOLARES
+  cejasPestanas: {
     id: "cejasPestanas",
     image: "cejas-01",
     prices: {
-      laminacionCejas: 584,
-      laminacionDiseno: 730,
-      laminacionTinte: 876,
-      tinteCejas: 292,
-      levantamientoPestanas: 730,
-      extensionPestanas: 912
+      laminacionCejas: 16,
+      laminacionDiseno: 20,
+      laminacionTinte: 24,
+      tinteCejas: 8,
+      levantamientoPestanas: 20,
+      extensionPestanas: 25
     }
   },
   depilacion: {
@@ -86,59 +86,59 @@ export const ServicesData = {
       gluteos: { from: 10 }
     }
   },
-  lavado: {// FALTA PRECIO EN DOLARES
+  lavado: {
     id: "lavado",
     image: "hair-01",
     prices: {
-      lavadoExpress: 146,
-      lavadoProfundo: 292,
-      lavadoMascarilla: 657,
-      lavadoAmpolla: 546,
-      relajanteExpress: 730,
-      cabelloTratado: 1278,
-      aplicacionTinta: 438
+      lavadoExpress: 4,
+      lavadoProfundo: 8,
+      lavadoMascarilla: 18,
+      lavadoAmpolla: 15,
+      relajanteExpress: 20,
+      cabelloTratado: 35,
+      aplicacionTinta: { from: 12 }
     }
   },
-  estilismo: {// FALTA PRECIO EN DOLARES
+  estilismo: {
     id: "estilismo",
     image: "hair-02",
     prices: {
-      secado: 365,
-      planchado: 365,
-      ondas: 546,
-      peinadoSencillo: 657,
-      peinadoElaborado: 840,
-      trenzas: 292,
-      cortePuntas: 219,
-      corteEstilo: 365
+      secado: { from: 10 },
+      planchado: { from: 10 },
+      ondas: { from: 15 },
+      peinadoSencillo: { from: 18 },
+      peinadoElaborado: { from: 23 },
+      trenzas: { from: 8 },
+      cortePuntas: { from: 6 },
+      corteEstilo: { from: 10 }
     }
   },
-  spa: {// FALTA PRECIO EN DOLARES
+  spa: {
     id: "spa",
     image: "spa-01",
     prices: {
-      maderoterapia: 1278,
-      masajeRelajante: 921,
-      masajeProfundo: 912
+      maderoterapia: 35,
+      masajeRelajante: 25,
+      masajeProfundo: 25
     }
   },
-  facial: {// FALTA PRECIO EN DOLARES
+  facial: {
     id: "facial",
     image: "spa-02",
     prices: {
-      detoxGlow: 1278,
-      guaSha: 1278,
-      hydrafacial: 1460,
-      facialRefrescante: 1278,
-      detoxEspalda: 1278
+      detoxGlow: 35,
+      guaSha: 35,
+      hydrafacial: 40,
+      facialRefrescante: 35,
+      detoxEspalda: 35
     }
   },
-  maquillaje: {// FALTA PRECIO EN DOLARES
+  maquillaje: {
     id: "maquillaje",
     image: "addons-01",
     prices: {
-      profesional: 1095,
-      pestanas: 182
+      profesional: { from: 30 },
+      pestanas: 5
     }
   },
   manicureNinos: {
