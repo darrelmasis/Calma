@@ -1,25 +1,46 @@
-# Definir rutas de las carpetas
+﻿# Carpeta fuente (siempre la misma)
 $src = "C:\Users\ADATOS\OneDrive - MONISA\Escritorio\DM\Proyectos\Calma\client\src\assets\icons\src\regular"
-$target = "C:\Users\ADATOS\OneDrive - MONISA\Recursos\svgs\duotone-regular"
-$dest = "C:\Users\ADATOS\OneDrive - MONISA\Escritorio\DM\Proyectos\Calma\client\src\assets\icons\src\duotones\regular"
 
-# Crear la carpeta destino si no existe
-if (-not (Test-Path -Path $dest)) {
-    New-Item -ItemType Directory -Path $dest
-}
+# Lista de destinos con su respectivo target
+$routes = @(
+    @{
+        target = "C:\Users\ADATOS\OneDrive - MONISA\Recursos\svgs\duotone-regular"
+        dest   = "C:\Users\ADATOS\OneDrive - MONISA\Escritorio\DM\Proyectos\Calma\client\src\assets\icons\src\duotones\regular"
+    },
+    @{
+        target = "C:\Users\ADATOS\OneDrive - MONISA\Recursos\svgs\duotone"
+        dest   = "C:\Users\ADATOS\OneDrive - MONISA\Escritorio\DM\Proyectos\Calma\client\src\assets\icons\src\duotones\solid"
+    }
 
-# Obtener todos los archivos de la carpeta fuente
+    @{
+        target = "C:\Users\ADATOS\OneDrive - MONISA\Recursos\svgs\solid"
+        dest   = "C:\Users\ADATOS\OneDrive - MONISA\Escritorio\DM\Proyectos\Calma\client\src\assets\icons\src\solid"
+    }
+    # 👉 Aquí puedes seguir agregando más pares target/dest
+)
+
+# Obtener todos los archivos de la carpeta fuente (una sola vez)
 $srcFiles = Get-ChildItem -Path $src -File
 
-foreach ($file in $srcFiles) {
-    # Buscar el archivo con el mismo nombre en la carpeta target
-    $targetFile = Get-ChildItem -Path $target -File -Filter $file.Name
+foreach ($route in $routes) {
+    $target = $route.target
+    $dest   = $route.dest
 
-    if ($targetFile) {
-        # Copiar el archivo encontrado a la carpeta destino
-        Copy-Item -Path $targetFile.FullName -Destination $dest -Force
-        Write-Output "Copiado: $($targetFile.Name)"
-    } else {
-        Write-Output "No encontrado en target: $($file.Name)"
+    # Crear carpeta destino si no existe
+    if (-not (Test-Path -Path $dest)) {
+        New-Item -ItemType Directory -Path $dest | Out-Null
+    }
+
+    foreach ($file in $srcFiles) {
+        # Buscar el archivo con el mismo nombre en la carpeta target
+        $targetFile = Get-ChildItem -Path $target -File -Filter $file.Name
+
+        if ($targetFile) {
+            # Copiar el archivo encontrado a la carpeta destino
+            Copy-Item -Path $targetFile.FullName -Destination $dest -Force
+            Write-Output "Copiado: $($targetFile.Name) → $dest"
+        } else {
+            Write-Output "No encontrado en target: $($file.Name)"
+        }
     }
 }

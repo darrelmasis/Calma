@@ -1,6 +1,7 @@
 import ArrowRight from './arrow-right.svg?react';
 import ArrowUpRightFromSquare from './arrow-up-right-from-square.svg?react';
 import Bars from './bars.svg?react';
+import BellConcierge from './bell-concierge.svg?react';
 import BookSparkles from './book-sparkles.svg?react';
 import CalendarCheck from './calendar-check.svg?react';
 import ChampagneGlasses from './champagne-glasses.svg?react';
@@ -27,6 +28,7 @@ export {
   ArrowRight,
   ArrowUpRightFromSquare,
   Bars,
+  BellConcierge,
   BookSparkles,
   CalendarCheck,
   ChampagneGlasses,
