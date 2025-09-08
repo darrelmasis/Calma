@@ -27,7 +27,7 @@ export const Hero = () => {
             <div className="grid">
               <div className="grid-row mt-6">
                 <div className="grid-col-12 grid-col-md-5">
-                  <Button onClick={goToServices} classes="" variant="primary-ghost" label={t('home.heroSection.button_1')} size="large" icon="spa" />
+                  <Button onClick={goToServices} variant="primary" label={t('home.heroSection.button_1')} size="large" icon="spa" />
                 </div>
               </div>
 
