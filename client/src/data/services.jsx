@@ -3,62 +3,62 @@ export const ServicesData = {
     id: "manicure",
     image: "manicure-01",
     prices: {
-      regular: 237,
-      spa: 401,
-      vip: 546,
-      gel: 566,
-      spaGel: 730,
-      vipGel: 876
+      regular: 6.5,
+      spa: 11,
+      vip: 15,
+      gel: 15.5,
+      spaGel: 20,
+      vipGel: 24
     }
   },
   pedicure: {
     id: "pedicure",
     image: "pedicure-01",
     prices: {
-      regular: 310,
-      spa: 511,
-      vip: 584,
-      gel: 584,
-      spaGel: 767,
-      vipGel: 912
+      regular: 8.5,
+      spa: 14,
+      vip: 16,
+      gel: 16,
+      spaGel: 21,
+      vipGel: 25
     }
   },
   acrilicas: {
     id: "acrilicas",
     image: "manicure-02",
     prices: {
-      naturales: 548,
-      almond: 657,
-      coffin: 620,
-      esculturales: 657,
-      refill: 475,
-      banoAcrilico: 511,
-      rubber: 511,
-      poly: 803
+      naturales: 15,
+      almond: 18,
+      coffin: 17,
+      esculturales: { from: 18 },
+      refill: 13,
+      banoAcrilico: 14,
+      rubber: 14,
+      poly: 22
     }
   },
   extras: {
     id: "extras",
     image: "extras-01",
     prices: {
-      limpieza: 73,
-      decoracion: 18,
-      gelCalcio: 110,
-      extensionCalcio: 548,
-      gelFrio: 182,
-      topGelFrio: 110,
-      parafina: 256,
-      botasTermicas: 110,
-      guantesHidratantes: 146,
-      esmalteRegular: 146,
-      esmalteGel: 365,
-      reparacionUñas: 73,
-      uñasExtraAcrilico: 110,
-      retiroGel: 110,
-      retiroAcrilico: 292
+      limpieza: { from: 2 },
+      decoracion: { from: 0.5 },
+      gelCalcio: { from: 3 },
+      extensionCalcio: { from: 15 },
+      gelFrio: 5,
+      topGelFrio: 3,
+      parafina: 7,
+      botasTermicas: 3,
+      guantesHidratantes: 4,
+      esmalteRegular: 4,
+      esmalteGel: 10,
+      reparacionUñas: { from: 2 },
+      uñasExtraAcrilico: { from: 3 },
+      retiroGel: { from: 3 },
+      retiroAcrilico: { from: 8 }
     }
   },
-  cejasPestanas: {
+  cejasPestanas: {// FALTA PRECIO EN DOLARES
     id: "cejasPestanas",
     image: "cejas-01",
     prices: {
@@ -74,19 +74,19 @@ export const ServicesData = {
     id: "depilacion",
     image: "waxing-01",
     prices: {
-      cejas: 182,
-      bigote: 110,
-      axilas: 365,
-      bikini: 438,
-      fullBikini: 730,
-      brazos: 365,
-      mediaPierna: 546,
-      piernaCompleta: 730,
-      espalda: 546,
-      gluteos: 365
+      cejas: { from: 5 },
+      bigote: 3,
+      axilas: 10,
+      bikini: { from: 13 },
+      fullBikini: { from: 10 },
+      brazos: { from: 10 },
+      mediaPierna: { from: 15 },
+      piernaCompleta: { from: 20 },
+      espalda: { from: 15 },
+      gluteos: { from: 10 }
     }
   },
-  lavado: {
+  lavado: {// FALTA PRECIO EN DOLARES
     id: "lavado",
     image: "hair-01",
     prices: {
@@ -99,7 +99,7 @@ export const ServicesData = {
       aplicacionTinta: 438
     }
   },
-  estilismo: {
+  estilismo: {// FALTA PRECIO EN DOLARES
     id: "estilismo",
     image: "hair-02",
     prices: {
@@ -113,7 +113,7 @@ export const ServicesData = {
       corteEstilo: 365
     }
   },
-  spa: {
+  spa: {// FALTA PRECIO EN DOLARES
     id: "spa",
     image: "spa-01",
     prices: {
@@ -122,7 +122,7 @@ export const ServicesData = {
       masajeProfundo: 912
     }
   },
-  facial: {
+  facial: {// FALTA PRECIO EN DOLARES
     id: "facial",
     image: "spa-02",
     prices: {
@@ -133,7 +133,7 @@ export const ServicesData = {
       detoxEspalda: 1278
     }
   },
-  maquillaje: {
+  maquillaje: {// FALTA PRECIO EN DOLARES
     id: "maquillaje",
     image: "addons-01",
     prices: {
@@ -145,16 +145,16 @@ export const ServicesData = {
     id: "manicure-ninos",
     image: "maniKids-01",
     prices: {
-      regular: 146,
-      gel: 292
+      regular: 4,
+      gel: 8
     }
   },
   pedicureNinos: {
     id: "pedicure-ninos",
     image: "pediKids-01",
     prices: {
-      regular: 219,
-      gel: 401
+      regular: 6,
+      gel: 11
     }
   }
 };
