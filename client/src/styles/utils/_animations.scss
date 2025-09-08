@@ -1,0 +1,77 @@
+@mixin spin($duration: 1s, $timing: ease, $infinite: false) {
+  transform-origin: center;
+  animation: spin $duration $timing #{if($infinite, 'infinite', '')} forwards;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0turn);
+  }
+  to {
+    transform: rotate(0.5turn);
+  }
+}
+
+@mixin bounceIn($duration: 1s, $timing: ease, $infinite: false) {
+  transform-origin: center;
+  animation: bounceIn $duration $timing #{if($infinite, 'infinite', '')} forwards;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(1) rotate(20deg);
+  }
+  50% {
+    transform: scale(1.2) rotate(-20deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@mixin shake($duration: 1s, $timing: ease, $infinite: false) {
+  transform-origin: center;
+  animation: shake $duration $timing #{if($infinite, 'infinite', '')} forwards;
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  30% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@mixin bounceIcon($duration: 5s, $timing: ease, $infinite: false) {
+  transform-origin: center;
+  animation: bounceIcon $duration $timing #{if($infinite, 'infinite', '')} forwards;
+  animation-delay: 3s;
+}
+
+@keyframes bounceIcon {
+  0% {
+    transform: translateX(0);
+  }
+  3% {
+    transform: translateX(-5px);
+  }
+  6% {
+    transform: translateX(0);
+  }
+  9% {
+    transform: translateX(-3px);
+  }
+  12% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(0); // los últimos 80% = 4s en reposo
+  }
+}
