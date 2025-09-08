@@ -122,13 +122,15 @@ $flexbox-classes: (
 
     // Clases responsivas
     @each $breakpoint, $breakpoint-value in bp.$breakpoints {
-      $responsive-class-name: #{$property-class}-#{$breakpoint}-#{$value};
-      @media (min-width: $breakpoint-value) {
-        .#{$responsive-class-name} {
-          @if $measurement {
-            #{$property-property}: #{$value}#{$measurement} !important;
-          } @else {
-            #{$property-property}: #{$value} !important;
+      @if $breakpoint != xs {
+        $responsive-class-name: #{$property-class}-#{$breakpoint}-#{$value};
+        @media (min-width: $breakpoint-value) {
+          .#{$responsive-class-name} {
+            @if $measurement {
+              #{$property-property}: #{$value}#{$measurement} !important;
+            } @else {
+              #{$property-property}: #{$value} !important;
+            }
           }
         }
       }
