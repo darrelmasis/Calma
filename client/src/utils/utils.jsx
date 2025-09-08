@@ -21,7 +21,7 @@ const formatPhone = (phone) => {
   return `${match[1]} ${match[2]} ${match[3]}`;
 };
 
-const USD = ({ amount }) => {
+const USD = ({ amount, currencySymbol }) => {
 
   const [isvalidNumber, setIsvalidNumber] = useState(false);
 
@@ -49,6 +49,7 @@ const USD = ({ amount }) => {
         isvalidNumber
           ? '-'
           : <>
+            <span className='me-1'>{currencySymbol}</span>
             {entero}
             <sup className='small text-dark'>.{decimal}</sup>
           </>
