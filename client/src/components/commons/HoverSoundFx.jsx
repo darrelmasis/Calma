@@ -11,7 +11,7 @@ const HoverSoundWrapper = ({ children, route, matchType = "except" }) => {
       new Howl({
         src: ["/sounds/bell.mp3", "/sounds/bell.ogg",],
         volume: 0.2,
-         preload: true, // fuerza carga
+        preload: true, // fuerza carga
       }),
     []
   );
@@ -29,7 +29,7 @@ const HoverSoundWrapper = ({ children, route, matchType = "except" }) => {
   };
 
   return (
-    <div onMouseDown={playSound} style={{ display: "flex", width: "100%" }}>
+    <div onClick={playSound} style={{ display: "flex", width: "100%" }}>
       {children}
     </div>
   );
