@@ -38,7 +38,7 @@
   --btn-color: #{map.get($color-map, $text)};
   --btn-color-hover: #{map.get($color-map, $text-hover)};
   --btn-border: 1px solid #{map.get($color-map, $bg)};
-  // --btn-padding: calc(#{btns.$btn-padding-y} - 1px) calc(#{btns.$btn-padding-x} - 1px);
+  --btn-padding: calc(#{btns.$btn-padding-y} - 1px) calc(#{btns.$btn-padding-x} - 1px);
 
   $bg: map.get($color-map, $bg);
   $outline-color: color.change($bg, $alpha: 0.4);

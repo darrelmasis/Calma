@@ -6,7 +6,7 @@
 
 .btn {
   @include buttons_mixins.button-initial(
-    map.get(vars.$button-theme-colors, 'secondary'),
+    map.get(vars.$button-theme-colors, 'initial'),
     bf.get-button-state('initial', 'main'),
     bf.get-button-state('initial', 'main-hover'),
     bf.get-button-state('initial', 'main-active'),
@@ -57,7 +57,7 @@
   &.ghost-active {
     background-color: var(--btn-ghost-bg-active);
     color: var(--btn-ghost-color-active);
-     border: var(--btn-border);
+    border: var(--btn-border);
   }
 
   &:disabled {

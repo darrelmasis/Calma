@@ -21,6 +21,7 @@ $button-theme-colors: (
   info: c.$blues,
   light: c.$lights,
   dark: c.$darks,
+  initial: c.$neutrals,
 );
 
 $buttons-colors: (
@@ -131,7 +132,7 @@ $buttons-sizes: (
     $btn-line-height,
     $btn-min-width,
     21px,
-    calc($btn-border-radius * 0.75)
+    calc($btn-border-radius * 0.75),
   ),
   medium: (
     $btn-padding-y,
@@ -140,15 +141,15 @@ $buttons-sizes: (
     $btn-line-height,
     $btn-min-width,
     $btn-square-size,
-    $btn-border-radius
+    $btn-border-radius,
   ),
   large: (
     calc($btn-padding-y * 1.5),
     calc($btn-padding-x * 1.5),
-   calc($btn-normal-fs + 2px),
+    calc($btn-normal-fs + 2px),
     $btn-line-height,
     $btn-min-width,
     28px,
-    calc($btn-border-radius * 1.25)
+    calc($btn-border-radius * 1.25),
   ),
 );
