@@ -5,113 +5,314 @@
 @use '../mixins/mediaqueries' as mq;
 @use '../config/breakpoints' as bp;
 @use 'sass:map';
+@use '../utils/animations' as animate;
+
+body {
+  overflow-x: hidden !important;
+}
 
 .navbar {
-  height: 100px;
-  top: 0;
-  left: 0;
-  z-index: 1000;
+  padding-block: 1rem;
 
-  &-left,
-  &-right {
+  &-desktop {
+    width: 100%;
+  }
+
+  &-brand {
+    order: 2;
+    margin-inline: 2rem;
+
+    &-btn.btn {
+      --btn-bg: none;
+      --btn-bg-hover: none;
+      --btn-bg-active: none;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      &:active {
+        transform: scale(1);
+      }
+    }
+
+    &-logo {
+      width: 68px;
+      height: 68px;
+
+      &:hover .logo-sheets {
+        @include animate.spin();
+      }
+    }
+  }
+
+  &-section {
     flex: 1;
+    display: flex;
+
+    &-left {
+      justify-content: flex-end;
+      order: 1;
+
+      & .navbar-links > :last-child {
+        margin-right: auto;
+        order: -1;
+      }
+    }
+
+    &-right {
+      justify-content: flex-start;
+      order: 3;
+
+      & .navbar-links > :last-child {
+        margin-left: auto;
+      }
+    }
   }
 
   &-links {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
     list-style: none;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
     align-items: center;
-    justify-content: center;
+    width: 100%;
 
-    a {
-      text-decoration: none;
+    & .navbar-link {
       color: c.$text-color;
+      display: flex;
       font-size: typo.$fs-base;
       font-weight: map.get(typo.$font-weights, 'medium');
-      padding: 0.5rem 0.75rem;
+      padding: 0.375rem 0;
       border-radius: 0.375rem;
-      display: flex;
-      align-items: center;
-      transition: all 0.3s ease-in-out;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+      position: relative;
       user-select: none;
+      text-decoration: none;
+      color: c.$text-color;
+      align-items: center;
+      min-width: 7rem;
+      max-width: 7rem;
+      text-align: center;
+      justify-content: center;
 
-      &:hover {
-        color: c.$text-color;
-        background-color: fn.getColor(palette.$grays, '100');
+      &:hover,
+      &:focus {
+        color: c.$primary !important;
+        background-color: fn.getColor(palette.$golds, '50');
+
+        & > .icon-wrapper {
+          @include animate.shake(0.4s);
+        }
+      }
+
+      &:focus {
+        outline: none;
       }
 
       &.active {
         color: c.$primary;
         background-color: fn.getColor(palette.$golds, '50');
         font-weight: bolder;
+        border: 2px solid fn.getColor(palette.$golds, '300');
+
+        & > .icon-wrapper {
+          @include animate.bounceIn(0.4s);
+        }
       }
+    }
+
+    &-label {
+      color: inherit;
     }
   }
 
-  &-logo {
-    width: 80px;
-    height: 80px;
+  &-mobile {
+    &-controls {
+      margin-left: auto;
+      // display: none;
+    }
+
+    &-ghost {
+      width: 100%;
+      flex: 1;
+      order: 1;
+    }
+
+    &-controls {
+      display: flex;
+      align-items: center;
+      flex: 1;
+      order: 3;
+      justify-content: flex-end;
+
+      .navbar-toggle-btn {
+        background: none;
+        margin-right: 1rem;
+        color: c.$text-color;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: fn.getColor(palette.$golds, '50');
+          color: c.$primary;
+        }
+      }
+    }
+
+    &-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100dvh;
+      background-color: rgba(#000000, 0.5);
+      backdrop-filter: blur(5px);
+      transition: opacity 0.3s ease;
+      z-index: 10;
+
+      &-enter {
+        opacity: 0;
+      }
+
+      &-enter-active {
+        opacity: 1;
+      }
+
+      &-exit {
+        opacity: 1;
+      }
+
+      &-exit-active {
+        opacity: 0;
+      }
+    }
+
+    &-content {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%; // por defecto ocupa el máximo de ancho disponible
+      max-width: 100%; // como es convención mobile-first por defecto utiliza 100% en pantallas más grandes se limita a 400px
+      height: 100dvh;
+      background-color: #ffffff;
+      padding: 1rem 0;
+      display: flex;
+      flex-direction: column;
+      z-index: 20;
+      transition: max-width 0.3s;
+      overflow-y: scroll;
+
+      & > .container {
+        display: flex;
+        flex-direction: column;
+      }
+
+      &-enter {
+        opacity: 0;
+        transform: translateX(100%);
+      }
+
+      &-enter-active {
+        opacity: 1;
+        transform: translateX(0);
+        transition:
+          opacity 0.3s ease,
+          transform 0.3s ease;
+      }
+
+      &-exit {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      &-exit-active {
+        opacity: 0;
+        transform: translateX(100%);
+        transition:
+          opacity 0.3s ease,
+          transform 0.3s ease;
+      }
+
+      &-controls {
+        display: flex;
+        justify-content: space-between;
+        min-height: 68px;
+        align-items: center;
+
+        & > .navbar-toggle-btn {
+          background: none;
+          max-height: fit-content;
+          color: c.$text-color;
+
+          &:hover {
+            background: fn.getColor(palette.$golds, '50');
+            color: c.$primary;
+          }
+        }
+      }
+
+      &-links {
+        gap: 1rem;
+        & li {
+          width: 100%;
+        }
+
+        & > .navbar-links {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+
+          & .navbar-link {
+            min-width: 100%;
+            padding: 1rem 0;
+            font-size: calc(typo.$fs-base * 1.1);
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.75;
+
+            &.active {
+              font-weight: bold;
+              background-color: #f5f2ed;
+              background-image: radial-gradient(circle, fn.getColor(palette.$golds, '50') 10%, fn.getColor(palette.$golds, '200') 90%);
+            }
+          }
+        }
+      }
+
+      &-cta {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        margin-top: 1rem;
+
+        & &-button {
+          padding: 1rem 0;
+        }
+      }
+    }
+  }
+}
+// Clases auxiliares
+
+body.navbar-open {
+  overflow: hidden;
+}
+
+@include mq.screen-between(md, xl) {
+  .navbar-mobile-content {
+    max-width: 300px;
   }
 }
 
-// Menú móvil
-.navbar-mobile-menu {
-  position: fixed;
-  top: 100px;
-  left: 0;
-  width: 100%;
-  height: calc(100vh - 100px);
-  background-color: rgba(#fff, 0.9);
-  backdrop-filter: blur(5px);
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
+.bounce-animation.navbar-desktop-cta-button .icon-wrapper svg {
+  @include animate.bounceIn(0.3s);
+}
 
-  transform: translateX(100%);
-  transition: transform 0.3s ease-in-out;
-
-  &.open {
-    transform: translateX(0);
-  }
-
-  &.closing {
-    transform: translateX(100%);
-  }
-
-  .navbar-links {
-    // flex: 1;
-    width: 100%;
-    text-align: center;
-    gap: 0;
-    justify-content: center;
-
-    li,
-    a {
-      width: 100%;
-    }
-
-    a {
-      padding: 1.5rem 0;
-      font-size: calc(typo.$fs-base * 1.2);
-      text-align: center;
-      align-items: center;
-      justify-content: center;
-      line-height: 1.75;
-
-      &.active {
-        font-weight: bold;
-        background-color: #f5f2ed;
-        background-image: radial-gradient(circle, fn.getColor(palette.$golds, '50') 10%, fn.getColor(palette.$golds, '200') 90%);
-      }
-    }
-  }
-
-  & > button {
-    width: 100%;
-    padding: 1.5rem 0;
-    font-size: 1.2rem;
-  }
+.navbar-desktop-cta-button .icon-wrapper > svg {
+  @include animate.bounceIcon(5s, $infinite: true);
 }
