@@ -17,7 +17,7 @@ export const dictionary = {
     footer: {
       cta: {
         title: '¡Agenda tu cita hoy!',
-        description: 'Reserva con nuestros especialistas en bienestar cuando y donde quieras.',
+        description: 'Reserva con nuestros especialistas en bienestar cuando y donde quieras',
         button: 'Reservar ahora'
       },
       columns: {
@@ -48,7 +48,7 @@ export const dictionary = {
         }
       },
       legal: {
-        copyright: 'Todos los derechos reservados.',
+        copyright: 'Todos los derechos reservados',
         privacy: 'Política de privacidad',
         privacyTooltip: 'Ver política de privacidad',
         terms: 'Términos y condiciones',
@@ -61,7 +61,7 @@ export const dictionary = {
         title_1: 'Encuentra tu',
         title_2: 'Calma',
         title_3: 'interior',
-        description: 'Descubre un espacio diseñado para tu bienestar y tranquilidad, donde cada servicio está pensado para restaurar tu equilibrio.',
+        description: 'Descubre un espacio diseñado para tu bienestar y tranquilidad, donde cada servicio está pensado para restaurar tu equilibrio',
         button_1: 'Descubir servicios',
         button_2: 'Paquetes disponibles'
       },
@@ -69,14 +69,14 @@ export const dictionary = {
         title: '¿Porque Elegir Calma?',
         description: 'Nuestro enfoque holístico nos distingue',
         points: {
-          p1: { title: 'Atención personalizada', description: 'Cada cliente recibe un tratamiento único adaptado a sus necesidades específicas.' },
-          p2: { title: 'Ambiente Seguro', description: 'Creamos un entorno acogedor y seguro para que te sientas cómodo y relajado.' },
-          p3: { title: 'Expertos Certificados', description: 'Nuestro equipo cuenta con amplia experiencia y formación especializada.' },
+          p1: { title: 'Atención personalizada', description: 'Cada cliente recibe un tratamiento único adaptado a sus necesidades específicas' },
+          p2: { title: 'Ambiente Seguro', description: 'Creamos un entorno acogedor y seguro para que te sientas cómodo y relajado' },
+          p3: { title: 'Expertos Certificados', description: 'Nuestro equipo cuenta con amplia experiencia y formación especializada' },
         }
       },
       section_3: {
         title: 'Comienza tu camino hacia la tranquilidad',
-        description: 'Descubre nuestros servicios y encuentra el que mejor se adapte a tus necesidades.',
+        description: 'Descubre nuestros servicios y encuentra el que mejor se adapte a tus necesidades',
         button: 'Descubrir Servicios',
       },
     },
@@ -84,29 +84,29 @@ export const dictionary = {
       pageTitle: 'Nuestra Historia',
       section_1: {
         title: 'Nuestra Historia',
-        history_p1: 'Comenzamos este camino en 2016, comprometidas no solo con ofrecer servicios, sino también una experiencia que deleitara los sentidos y nutriera el cuerpo y el alma. Calma nació del deseo de crear un espacio de renovación y tranquilidad en medio de lo cotidiano, inspirado por la intención de preservar ese equilibrio interior del que todos dependemos. De ahí surge nuestro nombre: el estado o la cualidad de estar en paz.',
-        history_p2: 'Desde el inicio, nuestro enfoque ha sido conectar con lo esencial: tratamientos que combinan técnicas tradicionales con un enfoque moderno.',
-        history_p3: 'Esto da lugar a una experiencia transformadora en un ambiente cuidadosamente diseñado, para que cada visita sea un verdadero momento de pausa.',
-        history_p4: 'Creemos que el bienestar no es un lujo, sino una necesidad. Por eso, cada servicio ha sido pensado con el descanso y la belleza en mente.',
-        history_p5: 'Hoy, Calma es reconocida por su compromiso con el bienestar y su dedicación. Cada rincón refleja nuestra atención al detalle y el profundo respeto por quienes nos visitan.',
-        history_p6: 'El propósito es seguir creciendo con intención de expandir nuestros servicios sin perder la esencia que nos define. Calma es más que un espacio físico; es una invitación a reconectar contigo, respirar profundo y encontrar tu equilibrio.',
+        history_p1: 'Comenzamos este camino en 2016, comprometidas no solo con ofrecer servicios, sino también una experiencia que deleitara los sentidos y nutriera el cuerpo y el alma. Calma nació del deseo de crear un espacio de renovación y tranquilidad en medio de lo cotidiano, inspirado por la intención de preservar ese equilibrio interior del que todos dependemos. De ahí surge nuestro nombre: el estado o la cualidad de estar en paz',
+        history_p2: 'Desde el inicio, nuestro enfoque ha sido conectar con lo esencial: tratamientos que combinan técnicas tradicionales con un enfoque moderno',
+        history_p3: 'Esto da lugar a una experiencia transformadora en un ambiente cuidadosamente diseñado, para que cada visita sea un verdadero momento de pausa',
+        history_p4: 'Creemos que el bienestar no es un lujo, sino una necesidad. Por eso, cada servicio ha sido pensado con el descanso y la belleza en mente',
+        history_p5: 'Hoy, Calma es reconocida por su compromiso con el bienestar y su dedicación. Cada rincón refleja nuestra atención al detalle y el profundo respeto por quienes nos visitan',
+        history_p6: 'El propósito es seguir creciendo con intención de expandir nuestros servicios sin perder la esencia que nos define. Calma es más que un espacio físico; es una invitación a reconectar contigo, respirar profundo y encontrar tu equilibrio',
         end_tag: 'Con Mucho Cariño',
-        owners: 'Ariana y Sthephanie Portillio',
+        owners: 'Ariana y Sthephanie Portillo',
         imageAlt: 'Imagen representativa de nuestra historia'
       },
       section_2: {
         title: '¿Quiénes Somos?',
         visionTitle: 'Nuestra Visión',
-        visionDescription: 'Crear experiencias de bienestar que nutran el cuerpo y la mente a través de servicios personalizados, en un entorno pensado para la relajación y la renovación interior.',
+        visionDescription: 'Crear experiencias de bienestar que nutran el cuerpo y la mente a través de servicios personalizados, en un entorno pensado para la relajación y la renovación interior',
         missionTitle: 'Nuestra Misión',
-        missionDescription: 'Ofrecer un espacio donde cada persona pueda reconectar con su calma interior mediante tratamientos y un servicio excepcional, siempre enfocados en el bienestar integral.'
+        missionDescription: 'Ofrecer un espacio donde cada persona pueda reconectar con su calma interior mediante tratamientos y un servicio excepcional, siempre enfocados en el bienestar integral'
       }
     },
     packages: {
       pageTitle: 'Nuestros Paquetes',
       section_1: {
         title: 'Nuestros Paquetes',
-        description: 'Descubre nuestros paquetes diseñados para ofrecerte una experiencia completa de bienestar y relajación. Cada paquete combina diferentes servicios para brindarte un momento único de renovación.',
+        description: 'Descubre nuestros paquetes diseñados para ofrecerte una experiencia completa de bienestar y relajación. Cada paquete combina diferentes servicios para brindarte un momento único de renovación',
         include_text: 'El Paquete Incluye',
         group_optionaly_text: 'Todos nuestros paquetes tienen opciones de grupo',
         from_price_text: 'Desde',
@@ -187,7 +187,7 @@ export const dictionary = {
       showLess: 'Mostrar menos',
       section_1: {
         title: 'Servicios Disponibles',
-        description: 'Explora nuestra variedad de servicios diseñados para tu bienestar, belleza y relajación, cada experiencia ha sido cuidadosamente pensada para armonizar cuerpo y mente.',
+        description: 'Explora nuestra variedad de servicios diseñados para tu bienestar, belleza y relajación, cada experiencia ha sido cuidadosamente pensada para armonizar cuerpo y mente',
         booking_button_text: 'Reservar ahora',
         view_all: 'Ver todos',
         tabsHeader: 'Categorías',
@@ -372,12 +372,12 @@ export const dictionary = {
     },
     booking: {
       pageTitle: 'Citas',
-      booking_p1: 'Descubre la experiencia de belleza y relajación que mereces.',
+      booking_p1: 'Descubre la experiencia de belleza y relajación que mereces',
       booking_button: 'Reserva tu cita',
       booking_alert: 'Próximamente podrás reservar tus citas aquí!',
       section_1: {
         title: 'Reserva tu cita',
-        description: 'Próximamente podrás reservar tus citas aquí. Mientras tanto, contáctanos para agendar tu visita y vivir la experiencia Calma.'
+        description: 'Próximamente podrás reservar tus citas aquí. Mientras tanto, contáctanos para agendar tu visita y vivir la experiencia Calma'
       }
     }
   },
@@ -399,7 +399,7 @@ export const dictionary = {
     footer: {
       cta: {
         title: 'Book Your Appointment Today!',
-        description: 'Schedule your session with our wellness specialists anytime, anywhere.',
+        description: 'Schedule your session with our wellness specialists anytime, anywhere',
         button: 'Book Now'
       },
       columns: {
@@ -430,7 +430,7 @@ export const dictionary = {
         }
       },
       legal: {
-        copyright: 'All rights reserved.',
+        copyright: 'All rights reserved',
         privacy: 'Privacy Policy',
         privacyTooltip: 'View privacy policy',
         terms: 'Terms & Conditions', // Ampersand común en legales
@@ -443,22 +443,22 @@ export const dictionary = {
         title_1: 'Find Your',
         title_2: 'Inner Calm', // Más natural y potente
         title_3: ' ',
-        description: 'Discover a space designed for your wellness and peace, where every service is crafted to restore your balance.',
+        description: 'Discover a space designed for your wellness and peace, where every service is crafted to restore your balance',
         button_1: 'Explore Services',
         button_2: 'View Packages'
       },
       section_2: {
         title: 'Why Choose Calma?',
-        description: 'Our holistic approach sets us apart.',
+        description: 'Our holistic approach sets us apart',
         points: {
-          p1: { title: 'Personalized Care', description: 'Every client receives a unique treatment tailored to their specific needs.' },
-          p2: { title: 'Safe Environment', description: 'We create a welcoming, safe space so you feel comfortable and relaxed.' },
-          p3: { title: 'Certified Experts', description: 'Our team has extensive experience and specialized training.' },
+          p1: { title: 'Personalized Care', description: 'Every client receives a unique treatment tailored to their specific needs' },
+          p2: { title: 'Safe Environment', description: 'We create a welcoming, safe space so you feel comfortable and relaxed' },
+          p3: { title: 'Certified Experts', description: 'Our team has extensive experience and specialized training' },
         }
       },
       section_3: {
         title: 'Start Your Journey to Tranquility',
-        description: 'Explore our services and find the perfect fit for your needs.',
+        description: 'Explore our services and find the perfect fit for your needs',
         button: 'Explore Services',
       },
     },
@@ -466,29 +466,29 @@ export const dictionary = {
       pageTitle: 'Our Story',
       section_1: {
         title: 'Our Story',
-        history_p1: 'We began this journey in 2016, committed to offering services as well as an experience that aimed to please ascetics but also nurture body and soul. Calma was born from the desire to create a space of renewal and tranquility amid the day to day. Inspired to insure that inner balance we all thrive upon. Hence the origin of our name the state or quality of being at peace.',
-        history_p2: 'Our focus has always been connecting with the essentials: treatments combining traditional techniques with a more modern approach.',
-        history_p3: 'This creates a transformative experience in a crafted atmosphere to make each visit a moment of pause.',
-        history_p4: 'We believe wellness is not a luxury, but a necessity, so every service is designed with rest, and beauty in mind.',
-        history_p5: 'Today, Calma is known for wellness, and its diligence. Every corner reflects our attention to detail and deep respect for our visitors. From the beginning, we have grown thanks to the love of our clients and most importantly the passion of our team. Our story is just beginning.',
-        history_p6: 'We aim to grow with purpose, expanding our services while preserving the essence that defines us. Calma is more than a physical space; it is an invitation to reconnect with yourself, breathe deeply, and find balance.',
+        history_p1: 'We began this journey in 2016, committed to offering services as well as an experience that aimed to please ascetics but also nurture body and soul. Calma was born from the desire to create a space of renewal and tranquility amid the day to day. Inspired to insure that inner balance we all thrive upon. Hence the origin of our name the state or quality of being at peace',
+        history_p2: 'Our focus has always been connecting with the essentials: treatments combining traditional techniques with a more modern approach',
+        history_p3: 'This creates a transformative experience in a crafted atmosphere to make each visit a moment of pause',
+        history_p4: 'We believe wellness is not a luxury, but a necessity, so every service is designed with rest, and beauty in mind',
+        history_p5: 'Today, Calma is known for wellness, and its diligence. Every corner reflects our attention to detail and deep respect for our visitors. From the beginning, we have grown thanks to the love of our clients and most importantly the passion of our team. Our story is just beginning',
+        history_p6: 'We aim to grow with purpose, expanding our services while preserving the essence that defines us. Calma is more than a physical space; it is an invitation to reconnect with yourself, breathe deeply, and find balance',
         end_tag: 'Much Love',
-        owners: 'Ariana & Sthephanie Portillio',
+        owners: 'Ariana & Sthephanie Portillo',
         imageAlt: 'Imagen representativa de nuestra historia'
       },
       section_2: {
         title: 'Who We Are',
         visionTitle: 'Our Vision',
-        visionDescription: 'We hope to achieve a wellness experience that nurture the body, and mind through personalized services, within a environment designed for relaxation and inner renewal.',
+        visionDescription: 'We hope to achieve a wellness experience that nurture the body, and mind through personalized services, within a environment designed for relaxation and inner renewal',
         missionTitle: 'Our Mission',
-        missionDescription: 'To offer a space where our clients can find their inner calm through treatments and exceptional service that prioritize wellness.'
+        missionDescription: 'To offer a space where our clients can find their inner calm through treatments and exceptional service that prioritize wellness'
       }
     },
     packages: {
       pageTitle: 'Our Packages',
       section_1: {
         title: 'Our Packages',
-        description: 'Discover our packages designed to provide a complete wellness and relaxation experience. Each combines different services to offer you a unique moment of renewal.',
+        description: 'Discover our packages designed to provide a complete wellness and relaxation experience. Each combines different services to offer you a unique moment of renewal',
         include_text: 'The Service Includes',
         group_optionaly_text: 'All our packages offer group options',
         from_price_text: 'From',
@@ -566,7 +566,7 @@ export const dictionary = {
       showLess: 'Show less',
       section_1: {
         title: 'Available Services',
-        description: 'Explore our variety of services designed for your well-being, beauty, and relaxation. Each experience has been carefully crafted to harmonize body and mind.',
+        description: 'Explore our variety of services designed for your well-being, beauty, and relaxation. Each experience has been carefully crafted to harmonize body and mind',
         booking_button_text: 'Book Now',
         view_all: 'View All',
         tabsHeader: 'Categories',

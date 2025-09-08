@@ -110,7 +110,7 @@ const Home = () => {
               <h2 className="fs-4 mb-3 text-secondary">{t('home.section_3.title')}</h2>
             </Fade>
             <Fade>
-              <p className="fs-1 mb-6 text-muted">{t('home.section_3.description')}</p>
+              <p className="fs-1 mb-6 text-dark">{t('home.section_3.description')}</p>
             </Fade>
             <Fade>
               <Button onClick={goToServices} variant="secondary" label={t('home.section_3.button')} size="large" icon="spa" />
