@@ -38,3 +38,6 @@
 
 // Generar utilidades de columnas
 @include grid_mixins.generate-grid-cols('grid-column', 'grid-col');
+
+// Generar utilidades de comiezos de columnas
+@include grid_mixins.generate-grid-offsets('grid-offset');
