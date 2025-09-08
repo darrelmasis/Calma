@@ -8,10 +8,11 @@ $borders-radius-corners: top-left, top-right, bottom-left, bottom-right, top, bo
 $border-style: borders.$border-width borders.$border-style var(--border-color);
 $border-radius-base: borders.$border-radius;
 
+// Bordes
 @each $direction in $borders-directions {
   @if $direction == 'all' {
     .border {
-      @include borders_mixins.border($direction, $border-style);
+      @include borders_mixins.border('all', $border-style);
     }
   } @else if $direction == 'none' {
     .border-none {
@@ -24,14 +25,19 @@ $border-radius-base: borders.$border-radius;
   }
 }
 
+// Bordes redondeados
 @each $corner in $borders-radius-corners {
   @if $corner == 'all' {
     .rounded {
-      @include borders_mixins.border-radius($corner, $border-radius-base);
+      @include borders_mixins.border-radius('all', $border-radius-base);
     }
   } @else if $corner == 'pill' {
     .rounded-#{$corner} {
-      @include borders_mixins.border-radius($corner, $border-radius-base * 3);
+      @include borders_mixins.border-radius('pill', $border-radius-base * 3);
+    }
+  } @else if $corner == 'circle' {
+    .rounded-#{$corner} {
+      @include borders_mixins.border-radius('circle', 50%);
     }
   } @else {
     .rounded-#{$corner} {
