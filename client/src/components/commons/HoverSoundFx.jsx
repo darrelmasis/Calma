@@ -9,8 +9,9 @@ const HoverSoundWrapper = ({ children, route, matchType = "except" }) => {
   const hoverSound = useMemo(
     () =>
       new Howl({
-        src: ["/sounds/bell.ogg", "/sounds/bell.mp3"],
+        src: ["/sounds/bell.mp3", "/sounds/bell.ogg",],
         volume: 0.2,
+         preload: true, // fuerza carga
       }),
     []
   );
