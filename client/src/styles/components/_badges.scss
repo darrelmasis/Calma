@@ -1,0 +1,14 @@
+@use '../config/typography' as typho;
+@use '../config/colors_map' as c;
+@use '../config/colors' as palettes;
+@use '../functions/' as fn;
+@use 'sass:map';
+
+.badge {
+  color: #ffffff;
+  background-color: map.get(palettes.$golds, '500');
+  padding: 0.35em 0.65em;
+  border-radius: 0.375rem;
+  font-family: typho.$font-family-base;
+  font-weight: 600;
+}
