@@ -1,11 +1,10 @@
-import React from 'react'
 import { usePageTitle } from '@utils/utils'
 import Header from '../../components/layout/Header'
 import Footer from '../../components/layout/Footer'
 import { FadeInWhenVisible as Fade } from '../../components/commons/animations/FadeInWhenVisible'
 import { useLang } from '../../i18n/LanguageContext'
 import FloatingButton from '../../components/commons/FloatingButton'
-import { historyRight, mission, vission } from '../../assets/assets'
+import { ResponsiveImage } from '../../components/ui/ResponsiveImage'
 
 const History = () => {
   const { t } = useLang()
@@ -54,7 +53,7 @@ const History = () => {
               </div>
               <div className="grid-col-12 grid-col-md-6 text-end">
                 <Fade className='position-sticky top-1 mb-3'>
-                  <img className='rounded w-100' src={historyRight} alt="" />
+                  <ResponsiveImage name="history-right" alt="Imagen de la historia" className="rounded" />
                 </Fade>
               </div>
             </div>
@@ -84,7 +83,7 @@ const History = () => {
               </div>
               <div className="grid-col-12 grid-col-md-6 text-end">
                 <Fade>
-                  <img className='rounded w-100 position-md-sticky top-md-1 mb-3' src={vission} alt="" />
+                  <ResponsiveImage name="vission" alt="Imagen de la visión" className="rounded" />
                 </Fade>
               </div>
             </div>
@@ -99,7 +98,7 @@ const History = () => {
               </div>
               <div className="grid-col-12 grid-col-md-6 text-end order-2 order-md-1">
                 <Fade>
-                  <img className='rounded w-100 position-md-sticky top-md-1 mb-3' src={mission} alt="" />
+                  <ResponsiveImage name="mission" alt="Imagen de la misión" className="rounded" />
                 </Fade>
               </div>
             </div>

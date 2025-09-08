@@ -5,6 +5,7 @@
 @forward 'utils';
 @forward 'typography';
 @forward 'animations';
+@forward 'responsiveImages';
 
 @use '../config/typography' as typo;
 @use '../mixins/typography' as typo_mixins;

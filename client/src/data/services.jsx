@@ -1,9 +1,7 @@
-import { manicure01, pedicure01, manicure02, extras01, cejas01, waxing01, hair01, hair02, spa01, spa02, addons01, pediKids01, maniKids01 } from '../assets/assets'
-
 export const ServicesData = {
   manicure: {
     id: "manicure",
-    image: manicure01,
+    image: "manicure-01",
     prices: {
       regular: 237,
       spa: 401,
@@ -15,7 +13,7 @@ export const ServicesData = {
   },
   pedicure: {
     id: "pedicure",
-    image: pedicure01,
+    image: "pedicure-01",
     prices: {
       regular: 310,
       spa: 511,
@@ -27,7 +25,7 @@ export const ServicesData = {
   },
   acrilicas: {
     id: "acrilicas",
-    image: manicure02,
+    image: "manicure-02",
     prices: {
       naturales: 548,
       almond: 657,
@@ -41,7 +39,7 @@ export const ServicesData = {
   },
   extras: {
     id: "extras",
-    image: extras01,
+    image: "extras-01",
     prices: {
       limpieza: 73,
       decoracion: 18,
@@ -62,7 +60,7 @@ export const ServicesData = {
   },
   cejasPestanas: {
     id: "cejasPestanas",
-    image: cejas01,
+    image: "cejas-01",
     prices: {
       laminacionCejas: 584,
       laminacionDiseno: 730,
@@ -74,7 +72,7 @@ export const ServicesData = {
   },
   depilacion: {
     id: "depilacion",
-    image: waxing01,
+    image: "waxing-01",
     prices: {
       cejas: 182,
       bigote: 110,
@@ -90,7 +88,7 @@ export const ServicesData = {
   },
   lavado: {
     id: "lavado",
-    image: hair01,
+    image: "hair-01",
     prices: {
       lavadoExpress: 146,
       lavadoProfundo: 292,
@@ -103,7 +101,7 @@ export const ServicesData = {
   },
   estilismo: {
     id: "estilismo",
-    image: hair02,
+    image: "hair-02",
     prices: {
       secado: 365,
       planchado: 365,
@@ -117,7 +115,7 @@ export const ServicesData = {
   },
   spa: {
     id: "spa",
-    image: spa01,
+    image: "spa-01",
     prices: {
       maderoterapia: 1278,
       masajeRelajante: 921,
@@ -126,7 +124,7 @@ export const ServicesData = {
   },
   facial: {
     id: "facial",
-    image: spa02,
+    image: "spa-02",
     prices: {
       detoxGlow: 1278,
       guaSha: 1278,
@@ -137,7 +135,7 @@ export const ServicesData = {
   },
   maquillaje: {
     id: "maquillaje",
-    image: addons01,
+    image: "addons-01",
     prices: {
       profesional: 1095,
       pestanas: 182
@@ -145,7 +143,7 @@ export const ServicesData = {
   },
   manicureNinos: {
     id: "manicure-ninos",
-    image: maniKids01,
+    image: "maniKids-01",
     prices: {
       regular: 146,
       gel: 292
@@ -153,7 +151,7 @@ export const ServicesData = {
   },
   pedicureNinos: {
     id: "pedicure-ninos",
-    image: pediKids01,
+    image: "pediKids-01",
     prices: {
       regular: 219,
       gel: 401

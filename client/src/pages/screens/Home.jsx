@@ -8,8 +8,7 @@ import { FadeInWhenVisible as Fade } from '../../components/commons/animations/F
 import Footer from '../../components/layout/Footer'
 import { useLang } from '../../i18n/LanguageContext'
 import FloatingButton from '../../components/commons/FloatingButton'
-
-import { image01, image02, image03 } from '../../assets/assets';
+import { ResponsiveImage } from '../../components/ui/ResponsiveImage'
 
 
 const Home = () => {
@@ -51,7 +50,7 @@ const Home = () => {
                     <p className="text-muted">{t('home.section_2.points.p1.description')}</p>
                   </Fade>
                   <Fade>
-                    <img className='w-100 rounded border' src={image01} alt="" />
+                    <ResponsiveImage name="image-01" alt="Masaje terapéutico en la espalda con una piedra calentada de forma ergonómica" className="rounded" />
                   </Fade>
                 </div>
               </div>
@@ -70,7 +69,7 @@ const Home = () => {
                     <p className="text-muted">{t('home.section_2.points.p2.description')}</p>
                   </Fade>
                   <Fade>
-                    <img className='w-100 rounded border' src={image02} alt="" />
+                    <ResponsiveImage name="image-02" alt="Aplicación de cera depilatoria en el área del labio superior con un palito de madera" className="rounded" />
                   </Fade>
                 </div>
               </div>
@@ -89,7 +88,7 @@ const Home = () => {
                     <p className="text-muted">{t('home.section_2.points.p3.description')}</p>
                   </Fade>
                   <Fade>
-                    <img className='w-100 rounded border' src={image03} alt="" />
+                    <ResponsiveImage name="image-03" alt="Aplicación de cera depilatoria en el área del labio superior con un palito de madera" className="rounded" />
                   </Fade>
                 </div>
               </div>

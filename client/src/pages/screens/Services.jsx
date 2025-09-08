@@ -6,7 +6,7 @@ import { useLang } from '../../i18n/LanguageContext'
 import { Tabs } from '../../components/commons/Tabs';
 import FloatingButton from '../../components/commons/FloatingButton'
 import { ServicesData } from '../../data/services'
-
+import { ResponsiveImage } from '../../components/ui/ResponsiveImage'
 
 
 const Services = () => {
@@ -38,8 +38,8 @@ const Services = () => {
                 <Fade key={subcategoryId} className="grid-col-12 grid-col-lg-6 menu-card">
                   <div className=' bg-white border rounded p-3 grid'>
                     <div className="menu-card-header image-overlay">
-                      <img className='logo-calma' src='/logo-calma.svg' alt="logo-calma" />
-                      <img className='w-100 service-img' src={serviceData.image} alt="calma_img" />
+                      <ResponsiveImage name="logo-calma" type='svg' basePath='' alt="Logo de Calma Spa & Salón" className="logo-calma" />
+                      <ResponsiveImage name={serviceData.image} className="service-img" />
                     </div>
 
                     <div className="menu-card-body">

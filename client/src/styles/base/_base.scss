@@ -33,7 +33,7 @@ a {
 
     &:hover,
     &:focus {
-     color: clr.adjust(color.$primary, $lightness: -20%);
+      color: clr.adjust(color.$primary, $lightness: -20%);
       /* Enlaces visitados al pasar el ratón o al enfocar */
     }
   }
@@ -44,8 +44,21 @@ a {
 
     &:hover,
     &:focus {
-     color: clr.adjust(color.$tertiary, $lightness: -20%);
+      color: clr.adjust(color.$tertiary, $lightness: -20%);
       /* Enlaces visitados al pasar el ratón o al enfocar */
     }
   }
+}
+
+picture {
+  display: block; // evita problemas si lo usas dentro de grids o flexbox
+  max-width: 100%;
+}
+
+picture img {
+  display: block; // quita el espacio fantasma bajo imágenes inline
+  width: 100%; // ocupa todo el ancho disponible
+  height: auto; // mantiene proporciones
+  object-fit: cover; // opcional, si quieres recortar en lugar de deformar
+  border-radius: var(--radius, 0); // opcional, si usas radios globales
 }
