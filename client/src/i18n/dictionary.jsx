@@ -71,7 +71,7 @@ export const dictionary = {
         points: {
           p1: { title: 'Atención personalizada', description: 'Cada cliente recibe un tratamiento único adaptado a sus necesidades específicas.' },
           p2: { title: 'Ambiente Seguro', description: 'Creamos un entorno acogedor y seguro para que te sientas cómodo y relajado.' },
-          p3: { title: 'Profesionales Certificados', description: 'Nuestro equipo cuenta con amplia experiencia y formación especializada.' },
+          p3: { title: 'Expertos Certificados', description: 'Nuestro equipo cuenta con amplia experiencia y formación especializada.' },
         }
       },
       section_3: {
@@ -450,7 +450,7 @@ export const dictionary = {
         points: {
           p1: { title: 'Personalized Care', description: 'Every client receives a unique treatment tailored to their specific needs.' },
           p2: { title: 'Safe Environment', description: 'We create a welcoming, safe space so you feel comfortable and relaxed.' },
-          p3: { title: 'Certified Professionals', description: 'Our team has extensive experience and specialized training.' },
+          p3: { title: 'Certified Experts', description: 'Our team has extensive experience and specialized training.' },
         }
       },
       section_3: {
