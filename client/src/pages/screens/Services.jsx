@@ -7,13 +7,13 @@ import { Tabs } from '../../components/commons/Tabs';
 import FloatingButton from '../../components/commons/FloatingButton'
 import { ServicesData } from '../../data/services'
 import { ResponsiveImage } from '../../components/ui/ResponsiveImage'
-
+import { USD } from '../../utils/utils'
 
 const Services = () => {
   const { t } = useLang()
   usePageTitle(t('services.pageTitle'))
   const categories = t('services.section_1.category', { returnObjects: true })
-  const currencySymbol = <span className='small text-dark'>USD</span>;
+  const currencySymbol = <span className='text-dark'>$</span>;
   const tabs = Object.entries(categories).map((category) => (
 
     {
@@ -49,16 +49,20 @@ const Services = () => {
 
                       <div className="menu-card-tags">
                         <div className="d-flex flex-direction-column">
-                          {Object.entries(subcategory.services).map((item, index) => {
+                          {Object.entries(subcategory.services).map((item) => {
+
                             const serviceItem = item[1]
                             const serviceItemId = item[0]
                             const serviceItemPrice = serviceData.prices[serviceItemId]
 
 
-                            return (
 
+                            // Detecta si el servicio es de tipo "from"
+                            const isFrom = serviceItemPrice.hasOwnProperty('from')
+
+                            return (
                               <Fade key={serviceItemId}>
-                                < div>
+                                <div>
                                   <div className="d-flex align-items-center justify-content-space-between">
                                     <h4 className="m-0 text-primary fs-1">
                                       {serviceItem.name}
@@ -66,14 +70,28 @@ const Services = () => {
 
                                     <div className="border-dotted"></div>
 
-                                    <h4 className="m-0 text-dark fs-1">
-                                      {currencySymbol} {serviceItemPrice}
-                                    </h4>
+                                    <h4 className="m-0 text-dark fs-1 d-flex align-items-baseline gap-1">
+                                      {
+                                        isFrom && (
+                                          <>
+                                            {isFrom && <span className="badge small">{t('services.fromBadge')}</span>}
+                                            {currencySymbol} <USD amount={serviceItemPrice.from} />
+                                          </>
+                                        )
 
+                                      }
+
+                                      {
+                                        !isFrom && (
+                                          <>
+                                            {currencySymbol} <USD amount={serviceItemPrice} />
+                                          </>
+                                        )
+                                      }
+                                    </h4>
                                   </div>
 
-                                  {<p className="text-muted fw-semibold">{serviceItem.description}</p>}
-
+                                  <p className="text-muted fw-semibold">{serviceItem.description}</p>
                                 </div>
                               </Fade>
                             )
