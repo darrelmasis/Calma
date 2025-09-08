@@ -8,16 +8,26 @@ import FloatingButton from '../../components/commons/FloatingButton'
 import { ServicesData } from '../../data/services'
 import { ResponsiveImage } from '../../components/ui/ResponsiveImage'
 import { USD } from '../../utils/utils'
+import classNames from 'classnames'
+import { useState } from 'react'
+import { Button } from '../../components/ui/Button'
+import { Icon } from '../../components/commons/Icons'
 
 const Services = () => {
   const { t } = useLang()
   usePageTitle(t('services.pageTitle'))
   const categories = t('services.section_1.category', { returnObjects: true })
-  const currencySymbol = <span className='text-dark'>$</span>;
+  const currencySymbol = '$'
+  const [isExpanded, setIsExpanded] = useState(null);
+
+
+  const handleExpandedButtonClick = (subcategoryId) => {
+    setIsExpanded(prev => prev === subcategoryId ? null : subcategoryId);
+  }
+
   const tabs = Object.entries(categories).map((category) => (
 
     {
-
 
       id: category[0],
       label: category[1].name,
@@ -31,18 +41,26 @@ const Services = () => {
               const subcategory = subcat[1]
               const subcategoryId = subcat[0]
 
+              const menuCardBodyClasses = classNames({
+                'menu-card-body': true,
+                'menu-card-body-expanded': isExpanded === subcategoryId
+
+              }, 'px-3')
+
+              const menuCardClasses = classNames('grid-col-12 grid-col-lg-6 menu-card')
+
 
 
               // Estructura normal para otras subcategorías
               return (
-                <Fade key={subcategoryId} className="grid-col-12 grid-col-lg-6 menu-card">
-                  <div className=' bg-white border rounded p-3 grid'>
-                    <div className="menu-card-header image-overlay">
+                <Fade key={subcategoryId} className={menuCardClasses}>
+                  <div className=' bg-white border rounded grid'>
+                    <div className="menu-card-header image-overlay pt-3 ps-3 pe-3">
                       <ResponsiveImage name="logo-calma" type='svg' basePath='' alt="Logo de Calma Spa & Salón" className="logo-calma" />
                       <ResponsiveImage name={serviceData.image} className="service-img" />
                     </div>
 
-                    <div className="menu-card-body">
+                    <div className={menuCardBodyClasses}>
                       <div className="menu-card-title mt-4">
                         <Fade><h3 className='mt-0 mb-3 text-primary fs-4'>{subcategory.name}</h3></Fade>
                       </div>
@@ -70,12 +88,12 @@ const Services = () => {
 
                                     <div className="border-dotted"></div>
 
-                                    <h4 className="m-0 text-dark fs-1 d-flex align-items-baseline gap-1">
+                                    <h4 className="m-0 text-dark fs-1 d-flex align-items-baseline">
                                       {
                                         isFrom && (
                                           <>
-                                            {isFrom && <span className="badge small">{t('services.fromBadge')}</span>}
-                                            {currencySymbol} <USD amount={serviceItemPrice.from} />
+                                            {isFrom && <span className="badge small me-3">{t('services.fromBadge')}</span>}
+                                            <USD amount={serviceItemPrice.from} currencySymbol={currencySymbol} />
                                           </>
                                         )
 
@@ -84,7 +102,7 @@ const Services = () => {
                                       {
                                         !isFrom && (
                                           <>
-                                            {currencySymbol} <USD amount={serviceItemPrice} />
+                                            <USD amount={serviceItemPrice} currencySymbol={currencySymbol} />
                                           </>
                                         )
                                       }
@@ -99,7 +117,15 @@ const Services = () => {
                         </div>
                       </div>
 
-
+                    </div>
+                    <div className="menu-card-footer px-3 pb-3 pt-2 d-flex justify-content-center">
+                      <Button
+                        classes='show-more-button'
+                        variant="primary"
+                        size=""
+                        label={isExpanded === subcategoryId ? t('services.showLess') : t('services.showMore')}
+                        onClick={() => handleExpandedButtonClick(subcategoryId)} />
+                      <Icon name={isExpanded === subcategoryId ? 'chevron-up' : 'chevron-down'} className="ms-2 show-more-icon" />
                     </div>
                   </div>
                 </Fade>
@@ -116,28 +142,10 @@ const Services = () => {
       <FloatingButton />
 
       <Header />
-      <Fade>
-        <section className='py-4 body-bg'>
-          <div className="container">
-            <div className="grid">
-              <div className="grid-row">
-                <div className="grid-col-12 d-flex flex-direction-column align-items-center justify-content-center">
-                  <Fade><h1 className="fs-4 text-primary text-center">{t('services.section_1.title')}</h1></Fade>
-                  <Fade> <p className='text-center text-muted mw-500'>
-                    {t('services.section_1.description')}
-                  </p></Fade>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </Fade>
 
-      <section className='mb-6'>
-        <div className="container">
-          <Tabs tabs={tabs} />
-        </div>
-      </section>
+      <div className="container">
+        <Tabs tabs={tabs} />
+      </div>
       <Footer />
     </div>
   )
