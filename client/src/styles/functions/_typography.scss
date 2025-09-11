@@ -1,24 +1,68 @@
-@use 'sass:math';
 @use 'sass:map';
+@use 'sass:math';
+@use 'sass:meta';
 
-// Devuelve el tamaño de fuente desde el mapa $font-sizes
-@function size($key, $font-sizes) {
-  @if map.has-key($font-sizes, $key) {
-    @return map.get($font-sizes, $key);
-  } @else {
-    @warn "El tamaño de fuente '#{$key}' no está definido en el mapa.";
-    @return null;
+/// Elimina la unidad del valor
+@function strip-unit($number) {
+  @if meta.type-of($number) == 'number' and not math.is-unitless($number) {
+    @return math.div($number, ($number * 0 + 1));
   }
+  @return $number;
 }
 
-/// Calcula un tamaño de fuente fluido usando clamp()
-/// @param {Number} $min - tamaño mínimo (en rem)
-/// @param {Number} $max - tamaño máximo (en rem)
-/// @param {Number} $min-vw - ancho mínimo del viewport (en px)
-/// @param {Number} $max-vw - ancho máximo del viewport (en px)
-@function fluid-size($min, $max, $min-vw: 320, $max-vw: 1200) {
-  $slope: ($max - $min) / ($max-vw - $min-vw);
-  $base: $min - $slope * $min-vw;
+// Obtiene un tamaño desde un mapa tipográfico
+@function size($key, $map) {
+  @if map.has-key($map, $key) {
+    @return map.get($map, $key);
+  }
+  @warn "El tamaño #{$key} no existe en el mapa tipográfico.";
+  @return null;
+}
 
-  @return clamp(#{$min}rem, #{$base}rem + #{$slope * 100}vw, #{$max}rem);
+// Obtiene un peso de fuente desde un mapa tipográfico
+@function weight($key, $map) {
+  @if map.has-key($map, $key) {
+    @return map.get($map, $key);
+  }
+  @warn "El peso #{$key} no existe en el mapa tipográfico.";
+  @return null;
+}
+
+/**
+ * Calcula un font-size fluido usando clamp()
+ */
+@function fluid($min, $max, $min-vw: 320, $max-vw: 1200) {
+  // Convertir viewport widths a rem (asumiendo 16px base)
+  $min-vw-rem: math.div($min-vw, 16);
+  $max-vw-rem: math.div($max-vw, 16);
+
+  // Asegurar valores sin unidades
+  $min-unitless: strip-unit($min);
+  $max-unitless: strip-unit($max);
+
+  // Calcular pendiente e intercepto usando unidades consistentes (rem)
+  $slope: math.div(($max-unitless - $min-unitless), ($max-vw-rem - $min-vw-rem));
+  $base: $min-unitless - $slope * $min-vw-rem;
+  $slope-vw: $slope * 100;
+
+  // Retorna el clamp con unidades correctas
+  @return clamp(#{$min-unitless}rem, #{$base}rem + #{$slope-vw}vw, #{$max-unitless}rem);
+}
+
+/**
+ * Mixin para aplicar tamaño de fuente
+ */
+@mixin font-size($key, $fluid: false) {
+  $size: size($key, $font-sizes);
+
+  @if $size == null {
+    @warn 'El tamaño de fuente no es válido = null';
+  }
+
+  @if $fluid and type-of($size) == 'number' {
+    $size-unitless: strip-unit($size);
+    font-size: fluid($size-unitless * 0.9, $size-unitless * 1.1);
+  } @else {
+    font-size: #{$size}rem;
+  }
 }

@@ -1,102 +1,38 @@
-@use 'sass:math';
-@use 'sass:map';
 @use '../config/typography' as typo;
-// -----------------------------------------------------------------------------
-// Typography Utilities
-// -----------------------------------------------------------------------------
+@use '../functions/typography' as fn;
+@use 'sass:meta';
 
-/**
- * Mixin base para crear una clase de tamaño de fuente
- * @param {string} $class - Nombre de clase
- * @param {number} $size - Tamaño de fuente (en rem, em, etc.)
- * @param {boolean} $important - Si se agrega !important
- */
-@mixin font-size-class($class, $size, $important: false) {
-  $imp: if($important, ' !important', '');
-  .#{$class} {
-    font-size: #{$size}#{$imp};
+// Aplica tamaño desde mapa
+@mixin font-size($key, $fluid: false) {
+  $size: fn.size($key, typo.$font-sizes);
+
+  @if $size == null {
+    @warn "El tamaño `#{$key}` no existe en $font-sizes.";
+  } @else if $fluid and (meta.type-of($size) == number) {
+    // Genera clamp entre 0.9x y 1.1x del valor
+    font-size: fn.fluid($size * 0.9, $size * 1.1);
+  } @else {
+    font-size: $size;
   }
 }
 
-@mixin generate-font-weight-utilities($font-weights) {
-  @each $name, $weight in $font-weights {
-    .fw-#{$name} {
-      font-weight: #{$weight};
-    }
-  }
-}
-
-/**
- * Mixin para generar clases utilitarias simbólicas (ej: .fs-h1, .fs-small)
- * @param {boolean} $responsive - Si se generan versiones responsivas
- * @param {boolean} $important - Si se agrega !important
- * @param {map} $sizes - Mapa de tamaños (por defecto usa $font-sizes)
- */
-@mixin generate-font-size-utilities($responsive: true, $important: false, $sizes: $font-sizes) {
-  // Clases base
+// Genera utilitarios fs-h1, fs-small, etc.
+@mixin generate-font-size-utilities($sizes: typo.$font-sizes) {
   @each $name, $size in $sizes {
-    @include font-size-class('fs-#{$name}', $size, $important);
-  }
-
-  // Responsivas si existen breakpoints
-  @if $responsive and global-variable-exists(breakpoints) {
-    @if type-of($breakpoints) == 'map' {
-      @each $bp, $bp-value in $breakpoints {
-        @media (min-width: #{$bp-value}) {
-          @each $name, $size in $sizes {
-            @include font-size-class('fs-#{$bp}-#{$name}', $size, $important);
-          }
-        }
+    .fs-#{'' + $name} {
+      font-size: $size;
+      @if ($name == 'display-1') or ($name == 'display-2') {
+        font-weight: fn.weight(light, typo.$font-weights);
       }
     }
   }
 }
 
-/**
- * Mixin para generar clases utilitarias numéricas escaladas
- * (ej: .fs-1, .fs--1)
- * @param {number} $levels - Niveles positivos (1 a n)
- * @param {number} $neg-levels - Niveles negativos opcionales (ej: 3 = .fs--1 a .fs--3)
- * @param {boolean} $important - Si se agrega !important
- */
-@mixin generate-scaled-font-utilities($levels: 6, $neg-levels: 3, $important: false) {
-  $imp: if($important, ' !important', '');
-
-  // Positivos (fs-1, fs-2...)
-  @for $i from 1 through $levels {
-    $size: math.pow(typo.$fs-ratio, $i) * typo.$fs-base;
-    .fs-#{$i} {
-      font-size: #{$size}#{$imp};
+// Pesos
+@mixin generate-font-weight-utilities($weights: typo.$font-weights) {
+  @each $name, $weight in $weights {
+    .fw-#{'' + $name} {
+      font-weight: $weight;
     }
   }
-
-  // Negativos (fs--1, fs--2...)
-  @if $neg-levels > 0 {
-    @for $i from 1 through $neg-levels {
-      $size: math.div(typo.$fs-base, math.pow(typo.$fs-ratio, $i));
-      .fs--#{$i} {
-        font-size: #{$size}#{$imp};
-      }
-    }
-  }
-}
-
-// Aplica tamaño de fuente desde el mapa $font-sizes
-// @param {string} $key - clave del mapa (ej: h1, small)
-@mixin font-size($key) {
-  font-size: size($key);
-}
-
-/// Mixin para aplicar tamaño fluido entre breakpoints
-/// @param {String} $key - clave como 'h1', 'h2'
-/// @param {Map} $ratios - mapa de ratios responsivos
-@mixin fluid-font-size($key, $ratios: typo.$responsive-type-ratios) {
-  $base-size: map.get(typo.$font-sizes, $key);
-  $sm-ratio: map.get($ratios, 'sm');
-  $lg-ratio: map.get($ratios, 'lg');
-
-  $min-size: math.div($base-size, $lg-ratio); // tamaño para sm
-  $max-size: $base-size * $lg-ratio; // tamaño para lg
-
-  font-size: fluid-size($min-size, $max-size);
 }

@@ -7,24 +7,8 @@
 @forward 'animations';
 @forward 'responsiveImages';
 
-@use '../config/typography' as typo;
-@use '../mixins/typography' as typo_mixins;
 @use '../mixins/grid' as grid_mixins;
 @use '../mixins/spacing' as spacing_mixins;
-
-@include typo_mixins.generate-font-weight-utilities(typo.$font-weights);
-
-// Genera clases útiles para el tamaño de fuente
-// @param $name: Nombre de la clase
-// @param $size: Tamaño de fuente
-@each $name, $size in typo.$font-sizes {
-  @include typo_mixins.font-size-class('fs-#{$name}', $size);
-}
-
-// Genera clases útiles para el tamaño de fuente escalado
-// @param $levels: Niveles de escalado (1 a n)
-// @param $neg-levels: Niveles negativos opcionales (ej: 3 = .fs--1 a .fs--3)
-@include typo_mixins.generate-scaled-font-utilities();
 
 // Genera clases útiles para el espaciado
 // @param $name: Nombre de la clase

@@ -1,8 +1,8 @@
 @use '../config/typography' as typo;
-@use '../mixins/typography' as typo_mixins;
-@use '../functions/typography' as typo_functions;
+@use '../mixins/typography' as mixin;
+@use 'sass:map';
 
-// Encabezados
+// Headings
 h1,
 h2,
 h3,
@@ -10,48 +10,45 @@ h4,
 h5,
 h6 {
   font-family: typo.$font-family-heading;
-  font-weight: typo.$titles-font-weight;
-  line-height: typo.$titles-line-height;
-  margin-bottom: typo.$title-margin-bottom;
+  font-weight: map.get(typo.$font-weights, black);
+  line-height: typo.$title-line-height;
+  margin-bottom: 0.5rem;
 }
 
-// Aplicación de tamaños escalados
 h1 {
-  @include typo_mixins.fluid-font-size(h1);
+  @include mixin.font-size(h1, $fluid: true);
 }
-
 h2 {
-  @include typo_mixins.fluid-font-size(h2);
+  @include mixin.font-size(h2, $fluid: true);
 }
-
 h3 {
-  @include typo_mixins.fluid-font-size(h3);
+  @include mixin.font-size(h3, $fluid: true);
 }
-
 h4 {
-  @include typo_mixins.fluid-font-size(h4);
+  @include mixin.font-size(h4, $fluid: true);
 }
-
 h5 {
-  @include typo_mixins.fluid-font-size(h5);
+  @include mixin.font-size(h5);
 }
-
 h6 {
-  @include typo_mixins.fluid-font-size(h6);
+  @include mixin.font-size(h6);
 }
 
-// Texto base y variaciones
+// Body
+body,
+p,
+li,
+.text-base {
+  @include mixin.font-size(regular);
+  font-weight: map.get(typo.$font-weights, regular);
+}
+
 p {
-  font-size: typo_functions.size(normal, typo.$font-sizes);
   line-height: typo.$line-height-base;
-  margin-bottom: typo.$paragraph-margin-bottom;
+  margin-bottom: 1.25rem;
 }
 
 small,
 .small {
-  font-size: typo_functions.size(small, typo.$font-sizes);
-}
-
-.smaller {
-  font-size: typo_functions.size(smaller, typo.$font-sizes);
+  @include mixin.font-size(small);
 }

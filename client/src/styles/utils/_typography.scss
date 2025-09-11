@@ -1,8 +1,27 @@
 @use '../config/typography' as typo;
+@use '../mixins/typography' as mixin;
+@use 'sass:map';
 
-// Utilidades de peso de fuente
-@each $name, $weight in typo.$font-weights {
-  .fw-#{$name} {
-    font-weight: #{$weight};
+/* =====================================
+   Utilities: Typography
+   ===================================== */
+
+/* Font Sizes */
+@include mixin.generate-font-size-utilities(typo.$font-sizes);
+
+/* Font Weights */
+@include mixin.generate-font-weight-utilities(typo.$font-weights);
+
+/* Line Heights */
+@each $name, $lh in typo.$line-heights {
+  .lh-#{$name} {
+    line-height: $lh;
+  }
+}
+
+/* Measures (longitud de línea de lectura) */
+@each $name, $measure in typo.$measure {
+  .measure-#{$name} {
+    max-width: $measure;
   }
 }
