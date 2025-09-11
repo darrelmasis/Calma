@@ -4,6 +4,11 @@ import path from 'path'
 import svgr from 'vite-plugin-svgr'
 import { VitePWA } from 'vite-plugin-pwa'
 
+const appName = process.env.VITE_APP_NAME
+const appNameShort = process.env.VITE_CALMA_SHORT_NAME
+const appDescription = process.env.VITE_CALMA_DESCRIPTION
+
+// https://vitejs.dev/config/
 
 export default defineConfig({
   plugins: [
@@ -19,9 +24,9 @@ export default defineConfig({
         '/sounds/*'
       ],
       manifest: {
-        "name": "Calma Spa & Nails",
-        "short_name": "Calma",
-        "description": "Spa y salón de uñas. Servicios, paquetes y boutique.",
+        "name": appName,
+        "short_name": appNameShort,
+        "description": appDescription,
         "start_url": "/",
         "display": "standalone",
         "background_color": "#ffffff",
@@ -127,7 +132,7 @@ export default defineConfig({
       },
       workbox: {
         navigateFallback: '/index.html',
-        globPatterns: ['**/*.{js,css,html,xml,png,jpg,jpeg,svg,gif,woff2,json,ttf,ico}'],
+        globPatterns: ['**/*.{js,css,html,xml,png,jpg,jpeg,svg,gif,woff2,json,ttf,ico,mp3,ogg,webp}'],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/.*\.(?:png|jpg|jpeg|svg|gif|webp)$/,
