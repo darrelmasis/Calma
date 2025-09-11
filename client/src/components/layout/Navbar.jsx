@@ -10,6 +10,7 @@ import classNames from 'classnames'
 import { useMediaQuery } from '../../hooks/useMediaQuery'
 import { CSSTransition } from 'react-transition-group'
 import { HoverSoundWrapper } from '../commons/HoverSoundFx'
+import { useOfflineStatus } from '../../hooks/useOfflineStatus'
 
 
 const NavbarCTA = ({ onClick, className }) => {
@@ -66,6 +67,8 @@ export const Navbar = () => {
   const contentRef = useRef(null)
   const prevPath = useRef(location.pathname);
   const [CTAClicked, setCTAClicked] = useState(false);
+  const isOffline = useOfflineStatus()
+
 
   const navLinks = [
     { path: '/', label: t('header.links.home'), position: 'left', icon: 'house' },
@@ -175,8 +178,19 @@ export const Navbar = () => {
 
                   })
                 }
-                < li >
+                < li className='d-flex align-items-center gap-3' >
                   <LanguageSwitcher />
+                  {
+                    isOffline && (
+                      <Icon
+                        name="wifi-exclamation"
+                        variant='duotones'
+                        duotone='solid'
+                        size="lg"
+                        className="text-warning icon-offline"
+                      />
+                    )
+                  }
                 </li>
               </ul>
             </div>
