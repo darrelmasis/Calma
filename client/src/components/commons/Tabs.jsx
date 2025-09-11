@@ -21,7 +21,7 @@ export const Tabs = ({ tabs }) => {
     <div className="grid">
       <div className="grid-row  gap-lg-3">
         {/* Encabezado arriba */}
-        <div className="grid-col-10 grid-offset-3 d-flex flex-direction-column align-items-center justify-content-center">
+        <div className="grid-col-12 grid-col-lg-10 grid-offset-lg-3 d-flex flex-direction-column align-items-center justify-content-center">
           <Fade>
             <h1 className="fs-4 text-primary text-center">
               {t('services.section_1.title')}
