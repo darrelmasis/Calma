@@ -38,7 +38,7 @@ export const Icon = ({ name, variant = 'regular', duotone = 'regular', className
   const componentClasses = classNames(
     'icon-wrapper',
     className,
-    `icon-wrapper--${size}`
+    `icon-wrapper-${size}`
   )
 
   return (

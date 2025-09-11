@@ -14,16 +14,22 @@
     fill: currentColor;
   }
 
-  &--sm {
+  &-sm {
     font-size: 0.875em; // ≈14px si el root es 16px
     width: 1em;
     height: 1em;
   }
 
-  &--xs {
+  &-xs {
     font-size: 0.75em; // ≈12px
     width: 0.875em;
     height: 0.875em;
+  }
+
+  &-lg {
+    font-size: 1.75em; // ≈28px
+    width: 1.45em;
+    height: 1.45em;
   }
 
   /* Aplicar la animación a los SVG deseados */
