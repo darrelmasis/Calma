@@ -3,6 +3,7 @@ import { Button } from '../ui/Button'
 import { useNavigate } from 'react-router-dom'
 import { FadeInWhenVisible as Fade } from './animations/FadeInWhenVisible'
 import { useLang } from '../../i18n/LanguageContext'
+import { size } from '@floating-ui/react-dom'
 
 export const Hero = () => {
   const navigate = useNavigate()
@@ -27,7 +28,13 @@ export const Hero = () => {
             <div className="grid">
               <div className="grid-row mt-6">
                 <div className="grid-col-12 grid-col-md-5">
-                  <Button onClick={goToServices} variant="primary" label={t('home.heroSection.button_1')} size="large" icon="spa" />
+                  <Button
+                    onClick={goToServices}
+                    variant="primary"
+                    ariaLabel={t('home.heroSection.button_1')}
+                    label={t('home.heroSection.button_1')}
+                    size="large"
+                    icon={{ name: "spa", size: "lg", variant: "duotones", duotone: "regular" }} />
                 </div>
               </div>
 

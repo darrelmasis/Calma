@@ -49,7 +49,7 @@ const FloatingButton = () => {
   return (
     <div className="floating-button-container">
 
-      <Button classes={"floating-button"} onClick={togglePopup} aria-label="Abrir chat de WhatsApp" tabIndex={0} variant="link" size="large">
+      <Button className="floating-button" onClick={togglePopup} ariaLabel="Abrir chat de WhatsApp" tabIndex={0} variant="link" size="large">
         <img src={whatsappLogo} alt="WhatsApp" className="floating-button__icon" />
       </Button>
 
@@ -63,10 +63,10 @@ const FloatingButton = () => {
             placeholder="Escribe tu mensaje..."
             autoFocus
           />
-          <button className="floating-button__send" onClick={handleSend}>
+          <Button className="floating-button__send" onClick={handleSend} size="medium">
             <img src={whatsappLogo} alt="WhatsApp" style={{ width: 20, marginRight: 6, verticalAlign: 'middle' }} />
             Enviar
-          </button>
+          </Button>
         </div>
       )}
     </div>

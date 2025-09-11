@@ -6,6 +6,7 @@ import { useLang } from '../../i18n/LanguageContext'
 import { useNavigate } from 'react-router-dom'
 import { formatPhone } from '../../utils/utils'
 import { LogoCalma } from '../ui/LogoCalma'
+import { m } from 'framer-motion'
 
 const Footer = () => {
   const phoneNumber = import.meta.env.VITE_CALMA_PHONE_NUMBER
@@ -31,7 +32,20 @@ const Footer = () => {
                 <p className="text-muted">{t('footer.cta.description')}</p>
               </Fade>
               <Fade>
-                <Button onClick={() => navigate('/booking')} label={t('footer.cta.button')} variant="primary" size="large" icon="arrow-right" iconPosition="right" classes="mt-3" />
+                <Button
+                  onClick={() => navigate('/booking')}
+                  label={t('footer.cta.button')}
+                  variant="primary"
+                  ghost={true}
+                  size="large"
+                  icon={
+                    {
+                      name: "arrow-right",
+                      position: "right",
+                      variant: "regular",
+                    }
+                  }
+                  className="mt-3" />
               </Fade>
             </div>
           </div>

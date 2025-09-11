@@ -5,7 +5,7 @@ import { FadeInWhenVisible as Fade } from '../../components/commons/animations/F
 
 export const SidebarMenuTabs = ({ tabs, activeTab, setActiveTab, viewAllButtonText }) => {
   const allTabs = [
-    { id: 'all', label: viewAllButtonText, icon: <Icon name="table-columns" /> },
+    { id: 'all', label: viewAllButtonText, icon: "table-columns" },
     ...tabs.map(tab => ({ id: tab.id, label: tab.label }))
   ];
 
@@ -17,11 +17,17 @@ export const SidebarMenuTabs = ({ tabs, activeTab, setActiveTab, viewAllButtonTe
           {allTabs.map(tab => (
             <Button
               key={tab.id}
-              variant="primary-ghost"
+              variant="primary"
+              ghost={true}
               label={tab.label}
               size="small"
-              icon={tab.icon}
-              classes={classNames('m-2 fw-bold', { 'ghost-active': tab.id === activeTab })}
+              icon={{
+                name: tab.icon,
+                size: "sm",
+                variant: "duotones",
+                duotone: "regular"
+              }}
+              className={classNames('m-2 fw-bold', { 'ghost-active': tab.id === activeTab })}
               onClick={() => setActiveTab(tab.id)}
             />
           ))}

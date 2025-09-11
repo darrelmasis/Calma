@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
 import classNames from 'classnames'
-import { Icon } from '../commons/Icons'
 import { Button } from '../ui/Button'
 
 export const Select = ({
@@ -8,7 +7,7 @@ export const Select = ({
   options = [],
   value,
   onChange,
-  placeholder = 'Seleccionar...',
+  placeholder = 'Seleccionar',
   error,
   disabled = false,
   className = '',
@@ -48,9 +47,20 @@ export const Select = ({
         })}
         onClick={toggleDropdown}
       >
-        <Button variant='primary-ghost' classes='' icon={isOpen ? 'chevron-up' : 'chevron-down'} iconPosition='right'>
-          {selectedOption ? selectedOption.label : placeholder}
-        </Button>
+        <Button
+          variant='primary'
+          ariaLabel="Cambiar de Idioma"
+          ghost={true}
+          label={selectedOption ? selectedOption.label : placeholder}
+          icon={
+            {
+              name: 'earth-americas',
+              size: "sm",
+              variant: "duotones",
+              duotone: "regular"
+            }
+          }
+        />
 
         {isOpen && (
           <ul className="custom-select__list border text-dark">

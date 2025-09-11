@@ -28,10 +28,10 @@ const Home = () => {
       <section id="why" className="py-5 bg-body d-flex align-items-center">
         <div className="container d-flex flex-direction-column align-items-center justify-content-center">
           <Fade>
-            <h2 className="fs-4 text-primary mb-1 text-center">{t('home.section_2.title')}</h2>
+            <h2 className="text-primary mb-1 text-center">{t('home.section_2.title')}</h2>
           </Fade>
           <Fade>
-            <p className="fs-1 text-muted mt-1">{t('home.section_2.description')}</p>
+            <p className="fs-lead text-muted mt-1 text-center">{t('home.section_2.description')}</p>
           </Fade>
           <div className="grid mt-lg-6 mt-4 text-center">
             <div className="grid-row">
@@ -44,7 +44,7 @@ const Home = () => {
                     </span>
                   </Fade>
                   <Fade>
-                    <h2>{t('home.section_2.points.p1.title')}</h2>
+                    <h4>{t('home.section_2.points.p1.title')}</h4>
                   </Fade>
                   <Fade>
                     <p className="text-muted">{t('home.section_2.points.p1.description')}</p>
@@ -63,7 +63,7 @@ const Home = () => {
                     </span>
                   </Fade>
                   <Fade>
-                    <h2>{t('home.section_2.points.p2.title')}</h2>
+                    <h4>{t('home.section_2.points.p2.title')}</h4>
                   </Fade>
                   <Fade>
                     <p className="text-muted">{t('home.section_2.points.p2.description')}</p>
@@ -82,7 +82,7 @@ const Home = () => {
                     </span>
                   </Fade>
                   <Fade>
-                    <h2>{t('home.section_2.points.p3.title')}</h2>
+                    <h4>{t('home.section_2.points.p3.title')}</h4>
                   </Fade>
                   <Fade>
                     <p className="text-muted">{t('home.section_2.points.p3.description')}</p>
@@ -97,25 +97,35 @@ const Home = () => {
         </div>
       </section>
       { /* Special Section */}
-      <section id="how" className="py-5 bg-container d-flex align-items-center hero-gradient">
+      <section id="how" className="py-5 bg-container d-flex align-items-center ">
         <div className="container text-center">
-          <div className=" rounded p-5 special-section">
 
-            <Fade>
-              <div className="fs-6">
-                <Icon name="spa" className="text-secondary mb-3" size="large" />
-              </div>
-            </Fade>
-            <Fade>
-              <h2 className="fs-4 mb-3 text-secondary">{t('home.section_3.title')}</h2>
-            </Fade>
-            <Fade>
-              <p className="fs-1 mb-6 text-dark">{t('home.section_3.description')}</p>
-            </Fade>
-            <Fade>
-              <Button onClick={goToServices} variant="secondary" label={t('home.section_3.button')} size="large" icon="spa" />
-            </Fade>
-          </div>
+
+          <Fade>
+            <div className="fs-6">
+              <Icon name="spa" className="text-secondary mb-3" size="large" />
+            </div>
+          </Fade>
+          <Fade>
+            <h2 className="fs-4 mb-3 text-secondary">{t('home.section_3.title')}</h2>
+          </Fade>
+          <Fade>
+            <p className="fs-1 mb-6 text-muted">{t('home.section_3.description')}</p>
+          </Fade>
+          <Fade>
+            <Button
+              onClick={goToServices}
+              variant="secondary"
+              label={t('home.section_3.button')}
+              size="large"
+              icon={
+                {
+                  name: "spa",
+                }
+              }
+            />
+          </Fade>
+
         </div>
       </section>
       <Footer />

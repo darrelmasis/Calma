@@ -19,7 +19,7 @@
   --btn-color-hover: #{map.get($color-map, $text)};
 
   $bg: map.get($color-map, $bg);
-  $outline-color: color.change($bg, $alpha: 0.4);
+  $outline-color: color.change($bg, $alpha: 0.4); // Cambia la opacidad del color de fondo para el outline
   --btn-outline: #{$outline-color};
 
   &:focus {
@@ -37,8 +37,7 @@
   --btn-bg-active: #{map.get($color-map, $active)};
   --btn-color: #{map.get($color-map, $text)};
   --btn-color-hover: #{map.get($color-map, $text-hover)};
-  --btn-border: 1px solid #{map.get($color-map, $bg)};
-  --btn-padding: calc(#{btns.$btn-padding-y} - 1px) calc(#{btns.$btn-padding-x} - 1px);
+  --btn-border: 2px solid #{map.get($color-map, $bg)};
 
   $bg: map.get($color-map, $bg);
   $outline-color: color.change($bg, $alpha: 0.4);

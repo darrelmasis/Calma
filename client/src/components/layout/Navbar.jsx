@@ -21,9 +21,15 @@ const NavbarCTA = ({ onClick, className }) => {
     <Button
       onClick={onClick}
       variant="primary"
-      classes={classes}
-      size="medium"
-      icon="bell-concierge"
+      className={classes}
+      icon={
+        {
+          name: "bell-concierge",
+          position: "left",
+          variant: "regular",
+        }
+      }
+      ariaLabel="Reservar cita"
       label={t('header.headerButton.book')}
     />
   )
@@ -35,10 +41,15 @@ const MenuControlBtn = ({ isMenuOpen, handleCloseMenu, handleOpenMenu }) => {
 
     <Button
       variant="primary"
-      classes='navbar-toggle-btn'
-      icon={isMenuOpen ? 'xmark' : 'bars'}
+      className='navbar-toggle-btn'
+      icon={
+        {
+          name: isMenuOpen ? 'xmark' : 'bars',
+          variant: 'regular',
+        }
+      }
       size="large"
-      aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
+      ariaLabel={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
       aria-expanded={isMenuOpen}
       aria-controls="mobile-menu"
       onClick={isMenuOpen ? handleCloseMenu : handleOpenMenu}
@@ -123,9 +134,10 @@ export const Navbar = () => {
             <div className="navbar-brand">
               <Tooltip content={t('header.links.logoTooltip')} placement="bottom">
                 <Button
-                  variant=''
+                  variant='initial'
                   size='medium'
-                  classes="p-0 m-0 rounded-circle navbar-brand-btn"
+                  className="p-0 m-0 rounded-circle navbar-brand-btn"
+                  ariaLabel="Logo de calma | Inicio"
                   onClick={handleLogoClick}
                 >
                   <LogoCalma className="navbar-brand-logo" />
@@ -219,9 +231,10 @@ export const Navbar = () => {
             <div className="navbar-brand">
               <Tooltip content={t('header.links.logoTooltip')} placement="bottom">
                 <Button
-                  variant=''
+                  variant='initial'
                   size='medium'
-                  classes="p-0 m-0 rounded-circle navbar-brand-btn"
+                  className="p-0 m-0 rounded-circle navbar-brand-btn"
+                  ariaLabel="Logo de calma | Inicio"
                   onClick={handleLogoClick}
                 >
                   <LogoCalma className="navbar-brand-logo" />

@@ -11,7 +11,6 @@ import { USD } from '../../utils/utils'
 import classNames from 'classnames'
 import { useState } from 'react'
 import { Button } from '../../components/ui/Button'
-import { Icon } from '../../components/commons/Icons'
 
 const Services = () => {
   const { t } = useLang()
@@ -122,10 +121,15 @@ const Services = () => {
                       <Button
                         classes='show-more-button'
                         variant="primary"
-                        size=""
+                        ghost={true}
                         label={isExpanded === subcategoryId ? t('services.showLess') : t('services.showMore')}
-                        onClick={() => handleExpandedButtonClick(subcategoryId)} />
-                      <Icon name={isExpanded === subcategoryId ? 'chevron-up' : 'chevron-down'} className="ms-2 show-more-icon" />
+                        onClick={() => handleExpandedButtonClick(subcategoryId)}
+                        icon={
+                          {
+                            name: isExpanded === subcategoryId ? "chevron-up" : "chevron-down",
+                          }
+                        }
+                      />
                     </div>
                   </div>
                 </Fade>

@@ -67,12 +67,16 @@
     pointer-events: none;
   }
 
-  & .icon {
+  &-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     font-size: var(--btn-font-size);
   }
 
-  & > span {
+  &-label {
     display: inline-flex;
+    align-items: center;
   }
 
   &-square {
@@ -86,6 +90,11 @@
       align-items: center;
       justify-content: center;
     }
+  }
+
+  &-block {
+    width: 100%;
+    display: flex;
   }
 }
 

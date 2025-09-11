@@ -9,6 +9,7 @@ import { Input } from '../../components/forms/Input'
 import { Select } from '../../components/forms/Select'
 import { Textarea } from '../../components/forms/Textarea'
 import axios from 'axios'
+import { Button } from '../../components/ui/Button'
 
 const Booking = () => {
   const { t } = useLang()
@@ -168,7 +169,13 @@ const Booking = () => {
               placeholder="Escribe un mensaje"
             />
 
-            <button type="submit" className="btn btn-primary mt-3">Enviar Reserva</button>
+            <Button
+              type="submit"
+              className="btn btn-primary mt-3"
+              size='large'
+              label="Reservar"
+              icon={{ name: "paper-plane-top", position: "right", variant: "regular" }}
+            />
           </form>
         </div>
       </section>
