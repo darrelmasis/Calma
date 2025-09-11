@@ -8,18 +8,33 @@
   Estas variables se utilizarán en toda la aplicación.
 */
 
+/*
+  Variables de color para el tema claro (accesibles WCAG)
+  -------------------------------------------------------
+  Cada "500" está calibrado con al menos 4.5:1 de contraste
+  sobre blanco.
+*/
+
 $light-theme-colors: (
-  'primary': fn.getColor(c.$golds, '500'),
+  'primary': #7d653e,
+  // golds-500 ajustado
   'secondary': fn.getColor(c.$wines, '500'),
-  'tertiary': fn.getColor(c.$purples, '500'),
-  'danger': fn.getColor(c.$reds, '500'),
-  'warning': fn.getColor(c.$yellows, '300'),
-  'success': fn.getColor(c.$greens, '500'),
+  // no tocado, ya cumple contraste
+  'tertiary': #8f448f,
+  // purples-500 ajustado
+  'danger': #d04646,
+  // reds-500 ajustado
+  'warning': #d18a3d,
+  // yellows-300 ahora usable como warning
+  'success': #12855a,
+  // greens-500 ajustado
   'info': fn.getColor(c.$blues, '500'),
-  'light': fn.getColor(c.$lights, '300'),
+  // cumple contraste
+  'light': #647983,
+  // grays-500 ajustado
   'dark': fn.getColor(c.$darks, '900'),
   'text-color': fn.getColor(c.$grays, '900'),
-  'text-color-muted': fn.getColor(c.$grays, '500'),
+  'text-color-muted': fn.getColor(c.$grays, '700'),
   'body-bg': fn.getColor(c.$grays, '50'),
   'border-color': fn.getColor(c.$grays, '100'),
   'container-bg': fn.getColor(c.$neutrals, '50'),
