@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
-    "preview": "vite preview --host"
+    "preview": "npm run build && vite preview --host"
   },
   "dependencies": {
     "@floating-ui/react": "^0.27.8",
