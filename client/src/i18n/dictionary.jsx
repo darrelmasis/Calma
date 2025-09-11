@@ -18,7 +18,7 @@ export const dictionary = {
       cta: {
         title: '¡Agenda tu cita hoy!',
         description: 'Reserva con nuestros especialistas en bienestar cuando y donde quieras',
-        button: 'Reservar ahora'
+        button: '¡Reserva ahora!'
       },
       columns: {
         contact: {
@@ -84,22 +84,22 @@ export const dictionary = {
       pageTitle: 'Nuestra Historia',
       section_1: {
         title: 'Nuestra Historia',
-        history_p1: 'Comenzamos este camino en 2016, comprometidas no solo con ofrecer servicios, sino también una experiencia que deleitara los sentidos y nutriera el cuerpo y el alma. Calma nació del deseo de crear un espacio de renovación y tranquilidad en medio de lo cotidiano, inspirado por la intención de preservar ese equilibrio interior del que todos dependemos. De ahí surge nuestro nombre: el estado o la cualidad de estar en paz',
+        history_p1: 'Comenzamos este camino en 2016, comprometidas no solo con ofrecer servicios, sino también una experiencia que deleitara los sentidos y nutriera el cuerpo y el alma. Calma nació del deseo de crear un espacio de renovación y tranquilidad en medio de lo cotidiano, inspirado por la intención de preservar ese equilibrio interior del que todos dependemos. De ahí surge nuestro nombre: el estado o la cualidad de estar en paz.',
         history_p2: 'Desde el inicio, nuestro enfoque ha sido conectar con lo esencial: tratamientos que combinan técnicas tradicionales con un enfoque moderno',
-        history_p3: 'Esto da lugar a una experiencia transformadora en un ambiente cuidadosamente diseñado, para que cada visita sea un verdadero momento de pausa',
-        history_p4: 'Creemos que el bienestar no es un lujo, sino una necesidad. Por eso, cada servicio ha sido pensado con el descanso y la belleza en mente',
-        history_p5: 'Hoy, Calma es reconocida por su compromiso con el bienestar y su dedicación. Cada rincón refleja nuestra atención al detalle y el profundo respeto por quienes nos visitan',
-        history_p6: 'El propósito es seguir creciendo con intención de expandir nuestros servicios sin perder la esencia que nos define. Calma es más que un espacio físico; es una invitación a reconectar contigo, respirar profundo y encontrar tu equilibrio',
-        end_tag: 'Con Mucho Cariño',
+        history_p3: 'Esto da lugar a una experiencia transformadora en un ambiente cuidadosamente diseñado, para que cada visita sea un verdadero momento de pausa.',
+        history_p4: 'Creemos que el bienestar no es un lujo, sino una necesidad. Por eso, cada servicio ha sido pensado con el descanso y la belleza en mente.',
+        history_p5: 'Hoy, Calma es reconocida por su compromiso con el bienestar y su dedicación. Cada rincón refleja nuestra atención al detalle y el profundo respeto por quienes nos visitan.',
+        history_p6: 'El propósito es seguir creciendo con intención de expandir nuestros servicios sin perder la esencia que nos define. Calma es más que un espacio físico; es una invitación a reconectar contigo, respirar profundo y encontrar tu equilibrio.',
+        end_tag: 'Con Mucho Cariño,',
         owners: 'Ariana y Sthephanie Portillo',
         imageAlt: 'Imagen representativa de nuestra historia'
       },
       section_2: {
         title: '¿Quiénes Somos?',
         visionTitle: 'Nuestra Visión',
-        visionDescription: 'Crear experiencias de bienestar que nutran el cuerpo y la mente a través de servicios personalizados, en un entorno pensado para la relajación y la renovación interior',
+        visionDescription: 'Crear experiencias de bienestar que nutran el cuerpo y la mente a través de servicios personalizados, en un entorno pensado para la relajación y la renovación interior.',
         missionTitle: 'Nuestra Misión',
-        missionDescription: 'Ofrecer un espacio donde cada persona pueda reconectar con su calma interior mediante tratamientos y un servicio excepcional, siempre enfocados en el bienestar integral'
+        missionDescription: 'Ofrecer un espacio donde cada persona pueda reconectar con su calma interior mediante tratamientos y un servicio excepcional, siempre enfocados en el bienestar integral.'
       }
     },
     packages: {
@@ -400,7 +400,7 @@ export const dictionary = {
       cta: {
         title: 'Book Your Appointment Today!',
         description: 'Schedule your session with our wellness specialists anytime, anywhere',
-        button: 'Book Now'
+        button: 'Book Now!'
       },
       columns: {
         contact: {
@@ -466,13 +466,13 @@ export const dictionary = {
       pageTitle: 'Our Story',
       section_1: {
         title: 'Our Story',
-        history_p1: 'We began this journey in 2016, committed to offering services as well as an experience that aimed to please ascetics but also nurture body and soul. Calma was born from the desire to create a space of renewal and tranquility amid the day to day. Inspired to insure that inner balance we all thrive upon. Hence the origin of our name the state or quality of being at peace',
-        history_p2: 'Our focus has always been connecting with the essentials: treatments combining traditional techniques with a more modern approach',
-        history_p3: 'This creates a transformative experience in a crafted atmosphere to make each visit a moment of pause',
-        history_p4: 'We believe wellness is not a luxury, but a necessity, so every service is designed with rest, and beauty in mind',
-        history_p5: 'Today, Calma is known for wellness, and its diligence. Every corner reflects our attention to detail and deep respect for our visitors. From the beginning, we have grown thanks to the love of our clients and most importantly the passion of our team. Our story is just beginning',
-        history_p6: 'We aim to grow with purpose, expanding our services while preserving the essence that defines us. Calma is more than a physical space; it is an invitation to reconnect with yourself, breathe deeply, and find balance',
-        end_tag: 'Much Love',
+        history_p1: 'We began this journey in 2016, committed to offering services as well as an experience that aimed to please ascetics but also nurture body and soul. Calma was born from the desire to create a space of renewal and tranquility amid the day to day. Inspired to insure that inner balance we all thrive upon. Hence the origin of our name the state or quality of being at peace.',
+        history_p2: 'Our focus has always been connecting with the essentials: treatments combining traditional techniques with a more modern approach.',
+        history_p3: 'This creates a transformative experience in a crafted atmosphere to make each visit a moment of pause.',
+        history_p4: 'We believe wellness is not a luxury, but a necessity, so every service is designed with rest, and beauty in mind.',
+        history_p5: 'Today, Calma is known for wellness, and its diligence. Every corner reflects our attention to detail and deep respect for our visitors. From the beginning, we have grown thanks to the love of our clients and most importantly the passion of our team. Our story is just beginning.',
+        history_p6: 'We aim to grow with purpose, expanding our services while preserving the essence that defines us. Calma is more than a physical space; it is an invitation to reconnect with yourself, breathe deeply, and find balance.',
+        end_tag: 'Much Love,',
         owners: 'Ariana & Sthephanie Portillo',
         imageAlt: 'Imagen representativa de nuestra historia'
       },
