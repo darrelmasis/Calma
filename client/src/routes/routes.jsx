@@ -1,9 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { Booking, Contact, History, Home, NotFound, Packages, Services, Privacy } from '../pages/Index'
+import { Booking, History, Home, NotFound, Packages, Services, Privacy } from '../pages/Index'
+import ScrollTop from '../components/commons/ScrollTop'
 
 const AppRoutes = () => {
   return (
     <Router basename="/">
+      <ScrollTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/history" element={<History />} />
