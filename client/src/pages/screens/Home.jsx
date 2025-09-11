@@ -9,6 +9,7 @@ import Footer from '../../components/layout/Footer'
 import { useLang } from '../../i18n/LanguageContext'
 import FloatingButton from '../../components/commons/FloatingButton'
 import { ResponsiveImage } from '../../components/ui/ResponsiveImage'
+import OfflineIndicator from '../../components/layout/OfflineIndicator'
 
 
 const Home = () => {
@@ -22,6 +23,7 @@ const Home = () => {
 
   return (
     <>
+      <OfflineIndicator />
       <FloatingButton />
       <Header />
       <Hero />
