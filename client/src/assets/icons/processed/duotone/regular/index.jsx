@@ -24,6 +24,7 @@ import Shield from './shield.svg?react';
 import Spa from './spa.svg?react';
 import Sparkles from './sparkles.svg?react';
 import TableColumns from './table-columns.svg?react';
+import WifiExclamation from './wifi-exclamation.svg?react';
 import Xmark from './xmark.svg?react';
 
 export {
@@ -53,5 +54,6 @@ export {
   Spa,
   Sparkles,
   TableColumns,
+  WifiExclamation,
   Xmark
 };
