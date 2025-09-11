@@ -2,12 +2,147 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import path from 'path'
 import svgr from 'vite-plugin-svgr'
+import { VitePWA } from 'vite-plugin-pwa'
 
 
 export default defineConfig({
   plugins: [
     react(),
-    svgr({ svgrOptions: { icon: true } })
+    svgr({ svgrOptions: { icon: true } }),
+    VitePWA({
+      registerType: 'autoUpdate',
+      includeAssets: [
+        '/favicon.ico',
+        '/images/jpg/*',
+        '/images/webp/*',
+        '/images/pwa/*',
+        '/sounds/*'
+      ],
+      manifest: {
+        "name": "Calma Spa & Nails",
+        "short_name": "Calma",
+        "description": "Spa y salón de uñas. Servicios, paquetes y boutique.",
+        "start_url": "/",
+        "display": "standalone",
+        "background_color": "#ffffff",
+        "theme_color": "#d4a373",
+        "orientation": "portrait",
+        "scope": "/",
+        "icons": [
+          {
+            "src": "/images/pwa/icon-1024.png",
+            "sizes": "1024x1024",
+            "type": "image/png",
+            "purpose": "any"
+          },
+          {
+            "src": "/images/pwa/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+          },
+          {
+            "src": "/images/pwa/icon-384.png",
+            "sizes": "384x384",
+            "type": "image/png",
+            "purpose": "any"
+          },
+
+          {
+            "src": "/images/pwa/icon-256.png",
+            "sizes": "256x256",
+            "type": "image/png",
+            "purpose": "any"
+          },
+
+          {
+            "src": "/images/pwa/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+          },
+
+          {
+            "src": "/images/pwa/icon-180.png",
+            "sizes": "180x180",
+            "type": "image/png",
+            "purpose": "any"
+          },
+
+          {
+            "src": "/images/pwa/icon-167.png",
+            "sizes": "167x167",
+            "type": "image/png",
+            "purpose": "any"
+          },
+
+          {
+            "src": "/images/pwa/icon-152.png",
+            "sizes": "152x152",
+            "type": "image/png",
+            "purpose": "any"
+          },
+
+          {
+            "src": "/images/pwa/icon-144.png",
+            "sizes": "144x144",
+            "type": "image/png",
+            "purpose": "any"
+          },
+
+          {
+            "src": "/images/pwa/icon-128.png",
+            "sizes": "128x128",
+            "type": "image/png",
+            "purpose": "any"
+          },
+
+          {
+            "src": "/images/pwa/icon-120.png",
+            "sizes": "120x120",
+            "type": "image/png",
+            "purpose": "any"
+          },
+
+          {
+            "src": "/images/pwa/icon-96.png",
+            "sizes": "96x96",
+            "type": "image/png",
+            "purpose": "any"
+          },
+
+          {
+            "src": "/images/pwa/icon-72.png",
+            "sizes": "72x72",
+            "type": "image/png",
+            "purpose": "any"
+          },
+          {
+            "src": "/images/pwa/icon-48.png",
+            "sizes": "48x48",
+            "type": "image/png",
+            "purpose": "any"
+          }
+        ]
+      },
+      workbox: {
+        navigateFallback: '/index.html',
+        globPatterns: ['**/*.{js,css,html,xml,png,jpg,jpeg,svg,gif,woff2,json,ttf,ico}'],
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/.*\.(?:png|jpg|jpeg|svg|gif|webp)$/,
+            handler: 'CacheFirst',
+            options: { cacheName: 'images-cache' }
+          },
+          {
+            urlPattern: /^https:\/\/.*\.json$/,
+            handler: 'NetworkFirst',
+            options: { cacheName: 'api-cache' }
+          }
+        ]
+      }
+
+    })
   ],
   base: './',
   resolve: {
