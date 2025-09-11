@@ -202,7 +202,9 @@ body {
       display: flex;
       flex-direction: column;
       z-index: 20;
-      transition: max-width 0.3s;
+      transition:
+        max-width 0.3s ease,
+        padding-top 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
       overflow-y: scroll;
 
       & > .container {
@@ -300,6 +302,10 @@ body {
 
 body.navbar-open {
   overflow: hidden;
+}
+
+body.thinbar-open .navbar-mobile-content {
+  padding-top: 34.39px; // Ajusta este valor según la altura de la barra
 }
 
 @include mq.screen-between(md, xl) {
