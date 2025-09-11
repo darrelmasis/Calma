@@ -9,6 +9,7 @@ import Check from './check.svg?react';
 import ChevronDown from './chevron-down.svg?react';
 import ChevronUp from './chevron-up.svg?react';
 import CircleQuestion from './circle-question.svg?react';
+import EarthAmericas from './earth-americas.svg?react';
 import Envelope from './envelope.svg?react';
 import Gem from './gem.svg?react';
 import HandHoldingBox from './hand-holding-box.svg?react';
@@ -17,6 +18,7 @@ import Heart from './heart.svg?react';
 import House from './house.svg?react';
 import LocationDot from './location-dot.svg?react';
 import Mobile from './mobile.svg?react';
+import PaperPlaneTop from './paper-plane-top.svg?react';
 import RingsWedding from './rings-wedding.svg?react';
 import Shield from './shield.svg?react';
 import Spa from './spa.svg?react';
@@ -36,6 +38,7 @@ export {
   ChevronDown,
   ChevronUp,
   CircleQuestion,
+  EarthAmericas,
   Envelope,
   Gem,
   HandHoldingBox,
@@ -44,6 +47,7 @@ export {
   House,
   LocationDot,
   Mobile,
+  PaperPlaneTop,
   RingsWedding,
   Shield,
   Spa,
