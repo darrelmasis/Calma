@@ -25,3 +25,6 @@
 
 // Generar utilidades de comiezos de columnas
 @include grid_mixins.generate-grid-offsets('grid-offset');
+
+// Generar utilidades de plantillas de columnas
+@include grid_mixins.generate-grid-template-cols();
