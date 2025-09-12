@@ -5,7 +5,8 @@ import classNames from 'classnames';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import { useNavigate } from 'react-router-dom';
 import { useLang } from '../../i18n/LanguageContext'
-import { SoundWrapper } from './SoundWrapper';
+import { SoundWrapper, useSound } from './SoundManager';
+
 
 const FloatingButton = () => {
   const [showOptions, setShowOptions] = useState(false);
@@ -16,6 +17,8 @@ const FloatingButton = () => {
   const { t } = useLang()
   const containerRef = useRef(null); // <-- referencia al contenedor principal
   const iconRef = useRef(null)
+  const sound = useSound('closePops', 0.5)
+  const showOptionsRef = useRef(showOptions);
 
   const mainButtonSound = switchIcon ? 'closePops' : 'openPops'
 
@@ -58,15 +61,23 @@ const FloatingButton = () => {
     window.open(whatsappLink, '_blank', 'noopener,noreferrer')
   }
 
+  // 🔹 Mantener el ref actualizado
+  useEffect(() => {
+    showOptionsRef.current = showOptions;
+  }, [showOptions]);
+
   // 🔹 Cerrar opciones al hacer click fuera
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (containerRef.current && !containerRef.current.contains(event.target)) {
-        setShowOptions(false);
-        setSwitchIcon(false);
-        setIsVisible(false);
+    const handleClickOutside = (e) => {
+      if (containerRef.current && !containerRef.current.contains(e.target)) {
+        if (showOptionsRef.current) { // ✅ ahora sí tiene el valor actual
+          sound.play();
+          setTimeout(() => setShowOptions(false), 100);
+          setSwitchIcon(false);
+          setTimeout(() => setIsVisible(false), 500);
+        }
       }
-    }
+    };
 
     document.addEventListener('mousedown', handleClickOutside);
     document.addEventListener('touchstart', handleClickOutside);
@@ -74,8 +85,8 @@ const FloatingButton = () => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('touchstart', handleClickOutside);
-    }
-  }, []);
+    };
+  }, [sound]);
 
   return (
     <div className="floating-button z-index-10" ref={containerRef}>
