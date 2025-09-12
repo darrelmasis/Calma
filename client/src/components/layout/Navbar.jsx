@@ -9,7 +9,7 @@ import { Icon } from '../commons/Icons'
 import classNames from 'classnames'
 import { useMediaQuery } from '../../hooks/useMediaQuery'
 import { CSSTransition } from 'react-transition-group'
-import { SoundWrapper } from '../commons/SoundWrapper'
+import { SoundWrapper } from '../commons/SoundManager'
 import { useOfflineStatus } from '../../hooks/useOfflineStatus'
 
 
