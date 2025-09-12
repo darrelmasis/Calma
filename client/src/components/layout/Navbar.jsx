@@ -9,7 +9,7 @@ import { Icon } from '../commons/Icons'
 import classNames from 'classnames'
 import { useMediaQuery } from '../../hooks/useMediaQuery'
 import { CSSTransition } from 'react-transition-group'
-import { HoverSoundWrapper } from '../commons/HoverSoundFx'
+import { SoundWrapper } from '../commons/SoundWrapper'
 import { useOfflineStatus } from '../../hooks/useOfflineStatus'
 
 
@@ -227,9 +227,13 @@ export const Navbar = () => {
 
                 }
                 < li >
-                  <HoverSoundWrapper route={'/booking'}>
+                  <SoundWrapper
+                    route={'/booking'}
+                    matchType='except'
+                    sound='bell'
+                    trigger='click'>
                     <NavbarCTA onClick={handleCTAClick} className={classNames({ 'bounce-animation': CTAClicked }, 'navbar-desktop-cta-button')} />
-                  </HoverSoundWrapper>
+                  </SoundWrapper>
                 </li>
               </ul>
             </div>
@@ -316,11 +320,15 @@ export const Navbar = () => {
                   </div>
 
                   <div className="navbar-mobile-content-cta">
-                    <HoverSoundWrapper route={'/booking'}>
+                    <SoundWrapper
+                      route={'/booking'}
+                      matchType='except'
+                      sound='bell'
+                      trigger='click'>
 
 
                       <NavbarCTA onClick={handleCTAClick} className={classNames({ 'bounce-animation': CTAClicked }, 'w-100', 'navbar-mobile-content-cta-button')} />
-                    </HoverSoundWrapper>
+                    </SoundWrapper>
                   </div>
                 </div>
 
