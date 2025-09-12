@@ -25,7 +25,7 @@ async function optimizeImage(file) {
         .toFile(path.join(outputDir, "webp", `${name}-${size}.webp`)),
 
       sharp(inputPath)
-        .resize(size)
+        .resize({ width: size, withoutEnlargement: true }) // Mantiene la proporción original
         .jpeg({ quality: 80 })
         .toFile(path.join(outputDir, "jpg", `${name}-${size}.jpg`)),
     ])
