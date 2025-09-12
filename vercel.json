@@ -16,6 +16,10 @@
   ],
   "routes": [
     {
+      "src": "/manifest.webmanifest",
+      "dest": "/client/manifest.webmanifest"
+    },
+    {
       "src": "/api/booking/send-mail",
       "methods": ["POST"],
       "dest": "/server/src/api/booking-send-mail.js"
