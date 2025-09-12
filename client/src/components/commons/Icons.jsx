@@ -15,7 +15,7 @@ export const Icons = {
   }
 }
 
-export const Icon = ({ name, variant = 'regular', duotone = 'regular', className, size = 'md' }) => {
+export const Icon = ({ name, variant = 'regular', duotone = 'regular', className, size = 'md', ref = null }) => {
   const nameCleanaed = name
     .split('-')
     .map(w => w.charAt(0).toUpperCase() + w.slice(1))
@@ -42,7 +42,7 @@ export const Icon = ({ name, variant = 'regular', duotone = 'regular', className
   )
 
   return (
-    <span className={componentClasses}>
+    <span ref={ref} className={componentClasses}>
       <IconComponent className="icon" />
     </span>
   )
