@@ -57,7 +57,7 @@ export const SoundWrapper = forwardRef(
 
     // 🔹 Handlers según trigger
     let eventHandlers = {};
-    if (trigger === "click") eventHandlers = { onClick: playSound, onTouchStart: playSound };
+    if (trigger === "click") eventHandlers = { onClick: playSound};
     else if (trigger === "hover") eventHandlers = { onMouseEnter: playSound };
     else if (trigger === "focus") eventHandlers = { onFocus: playSound };
 
