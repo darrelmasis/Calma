@@ -1,7 +1,5 @@
 User-agent: *
-Disallow: /admin/
-Disallow: /login/
-Disallow: /private/
 Allow: /
-
-Sitemap: https://www.tusitio.com/sitemap.xml
+Disallow: /admin
+Disallow: /private
+Sitemap: https://calma-test.vercel.app/sitemap.xml
