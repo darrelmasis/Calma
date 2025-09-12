@@ -29,6 +29,14 @@
       "dest": "/client/$1"
     },
     {
+      "src": "/robots.txt",
+      "dest": "/client/robots.txt"
+    },
+    {
+      "src": "/sitemap.xml",
+      "dest": "/client/sitemap.xml"
+    },
+    {
       "src": "/(.*)",
       "dest": "/client/index.html",
       "headers": {
