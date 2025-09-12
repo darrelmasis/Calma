@@ -4,7 +4,6 @@ import Footer from '../../components/layout/Footer'
 import { FadeInWhenVisible as Fade } from '../../components/commons/animations/FadeInWhenVisible'
 import { useLang } from '../../i18n/LanguageContext'
 import { Tabs } from '../../components/commons/Tabs';
-import FloatingButton from '../../components/commons/FloatingButton'
 import { ServicesData } from '../../data/services'
 import { ResponsiveImage } from '../../components/ui/ResponsiveImage'
 import { USD } from '../../utils/utils'
@@ -143,7 +142,6 @@ const Services = () => {
 
   return (
     <div>
-      <FloatingButton />
 
       <Header />
 

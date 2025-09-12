@@ -6,7 +6,6 @@ import { useLang } from '../../i18n/LanguageContext'
 import PackageCard from '../../components/commons/PackageCard'
 import { Accordion } from '../../components/commons/Accordion' // <-- importamos el nuevo componente
 import { AccordionGroup } from '../../components/commons/AccordionGroup'
-import FloatingButton from '../../components/commons/FloatingButton'
 
 const Packages = () => {
   const { t } = useLang()
@@ -17,7 +16,6 @@ const Packages = () => {
 
   return (
     <div>
-      <FloatingButton/>
 
       <Header />
 

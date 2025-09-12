@@ -7,9 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import { FadeInWhenVisible as Fade } from '../../components/commons/animations/FadeInWhenVisible'
 import Footer from '../../components/layout/Footer'
 import { useLang } from '../../i18n/LanguageContext'
-import FloatingButton from '../../components/commons/FloatingButton'
 import { ResponsiveImage } from '../../components/ui/ResponsiveImage'
-import OfflineIndicator from '../../components/layout/OfflineIndicator'
 
 
 const Home = () => {
@@ -23,8 +21,6 @@ const Home = () => {
 
   return (
     <>
-      <OfflineIndicator />
-      <FloatingButton />
       <Header />
       <Hero />
       <section id="why" className="py-5 bg-body d-flex align-items-center">

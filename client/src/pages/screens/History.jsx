@@ -3,7 +3,6 @@ import Header from '../../components/layout/Header'
 import Footer from '../../components/layout/Footer'
 import { FadeInWhenVisible as Fade } from '../../components/commons/animations/FadeInWhenVisible'
 import { useLang } from '../../i18n/LanguageContext'
-import FloatingButton from '../../components/commons/FloatingButton'
 import { ResponsiveImage } from '../../components/ui/ResponsiveImage'
 
 const History = () => {
@@ -11,7 +10,6 @@ const History = () => {
   usePageTitle(t('history.pageTitle'))
   return (
     <div>
-      <FloatingButton />
       <Header />
 
       <section className="py-4 body-bg">

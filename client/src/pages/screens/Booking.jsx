@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { usePageTitle } from '@utils/utils'
 import Header from '../../components/layout/Header'
 import Footer from '../../components/layout/Footer'
-import FloatingButton from '../../components/commons/FloatingButton'
 import { FadeInWhenVisible as Fade } from '../../components/commons/animations/FadeInWhenVisible'
 import { useLang } from '../../i18n/LanguageContext'
 import { Input } from '../../components/forms/Input'
@@ -83,7 +82,6 @@ const Booking = () => {
 
   return (
     <div>
-      <FloatingButton />
       <Header />
 
       <section className="py-4 body-bg">
