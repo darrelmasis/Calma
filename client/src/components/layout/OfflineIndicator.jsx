@@ -53,11 +53,10 @@ const OfflineIndicator = () => {
       >
         <div
           ref={offlineRef}
-          className="network-status-offline bg-warning text-dark text-center fw-semibold py-3"
+          className="network-status-offline bg-warning-100 text-center fw-semibold py-3"
         >
-          <div className="d-flex align-items-center justify-content-center">
-            <span className="offline-pulse me-2"></span>
-            ¡Houston, tenemos un problema! 🌌 No hay internet
+          <div className="d-flex align-items-center text-warning justify-content-center">
+            ¡Houston, tenemos un problema!
           </div>
         </div>
       </CSSTransition>
