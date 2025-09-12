@@ -19,11 +19,13 @@ import House from './house.svg?react';
 import LocationDot from './location-dot.svg?react';
 import Mobile from './mobile.svg?react';
 import PaperPlaneTop from './paper-plane-top.svg?react';
+import Question from './question.svg?react';
 import RingsWedding from './rings-wedding.svg?react';
 import Shield from './shield.svg?react';
 import Spa from './spa.svg?react';
 import Sparkles from './sparkles.svg?react';
 import TableColumns from './table-columns.svg?react';
+import Whatsapp from './whatsapp.svg?react';
 import WifiExclamation from './wifi-exclamation.svg?react';
 import Xmark from './xmark.svg?react';
 
@@ -49,11 +51,13 @@ export {
   LocationDot,
   Mobile,
   PaperPlaneTop,
+  Question,
   RingsWedding,
   Shield,
   Spa,
   Sparkles,
   TableColumns,
+  Whatsapp,
   WifiExclamation,
   Xmark
 };

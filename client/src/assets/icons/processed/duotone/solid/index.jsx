@@ -19,6 +19,7 @@ import House from './house.svg?react';
 import LocationDot from './location-dot.svg?react';
 import Mobile from './mobile.svg?react';
 import PaperPlaneTop from './paper-plane-top.svg?react';
+import Question from './question.svg?react';
 import RingsWedding from './rings-wedding.svg?react';
 import Shield from './shield.svg?react';
 import Spa from './spa.svg?react';
@@ -49,6 +50,7 @@ export {
   LocationDot,
   Mobile,
   PaperPlaneTop,
+  Question,
   RingsWedding,
   Shield,
   Spa,
