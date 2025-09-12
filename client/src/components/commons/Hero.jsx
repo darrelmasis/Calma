@@ -3,7 +3,6 @@ import { Button } from '../ui/Button'
 import { useNavigate } from 'react-router-dom'
 import { FadeInWhenVisible as Fade } from './animations/FadeInWhenVisible'
 import { useLang } from '../../i18n/LanguageContext'
-import { size } from '@floating-ui/react-dom'
 
 export const Hero = () => {
   const navigate = useNavigate()
