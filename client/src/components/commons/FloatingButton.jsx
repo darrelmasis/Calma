@@ -1,74 +1,136 @@
 import { useState, useRef, useEffect } from 'react';
-import whatsappLogo from '/whatsapp_logo.svg';
 import { Button } from '../ui/Button';
-
+import { Icon } from './Icons';
+import classNames from 'classnames';
+import { CSSTransition, SwitchTransition } from 'react-transition-group';
+import { useNavigate } from 'react-router-dom';
+import { useLang } from '../../i18n/LanguageContext'
+import { SoundWrapper } from './SoundWrapper';
 
 const FloatingButton = () => {
-  // Configuración local
-  const phoneNumber = '83275144';
-  const defaultMessage = '¡Hola Equipo de Calma! Me gustaría más información.';
-  const countryCode = '505';
+  const [showOptions, setShowOptions] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [switchIcon, setSwitchIcon] = useState(false)
+  const navigate = useNavigate()
+  const calmaPhoneNumber = import.meta.env.VITE_CALMA_PHONE_NUMBER
+  const { t } = useLang()
+  const containerRef = useRef(null); // <-- referencia al contenedor principal
+  const iconRef = useRef(null)
 
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [message, setMessage] = useState(defaultMessage);
-  const popupRef = useRef(null);
+  const mainButtonSound = switchIcon ? 'closePops' : 'openPops'
 
-  const formatPhoneNumber = (num) => {
+  const optionButtonClasses = classNames({
+    'option-button': true,
+    'show': showOptions,
+    'hide': !showOptions
+  });
+
+  const mainButtonIconName = classNames({
+    'question': !switchIcon,
+    'xmark': switchIcon
+  })
+
+  const formatPhoneNumber = (num, countryCode = "505") => {
     let cleanNum = num.replace(/\D/g, '');
     if (!cleanNum.startsWith(countryCode)) {
       cleanNum = countryCode + cleanNum;
     }
     return cleanNum;
-  };
-  const whatsappLink = `https://wa.me/${formatPhoneNumber(phoneNumber)}?text=${encodeURIComponent(message)}`;
+  }
 
-  // Cerrar el popup si se hace click fuera
+  const handleMainButtonClick = () => {
+    if (!showOptions) {
+      setTimeout(() => setShowOptions(true), 100);
+    } else {
+      setTimeout(() => setShowOptions(false), 100)
+    }
+    switchIcon ? setSwitchIcon(false) : setSwitchIcon(true)
+
+    isVisible ? setTimeout(() => setIsVisible(false), 500) : setTimeout(() => setIsVisible(true), 100)
+  }
+
+  const handleBookingButton = () => {
+    navigate('/booking')
+  }
+
+  const handleWhatsappButton = () => {
+    const whatsappLink = `https://wa.me/${formatPhoneNumber(calmaPhoneNumber)}`;
+    window.open(whatsappLink, '_blank', 'noopener,noreferrer')
+  }
+
+  // 🔹 Cerrar opciones al hacer click fuera
   useEffect(() => {
-    function handleClickOutside(event) {
-      if (popupRef.current && !popupRef.current.contains(event.target)) {
-        setIsPopupOpen(false);
+    const handleClickOutside = (event) => {
+      if (containerRef.current && !containerRef.current.contains(event.target)) {
+        setShowOptions(false);
+        setSwitchIcon(false);
+        setIsVisible(false);
       }
     }
-    if (isPopupOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [isPopupOpen]);
-
-  const togglePopup = () => {
-    setIsPopupOpen((prev) => !prev);
-  };
-
-  const handleSend = () => {
-    window.open(whatsappLink, '_blank', 'noopener,noreferrer');
-    setIsPopupOpen(false);
-  };
+      document.removeEventListener('touchstart', handleClickOutside);
+    }
+  }, []);
 
   return (
-    <div className="floating-button-container">
+    <div className="floating-button z-index-10" ref={containerRef}>
+      <div className="floating-button-container">
+        {isVisible && (
+          <div className="floating-button-options">
+            <div className={optionButtonClasses}>
+              <Button onClick={handleWhatsappButton} variant='success' className='option-button-wrapper whatsapp-button p-0'>
+                <div className="grid-row grid-col-auto-1fr justify-content-center gap-0">
+                  <div className="d-flex option-button-label align-items-center justify-content-center h-100 ms-3">
+                    <p className='m-0 fs-medium white-space-nowrap'>{t('floatingButton.whatsappButtonText')}</p>
+                  </div>
+                  <div className="d-flex option-button-icon align-items-center justify-content-center">
+                    <Icon name="whatsapp" variant="brands" size='lg' />
+                  </div>
+                </div>
+              </Button>
+            </div>
+            <div className={optionButtonClasses}>
+              <Button onClick={handleBookingButton} variant='primary' className='option-button-wrapper booking-button p-0'>
+                <div className="grid-row grid-col-auto-1fr justify-content-center gap-0">
+                  <div className="d-flex option-button-label align-items-center justify-content-center h-100 ms-3">
+                    <p className='m-0 fs-medium white-space-nowrap'>{t('floatingButton.bookingButtontext')}</p>
+                  </div>
+                  <div className="d-flex option-button-icon align-items-center justify-content-center">
+                    <Icon name="calendar-check" variant="regular" />
+                  </div>
+                </div>
+              </Button>
+            </div>
+          </div>
+        )}
 
-      <Button className="floating-button" onClick={togglePopup} ariaLabel="Abrir chat de WhatsApp" tabIndex={0} variant="link" size="large">
-        <img src={whatsappLogo} alt="WhatsApp" className="floating-button__icon" />
-      </Button>
-
-      {isPopupOpen && (
-        <div className="floating-button__popup animated" ref={popupRef}>
-          <span className="floating-button__title">¿En qué podemos ayudarte?</span>
-          <textarea
-            className="floating-button__textarea"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            placeholder="Escribe tu mensaje..."
-            autoFocus
-          />
-          <Button className="floating-button__send" onClick={handleSend} size="medium">
-            <img src={whatsappLogo} alt="WhatsApp" style={{ width: 20, marginRight: 6, verticalAlign: 'middle' }} />
-            Enviar
+        <SoundWrapper sound={mainButtonSound} trigger='click' volume="0.5">
+          <Button
+            className="floating-button-toggle rounded-circle main-button"
+            variant='info'
+            onClick={handleMainButtonClick}
+            ariaLabel="Abrir burbujas de opciones"
+            tabIndex={0}
+            size="large"
+          >
+            <SwitchTransition mode='out-in'>
+              <CSSTransition
+                key={mainButtonIconName}
+                timeout={100}
+                nodeRef={iconRef}
+                classNames="fade"
+              >
+                <Icon ref={iconRef} name={mainButtonIconName} variant="solid" size="lg" />
+              </CSSTransition>
+            </SwitchTransition>
           </Button>
-        </div>
-      )}
+        </SoundWrapper>
+      </div>
     </div>
   );
 };

@@ -379,6 +379,10 @@ export const dictionary = {
         title: 'Reserva tu cita',
         description: 'Próximamente podrás reservar tus citas aquí. Mientras tanto, contáctanos para agendar tu visita y vivir la experiencia Calma'
       }
+    },
+    floatingButton: {
+      whatsappButtonText: "Escribenos por WhatsApp",
+      bookingButtontext: "Reserva con nosotros"
     }
   },
   en: {
@@ -749,6 +753,10 @@ export const dictionary = {
         }
       }
 
+    },
+    floatingButton: {
+      whatsappButtonText: "Write to us on WhatsApp",
+      bookingButtontext: "Book with us"
     }
   }
 }
