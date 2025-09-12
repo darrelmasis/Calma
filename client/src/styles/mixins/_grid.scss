@@ -40,3 +40,37 @@
     }
   }
 }
+
+@mixin generate-grid-template-cols($prefix: 'grid-col') {
+  // Clases básicas
+  .#{$prefix}-auto {
+    grid-template-columns: auto;
+  }
+  .#{$prefix}-1fr {
+    grid-template-columns: 1fr;
+  }
+  .#{$prefix}-auto-1fr {
+    grid-template-columns: auto 1fr;
+  }
+  .#{$prefix}-1fr-auto {
+    grid-template-columns: 1fr auto;
+  }
+
+  // Responsive
+  @each $breakpoint, $width in bp.$breakpoints {
+    @include mq.screen('min', $breakpoint) {
+      .#{$prefix}-#{$breakpoint}-auto {
+        grid-template-columns: auto;
+      }
+      .#{$prefix}-#{$breakpoint}-1fr {
+        grid-template-columns: 1fr;
+      }
+      .#{$prefix}-#{$breakpoint}-auto-1fr {
+        grid-template-columns: auto 1fr;
+      }
+      .#{$prefix}-#{$breakpoint}-1fr-auto {
+        grid-template-columns: 1fr auto;
+      }
+    }
+  }
+}
