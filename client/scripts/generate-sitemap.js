@@ -1,7 +1,17 @@
 import { SitemapStream, streamToPromise } from 'sitemap';
-import { writeFileSync } from 'fs';
+import fs from 'fs';
+import path from 'path';
+import { configDotenv } from 'dotenv';
 
-const sitemap = new SitemapStream({ hostname: 'https://www.calma.salon' });
+configDotenv();
+
+// Carpeta public (asegúrate que exista)
+const publicDir = path.join(process.cwd(), 'public');
+if (!fs.existsSync(publicDir)) {
+  fs.mkdirSync(publicDir, { recursive: true });
+}
+
+const sitemap = new SitemapStream({ hostname: process.env.VITE_CALMA_URL });
 
 const links = [
   { url: '/', changefreq: 'daily', priority: 1.0 },
@@ -14,16 +24,15 @@ const links = [
 
 // Escribir todas las URLs en el stream
 links.forEach(link => sitemap.write(link));
-
-// Finalizar el stream
 sitemap.end();
 
 // Convertir a promesa y escribir el sitemap.xml
 streamToPromise(sitemap)
   .then(data => {
-    writeFileSync('../public/sitemap.xml', data.toString());
-    console.log('Sitemap generado correctamente en public/sitemap.xml');
+    const sitemapPath = path.join(publicDir, 'sitemap.xml');
+    fs.writeFileSync(sitemapPath, data.toString());
+    console.log(`✅ Sitemap generado correctamente en ${sitemapPath}`);
   })
   .catch(err => {
-    console.error('Error al generar el sitemap:', err);
+    console.error('❌ Error al generar el sitemap:', err);
   });
