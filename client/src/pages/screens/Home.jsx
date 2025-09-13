@@ -44,7 +44,7 @@ const Home = () => {
                   </span>
                 </Fade>
                 <Fade>
-                  <h4 className='card-title-hack'>{t('home.section_2.points.p1.title')}</h4>
+                  <h3 className='card-title-hack fs-h4'>{t('home.section_2.points.p1.title')}</h3>
                 </Fade>
                 <Fade>
                   <p className="text-muted wx-lg-350">{t('home.section_2.points.p1.description')}</p>
@@ -63,7 +63,7 @@ const Home = () => {
                   </span>
                 </Fade>
                 <Fade>
-                  <h4 className='card-title-hack'>{t('home.section_2.points.p2.title')}</h4>
+                  <h3 className='card-title-hack fs-h4'>{t('home.section_2.points.p2.title')}</h3>
                 </Fade>
                 <Fade>
                   <p className="text-muted wx-lg-350">{t('home.section_2.points.p2.description')}</p>
@@ -82,7 +82,7 @@ const Home = () => {
                   </span>
                 </Fade>
                 <Fade>
-                  <h4 className='card-title-hack'>{t('home.section_2.points.p3.title')}</h4>
+                  <h3 className='card-title-hack fs-h4'>{t('home.section_2.points.p3.title')}</h3>
                 </Fade>
                 <Fade>
                   <p className="text-muted wx-lg-350">{t('home.section_2.points.p3.description')}</p>

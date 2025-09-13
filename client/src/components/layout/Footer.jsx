@@ -60,7 +60,7 @@ const Footer = () => {
             <div className="d-flex flex-direction-column flex-direction-lg-row align-items-start mb-3 px-3 mt-3 justify-content-space-between">
 
               <div>
-                <h5 className="text-dark fs-lead text-muted mb-5">{t('footer.columns.contact.title')}</h5>
+                <h3 className="text-dark fs-lead text-muted mb-5">{t('footer.columns.contact.title')}</h3>
                 <ul className="fs-medium list-unstyled list-bordered text-muted d-flex flex-direction-column gap-1 align-items-flex-start">
                   <li className="w-100">
                     <Icon name="mobile" className="me-2" />
@@ -73,7 +73,7 @@ const Footer = () => {
                       <Icon name="arrow-up-right-from-square" className="ms-1" size="xs" />
                     </a>
                   </li>
-                  <li className="w-100 ">
+                  <li className="w-100 ">s
                     <Icon name="location-dot" className="me-2" />
                     <Tooltip content={t('footer.columns.contact.addressTooltip')}>
                       <a target='_blank' href="https://maps.app.goo.gl/j9ZjqwatmQGa8aA4A" className=''>
@@ -90,7 +90,7 @@ const Footer = () => {
               </div>
 
               <div>
-                <h5 className="text-dark fs-lead text-muted mb-5">{t('footer.columns.nav.title')}</h5>
+                <h3 className="text-dark fs-lead text-muted mb-5">{t('footer.columns.nav.title')}</h3>
                 <ul className="fs-medium list-unstyled list-bordered text-muted d-flex flex-direction-column gap-1 align-items-flex-start">
                   <li className='w-100'>
                     <a href="/cita" className="text-muted">
@@ -116,7 +116,7 @@ const Footer = () => {
               </div>
 
               <div>
-                <h5 className="text-dark fs-lead text-muted mb-5">{t('footer.columns.about.title')}</h5>
+                <h3 className="text-dark fs-lead text-muted mb-5">{t('footer.columns.about.title')}</h3>
                 <ul className="list-unstyled fs-medium list-bordered text-muted d-flex flex-direction-column gap-1 align-items-flex-start">
                   <li className='w-100'>
                     <a href="/history#about" className="text-muted">
@@ -137,7 +137,7 @@ const Footer = () => {
               </div>
 
               <div>
-                <h5 className="text-dark fs-lead text-muted mb-5">{t('footer.columns.social.title')}</h5>
+                <h3 className="text-dark fs-lead text-muted mb-5">{t('footer.columns.social.title')}</h3>
                 <ul className="list-unstyled fs-medium list-bordered text-muted d-flex flex-direction-column gap-1 align-items-flex-start">
                   <li className='w-100'>
                     <Tooltip content={t('footer.columns.social.facebookTooltip')}>
