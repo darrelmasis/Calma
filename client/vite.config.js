@@ -141,19 +141,30 @@ export default defineConfig({
           {
             urlPattern: /^https?:\/\/.*\.(?:png|jpg|jpeg|svg|gif|webp)$/,
             handler: 'CacheFirst',
-            options: { cacheName: 'images-cache' }
+            options: {
+              cacheName: 'images-cache',
+              expiration: { maxEntries: 100, maxAgeSeconds: 60 * 60 * 24 * 7 }, // 7 days
+            },
           },
           {
             urlPattern: /^https?:\/\/.*\.json$/,
             handler: 'NetworkFirst',
-            options: { cacheName: 'api-cache' }
+            options: {
+              cacheName: 'api-cache',
+              networkTimeoutSeconds: 10,
+              expiration: { maxEntries: 50, maxAgeSeconds: 60 * 60 * 3 }, // 3 hours
+            },
           },
           {
             urlPattern: ({ request }) => request.destination === 'image',
             handler: 'CacheFirst',
-            options: { cacheName: 'images-cache' }
-          }
+            options: {
+              cacheName: 'images-cache',
+              expiration: { maxEntries: 100, maxAgeSeconds: 60 * 60 * 24 * 7 }, // 7 days
+            },
+          },
         ]
+
       }
 
     })
