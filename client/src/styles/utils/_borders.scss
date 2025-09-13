@@ -1,18 +1,39 @@
 @use '../config/borders' as borders;
 @use '../mixins/borders' as borders_mixins;
+@use '../config/colors_map' as c;
 @use 'sass:map';
 
 $borders-directions: top, right, bottom, left, all, none;
 $borders-radius-corners: top-left, top-right, bottom-left, bottom-right, top, bottom, left, right, pill, circle, all;
 
-$border-style: borders.$border-width borders.$border-style var(--border-color);
-$border-radius-base: borders.$border-radius;
+$border-style-colors: (
+  'primary': c.$primary,
+  'danger': c.$danger,
+  'warning': c.$warning,
+  'success': c.$success,
+  'info': c.$info,
+  'light': c.$light,
+  'dark': c.$dark,
+  'base-style': c.$border-color,
+  'white': #ffffff,
+);
 
-// Bordes
+$border-style: borders.$border-width borders.$border-style var(--border-color);
+
+// Generador de clases border-n
+@each $step, $size in borders.$border-widths-steps {
+  .border-#{$step} {
+    border-width: $size !important;
+  }
+}
+
+// -------------------------------
+// Bordes base-style (legacy por defecto)
+// -------------------------------
 @each $direction in $borders-directions {
   @if $direction == 'all' {
     .border {
-      @include borders_mixins.border('all', $border-style);
+      @include borders_mixins.border('all', borders.$border-width borders.$border-style map.get($border-style-colors, 'base-style'));
     }
   } @else if $direction == 'none' {
     .border-none {
@@ -20,28 +41,58 @@ $border-radius-base: borders.$border-radius;
     }
   } @else {
     .border-#{$direction} {
-      @include borders_mixins.border($direction, $border-style);
+      @include borders_mixins.border($direction, borders.$border-width borders.$border-style map.get($border-style-colors, 'base-style'));
+    }
+  }
+}
+
+// -------------------------------
+// Bordes con colores adicionales
+// -------------------------------
+@each $direction in $borders-directions {
+  @each $color-name, $color-value in $border-style-colors {
+    // evitamos duplicar base-style, ya que lo manejamos arriba
+    @if $color-name != 'base-style' and $direction != 'none' {
+      @if $direction == 'all' {
+        .border-#{$color-name} {
+          @include borders_mixins.border('all', borders.$border-width borders.$border-style $color-value);
+        }
+      } @else {
+        .border-#{$direction}-#{$color-name} {
+          @include borders_mixins.border($direction, borders.$border-width borders.$border-style $color-value);
+        }
+      }
     }
   }
 }
 
 // Bordes redondeados
 @each $corner in $borders-radius-corners {
-  @if $corner == 'all' {
-    .rounded {
-      @include borders_mixins.border-radius('all', $border-radius-base);
+  @each $size-name, $size-value in borders.$border-radius-steps {
+    // Soporte legacy para .rounded (solo cuando corner = all y size = md)
+    @if $corner == 'all' and $size-name == 'md' {
+      .rounded {
+        @include borders_mixins.border-radius('all', $size-value);
+      }
     }
-  } @else if $corner == 'pill' {
-    .rounded-#{$corner} {
-      @include borders_mixins.border-radius('pill', $border-radius-base * 3);
-    }
-  } @else if $corner == 'circle' {
-    .rounded-#{$corner} {
-      @include borders_mixins.border-radius('circle', 50%);
-    }
-  } @else {
-    .rounded-#{$corner} {
-      @include borders_mixins.border-radius($corner, $border-radius-base);
+
+    // Clases nuevas escalables
+    @if $corner == 'all' {
+      .rounded-all-#{$size-name} {
+        @include borders_mixins.border-radius('all', $size-value);
+      }
+    } @else if $corner == 'pill' {
+      .rounded-#{$corner}-#{$size-name} {
+        @include borders_mixins.border-radius('pill', $size-value * 3);
+      }
+    } @else if $corner == 'circle' {
+      .rounded-#{$corner}-#{$size-name} {
+        @include borders_mixins.border-radius('circle', 50%);
+      }
+    } @else {
+      .rounded-#{$corner}-#{$size-name} {
+        @include borders_mixins.border-radius($corner, $size-value);
+      }
     }
   }
 }

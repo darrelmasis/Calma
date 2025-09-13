@@ -21,17 +21,19 @@
   } @else if $corner == 'right' {
     border-top-right-radius: $radius;
     border-bottom-right-radius: $radius;
-  }
-  // TODO agregar raidius del pill y circle
-
-  @else if $corner == 'pill' {
-    border-top-right-radius: $radius;
-    border-bottom-right-radius: $radius;
+  } @else if $corner == 'top-left' {
     border-top-left-radius: $radius;
+  } @else if $corner == 'top-right' {
+    border-top-right-radius: $radius;
+  } @else if $corner == 'bottom-left' {
     border-bottom-left-radius: $radius;
+  } @else if $corner == 'bottom-right' {
+    border-bottom-right-radius: $radius;
+  } @else if $corner == 'pill' {
+    border-radius: $radius * 3;
   } @else if $corner == 'circle' {
     border-radius: 50%;
   } @else {
-    border-#{$corner}-radius: $radius;
+    @warn "Border radius mixin: corner `#{$corner}` no reconocido.";
   }
 }
