@@ -1,3 +1,4 @@
+import AnglesUpDown from './angles-up-down.svg?react';
 import ArrowRight from './arrow-right.svg?react';
 import ArrowUpRightFromSquare from './arrow-up-right-from-square.svg?react';
 import Bars from './bars.svg?react';
@@ -25,11 +26,13 @@ import Shield from './shield.svg?react';
 import Spa from './spa.svg?react';
 import Sparkles from './sparkles.svg?react';
 import TableColumns from './table-columns.svg?react';
+import Users from './users.svg?react';
 import Whatsapp from './whatsapp.svg?react';
 import WifiExclamation from './wifi-exclamation.svg?react';
 import Xmark from './xmark.svg?react';
 
 export {
+  AnglesUpDown,
   ArrowRight,
   ArrowUpRightFromSquare,
   Bars,
@@ -57,6 +60,7 @@ export {
   Spa,
   Sparkles,
   TableColumns,
+  Users,
   Whatsapp,
   WifiExclamation,
   Xmark
