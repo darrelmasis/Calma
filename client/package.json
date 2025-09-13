@@ -10,10 +10,11 @@
     "dev": "vite --host",
     "preview": "npm run build && vite preview --host",
     "generate:robots": "node ./scripts/generate-robots.js",
+    "generate:humans": "node ./scripts/generate-humans.js",
     "generate:sitemap": "node ./scripts/generate-sitemap.js",
     "processImages": "node ./scripts/optimized-images.js",
     "processIcons": "node ./scripts/process-icons.js",
-    "build": "npm run generate:robots && npm run generate:sitemap && npm run processImages && npm run processIcons && vite build"
+    "build": "node ./scripts/run.js "
   },
   "dependencies": {
     "@floating-ui/react": "^0.27.8",

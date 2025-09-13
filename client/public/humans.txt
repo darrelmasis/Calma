@@ -1,0 +1,30 @@
+# humans.txt - Calma Nails & Spa
+# This file gives credit to all contributors and provides basic info about the site.
+# More info: https://humanstxt.org/
+
+/* TEAM */
+Developer: Darel Masis
+Role: Fullstack
+Email: darrelmasis@gmail.com
+LinkedIn: https://www.linkedin.com/in/darrelmasis/
+GitHub: https://github.com/darrelmasis
+
+Content & Vision: Ariana y Stephanie Portillo
+Role: Calma Owners
+Contribution: Provided history, vision, mission, logos, photos, and content
+
+Content Coordinator: María Duarte
+Role: Content Intermediary
+Contribution: Scheduled appointments, collected content from owners, communicated updates
+
+/* SITE */
+Site: Calma Nails & Spa
+URL: https://calma-test.vercel.app
+Technologies: HTML5, CSS3, React, Vite, PWA, SCSS, Node.js, Express, Git, Github, Adobe Illustrator, Adobe Photoshop
+
+/* VERSION */
+Version: undefined
+Build Date: 2025-09-13
+
+/* THANKS */
+Thanks to all collaborators, designers, and supporters who helped bring the project to life.

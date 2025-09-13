@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import dotenv from 'dotenv';
 
-dotenv.config();
+dotenv.config({ quiet: true });
 
 const calmaUrl = process.env.VITE_CALMA_URL;
 
@@ -50,4 +50,4 @@ const robotsTxt = generateRobotsTxt(robotsConfig);
 const outputPath = path.join(process.cwd(), 'public', 'robots.txt');
 
 fs.writeFileSync(outputPath, robotsTxt);
-console.log(`✅ robots.txt generado en: ${outputPath}`);
+console.log('✅ robots.txt generado correctamente');

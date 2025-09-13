@@ -60,7 +60,7 @@ function processSVG(filePath, targetPath) {
 
   fs.mkdirSync(path.dirname(targetPath), { recursive: true });
   fs.writeFileSync(targetPath, svg, 'utf-8');
-  console.log(`Procesado: ${targetPath}`);
+  // console.log(`Procesado: ${targetPath}`); // Descomentar para ver cada archivo procesado
 }
 
 // Función para procesar carpetas de SVG
@@ -117,7 +117,7 @@ function generateIndex(folder) {
 
   const content = lines.join('\n') + '\n\n' + exports + '\n';
   fs.writeFileSync(path.join(folder, 'index.jsx'), content, 'utf-8');
-  console.log(`Index generado en: ${folder}/index.jsx`);
+  // console.log(`Index generado en: ${folder}/index.jsx`); // Descomentar para ver cada index generado
 }
 
 // Generar index.js para cada carpeta procesada de forma recursiva
@@ -133,3 +133,4 @@ function generateIndexesRecursive(folder) {
 
 // Ejecutar generación de index
 generateIndexesRecursive(targetBase);
+console.log('✅ Iconos procesados correctamente.');

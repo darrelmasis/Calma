@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { configDotenv } from 'dotenv';
 
-configDotenv();
+configDotenv({ quiet: true });
 
 // Carpeta public (asegúrate que exista)
 const publicDir = path.join(process.cwd(), 'public');
@@ -31,7 +31,7 @@ streamToPromise(sitemap)
   .then(data => {
     const sitemapPath = path.join(publicDir, 'sitemap.xml');
     fs.writeFileSync(sitemapPath, data.toString());
-    console.log(`✅ Sitemap generado correctamente en ${sitemapPath}`);
+    console.log('✅ Sitemap generado correctamente.');
   })
   .catch(err => {
     console.error('❌ Error al generar el sitemap:', err);

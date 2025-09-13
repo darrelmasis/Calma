@@ -42,9 +42,10 @@ async function main() {
   for (const file of files) {
     if (/\.(jpe?g|png)$/i.test(file)) {
       await optimizeImage(file);
-      console.log("Optimized:", file);
+      // console.log("Optimized:", file); // Uncomment for detailed logs
     }
   }
+  console.log('✅ Imagenes optimizadas correctamente.');
 }
 
 main().catch(console.error);
