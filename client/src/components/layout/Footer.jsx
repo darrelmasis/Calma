@@ -23,20 +23,17 @@ const Footer = () => {
     <>
       <OfflineIndicator />
       <FloatingButton />
-      <footer className="mt-5">
-        <div className="container border-top pt-6 ">
+      <footer className="footer bg-container py-3">
+        <div className="container">
           {/* Bloque CTA */}
           <div className="grid">
             <div className="grid-row justify-content-center text-center mb-6">
               <div className="grid-col-12">
                 <Fade>
-                  <LogoCalma className="mb-3" alt="Logo de Calma" width="68px" />
+                  <h2 className="text-dark fw-light">{t('footer.cta.title')}</h2>
                 </Fade>
                 <Fade>
-                  <h2 className="text-dark">{t('footer.cta.title')}</h2>
-                </Fade>
-                <Fade>
-                  <p className="text-muted">{t('footer.cta.description')}</p>
+                  <p className="text-muted fw-light">{t('footer.cta.description')}</p>
                 </Fade>
                 <Fade>
                   <Button
@@ -60,115 +57,121 @@ const Footer = () => {
 
           {/* Footer con columnas */}
           <Fade>
-            <div className="grid mt-8">
-              <div className="grid-row d-md-flex flex-direction-column flex-direction-md-row justify-content-space-between align-items-start mb-3 px-3">
-                <div className="grid-col-12 grid-col-md-3 text-md-start">
-                  <h4 className="text-dark">{t('footer.columns.contact.title')}</h4>
-                  <ul className="list-unstyled text-muted">
-                    <li className="mb-1">
-                      <Icon name="mobile" className="me-2" />
-                      <a
-                        target="_blank"
-                        href={`https://wa.me/${phoneNumber}`}
-                      >
-                        {formatPhone(phoneNumber)}
+            <div className="d-flex flex-direction-column flex-direction-lg-row align-items-start mb-3 px-3 mt-3 justify-content-space-between">
+
+              <div>
+                <h5 className="text-dark fs-lead text-muted mb-5">{t('footer.columns.contact.title')}</h5>
+                <ul className="fs-medium list-unstyled list-bordered text-muted d-flex flex-direction-column gap-1 align-items-flex-start">
+                  <li className="w-100">
+                    <Icon name="mobile" className="me-2" />
+                    <a
+                      target="_blank"
+                      href={`https://wa.me/${phoneNumber}`}
+                      className='w-100'
+                    >
+                      {formatPhone(phoneNumber)}
+                      <Icon name="arrow-up-right-from-square" className="ms-1" size="xs" />
+                    </a>
+                  </li>
+                  <li className="w-100 ">
+                    <Icon name="location-dot" className="me-2" />
+                    <Tooltip content={t('footer.columns.contact.addressTooltip')}>
+                      <a target='_blank' href="https://maps.app.goo.gl/j9ZjqwatmQGa8aA4A" className=''>
+                        {t('footer.columns.contact.address')}
                         <Icon name="arrow-up-right-from-square" className="ms-1" size="xs" />
                       </a>
-                    </li>
-                    <li className="mb-1">
-                      <Icon name="location-dot" className="me-2" />
-                      <Tooltip content={t('footer.columns.contact.addressTooltip')}>
-                        <a target='_blank' href="https://maps.app.goo.gl/j9ZjqwatmQGa8aA4A">
-                          {t('footer.columns.contact.address')}
-                          <Icon name="arrow-up-right-from-square" className="ms-1" size="xs" />
-                        </a>
-                      </Tooltip>
-                    </li>
-                    <li>
-                      <Icon name='envelope' className='me-2' />{email}
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="grid-col-12 grid-col-md-3">
-                  <h4 className="text-dark">{t('footer.columns.nav.title')}</h4>
-                  <ul className="list-unstyled">
-                    <li>
-                      <a href="/cita" className="text-muted">
-                        {t('footer.columns.nav.book')}
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/services" className="text-muted">
-                        {t('footer.columns.nav.services')}
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/history" className="text-muted">
-                        {t('footer.columns.nav.history')}
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/packages" className="text-muted">
-                        {t('footer.columns.nav.packages')}
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="grid-col-12 grid-col-md-3">
-                  <h4 className="text-dark">{t('footer.columns.about.title')}</h4>
-                  <ul className="list-unstyled">
-                    <li>
-                      <a href="/history#about" className="text-muted">
-                        {t('footer.columns.about.who')}
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/equipo" className="text-muted">
-                        {t('footer.columns.about.team')}
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/blog" className="text-muted">
-                        {t('footer.columns.about.blog')}
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="grid-col-12 grid-col-md-3">
-                  <h4 className="text-dark">{t('footer.columns.social.title')}</h4>
-                  <ul className="list-unstyled">
-                    <li>
-                      <Tooltip content={t('footer.columns.social.facebookTooltip')}>
-                        <a href={calmaFacebook} target="_blank" className="text-muted d-flex align-items-center">
-                          <Icon name="square-facebook" variant='brands' className="me-2" />
-                          {t('footer.columns.social.facebook')}
-                          <Icon name="arrow-up-right-from-square" className="ms-1" size="xs" />
-                        </a>
-                      </Tooltip>
-                    </li>
-                    <li>
-                      <Tooltip content={t('footer.columns.social.instagramTooltip')}>
-                        <a href={calmaInstagram} target="_blank" className="text-muted d-flex align-items-center">
-                          <Icon name="square-instagram" variant='brands' className="me-2" />
-                          {t('footer.columns.social.instagram')}
-                          <Icon name="arrow-up-right-from-square" className="ms-1" size="xs" />
-                        </a>
-                      </Tooltip>
-                    </li>
-                  </ul>
-                </div>
+                    </Tooltip>
+                  </li>
+                  <li className='w-100 '>
+                    <Icon name='envelope' className='me-2' />
+                    {email}
+                  </li>
+                </ul>
               </div>
+
+              <div>
+                <h5 className="text-dark fs-lead text-muted mb-5">{t('footer.columns.nav.title')}</h5>
+                <ul className="fs-medium list-unstyled list-bordered text-muted d-flex flex-direction-column gap-1 align-items-flex-start">
+                  <li className='w-100'>
+                    <a href="/cita" className="text-muted">
+                      {t('footer.columns.nav.book')}
+                    </a>
+                  </li>
+                  <li className='w-100'>
+                    <a href="/services" className="text-muted">
+                      {t('footer.columns.nav.services')}
+                    </a>
+                  </li>
+                  <li className='w-100'>
+                    <a href="/history" className="text-muted">
+                      {t('footer.columns.nav.history')}
+                    </a>
+                  </li>
+                  <li className='w-100'>
+                    <a href="/packages" className="text-muted">
+                      {t('footer.columns.nav.packages')}
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h5 className="text-dark fs-lead text-muted mb-5">{t('footer.columns.about.title')}</h5>
+                <ul className="list-unstyled fs-medium list-bordered text-muted d-flex flex-direction-column gap-1 align-items-flex-start">
+                  <li className='w-100'>
+                    <a href="/history#about" className="text-muted">
+                      {t('footer.columns.about.who')}
+                    </a>
+                  </li>
+                  <li className='w-100'>
+                    <a href="/equipo" className="text-muted">
+                      {t('footer.columns.about.team')}
+                    </a>
+                  </li>
+                  <li className='w-100'>
+                    <a href="/blog" className="text-muted">
+                      {t('footer.columns.about.blog')}
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h5 className="text-dark fs-lead text-muted mb-5">{t('footer.columns.social.title')}</h5>
+                <ul className="list-unstyled fs-medium list-bordered text-muted d-flex flex-direction-column gap-1 align-items-flex-start">
+                  <li className='w-100'>
+                    <Tooltip content={t('footer.columns.social.facebookTooltip')}>
+                      <a href={calmaFacebook} target="_blank" className="text-muted d-flex align-items-center">
+                        <Icon name="square-facebook" variant='brands' className="me-2" />
+                        {t('footer.columns.social.facebook')}
+                        <Icon name="arrow-up-right-from-square" className="ms-1" size="xs" />
+                      </a>
+                    </Tooltip>
+                  </li>
+                  <li className='w-100'>
+                    <Tooltip content={t('footer.columns.social.instagramTooltip')}>
+                      <a href={calmaInstagram} target="_blank" className="text-muted d-flex align-items-center">
+                        <Icon name="square-instagram" variant='brands' className="me-2" />
+                        {t('footer.columns.social.instagram')}
+                        <Icon name="arrow-up-right-from-square" className="ms-1" size="xs" />
+                      </a>
+                    </Tooltip>
+                  </li>
+                </ul>
+              </div>
+
             </div>
           </Fade>
 
           {/* Legal */}
-          <div className="grid border-top py-6">
-            <div className="grid-row justify-content-center align-items-center text-muted">
-              <div className="grid-col-12 text-center text-md-start grid-col-md-6">© {new Date().getFullYear()} {t('footer.legal.copyright')}</div>
-            </div>
+          <div className="border-top py-5">
+            <Fade className='d-flex flex-direction-column flex-direction-lg-row text-center text-lg-start gap-lg-2 align-items-center'>
+              <LogoCalma alt="Logo de Calma" className="wx-80 my-3 calma-logo-footer" />
+              <div className="mb-lg-2">
+                <p className="fs-medium fw-semibold mb-0">{t('footer.legal.copyright')}</p>
+                <p className="fs-medium text-muted mb-0 mt-1">{t('footer.legal.subtitle')}</p>
+              </div>
+            </Fade>
           </div>
         </div>
       </footer>
