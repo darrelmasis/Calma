@@ -8,7 +8,7 @@
   "author": "Darel Masis",
   "scripts": {
     "dev": "vite --host",
-    "preview": "npm run build && vite preview --host",
+    "preview": "vite preview --host",
     "generate:robots": "node ./scripts/generate-robots.js",
     "generate:humans": "node ./scripts/generate-humans.js",
     "generate:sitemap": "node ./scripts/generate-sitemap.js",
