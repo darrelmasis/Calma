@@ -38,8 +38,9 @@ h6 {
 body,
 p,
 li,
+a,
 .text-base {
-  @include mixin.font-size(regular);
+  @include mixin.font-size(regular, $fluid: true);
   font-weight: map.get(typo.$font-weights, regular);
 }
 
@@ -51,4 +52,8 @@ p {
 small,
 .small {
   @include mixin.font-size(small);
+}
+
+.fs-inherit {
+  font-size: inherit !important;
 }

@@ -21,7 +21,7 @@
   @each $name, $size in $sizes {
     .fs-#{'' + $name} {
       font-size: $size;
-      @if ($name == 'display-1') or ($name == 'display-2') {
+      @if ($name == 'display-1') or ($name == 'display-2') or($name == 'lead') {
         font-weight: fn.weight(light, typo.$font-weights);
       }
     }
