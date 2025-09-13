@@ -1,3 +1,6 @@
+@use '../mixins/mediaqueries' as mq;
+@use '../config/colors_map' as c;
+
 .network-status-offline,
 .network-status-online {
   width: 100%;
@@ -41,4 +44,23 @@ body .header {
 
 body.thinbar-open .header {
   padding-top: 34.39px; // Ajusta este valor según la altura de la barra
+}
+
+.card-title-hack {
+  @include mq.screen-between(lg, xl) {
+    font-size: 1.6rem;
+  }
+}
+
+.footer {
+  & .list-unstyled li {
+    min-height: 1.875rem;
+  }
+}
+
+.calma-logo-footer {
+  & > .logo-word,
+  & > .logo-sheets {
+    fill: c.$text-color-muted;
+  }
 }
