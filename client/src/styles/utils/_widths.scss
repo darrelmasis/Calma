@@ -1,0 +1,40 @@
+@use '../config/widths' as w;
+@use 'sass:map';
+@use '../config/breakpoints' as bp;
+@use '../mixins/mediaqueries' as mq;
+
+$classname: 'wx';
+
+// Generar clases responsivas
+@each $size-name, $size-value in w.$width-steps {
+  // Clases base mobile-first
+  .#{$classname}-#{$size-name} {
+    width: $size-value;
+  }
+
+  @each $bp-name, $bp-value in bp.$breakpoints {
+    @if $bp-name != 'xs' {
+      @include mq.screen(min, $bp-name) {
+        .#{$classname}-#{$bp-name}-#{$size-name} {
+          width: $size-value;
+        }
+      }
+    }
+  }
+}
+
+@each $size-name, $size-value in w.$max-width-steps {
+  .max-wx-#{$size-name} {
+    max-width: $size-value;
+  }
+
+  @each $bp-name, $bp-value in bp.$breakpoints {
+    @if $bp-name != 'xs' {
+      @include mq.screen(min, $bp-name) {
+        .max-wx-#{$bp-name}-#{$size-name} {
+          max-width: $size-value;
+        }
+      }
+    }
+  }
+}

@@ -6,6 +6,7 @@
 @forward 'typography';
 @forward 'animations';
 @forward 'responsiveImages';
+@forward 'widths';
 
 @use '../mixins/grid' as grid_mixins;
 @use '../mixins/spacing' as spacing_mixins;
