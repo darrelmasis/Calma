@@ -122,7 +122,7 @@ const FloatingButton = () => {
 
         <SoundWrapper sound={mainButtonSound} trigger='click' volume="0.5">
           <Button
-            className="floating-button-toggle rounded-circle main-button"
+            className="floating-button-toggle rounded-all-full main-button"
             variant='info'
             onClick={handleMainButtonClick}
             ariaLabel="Abrir burbujas de opciones"
