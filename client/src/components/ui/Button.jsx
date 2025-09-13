@@ -13,7 +13,8 @@ export const Button = ({
     name: null,
     variant: "regular",
     duotone: "regular",
-    position: "left",
+    position: "left", // 'left' | 'right' | 'both'
+    name_alt: null,   // nombre alterno para el ícono derecho
     size: "md"
   },
   label,
@@ -21,21 +22,23 @@ export const Button = ({
   className,
   autoFocus = false,
   type = 'button',
-  ariaLabel, // para accesibilidad, si el botón no tiene texto visible
+  ariaLabel,
   ...rest
 }) => {
   const hasChildren = React.Children.count(children) > 0
   const hasLabel = Boolean(label)
   const isIconOnly = !hasLabel && !hasChildren
 
-  // const iconMargin = hasLabel || hasChildren ? sizeToIconMargin[size] : ''
-  const iconComponent =
-    icon && typeof icon === 'object' && typeof icon.name === 'string'
-      ? <Icon className='btn-icon' name={icon.name} variant={icon.variant} duotone={icon.duotone} size={icon.size} />
-      : React.isValidElement(icon)
-        ? <span className='btn-icon'>{icon}</span>
-        : null
-
+  // Función para renderizar un ícono
+  const renderIcon = (iconName) => {
+    if (icon && typeof icon === 'object' && typeof iconName === 'string') {
+      return <Icon className='btn-icon' name={iconName} variant={icon.variant} duotone={icon.duotone} size={icon.size} />
+    }
+    if (React.isValidElement(icon)) {
+      return <span className='btn-icon'>{icon}</span>
+    }
+    return null
+  }
 
   const buttonClasses = classNames(
     'btn',
@@ -52,8 +55,7 @@ export const Button = ({
     if (!disabled && onClick) onClick(e)
   }
 
-  const iconPosition = icon && typeof icon === 'object' ? icon.position || 'left' : 'left';
-
+  const iconPosition = icon && typeof icon === 'object' ? icon.position || 'left' : 'left'
 
   return (
     <button
@@ -62,11 +64,17 @@ export const Button = ({
       className={buttonClasses}
       onClick={handleClick}
       autoFocus={autoFocus}
+      aria-label={ariaLabel || (isIconOnly ? icon?.name : undefined)}
       {...rest}
     >
-      {iconPosition === 'left' && iconComponent}
-      {hasChildren ? children : hasLabel && <span className="btnlabel">{label}</span>}
-      {iconPosition === 'right' && iconComponent}
+      {/* Icono izquierdo */}
+      {(iconPosition === 'left' || iconPosition === 'both') && renderIcon(icon.name)}
+
+      {/* Texto o children */}
+      {hasChildren ? children : hasLabel && <span className="btn-label">{label}</span>}
+
+      {/* Icono derecho */}
+      {(iconPosition === 'right' || iconPosition === 'both') && renderIcon(icon.name_alt)}
     </button>
   )
 }
