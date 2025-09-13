@@ -39,8 +39,8 @@ const Home = () => {
             <div className="grid-col-12 grid-col-md-6 grid-col-lg-4 text-center my-lg-0 mb-3 py-3 py-lg-0">
               <div className="card d-flex flex-direction-column align-items-center">
                 <Fade>
-                  <span className="card-icon border-primary border-1 p-3 rounded-all-full d-inline-flex align-items-center justify-content-center">
-                    <Icon name="heart" variant='duotones' duotone='regular' size='md' className="text-primary" />
+                  <span className="border-primary card-icon p-3 rounded-all-full d-inline-flex align-items-center justify-content-center">
+                    <Icon name="heart" variant='regular' size="lg" className="text-primary" />
                   </span>
                 </Fade>
                 <Fade>
@@ -58,8 +58,8 @@ const Home = () => {
             <div className="grid-col-12 grid-col-md-6 grid-col-lg-4 text-center my-lg-0 mb-3 py-3 py-lg-0">
               <div className="card d-flex flex-direction-column align-items-center">
                 <Fade>
-                  <span className="card-icon border-primary border-1 p-3 rounded-all-full d-inline-flex align-items-center justify-content-center">
-                    <Icon name="shield" variant='duotones' duotone='regular' size='md' className="text-primary" />
+                  <span className="border-primary card-icon p-3 rounded-all-full d-inline-flex align-items-center justify-content-center">
+                    <Icon name="shield" variant='regular' size="lg" className="text-primary" />
                   </span>
                 </Fade>
                 <Fade>
@@ -77,8 +77,8 @@ const Home = () => {
             <div className="grid-col-12 grid-col-md-12 grid-col-lg-4 text-center my-lg-0 mb-3 py-3 py-lg-0">
               <div className="card d-flex flex-direction-column align-items-center">
                 <Fade>
-                  <span className="card-icon p-3 rounded-all-full border-primary border-1 d-inline-flex align-items-center justify-content-center">
-                    <Icon name="users" variant='duotones' duotone='regular' size='md' className="text-primary" />
+                  <span className="border-primary card-icon p-3 rounded-all-full d-inline-flex align-items-center justify-content-center">
+                    <Icon name="users" variant='regular' size="lg" className="text-primary" />
                   </span>
                 </Fade>
                 <Fade>

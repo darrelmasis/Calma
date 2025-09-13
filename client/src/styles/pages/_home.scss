@@ -1,7 +1,10 @@
+@use '../config/colors' as c;
+@use '../functions/colors' as fn;
+@use 'sass:map';
+
 .card {
   &-icon {
-    background-color: #e3e1dc;
-    font-size: 1.5rem;
+    background-color: map.get(c.$golds, '50');
   }
 }
 
