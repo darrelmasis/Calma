@@ -12,22 +12,45 @@ export const sounds = {
 
 // ---------------------------
 // Hook para reproducir sonidos manualmente
-export const useSound = (sound = "bell", volume = 0.2) => {
-  const soundInstance = useRef(null);
+export const useSound = (
+  sound = "bell",
+  volume = 0.2,
+  route = null,
+  matchType = "except"
+) => {
+  const location = useLocation();
+  const lastTriggerTime = useRef(0);
 
-  if (!soundInstance.current && sounds[sound]) {
-    soundInstance.current = new Howl({ src: sounds[sound], volume, preload: true });
-  }
+  const soundInstance = useMemo(() => {
+    if (!sounds[sound]) {
+      console.warn(`⚠️ El sonido "${sound}" no existe.`);
+      return null;
+    }
+    return new Howl({ src: sounds[sound], volume, preload: true });
+  }, [sound, volume]);
 
   const play = () => {
-    if (soundInstance.current) {
-      soundInstance.current.stop();
-      soundInstance.current.play();
+    const now = Date.now();
+    if (now - lastTriggerTime.current < 300) return; // evita doble disparo
+    lastTriggerTime.current = now;
+
+    if (!soundInstance) return;
+
+    const isMatch = location.pathname === route;
+    const shouldPlay =
+      route === null ||
+      (matchType === "only" && isMatch) ||
+      (matchType === "except" && !isMatch);
+
+    if (shouldPlay) {
+      soundInstance.stop();
+      soundInstance.play();
     }
   };
 
   return { play };
 };
+
 
 // ---------------------------
 // Componente para triggers automáticos
@@ -57,7 +80,7 @@ export const SoundWrapper = forwardRef(
 
     // 🔹 Handlers según trigger
     let eventHandlers = {};
-    if (trigger === "click") eventHandlers = { onClick: playSound};
+    if (trigger === "click") eventHandlers = { onClick: playSound };
     else if (trigger === "hover") eventHandlers = { onMouseEnter: playSound };
     else if (trigger === "focus") eventHandlers = { onFocus: playSound };
 
