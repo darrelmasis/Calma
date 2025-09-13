@@ -20,6 +20,10 @@
       "dest": "/client/manifest.webmanifest"
     },
     {
+      "src": "/favicon.ico",
+      "dest": "/client/favicon.ico"
+    },
+    {
       "src": "/api/booking/send-mail",
       "methods": ["POST"],
       "dest": "/server/src/api/booking-send-mail.js"
@@ -39,6 +43,10 @@
     {
       "src": "/sitemap.xml",
       "dest": "/client/sitemap.xml"
+    },
+    {
+      "src": "/humans.txt",
+      "dest": "/client/humans.txt"
     },
     {
       "src": "/(.*)",
