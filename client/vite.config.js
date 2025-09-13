@@ -14,12 +14,17 @@ export default defineConfig({
     svgr({ svgrOptions: { icon: true } }),
     VitePWA({
       registerType: 'autoUpdate',
+      injectRegister: 'auto',
       includeAssets: [
         '/favicon.ico',
-        '/images/jpg/*',
-        '/images/webp/*',
-        '/images/pwa/*',
-        '/sounds/*'
+        '/favicon.png',
+        '/logo-calma.svg',
+        '/robots.txt',
+        '/sitemap.xml',
+        '/sounds/bell.mp3',
+        '/sounds/bell.ogg',
+        '/sounds/open-pops.ogg',
+        '/sounds/close-pops.ogg'
       ],
       manifest: {
         "name": process.env.VITE_CALMA_NAME,
@@ -134,21 +139,26 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,xml,png,jpg,jpeg,svg,gif,woff2,json,ttf,ico,mp3,ogg,webp}'],
         runtimeCaching: [
           {
-            urlPattern: /^https:\/\/.*\.(?:png|jpg|jpeg|svg|gif|webp)$/,
+            urlPattern: /^https?:\/\/.*\.(?:png|jpg|jpeg|svg|gif|webp)$/,
             handler: 'CacheFirst',
             options: { cacheName: 'images-cache' }
           },
           {
-            urlPattern: /^https:\/\/.*\.json$/,
+            urlPattern: /^https?:\/\/.*\.json$/,
             handler: 'NetworkFirst',
             options: { cacheName: 'api-cache' }
+          },
+          {
+            urlPattern: ({ request }) => request.destination === 'image',
+            handler: 'CacheFirst',
+            options: { cacheName: 'images-cache' }
           }
         ]
       }
 
     })
   ],
-  base: './',
+  base: '/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -165,18 +175,19 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     emptyOutDir: true,
-    base: process.env.NODE_ENV === 'production' ? '/' : '/',
     sourcemap: false,
     cssCodeSplit: true,
     rollupOptions: {
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
-            return id
-              .toString()
-              .split('node_modules/')[1]
-              .split('/')[0]
-              .toString()
+            if (id.includes('react') || id.includes('react-dom')) {
+              return 'react-vendor';
+            }
+            if (id.includes('lodash') || id.includes('date-fns')) {
+              return 'utils-vendor';
+            }
+            return 'vendor';
           }
         },
       },
