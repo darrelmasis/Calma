@@ -6,7 +6,6 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  display: flex;
   align-items: center;
 
   li {
@@ -19,20 +18,28 @@
   &-unstyled {
     list-style: none;
     padding-left: 0;
+    text-align: inherit;
 
     li {
       margin-bottom: 0.5rem;
       display: flex;
       margin-bottom: 1rem;
       align-items: center;
+      font-size: inherit;
+      text-align: inherit;
 
       & a {
         text-decoration: none;
+        font-size: inherit;
 
         &:hover {
           text-decoration: underline;
           // color: clr.adjust(color.$primary, $lightness: -20%);
         }
+      }
+
+      & .list-element-wrapper {
+        text-align: inherit;
       }
     }
   }
