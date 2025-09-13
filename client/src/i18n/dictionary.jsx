@@ -1,3 +1,17 @@
+
+
+const currentYear = new Date().getFullYear();
+const copyrightName = import.meta.env.VITE_CALMA_NAME;
+const authors = import.meta.env.VITE_CALMA_AUTHOR;
+
+
+const copyrightEs = `© ${currentYear} • ${copyrightName} • Todos los derechos reservados.`;
+const copyrightEn = `© ${currentYear} • ${copyrightName} • All rights reserved.`;
+
+const authorsEs = `Con Mucho Cariño, ${authors}`;
+const authorsEn = `Much Love, ${authors}`;
+
+
 export const dictionary = {
   es: {
     header: {
@@ -48,11 +62,9 @@ export const dictionary = {
         }
       },
       legal: {
-        copyright: 'Todos los derechos reservados',
-        privacy: 'Política de privacidad',
-        privacyTooltip: 'Ver política de privacidad',
-        terms: 'Términos y condiciones',
-        termsTooltip: 'Ver Términos y condiciones'
+        copyright: copyrightEs,
+        subtitle: authorsEs
+
       }
     },
     home: {
@@ -69,9 +81,9 @@ export const dictionary = {
         title: '¿Porque Elegir Calma?',
         description: 'Nuestro enfoque holístico nos distingue',
         points: {
-          p1: { title: 'Atención personalizada', description: 'Cada cliente recibe un tratamiento único adaptado a sus necesidades específicas' },
-          p2: { title: 'Ambiente Seguro', description: 'Creamos un entorno acogedor y seguro para que te sientas cómodo y relajado' },
-          p3: { title: 'Expertos Certificados', description: 'Nuestro equipo cuenta con amplia experiencia y formación especializada' },
+          p1: { title: 'Atención personalizada', description: 'Cada cliente recibe un tratamiento único adaptado a sus necesidades' },
+          p2: { title: 'Ambiente Seguro', description: 'Creamos un entorno acogedor y seguro para que te sientas cómodo' },
+          p3: { title: 'Personal Experto', description: 'Nuestro equipo cuenta con amplia experiencia y formación especializada' },
         }
       },
       section_3: {
@@ -434,11 +446,8 @@ export const dictionary = {
         }
       },
       legal: {
-        copyright: 'All rights reserved',
-        privacy: 'Privacy Policy',
-        privacyTooltip: 'View privacy policy',
-        terms: 'Terms & Conditions', // Ampersand común en legales
-        termsTooltip: 'View Terms & Conditions'
+        copyright: copyrightEn,
+        subtitle: authorsEn
       }
     },
     home: {
@@ -455,9 +464,9 @@ export const dictionary = {
         title: 'Why Choose Calma?',
         description: 'Our holistic approach sets us apart',
         points: {
-          p1: { title: 'Personalized Care', description: 'Every client receives a unique treatment tailored to their specific needs' },
-          p2: { title: 'Safe Environment', description: 'We create a welcoming, safe space so you feel comfortable and relaxed' },
-          p3: { title: 'Certified Experts', description: 'Our team has extensive experience and specialized training' },
+          p1: { title: 'Personalized Care', description: 'Each client receives a unique treatment tailored to their needs' },
+          p2: { title: 'Safe Environment', description: 'We create a welcoming, safe space so you feel comfortable' },
+          p3: { title: 'Experienced staff', description: 'Our team has extensive experience and specialized training' },
         }
       },
       section_3: {
