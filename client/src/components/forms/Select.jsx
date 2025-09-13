@@ -3,7 +3,6 @@ import classNames from 'classnames'
 import { Button } from '../ui/Button'
 
 export const Select = ({
-  label,
   options = [],
   value,
   onChange,
@@ -37,51 +36,51 @@ export const Select = ({
   }, [])
 
   return (
-    <div className={classNames('form-group', className)} ref={selectRef}>
-      {label && <label className="form-label">{label}</label>}
-      <div
-        className={classNames('custom-select', {
-          'is-open': isOpen,
-          'is-disabled': disabled,
-          'has-error': error,
-        })}
-        onClick={toggleDropdown}
-      >
-        <Button
-          variant='primary'
-          ariaLabel="Cambiar de Idioma"
-          ghost={true}
-          label={selectedOption ? selectedOption.label : placeholder}
-          icon={
-            {
-              name: 'earth-americas',
-              size: "sm",
-              variant: "duotones",
-              duotone: "regular"
-            }
+    <div
+      className={classNames('custom-select', {
+        'is-open': isOpen,
+        'is-disabled': disabled,
+        'has-error': error,
+      }, className)}
+      onClick={toggleDropdown}
+      ref={selectRef}
+    >
+      <Button
+        variant='primary'
+        className={'custom-select-button justify-content-space-between'}
+        ariaLabel="Cambiar de Idioma"
+        ghost={true}
+        label={selectedOption ? selectedOption.label : placeholder}
+        icon={
+          {
+            name: 'earth-americas',
+            name_alt: 'angles-up-down',
+            position: 'both',
+            size: "sm",
+            variant: "duotones",
+            duotone: "regular"
           }
-        />
+        }
+      />
 
-        {isOpen && (
-          <ul className="custom-select__list border text-dark">
-            {options.map((opt) => (
-              <li
-                key={opt.value}
-                className={classNames('custom-select__option', {
-                  'is-selected': opt.value === value,
-                })}
-                onClick={(e) => {
-                  e.stopPropagation() // Evita que el clic cierre el menú antes de seleccionar
-                  handleSelect(opt.value)
-                }}
-              >
-                {opt.label}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-      {error && <span className="form-error">{error}</span>}
+      {isOpen && (
+        <ul className="custom-select-list border text-dark px-0 py-3 m-0 d-flex flex-direction-column rounded-all-sm">
+          {options.map((opt) => (
+            <li
+              key={opt.value}
+              className={classNames('custom-select-list-option', {
+                'is-selected': opt.value === value,
+              })}
+              onClick={(e) => {
+                e.stopPropagation() // Evita que el clic cierre el menú antes de seleccionar
+                handleSelect(opt.value)
+              }}
+            >
+              {opt.label}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   )
 }
