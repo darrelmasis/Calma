@@ -191,6 +191,7 @@ export default defineConfig(({ mode }) => (
       },
     },
     build: {
+      chunkSizeWarningLimit: 2000,
       minify: mode === 'production' ? 'terser' : false, // Usar 'terser' para producción, false para desarrollo
       terserOptions: {
         format: mode === 'production' ? { comments: false } : { comments: true }, // Mantener comentarios en desarrollo
