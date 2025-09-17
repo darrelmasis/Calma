@@ -16,29 +16,30 @@
 */
 
 $light-theme-colors: (
-  'primary': #7d653e,
+  'primary': fn.getColor(c.$golds, '500'),
   // golds-500 ajustado
   'secondary': fn.getColor(c.$wines, '500'),
   // no tocado, ya cumple contraste
-  'tertiary': #8f448f,
+  'tertiary': fn.getColor(c.$purples, '500'),
   // purples-500 ajustado
-  'danger': #d04646,
+  'danger': fn.getColor(c.$reds, '500'),
   // reds-500 ajustado
-  'warning': #d18a3d,
+  'warning': fn.getColor(c.$yellows, '300'),
   // yellows-300 ahora usable como warning
-  'success': #12855a,
+  'success': fn.getColor(c.$greens, '500'),
   // greens-500 ajustado
   'info': fn.getColor(c.$blues, '500'),
   // cumple contraste
-  'light': #647983,
+  'light': fn.getColor(c.$grays, '500'),
   // grays-500 ajustado
   'dark': fn.getColor(c.$darks, '900'),
   'text-color': fn.getColor(c.$grays, '900'),
   'text-color-muted': fn.getColor(c.$grays, '700'),
-  'body-bg': fn.getColor(c.$grays, '50'),
+  'body-bg': fn.getColor(c.$lights, '50'),
+  'body-bg-alt': fn.getColor(c.$neutrals, '50'),
   'border-color': fn.getColor(c.$grays, '100'),
-  'container-bg': fn.getColor(c.$neutrals, '50'),
-  'white': fn.getColor(c.$neutrals, '50'),
+  'container-bg': fn.getColor(c.$neutrals, '0'),
+  'white': fn.getColor(c.$neutrals, '0'),
 );
 
 $primary: fn.getColor($light-theme-colors, 'primary'); // Color corporativo usado en botones principales
@@ -53,6 +54,7 @@ $dark: fn.getColor($light-theme-colors, 'dark');
 $text-color: fn.getColor($light-theme-colors, 'text-color');
 $text-color-muted: fn.getColor($light-theme-colors, 'text-color-muted');
 $body-bg: fn.getColor($light-theme-colors, 'body-bg');
+$body-bg-alt: fn.getColor($light-theme-colors, 'body-bg-alt');
 $border-color: fn.getColor($light-theme-colors, 'border-color');
 $container-bg: fn.getColor($light-theme-colors, 'container-bg');
 
