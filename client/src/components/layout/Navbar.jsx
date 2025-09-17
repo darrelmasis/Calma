@@ -9,12 +9,15 @@ import { Icon } from '../commons/Icons'
 import classNames from 'classnames'
 import { useMediaQuery } from '../../hooks/useMediaQuery'
 import { CSSTransition } from 'react-transition-group'
-import { SoundWrapper } from '../commons/SoundManager'
 import { useOfflineStatus } from '../../hooks/useOfflineStatus'
+import { useSelectedServices } from '../../hooks/useSelectedService'
+import { Dropdown, DropdownTrigger, DropdownContent } from '../ui/Dropdown'
+import { ReadMore } from '../ui/ReadMore'
 
 
 const NavbarCTA = ({ onClick, className }) => {
   const { t } = useLang()
+  const { totalServices } = useSelectedServices()
 
   const classes = classNames(className)
 
@@ -23,15 +26,14 @@ const NavbarCTA = ({ onClick, className }) => {
       onClick={onClick}
       variant="primary"
       className={classes}
-      icon={
-        {
-          name: "bell-concierge",
-          position: "left",
-          variant: "regular",
-        }
-      }
+      icon={[{ name: "calendar-check", position: "left", variant: "regular" }]}
       ariaLabel="Reservar cita"
-      label={t('header.headerButton.book')}
+      label={
+        <>
+          {t('header.headerButton.book')}
+          <span className='ms-2'>{`(${totalServices})`}</span>
+        </>
+      }
     />
   )
 }
@@ -42,7 +44,7 @@ const MenuControlBtn = ({ isMenuOpen, handleCloseMenu, handleOpenMenu }) => {
 
     <Button
       variant="primary"
-      className='navbar-toggle-btn'
+      className='navbar-toggle-btn border-0'
       icon={
         {
           name: isMenuOpen ? 'xmark' : 'bars',
@@ -68,6 +70,7 @@ export const Navbar = () => {
   const prevPath = useRef(location.pathname);
   const [CTAClicked, setCTAClicked] = useState(false);
   const isOffline = useOfflineStatus()
+  const { totalServices, services, clearServices, removeService } = useSelectedServices()
 
 
   const navLinks = [
@@ -139,7 +142,7 @@ export const Navbar = () => {
                 <Button
                   variant='initial'
                   size='medium'
-                  className="p-0 m-0 rounded-circle navbar-brand-btn"
+                  className="p-0 m-0 rounded-circle navbar-brand-btn border-0"
                   ariaLabel="Logo de calma | Inicio"
                   onClick={handleLogoClick}
                 >
@@ -227,121 +230,189 @@ export const Navbar = () => {
 
                 }
                 < li >
-                  <SoundWrapper
+                  {/* <SoundWrapper
                     route={'/booking'}
                     matchType='except'
                     sound='bell'
                     trigger='click'>
                     <NavbarCTA onClick={handleCTAClick} className={classNames({ 'bounce-animation': CTAClicked }, 'navbar-desktop-cta-button')} />
-                  </SoundWrapper>
+                  </SoundWrapper> */}
+                  <Dropdown>
+                    <DropdownTrigger>
+                      <div className='navbar-dropdown-info'>
+                        {/* <div className="navbar-dropdown-info-wrapper d-flex align-items-center">
+                          <Icon name="bag-shopping" size='lg' />
+                          {
+                            totalServices > 0 && (
+                              <p className='ms-1 text-white my-0 bg-danger-400 rounded fs-xsmall navbar-dropdown-info-label fw-semibold text-center'>{totalServices}</p>
+                            )
+                          }
+                        </div>
+                        <Icon name="chevron-down" /> */}
+                        <Button variant='basic' className="position-relative rounded-pill-md" icon={[
+                          { name: "calendar-check", variant: "regular", position: "left" },
+                          { name: "chevron-down", variant: "regular", position: "right" }
+                        ]}>
+                          <div className='possition-relative'>
+                            <span className='me-4s'>Agendar</span>
+                            {totalServices > 0 && (
+                              <span className='fs-small text-white navbar-dropdown-badge bg-danger-400 position-absolute fw-bold'>
+                                <span>{totalServices}</span>
+                              </span>
+                            )}
+                          </div>
+                        </Button>
+                      </div>
+
+                    </DropdownTrigger>
+                    <DropdownContent>
+                      <div className="navbar-dropdown-wrapper">
+                        {totalServices === 0 && <p className='fs-h6 text-center text-muted'>No hay servicios seleccionados</p>}
+                        {
+                          <>
+                            <div className="navbar-dropdown-services-added scrollbar-thin">
+                              {
+                                Object.entries(services).map(([category, items]) => (
+                                  <div key={category}>
+                                    <div className='mb-3 fs-h6'>{category}</div>
+                                    <ul className='navbar-dropdown-service-list mb-3'>
+                                      {items.map((service) => (
+                                        <li className='navbar-dropdown-service-item rounded-all-sm d-flex align-items-center justify-content-space-between fs-small ' key={service.name}>
+                                          <span className='me-2 d-flex align-items-center gap-1'>
+                                            <span>{service.name}</span>
+                                          </span>
+                                          <Button icon='trash-can' size='small' ghost variant='danger' onClick={() => removeService(category, service.name)} />
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                ))
+                              }
+                            </div>
+                            {
+                              totalServices > 0 && (
+                                <div className='navbar-dropdown-actions d-flex flex-column justify-content-space-between'>
+                                  <Button size='medium' icon="broom-wide" variant='basic' onClick={clearServices}>Limpiar</Button>
+                                  <Button size='medium' icon="calendar-check" variant='dark' onClick={clearServices}>Agendar</Button>
+                                </div>
+                              )
+                            }
+                          </>
+                        }
+                      </div>
+                    </DropdownContent>
+                  </Dropdown>
                 </li>
               </ul>
             </div>
           </div>
         </div>
-      )}
+      )
+      }
 
       {/* Menú móvil */}
-      {!isDesktop && (
-        <div className='navbar-mobile d-flex d-xl-none justify-content-center'>
-          <div className="container d-flex">
-            {/* Logotipo de Calma */}
-            <div className="navbar-brand">
-              <Tooltip content={t('header.links.logoTooltip')} placement="bottom">
-                <Button
-                  variant='initial'
-                  size='medium'
-                  className="p-0 m-0 rounded-circle navbar-brand-btn"
-                  ariaLabel="Logo de calma | Inicio"
-                  onClick={handleLogoClick}
-                >
-                  <LogoCalma className="navbar-brand-logo" />
-                </Button>
-              </Tooltip>
-            </div>
-            <div className="navbar-mobile-ghost"></div> {/* Se utiliza para completar el área del lado izquierdo del menú, para que el logo quede en el centro */}
+      {
+        !isDesktop && (
+          <div className='navbar-mobile d-flex d-xl-none justify-content-center'>
+            <div className="container d-flex">
+              {/* Logotipo de Calma */}
+              <div className="navbar-brand">
+                <Tooltip content={t('header.links.logoTooltip')} placement="bottom">
+                  <Button
+                    variant='initial'
+                    size='medium'
+                    className="p-0 m-0 rounded-circle navbar-brand-btn border-0"
+                    ariaLabel="Logo de calma | Inicio"
+                    onClick={handleLogoClick}
+                  >
+                    <LogoCalma className="navbar-brand-logo" />
+                  </Button>
+                </Tooltip>
+              </div>
+              <div className="navbar-mobile-ghost"></div> {/* Se utiliza para completar el área del lado izquierdo del menú, para que el logo quede en el centro */}
 
 
-            {/* Controles móviles */}
-            <div className="navbar-mobile-controls">
-              <MenuControlBtn isMenuOpen={isMenuOpen} handleCloseMenu={handleCloseMenu} handleOpenMenu={handleOpenMenu} />
-            </div>
+              {/* Controles móviles */}
+              <div className="navbar-mobile-controls">
+                <MenuControlBtn isMenuOpen={isMenuOpen} handleCloseMenu={handleCloseMenu} handleOpenMenu={handleOpenMenu} />
+              </div>
 
-            {/* Overlay */}
+              {/* Overlay */}
 
 
 
-            <CSSTransition in={isMenuOpen} timeout={300} classNames='navbar-mobile-overlay' unmountOnExit nodeRef={overlayRef}>
-              <div ref={overlayRef} className="navbar-mobile-overlay" onClick={handleCloseMenu} />
-            </CSSTransition>
+              <CSSTransition in={isMenuOpen} timeout={300} classNames='navbar-mobile-overlay' unmountOnExit nodeRef={overlayRef}>
+                <div ref={overlayRef} className="navbar-mobile-overlay" onClick={handleCloseMenu} />
+              </CSSTransition>
 
-            <CSSTransition in={isMenuOpen} timeout={300} classNames='navbar-mobile-content' unmountOnExit nodeRef={contentRef}>
+              <CSSTransition in={isMenuOpen} timeout={300} classNames='navbar-mobile-content' unmountOnExit nodeRef={contentRef}>
 
-              <div ref={contentRef} className="navbar-mobile-content" >
-                <div className="container px-5">
-                  <div className="navbar-mobile-content-controls container px-0 border-bottom py-3 mb-3">
+                <div ref={contentRef} className="navbar-mobile-content" >
+                  <div className="container px-5">
+                    <div className="navbar-mobile-content-controls container px-0 border-bottom py-3 mb-3">
 
-                    <LanguageSwitcher />
+                      <LanguageSwitcher />
 
-                    <MenuControlBtn isMenuOpen={isMenuOpen} handleCloseMenu={handleCloseMenu} handleOpenMenu={handleOpenMenu} />
-                  </div>
+                      <MenuControlBtn isMenuOpen={isMenuOpen} handleCloseMenu={handleCloseMenu} handleOpenMenu={handleOpenMenu} />
+                    </div>
 
-                  <div className="navbar-mobile-content-links border-top border-bottom pb-3">
-                    <ul className='navbar-links'>
-                      {
-                        navLinks.map(link => {
-                          const isActive = link.path === location.pathname
-                          const activeClass = classNames({ 'active': isActive })
-                          return (
-                            <li key={link.path} className={activeClass}>
-                              <NavLink
-                                className='navbar-link'
-                                to={link.path}
-                                onClick={() => handleLinkClick(link.path)}>
-                                {link.icon && (
-                                  <Icon
-                                    name={link.icon}
-                                    className="me-2"
-                                    duotone="regular"
-                                    variant={isActive ? 'duotones' : 'regular'}
-                                  />
-                                )}
-                                <span className='navbar-link-label'>
-                                  {link.label}
-                                </span>
-                              </NavLink>
-                            </li>
-                          )
+                    <div className="navbar-mobile-content-links border-top border-bottom pb-3">
+                      <ul className='navbar-links'>
+                        {
+                          navLinks.map(link => {
+                            const isActive = link.path === location.pathname
+                            const activeClass = classNames({ 'active': isActive })
+                            return (
+                              <li key={link.path} className={activeClass}>
+                                <NavLink
+                                  className='navbar-link'
+                                  to={link.path}
+                                  onClick={() => handleLinkClick(link.path)}>
+                                  {link.icon && (
+                                    <Icon
+                                      name={link.icon}
+                                      className="me-2"
+                                      duotone="regular"
+                                      variant={isActive ? 'duotones' : 'regular'}
+                                    />
+                                  )}
+                                  <span className='navbar-link-label'>
+                                    {link.label}
+                                  </span>
+                                </NavLink>
+                              </li>
+                            )
 
-                        })
+                          })
 
-                      }
-                    </ul>
-                  </div>
+                        }
+                      </ul>
+                    </div>
 
-                  <div className="navbar-mobile-content-cta">
-                    <SoundWrapper
-                      route={'/booking'}
-                      matchType='except'
-                      sound='bell'
-                      trigger='click'>
+                    <div className="navbar-mobile-content-cta">
+                      {/* <SoundWrapper
+                        route={'/booking'}
+                        matchType='except'
+                        sound='bell'
+                        trigger='click'> */}
 
 
                       <NavbarCTA onClick={handleCTAClick} className={classNames({ 'bounce-animation': CTAClicked }, 'w-100', 'navbar-mobile-content-cta-button')} />
-                    </SoundWrapper>
+                      {/* </SoundWrapper> */}
+                    </div>
                   </div>
+
                 </div>
 
-              </div>
-
-            </CSSTransition>
+              </CSSTransition>
 
 
 
-          </div>
+            </div>
 
-        </div >
-      )}
+          </div >
+        )
+      }
     </nav >
   )
 }
