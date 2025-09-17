@@ -1,0 +1,50 @@
+@use '../mixins/mediaqueries' as mq;
+
+.horizontal-scroll {
+  position: relative;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+
+  .scroll-container {
+    display: flex;
+    gap: 0.5rem; // o el gap que quieras
+    overflow-x: auto;
+    scroll-behavior: smooth; // animación al hacer snap
+    scrollbar-width: none; // Firefox
+    -ms-overflow-style: none; // IE/Edge
+    &::-webkit-scrollbar {
+      display: none; // Chrome, Safari
+    }
+
+    scroll-snap-type: x proximity; // activa snap horizontal
+  }
+
+  .scroll-container > * {
+    scroll-snap-align: center; // cada hijo se ajusta al inicio
+    // flex: 0 0 auto; // evitar que se encoja
+    @include mq.screen(max, md) {
+      min-width: 12rem;
+      padding: 1rem;
+    }
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2rem;
+    pointer-events: none;
+    z-index: 2;
+
+    &.left {
+      left: 0;
+      background: linear-gradient(to right, rgba(255, 255, 255, 0.9), transparent);
+    }
+
+    &.right {
+      right: 0;
+      background: linear-gradient(to left, rgba(255, 255, 255, 0.9), transparent);
+    }
+  }
+}
