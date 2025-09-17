@@ -19,25 +19,9 @@ export const Tabs = ({ tabs }) => {
 
   return (
     <div className="grid">
-      <div className="grid-row  gap-lg-3">
-        {/* Encabezado arriba */}
-        <div className="grid-col-12 grid-col-lg-10 grid-offset-lg-3 d-flex flex-direction-column align-items-center justify-content-center">
-          <Fade>
-            <h1 className="fs-4 text-primary text-center">
-              {t('services.section_1.title')}
-            </h1>
-          </Fade>
-          <Fade>
-            <p className='text-center text-muted mw-500'>
-              {t('services.section_1.description')}
-            </p>
-          </Fade>
-        </div>
-      </div>
-
       {/* Fila con sidebar + cards */}
-      <div className="grid-row gap-lg-3 mt-4">
-        <div className="grid-col-12 grid-col-lg-2">
+      <div className="grid-row gap-md-2 mt-4">
+        <div className="grid-col-12 grid-col-xl-2">
           <SidebarMenuTabs
             tabs={tabs}
             activeTab={activeTab}
@@ -45,7 +29,7 @@ export const Tabs = ({ tabs }) => {
             viewAllButtonText={viewAllButtonText}
           />
         </div>
-        <div className="grid-col-12 grid-col-lg-10">
+        <div className="grid-col-12 grid-col-xl-10 grid-row gap-2">
           <TabsCards tabs={tabs} activeTab={activeTab} />
         </div>
       </div>
