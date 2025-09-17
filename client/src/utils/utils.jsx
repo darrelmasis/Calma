@@ -1,3 +1,4 @@
+import classNames from 'classnames'
 import { useState, useEffect } from 'react'
 
 const usePageTitle = pageTitle => {
@@ -21,9 +22,11 @@ const formatPhone = (phone) => {
   return `${match[1]} ${match[2]} ${match[3]}`;
 };
 
-const USD = ({ amount, currencySymbol }) => {
+const USD = ({ amount, currencySymbol, className }) => {
 
   const [isvalidNumber, setIsvalidNumber] = useState(false);
+
+  const classes = classNames('me-1', className)
 
   useEffect(() => {
     if (isNaN(amount)) {
@@ -49,8 +52,8 @@ const USD = ({ amount, currencySymbol }) => {
         isvalidNumber
           ? '-'
           : <>
-            <span className='me-1'>{currencySymbol}</span>
-            {entero}
+            <span className={classes}>{currencySymbol}</span>
+            <span className='fw-semibold'>{entero}</span>
             <sup className='small text-dark'>.{decimal}</sup>
           </>
       }
