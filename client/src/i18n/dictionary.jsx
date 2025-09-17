@@ -252,8 +252,8 @@ export const dictionary = {
                 services: {
                   limpieza: { name: 'Limpieza', description: 'Limpieza básica de uñas' },
                   decoracion: { name: 'Decoración', description: 'Decoración personalizada de uñas' },
-                  gelCalcio: { name: 'Gel Calcio', description: 'Aplicación de gel de calcio' },
-                  extensionCalcio: { name: 'Extensión Calcio', description: 'Extensión de uñas con gel de calcio' },
+                  gelCalcio: { name: 'Gel Calcio', description: 'Aplicación de gel calcio' },
+                  extensionCalcio: { name: 'Extensión Calcio', description: 'Extensión de uñas con gel calcio' },
                   gelFrio: { name: 'Gel Frío', description: 'Aplicación de gel frío' },
                   topGelFrio: { name: 'Top Gel Frío', description: 'Capa superior de gel frío' },
                   parafina: { name: 'Parafina', description: 'Tratamiento de parafina' },
@@ -276,8 +276,8 @@ export const dictionary = {
                 name: 'Cejas y Pestañas',
                 services: {
                   laminacionCejas: { name: 'Laminación Cejas', description: 'Tratamiento de laminación de cejas' },
-                  laminacionDiseno: { name: 'Laminación y Diseño', description: 'Laminación, diseño de cejas' },
-                  laminacionTinte: { name: 'Laminación y Tinte', description: 'Laminación, tinte de cejas' },
+                  laminacionDiseno: { name: 'Laminación y Diseño', description: 'Laminación + diseño de cejas' },
+                  laminacionTinte: { name: 'Laminación y Tinte', description: 'Laminación + tinte de cejas' },
                   tinteCejas: { name: 'Tinte de Cejas', description: 'Aplicación de tinte en cejas' },
                   levantamientoPestanas: { name: 'Levantamiento de Pestañas', description: 'Levantamiento de pestañas natural' },
                   extensionPestanas: { name: 'Extensión de Pestañas', description: 'Aplicación de extensión de pestañas' }
@@ -635,8 +635,8 @@ export const dictionary = {
                   parafina: { name: 'Paraffin', description: 'Paraffin treatment' },
                   botasTermicas: { name: 'Thermal Boots', description: 'Thermal boot treatment' },
                   guantesHidratantes: { name: 'Moisturizing Gloves', description: 'Hydrating glove treatment' },
-                  esmalteRegular: { name: 'Regular Polish', description: 'Regular nail polish' },
-                  esmalteGel: { name: 'Gel Polish', description: 'Gel polish' },
+                  esmalteRegular: { name: 'Regular Polish', description: 'Regular nail polish application' },
+                  esmalteGel: { name: 'Gel Polish', description: 'Gel polish application' },
                   reparacionUñas: { name: 'Nail Repair', description: 'Nail repair' },
                   uñasExtraAcrilico: { name: 'Extra Acrylic Nails', description: 'Additional acrylic nails' },
                   retiroGel: { name: 'Gel Removal', description: 'Gel polish removal' },
@@ -652,8 +652,8 @@ export const dictionary = {
                 name: 'Eyebrows & Lashes',
                 services: {
                   laminacionCejas: { name: 'Brow Lamination', description: 'Eyebrow lamination treatment' },
-                  laminacionDiseno: { name: 'Design Lamination', description: 'Eyebrow design lamination' },
-                  laminacionTinte: { name: 'Tint Lamination', description: 'Eyebrow lamination with tint' },
+                  laminacionDiseno: { name: 'Design Lamination', description: 'Eyebrow design  + lamination' },
+                  laminacionTinte: { name: 'Tint Lamination', description: 'Eyebrow lamination + tint' },
                   tinteCejas: { name: 'Eyebrow Tint', description: 'Eyebrow tinting' },
                   levantamientoPestanas: { name: 'Lash Lift', description: 'Eyelash lifting' },
                   extensionPestanas: { name: 'Lash Extensions', description: 'Eyelash extensions' }
