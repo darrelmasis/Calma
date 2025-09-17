@@ -10,7 +10,7 @@ h4,
 h5,
 h6 {
   font-family: typo.$font-family-heading;
-  font-weight: map.get(typo.$font-weights, black);
+  font-weight: map.get(typo.$font-weights, bold);
   line-height: typo.$title-line-height;
   margin-bottom: 0.5rem;
 }
