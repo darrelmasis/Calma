@@ -1,6 +1,8 @@
 @use '../config/borders' as borders;
 @use '../mixins/borders' as borders_mixins;
 @use '../config/colors_map' as c;
+@use '../config/breakpoints' as bp;
+@use '../mixins/mediaqueries' as mq;
 @use 'sass:map';
 
 $borders-directions: top, right, bottom, left, all, none;
@@ -21,9 +23,20 @@ $border-style-colors: (
 $border-style: borders.$border-width borders.$border-style var(--border-color);
 
 // Generador de clases border-n
+// Generador responsive de border-width
 @each $step, $size in borders.$border-widths-steps {
+  // Clase base (mobile first)
   .border-#{$step} {
     border-width: $size !important;
+  }
+
+  // Clases responsive por breakpoint
+  @each $bp-name, $bp-size in bp.$breakpoints {
+    @include mq.screen(min, $bp-name) {
+      .border-#{$bp-name}-#{$step} {
+        border-width: $size !important;
+      }
+    }
   }
 }
 
@@ -51,8 +64,8 @@ $border-style: borders.$border-width borders.$border-style var(--border-color);
 // -------------------------------
 @each $direction in $borders-directions {
   @each $color-name, $color-value in $border-style-colors {
-    // evitamos duplicar base-style, ya que lo manejamos arriba
     @if $color-name != 'base-style' and $direction != 'none' {
+      // Base mobile
       @if $direction == 'all' {
         .border-#{$color-name} {
           @include borders_mixins.border('all', borders.$border-width borders.$border-style $color-value);
@@ -60,6 +73,21 @@ $border-style: borders.$border-width borders.$border-style var(--border-color);
       } @else {
         .border-#{$direction}-#{$color-name} {
           @include borders_mixins.border($direction, borders.$border-width borders.$border-style $color-value);
+        }
+      }
+
+      // Responsive
+      @each $bp-name, $bp-size in bp.$breakpoints {
+        @include mq.screen(min, $bp-name) {
+          @if $direction == 'all' {
+            .border-#{$bp-name}-#{$color-name} {
+              @include borders_mixins.border('all', borders.$border-width borders.$border-style $color-value);
+            }
+          } @else {
+            .border-#{$direction}-#{$bp-name}-#{$color-name} {
+              @include borders_mixins.border($direction, borders.$border-width borders.$border-style $color-value);
+            }
+          }
         }
       }
     }
