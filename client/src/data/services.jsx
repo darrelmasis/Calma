@@ -1,7 +1,10 @@
+import { Icon } from "../components/commons/Icons";
+
 export const ServicesData = {
   manicure: {
     id: "manicure",
     image: "manicure-01",
+    Icon: "hand-sparkles",
     prices: {
       regular: 6.5,
       spa: 11,
@@ -14,6 +17,7 @@ export const ServicesData = {
   pedicure: {
     id: "pedicure",
     image: "pedicure-01",
+    Icon: "sparkles",
     prices: {
       regular: 8.5,
       spa: 14,
@@ -26,6 +30,7 @@ export const ServicesData = {
   acrilicas: {
     id: "acrilicas",
     image: "manicure-02",
+    Icon: "paintbrush-fine",
     prices: {
       naturales: 15,
       almond: 18,
@@ -40,6 +45,7 @@ export const ServicesData = {
   extras: {
     id: "extras",
     image: "extras-01",
+    Icon: "gift",
     prices: {
       limpieza: { from: 2 },
       decoracion: { from: 0.5 },
@@ -61,6 +67,7 @@ export const ServicesData = {
   cejasPestanas: {
     id: "cejasPestanas",
     image: "cejas-01",
+    Icon: "sparkles",
     prices: {
       laminacionCejas: 16,
       laminacionDiseno: 20,
@@ -73,6 +80,7 @@ export const ServicesData = {
   depilacion: {
     id: "depilacion",
     image: "waxing-01",
+    Icon: "sparkles",
     prices: {
       cejas: { from: 5 },
       bigote: 3,
@@ -89,6 +97,7 @@ export const ServicesData = {
   lavado: {
     id: "lavado",
     image: "hair-01",
+    Icon: "shower",
     prices: {
       lavadoExpress: 4,
       lavadoProfundo: 8,
@@ -102,6 +111,7 @@ export const ServicesData = {
   estilismo: {
     id: "estilismo",
     image: "hair-02",
+    Icon: "sparkles",
     prices: {
       secado: { from: 10 },
       planchado: { from: 10 },
@@ -116,6 +126,7 @@ export const ServicesData = {
   spa: {
     id: "spa",
     image: "spa-01",
+    Icon: "spa",
     prices: {
       maderoterapia: 35,
       masajeRelajante: 25,
@@ -125,6 +136,7 @@ export const ServicesData = {
   facial: {
     id: "facial",
     image: "spa-02",
+    Icon: "face-smile-relaxed",
     prices: {
       detoxGlow: 35,
       guaSha: 35,
@@ -136,6 +148,7 @@ export const ServicesData = {
   maquillaje: {
     id: "maquillaje",
     image: "addons-01",
+    Icon: "paintbrush-pencil",
     prices: {
       profesional: { from: 30 },
       pestanas: 5
@@ -144,6 +157,7 @@ export const ServicesData = {
   manicureNinos: {
     id: "manicure-ninos",
     image: "maniKids-01",
+    Icon: "child-reaching",
     prices: {
       regular: 4,
       gel: 8
@@ -152,6 +166,7 @@ export const ServicesData = {
   pedicureNinos: {
     id: "pedicure-ninos",
     image: "pediKids-01",
+    Icon: "child-reaching",
     prices: {
       regular: 6,
       gel: 11
