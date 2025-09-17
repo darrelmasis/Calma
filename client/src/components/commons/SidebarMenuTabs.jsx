@@ -3,6 +3,7 @@ import { Button } from '../ui/Button';
 import { Icon } from './Icons';
 import { FadeInWhenVisible as Fade } from '../../components/commons/animations/FadeInWhenVisible';
 import { HorizontalScroll } from './HorizontalScroll';
+import { useLang } from '../../i18n/LanguageContext';
 
 export const SidebarMenuTabs = ({ tabs, activeTab, setActiveTab, viewAllButtonText }) => {
   const allTabs = [
@@ -10,12 +11,13 @@ export const SidebarMenuTabs = ({ tabs, activeTab, setActiveTab, viewAllButtonTe
     ...tabs.map(tab => ({ id: tab.id, label: tab.label }))
   ];
   const activeTabIndex = tabs.findIndex(tab => tab.id === activeTab);
+  const { t } = useLang()
 
 
   return (
     <Fade className='position-sticky top-8'>
       <div className="text-center">
-        <h3 className="text-center fs-h5 mb-3">Categorías</h3>
+        <h3 className="text-center fs-h5 mb-3">{t('services.section_1.tabsHeader')}</h3>
         <div className="categories-menu mx-3">
           <HorizontalScroll classNameContainer="d-flex flex-direction-xl-column mb-3 gap-2" activeIndex={activeTabIndex + 1}>
             {allTabs.map(tab => (
