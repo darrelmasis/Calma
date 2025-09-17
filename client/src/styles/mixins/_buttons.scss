@@ -3,25 +3,26 @@
 @use 'sass:color';
 @use '../config/buttons' as btns;
 
-@mixin button-initial($color-map, $bg, $hover, $active, $text) {
+@mixin button-initial($color-map, $bg, $hover, $active, $text, $border) {
   --btn-bg: #{map.get($color-map, $bg)};
   --btn-bg-hover: #{map.get($color-map, $hover)};
   --btn-bg-active: #{map.get($color-map, $active)};
   --btn-color: #{map.get($color-map, $text)};
   --btn-color-hover: #{map.get($color-map, $text)};
+  --btn-border: #{btns.$btn-border-width} solid #{map.get($color-map, $border)};
 }
 
-@mixin button-variant($color-map, $bg, $hover, $active, $text) {
+@mixin button-variant($color-map, $bg, $hover, $active, $text, $border: $text) {
   --btn-bg: #{map.get($color-map, $bg)};
   --btn-bg-hover: #{map.get($color-map, $hover)};
   --btn-bg-active: #{map.get($color-map, $active)};
   --btn-color: #{map.get($color-map, $text)};
   --btn-color-hover: #{map.get($color-map, $text)};
+  --btn-border: #{btns.$btn-border-width} solid #{map.get($color-map, $border)};
 
   $bg: map.get($color-map, $bg);
   $outline-color: color.change($bg, $alpha: 0.4); // Cambia la opacidad del color de fondo para el outline
   --btn-outline: #{$outline-color};
-
 
   &:focus-visible {
     outline: 2px solid var(--dark);
@@ -34,12 +35,11 @@
   --btn-bg-active: #{map.get($color-map, $active)};
   --btn-color: #{map.get($color-map, $text)};
   --btn-color-hover: #{map.get($color-map, $text-hover)};
-  --btn-border: 2px solid #{map.get($color-map, $bg)};
+  --btn-border: #{btns.$btn-border-width} solid #{map.get($color-map, $bg)};
 
   $bg: map.get($color-map, $bg);
   $outline-color: color.change($bg, $alpha: 0.4);
   --btn-outline: #{$outline-color};
-
 
   &:focus-visible {
     outline: 2px solid var(--dark);

@@ -10,18 +10,17 @@
     bf.get-button-state('initial', 'main'),
     bf.get-button-state('initial', 'main-hover'),
     bf.get-button-state('initial', 'main-active'),
-    bf.get-button-state('initial', 'text-color')
+    bf.get-button-state('initial', 'text-color'),
+    bf.get-button-state('initial', 'border-color')
   );
 
   --btn-padding: #{vars.$btn-padding-y} #{vars.$btn-padding-x};
-  --btn-font-size: #{vars.$btn-normal-fs};
+  --btn-font-size: #{vars.$btn-font-size};
   --btn-line-height: #{vars.$btn-line-height};
 
-  --btn-padding-square: #{vars.$btn-padding-y};
   --btn-square-size: #{vars.$btn-square-size};
 
   // Bordes
-  --btn-border: 0;
   --btn-border-disabled: 0;
   --btn-border-radius: #{vars.$btn-border-radius};
 
@@ -82,14 +81,16 @@
 
   &-square {
     aspect-ratio: 1;
-    padding: var(--btn-padding-square);
+    height: calc(var(--btn-square-size) * 2);
+    width: calc(var(--btn-square-size) * 2);
+    padding: 0;
+    font-size: var(--btn-font-size) !important;
 
     & > span {
-      height: var(--btn-square-size);
-      width: var(--btn-square-size);
+      // height: calc(var(--btn-line-height) * var(--btn-font-size));
+      // width: calc(var(--btn-line-height) * var(--btn-font-size));
+      height: calc(var(--btn-line-height) * var(--btn-font-size));
       display: inline-flex;
-      align-items: center;
-      justify-content: center;
     }
   }
 
@@ -102,7 +103,6 @@
 @each $size, $values in vars.$buttons-sizes {
   .btn-#{$size} {
     --btn-padding: #{list.nth($values, 1)} #{list.nth($values, 2)};
-    --btn-padding-square: #{list.nth($values, 1)};
     --btn-font-size: #{list.nth($values, 3)};
     --btn-line-height: #{list.nth($values, 4)};
     --btn-min-width: #{list.nth($values, 5)};
@@ -118,7 +118,8 @@
       bf.get-button-state($theme, 'main'),
       bf.get-button-state($theme, 'main-hover'),
       bf.get-button-state($theme, 'main-active'),
-      bf.get-button-state($theme, 'text-color')
+      bf.get-button-state($theme, 'text-color'),
+      bf.get-button-state($theme, 'border-color')
     );
   }
 

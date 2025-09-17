@@ -3,20 +3,13 @@ import classNames from 'classnames'
 import { Icon } from '../commons/Icons'
 
 export const Button = ({
-  size = 'medium', // 'small' | 'medium' | 'large'
-  variant = 'primary', // 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | 'link'
-  ghost = false, // botón con estilo ghost (transparente)
-  fullWidth = false, // que ocupe el 100% del ancho disponible
+  size = 'medium',            // small | medium | large
+  variant = 'initial',        // primary | secondary | success | danger | warning | info | light | dark | link
+  ghost = false,              // botón ghost (transparente)
+  fullWidth = false,          // ancho completo
   onClick,
   disabled = false,
-  icon = {
-    name: null,
-    variant: "regular",
-    duotone: "regular",
-    position: "left", // 'left' | 'right' | 'both'
-    name_alt: null,   // nombre alterno para el ícono derecho
-    size: "md"
-  },
+  icon = null,                // puede ser string, objeto o array de objetos
   label,
   children,
   className,
@@ -29,15 +22,47 @@ export const Button = ({
   const hasLabel = Boolean(label)
   const isIconOnly = !hasLabel && !hasChildren
 
-  // Función para renderizar un ícono
-  const renderIcon = (iconName) => {
-    if (icon && typeof icon === 'object' && typeof iconName === 'string') {
-      return <Icon className='btn-icon' name={iconName} variant={icon.variant} duotone={icon.duotone} size={icon.size} />
+  // Valores por defecto de un icono
+  const defaultIconProps = {
+    name: null,
+    variant: 'regular',
+    duotone: 'regular',
+    position: 'left',
+    size: 'md',
+  }
+
+  // Normalizamos el icon prop a un array de objetos
+  let finalIcons = []
+  if (icon) {
+    if (Array.isArray(icon)) {
+      finalIcons = icon.map(ic => {
+        if (typeof ic === 'string') return { ...defaultIconProps, name: ic }
+        if (typeof ic === 'object') return { ...defaultIconProps, ...ic }
+        return null
+      }).filter(Boolean)
+    } else if (typeof icon === 'string') {
+      finalIcons = [{ ...defaultIconProps, name: icon }]
+    } else if (typeof icon === 'object' && icon.name) {
+      finalIcons = [{ ...defaultIconProps, ...icon }]
     }
-    if (React.isValidElement(icon)) {
-      return <span className='btn-icon'>{icon}</span>
-    }
-    return null
+  }
+
+  // Función para renderizar un icono
+  const renderIcon = (ic) => {
+    if (!ic || !ic.name) return null
+    return <Icon key={ic.name} name={ic.name} variant={ic.variant} duotone={ic.duotone} size={ic.size} className="btn-icon" />
+  }
+
+  // Renderizamos iconos por posición
+  const renderIconsByPosition = (pos) => {
+    if (!finalIcons.length) return null
+    return finalIcons
+      .filter((ic, idx) => {
+        if (ic.position) return ic.position === pos
+        // si no tiene position, primer icono a la izquierda, segundo a la derecha
+        return idx === 0 ? pos === 'left' : pos === 'right'
+      })
+      .map(ic => renderIcon(ic))
   }
 
   const buttonClasses = classNames(
@@ -55,8 +80,6 @@ export const Button = ({
     if (!disabled && onClick) onClick(e)
   }
 
-  const iconPosition = icon && typeof icon === 'object' ? icon.position || 'left' : 'left'
-
   return (
     <button
       type={type}
@@ -64,17 +87,17 @@ export const Button = ({
       className={buttonClasses}
       onClick={handleClick}
       autoFocus={autoFocus}
-      aria-label={ariaLabel || (isIconOnly ? icon?.name : undefined)}
+      aria-label={ariaLabel || (isIconOnly ? finalIcons[0]?.name : undefined)}
       {...rest}
     >
-      {/* Icono izquierdo */}
-      {(iconPosition === 'left' || iconPosition === 'both') && renderIcon(icon.name)}
+      {/* Iconos a la izquierda */}
+      {renderIconsByPosition('left')}
 
       {/* Texto o children */}
       {hasChildren ? children : hasLabel && <span className="btn-label">{label}</span>}
 
-      {/* Icono derecho */}
-      {(iconPosition === 'right' || iconPosition === 'both') && renderIcon(icon.name_alt)}
+      {/* Iconos a la derecha */}
+      {renderIconsByPosition('right')}
     </button>
   )
 }
