@@ -57,7 +57,9 @@ $font-sizes: (
   // 16px
   medium: math.div($fs-base, math.pow($fs-ratio, 0.5)),
   //
-  small: math.div($fs-base, $fs-ratio), // 12.8px → mejor subir a 14px si accesibilidad manda
+  small: math.div($fs-base, $fs-ratio),
+  // 12.8px → mejor subir a 14px si accesibilidad manda
+  xsmall: math.div($fs-base, math.pow($fs-ratio, 2)),
 ) !default;
 
 /* ============================
