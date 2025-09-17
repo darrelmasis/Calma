@@ -25,12 +25,14 @@
     "framer-motion": "^12.16.0",
     "fs-extra": "^11.3.1",
     "howler": "^2.2.4",
+    "html-react-parser": "^5.2.6",
     "motion": "^12.10.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.4.0",
     "react-transition-group": "^4.4.5",
-    "sharp": "^0.34.3"
+    "sharp": "^0.34.3",
+    "simple-parallax-js": "^6.2.1"
   },
   "devDependencies": {
     "@types/react": "^19.0.10",
