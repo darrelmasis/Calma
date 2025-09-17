@@ -1,5 +1,6 @@
 @use 'sass:map';
 @use '../config/breakpoints' as bp;
+@use '../mixins/mediaQueries' as mq;
 
 $flexbox-classes: (
   'display': (
@@ -32,6 +33,16 @@ $flexbox-classes: (
     class: text,
     values: start end center justify,
   ),
+  'text-wrap': (
+    property: text-wrap,
+    class: text-wrap,
+    values: nowrap wrap balance pretty,
+  ),
+  'text-overflow': (
+    property: text-overflow,
+    class: text-overflow,
+    values: clip ellipsis,
+  ),
   'position': (
     property: position,
     class: position,
@@ -45,7 +56,7 @@ $flexbox-classes: (
   'top': (
     property: top,
     class: top,
-    values: 0 1 2 3 4 auto,
+    values: 0 1 2 3 4 5 6 7 8 9 auto,
     measurement: 'rem',
   ),
   'right': (
@@ -103,6 +114,21 @@ $flexbox-classes: (
     class: order,
     values: 0 1 2 3 4 5 6 7 8 9 10,
   ),
+  'pointer-events': (
+    property: pointer-events,
+    class: pointer-events,
+    values: auto none,
+  ),
+  'user-select': (
+    property: user-select,
+    class: user-select,
+    values: auto none text all contain,
+  ),
+  'object-fit': (
+    property: object-fit,
+    class: object-fit,
+    values: fill contain cover none scale-down,
+  ),
 );
 
 @each $property-name, $property-values in $flexbox-classes {
@@ -132,6 +158,54 @@ $flexbox-classes: (
               #{$property-property}: #{$value} !important;
             }
           }
+        }
+      }
+    }
+  }
+}
+
+// Clase base
+.scrollbar-hidden {
+  -ms-overflow-style: none; /* IE y Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+}
+
+// Responsivas
+@each $breakpoint, $value in bp.$breakpoints {
+  @if $breakpoint != xs {
+    @include mq.screen(min, $breakpoint) {
+      .scrollbar-#{$breakpoint}-hidden {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+// Clase base
+.scrollbar-visible {
+  -ms-overflow-style: auto; /* IE y Edge */
+  scrollbar-width: auto; /* Firefox */
+  &::-webkit-scrollbar {
+    display: block; /* Chrome, Safari, Opera */
+  }
+}
+
+// Responsivas
+@each $breakpoint, $value in bp.$breakpoints {
+  @if $breakpoint != xs {
+    @include mq.screen(min, $breakpoint) {
+      .scrollbar-#{$breakpoint}-visible {
+        -ms-overflow-style: auto;
+        scrollbar-width: auto;
+        &::-webkit-scrollbar {
+          display: block;
         }
       }
     }
