@@ -23,7 +23,7 @@ const Footer = () => {
     <>
       <OfflineIndicator />
       <FloatingButton />
-      <footer className="footer bg-container py-3">
+      <footer className="footer py-3">
         <div className="container">
           {/* Bloque CTA */}
           <div className="grid">
@@ -32,10 +32,10 @@ const Footer = () => {
                 <Fade>
                   <h2 className="text-dark fw-light">{t('footer.cta.title')}</h2>
                 </Fade>
-                <Fade>
+                <Fade delay={0.2}>
                   <p className="text-muted fw-light">{t('footer.cta.description')}</p>
                 </Fade>
-                <Fade>
+                <Fade delay={0.4}>
                   <Button
                     onClick={() => navigate('/booking')}
                     label={t('footer.cta.button')}
@@ -56,9 +56,9 @@ const Footer = () => {
           </div>
 
           {/* Footer con columnas */}
-          <Fade>
-            <div className="d-flex flex-direction-column flex-direction-lg-row align-items-start mb-3 px-3 mt-3 justify-content-space-between">
+          <div className="d-flex flex-direction-column flex-direction-lg-row align-items-start mb-3 px-3 mt-3 justify-content-space-between">
 
+            <Fade>
               <div>
                 <h3 className="text-dark fs-lead text-muted mb-5">{t('footer.columns.contact.title')}</h3>
                 <ul className="fs-medium list-unstyled list-bordered text-muted d-flex flex-direction-column gap-1 align-items-flex-start">
@@ -73,7 +73,7 @@ const Footer = () => {
                       <Icon name="arrow-up-right-from-square" className="ms-1" size="xs" />
                     </a>
                   </li>
-                  <li className="w-100 ">s
+                  <li className="w-100 ">
                     <Icon name="location-dot" className="me-2" />
                     <Tooltip content={t('footer.columns.contact.addressTooltip')}>
                       <a target='_blank' href="https://maps.app.goo.gl/j9ZjqwatmQGa8aA4A" className=''>
@@ -88,7 +88,9 @@ const Footer = () => {
                   </li>
                 </ul>
               </div>
+            </Fade>
 
+            <Fade>
               <div>
                 <h3 className="text-dark fs-lead text-muted mb-5">{t('footer.columns.nav.title')}</h3>
                 <ul className="fs-medium list-unstyled list-bordered text-muted d-flex flex-direction-column gap-1 align-items-flex-start">
@@ -114,7 +116,9 @@ const Footer = () => {
                   </li>
                 </ul>
               </div>
+            </Fade>
 
+            <Fade>
               <div>
                 <h3 className="text-dark fs-lead text-muted mb-5">{t('footer.columns.about.title')}</h3>
                 <ul className="list-unstyled fs-medium list-bordered text-muted d-flex flex-direction-column gap-1 align-items-flex-start">
@@ -135,7 +139,9 @@ const Footer = () => {
                   </li>
                 </ul>
               </div>
+            </Fade>
 
+            <Fade>
               <div>
                 <h3 className="text-dark fs-lead text-muted mb-5">{t('footer.columns.social.title')}</h3>
                 <ul className="list-unstyled fs-medium list-bordered text-muted d-flex flex-direction-column gap-1 align-items-flex-start">
@@ -159,14 +165,16 @@ const Footer = () => {
                   </li>
                 </ul>
               </div>
+            </Fade>
 
-            </div>
-          </Fade>
+          </div>
 
           {/* Legal */}
-          <div className="border-top py-5">
-            <Fade className='d-flex flex-direction-column flex-direction-lg-row text-center text-lg-start gap-lg-2 align-items-center'>
+          <div className="border-top py-5 d-flex flex-direction-column flex-direction-lg-row text-center text-lg-start gap-lg-2 align-items-center">
+            <Fade>
               <LogoCalma alt="Logo de Calma" className="wx-80 my-3 calma-logo-footer" />
+            </Fade>
+            <Fade>
               <div className="mb-lg-2">
                 <p className="fs-medium fw-semibold mb-0">{t('footer.legal.copyright')}</p>
                 <p className="fs-medium text-muted mb-0 mt-1">{t('footer.legal.subtitle')}</p>
