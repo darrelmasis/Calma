@@ -17,7 +17,7 @@ const Hero2 = ({
       variant: "primary",
       ariaLabel: "Call to Action",
       label: "Get Started",
-      size: "large",
+      size: "xlarge",
       icon: { name: "spa", size: "lg", variant: "duotones", duotone: "regular" },
       onClick: null
     }
