@@ -369,17 +369,12 @@ export const dictionary = {
             name: 'Niños',
             subCategory: {
               manicureNinos: {
-                name: 'Manicure Niños',
+                name: 'Niños',
                 services: {
-                  regular: { name: 'Regular', description: 'Limpieza y esmaltado básico' },
-                  gel: { name: 'Gel', description: 'Aplicación de gel para niños' }
-                }
-              },
-              pedicureNinos: {
-                name: 'Pedicure Niños',
-                services: {
-                  regular: { name: 'Regular', description: 'Limpieza básica de pies' },
-                  gel: { name: 'Gel', description: 'Aplicación de gel en pies' }
+                  regular: { name: 'Manicure Regular', description: 'Limpieza y esmaltado básico' },
+                  gel: { name: 'Manicure Gel', description: 'Aplicación de gel para niños' },
+                  regularPedi: { name: 'Pedicure Regular', description: 'Limpieza básica de pies' },
+                  gelPedi: { name: 'Pedicure Gel', description: 'Aplicación de gel en pies' }
                 }
               }
             }
@@ -752,15 +747,10 @@ export const dictionary = {
               manicureNinos: {
                 name: 'Kids Manicure',
                 services: {
-                  regular: { name: 'Regular', description: 'General cleaning, regular polish' },
-                  gel: { name: 'Gel', description: 'Cleaning + gel polish' }
-                }
-              },
-              pedicureNinos: {
-                name: 'Kids Pedicure',
-                services: {
-                  regular: { name: 'Regular', description: 'General cleaning, regular polish' },
-                  gel: { name: 'Gel', description: 'Cleaning + gel polish' }
+                  regular: { name: 'Regular Mani', description: 'General cleaning, regular polish' },
+                  gel: { name: 'Gel Mani', description: 'Cleaning + gel polish' },
+                  regularPedi: { name: 'Regular Pedi', description: 'General cleaning, regular polish' },
+                  gelPedi: { name: 'Gel Pedi', description: 'Cleaning + gel polish' }
                 }
               }
             }

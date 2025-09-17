@@ -160,16 +160,9 @@ export const ServicesData = {
     Icon: "child-reaching",
     prices: {
       regular: 4,
-      gel: 8
-    }
-  },
-  pedicureNinos: {
-    id: "pedicure-ninos",
-    image: "pediKids-01",
-    Icon: "child-reaching",
-    prices: {
-      regular: 6,
-      gel: 11
+      gel: 8,
+      regularPedi: 6,
+      gelPedi: 11
     }
   }
 };
