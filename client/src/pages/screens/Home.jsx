@@ -45,11 +45,8 @@ const Home = () => {
       <section id="why" className="py-5 bg-neutral-0 d-flex align-items-center border-top">
         <div className="container d-flex flex-direction-column align-items-center justify-content-center">
 
-          <Fade>
+          <Fade className='mb-5'>
             <h2 className="text-primary mb-1 text-center">{t('home.section_2.title')}</h2>
-          </Fade>
-          <Fade delay={0.2}>
-            <p className="fs-lead text-muted mt-1 text-center">{t('home.section_2.description')}</p>
           </Fade>
 
           {/* <div className="grid mt-lg-6 mt-4 text-center"> */}
