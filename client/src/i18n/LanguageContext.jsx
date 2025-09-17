@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react'
 import { dictionary } from './dictionary'
+import parse from 'html-react-parser'
 
 const LanguageContext = createContext()
 
@@ -22,13 +23,28 @@ export const LanguageProvider = ({ children }) => {
   const changeLanguage = (newLang) => setLang(newLang)
 
   const t = (key, options = {}) => {
+    const { parse: shouldParse = false, returnObjects = false } = options
     const keys = key.split('.')
     const result = keys.reduce((acc, curr) => acc?.[curr], dictionary[lang])
+
     if (result === undefined) return key
-    if (options.returnObjects) return result
-    if (typeof result === 'string') return result
-    return JSON.stringify(result) // fallback si es objeto
+    if (returnObjects) return result
+
+    // Si es string y options.parse es true, parseamos HTML
+    if (typeof result === 'string') {
+      return shouldParse ? parse(result) : result
+    }
+
+    // Si es un elemento React, lo retornamos directamente
+    if (typeof result === 'object' && result.$$typeof) {
+      return result
+    }
+
+    // Fallback para otros tipos de objeto
+    return JSON.stringify(result)
   }
+
+
 
   return (
     <LanguageContext.Provider value={{ lang, changeLanguage, t }}>
