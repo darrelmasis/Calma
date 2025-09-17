@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import { useNavigate } from 'react-router-dom';
 import { useLang } from '../../i18n/LanguageContext'
-import { SoundWrapper, useSound } from './SoundManager';
+import { sounds, useSound } from './SoundManager';
 
 
 const FloatingButton = () => {
@@ -17,10 +17,10 @@ const FloatingButton = () => {
   const { t } = useLang()
   const containerRef = useRef(null); // <-- referencia al contenedor principal
   const iconRef = useRef(null)
-  const sound = useSound('closePops', 0.5)
+  const closeSound = useSound('closePops', 0.5)
+  const openSound = useSound('openPops', 0.5)
   const showOptionsRef = useRef(showOptions);
 
-  const mainButtonSound = switchIcon ? 'closePops' : 'openPops'
 
   const optionButtonClasses = classNames({
     'option-button': true,
@@ -43,10 +43,13 @@ const FloatingButton = () => {
 
   const handleMainButtonClick = () => {
     if (!showOptions) {
+      openSound.play();
       setTimeout(() => setShowOptions(true), 100);
     } else {
       setTimeout(() => setShowOptions(false), 100)
+      closeSound.play();
     }
+
     switchIcon ? setSwitchIcon(false) : setSwitchIcon(true)
 
     isVisible ? setTimeout(() => setIsVisible(false), 500) : setTimeout(() => setIsVisible(true), 100)
@@ -71,7 +74,7 @@ const FloatingButton = () => {
     const handleClickOutside = (e) => {
       if (containerRef.current && !containerRef.current.contains(e.target)) {
         if (showOptionsRef.current) { // ✅ ahora sí tiene el valor actual
-          sound.play();
+          closeSound.play();
           setTimeout(() => setShowOptions(false), 100);
           setSwitchIcon(false);
           setTimeout(() => setIsVisible(false), 500);
@@ -86,7 +89,7 @@ const FloatingButton = () => {
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('touchstart', handleClickOutside);
     };
-  }, [sound]);
+  }, [openSound]);
 
   return (
     <div className="floating-button z-index-10" ref={containerRef}>
@@ -120,27 +123,25 @@ const FloatingButton = () => {
           </div>
         )}
 
-        <SoundWrapper sound={mainButtonSound} trigger='click' volume="0.5">
-          <Button
-            className="floating-button-toggle rounded-all-full main-button"
-            variant='info'
-            onClick={handleMainButtonClick}
-            ariaLabel="Abrir burbujas de opciones"
-            tabIndex={0}
-            size="large"
-          >
-            <SwitchTransition mode='out-in'>
-              <CSSTransition
-                key={mainButtonIconName}
-                timeout={100}
-                nodeRef={iconRef}
-                classNames="fade"
-              >
-                <Icon ref={iconRef} name={mainButtonIconName} variant="solid" size="lg" />
-              </CSSTransition>
-            </SwitchTransition>
-          </Button>
-        </SoundWrapper>
+        <Button
+          className="floating-button-toggle rounded-all-full main-button"
+          variant='info'
+          onClick={handleMainButtonClick}
+          ariaLabel="Abrir burbujas de opciones"
+          tabIndex={0}
+          size="large"
+        >
+          <SwitchTransition mode='out-in'>
+            <CSSTransition
+              key={mainButtonIconName}
+              timeout={100}
+              nodeRef={iconRef}
+              classNames="fade"
+            >
+              <Icon ref={iconRef} name={mainButtonIconName} variant="solid" size="lg" />
+            </CSSTransition>
+          </SwitchTransition>
+        </Button>
       </div>
     </div>
   );
