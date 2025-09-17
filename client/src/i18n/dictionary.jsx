@@ -176,7 +176,7 @@ export const dictionary = {
           items: [
             {
               question: "¿Puedo personalizar un paquete?",
-              answer: "Cada paquete puede ser personalizado a la necesidad del cliente/grupo, Contáctanos para adaptar el paquete a tu necesidad."
+              answer: "Cada paquete puede ser personalizado a la necesidad del cliente ogrupo, Contáctanos para adaptar el paquete a tu necesidad."
             },
             {
               question: "¿Debo reservar con anticipación?",
@@ -215,8 +215,8 @@ export const dictionary = {
               manicure: {
                 name: 'Manicure',
                 services: {
-                  regular: { name: 'Regular', description: 'Limpieza general, esmalte regular' },
-                  spa: { name: 'SPA', description: 'Limpieza, masaje, guantes, hidratantes, esmalte regular' },
+                  regular: { name: 'Regular', description: 'Limpieza, esmalte regular' },
+                  spa: { name: 'SPA', description: 'Limpieza, masaje, guantes hidratantes, esmalte regular' },
                   vip: { name: 'VIP', description: 'Limpieza, sal epsom, toallas calientes, masaje, parafina, esmalte regular' },
                   gel: { name: 'Gel', description: 'Limpieza, esmalte gel' },
                   spaGel: { name: 'SPA Gel', description: 'Limpieza, masajes, guantes, hidratantes, esmalte gel' },
@@ -226,12 +226,12 @@ export const dictionary = {
               pedicure: {
                 name: 'Pedicure',
                 services: {
-                  regular: { name: 'Regular', description: 'Limpieza general, esmalte regular' },
-                  spa: { name: 'SPA', description: 'Limpieza, masaje, hidratación, esmalte regular' },
-                  vip: { name: 'VIP', description: 'Limpieza, masaje, esmalte regular' },
+                  regular: { name: 'Regular', description: 'Limpieza, esmalte regular' },
+                  spa: { name: 'SPA', description: 'Limpieza profunda, Salt scrub, masaje, Mascarilla hidratante o toallas calientes y esmalte regular' },
+                  vip: { name: 'VIP', description: 'Limpieza profunda, baño jelly, masaje y esmalte regular' },
                   gel: { name: 'Gel', description: 'Limpieza, esmalte gel' },
-                  spaGel: { name: 'SPA Gel', description: 'Limpieza, masaje, esmalte gel' },
-                  vipGel: { name: 'VIP Gel', description: 'Limpieza, masaje, esmalte gel' }
+                  spaGel: { name: 'SPA Gel', description: 'Limpieza profunda, Salt scrub, masaje, Mascarilla hidratante o toallas calientes y esmalte gel' },
+                  vipGel: { name: 'VIP Gel', description: 'Limpieza profunda, baño jelly, masaje y esmalte gel' }
                 }
               },
               acrilicas: {
@@ -242,9 +242,9 @@ export const dictionary = {
                   coffin: { name: 'Coffin', description: 'Uñas acrílicas forma coffin' },
                   esculturales: { name: 'Esculturales', description: 'Uñas esculturales' },
                   refill: { name: 'Refill', description: 'Relleno de uñas acrílicas' },
-                  banoAcrilico: { name: 'Baño Acrílico', description: 'Tratamiento de baño acrílico' },
-                  rubber: { name: 'Rubber', description: 'Uñas acrílicas Rubber' },
-                  poly: { name: 'Poly', description: 'Uñas Poly' }
+                  banoAcrilico: { name: 'Baño Acrílico', description: 'Aplicación de baño acrílico' },
+                  rubber: { name: 'Rubber', description: 'Aplicación de rubber' },
+                  poly: { name: 'Poly', description: 'Aplicación de poly gel' }
                 }
               },
               extras: {
@@ -292,7 +292,7 @@ export const dictionary = {
                   bikini: { name: 'Bikini', description: 'Depilación bikini' },
                   fullBikini: { name: 'Full Bikini', description: 'Depilación completa de bikini' },
                   brazos: { name: 'Brazos', description: 'Depilación de brazos' },
-                  mediaPierna: { name: 'Media Pierna', description: 'Depilación media pierna' },
+                  mediaPierna: { name: '1/2 Pierna', description: 'Depilación media pierna' },
                   piernaCompleta: { name: 'Pierna Completa', description: 'Depilación pierna completa' },
                   espalda: { name: 'Espalda', description: 'Depilación de espalda' },
                   gluteos: { name: 'Glúteos', description: 'Depilación de glúteos' }
@@ -306,13 +306,13 @@ export const dictionary = {
               lavado: {
                 name: 'Lavado y Tratamientos',
                 services: {
-                  lavadoExpress: { name: 'Lavado Express', description: 'Lavado rápido y básico' },
-                  lavadoProfundo: { name: 'Lavado Profundo', description: 'Lavado profundo con mascarilla' },
-                  lavadoMascarilla: { name: 'Lavado + Mascarilla', description: 'Lavado con mascarilla hidratante' },
-                  lavadoAmpolla: { name: 'Lavado + Ampolla', description: 'Lavado con aplicación de ampolla' },
-                  relajanteExpress: { name: 'Relajante Express', description: 'Masaje relajante durante lavado' },
-                  cabelloTratado: { name: 'Cabello Tratado', description: 'Tratamiento para cabello dañado' },
-                  aplicacionTinta: { name: 'Aplicación de Tinta', description: 'Aplicación de color o tinte' }
+                  lavadoExpress: { name: 'Lavado Express', description: 'Lavado rápido (1 shampuseada)' },
+                  lavadoProfundo: { name: 'Lavado Profundo', description: 'Lavado profundo (2 shampuseadas)' },
+                  lavadoMascarilla: { name: 'Lavado + Mascarilla', description: 'Lavado profundo (2 shampuseadas) + mascarilla' },
+                  lavadoAmpolla: { name: 'Lavado + Ampolla Tratamiento ', description: 'Lavado profundo (2 shampuseadas) + ampolla tratamiento ' },
+                  relajanteExpress: { name: 'Relajante Express', description: 'Lavado profundo + ampolla tratamiento + masaje cuero cabelludo' },
+                  cabelloTratado: { name: 'Cabello Tratado', description: 'lavado profundo (2 shampuseadas) + mascarilla hidratante + ampolla tratamiento' },
+                  aplicacionTinta: { name: 'Aplicación de Tinte', description: 'Aplicación de tinte' }
                 }
               },
               estilismo: {
@@ -320,7 +320,7 @@ export const dictionary = {
                 services: {
                   secado: { name: 'Secado', description: 'Secado de cabello' },
                   planchado: { name: 'Planchado', description: 'Planchado de cabello' },
-                  ondas: { name: 'Ondas', description: 'Peinado con ondas' },
+                  ondas: { name: 'Ondas', description: 'Ondas estilizadas' },
                   peinadoSencillo: { name: 'Peinado Sencillo', description: 'Peinado básico' },
                   peinadoElaborado: { name: 'Peinado Elaborado', description: 'Peinado elaborado' },
                   trenzas: { name: 'Trenzas', description: 'Trenzas o trenzado' },
@@ -336,19 +336,19 @@ export const dictionary = {
               spa: {
                 name: 'SPA',
                 services: {
-                  maderoterapia: { name: 'Maderoterapia', description: 'Masaje con técnicas de maderoterapia' },
-                  masajeRelajante: { name: 'Masaje Relajante', description: 'Masaje corporal relajante' },
-                  masajeProfundo: { name: 'Masaje Profundo', description: 'Masaje profundo terapéutico' }
+                  maderoterapia: { name: 'Maderoterapia', description: 'Drenaje linfático' },
+                  masajeRelajante: { name: 'Masaje Relajante', description: 'Estimulación relajante, reducción de tensión muscular' },
+                  masajeProfundo: { name: 'Masaje Profundo', description: 'Masaje profundo terapéutico / Toallas calientes' }
                 }
               },
               facial: {
                 name: 'Facial',
                 services: {
-                  detoxGlow: { name: 'Detox Glow', description: 'Tratamiento facial detox' },
-                  guaSha: { name: 'Gua Sha', description: 'Masaje facial Gua Sha' },
-                  hydrafacial: { name: 'Hydrafacial', description: 'Hydrafacial completo' },
-                  facialRefrescante: { name: 'Facial Refrescante', description: 'Facial refrescante y calmante' },
-                  detoxEspalda: { name: 'Detox Espalda', description: 'Tratamiento detox de espalda' }
+                  detoxGlow: { name: 'Detox Glow', description: 'Tratamiento facial desintoxicante' },
+                  guaSha: { name: 'Gua Sha', description: 'Tratamiento de drenaje y desinflamación facial' },
+                  hydrafacial: { name: 'Hydrafacial', description: 'Hidratación facial profunda y piel radiante' },
+                  facialRefrescante: { name: 'Facial Refrescante', description: 'Tratamiento facial tonificante y escultural' },
+                  detoxEspalda: { name: 'Detox Espalda', description: 'Tratamiento desintoxicante de espalda' }
                 }
               }
             }
@@ -359,8 +359,8 @@ export const dictionary = {
               maquillaje: {
                 name: 'Maquillaje',
                 services: {
-                  profesional: { name: 'Profesional', description: 'Maquillaje profesional completo' },
-                  pestanas: { name: 'Pestañas', description: 'Maquillaje de pestañas' }
+                  profesional: { name: 'Profesional', description: 'Maquillaje profesional completo, personalizado para cualquier ocasión' },
+                  pestanas: { name: 'Pestañas', description: 'Aplicación de pestañas' }
                 }
               }
             }
@@ -371,10 +371,10 @@ export const dictionary = {
               manicureNinos: {
                 name: 'Niños',
                 services: {
-                  regular: { name: 'Manicure Regular', description: 'Limpieza y esmaltado básico' },
-                  gel: { name: 'Manicure Gel', description: 'Aplicación de gel para niños' },
-                  regularPedi: { name: 'Pedicure Regular', description: 'Limpieza básica de pies' },
-                  gelPedi: { name: 'Pedicure Gel', description: 'Aplicación de gel en pies' }
+                  regular: { name: 'Mani Regular', description: 'Limpieza y esmaltado básico' },
+                  gel: { name: 'Mani Gel', description: 'Aplicación de gel para niños' },
+                  regularPedi: { name: 'Pedi Regular', description: 'Limpieza básica de pies' },
+                  gelPedi: { name: 'Pedi Gel', description: 'Aplicación de gel en pies' }
                 }
               }
             }
@@ -421,7 +421,7 @@ export const dictionary = {
       columns: {
         contact: {
           title: 'Contact',
-          address: '1 block N & 10m W of La Merced Church, Granada',
+          address: 'Iglesia La Merced, 1C N, 10v O, Granada',
           addressTooltip: 'View location on Google Maps',
         },
         nav: {
@@ -496,7 +496,7 @@ export const dictionary = {
       pageTitle: 'Our Packages',
       section_1: {
         title: 'Our Packages',
-        description: 'Discover our packages designed to provide a complete wellness and relaxation experience. Each combines different services to offer you a unique moment of renewal',
+        description: 'Discover our packages designed to provide a complete wellness and relaxation experience. Each combine different services to offer you a unique moment of renewal',
         include_text: 'The Service Includes',
         group_optionaly_text: 'All our packages offer group options',
         from_price_text: 'From',
@@ -552,12 +552,12 @@ export const dictionary = {
           title: "Frequently Asked Questions",
           items: [
             {
-              question: "Should I book in advanced?",
-              answer: "Yes, you should book in advanced to coordinate dates and times."
+              question: "Can I customize a package?",
+              answer: "Each package can be customized to accommodate the need of every client or group. Contact us to tailor the package to your needs."
             },
             {
-              question: "Can I customize a package?",
-              answer: "Each package can be customized to accommodate the need of every client I group. Contact us to tailor the package to your needs."
+              question: "Should I book in advanced?",
+              answer: "Yes, you should book in advanced to coordinate dates and times."
             },
             {
               question: "How long does each package last?",
@@ -591,22 +591,22 @@ export const dictionary = {
               manicure: {
                 name: 'Manicure',
                 services: {
-                  regular: { name: 'Regular', description: 'General cleaning, Regular polish' },
-                  spa: { name: 'SPA', description: 'Cleaning, massage, gloves, moisturizers + regular polish' },
+                  regular: { name: 'Regular', description: 'Cleaning, Regular polish' },
+                  spa: { name: 'SPA', description: 'Cleaning, massage, Moisturizing gloves, regular polish' },
                   vip: { name: 'VIP', description: 'Cleaning, Epsom salt, hot towels + massage, paraffin, regular polish' },
                   gel: { name: 'Gel', description: 'Cleaning + gel polish' },
-                  spaGel: { name: 'SPA Gel', description: 'Cleaning, massage, gloves, moisturizers + gel polish' },
+                  spaGel: { name: 'SPA Gel', description: 'Cleaning, massage, Moisturizing gloves + gel polish' },
                   vipGel: { name: 'VIP Gel', description: 'Cleaning, Epsom salt, hot towels + massage, paraffin, gel polish' }
                 }
               },
               pedicure: {
                 name: 'Pedicure',
                 services: {
-                  regular: { name: 'Regular', description: 'General cleaning, Regular polish' },
-                  spa: { name: 'SPA', description: 'Deep cleaning, salt scrub, massage, moisturizing mask or hot towels' },
-                  vip: { name: 'VIP', description: 'Deep cleaning, jelly bath, massage, regular polish' },
+                  regular: { name: 'Regular', description: 'Cleaning, Regular polish' },
+                  spa: { name: 'SPA', description: 'Deep cleansing, salt scrub, massage, hydrating mask or hot towels, and regular polish' },
+                  vip: { name: 'VIP', description: 'Deep cleansing, jelly bath, massage, and regular polish' },
                   gel: { name: 'Gel', description: 'Cleaning + gel polish' },
-                  spaGel: { name: 'SPA Gel', description: 'Deep cleaning, salt scrub, massage, moisturizing mask or hot towels + gel polish' },
+                  spaGel: { name: 'SPA Gel', description: 'Deep cleaning, salt scrub, massage, moisturizing mask or hot towels, gel polish' },
                   vipGel: { name: 'VIP Gel', description: 'Deep cleaning, jelly bath, massage, gel polish' }
                 }
               },
@@ -618,8 +618,8 @@ export const dictionary = {
                   coffin: { name: 'Coffin', description: 'Coffin-shaped acrylic nails' },
                   esculturales: { name: 'Sculpted', description: 'Sculpted acrylic nails' },
                   refill: { name: 'Refill', description: 'Acrylic refill' },
-                  banoAcrilico: { name: 'Acrylic Soak', description: 'Acrylic nail soak' },
-                  rubber: { name: 'Rubber', description: 'Rubber base acrylic' },
+                  banoAcrilico: { name: 'Base Coat', description: 'Base application' },
+                  rubber: { name: 'Rubber', description: 'Rubber application' },
                   poly: { name: 'Poly Gel', description: 'Poly Gel application' }
                 }
               },
@@ -664,11 +664,11 @@ export const dictionary = {
                 services: {
                   cejas: { name: 'Eyebrows', description: 'Eyebrow waxing' },
                   bigote: { name: 'Upper Lip', description: 'Upper lip waxing' },
-                  axilas: { name: 'Underarms', description: 'Underarm waxing' },
+                  axilas: { name: 'Armpits', description: 'Armpit waxing' },
                   bikini: { name: 'Bikini', description: 'Bikini waxing' },
                   fullBikini: { name: 'Full Bikini', description: 'Full bikini waxing' },
                   brazos: { name: 'Arms', description: 'Arm waxing' },
-                  mediaPierna: { name: 'Half Leg', description: 'Half leg waxing' },
+                  mediaPierna: { name: '1/2 Leg', description: 'Half leg waxing' },
                   piernaCompleta: { name: 'Full Leg', description: 'Full leg waxing' },
                   espalda: { name: 'Back', description: 'Back waxing' },
                   gluteos: { name: 'Buttocks', description: 'Buttocks waxing' }
@@ -682,12 +682,12 @@ export const dictionary = {
               lavado: {
                 name: 'Wash & Treatments',
                 services: {
-                  lavadoExpress: { name: 'Express Wash', description: 'Quick hair wash' },
-                  lavadoProfundo: { name: 'Deep Wash', description: 'Deep cleansing hair wash' },
-                  lavadoMascarilla: { name: 'Wash with Mask', description: 'Hair wash with mask treatment' },
-                  lavadoAmpolla: { name: 'Wash with Ampoule', description: 'Hair wash with ampoule application' },
-                  relajanteExpress: { name: 'Relaxing Express', description: 'Express relaxing wash' },
-                  cabelloTratado: { name: 'Treated Hair', description: 'Hair treatment for treated hair' },
+                  lavadoExpress: { name: 'Express Wash', description: 'Quick hair wash (1 shampoo application)' },
+                  lavadoProfundo: { name: 'Deep Wash', description: 'Deep cleansing hair wash (2 shampoo applications)' },
+                  lavadoMascarilla: { name: 'Wash + Mask', description: 'Hair wash + hydrating mask treatment (2 shampoo applications + mask)' },
+                  lavadoAmpolla: { name: 'Wash serum capsule', description: 'Hair wash + serum capsule treatment (2 shampoo applications + ampoule)' },
+                  relajanteExpress: { name: 'Relaxing Express', description: 'Deep hair wash/serum capsule/scalp massage' },
+                  cabelloTratado: { name: 'Treated Hair', description: 'Deep hair wash/hydrating hair mask/serum capsule treatment' },
                   aplicacionTinta: { name: 'Dye Application', description: 'Hair dye application' }
                 }
               },
@@ -695,13 +695,13 @@ export const dictionary = {
                 name: 'Styling',
                 services: {
                   secado: { name: 'Blow Dry', description: 'Hair blow dry' },
-                  planchado: { name: 'Straightening', description: 'Hair straightening' },
-                  ondas: { name: 'Waves', description: 'Creating waves in hair' },
+                  planchado: { name: 'Iron', description: 'Hair straightening with iron' },
+                  ondas: { name: 'Waves', description: 'Styling waves' },
                   peinadoSencillo: { name: 'Simple Style', description: 'Simple hairstyle' },
                   peinadoElaborado: { name: 'Elaborate Style', description: 'Complex hairstyle' },
                   trenzas: { name: 'Braids', description: 'Braiding hair' },
                   cortePuntas: { name: 'Trim', description: 'Hair trimming' },
-                  corteEstilo: { name: 'Style Cut', description: 'Haircut with style' }
+                  corteEstilo: { name: 'Style Cut', description: 'Complex haircut with styling' }
                 }
               }
             }
@@ -712,19 +712,19 @@ export const dictionary = {
               spa: {
                 name: 'SPA',
                 services: {
-                  maderoterapia: { name: 'Wood Therapy', description: 'Wood therapy massage' },
-                  masajeRelajante: { name: 'Relaxing Massage', description: 'Relaxing full-body massage' },
-                  masajeProfundo: { name: 'Deep Massage', description: 'Deep tissue massage' }
+                  maderoterapia: { name: 'Wood Therapy', description: 'Sculpting / Lymphatic drainage massage' },
+                  masajeRelajante: { name: 'Relaxing Massage', description: 'Gentle stroke treatment to reduce muscle tension' },
+                  masajeProfundo: { name: 'Deep Massage', description: 'Deep therapeutic massage / Hot towels' }
                 }
               },
               facial: {
                 name: 'Facial',
                 services: {
                   detoxGlow: { name: 'Detox Glow', description: 'Detoxifying facial treatment' },
-                  guaSha: { name: 'Gua Sha', description: 'Gua Sha facial massage' },
-                  hydrafacial: { name: 'Hydrafacial', description: 'Hydrafacial treatment' },
-                  facialRefrescante: { name: 'Refreshing Facial', description: 'Refreshing facial treatment' },
-                  detoxEspalda: { name: 'Back Detox', description: 'Back detox treatment' }
+                  guaSha: { name: 'Gua Sha', description: 'Reduction of facial inflammation treatment' },
+                  hydrafacial: { name: 'Hydrafacial', description: 'Hydrating radiant skin treatment' },
+                  facialRefrescante: { name: 'Refreshing Facial', description: 'Sculpting/tonifying facial treatment' },
+                  detoxEspalda: { name: 'Back Detox', description: 'Deep back detoxification treatment' }
                 }
               }
             }
@@ -735,8 +735,8 @@ export const dictionary = {
               maquillaje: {
                 name: 'Makeup',
                 services: {
-                  profesional: { name: 'Professional', description: 'Professional makeup' },
-                  pestanas: { name: 'Lashes', description: 'Eyelash makeup' }
+                  profesional: { name: 'Professional', description: 'Professional makeup application for any occasion' },
+                  pestanas: { name: 'Lashes', description: 'Lash application' }
                 }
               }
             }
