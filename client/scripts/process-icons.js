@@ -1,6 +1,12 @@
 import fs from 'fs';
 import path from 'path';
+import { execSync } from 'child_process';
 
+const copyIconsFilePath = 'powershell -ExecutionPolicy Bypass -File "C:\\Users\\ADATOS\\OneDrive - MONISA\\Escritorio\\DM\\Proyectos\\Calma\\client\\src\\assets\\icons\\src\\get-icons-variants-from-regular.ps1"'
+
+execSync(copyIconsFilePath, { stdio: 'inherit' });
+
+// Definir las carpetas fuente y destino
 const sourceFolders = {
   regular: 'src/assets/icons/src/regular',
   solid: 'src/assets/icons/src/solid',
@@ -27,7 +33,8 @@ function processSVG(filePath, targetPath) {
   // Agregar atributo data-icon al <svg>
   svg = svg.replace(/<svg/, `<svg data-iconName="${iconName}"`);
 
-  const viewBoxMatch = svg.match(/viewBox="([\d.-]+)\s+([\d.-]+)\s+([\d.-]+)\s+([\d.-]+)"/);
+  const viewBoxMatch = svg.match(/viewBox=['"]([\d.\-]+)\s+([\d.\-]+)\s+([\d.\-]+)\s+([\d.\-]+)['"]/i);
+
   if (!viewBoxMatch) {
     console.warn(`No viewBox encontrado en: ${filePath}`);
     return;
