@@ -1,6 +1,6 @@
 @use 'sass:map';
 @use '../config/breakpoints' as bp;
-@use '../mixins/mediaQueries' as mq;
+@use '../mixins/mediaqueries' as mq;
 
 $flexbox-classes: (
   'display': (
