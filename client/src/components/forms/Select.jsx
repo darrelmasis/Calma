@@ -52,14 +52,10 @@ export const Select = ({
         ghost={true}
         label={selectedOption ? selectedOption.label : placeholder}
         icon={
-          {
-            name: 'earth-americas',
-            name_alt: 'angles-up-down',
-            position: 'both',
-            size: "sm",
-            variant: "duotones",
-            duotone: "regular"
-          }
+          [
+            { name: 'language-alt', position: 'left', variant: "duotones", duotone: "regular" },
+            { name: 'angles-up-down', position: 'right', variant: "regular" }
+          ]
         }
       />
 
