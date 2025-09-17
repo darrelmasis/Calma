@@ -86,7 +86,7 @@ export const ServicesData = {
       bigote: 3,
       axilas: 10,
       bikini: { from: 13 },
-      fullBikini: { from: 10 },
+      fullBikini: { from: 20 },
       brazos: { from: 10 },
       mediaPierna: { from: 15 },
       piernaCompleta: { from: 20 },
