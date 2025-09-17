@@ -16,7 +16,7 @@ const soundInstances = {};
 // Instancia global del último sonido que se reprodujo
 let lastPlayedSound = null;
 
-export const getSound = (sound, volume = 0.2) => {
+export const getSound = (sound, volume = 1) => {
   if (!sounds[sound]) {
     console.warn(`⚠️ El sonido "${sound}" no existe.`);
     return null;
