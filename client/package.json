@@ -14,7 +14,8 @@
     "generate:sitemap": "node ./scripts/generate-sitemap.js",
     "processImages": "node ./scripts/optimized-images.js",
     "processIcons": "node ./scripts/process-icons.js",
-    "build": "node ./scripts/run.js "
+    "build:local": "node ./scripts/run.js",
+    "build": "vite build"
   },
   "dependencies": {
     "@floating-ui/react": "^0.27.8",
