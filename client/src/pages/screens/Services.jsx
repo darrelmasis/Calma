@@ -175,7 +175,7 @@ const Services = () => {
                         className="menu-card-footer"
                         onClick={() => handleToggle(subcategoryId)}
                       >
-                        <div className="menu-card-footer--expandable">
+                        <div className="menu-card-footer--expandable d-flex flex-direction-column">
                           <span className='fs-medium'>
                             {isExpanded === subcategoryId ? t('services.cardFooter.expandable.expanded') : t('services.cardFooter.expandable.collapsed')}
                           </span>
@@ -186,7 +186,7 @@ const Services = () => {
 
                     {serviceItems.length === 3 && (
                       <div
-                        className="menu-card-footer border-top mx-3"
+                        className="menu-card-footer"
                       >
                         <div className="menu-card-footer--static">
                           <span className='fs-medium'>
@@ -201,7 +201,7 @@ const Services = () => {
 
                     {serviceItems.length < 3 && (
                       <div
-                        className="menu-card-footer border-top mx-3"
+                        className="menu-card-footer"
                       >
                         <div className="menu-card-footer--minimal">
                           <span className='fs-medium'>

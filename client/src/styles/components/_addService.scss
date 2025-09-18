@@ -1,8 +1,6 @@
 @use '../config/colors_map' as c;
-
-.add-service-icon {
-  transition: 0.3s ease;
-}
+@use '../config/colors' as pallette;
+@use '../functions/colors' as fn;
 
 .add-service-fade-enter {
   animation: fade-in-scale 0.1s ease forwards;
@@ -53,8 +51,27 @@
   cursor: pointer;
 }
 
-.add-service-icon[data-name='circle-plus'] {
+.add-service-button {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  transition: 0.3s ease;
+
   &:hover {
-    color: c.$text-color; // o c.$text-color según tu variable
+    background-color: fn.getColor(pallette.$darks, '100');
+    color: fn.getColor(pallette.$darks, '900');
+  }
+}
+
+.add-service-icon {
+  transition: 0.3s ease;
+}
+
+.add-service-icon[data-name='circle-plus'] {
+  .add-service-button:hover & {
+    color: inherit;
   }
 }

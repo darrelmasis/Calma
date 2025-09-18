@@ -45,6 +45,7 @@
     box-shadow:
       0 2px 6px rgba(0, 0, 0, 0.12),
       0 1px 3px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
   }
 
   &-content {
@@ -54,6 +55,10 @@
 
     &.expanded ~ .menu-card-footer {
       background-color: fn.getColor(pallette.$lights, '200');
+
+      & .menu-card-footer--expandable {
+        flex-flow: column-reverse;
+      }
     }
   }
 
@@ -70,6 +75,7 @@
 
   &-footer {
     // padding a todos los footers
+    background-color: fn.getColor(pallette.$lights, '200');
 
     &--expandable,
     &--static,
@@ -89,18 +95,19 @@
       // background-color: fn.getColor(pallette.$golds, '50');
 
       &:hover {
-        background-color: fn.getColor(pallette.$lights, '100');
+        background-color: fn.getColor(pallette.$lights, '300');
       }
 
-      &:before {
-        content: '';
-        display: block;
-        position: absolute;
-        top: 0;
-        width: calc(80% - 2rem);
-        height: 1px;
-        background-color: colors.$border-color;
-      }
+      // &:before {
+      //   content: '';
+      //   display: block;
+      //   position: absolute;
+      //   top: 0;
+      //   width: calc(80% - 2rem);
+      //   height: 1px;
+      //   background-color: colors.$border-color;
+      // }
+      gap: 0;
     }
 
     &--static {
@@ -149,7 +156,4 @@
 
 .service-item-option-button {
   cursor: pointer;
-}
-
-.service-item-option-popover {
 }
