@@ -12,10 +12,10 @@
     "generate:robots": "node ./scripts/generate-robots.js",
     "generate:humans": "node ./scripts/generate-humans.js",
     "generate:sitemap": "node ./scripts/generate-sitemap.js",
-    "processImages": "node ./scripts/optimized-images.js",
-    "processIcons": "node ./scripts/process-icons.js",
+    "process:images": "node ./scripts/optimized-images.js",
+    "process:icons": "node ./scripts/process-icons.js",
     "build:local": "node ./scripts/run.js",
-    "build": "npm i && vite build"
+    "build": "vite build"
   },
   "dependencies": {
     "@floating-ui/react": "^0.27.8",

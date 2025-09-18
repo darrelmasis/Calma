@@ -1,22 +1,12 @@
 {
   "name": "calma-server",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
-  "description": "Contiene la lógica de la aplicación de Calma",
-  "license": "ISC",
+  "description": "Lógica del backend de la app Calma",
   "author": "Darel Masis",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.js"
-  },
+  "license": "ISC",
   "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.6.1",
-    "express": "^4.21.2",
-    "mysql": "^2.18.1",
     "nodemailer": "^7.0.6"
   }
 }
