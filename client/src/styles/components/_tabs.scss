@@ -51,15 +51,14 @@
   &-content {
     position: relative;
     // max-height: 13.35375rem;
-    // transition: 0.3s ease;
+    transition: 0.3s ease;
 
     &.expanded ~ .menu-card-footer {
-      background-color: fn.getColor(pallette.$golds, '400');
-
+      background-color: fn.getColor(pallette.$darks, '900');
 
       & .menu-card-footer--expandable {
         flex-flow: column-reverse;
-        color: fn.getColor(pallette.$golds, '50');
+        color: fn.getColor(pallette.$darks, '0');
       }
     }
   }
@@ -77,17 +76,43 @@
 
   &-footer {
     // padding a todos los footers
-    background-color: fn.getColor(pallette.$golds, '200');
+    background: linear-gradient(45deg, fn.getColor(pallette.$purples, '700'), fn.getColor(pallette.$golds, '400'));
+    transition: all 0.3s ease;
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(-90deg, fn.getColor(pallette.$purples, '400'), fn.getColor(pallette.$golds, '500'));
+      opacity: 0;
+      z-index: 0;
+
+      transition: opacity 0.5s ease;
+    }
+
+    &:hover:before {
+      opacity: 1;
+    }
+
+    .mi-boton:hover {
+      background: none; /* Elimina el gradiente inicial para que se vea el del pseudoelemento */
+    }
 
     &--expandable,
     &--static,
     &--minimal {
+      transition: all 3s ease;
       min-height: 60px;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 1rem;
-      color: fn.getColor(pallette.$golds, '900');
+      color: fn.getColor(pallette.$darks, '0');
+      position: relative;
     }
 
     &--expandable {
@@ -96,27 +121,14 @@
       position: relative;
 
       &:hover {
-        background-color: fn.getColor(pallette.$golds, '300');
       }
 
-      // &:before {
-      //   content: '';
-      //   display: block;
-      //   position: absolute;
-      //   top: 0;
-      //   width: calc(80% - 2rem);
-      //   height: 1px;
-      //   background-color: colors.$border-color;
-      // }
       gap: 0;
     }
 
-    &--static {
-      // background-color: fn.getColor(pallette.$golds, '100');
-    }
-
-    &--minimal {
-      // color: colors.$primary;
+    &--static, &--minimal {
+      background-color: fn.getColor(pallette.$neutrals, '50');
+      color: colors.$text-color;
     }
   }
 }
