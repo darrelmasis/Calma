@@ -95,7 +95,7 @@ const Footer = () => {
                 <h3 className="text-dark fs-lead text-muted mb-5">{t('footer.columns.nav.title')}</h3>
                 <ul className="fs-medium list-unstyled list-bordered text-muted d-flex flex-direction-column gap-1 align-items-flex-start">
                   <li className='w-100'>
-                    <a href="/cita" className="text-muted">
+                    <a href="/booking" className="text-muted">
                       {t('footer.columns.nav.book')}
                     </a>
                   </li>
@@ -105,7 +105,7 @@ const Footer = () => {
                     </a>
                   </li>
                   <li className='w-100'>
-                    <a href="/history" className="text-muted">
+                    <a href="/story" className="text-muted">
                       {t('footer.columns.nav.history')}
                     </a>
                   </li>
@@ -123,12 +123,12 @@ const Footer = () => {
                 <h3 className="text-dark fs-lead text-muted mb-5">{t('footer.columns.about.title')}</h3>
                 <ul className="list-unstyled fs-medium list-bordered text-muted d-flex flex-direction-column gap-1 align-items-flex-start">
                   <li className='w-100'>
-                    <a href="/history#about" className="text-muted">
+                    <a href="/story#about" className="text-muted">
                       {t('footer.columns.about.who')}
                     </a>
                   </li>
                   <li className='w-100'>
-                    <a href="/equipo" className="text-muted">
+                    <a href="/team" className="text-muted">
                       {t('footer.columns.about.team')}
                     </a>
                   </li>

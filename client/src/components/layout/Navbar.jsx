@@ -12,7 +12,6 @@ import { CSSTransition } from 'react-transition-group'
 import { useOfflineStatus } from '../../hooks/useOfflineStatus'
 import { useSelectedServices } from '../../hooks/useSelectedService'
 import { Dropdown, DropdownTrigger, DropdownContent } from '../ui/Dropdown'
-import { ReadMore } from '../ui/ReadMore'
 
 
 const NavbarCTA = ({ onClick, className }) => {
@@ -75,7 +74,7 @@ export const Navbar = () => {
 
   const navLinks = [
     { path: '/', label: t('header.links.home'), position: 'left', icon: 'house' },
-    { path: '/history', label: t('header.links.history'), position: 'left', icon: 'book-sparkles' },
+    { path: '/story', label: t('header.links.history'), position: 'left', icon: 'book-sparkles' },
     { path: '/services', label: t('header.links.services'), position: 'right', icon: 'hand-holding-heart' },
     { path: '/packages', label: t('header.links.packages'), position: 'right', icon: 'hand-holding-box' },
   ]
