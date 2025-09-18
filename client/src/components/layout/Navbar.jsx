@@ -250,7 +250,7 @@ export const Navbar = () => {
                           <div className='possition-relative'>
                             <span className='me-4s'>Agendar</span>
                             {totalServices > 0 && (
-                              <span className='fs-small text-white navbar-dropdown-badge bg-danger-400 position-absolute fw-bold'>
+                              <span className='fs-small text-white navbar-dropdown-badge border-white border-2 bg-danger-400 position-absolute fw-bold'>
                                 <span>{totalServices}</span>
                               </span>
                             )}
