@@ -1,6 +1,7 @@
 @use 'sass:map';
 @use '../config/breakpoints' as bp;
 @use '../mixins/mediaqueries' as mq;
+@use '../functions/strings' as fn;
 
 $flexbox-classes: (
   'display': (
@@ -106,7 +107,7 @@ $flexbox-classes: (
   'grid-gap': (
     property: gap,
     class: gap,
-    values: 0 1 2 3 4 5,
+    values: 0 0.5 1 2 3 4 5,
     measurement: 'rem',
   ),
   'order': (
@@ -137,7 +138,7 @@ $flexbox-classes: (
   $measurement: map.get($property-values, measurement);
 
   @each $value in map.get($property-values, values) {
-    $class-name: #{$property-class}-#{$value};
+    $class-name: #{$property-class}-#{fn.escape-class($value)};
     .#{$class-name} {
       @if $measurement {
         #{$property-property}: #{$value}#{$measurement}; // Aplica unidad si existe
@@ -149,7 +150,7 @@ $flexbox-classes: (
     // Clases responsivas
     @each $breakpoint, $breakpoint-value in bp.$breakpoints {
       @if $breakpoint != xs {
-        $responsive-class-name: #{$property-class}-#{$breakpoint}-#{$value};
+        $responsive-class-name: #{$property-class}-#{$breakpoint}-#{fn.escape-class($value)};
         @media (min-width: $breakpoint-value) {
           .#{$responsive-class-name} {
             @if $measurement {
