@@ -3,11 +3,11 @@
   "routes": [
     {
       "src": "/manifest.webmanifest",
-      "dest": "/manifest.webmanifest"
+      "dest": "client/manifest.webmanifest"
     },
     {
       "src": "/favicon.ico",
-      "dest": "/favicon.ico"
+      "dest": "client/favicon.ico"
     },
     {
       "src": "/api/booking/send-mail",
@@ -16,27 +16,27 @@
     },
     {
       "src": "/assets/(.*)",
-      "dest": "/assets/$1"
+      "dest": "client/assets/$1"
     },
     {
       "src": "/(.*\\.(svg|css|js|png|jpg|webp|ttf|woff2|ogg|mp3))",
-      "dest": "/$1"
+      "dest": "client/$1"
     },
     {
       "src": "/robots.txt",
-      "dest": "/robots.txt"
+      "dest": "client/robots.txt"
     },
     {
       "src": "/sitemap.xml",
-      "dest": "/sitemap.xml"
+      "dest": "client/sitemap.xml"
     },
     {
       "src": "/humans.txt",
-      "dest": "/humans.txt"
+      "dest": "client/humans.txt"
     },
     {
       "src": "/(.*)",
-      "dest": "/index.html",
+      "dest": "client/index.html",
       "headers": {
         "Cache-Control": "public, max-age=0, must-revalidate"
       }
