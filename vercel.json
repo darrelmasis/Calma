@@ -8,7 +8,7 @@
     { "src": "/sitemap.xml", "dest": "/sitemap.xml" },
     { "src": "/humans.txt", "dest": "/humans.txt" },
     {
-      "src": "/(.*)",
+      "src": "/.*",
       "dest": "/index.html",
       "headers": { "Cache-Control": "public, max-age=0, must-revalidate" }
     }
