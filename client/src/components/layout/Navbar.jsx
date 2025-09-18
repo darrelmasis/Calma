@@ -104,6 +104,10 @@ export const Navbar = () => {
     if (!isDesktop) handleCloseMenu()
   }
 
+  const navigateToServices = () => {
+    navigate('/services')
+  }
+
   const handleCTAClick = () => {
     setTimeout(() => {
       navigate('/booking')
@@ -240,15 +244,6 @@ export const Navbar = () => {
                   <Dropdown>
                     <DropdownTrigger>
                       <div className='navbar-dropdown-info'>
-                        {/* <div className="navbar-dropdown-info-wrapper d-flex align-items-center">
-                          <Icon name="bag-shopping" size='lg' />
-                          {
-                            totalServices > 0 && (
-                              <p className='ms-1 text-white my-0 bg-danger-400 rounded fs-xsmall navbar-dropdown-info-label fw-semibold text-center'>{totalServices}</p>
-                            )
-                          }
-                        </div>
-                        <Icon name="chevron-down" /> */}
                         <Button variant='basic' className="position-relative rounded-pill-md" icon={[
                           { name: "calendar-check", variant: "regular", position: "left" },
                           { name: "chevron-down", variant: "regular", position: "right" }
@@ -267,17 +262,31 @@ export const Navbar = () => {
                     </DropdownTrigger>
                     <DropdownContent>
                       <div className="navbar-dropdown-wrapper">
-                        {totalServices === 0 && <p className='fs-h6 text-center text-muted'>No hay servicios seleccionados</p>}
+                        {totalServices === 0 && (
+                          <div className="d-flex flex-direction-column align-items-center justify-content-center gap-1">
+                            <Icon name="inbox" size='lg' className="text-muted" />
+                            <p className='fs-medium text-center text-muted m-0'>No has seleccionado ningún servicio</p>
+                            <Button className="" variant='primary' ghost onClick={navigateToServices}>Explorar Servicios</Button>
+                          </div>
+                        )}
                         {
                           <>
+                            {
+                              totalServices > 0 && (
+                                <p className='text-center border-bottom pb-3 d-flex align-items-center justify-content-center  gap-1 mt-1'>
+                                  <Icon name="list-check" size='sm' className="text-muted" />
+                                  <span>Servicios agregados</span>
+                                </p>
+                              )
+                            }
                             <div className="navbar-dropdown-services-added scrollbar-thin">
                               {
                                 Object.entries(services).map(([category, items]) => (
                                   <div key={category}>
                                     <div className='mb-3 fs-h6'>{category}</div>
-                                    <ul className='navbar-dropdown-service-list mb-3'>
+                                    <ul className='navbar-dropdown-service-list mb-3 gap-0-5'>
                                       {items.map((service) => (
-                                        <li className='navbar-dropdown-service-item rounded-all-sm d-flex align-items-center justify-content-space-between fs-small ' key={service.name}>
+                                        <li className='navbar-dropdown-service-item rounded-all-sm d-flex align-items-center justify-content-space-between fs-medium ' key={service.name}>
                                           <span className='me-2 d-flex align-items-center gap-1'>
                                             <span>{service.name}</span>
                                           </span>

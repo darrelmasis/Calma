@@ -316,10 +316,10 @@ body {
   &-dropdown-service-item {
     padding: 0.5rem 1rem;
     background-color: transparent;
-    // border-bottom: 1px solid fn.getColor(palette.$darks, '50');
+    background-color: fn.getColor(palette.$lights, '50');
 
     &:hover {
-      background-color: fn.getColor(palette.$lights, '50');
+      background-color: fn.getColor(palette.$lights, '100');
     }
     &:last-child {
       border-bottom: none;
