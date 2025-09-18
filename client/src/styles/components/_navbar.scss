@@ -77,7 +77,7 @@ body {
     list-style: none;
     margin: 0;
     padding: 0;
-    line-height: 1.8;
+    line-height: 2;
     align-items: center;
     width: 100%;
 
@@ -85,17 +85,15 @@ body {
       color: c.$text-color;
       display: flex;
       font-size: typo.$fs-base;
-      padding: 0.375rem 0;
+      padding: 0.0625rem 1rem;
       border-radius: 0.5rem;
-      border: 2px solid transparent;
+      border: 1px solid transparent;
       transition: all 0.3s ease;
       position: relative;
       user-select: none;
       text-decoration: none;
       color: c.$text-color;
       align-items: center;
-      min-width: 7rem;
-      max-width: 7rem;
       text-align: center;
       justify-content: center;
 
@@ -116,8 +114,7 @@ body {
       &.active {
         color: c.$primary;
         background-color: fn.getColor(palette.$golds, '50');
-        font-weight: bolder;
-        border: 2px solid fn.getColor(palette.$golds, '300');
+        border: 1px solid fn.getColor(palette.$golds, '300');
 
         & > .icon-wrapper {
           @include animate.bounceIn(0.4s);
