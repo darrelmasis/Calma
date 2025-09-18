@@ -141,34 +141,71 @@ export default defineConfig(({ mode }) => (
           navigateFallback: '/index.html',
           globPatterns: ['**/*.{js,css,html,xml,png,jpg,jpeg,svg,gif,woff2,json,ttf,ico,mp3,ogg,webp}'],
           runtimeCaching: [
+            // HTML / SPA
+            {
+              urlPattern: ({ request }) => request.destination === 'document',
+              handler: 'NetworkFirst',
+              options: {
+                cacheName: 'html-cache',
+                networkTimeoutSeconds: 10,
+                expiration: {
+                  maxEntries: 10,
+                  maxAgeSeconds: 60 * 60 * 24, // 1 día
+                },
+              },
+            },
+            // JS / CSS
+            {
+              urlPattern: ({ request }) => request.destination === 'script' || request.destination === 'style',
+              handler: 'StaleWhileRevalidate',
+              options: {
+                cacheName: 'static-resources',
+                expiration: {
+                  maxEntries: 50,
+                  maxAgeSeconds: 60 * 60 * 24 * 7, // 7 días
+                },
+              },
+            },
+            // Imágenes externas
             {
               urlPattern: /^https?:\/\/.*\.(?:png|jpg|jpeg|svg|gif|webp)$/,
               handler: 'CacheFirst',
               options: {
                 cacheName: 'images-cache',
-                expiration: { maxEntries: 100, maxAgeSeconds: 60 * 60 * 24 * 7 }, // 7 days
+                expiration: {
+                  maxEntries: 100,
+                  maxAgeSeconds: 60 * 60 * 24 * 7, // 7 días
+                },
               },
             },
+            // JSON / APIs
             {
               urlPattern: /^https?:\/\/.*\.json$/,
               handler: 'NetworkFirst',
               options: {
                 cacheName: 'api-cache',
                 networkTimeoutSeconds: 10,
-                expiration: { maxEntries: 50, maxAgeSeconds: 60 * 60 * 3 }, // 3 hours
+                expiration: {
+                  maxEntries: 50,
+                  maxAgeSeconds: 60 * 60 * 3, // 3 horas
+                },
               },
             },
+            // Imágenes locales
             {
               urlPattern: ({ request }) => request.destination === 'image',
               handler: 'CacheFirst',
               options: {
                 cacheName: 'images-cache',
-                expiration: { maxEntries: 100, maxAgeSeconds: 60 * 60 * 24 * 7 }, // 7 days
+                expiration: {
+                  maxEntries: 100,
+                  maxAgeSeconds: 60 * 60 * 24 * 7, // 7 días
+                },
               },
             },
-          ]
-
+          ],
         }
+
 
       }),
       vitePluginCleanCSS(),
