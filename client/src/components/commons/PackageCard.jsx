@@ -7,10 +7,10 @@ const PackageCard = ({ icono, nombre, precio, descripcion, servicios, isFeatured
 
   return (
     <div className="package-card">
-      <div className="rounded bg-container w-100">
+      <div className="rounded w-100">
         <div className="package-card-header p-3 rounded-top-sm position-relative">
           <Icon name={icono} className=" package-icon bg-white" size='lg' />
-          <h2 className="text-white fs-lead"><span className='fs-h5 fw-light me-2'>{t('packages.section_1.from_price_text')}</span>{currencySymbol} {precio}</h2>
+          <h2 className="text-white fs-lead"><span className='fs-h5 fw-light me-2'>{t('packages.section_1.from_price_text')} /</span>{currencySymbol}{precio}</h2>
           <h2 className="text-white fs-h4">{nombre}</h2>
           <span className="text-neutral-50 fw-light package-description fs-medium">{descripcion}</span>
           {

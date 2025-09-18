@@ -32,25 +32,26 @@ const Packages = () => {
                 </Fade>
               </div>
             </div>
-            <div className="package-card-group grid-row gap-lg-3">
+            <Fade className="package-card-group grid-row gap-lg-3">
               {packages.map((pkg, index) => (
-                <div className="package-card-wrapper grid-col-12 grid-col-md-4 rounded-all-md border" key={index}>
-                  <Fade>
-                    <PackageCard
-                      icono={pkg.icono}
-                      nombre={pkg.nombre_original}
-                      precio={pkg.precio}
-                      descripcion={pkg.descripcion_corta}
-                      servicios={pkg.servicios_incluidos}
-                      isFeatured={pkg.featured}
-                      featuredText={pkg.featured_text}
-                    />
-                  </Fade>
+                <div key={index} className='package-card-wrapper grid-col-12 grid-col-md-4 border rounded-all-sm bg-neutral-50' data-featured={pkg.featured}>
+                  <PackageCard
+                    icono={pkg.icono}
+                    nombre={pkg.nombre_original}
+                    precio={pkg.precio}
+                    descripcion={pkg.descripcion_corta}
+                    servicios={pkg.servicios_incluidos}
+                    isFeatured={pkg.featured}
+                    featuredText={pkg.featured_text}
+                  />
                 </div>
               ))}
-            </div>
+            </Fade>
           </div>
-          <p className='text-muted text-center fs-medium mt-5'>{`* ${t('packages.section_1.group_optionaly_text')}`}</p>
+          <Fade>
+            <p className='text-muted text-center fs-medium mt-5'>{`* ${t('packages.section_1.group_optionaly_text')}`}</p>
+
+          </Fade>
         </div>
       </section>
 

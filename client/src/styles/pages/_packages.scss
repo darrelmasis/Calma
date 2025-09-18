@@ -8,24 +8,16 @@
 
   @include mq.screen('min', 'lg') {
     &:hover {
-      box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
-      transform: scale(1.02);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
       cursor: pointer;
-    }
-    &:hover .package-header {
-      background-color: var(--primary);
-    }
-    &:hover .package-description {
-      color: var(--primary-100);
     }
   }
 }
 
 .package-card-group {
   @include mq.screen('min', 'lg') {
-    &:has(.package-card-wrapper:hover) .package-card-wrapper:not(:hover) {
-      opacity: 0.85;
-      transform: scale(0.98);
+    & .package-card-wrapper:not([data-featured='true']) {
+      transform: scale(0.9);
     }
   }
 }
