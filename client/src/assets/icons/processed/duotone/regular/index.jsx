@@ -34,6 +34,7 @@ import Inbox from './inbox.svg?react';
 import LanguageAlt from './language-alt.svg?react';
 import Language from './language.svg?react';
 import LightbulbOn from './lightbulb-on.svg?react';
+import ListCheck from './list-check.svg?react';
 import LocationDot from './location-dot.svg?react';
 import Mobile from './mobile.svg?react';
 import PaintbrushFine from './paintbrush-fine.svg?react';
@@ -90,6 +91,7 @@ export {
   LanguageAlt,
   Language,
   LightbulbOn,
+  ListCheck,
   LocationDot,
   Mobile,
   PaintbrushFine,
