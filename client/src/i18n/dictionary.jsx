@@ -117,7 +117,7 @@ export const dictionary = {
       pageTitle: 'Nuestros Paquetes',
       section_1: {
         title: 'Nuestros Paquetes',
-        description: 'Descubre nuestros paquetes diseñados para ofrecerte una experiencia completa de bienestar y relajación. Cada paquete combina diferentes servicios para brindarte un momento único de renovación',
+        description: 'Descubre nuestros paquetes diseñados para ofrecer una experiencia de bienestar y relajación. Cada uno combina servicios para brindarte un momento único de renovación.',
         include_text: 'El Paquete Incluye',
         group_optionaly_text: 'Todos nuestros paquetes tienen opciones de grupo',
         from_price_text: 'Desde',
@@ -127,6 +127,8 @@ export const dictionary = {
             icono: "sparkles",
             nombre_original: "Calma",
             precio: "150",
+            featured: false,
+            featured_text: "",
             descripcion_corta: "Renovación integral cuerpo y mente, ideal para cumpleaños o cualquier ocasión especial",
             servicios_incluidos: [
               "Manicure SPA (Gel o regular)",
@@ -141,6 +143,8 @@ export const dictionary = {
             icono: "champagne-glasses",
             nombre_original: "The Day",
             precio: "170",
+            featured: true,
+            featured_text: "Más Popular",
             descripcion_corta: "Prepárate para tu evento especial con Calma",
             servicios_incluidos: [
               "Lavado línea SPA",
@@ -155,6 +159,8 @@ export const dictionary = {
             icono: "rings-wedding",
             nombre_original: "Bridal Glow-Up",
             precio: "250",
+            featured: false,
+            featured_text: "",
             descripcion_corta: "Experiencia de belleza completa para novias",
             servicios_incluidos: [
               "Manicure VIP SPA (Gel o regular)",
@@ -506,6 +512,8 @@ export const dictionary = {
             icono: "sparkles",
             nombre_original: "Calma",
             precio: "150",
+            featured: false,
+            featured_text: "",
             descripcion_corta: "Complete body and mind renewal, ideal for birthdays or special occasions.",
             servicios_incluidos: [
               "SPA Manicure (Gel or regular)",
@@ -520,6 +528,8 @@ export const dictionary = {
             icono: "champagne-glasses",
             nombre_original: "The Day",
             precio: "170",
+            featured: true,
+            featured_text: "Most Popular",
             descripcion_corta: "Prepare for your special event with calm and confidence.",
             servicios_incluidos: [
               "SPA shampoo & wash",
@@ -534,6 +544,8 @@ export const dictionary = {
             icono: "rings-wedding",
             nombre_original: "Bridal Glow-Up",
             precio: "250",
+            featured: false,
+            featured_text: "",
             descripcion_corta: "Complete beauty experience for brides.",
             servicios_incluidos: [
               "VIP SPA Manicure (Gel or regular)",

@@ -19,14 +19,14 @@ const Packages = () => {
 
       <Header />
 
-      <section className="py-4 body-bg">
+      <section className="py-4 bg-neutral-0">
         <div className="container">
           <div className="grid">
             <div className="grid-row mb-6">
               <div className="grid-col-12 d-flex flex-direction-column align-items-center justify-content-center">
-                <Fade><h1 className="fs-4 text-primary text-center">{t('packages.section_1.title')}</h1></Fade>
+                <Fade><h1 className="fs-4 text-center">{t('packages.section_1.title')}</h1></Fade>
                 <Fade>
-                  <p className='text-center text-muted mw-500'>
+                  <p className='text-center text-muted max-wx-750'>
                     {t('packages.section_1.description')}
                   </p>
                 </Fade>
@@ -34,7 +34,7 @@ const Packages = () => {
             </div>
             <div className="package-card-group grid-row gap-lg-3">
               {packages.map((pkg, index) => (
-                <div className="grid-col-12 grid-col-md-4" key={index}>
+                <div className="package-card-wrapper grid-col-12 grid-col-md-4 rounded-all-md border" key={index}>
                   <Fade>
                     <PackageCard
                       icono={pkg.icono}
@@ -42,13 +42,15 @@ const Packages = () => {
                       precio={pkg.precio}
                       descripcion={pkg.descripcion_corta}
                       servicios={pkg.servicios_incluidos}
+                      isFeatured={pkg.featured}
+                      featuredText={pkg.featured_text}
                     />
                   </Fade>
                 </div>
               ))}
             </div>
           </div>
-          <p className='text-muted text-center'>{t('packages.section_1.group_optionaly_text')}</p>
+          <p className='text-muted text-center fs-medium mt-5'>{`* ${t('packages.section_1.group_optionaly_text')}`}</p>
         </div>
       </section>
 
@@ -71,7 +73,7 @@ const Packages = () => {
                   {faqs.map((faq, i) => (
                     <Fade key={i}>
                       <Accordion title={faq.question}>
-                        <p className="text-muted text-base">
+                        <p className="mb-0 text-muted ">
                           {faq.answer}
                         </p>
                       </Accordion>

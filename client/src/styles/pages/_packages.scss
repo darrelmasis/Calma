@@ -1,48 +1,67 @@
 @use '../mixins/mediaqueries' as mq;
+@use '../config/colors_map' as c;
+@use '../config/colors' as pallette;
+@use '../functions/colors' as fn;
 
-.package-card-group {
-
-  .package-header, .package-description {
-    transition: .3s ease-in-out;
-  }
-  .package-card {
-    transition:  0.3s ease-in-out;
-    @include mq.screen('min', 'lg') {
-
-      &:hover {
-        transform: scale(1.05);
-        transition: transform 0.3s ease-in-out;
-        cursor: pointer;
-      }
-      &:hover .package-header{
-        background-color: var(--primary);
-      }
-      &:hover .package-description{
-        color: var(--primary-100);
-      }
-    }
-  }
+.package-card-wrapper {
+  transition: 0.3s ease-in-out;
 
   @include mq.screen('min', 'lg') {
-    &:has(.package-card:hover) .package-card:not(:hover) {
-    opacity: 0.8;
-    transition: opacity,transform 0.3s ease-in-out;
-    transform: scale(0.95);
-
-  }
+    &:hover {
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+      transform: scale(1.02);
+      cursor: pointer;
+    }
+    &:hover .package-header {
+      background-color: var(--primary);
+    }
+    &:hover .package-description {
+      color: var(--primary-100);
+    }
   }
 }
 
+.package-card-group {
+  @include mq.screen('min', 'lg') {
+    &:has(.package-card-wrapper:hover) .package-card-wrapper:not(:hover) {
+      opacity: 0.85;
+      transform: scale(0.98);
+    }
+  }
+}
+
+.package-icon {
+  width: 48px;
+  height: 48px;
+  padding: 10px;
+  // background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.most-popular-tag {
+  top: 10px;
+  right: 10px;
+  // background-color: rgba( #ffffff, 0.5);
+  backdrop-filter: blur(10px) brightness(150%);
+}
+
+.package-card-header {
+  background: linear-gradient(45deg, fn.getColor(pallette.$purples, '700'), fn.getColor(pallette.$golds, '300'));
+}
 
 .faq-item {
   cursor: pointer;
-  transition: .3s ease-in-out;
+  transition: 0.3s ease-in-out;
   &:hover {
-    background-color: var(--neutral-100);
+    background-color: var(--neutral-50);
   }
 
   &.active {
-    background-color: var(--neutral-100);
+    background-color: var(--neutral-50);
   }
   .faq-card {
     transition: all 0.3s ease;

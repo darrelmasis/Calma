@@ -1,4 +1,3 @@
-import React, { useState, Children, cloneElement, isValidElement } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Icon } from '../commons/Icons';
 
@@ -23,11 +22,11 @@ export const Accordion = ({
       tabIndex={0}
       aria-expanded={estaActivo}
       onKeyDown={(e) => e.key === 'Enter' && manejarAlternar()}
-      className={`border rounded p-4 bg-container faq-item mb-3 ${estaActivo ? 'active' : ''} ${className}`}
+      className={`border rounded py-3 px-5 bg-container faq-item mb-3 ${estaActivo ? 'active' : ''} ${className}`}
       onClick={manejarAlternar}
     >
       <div className="d-flex justify-content-space-between align-items-center">
-        <h3 className="m-0 text-primary">{title}</h3>
+        <p className="m-0">{title}</p>
         <motion.div animate={{ rotate: estaActivo ? 180 : 0 }}>
           <Icon name="chevron-down" className="text-primary" />
         </motion.div>
@@ -43,7 +42,7 @@ export const Accordion = ({
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             className="overflow-hidden"
           >
-            <div className="mt-4 text-muted text-base">{children}</div>
+            <div className="mt-4">{children}</div>
           </motion.div>
         )}
       </AnimatePresence>
