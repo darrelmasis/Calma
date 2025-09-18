@@ -48,6 +48,7 @@ import Shield from './shield.svg?react';
 import Shower from './shower.svg?react';
 import Spa from './spa.svg?react';
 import Sparkles from './sparkles.svg?react';
+import Stars from './stars.svg?react';
 import TableColumns from './table-columns.svg?react';
 import TrashCan from './trash-can.svg?react';
 import Users from './users.svg?react';
@@ -106,6 +107,7 @@ export {
   Shower,
   Spa,
   Sparkles,
+  Stars,
   TableColumns,
   TrashCan,
   Users,
