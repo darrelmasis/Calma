@@ -54,10 +54,12 @@
     // transition: 0.3s ease;
 
     &.expanded ~ .menu-card-footer {
-      background-color: fn.getColor(pallette.$lights, '200');
+      background-color: fn.getColor(pallette.$golds, '400');
+
 
       & .menu-card-footer--expandable {
         flex-flow: column-reverse;
+        color: fn.getColor(pallette.$golds, '50');
       }
     }
   }
@@ -75,7 +77,7 @@
 
   &-footer {
     // padding a todos los footers
-    background-color: fn.getColor(pallette.$lights, '200');
+    background-color: fn.getColor(pallette.$golds, '200');
 
     &--expandable,
     &--static,
@@ -85,17 +87,16 @@
       align-items: center;
       justify-content: center;
       gap: 1rem;
-      color: colors.$text-color;
+      color: fn.getColor(pallette.$golds, '900');
     }
 
     &--expandable {
       cursor: pointer;
       transition: 0.3s ease;
       position: relative;
-      // background-color: fn.getColor(pallette.$golds, '50');
 
       &:hover {
-        background-color: fn.getColor(pallette.$lights, '300');
+        background-color: fn.getColor(pallette.$golds, '300');
       }
 
       // &:before {
