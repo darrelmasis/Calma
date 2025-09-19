@@ -1,0 +1,100 @@
+@use '../config/colors' as pallette;
+@use '../config/colors_map' as c;
+@use '../functions/colors' as fn;
+
+$headerColor: fn.getColor(pallette.$golds, '50');
+$calmaColor: fn.getColor(pallette.$golds, '300');
+
+$main-gradient: linear-gradient(90deg, white 50%, $headerColor 50%);
+
+.card-deck {
+  // display: grid;
+  // grid-template-columns: repeat(6, 1fr); /* 6 columnas */
+  // justify-content: space-around;
+  // row-gap: 2rem;
+}
+
+.profile-card {
+
+  // box-shadow:
+  //   0 1px 2px rgba(0, 0, 0, 0.07),
+  //   0 2px 4px rgba(0, 0, 0, 0.06),
+  //   0 4px 8px rgba(0, 0, 0, 0.05);
+  position: relative;
+  cursor: pointer;
+
+  &:hover {
+    & .profile-card-image:before {
+      opacity: 0;
+    }
+
+    & .profile-card-image:after {
+      transform-origin: center;
+      transform: translate(-50%, -50%) rotate(180deg);
+    }
+
+    & .profile-card-image-picture {
+      transform: scale(1.1) translateY(0rem);
+    }
+  }
+
+  &-header {
+    min-height: 10rem;
+    position: relative;
+  }
+
+  &-image {
+    width: 120px;
+    height: 120px;
+    position: relative;
+    border-radius: 50%;
+    background: white;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 127.0366px;
+      height: 135px;
+      z-index: 4;
+      background: url('/calma-arch.svg') no-repeat center;
+      transform: translate(-50%, -50%) rotate(0deg);
+      transform-origin: center;
+      transition: transform 1s ease-in-out;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      // backdrop-filter: grayscale(100%);
+      z-index: 2;
+      opacity: 1;
+      transition: 0.5s ease;
+      -webkit-mask-image: var(--mask-url);
+      mask-image: var(--mask-url);
+      -webkit-mask-size: cover;
+      mask-size: cover;
+      -webkit-mask-position: center;
+      mask-position: center;
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+    }
+
+    &-wrapper {
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+    &-picture {
+      transition: all 1s ease-in-out;
+    }
+  }
+}

@@ -4,4 +4,5 @@ import Story from './screens/Story'
 import Packages from './screens/Packages'
 import NotFound from './screens/NotFound'
 import Booking from './screens/Booking'
-export { Home, Services, Packages, NotFound, Story, Booking }
+import Team from './screens/Team'
+export { Home, Services, Packages, NotFound, Story, Booking, Team }

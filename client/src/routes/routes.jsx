@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { Booking, Story, Home, NotFound, Packages, Services } from '../pages/Index'
+import { Booking, Story, Home, NotFound, Packages, Services, Team } from '../pages/Index'
 import ScrollTop from '../components/commons/ScrollTop'
 
 const AppRoutes = () => {
@@ -14,6 +14,7 @@ const AppRoutes = () => {
         <Route path="/packages" element={<Packages />} />
         <Route path="/services" element={<Services />} />
         <Route path="/booking" element={<Booking />} />
+        <Route path="/team" element={<Team />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

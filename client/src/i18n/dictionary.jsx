@@ -401,6 +401,60 @@ export const dictionary = {
     floatingButton: {
       whatsappButtonText: "Escribenos por WhatsApp",
       bookingButtontext: "Reserva con nosotros"
+    },
+    team: {
+      pageTitle: 'Nuestro Equipo',
+      section_1: {
+        title: '¡Nuestro Equipo está aquí!',
+        description: 'Conoce a los profesionales que hacen posible nuestra misión'
+      },
+      section_2: {
+        profiles: {
+          agazo: {
+            name: 'Auxiliadora Gazo',
+            role: 'Estilista de cabello, Especialista en depilación, Manicurista, Pedicurista',
+            imageAlt: 'Foto de Auxiliadora Gazo',
+            photo: 'agazo',
+            order: 4
+          },
+          jbermudez: {
+            name: 'Joseling Bermúdez',
+            role: 'Manicurista, Especialista en acrílico, Especialista en rubber polygel, Estilista de cabello, Especialista en depilación',
+            imageAlt: 'Foto de Joseling Bermúdez',
+            photo: 'jbermudez',
+            order: 6
+          },
+          sguadamuz: {
+            name: 'Saida Guadamúz',
+            role: 'Manicurista, Especialista en rubber, Pedicurista, Especialista en extracción',
+            imageAlt: 'Foto de Saida Guadamúz',
+            photo: 'sguadamuz',
+            order: 5
+          },
+          hrosales: {
+            name: 'Haslly Rosales',
+            role: 'Manicurista, Especialista en acrílico, Especialista en rubber, Pedicurista',
+            imageAlt: 'Foto de Haslly Rosales',
+            photo: 'hrosales',
+            order: 1
+          },
+          mduarte: {
+            name: 'María Duarte',
+            role: 'Administradora, Maquillista, Lashista, Especialista en estética facial',
+            imageAlt: 'Foto de María Duarte',
+            photo: 'mduarte',
+            order: 2
+          },
+          nguadamuz: {
+            name: 'Nubia Guadamúz',
+            role: 'Masajista, Tratamientos corporales',
+            imageAlt: 'Foto de Nubia Guadamúz',
+            photo: 'nguadamuz',
+            order: 3
+          }
+        }
+      }
+
     }
   },
   en: {
@@ -774,6 +828,62 @@ export const dictionary = {
     floatingButton: {
       whatsappButtonText: "Write to us on WhatsApp",
       bookingButtontext: "Book with us"
+    },
+    team: {
+      pageTitle: 'Our Team',
+      section_1: {
+        title: 'Our team of experts is here',
+        description: 'Meet the professionals who make our mission possible'
+      },
+      section_2: {
+        profiles: {
+          agazo: {
+            name: 'Auxiliadora Gazo',
+            role: 'Hair Stylist, Waxing Specialist, Nail Technician, Pedicurist',
+            imageAlt: 'Photo of Auxiliadora Gazo',
+            photo: 'agazo',
+            order: 4
+          },
+          jbermudez: {
+            name: 'Joseling Bermúdez',
+            role: 'Nail Technician, Acrylic Specialist, Rubber Polygel Specialist, Hair Stylist, Waxing Specialist',
+            imageAlt: 'Photo of Joseling Bermúdez',
+            photo: 'jbermudez',
+            order: 6
+          },
+          sguadamuz: {
+            name: 'Saida Guadamúz',
+            role: 'Nail Technician, Rubber Specialist, Pedicurist, Extraction Specialist',
+            imageAlt: 'Photo of Saida Guadamúz',
+            photo: 'sguadamuz',
+            order: 5
+          },
+          hrosales: {
+            name: 'Haslly Rosales',
+            role: 'Nail Technician, Acrylic Specialist, Rubber Specialist, Pedicurist',
+            imageAlt: 'Photo of Haslly Rosales',
+            photo: 'hrosales',
+            order: 1
+          },
+          mduarte: {
+            name: 'María Duarte',
+            role: 'Manager, Makeup Artist, Lash Technician, Facial Aesthetics Specialist',
+            imageAlt: 'Photo of María Duarte',
+            photo: 'mduarte',
+            order: 2
+          },
+          nguadamuz: {
+            name: 'Nubia Guadamúz',
+            role: 'Massage Therapist, Body Treatments',
+            imageAlt: 'Photo of Nubia Guadamúz',
+            photo: 'nguadamuz',
+            order: 3
+          }
+        }
+      }
+
+
     }
+
   }
 }
