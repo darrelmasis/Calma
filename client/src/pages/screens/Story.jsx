@@ -25,12 +25,12 @@ const History = () => {
             </div>
             <div className="grid-row gap-lg-4">
               <div className="grid-col-12 grid-col-md-6 text-justify">
-                <Fade delay={0.2}>
+                <Fade>
                   <p className='mt-0'>
                     {t('history.section_1.history_p1')}
                   </p>
                 </Fade>
-                <Fade delay={0.4}>
+                <Fade>
                   <p>{t('history.section_1.history_p2')}</p>
                 </Fade>
                 <Fade >
