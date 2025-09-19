@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "concurrently": "^9.2.1",
+    "fast-glob": "^3.3.3",
     "prettier": "3.5.3"
   }
 }
