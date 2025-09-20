@@ -15,7 +15,6 @@ $main-gradient: linear-gradient(90deg, white 50%, $headerColor 50%);
 }
 
 .profile-card {
-
   // box-shadow:
   //   0 1px 2px rgba(0, 0, 0, 0.07),
   //   0 2px 4px rgba(0, 0, 0, 0.06),
@@ -33,8 +32,13 @@ $main-gradient: linear-gradient(90deg, white 50%, $headerColor 50%);
       transform: translate(-50%, -50%) rotate(180deg);
     }
 
+    & .profile-card-image-picture-alt {
+      transform: scale(1.1) translateY(0rem);
+      opacity: 0;
+    }
     & .profile-card-image-picture {
       transform: scale(1.1) translateY(0rem);
+      opacity: 1;
     }
   }
 
@@ -95,6 +99,14 @@ $main-gradient: linear-gradient(90deg, white 50%, $headerColor 50%);
     }
     &-picture {
       transition: all 1s ease-in-out;
+      filter: grayscale(50%);
+    }
+
+    &-picture-alt {
+      mix-blend-mode: multiply; //
+      transition: all 1s ease-in-out;
+      filter: grayscale(50%);
+
     }
   }
 }

@@ -59,12 +59,18 @@ const Team = () => {
                             className="profile-card-image"
                             style={{ '--mask-url': `url(/images/png/${expert.photo}-400.png)` }}
                           >
-                            <div className="profile-card-image-wrapper">
+                            <div className="profile-card-image-wrapper bg-primary-100 position-relative rounded-circle overflow-hidden">
                               <ResponsiveImage
                                 name={expert.photo}
                                 type='png'
                                 alt={expert.imageAlt}
-                                className="profile-card-image-picture"
+                                className="position-absolute profile-card-image-picture opacity-50"
+                              />
+                              <ResponsiveImage
+                                name={expert.photo}
+                                type='png'
+                                alt={expert.imageAlt}
+                                className="position-absolute profile-card-image-picture-alt opacity-90"
                               />
                             </div>
                           </div>
