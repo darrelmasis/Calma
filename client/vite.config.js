@@ -51,7 +51,6 @@ export default defineConfig(({ mode }) => ({
         ]
       },
       workbox: {
-        debug: false,
         skipWaiting: true,
         clientsClaim: true,
         navigateFallback: '/index.html',
