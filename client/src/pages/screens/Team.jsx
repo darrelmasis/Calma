@@ -23,7 +23,7 @@ const Team = () => {
     return (
       <ul className={className}>
         {items.map((item, index) => (
-          <li key={index} className={liClassName}>{item}</li>
+          <li key={index} className={liClassName}><span className='text-primary me-1'>•</span>{item}</li>
         ))}
       </ul>
     );
@@ -71,37 +71,13 @@ const Team = () => {
                         </div>
 
                         <div className="profile-card-content rounded-all-lg p-3">
-                          <h2 className='mb-1 text-primary-400 fw-light fs-h5 mt-0'>{expert.name}</h2>
+                          <h2 className='mb-1 text-primary-400 fw-light fs-h5 fw-semibold mt-0'>{expert.name}</h2>
                           {/* <p className='fs-medium m-0'>{expert.role}</p> */}
                           {/* <p className='fs-small text-muted m-0'>{expert.description}</p> */}
                           <StringToList text={expert.role} className="text-center p-0 list-style-none d-flex flex-direction-column gap-1" liClassName="m-0 fs-small text-muted " />
                         </div>
-
                       </div>
-
                     </div>
-
-                    // <Fade key={index} className='bg-danger w-100'>
-                    //   <div className="bg-primary rounded-all-lg ">
-                    //     <div
-                    //       className="profile-card-image-wrapper"
-                    //       data-name={expert.photo}
-                    //       style={{ '--mask-url': `url(/images/png/${expert.photo}-400.png)` }}
-                    //     >
-                    //       <ResponsiveImage
-                    //         name={expert.photo}
-                    //         type="png"
-                    //         alt={expert.imageAlt}
-                    //         className="profile-card-image"
-                    //       />
-                    //     </div>
-                    //   </div>
-                    //   <div className="bg-white rounded-all-lg">
-                    //     <h2 className='mb-1 text-primary-400 fs-h5 mt-0'>{expert.name}</h2>
-                    //     <p className='fs-medium m-0'>{expert.role}</p>
-                    //     <p className='fs-small text-muted m-0'>{expert.description}</p>
-                    //   </div>
-                    // </Fade>
                   )
 
                 }
