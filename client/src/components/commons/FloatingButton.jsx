@@ -6,6 +6,7 @@ import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import { useNavigate } from 'react-router-dom';
 import { useLang } from '../../i18n/LanguageContext'
 import { sounds, useSound } from './SoundManager';
+import { useLocation } from 'react-router-dom';
 
 
 const FloatingButton = () => {
@@ -20,6 +21,8 @@ const FloatingButton = () => {
   const closeSound = useSound('closePops', 0.5)
   const openSound = useSound('openPops', 0.5)
   const showOptionsRef = useRef(showOptions);
+  const { pathname } = useLocation();
+  const isBookingPage = pathname === '/booking';
 
 
   const optionButtonClasses = classNames({
@@ -92,58 +95,60 @@ const FloatingButton = () => {
   }, [openSound]);
 
   return (
-    <div className="floating-button z-index-10" ref={containerRef}>
-      <div className="floating-button-container">
-        {isVisible && (
-          <div className="floating-button-options">
-            <div className={optionButtonClasses}>
-              <Button onClick={handleWhatsappButton} variant='success' className='option-button-wrapper whatsapp-button p-0'>
-                <div className="grid-row grid-col-auto-1fr justify-content-center gap-0">
-                  <div className="d-flex option-button-label align-items-center justify-content-center h-100 ms-3">
-                    <p className='m-0 fs-medium white-space-nowrap'>{t('floatingButton.whatsappButtonText')}</p>
+    !isBookingPage && (
+      <div className={`floating-button z-index-10`} ref={containerRef}>
+        <div className="floating-button-container">
+          {isVisible && (
+            <div className="floating-button-options">
+              <div className={optionButtonClasses}>
+                <Button onClick={handleWhatsappButton} variant='success' className='option-button-wrapper whatsapp-button p-0'>
+                  <div className="grid-row grid-col-auto-1fr justify-content-center gap-0">
+                    <div className="d-flex option-button-label align-items-center justify-content-center h-100 ms-3">
+                      <p className='m-0 fs-medium white-space-nowrap'>{t('floatingButton.whatsappButtonText')}</p>
+                    </div>
+                    <div className="d-flex option-button-icon align-items-center justify-content-center">
+                      <Icon name="whatsapp" variant="brands" size='lg' />
+                    </div>
                   </div>
-                  <div className="d-flex option-button-icon align-items-center justify-content-center">
-                    <Icon name="whatsapp" variant="brands" size='lg' />
+                </Button>
+              </div>
+              <div className={optionButtonClasses}>
+                <Button onClick={handleBookingButton} variant='primary' className='option-button-wrapper booking-button p-0'>
+                  <div className="grid-row grid-col-auto-1fr justify-content-center gap-0">
+                    <div className="d-flex option-button-label align-items-center justify-content-center h-100 ms-3">
+                      <p className='m-0 fs-medium white-space-nowrap'>{t('floatingButton.bookingButtontext')}</p>
+                    </div>
+                    <div className="d-flex option-button-icon align-items-center justify-content-center">
+                      <Icon name="calendar-check" variant="regular" />
+                    </div>
                   </div>
-                </div>
-              </Button>
+                </Button>
+              </div>
             </div>
-            <div className={optionButtonClasses}>
-              <Button onClick={handleBookingButton} variant='primary' className='option-button-wrapper booking-button p-0'>
-                <div className="grid-row grid-col-auto-1fr justify-content-center gap-0">
-                  <div className="d-flex option-button-label align-items-center justify-content-center h-100 ms-3">
-                    <p className='m-0 fs-medium white-space-nowrap'>{t('floatingButton.bookingButtontext')}</p>
-                  </div>
-                  <div className="d-flex option-button-icon align-items-center justify-content-center">
-                    <Icon name="calendar-check" variant="regular" />
-                  </div>
-                </div>
-              </Button>
-            </div>
-          </div>
-        )}
+          )}
 
-        <Button
-          className="floating-button-toggle rounded-all-full main-button"
-          variant='info'
-          onClick={handleMainButtonClick}
-          ariaLabel="Abrir burbujas de opciones"
-          tabIndex={0}
-          size="large"
-        >
-          <SwitchTransition mode='out-in'>
-            <CSSTransition
-              key={mainButtonIconName}
-              timeout={100}
-              nodeRef={iconRef}
-              classNames="fade"
-            >
-              <Icon ref={iconRef} name={mainButtonIconName} variant="solid" size="lg" />
-            </CSSTransition>
-          </SwitchTransition>
-        </Button>
+          <Button
+            className="floating-button-toggle rounded-all-full main-button"
+            variant='info'
+            onClick={handleMainButtonClick}
+            ariaLabel="Abrir burbujas de opciones"
+            tabIndex={0}
+            size="large"
+          >
+            <SwitchTransition mode='out-in'>
+              <CSSTransition
+                key={mainButtonIconName}
+                timeout={100}
+                nodeRef={iconRef}
+                classNames="fade"
+              >
+                <Icon ref={iconRef} name={mainButtonIconName} variant="solid" size="lg" />
+              </CSSTransition>
+            </SwitchTransition>
+          </Button>
+        </div>
       </div>
-    </div>
+    )
   );
 };
 
