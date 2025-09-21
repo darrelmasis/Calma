@@ -2,66 +2,60 @@ import classNames from 'classnames'
 import { useState, useEffect } from 'react'
 
 const usePageTitle = pageTitle => {
-  const appName = import.meta.env.VITE_APP_NAME || 'Calma' // Valor por defecto si no está definido
+  const appName = import.meta.env.VITE_APP_NAME || 'Calma'
 
   useEffect(() => {
     const fullTitle = pageTitle ? `${pageTitle} | ${appName}` : appName
     document.title = fullTitle
 
     return () => {
-      document.title = appName // Restablece el título al desmontar el componente
+      document.title = appName
     }
   }, [pageTitle, appName])
 }
 
-// formatea un número de teléfono a formato internacional +CCC XXXX XXXX
 const formatPhone = (phone) => {
-  const cleaned = phone.replace(/[^\d+]/g, '');
-  const match = cleaned.match(/^(\+\d{3})(\d{4})(\d{4})$/);
-  if (!match) return phone;
-  return `${match[1]} ${match[2]} ${match[3]}`;
-};
+  const cleaned = phone.replace(/[^\d+]/g, '')
+  const match = cleaned.match(/^(\+\d{3})(\d{4})(\d{4})$/)
+  if (!match) return phone
+  return `${match[1]} ${match[2]} ${match[3]}`
+}
 
-const USD = ({ amount, currencySymbol, className }) => {
-
-  const [isvalidNumber, setIsvalidNumber] = useState(false);
-
-  const classes = classNames('me-1', className)
+const USD = ({ amount, currencySymbol = '$', size = 'regular', className, prefix }) => {
+  const [isValidNumber, setIsValidNumber] = useState(true)
 
   useEffect(() => {
-    if (isNaN(amount)) {
-      setIsvalidNumber(true);
-    } else {
-      setIsvalidNumber(false);
-    }
-  }, [amount]);
+    setIsValidNumber(!isNaN(amount))
+  }, [amount])
 
-  // Aseguramos que sea número
-  const num = !isvalidNumber ? Number(amount) : 0;
-  // Siempre forzamos dos decimales
-  const fixed = num.toFixed(2);
+  const num = isValidNumber ? Number(amount) : 0
+  const fixed = num.toFixed(2)
+  const [entero, decimal] = fixed.split('.')
 
-  // Dividimos en entero y decimal
-  const [entero, decimal] = fixed.split('.');
+  // Map de tamaños a clases de fuente
+  const sizeClasses = {
+    'xsmall': 'fs-xsmall',
+    'small': 'fs-small',
+    'regular': 'fs-regular',
+    'large': 'fs-h5 fw-bold',
+  }
 
-  // console.log({ amount, num, fixed, entero, decimal }); // Depuración
+  const containerClasses = classNames('d-inline-flex align-items-baseline', sizeClasses[size], className)
 
   return (
-    <span>
-      {
-        isvalidNumber
-          ? '-'
-          : <>
-            <span className={classes}>{currencySymbol}</span>
-            <span className='fw-semibold'>{entero}</span>
-            <sup className='small text-dark'>.{decimal}</sup>
-          </>
+    <span className={containerClasses}>
+      {!isValidNumber
+        ? '-'
+        : <>
+          {prefix && <span className='me-1'>{prefix}</span>}
+          <span>{currencySymbol}</span>
+          <span className='fw-semibold'>{entero}</span>
+          <span>.{decimal}</span>
+        </>
       }
     </span>
-  );
+  )
 }
 
 
-
-
-export { usePageTitle, formatPhone, USD };
+export { usePageTitle, formatPhone, USD }
