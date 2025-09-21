@@ -26,6 +26,20 @@ export const dictionary = {
       headerButton: {
         book: 'Reservar'
       },
+      dropdown: {
+        text: "Mi Bolsa",
+        title: "Servicios agregados",
+        empty: "Tu bolsa está vacía",
+        emptySubtitle: "Agrega servicios para reservar tu cita",
+        item: "Artículo",
+        items: "Artículos",
+        total: "Total estimado",
+        totalSubtitle: "servicio",
+        clear: "Limpiar",
+        book: "Agendar ahora!",
+        exploreServices: "Explorar Servicios",
+        clearTooltip: "Eliminar todos los servicios seleccionados",
+      }
 
     },
     footer: {
@@ -392,10 +406,41 @@ export const dictionary = {
       pageTitle: 'Citas',
       booking_p1: 'Descubre la experiencia de belleza y relajación que mereces',
       booking_button: 'Reserva tu cita',
-      booking_alert: 'Próximamente podrás reservar tus citas aquí!',
-      section_1: {
-        title: 'Reserva tu cita',
-        description: 'Próximamente podrás reservar tus citas aquí. Mientras tanto, contáctanos para agendar tu visita y vivir la experiencia Calma'
+      steps: {
+        welcome: {
+          title: "¡Genial! Veamos lo que elegiste 🎉",
+          subtitle: "Antes de agendar, revisa tus servicios seleccionados"
+        },
+        personalData: {
+          title: "Tus datos para contactarte",
+          subtitle: "Necesitamos algunos datos para agendar tus servicios",
+          fullNamePlaceholder: "Ej: María Pérez",
+          phonePlaceholder: "Ej: +505 8888 7777",
+          emailPlaceholder: "Ej: maria@email.com"
+        },
+        schedule: {
+          title: "Escoge fecha, hora y deja un mensaje",
+          subtitle: "Elige la fecha y hora que mejor te convenga y, si quieres, deja un mensaje extra para personalizar tu servicio",
+          datePlaceholder: "Selecciona la fecha",
+          timePlaceholder: "Selecciona la hora",
+          messagePlaceholder: "Escribe tu mensaje aquí..."
+        },
+        confirmation: {
+          title: "¡Todo listo! ✅",
+          subtitle: "Tu solicitud fue enviada correctamente. Nos pondremos en contacto contigo pronto."
+        },
+        noServices: {
+          title: "¡Oops! No seleccionaste ningún servicio",
+          subtitle: "Parece que todavía no agregaste servicios a tu bolsa."
+        },
+        buttons: {
+          back: "Atrás",
+          next: "Siguiente",
+          continue: "Continuar",
+          send: "Enviar",
+          backToServices: "Volver a servicios",
+          sendMessageOnly: "Enviar solo un mensaje"
+        }
       }
     },
     floatingButton: {
@@ -470,6 +515,19 @@ export const dictionary = {
       headerButton: {
         book: 'Book' // Mayúscula para consistencia en botones
       },
+      dropdown: {
+        text: "My Bag",
+        title: "Added Services",
+        empty: "Your bag is empty",
+        emptySubtitle: "Add services to book your appointment",
+        total: "Estimated total",
+        totalSubtitle: "service",
+        clear: "Clear bag",
+        book: "Book Now!",
+        exploreServices: "Explore Services",
+        clearTooltip: "Remove all selected services",
+
+      }
 
     },
     footer: {
