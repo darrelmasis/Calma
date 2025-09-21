@@ -49,7 +49,7 @@ const USD = ({ amount, currencySymbol = '$', size = 'regular', className, prefix
         : <>
           {prefix && <span className='me-1'>{prefix}</span>}
           <span>{currencySymbol}</span>
-          <span className='fw-semibold'>{entero}</span>
+          <span>{entero}</span>
           <span>.{decimal}</span>
         </>
       }

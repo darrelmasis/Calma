@@ -300,7 +300,7 @@ export const Navbar = () => {
                                           </div>
                                           <span className="me-2">
                                             <USD
-                                              className="fs-medium"
+                                              className="fs-medium fw-regular"
                                               amount={service.servicePrice}
                                               currencySymbol="$"
                                             />
