@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { execSync } from 'child_process';
 
-const copyIconsFilePath = 'powershell -ExecutionPolicy Bypass -File "C:\\Users\\ADATOS\\OneDrive - MONISA\\Escritorio\\DM\\Proyectos\\Calma\\client\\src\\assets\\icons\\src\\get-icons-variants-from-regular.ps1"'
+const copyIconsFilePath = 'powershell -ExecutionPolicy Bypass -File "C:\\Users\\ADATOS\\OneDrive - MONISA\\Carpeta Personal\\Proyectos\\Calma\\client\\src\\assets\\icons\\src\\get-icons-variants-from-regular.ps1"'
 
 execSync(copyIconsFilePath, { stdio: 'inherit' });
 
