@@ -78,7 +78,7 @@ $flexbox-classes: (
   'top': (
     property: top,
     class: top,
-    values: 0 1 2 3 4 5 6 7 8 9 auto,
+    values: -0.25 0 1 2 3 4 5 6 7 8 9 auto,
     measurement: 'rem',
   ),
   'right': (
@@ -106,7 +106,7 @@ $flexbox-classes: (
   'height': (
     property: height,
     class: h,
-    values: 25 50 75 100 auto,
+    values: 25 50 75 100 auto fit-content,
     measurement: '%',
   ),
   'height-dvh': (
@@ -163,10 +163,15 @@ $flexbox-classes: (
     values: 0 10 20 30 40 50 60 70 80 90 100,
     measurement: '%',
   ),
-  visibility: (
+  'visibility': (
     property: visibility,
     class: visibility,
     values: visible hidden collapse,
+  ),
+  'color': (
+    property: color,
+    class: color,
+    values: inherit current transparent black white red blue green yellow gray dark-gray light-gray,
   ),
 );
 
