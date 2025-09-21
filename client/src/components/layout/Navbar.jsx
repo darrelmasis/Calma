@@ -12,6 +12,7 @@ import { CSSTransition } from 'react-transition-group'
 import { useOfflineStatus } from '../../hooks/useOfflineStatus'
 import { useSelectedServices } from '../../hooks/useSelectedService'
 import { Dropdown, DropdownTrigger, DropdownContent } from '../ui/Dropdown'
+import { USD } from '../../utils/utils'
 
 
 const NavbarCTA = ({ onClick, className }) => {
@@ -69,7 +70,7 @@ export const Navbar = () => {
   const prevPath = useRef(location.pathname);
   const [CTAClicked, setCTAClicked] = useState(false);
   const isOffline = useOfflineStatus()
-  const { totalServices, services, clearServices, removeService } = useSelectedServices()
+  const { totalServices, servicesWithInfo, clearServices, removeService, totalPrice } = useSelectedServices()
 
 
   const navLinks = [
@@ -105,6 +106,10 @@ export const Navbar = () => {
 
   const navigateToServices = () => {
     navigate('/services')
+  }
+
+  const navigateToBooking = () => {
+    navigate('/booking')
   }
 
   const handleCTAClick = () => {
@@ -232,23 +237,16 @@ export const Navbar = () => {
                   })
 
                 }
-                < li >
-                  {/* <SoundWrapper
-                    route={'/booking'}
-                    matchType='except'
-                    sound='bell'
-                    trigger='click'>
-                    <NavbarCTA onClick={handleCTAClick} className={classNames({ 'bounce-animation': CTAClicked }, 'navbar-desktop-cta-button')} />
-                  </SoundWrapper> */}
+                <li>
                   <Dropdown>
                     <DropdownTrigger>
                       <div className='navbar-dropdown-info'>
                         <Button variant='basic' className="position-relative rounded-pill-md" icon={[
-                          { name: "calendar-check", variant: "regular", position: "left" },
+                          { name: "bag-shopping", variant: "regular", position: "left" },
                           { name: "chevron-down", variant: "regular", position: "right" }
                         ]}>
                           <div className='possition-relative'>
-                            <span className='me-4s'>Agendar</span>
+                            <span className='me-4s'>{t('header.dropdown.text')}</span>
                             {totalServices > 0 && (
                               <span className='fs-small text-white navbar-dropdown-badge border-white border-2 bg-danger-400 position-absolute fw-bold'>
                                 <span>{totalServices}</span>
@@ -260,55 +258,96 @@ export const Navbar = () => {
 
                     </DropdownTrigger>
                     <DropdownContent>
-                      <div className="navbar-dropdown-wrapper">
-                        {totalServices === 0 && (
-                          <div className="d-flex flex-direction-column align-items-center justify-content-center gap-1">
-                            <Icon name="inbox" size='lg' className="text-muted" />
-                            <p className='fs-medium text-center text-muted m-0'>No has seleccionado ningún servicio</p>
-                            <Button className="" variant='primary' ghost onClick={navigateToServices}>Explorar Servicios</Button>
+                      <div className="navbar-dropdown-wrapper overflow-hidden">
+                        {totalServices === 0 ? (
+                          <div className="d-flex flex-direction-column align-items-center justify-content-center gap-1 p-3">
+                            <Icon name="inbox" size="lg" className="text-muted" />
+                            <p className="fs-medium text-center text-muted m-0">
+                              {t('header.dropdown.empty')}
+                            </p>
+                            <Button variant="primary" ghost onClick={navigateToServices}>
+                              {t('header.dropdown.exploreServices')}
+                            </Button>
                           </div>
-                        )}
-                        {
+                        ) : (
                           <>
-                            {
-                              totalServices > 0 && (
-                                <p className='text-center border-bottom pb-3 d-flex align-items-center justify-content-center  gap-1 mt-1'>
-                                  <Icon name="list-check" size='sm' className="text-muted" />
-                                  <span>Servicios agregados</span>
-                                </p>
-                              )
-                            }
-                            <div className="navbar-dropdown-services-added scrollbar-thin">
-                              {
-                                Object.entries(services).map(([category, items]) => (
-                                  <div key={category}>
-                                    <div className='mb-3 fs-h6'>{category}</div>
-                                    <ul className='navbar-dropdown-service-list mb-3 gap-0-5'>
+                            <div className="p-3">
+                              <p className="text-center border-bottom pb-3 d-flex align-items-center justify-content-center gap-1 mt-1">
+                                <Icon name="list-check" size="sm" className="text-muted" />
+                                <span>{t('header.dropdown.title')}</span>
+                                <Tooltip content={t('header.dropdown.clearTooltip')} placement="bottom">
+                                  <Button size="medium" icon="broom-wide" variant="basic" onClick={clearServices} />
+                                </Tooltip>
+                              </p>
+
+                              <div className="navbar-dropdown-services-added scrollbar-thin">
+                                {Object.entries(servicesWithInfo).map(([categoryId, items]) => (
+                                  <div key={categoryId}>
+                                    <div className="mb-3 fs-h6">
+                                      {t(`services.section_1.category.${categoryId}.name`)}
+                                    </div>
+                                    <ul className="navbar-dropdown-service-list mb-3 gap-0-5">
                                       {items.map((service) => (
-                                        <li className='navbar-dropdown-service-item rounded-all-sm d-flex align-items-center justify-content-space-between fs-medium ' key={service.name}>
-                                          <span className='me-2 d-flex align-items-center gap-1'>
-                                            <span>{service.name}</span>
+                                        <li
+                                          className="navbar-dropdown-service-item rounded-all-sm d-flex align-items-center fs-medium"
+                                          key={`${categoryId}-${service.subCategoryId}-${service.id}`}
+                                        >
+                                          <div className="me-2 d-flex flex-direction-column flex-1">
+                                            <span className="text-muted fs-small mb-1">
+                                              {service.subCategoryName}
+                                            </span>
+                                            <span>{service.serviceName}</span>
+                                          </div>
+                                          <span className="me-2">
+                                            <USD
+                                              className="fs-medium"
+                                              amount={service.servicePrice}
+                                              currencySymbol="$"
+                                            />
                                           </span>
-                                          <Button icon='trash-can' size='small' ghost variant='danger' onClick={() => removeService(category, service.name)} />
+                                          <Button
+                                            icon="trash-can"
+                                            size="small"
+                                            ghost
+                                            variant="danger"
+                                            onClick={() =>
+                                              removeService(categoryId, service.subCategoryId, service.id)
+                                            }
+                                          />
                                         </li>
                                       ))}
                                     </ul>
                                   </div>
-                                ))
-                              }
+                                ))}
+                              </div>
                             </div>
-                            {
-                              totalServices > 0 && (
-                                <div className='navbar-dropdown-actions d-flex flex-column justify-content-space-between'>
-                                  <Button size='medium' icon="broom-wide" variant='basic' onClick={clearServices}>Limpiar</Button>
-                                  <Button size='medium' icon="calendar-check" variant='dark' onClick={clearServices}>Agendar</Button>
+
+                            {/* Total estimado */}
+                            <div className="bg-light-100 px-3 pt-2 pb-3 d-flex flex-direction-column gap-1">
+                              <p className="total-price text-end m-0 fs-medium d-flex align-items-flex-satrt justify-content-space-between">
+                                <div className='fs-h5 d-flex flex-direction-column align-items-flex-start'>
+                                  <span className='fw-bold'>{t('header.dropdown.total')}</span>
+                                  <span className='text-muted fs-small'>
+                                    {`${totalServices} ${totalServices === 1
+                                      ? t('header.dropdown.totalSubtitle')
+                                      : t('header.dropdown.totalSubtitle') + "s"}`}
+                                  </span>
+
                                 </div>
-                              )
-                            }
+                                <USD amount={totalPrice} currencySymbol="$" size="large" prefix="~" />
+                              </p>
+
+                              <div className="navbar-dropdown-actions d-flex justify-content-space-between gap-1">
+                                <Button size="medium" icon="calendar-check" fullWidth variant="info" onClick={navigateToBooking}>
+                                  {t('header.dropdown.book')}
+                                </Button>
+                              </div>
+                            </div>
                           </>
-                        }
+                        )}
                       </div>
                     </DropdownContent>
+
                   </Dropdown>
                 </li>
               </ul>
@@ -398,15 +437,10 @@ export const Navbar = () => {
                     </div>
 
                     <div className="navbar-mobile-content-cta">
-                      {/* <SoundWrapper
-                        route={'/booking'}
-                        matchType='except'
-                        sound='bell'
-                        trigger='click'> */}
 
 
                       <NavbarCTA onClick={handleCTAClick} className={classNames({ 'bounce-animation': CTAClicked }, 'w-100', 'navbar-mobile-content-cta-button')} />
-                      {/* </SoundWrapper> */}
+
                     </div>
                   </div>
 

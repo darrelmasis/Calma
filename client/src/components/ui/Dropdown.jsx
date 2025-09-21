@@ -120,7 +120,7 @@ export const DropdownContent = ({ children }) => {
       <div
         ref={refs.setFloating}
         {...interactions.getFloatingProps()}
-        className="dropdown-content p-3 bg-neutral-0 border"
+        className="dropdown-content bg-neutral-0 border"
         style={{
           position: strategy,
           top: y ?? 0,

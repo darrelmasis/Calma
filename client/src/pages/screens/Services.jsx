@@ -11,9 +11,7 @@ import classNames from 'classnames'
 import React, { useState, Fragment, useRef, useEffect } from 'react'
 import { Icon } from '../../components/commons/Icons'
 import { CSSTransition } from 'react-transition-group'
-import { Popover, PopoverContent, PopoverTrigger } from '../../components/ui/Popover'
 import { TruncateText } from '../../components/ui/ReadMore'
-import { Button } from '../../components/ui/Button'
 import AddService from '../../components/ui/AddService'
 
 const Services = () => {
@@ -58,6 +56,7 @@ const Services = () => {
 
     {
 
+
       id: category[0],
       label: category[1].name,
       content: (
@@ -68,9 +67,11 @@ const Services = () => {
 
             Object.entries(category[1].subCategory).map((subcat) => {
 
-              const serviceData = ServicesData[subcat[0]]
+              const serviceData = ServicesData[subcat[0]] //reemplazar esto por useSelectedService
               const subcategory = subcat[1]
-              const subcategoryId = subcat[0]
+              const subCategoryId = subcat[0]
+              const categoryId = category[0]
+
 
               const serviceItems = Object.entries(subcategory.services)
               const hasManyItems = serviceItems.length > 3
@@ -79,13 +80,13 @@ const Services = () => {
 
               const isItemsExpanded = classNames('menu-card-items d-flex flex-direction-column gap-1')
 
-              const menuCardContentClasses = classNames('menu-card-content pt-3 px-3', { "expanded": isExpanded === subcategoryId })
+              const menuCardContentClasses = classNames('menu-card-content pt-3 px-3', { "expanded": isExpanded === subCategoryId })
 
               // Estructura normal para otras subcategorías
               return (
 
-                <Fade key={`subcat-${subcategoryId}`} className={menuCardClasses} delay={0.2}>
-                  <div ref={getCardRef(subcategoryId)} className="menu-card-wrapper bg-neutral-50 rounded-all-sm d-flex flex-direction-column">
+                <Fade key={`subcat-${subCategoryId}`} className={menuCardClasses} delay={0.2}>
+                  <div ref={getCardRef(subCategoryId)} className="menu-card-wrapper bg-neutral-50 rounded-all-sm d-flex flex-direction-column">
 
                     <div className="menu-card-header rounded-top-sm overflow-hidden position-relative">
                       <ResponsiveImage name={serviceData.image} />
@@ -98,28 +99,28 @@ const Services = () => {
                         </h4>
                       </div>
                       <CSSTransition
-                        in={isExpanded === subcategoryId}
+                        in={isExpanded === subCategoryId}
                         timeout={300}
                         classNames="menu-items"
-                        nodeRef={getRef(subcategoryId)}
+                        nodeRef={getRef(subCategoryId)}
                         onEnter={() => {
-                          const el = getRef(subcategoryId).current
+                          const el = getRef(subCategoryId).current
                           if (el) el.style.maxHeight = el.scrollHeight + "px"
                         }}
                         onEntering={() => {
-                          const el = getRef(subcategoryId).current
+                          const el = getRef(subCategoryId).current
                           if (el) el.style.maxHeight = el.scrollHeight + "px"
                         }}
                         onExit={() => {
-                          const el = getRef(subcategoryId).current
+                          const el = getRef(subCategoryId).current
                           if (el) el.style.maxHeight = el.scrollHeight + "px"
                         }}
                         onExiting={() => {
-                          const el = getRef(subcategoryId).current
+                          const el = getRef(subCategoryId).current
                           if (el) el.style.maxHeight = "12.5rem"
                         }}
                       >
-                        <div ref={getRef(subcategoryId)} className={isItemsExpanded}>
+                        <div ref={getRef(subCategoryId)} className={isItemsExpanded}>
                           {
                             Object.entries(subcategory.services).map((item) => {
                               const serviceItem = item[1]
@@ -129,20 +130,19 @@ const Services = () => {
                               // Detecta si el servicio es de tipo "from"
                               const isFrom = serviceItemPrice.hasOwnProperty('from')
 
-
                               return (
-                                <Fragment key={`service-${serviceItemId}-${subcategoryId}`} >
+                                <Fragment key={`service-${serviceItemId}-${subCategoryId}`} >
                                   <div className='Service-wrapper'>
                                     <div className="service d-flex align-items-center justify-content-space-between">
                                       <span className='d-flex align-items-center flex-direction-row service-title fs-medium position-relative'>
                                         {serviceItem.name}
                                       </span>
-                                      <span className='service-price'>
+                                      <span className='service-price d-flex align-items-center'>
                                         {
                                           isFrom ? (
                                             <>
-                                              <span className='badge bg-warning-500 text-white fs-xsmall me-1 fw-semibold'>{t('services.fromBadge')}</span>
-                                              <USD className="fs-medium" amount={serviceItemPrice.from} currencySymbol='$' />
+                                              <span className='badge bg-warning-500 text-white fs-xsmall me-1 fw-semibold h-fit-content py-0'>{t('services.fromBadge')}</span>
+                                              <USD className="fs-medium h-fit-content" amount={serviceItemPrice.from} currencySymbol='$' />
                                             </>
                                           ) : (
                                             <>
@@ -152,7 +152,7 @@ const Services = () => {
                                           )
                                         }
                                       </span>
-                                      <AddService category={subcategory.name} service={serviceItem.name} description={serviceItem.description} className="ms-2" />
+                                      <AddService categoryId={categoryId} subCategoryId={subCategoryId} serviceId={serviceItemId} className="ms-2" />
 
                                     </div>
                                     <div className="service-description d-flex align-items-center">
@@ -173,13 +173,13 @@ const Services = () => {
                     {serviceItems.length > 3 && (
                       <div
                         className="menu-card-footer"
-                        onClick={() => handleToggle(subcategoryId)}
+                        onClick={() => handleToggle(subCategoryId)}
                       >
                         <div className="menu-card-footer--expandable d-flex flex-direction-column">
                           <span className='fs-medium'>
-                            {isExpanded === subcategoryId ? t('services.cardFooter.expandable.expanded') : t('services.cardFooter.expandable.collapsed')}
+                            {isExpanded === subCategoryId ? t('services.cardFooter.expandable.expanded') : t('services.cardFooter.expandable.collapsed')}
                           </span>
-                          <Icon name={isExpanded === subcategoryId ? "chevron-up" : "chevron-down"} />
+                          <Icon name={isExpanded === subCategoryId ? "chevron-up" : "chevron-down"} />
                         </div>
                       </div>
                     )}

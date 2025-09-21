@@ -4,11 +4,14 @@ import { CSSTransition, SwitchTransition } from "react-transition-group";
 import { useSelectedServices } from "../../hooks/useSelectedService";
 import classNames from "classnames";
 
-const AddService = ({ category, service, description, className }) => {
+const AddService = ({ categoryId, subCategoryId, serviceId, className }) => {
   const { services, addService, removeService } = useSelectedServices();
 
-  // Ahora comprobamos si ya existe por nombre
-  const isAdded = services[category]?.some((s) => s.name === service) || false;
+  // Comprobamos si el servicio ya fue agregado
+  const isAdded =
+    services[categoryId]?.some(
+      (s) => s.subCategoryId === subCategoryId && s.serviceId === serviceId
+    ) || false;
 
   const mainButtonIconName = isAdded
     ? { name: "trash-can", color: "text-danger" }
@@ -22,9 +25,9 @@ const AddService = ({ category, service, description, className }) => {
 
   const toggleService = () => {
     if (isAdded) {
-      removeService(category, service); // ✅ ahora solo pasamos name
+      removeService(categoryId, subCategoryId, serviceId);
     } else {
-      addService(category, service, description);
+      addService(categoryId, subCategoryId, serviceId);
     }
   };
 
