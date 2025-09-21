@@ -13,9 +13,11 @@ import Check from './check.svg?react';
 import ChevronDown from './chevron-down.svg?react';
 import ChevronUp from './chevron-up.svg?react';
 import ChildReaching from './child-reaching.svg?react';
+import CircleCheck from './circle-check.svg?react';
 import CircleInfo from './circle-info.svg?react';
 import CirclePlus from './circle-plus.svg?react';
 import CircleQuestion from './circle-question.svg?react';
+import Compass from './compass.svg?react';
 import EarthAmericas from './earth-americas.svg?react';
 import EllipsisVertical from './ellipsis-vertical.svg?react';
 import Envelope from './envelope.svg?react';
@@ -72,9 +74,11 @@ export {
   ChevronDown,
   ChevronUp,
   ChildReaching,
+  CircleCheck,
   CircleInfo,
   CirclePlus,
   CircleQuestion,
+  Compass,
   EarthAmericas,
   EllipsisVertical,
   Envelope,

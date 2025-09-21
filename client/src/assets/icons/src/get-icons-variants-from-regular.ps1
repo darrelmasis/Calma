@@ -1,20 +1,20 @@
 ﻿# Carpeta fuente (siempre la misma)
-$src = "C:\Users\ADATOS\OneDrive - MONISA\Escritorio\DM\Proyectos\Calma\client\src\assets\icons\src\regular"
+$src = "C:\Users\ADATOS\OneDrive - MONISA\Carpeta personal\Proyectos\Calma\client\src\assets\icons\src\regular"
 
 # Lista de destinos con su respectivo target
 $routes = @(
     @{
         target = "C:\Users\ADATOS\OneDrive - MONISA\Recursos\svgs\duotone-regular"
-        dest   = "C:\Users\ADATOS\OneDrive - MONISA\Escritorio\DM\Proyectos\Calma\client\src\assets\icons\src\duotones\regular"
+        dest   = "C:\Users\ADATOS\OneDrive - MONISA\Carpeta personal\Proyectos\Calma\client\src\assets\icons\src\duotones\regular"
     },
     @{
         target = "C:\Users\ADATOS\OneDrive - MONISA\Recursos\svgs\duotone"
-        dest   = "C:\Users\ADATOS\OneDrive - MONISA\Escritorio\DM\Proyectos\Calma\client\src\assets\icons\src\duotones\solid"
+        dest   = "C:\Users\ADATOS\OneDrive - MONISA\Carpeta personal\Proyectos\Calma\client\src\assets\icons\src\duotones\solid"
     }
 
     @{
         target = "C:\Users\ADATOS\OneDrive - MONISA\Recursos\svgs\solid"
-        dest   = "C:\Users\ADATOS\OneDrive - MONISA\Escritorio\DM\Proyectos\Calma\client\src\assets\icons\src\solid"
+        dest   = "C:\Users\ADATOS\OneDrive - MONISA\Carpeta personal\Proyectos\Calma\client\src\assets\icons\src\solid"
     }
     # 👉 Aquí puedes seguir agregando más pares target/dest
 )
