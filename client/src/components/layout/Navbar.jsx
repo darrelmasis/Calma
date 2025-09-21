@@ -265,7 +265,7 @@ export const Navbar = () => {
                             <p className="fs-medium text-center text-muted m-0">
                               {t('header.dropdown.empty')}
                             </p>
-                            <Button variant="primary" ghost onClick={navigateToServices}>
+                            <Button variant="primary" icon="compass" ghost onClick={navigateToServices}>
                               {t('header.dropdown.exploreServices')}
                             </Button>
                           </div>
@@ -324,7 +324,7 @@ export const Navbar = () => {
 
                             {/* Total estimado */}
                             <div className="bg-light-100 px-3 pt-2 pb-3 d-flex flex-direction-column gap-1">
-                              <p className="total-price text-end m-0 fs-medium d-flex align-items-flex-satrt justify-content-space-between">
+                              <div className="total-price text-end my-2 fs-medium d-flex align-items-flex-satrt justify-content-space-between">
                                 <div className='fs-h5 d-flex flex-direction-column align-items-flex-start'>
                                   <span className='fw-bold'>{t('header.dropdown.total')}</span>
                                   <span className='text-muted fs-small'>
@@ -335,7 +335,7 @@ export const Navbar = () => {
 
                                 </div>
                                 <USD amount={totalPrice} currencySymbol="$" size="large" prefix="~" />
-                              </p>
+                              </div>
 
                               <div className="navbar-dropdown-actions d-flex justify-content-space-between gap-1">
                                 <Button size="medium" icon="calendar-check" fullWidth variant="info" onClick={navigateToBooking}>
