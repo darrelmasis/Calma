@@ -25,9 +25,11 @@
     "howler": "^2.2.4",
     "html-react-parser": "^5.2.6",
     "react": "^19.0.0",
+    "react-circle-flags": "^0.0.23",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.4.0",
-    "react-transition-group": "^4.4.5"
+    "react-transition-group": "^4.4.5",
+    "nodemailer": "^7.0.6"
   },
   "devDependencies": {
     "@types/react": "^19.0.10",
