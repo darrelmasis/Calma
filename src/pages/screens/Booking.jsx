@@ -67,6 +67,9 @@ const Booking = () => {
 
     setFormErrors(errors);
 
+    console.log(formData);
+
+
     if (Object.keys(errors).length === 0) {
       try {
         const res = await axios.post("/api/send-mail", {
