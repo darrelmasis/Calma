@@ -408,7 +408,7 @@ export const dictionary = {
       booking_button: 'Reserva tu cita',
       steps: {
         welcome: {
-          title: "¡Genial! Veamos lo que elegiste 🎉",
+          title: "¡Genial! Veamos lo que elegiste",
           subtitle: "Antes de agendar, revisa tus servicios seleccionados"
         },
         personalData: {
@@ -419,15 +419,15 @@ export const dictionary = {
           emailPlaceholder: "Ej: maria@email.com"
         },
         schedule: {
-          title: "Escoge fecha, hora y deja un mensaje",
+          title: "Escoge fecha y hora",
           subtitle: "Elige la fecha y hora que mejor te convenga y, si quieres, deja un mensaje extra para personalizar tu servicio",
           datePlaceholder: "Selecciona la fecha",
           timePlaceholder: "Selecciona la hora",
           messagePlaceholder: "Escribe tu mensaje aquí..."
         },
         confirmation: {
-          title: "¡Todo listo! ✅",
-          subtitle: "Tu solicitud fue enviada correctamente. Nos pondremos en contacto contigo pronto."
+          title: "¡Ya casi!",
+          details: "Espera un mensaje de confirmación en tu correo electrónico o WhatsApp."
         },
         noServices: {
           title: "¡Oops! No seleccionaste ningún servicio",
