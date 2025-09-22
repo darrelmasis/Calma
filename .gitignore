@@ -12,3 +12,4 @@ Recursos
 **/.env*
 
 .vercel
+.vite
