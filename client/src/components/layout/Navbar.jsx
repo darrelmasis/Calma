@@ -258,7 +258,7 @@ export const Navbar = () => {
 
                     </DropdownTrigger>
                     <DropdownContent>
-                      <div className="navbar-dropdown-wrapper overflow-hidden">
+                      <div className="navbar-dropdown-wrapper rounded-all-mdoverflow-hidden">
                         {totalServices === 0 ? (
                           <div className="d-flex flex-direction-column align-items-center justify-content-center gap-1 p-3">
                             <Icon name="inbox" size="lg" className="text-muted" />
@@ -293,10 +293,10 @@ export const Navbar = () => {
                                           key={`${categoryId}-${service.subCategoryId}-${service.id}`}
                                         >
                                           <div className="me-2 d-flex flex-direction-column flex-1">
-                                            <span className="text-muted fs-small mb-1">
+                                            <span className="mb-1">
                                               {service.subCategoryName}
                                             </span>
-                                            <span>{service.serviceName}</span>
+                                            <span className='fs-small text-muted'>{service.serviceName}</span>
                                           </div>
                                           <span className="me-2">
                                             <USD
