@@ -49,3 +49,18 @@
     }
   }
 }
+
+.select-wrapper {
+  & > .form-control {
+    cursor: pointer;
+    padding-right: 2.5rem;
+  }
+
+  .select-icon {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+}

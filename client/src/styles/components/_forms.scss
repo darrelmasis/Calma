@@ -2,6 +2,8 @@
 @use '../config/forms' as vars;
 @use '../functions/forms' as ff;
 @use '../config/colors_map' as c;
+@use '../config/colors' as pallette;
+@use '../functions/colors' as fn;
 @use 'sass:map';
 @use 'sass:list';
 @use 'sass:color';
@@ -13,6 +15,12 @@
   & label {
     margin-bottom: 0.5rem;
   }
+
+  & textarea {
+    max-width: 100%;
+    min-height: 50px;
+    field-sizing: content;
+  }
 }
 
 .form-control {
@@ -21,9 +29,9 @@
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: 2;
   appearance: none;
-  background-color: #ffffff;
+  background-color: fn.getColor(pallette.$lights, '50');
   background-clip: padding-box;
   border: 1px solid c.$border-color;
   transition: all 0.2s;
@@ -32,12 +40,13 @@
   color: c.$text-color;
 
   &::placeholder {
-    color: c.$text-color-muted;
+    color: fn.getColor(pallette.$darks, '300');
+    font-size: 1rem;
   }
 
   &:focus {
     border-color: c.$primary;
-    box-shadow: 0 0 0 0.25rem color.change(c.$primary, $alpha: 0.4);
+    // box-shadow: 0 0 0 0.25rem color.change(c.$primary, $alpha: 0.4);
   }
 
   &:disabled {
