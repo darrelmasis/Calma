@@ -86,7 +86,7 @@ const handleSubmit = async () => {
       });
 
       if (res.data.ok) {
-        setIsSubmitted(true);
+        // setIsSubmitted(true);
         setFormData({
           nombre: "",
           prefix: "+505",
