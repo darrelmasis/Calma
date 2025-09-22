@@ -58,19 +58,30 @@ const Booking = () => {
     }
   }, [servicesWithInfo]);
 
- const handleSubmit = async () => {
+const handleSubmit = async () => {
   const errors = {};
   if (!formData.nombre) errors.nombre = "Nombre obligatorio";
   if (!formData.phone) errors.phone = "Teléfono obligatorio";
   if (!formData.date) errors.date = "Fecha obligatoria";
   if (!formData.time) errors.time = "Hora obligatoria";
+  if (!formData.mensaje) errors.mensaje = "Mensaje obligatorio";
 
   setFormErrors(errors);
 
   if (Object.keys(errors).length === 0) {
     try {
-      // Asegúrate de enviar como JSON
-      const res = await axios.post("/api/send-mail", formData, {
+      const payload = {
+        nombre: formData.nombre,
+        prefix: formData.prefix,
+        phone: formData.phone,
+        email: formData.email,
+        date: formData.date,
+        time: formData.time,
+        notes: formData.notes,
+        mensaje: formData.mensaje
+      };
+
+      const res = await axios.post("/api/send-mail", payload, {
         headers: { "Content-Type": "application/json" }
       });
 
@@ -78,12 +89,12 @@ const Booking = () => {
         setIsSubmitted(true);
         setFormData({
           nombre: "",
-          phone: "",
           prefix: "+505",
+          phone: "",
           email: "",
-          notes: "",
           date: "",
           time: "",
+          notes: "",
           mensaje: ""
         });
       } else {
@@ -95,6 +106,7 @@ const Booking = () => {
     }
   }
 };
+
 
 
 
