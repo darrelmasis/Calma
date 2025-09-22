@@ -1,0 +1,47 @@
+@use '../mixins/mediaqueries' as mq;
+@use '../config/colors_map' as c;
+
+.stepper {
+  overflow-x: hidden;
+  max-width: 100%;
+
+  &-actions {
+    backdrop-filter: blur(10px);
+  }
+}
+.steps-indicator {
+  min-width: 2.5rem;
+  height: 2.5rem;
+  font-weight: 600;
+  transition: all 0.5s ease 0.3s;
+  font-size: 1em;
+  line-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-content {
+  min-height: 25rem;
+}
+
+.step-conector {
+  width: 100%;
+  height: 4px;
+  transition: all 0.5s ease;
+  border-radius: 4px;
+  overflow: hidden;
+
+  &-progress {
+    display: block;
+    width: 0%;
+    height: 100%;
+    opacity: 0;
+    background-color: var(--primary-400);
+    transition: all 0.5s ease;
+  }
+  &-active &-progress {
+    width: 100%;
+    opacity: 1;
+  }
+}

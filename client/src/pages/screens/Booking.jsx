@@ -1,186 +1,286 @@
-import { useState } from 'react'
-import { usePageTitle } from '@utils/utils'
-import Header from '../../components/layout/Header'
-import Footer from '../../components/layout/Footer'
-import { FadeInWhenVisible as Fade } from '../../components/commons/animations/FadeInWhenVisible'
-import { useLang } from '../../i18n/LanguageContext'
-import { Input } from '../../components/forms/Input'
-import { Select } from '../../components/forms/Select'
-import { Textarea } from '../../components/forms/Textarea'
-import axios from 'axios'
-import { Button } from '../../components/ui/Button'
+import { useState, useEffect } from "react";
+import { useLang } from "../../i18n/LanguageContext";
+import { useNavigate } from "react-router-dom";
+import { Stepper, StepsContent, Step } from "../../components/layout/Stepper";
+import Header from "../../components/layout/Header";
+import Footer from "../../components/layout/Footer";
+import { useSelectedServices } from "../../hooks/useSelectedService";
+import { Input, PhoneNumber } from "../../components/forms/Input";
+import { USD, formatDate, formatTime } from "../../utils/utils";
+import axios from "axios";
 
 const Booking = () => {
-  const { t } = useLang()
-  usePageTitle('Agendar Cita')
+  const { t } = useLang();
+  const navigate = useNavigate();
+  const { servicesWithInfo, totalServices, totalPrice } = useSelectedServices();
 
-  // Categorías para el select
-  const categories = t('services.section_1.category', { returnObjects: true })
-  const options = [
-    { value: '', label: 'Selecciona una categoría', disabled: true },
-    ...Object.entries(categories).map(([key, category]) => ({
-      value: key,
-      label: category.name
-    }))
-  ]
-
-  // Estado del formulario
   const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    service: '',
-    date: '',
-    time: '',
-    notes: ''
-  })
+    nombre: "",
+    phone: "",
+    prefix: "",
+    email: "",
+    notes: "", // opcional
+    date: "",
+    time: "",
+    mensaje: "" // generado automáticamente con servicios
+  });
 
-  const [errors, setErrors] = useState({})
+  const [selectedDate, setSelectedDate] = useState(null);
 
-  // Manejar cambios
-  const handleChange = (field, value) => {
-    setFormData(prev => ({ ...prev, [field]: value }))
-  }
+  // Definir fecha mínima (mañana)
+  const minDate = new Date();
+  minDate.setDate(minDate.getDate() + 1);
+  minDate.setHours(0, 0, 0, 0);
 
-  // Manejar envío
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+  // Fecha máxima (opcional)
+  const maxDate = new Date();
+  maxDate.setMonth(maxDate.getMonth() + 6); // hasta 6 meses desde hoy
 
-    const newErrors = {}
-    if (!formData.name) newErrors.name = 'El nombre es obligatorio'
-    if (!formData.phone) newErrors.phone = 'El teléfono es obligatorio'
-    if (!formData.date) newErrors.date = 'Selecciona una fecha'
-    if (!formData.time) newErrors.time = 'Selecciona una hora'
 
-    setErrors(newErrors)
+  const [formErrors, setFormErrors] = useState({});
 
-    if (Object.keys(newErrors).length === 0) {
+  const hasServices = servicesWithInfo && Object.keys(servicesWithInfo).length > 0;
+
+  // Prellenar textarea con servicios seleccionados
+  useEffect(() => {
+    if (hasServices) {
+      let message = `<p>Hola equipo de Calma, me gustaría agendar los siguientes servicios:</p>`;
+      Object.entries(servicesWithInfo).forEach(([categoryId, items]) => {
+        if (items.length > 0) {
+          message += `<p><strong>${items[0].categoryName}:</strong></p><ul>`;
+          items.forEach((s) => {
+            message += `<li>${s.subCategoryName} → ${s.serviceName} (~${s.servicePrice})</li>`;
+          });
+          message += `</ul>`;
+        }
+      });
+      setFormData(prev => ({ ...prev, mensaje: message }));
+    }
+  }, [servicesWithInfo]);
+
+  const handleSubmit = async () => {
+    const errors = {};
+    if (!formData.nombre) errors.nombre = "Nombre obligatorio";
+    if (!formData.phone) errors.phone = "Teléfono obligatorio";
+    if (!formData.date) errors.date = "Fecha obligatoria";
+    if (!formData.time) errors.time = "Hora obligatoria";
+
+    setFormErrors(errors);
+
+    if (Object.keys(errors).length === 0) {
       try {
-        const res = await axios.post('/api/booking/send-mail', formData)
+        const res = await axios.post("/api/send-mail", {
+          name: formData.nombre,   // 👈 mapea con el backend
+          phone: formData.phone,
+          email: formData.email,
+          service: formData.service,
+          date: formData.date,
+          time: formData.time,
+          notes: formData.notes,
+        });
 
         if (res.data.ok) {
-          alert('Reserva enviada con éxito ✅')
+          setIsSubmitted(true);
           setFormData({
-            name: '',
-            phone: '',
-            email: '',
-            service: '',
-            date: '',
-            time: '',
-            notes: ''
-          })
+            nombre: "",
+            phone: "",
+            email: "",
+            service: "",
+            date: "",
+            time: "",
+            notes: "",
+          });
         } else {
-          alert('Error al enviar la reserva')
+          alert(res.data.message || "Error al enviar la reserva");
         }
       } catch (err) {
-        console.error(err)
-        alert('Error al enviar la reserva, inténtalo de nuevo')
+        console.error(err);
+        alert("Error al enviar la reserva, inténtalo de nuevo");
       }
     }
-  }
+  };
 
 
   return (
-    <div>
+    <>
       <Header />
+      <section className="bg-white py-5">
+        <div className="container d-flex justify-content-center">
+          <Stepper
+            formData={formData}
+            setFormData={setFormData}
+            formErrors={formErrors}
+            setFormErrors={setFormErrors}
+            onSubmit={handleSubmit}
+          >
+            {hasServices ? (
+              <StepsContent>
+                {/* Paso 1: Bienvenida + Resumen de servicios */}
+                <Step stepKey="welcome">
+                  {() => (
+                    <div className="d-flex flex-direction-column align-items-center justify-content-center">
 
-      <section className="py-4 body-bg">
-        <div className="container">
-          <div className="grid">
-            <div className="grid-row">
-              <div className="grid-col-12 d-flex flex-direction-column align-items-center justify-content-center">
-                <Fade>
-                  <h1 className="fs-4 text-primary text-center">Agenda tu cita</h1>
-                  <p className="text-center text-muted mw-500">Reserva con nosotros ahora</p>
-                </Fade>
-              </div>
-            </div>
-          </div>
+                      {/* Encabezado */}
+                      <div className="d-flex align-items-center flex-direction-column justify-content-center mb-5 text-center">
+                        <span className="fs-display-2">🎉</span>
+                        <p className="fs-h3 my-0">{t("booking.steps.welcome.title")}</p>
+                        <p className="fs-medium mt-0 text-muted">{t("booking.steps.welcome.subtitle")}</p>
+                      </div>
+
+                      {/* Resumen de servicios */}
+                      <div className="d-flex w-100 flex-wrap-wrap gap-2 justify-content-center">
+                        {Object.entries(servicesWithInfo).map(([cat, services]) => {
+                          const categoryId = cat;
+                          const categoryName = services[0]?.categoryName || "Categoría";
+
+                          return (
+                            <div
+                              key={categoryId}
+                              className="rounded border p-3 w-100 max-wx-md-300"
+                            >
+                              <span className="d-block mb-2 fs-h5">{categoryName}</span>
+                              <ul className="list-unstyled d-flex flex-direction-column m-0">
+                                {services.map((s) => (
+                                  <li
+                                    key={s.id + s.subCategoryId}
+                                    className="bg-light-50 rounded-all-sm px-3 py-3 bg-white m-0 d-flex justify-content-space-between"
+                                  >
+                                    <div className="d-flex flex-direction-column">
+                                      <span className="fw-semibold mb-1 fs-h6">{s.subCategoryName}</span>
+                                      <span className="text-muted fs-medium">{s.serviceName}</span>
+                                    </div>
+                                    <span>
+                                      <USD amount={s.servicePrice} className="fw-bold" />
+                                    </span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          );
+                        })}
+                      </div>
+
+                      {/* Total */}
+                      <div className="max-wx-lg-700 p-3 mt-5 text-center d-flex flex-direction-column gap-1">
+                        <div className="d-flex gap-1 align-items-center">
+                          <span className="fs-h4 fw-bold text-dark">{t("header.dropdown.total")}</span>
+                          <span className="fs-h4 text-dark fw-bold">~
+                            <USD
+                              size="large"
+                              amount={totalPrice}
+                            />
+                          </span>
+                        </div>
+                        <div className='text-muted fw-light'>
+                          {`
+                      ${totalServices} ${totalServices === 1
+                              ? t('header.dropdown.totalSubtitle')
+                              : t('header.dropdown.totalSubtitle') + "s"}`
+                          }
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </Step>
+
+                {/* Paso 2: Datos personales */}
+                <Step stepKey="personalData" className="d-flex flex-1 justify-content-center mt-3">
+                  {({ formData, setFormData, formErrors }) => (
+                    <div className="d-flex flex-direction-column justify-content-center gap-2 flex-1 max-wx-500">
+
+                      <div className="d-flex align-items-center flex-direction-column justify-content-center text-center">
+                        {/* <span className="fs-display-2 text-primary"><Icon name="address-card" variant="duotones" duotone="regular" /></span> */}
+                        <p className="fs-h3 my-0">{t("booking.steps.personalData.title")}</p>
+                        <p className="fs-medium mt-0 text-muted">{t("booking.steps.personalData.subtitle")}</p>
+                      </div>
+                      <Input
+                        label="Nombre Completo"
+                        placeholder="¿Cómo te llamas?"
+                        value={formData.nombre}
+                        name="nombre"
+                        onChange={(val) => setFormData(prev => ({ ...prev, nombre: val }))}
+                        error={formErrors.nombre}
+                        required
+                        className="w-100"
+                      />
+                      <Input
+                        label="Correo Electrónico"
+                        placeholder="¿Cuál es tu correo?"
+                        value={formData.email}
+                        name="email"
+                        onChange={(val) => setFormData(prev => ({ ...prev, email: val }))}
+                        error={formErrors.email}
+                        required
+                        className="w-100"
+                      />
+                      <PhoneNumber
+                        label="Número de teléfono"
+                        value={formData.phone}
+                        onChange={(valObj) =>
+                          setFormData(prev => ({ ...prev, phone: valObj.formatted, prefix: valObj.prefix }))
+                        }
+                        error={formErrors.phone}
+                        required
+                      />
+                    </div>
+                  )}
+                </Step>
+
+                {/* Paso 3: Agenda */}
+                <Step stepKey="schedule" className={"d-flex flex-1 justify-content-center mt-3"}>
+                  {({ formData, setFormData, formErrors }) => (
+                    <div className="d-flex flex-direction-column flex-1 gap-2 max-wx-500">
+                      <div className="d-flex align-items-center flex-direction-column justify-content-center text-center">
+                        {/* <span className="fs-display-2 text-primary"><Icon name="address-card" variant="duotones" duotone="regular" /></span> */}
+                        <p className="fs-h3 my-0">{t("booking.steps.schedule.title")}</p>
+                        <p className="fs-medium mt-0 text-muted">{t("booking.steps.schedule.subtitle")}</p>
+                      </div>
+                      <div className="d-flex align-items-flex-start justify-content-space-between gap-1">
+                        <Input className="w-100" type="date" label="Fecha" value={formData.date} onChange={(val) => setFormData(prev => ({ ...prev, date: val }))} error={formErrors.date} required />
+                        <Input className="w-100" type="time" label="Hora" value={formData.time} onChange={(val) => setFormData(prev => ({ ...prev, time: val }))} error={formErrors.time} required />
+                      </div>
+                      <div className="border-top"></div>
+                      <Input
+                        type="textarea"
+                        label="Mensaje (opcional)"
+                        value={formData.notes}
+                        name="notes"
+                        placeholder="Escribe aquí cualquier detalle adicional..."
+                        onChange={(val) => setFormData(prev => ({ ...prev, notes: val }))}
+                      />
+                    </div>
+                  )}
+                </Step>
+
+
+                {/* Paso 4: Resumen */}
+                <Step stepKey="confirmation" className="d-flex flex-1 justify-content-center mt-3">
+                  {({ formData }) => (
+                    <div className="d-flex flex-direction-column justify-content-center align-items-center flex-1 text-center max-wx-500 p-3 border  rounded shadow-sm">
+                      {/* Encabezado */}
+                      <div className="d-flex flex-direction-column align-items-center justify-content-center">
+                        <span className="fs-display-2">✅</span>
+                        <p className="fs-h3 mt-3">{t("booking.steps.confirmation.title")}</p>
+                      </div>
+
+                      {/* Información de la cita */}
+                      <div className="text-start">
+                        <p className="m-0 fs-lead text-center">{`Tu cita se agendará para el día ${formatDate(formData.date, "long")} a las ${formatTime(formData.time)}`}</p>
+                        <p className="text-center text-muted">{t("booking.steps.confirmation.details")}</p>
+                        <p className="text-center text-muted fs-small">{`(${formData.prefix} ${formData.phone}) | (${formData.email})`}</p>
+                      </div>
+                    </div>
+                  )}
+                </Step>
+
+              </StepsContent>
+            ) : <p>No hay servicios seleccionados.</p>}
+          </Stepper>
         </div>
       </section>
-
-      <section className="mb-6">
-        <div className="container d-flex align-items-center justify-content-center">
-          <form onSubmit={handleSubmit} className="booking-form d-flex flex-direction-column gap-1">
-
-            <div className="form-group">
-              <Input
-                type="text"
-                label="Nombre Completo"
-                value={formData.name}
-                onChange={val => handleChange('name', val)}
-                placeholder="Anaís Marenco Gonzáles"
-                error={errors.name}
-              />
-
-              <Input
-                type="tel"
-                label="Número de teléfono"
-                value={formData.phone}
-                autoComplete='false'
-                onChange={val => handleChange('phone', val)}
-                placeholder="e.g. +505 8327 5144"
-                error={errors.phone}
-              />
-            </div>
-
-            <Input
-              type="email"
-              label='Correo Electrónico'
-              value={formData.email}
-              onChange={val => handleChange('email', val)}
-              placeholder="Correo Electrónico"
-              error={errors.email}
-            />
-
-            <Select
-              options={options}
-              label='Categoría'
-              value={formData.service}
-              onChange={val => handleChange('service', val)}
-              className='w-100'
-            />
-
-            <div className="form-group">
-              <Input
-                type="date"
-                label="Fecha"
-                value={formData.date}
-                onChange={val => handleChange('date', val)}
-                placeholder="Fecha"
-                error={errors.date}
-              />
-
-              <Input
-                type="time"
-                label="Hora"
-                value={formData.time}
-                onChange={val => handleChange('time', val)}
-                placeholder="Hora"
-                error={errors.time}
-              />
-            </div>
-
-            <Textarea
-              value={formData.notes}
-              onChange={val => handleChange('notes', val)}
-              placeholder="Escribe un mensaje"
-            />
-
-            <Button
-              type="submit"
-              className="btn btn-primary mt-3"
-              size='large'
-              label="Reservar"
-              icon={{ name: "paper-plane-top", position: "right", variant: "regular" }}
-            />
-          </form>
-        </div>
-      </section>
-
       <Footer />
-    </div>
-  )
-}
+    </>
+  );
+};
 
-export default Booking
+export default Booking;
