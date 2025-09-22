@@ -58,4 +58,49 @@ const USD = ({ amount, currencySymbol = '$', size = 'regular', className, prefix
 }
 
 
-export { usePageTitle, formatPhone, USD }
+/**
+ * Formatea una fecha según el formato deseado
+ * @param {Date|string|number} date - La fecha a formatear
+ * @param {"short"|"medium"|"long"|"full"} format - Tipo de formato
+ * @param {string} locale - Código de localización, por defecto "es-ES"
+ * @returns {string}
+ */
+const formatDate = (date, format = "short", locale = "es-ES") => {
+  if (!date) return "";
+  const d = new Date(date);
+
+  const optionsMap = {
+    short: { day: "2-digit", month: "2-digit", year: "numeric" },           // dd/mm/yyyy
+    medium: { day: "numeric", month: "short", year: "numeric" },           // 21 sept 2025
+    long: { weekday: "long", day: "numeric", month: "long", year: "numeric" }, // domingo 21 de septiembre 2025
+    full: { weekday: "long", day: "numeric", month: "long", year: "numeric", hour: "numeric", minute: "numeric" } // incluye hora
+  };
+
+  const options = optionsMap[format] || optionsMap.short;
+
+  return new Intl.DateTimeFormat(locale, options).format(d);
+}
+
+/**
+ * Convierte hora "HH:mm" a formato 12h con AM/PM
+ * @param {string} timeStr - Hora en formato 24h, ej: "23:51"
+ * @returns {string} - Hora en formato 12h, ej: "11:51 PM"
+ */
+const formatTime = (timeStr) => {
+  if (!timeStr) return "";
+
+  const [hourStr, minuteStr] = timeStr.split(":");
+  let hours = parseInt(hourStr, 10);
+  const minutes = parseInt(minuteStr, 10);
+
+  if (isNaN(hours) || isNaN(minutes)) return "";
+
+  const ampm = hours >= 12 ? "PM" : "AM";
+  hours = hours % 12 || 12;
+
+  return `${hours}:${String(minutes).padStart(2, "0")} ${ampm}`;
+}
+
+
+
+export { usePageTitle, formatPhone, USD, formatDate, formatTime };
