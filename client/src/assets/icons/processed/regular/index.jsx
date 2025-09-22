@@ -1,3 +1,4 @@
+import AddressCard from './address-card.svg?react';
 import AnglesUpDown from './angles-up-down.svg?react';
 import ArrowRight from './arrow-right.svg?react';
 import ArrowUpRightFromSquare from './arrow-up-right-from-square.svg?react';
@@ -59,6 +60,7 @@ import WifiExclamation from './wifi-exclamation.svg?react';
 import Xmark from './xmark.svg?react';
 
 export {
+  AddressCard,
   AnglesUpDown,
   ArrowRight,
   ArrowUpRightFromSquare,
