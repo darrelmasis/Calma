@@ -58,50 +58,44 @@ const Booking = () => {
     }
   }, [servicesWithInfo]);
 
-  const handleSubmit = async () => {
-    const errors = {};
-    if (!formData.nombre) errors.nombre = "Nombre obligatorio";
-    if (!formData.phone) errors.phone = "Teléfono obligatorio";
-    if (!formData.date) errors.date = "Fecha obligatoria";
-    if (!formData.time) errors.time = "Hora obligatoria";
+ const handleSubmit = async () => {
+  const errors = {};
+  if (!formData.nombre) errors.nombre = "Nombre obligatorio";
+  if (!formData.phone) errors.phone = "Teléfono obligatorio";
+  if (!formData.date) errors.date = "Fecha obligatoria";
+  if (!formData.time) errors.time = "Hora obligatoria";
 
-    setFormErrors(errors);
+  setFormErrors(errors);
 
-    console.log(formData);
+  if (Object.keys(errors).length === 0) {
+    try {
+      // Asegúrate de enviar como JSON
+      const res = await axios.post("/api/send-mail", formData, {
+        headers: { "Content-Type": "application/json" }
+      });
 
-
-    if (Object.keys(errors).length === 0) {
-      try {
-        const res = await axios.post("/api/send-mail", {
-          name: formData.nombre,   // 👈 mapea con el backend
-          phone: formData.phone,
-          email: formData.email,
-          service: formData.service,
-          date: formData.date,
-          time: formData.time,
-          notes: formData.notes,
+      if (res.data.ok) {
+        setIsSubmitted(true);
+        setFormData({
+          nombre: "",
+          phone: "",
+          prefix: "+505",
+          email: "",
+          notes: "",
+          date: "",
+          time: "",
+          mensaje: ""
         });
-
-        if (res.data.ok) {
-          setIsSubmitted(true);
-          setFormData({
-            nombre: "",
-            phone: "",
-            email: "",
-            service: "",
-            date: "",
-            time: "",
-            notes: "",
-          });
-        } else {
-          alert(res.data.message || "Error al enviar la reserva");
-        }
-      } catch (err) {
-        console.error(err);
-        alert("Error al enviar la reserva, inténtalo de nuevo");
+      } else {
+        alert(res.data.message || "Error al enviar la reserva");
       }
+    } catch (err) {
+      console.error(err);
+      alert("Error al enviar la reserva, inténtalo de nuevo");
     }
-  };
+  }
+};
+
 
 
   return (
