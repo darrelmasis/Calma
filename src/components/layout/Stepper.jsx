@@ -6,7 +6,7 @@ import { Button } from "../ui/Button";
 import ScrollToTop from "../commons/ScrollTop";
 import { useSentinel } from "../../hooks/useSentinel";
 
-const Stepper = ({ children, formData, setFormData, formErrors, setFormErrors, onSubmit }) => {
+const Stepper = ({ children, formData, setFormData, formErrors, setFormErrors, onSubmit, isSubmitting }) => {
   const stepsContent = Children.toArray(children).find((child) => child.type === StepsContent);
   const steps = stepsContent ? Children.toArray(stepsContent.props.children) : [];
   const [activeStep, setActiveStep] = useState(0);
@@ -40,7 +40,6 @@ const Stepper = ({ children, formData, setFormData, formErrors, setFormErrors, o
   };
 
   const isLastStep = activeStep === steps.length - 1;
-  const completedIcon = <Icon name="check" />;
 
   return (
     <div className="w-100 d-flex flex-direction-column align-items-center">
@@ -60,13 +59,41 @@ const Stepper = ({ children, formData, setFormData, formErrors, setFormErrors, o
               "bg-primary-50": index >= activeStep,
             });
 
+            const isCompleted = index < activeStep;
+
             return (
               <div key={index} className={`d-flex align-items-center ${index < steps.length - 1 ? "flex-1" : ""}`}>
                 <div className={stepClasses}>
                   <div className={indicatorClasses}>
-                    {index < activeStep ? completedIcon : index + 1}
+                    <AnimatePresence mode="wait">
+                      {isCompleted ? (
+                        <motion.div
+                          key="check"
+                          initial={{ scale: 0, rotate: -90, opacity: 0 }}
+                          animate={{ scale: 1, rotate: 0, opacity: 1 }}
+                          exit={{ scale: 0, rotate: 90, opacity: 0 }}
+                          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                        >
+                          <Icon name="check" />
+                        </motion.div>
+                      ) : (
+                        <motion.div
+                          key="number"
+                          initial={{ scale: 0, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          exit={{ scale: 0, opacity: 0 }}
+                          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                        >
+                          {index + 1}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
-                  {index < steps.length - 1 && <div className={connectorClasses}><span className="step-conector-progress"></span></div>}
+                  {index < steps.length - 1 && (
+                    <div className={connectorClasses}>
+                      <span className="step-conector-progress"></span>
+                    </div>
+                  )}
                 </div>
               </div>
             );
@@ -90,6 +117,7 @@ const Stepper = ({ children, formData, setFormData, formErrors, setFormErrors, o
         nextButtonref={nextButtonref}
         onSubmit={onSubmit}
         formData={formData}
+        isSubmitting={isSubmitting}
       />
     </div>
   );
@@ -97,27 +125,29 @@ const Stepper = ({ children, formData, setFormData, formErrors, setFormErrors, o
 
 const StepsContent = ({ children }) => <>{children}</>;
 
-const StepperActions = ({ activeStep, prevStep, nextStep, isLastStep, nextButtonref, onSubmit, formData }) => {
+const StepperActions = ({ activeStep, prevStep, nextStep, isLastStep, nextButtonref, onSubmit, formData, isSubmitting }) => {
   const [sentinelRef, isSticky] = useSentinel({ offset: -32 });
   const stickyPanelClasses = classNames(
-    "stepper-actions d-flex max-wx-md-400 justify-content-center gap-3 position-sticky bottom-2 w-100 p-3 mt-5",
+    "stepper-actions d-flex max-wx-md-500 justify-content-center gap-3 position-sticky bottom-2 w-100 p-3 mt-5",
     { "stepper-actions-sticky rounded-all-lg z-index-30 bg-white border": isSticky }
   );
 
   return (
     <>
       <div className={stickyPanelClasses}>
-        <Button size="large" variant="basic" disabled={activeStep === 0} onClick={prevStep} className="flex-1">
+        <Button size="large" variant="basic" disabled={activeStep === 0 || isSubmitting} onClick={prevStep} className="flex-1">
           Atrás
         </Button>
         <Button
           ref={nextButtonref}
           size="large"
           variant="primary"
+          icon={{ name: isSubmitting ? "spinner" : isLastStep ? "check" : "arrow-right", position: "right", animation: isSubmitting ? "spin" : "", variant: isSubmitting ? "solid" : "regular" }}
           className={`flex-1 ${isLastStep ? "btn btn-success" : "btn btn-primary"}`}
-          onClick={isLastStep ? () => onSubmit?.(formData) : nextStep}
+          onClick={!isSubmitting ? (isLastStep ? () => onSubmit(formData) : nextStep) : null}
+          disabled={isSubmitting}
         >
-          {isLastStep ? "Finalizar" : "Siguiente"}
+          {isLastStep ? "Confirmar Cita" : "Siguiente"}
         </Button>
         <ScrollToTop triggerRef={nextButtonref} />
       </div>
