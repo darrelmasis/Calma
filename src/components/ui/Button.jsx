@@ -29,6 +29,7 @@ export const Button = ({
     duotone: 'regular',
     position: 'left',
     size: 'md',
+    animation: null
   }
 
   // Normalizamos el icon prop a un array de objetos
@@ -49,9 +50,26 @@ export const Button = ({
 
   // Función para renderizar un icono
   const renderIcon = (ic) => {
-    if (!ic || !ic.name) return null
-    return <Icon key={ic.name} name={ic.name} variant={ic.variant} duotone={ic.duotone} size={ic.size} className="btn-icon" />
-  }
+  if (!ic || !ic.name) return null
+
+  const iconClasses = classNames(
+    'btn-icon',
+    {
+      'icon-spin': ic.animation === 'spin' // <- si la prop es spin, agregamos clase
+    }
+  )
+
+  return (
+    <Icon
+      key={ic.name}
+      name={ic.name}
+      variant={ic.variant}
+      duotone={ic.duotone}
+      size={ic.size}
+      className={iconClasses}
+    />
+  )
+}
 
   // Renderizamos iconos por posición
   const renderIconsByPosition = (pos) => {

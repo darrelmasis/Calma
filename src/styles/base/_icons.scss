@@ -48,6 +48,11 @@
   & > svg[data-icon-name='circle-question'] {
     animation: notFoundIconAnimation 1s infinite; /* 2s de duración, infinito */
   }
+
+  &.icon-spin {
+    display: inline!important;
+    animation: iconSpin 1s linear infinite; /* 2s de duración, infinito */
+  }
 }
 
 /* ANIMACIÓN FADE*/
@@ -64,4 +69,13 @@
     opacity: 1;
     transform: rotateY(360deg);
   }
+}
+
+@keyframes iconSpin {
+    from {
+        transform:rotate(0turn);
+    }
+    to {
+        transform:rotate(1turn);
+    }
 }
