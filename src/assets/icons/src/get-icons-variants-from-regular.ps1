@@ -1,20 +1,22 @@
 ﻿# Carpeta fuente (siempre la misma)
-$src = "C:\Users\ADATOS\OneDrive - MONISA\Carpeta personal\Proyectos\Calma\client\src\assets\icons\src\regular"
+$src_base = "C:\Users\ADATOS\Downloads\Calma\src\assets\icons"
+
+# Subcarpeta de origen
+$src = Join-Path $src_base "src\regular"
 
 # Lista de destinos con su respectivo target
 $routes = @(
     @{
         target = "C:\Users\ADATOS\OneDrive - MONISA\Recursos\svgs\duotone-regular"
-        dest   = "C:\Users\ADATOS\OneDrive - MONISA\Carpeta personal\Proyectos\Calma\client\src\assets\icons\src\duotones\regular"
+        dest   = Join-Path $src_base "src\duotones\regular"
     },
     @{
         target = "C:\Users\ADATOS\OneDrive - MONISA\Recursos\svgs\duotone"
-        dest   = "C:\Users\ADATOS\OneDrive - MONISA\Carpeta personal\Proyectos\Calma\client\src\assets\icons\src\duotones\solid"
-    }
-
+        dest   = Join-Path $src_base "src\duotones\solid"
+    },
     @{
         target = "C:\Users\ADATOS\OneDrive - MONISA\Recursos\svgs\solid"
-        dest   = "C:\Users\ADATOS\OneDrive - MONISA\Carpeta personal\Proyectos\Calma\client\src\assets\icons\src\solid"
+        dest   = Join-Path $src_base "src\solid"
     }
     # 👉 Aquí puedes seguir agregando más pares target/dest
 )

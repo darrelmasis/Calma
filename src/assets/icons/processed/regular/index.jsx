@@ -36,6 +36,7 @@ import House from './house.svg?react';
 import Inbox from './inbox.svg?react';
 import LanguageAlt from './language-alt.svg?react';
 import Language from './language.svg?react';
+import LeftToBracket from './left-to-bracket.svg?react';
 import LightbulbOn from './lightbulb-on.svg?react';
 import ListCheck from './list-check.svg?react';
 import LocationDot from './location-dot.svg?react';
@@ -51,6 +52,7 @@ import Shield from './shield.svg?react';
 import Shower from './shower.svg?react';
 import Spa from './spa.svg?react';
 import Sparkles from './sparkles.svg?react';
+import Spinner from './spinner.svg?react';
 import Stars from './stars.svg?react';
 import TableColumns from './table-columns.svg?react';
 import TrashCan from './trash-can.svg?react';
@@ -98,6 +100,7 @@ export {
   Inbox,
   LanguageAlt,
   Language,
+  LeftToBracket,
   LightbulbOn,
   ListCheck,
   LocationDot,
@@ -113,6 +116,7 @@ export {
   Shower,
   Spa,
   Sparkles,
+  Spinner,
   Stars,
   TableColumns,
   TrashCan,
