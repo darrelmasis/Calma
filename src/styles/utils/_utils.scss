@@ -55,6 +55,11 @@ $flexbox-classes: (
     class: text,
     values: start end center justify,
   ),
+  'text-decoration': (
+    property: text-decoration,
+    class: text-decoration,
+    values: underline none
+  ),
   'text-wrap': (
     property: text-wrap,
     class: text-wrap,
