@@ -11,6 +11,8 @@ export const SelectedServicesProvider = ({ children }) => {
   const addSound = useSound("dropBag");
   const removeSound = useSound("trashBag");
   const clearShoppingBagSound = useSound("cleanShoppingBag");
+  const bellSound = useSound("bell");
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const { t } = useLang();
 
@@ -20,6 +22,7 @@ export const SelectedServicesProvider = ({ children }) => {
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || "{}");
     setServices(stored);
+      setIsLoaded(true);
   }, []);
 
   // ➕ Agregar servicio
@@ -58,10 +61,11 @@ export const SelectedServicesProvider = ({ children }) => {
     removeSound.play();
   };
 
-  const clearServices = () => {
+  const clearServices = (sound ="clear") => {
     localStorage.removeItem(LOCAL_STORAGE_KEY);
     setServices({});
-    clearShoppingBagSound.play();
+    if (sound === "clear") clearShoppingBagSound.play();
+    if (sound === "bell") bellSound.play();
   };
 
   const totalServices = useMemo(
@@ -118,6 +122,7 @@ export const SelectedServicesProvider = ({ children }) => {
         removeService,
         clearServices,
         getServicePrice,
+        isLoaded
       }}
     >
       {children}
