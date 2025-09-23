@@ -67,19 +67,28 @@ const USD = ({ amount, currencySymbol = '$', size = 'regular', className, prefix
  */
 const formatDate = (date, format = "short", locale = "es-ES") => {
   if (!date) return "";
-  const d = new Date(date);
+
+  let d;
+  // Si el valor es string en formato YYYY-MM-DD (del input date)
+  if (typeof date === "string" && /^\d{4}-\d{2}-\d{2}$/.test(date)) {
+    const [year, month, day] = date.split("-").map(Number);
+    d = new Date(year, month - 1, day); // LOCAL (sin desfase)
+  } else {
+    d = new Date(date); // fallback por si recibes un Date real o un ISO completo con hora
+  }
 
   const optionsMap = {
-    short: { day: "2-digit", month: "2-digit", year: "numeric" },           // dd/mm/yyyy
-    medium: { day: "numeric", month: "short", year: "numeric" },           // 21 sept 2025
-    long: { weekday: "long", day: "numeric", month: "long", year: "numeric" }, // domingo 21 de septiembre 2025
-    full: { weekday: "long", day: "numeric", month: "long", year: "numeric", hour: "numeric", minute: "numeric" } // incluye hora
+    short: { day: "2-digit", month: "2-digit", year: "numeric" },
+    medium: { day: "numeric", month: "short", year: "numeric" },
+    long: { weekday: "long", day: "numeric", month: "long", year: "numeric" },
+    full: { weekday: "long", day: "numeric", month: "long", year: "numeric", hour: "numeric", minute: "numeric" }
   };
 
   const options = optionsMap[format] || optionsMap.short;
 
   return new Intl.DateTimeFormat(locale, options).format(d);
-}
+};
+
 
 /**
  * Convierte hora "HH:mm" a formato 12h con AM/PM
