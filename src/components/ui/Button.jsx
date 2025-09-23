@@ -1,21 +1,25 @@
 import React from 'react'
 import classNames from 'classnames'
 import { Icon } from '../commons/Icons'
+import { Link } from 'react-router-dom'
 
 export const Button = ({
-  size = 'medium',            // small | medium | large
-  variant = 'initial',        // primary | secondary | success | danger | warning | info | light | dark | link
-  ghost = false,              // botón ghost (transparente)
-  fullWidth = false,          // ancho completo
+  as = 'button',              // button | a | link
+  size = 'medium',
+  variant = 'initial',
+  ghost = false,
+  fullWidth = false,
   onClick,
   disabled = false,
-  icon = null,                // puede ser string, objeto o array de objetos
+  icon = null,
   label,
   children,
   className,
   autoFocus = false,
   type = 'button',
   ariaLabel,
+  to,                         // para Link
+  href,                       // para <a>
   ...rest
 }) => {
   const hasChildren = React.Children.count(children) > 0
@@ -48,36 +52,30 @@ export const Button = ({
     }
   }
 
-  // Función para renderizar un icono
   const renderIcon = (ic) => {
-  if (!ic || !ic.name) return null
+    if (!ic || !ic.name) return null
 
-  const iconClasses = classNames(
-    'btn-icon',
-    {
-      'icon-spin': ic.animation === 'spin' // <- si la prop es spin, agregamos clase
-    }
-  )
+    const iconClasses = classNames('btn-icon', {
+      'icon-spin': ic.animation === 'spin'
+    })
 
-  return (
-    <Icon
-      key={ic.name}
-      name={ic.name}
-      variant={ic.variant}
-      duotone={ic.duotone}
-      size={ic.size}
-      className={iconClasses}
-    />
-  )
-}
+    return (
+      <Icon
+        key={ic.name}
+        name={ic.name}
+        variant={ic.variant}
+        duotone={ic.duotone}
+        size={ic.size}
+        className={iconClasses}
+      />
+    )
+  }
 
-  // Renderizamos iconos por posición
   const renderIconsByPosition = (pos) => {
     if (!finalIcons.length) return null
     return finalIcons
       .filter((ic, idx) => {
         if (ic.position) return ic.position === pos
-        // si no tiene position, primer icono a la izquierda, segundo a la derecha
         return idx === 0 ? pos === 'left' : pos === 'right'
       })
       .map(ic => renderIcon(ic))
@@ -89,13 +87,44 @@ export const Button = ({
     `btn-${variant}${ghost ? '-ghost' : ''}`,
     {
       'btn-square': isIconOnly,
-      'btn-block': fullWidth
+      'btn-block': fullWidth,
+      'btn-link': as === 'link'
     },
     className
   )
 
-  const handleClick = e => {
-    if (!disabled && onClick) onClick(e)
+  const content = (
+    <>
+      {renderIconsByPosition('left')}
+      {hasChildren ? children : hasLabel && <span className="btn-label">{label}</span>}
+      {renderIconsByPosition('right')}
+    </>
+  )
+
+  if (as === 'a') {
+    return (
+      <a
+        href={href}
+        className={buttonClasses}
+        aria-label={ariaLabel || (isIconOnly ? finalIcons[0]?.name : undefined)}
+        {...rest}
+      >
+        {content}
+      </a>
+    )
+  }
+
+  if (as === 'link') {
+    return (
+      <Link
+        to={to}
+        className={buttonClasses}
+        aria-label={ariaLabel || (isIconOnly ? finalIcons[0]?.name : undefined)}
+        {...rest}
+      >
+        {content}
+      </Link>
+    )
   }
 
   return (
@@ -103,19 +132,12 @@ export const Button = ({
       type={type}
       disabled={disabled}
       className={buttonClasses}
-      onClick={handleClick}
+      onClick={onClick}
       autoFocus={autoFocus}
       aria-label={ariaLabel || (isIconOnly ? finalIcons[0]?.name : undefined)}
       {...rest}
     >
-      {/* Iconos a la izquierda */}
-      {renderIconsByPosition('left')}
-
-      {/* Texto o children */}
-      {hasChildren ? children : hasLabel && <span className="btn-label">{label}</span>}
-
-      {/* Iconos a la derecha */}
-      {renderIconsByPosition('right')}
+      {content}
     </button>
   )
 }
