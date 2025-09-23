@@ -94,6 +94,8 @@ const Hero2 = ({
               <Fade delay={0.4} className="d-flex flex-wrap gap-2 mt-3">
                 {ctas.map((btn, idx) => (
                   <Button
+                    as='link'
+                    to={"/services"}
                     key={idx}
                     onClick={btn.onClick}
                     variant={btn.variant}
