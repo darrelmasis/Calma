@@ -46,25 +46,12 @@
     transform: scale(0);
     opacity: 0;
     animation: fade-in-scale 0.2s ease forwards;
-    &:nth-child(1) {
-      animation-delay: 0.1s;
-    }
-    &:nth-child(2) {
-      animation-delay: 0;
-    }
   }
 
   &.hide {
     transform: scale(1);
     opacity: 1;
     animation: fade-out-scale 0.2s ease forwards;
-
-    &:nth-child(1) {
-      animation-delay: 0;
-    }
-    &:nth-child(2) {
-      animation-delay: 0.1s;
-    }
   }
 
   &-icon {

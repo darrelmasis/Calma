@@ -3,10 +3,10 @@
 @use '../config/colors_map' as c;
 
 .hero {
-  min-height: 45rem; //~700px
+  min-height: calc(100vh - 100px);
 
   @include mq.screen('min', 'lg') {
-    min-height: 34.375rem; //~550px
+    min-height: calc(100vh - 100px);
   }
 
   &-content {

@@ -69,27 +69,27 @@ $main-gradient: linear-gradient(90deg, white 50%, $headerColor 50%);
       transition: transform 1s ease-in-out;
     }
 
-    &:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      backdrop-filter: grayscale(100%);
-      z-index: 2;
-      opacity: 1;
-      transition: 0.5s ease;
-      -webkit-mask-image: var(--mask-url);
-      mask-image: var(--mask-url);
-      -webkit-mask-size: cover;
-      mask-size: cover;
-      -webkit-mask-position: center;
-      mask-position: center;
-      -webkit-mask-repeat: no-repeat;
-      mask-repeat: no-repeat;
-    }
+    // &:before {
+    //   content: '';
+    //   position: absolute;
+    //   top: 0;
+    //   left: 0;
+    //   width: 100%;
+    //   height: 100%;
+    //   border-radius: 50%;
+    //   // backdrop-filter: grayscale(100%);
+    //   z-index: 2;
+    //   opacity: 1;
+    //   transition: 0.5s ease;
+    //   -webkit-mask-image: var(--mask-url);
+    //   mask-image: var(--mask-url);
+    //   -webkit-mask-size: cover;
+    //   mask-size: cover;
+    //   -webkit-mask-position: center;
+    //   mask-position: center;
+    //   -webkit-mask-repeat: no-repeat;
+    //   mask-repeat: no-repeat;
+    // }
 
     &-wrapper {
       overflow: hidden;
@@ -99,13 +99,13 @@ $main-gradient: linear-gradient(90deg, white 50%, $headerColor 50%);
     }
     &-picture {
       transition: all 1s ease-in-out;
-      filter: grayscale(50%);
+      // filter: grayscale(50%);
     }
 
     &-picture-alt {
       mix-blend-mode: multiply; //
       transition: all 1s ease-in-out;
-      filter: grayscale(50%);
+      // filter: grayscale(50%);
     }
   }
 }
