@@ -65,7 +65,7 @@
     @include form_mixins.form-variant(success);
   }
 
-  &.is-danger {
+  &.is-error {
     @include form_mixins.form-variant(danger);
   }
 }
@@ -77,4 +77,9 @@
 
 .booking-form {
   max-width: 600px;
+}
+
+.form-error {
+  top: calc(100% + 0.25rem);
+  left: 1rem;
 }

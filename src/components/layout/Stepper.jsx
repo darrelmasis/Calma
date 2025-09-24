@@ -1,33 +1,31 @@
-import React, { useState, Children, cloneElement, useRef } from "react";
+import React, { useState, Children, cloneElement, useEffect } from "react";
 import classNames from "classnames";
 import { Icon } from "../commons/Icons";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "../ui/Button";
-import ScrollToTop from "../commons/ScrollTop";
 import { useSentinel } from "../../hooks/useSentinel";
+import { useBookingValidation } from "../../hooks/useBookingValidation";
 
-const Stepper = ({ children, formData, setFormData, formErrors, setFormErrors, onSubmit, isSubmitting }) => {
+const Stepper = ({ children, formData, setFormData, onSubmit, isSubmitting }) => {
   const stepsContent = Children.toArray(children).find((child) => child.type === StepsContent);
   const steps = stepsContent ? Children.toArray(stepsContent.props.children) : [];
   const [activeStep, setActiveStep] = useState(0);
-  const nextButtonref = useRef(null);
 
-  const validateStep = (stepIndex) => {
-    const errors = {};
-    if (stepIndex === 1) { // Datos contacto
-      if (!formData.nombre?.trim()) errors.nombre = "Nombre obligatorio";
-      if (!formData.phone?.trim()) errors.phone = "Teléfono obligatorio";
-    }
-    if (stepIndex === 2) { // Fecha y hora
-      if (!formData.date) errors.date = "Fecha obligatoria";
-      if (!formData.time) errors.time = "Hora obligatoria";
-    }
-    setFormErrors(errors);
-    return Object.keys(errors).length === 0;
-  };
+  // CORREGIDO: Usar el hook correctamente
+  const { fields, validateStep, getField, validateField, clearField } = useBookingValidation();
+
+
+  const scrollToTop = () => window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+
+  useEffect(() => {
+    scrollToTop();
+  }, [activeStep]);
+
 
   const nextStep = () => {
-    if (!validateStep(activeStep)) return;
+    const isValid = validateStep(activeStep, formData);
+    if (!isValid) return;
+
     if (activeStep < steps.length - 1) {
       setActiveStep(prev => prev + 1);
     }
@@ -39,10 +37,13 @@ const Stepper = ({ children, formData, setFormData, formErrors, setFormErrors, o
     }
   };
 
+
+
   const isLastStep = activeStep === steps.length - 1;
 
   return (
     <div className="w-100 d-flex flex-direction-column align-items-center">
+      {/* Header con indicadores */}
       <div className="stepper-header w-100 max-wx-md-700 mb-4">
         <div className="d-flex justify-content-stretch w-100">
           {steps.map((step, index) => {
@@ -50,15 +51,14 @@ const Stepper = ({ children, formData, setFormData, formErrors, setFormErrors, o
               "step-completed": index < activeStep,
               "step-active": index === activeStep,
             });
-            const indicatorClasses = classNames("steps-indicator d-flex align-items-center rounded-circle-lg", {
-              "bg-primary text-white": index <= activeStep,
-              "bg-primary-50": index > activeStep,
-            });
+            const indicatorClasses = classNames(
+              "steps-indicator d-flex align-items-center rounded-circle-lg",
+              { "bg-primary text-white": index <= activeStep, "bg-primary-50": index > activeStep }
+            );
             const connectorClasses = classNames("step-conector mx-2", {
               "step-conector-active": index < activeStep,
               "bg-primary-50": index >= activeStep,
             });
-
             const isCompleted = index < activeStep;
 
             return (
@@ -101,11 +101,18 @@ const Stepper = ({ children, formData, setFormData, formErrors, setFormErrors, o
         </div>
       </div>
 
+      {/* Contenido del paso */}
       <div className="step-content position-relative w-100">
         <AnimatePresence mode="wait">
           {steps[activeStep] &&
-            cloneElement(steps[activeStep], { key: activeStep, active: true, formData, setFormData, formErrors, setFormErrors })
-          }
+            cloneElement(steps[activeStep], {
+              active: true,
+              formData,
+              setFormData,
+              getField,
+              validateField,
+              clearField
+            })}
         </AnimatePresence>
       </div>
 
@@ -114,9 +121,9 @@ const Stepper = ({ children, formData, setFormData, formErrors, setFormErrors, o
         prevStep={prevStep}
         nextStep={nextStep}
         isLastStep={isLastStep}
-        nextButtonref={nextButtonref}
-        onSubmit={onSubmit}
-        formData={formData}
+        onSubmit={() => {
+          if (validateStep(activeStep, formData)) onSubmit(formData);
+        }}
         isSubmitting={isSubmitting}
       />
     </div>
@@ -125,43 +132,47 @@ const Stepper = ({ children, formData, setFormData, formErrors, setFormErrors, o
 
 const StepsContent = ({ children }) => <>{children}</>;
 
-const StepperActions = ({ activeStep, prevStep, nextStep, isLastStep, nextButtonref, onSubmit, formData, isSubmitting }) => {
+const StepperActions = ({ activeStep, prevStep, nextStep, isLastStep, onSubmit, isSubmitting }) => {
   const [sentinelRef, isSticky] = useSentinel({ offset: -32 });
   const stickyPanelClasses = classNames(
-    "stepper-actions d-flex max-wx-md-500 justify-content-center gap-3 position-sticky bottom-2 w-100 p-3 mt-5",
+    "stepper-actions d-flex max-wx-md-500 justify-content-center gap-3 position-sticky bottom-2 w-100 py-3 mt-5",
     { "stepper-actions-sticky rounded-all-lg z-index-30 bg-white border": isSticky }
   );
 
   return (
     <>
       <div className={stickyPanelClasses}>
-        <Button size="large" variant="basic" disabled={activeStep === 0 || isSubmitting} onClick={prevStep} className="flex-1">
+        <Button size="large" icon="arrow-left" variant="basic" disabled={activeStep === 0 || isSubmitting} onClick={prevStep} className="flex-1">
           Atrás
         </Button>
         <Button
-          ref={nextButtonref}
+
           size="large"
           variant="primary"
-          icon={{ name: isSubmitting ? "spinner" : isLastStep ? "check" : "arrow-right", position: "right", animation: isSubmitting ? "spin" : "", variant: isSubmitting ? "solid" : "regular" }}
+          icon={{
+            name: isSubmitting ? "spinner" : isLastStep ? "check" : "arrow-right",
+            position: "right",
+            animation: isSubmitting ? "spin" : "",
+            variant: isSubmitting ? "solid" : "regular",
+          }}
           className={`flex-1 ${isLastStep ? "btn btn-success" : "btn btn-primary"}`}
-          onClick={!isSubmitting ? (isLastStep ? () => onSubmit(formData) : nextStep) : null}
+          onClick={!isSubmitting ? (isLastStep ? onSubmit : nextStep) : null}
           disabled={isSubmitting}
         >
           {isLastStep ? "Confirmar Cita" : "Siguiente"}
         </Button>
-        <ScrollToTop triggerRef={nextButtonref} />
       </div>
       <div ref={sentinelRef} style={{ height: 1 }} />
     </>
   );
 };
 
-const Step = ({ active, children, stepKey, className, formData, setFormData, formErrors, setFormErrors }) => {
+// CORREGIDO: Simplificar las props del Step
+const Step = ({ active, children, className, formData, setFormData, getField, validateField, clearField }) => {
   const stepClasses = classNames("step w-100", className, { "step-active": active });
 
   return (
     <motion.div
-      key={stepKey}
       initial={{ opacity: 0, x: -50 }}
       animate={{ opacity: active ? 1 : 0, x: active ? 0 : 50 }}
       exit={{ opacity: 0, x: 50 }}
@@ -169,7 +180,7 @@ const Step = ({ active, children, stepKey, className, formData, setFormData, for
       style={{ pointerEvents: active ? "auto" : "none", position: "relative" }}
     >
       <div className={stepClasses}>
-        {children({ formData, setFormData, formErrors, setFormErrors })}
+        {children({ formData, setFormData, getField, validateField, clearField })}
       </div>
     </motion.div>
   );

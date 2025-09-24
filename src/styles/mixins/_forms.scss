@@ -27,6 +27,10 @@
   }
 
   &:focus-visible {
-    outline: 2px solid var(--form-border-color);
+    // outline: 2px solid var(--form-border-color);
+  }
+
+  &::placeholder {
+    color: color.scale($text, $lightness: 40%);
   }
 }

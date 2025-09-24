@@ -50,7 +50,7 @@
   }
 
   &.icon-spin {
-    display: inline!important;
+    display: inline-block!important;
     animation: iconSpin 1s linear infinite; /* 2s de duración, infinito */
   }
 }

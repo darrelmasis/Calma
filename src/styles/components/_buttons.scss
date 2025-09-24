@@ -43,15 +43,16 @@
   // min-width: var(--btn-min-width);
   width: max-content;
 
-  &:hover {
+  &:hover,
+  &-link:hover {
     background-color: var(--btn-bg-hover);
     color: var(--btn-color-hover);
     // transform: scale(1.02);
   }
 
-  &:active {
+  &:active,
+  &-link:active {
     background-color: var(--btn-bg-active);
-    // transform: scale(1);
   }
 
   &.ghost-active {
@@ -99,14 +100,27 @@
     display: flex;
   }
 
-  &-link {
-    &,
+  &.btn-link {
+    color: var(--btn-color);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--btn-color-hover);
+    }
+
+    &:active {
+      color: var(--btn-color-active);
+    }
+
     &:visited {
       color: var(--btn-color);
-      text-decoration: none;
-      &:hover,
-      &:active {
-        color: var(--btn-color);
+    }
+
+    &[class*="ghost"] {
+      color: var(--btn-color);
+
+      &:hover {
+        color: var(--btn-color-hover);
       }
     }
   }

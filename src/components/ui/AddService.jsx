@@ -14,7 +14,7 @@ const AddService = ({ categoryId, subCategoryId, serviceId, className }) => {
     ) || false;
 
   const mainButtonIconName = isAdded
-    ? { name: "trash-can", color: "text-danger" }
+    ? { name: "circle-minus", color: "text-danger" }
     : { name: "circle-plus", color: "text-muted" };
 
   const addServiceButtonClasses = classNames("add-service-button", className, {

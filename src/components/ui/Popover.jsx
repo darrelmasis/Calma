@@ -83,11 +83,13 @@ export function PopoverContent({ children, className }) {
 
   if (!isMounted) return null;
 
+  const popoverContentClasses = `popover-content ${className || ""}`;
+
   return (
     <FloatingPortal>
       <div
         ref={refs.setFloating}
-        className={className}
+        className={popoverContentClasses}
         style={{
           position: strategy,
           top: y ?? 0,

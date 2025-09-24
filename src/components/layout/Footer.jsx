@@ -3,7 +3,7 @@ import { Icon } from '../commons/Icons'
 import { FadeInWhenVisible as Fade } from '../../components/commons/animations/FadeInWhenVisible'
 import { Tooltip } from '../../components/ui/Tooltip'
 import { useLang } from '../../i18n/LanguageContext'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { formatPhone } from '../../utils/utils'
 import { LogoCalma } from '../ui/LogoCalma'
 import FloatingButton from '../../components/commons/FloatingButton'
@@ -14,7 +14,8 @@ const Footer = () => {
   const phoneNumber = import.meta.env.VITE_CALMA_PHONE_NUMBER
   const email = import.meta.env.VITE_CALMA_EMAIL
   const { t } = useLang()
-  const navigate = useNavigate()
+  const location = useLocation()
+  const isBooking = location.pathname === "/booking";
 
   const calmaFacebook = import.meta.env.VITE_CALMA_FACEBOOK
   const calmaInstagram = import.meta.env.VITE_CALMA_INSTAGRAM
@@ -26,34 +27,80 @@ const Footer = () => {
       <footer className="footer py-3">
         <div className="container">
           {/* Bloque CTA */}
-          <div className="grid">
-            <div className="grid-row justify-content-center text-center mb-6">
-              <div className="grid-col-12">
-                <Fade>
-                  <h2 className="text-dark fw-light">{t('footer.cta.title')}</h2>
-                </Fade>
-                <Fade delay={0.2}>
-                  <p className="text-muted fw-light">{t('footer.cta.description')}</p>
-                </Fade>
-                <Fade delay={0.4}>
-                  <Button
-                    onClick={() => navigate('/booking')}
-                    label={t('footer.cta.button')}
-                    variant="primary"
-                    ghost={true}
-                    size="large"
-                    icon={
-                      {
-                        name: "arrow-right",
-                        position: "right",
-                        variant: "regular",
-                      }
-                    }
-                    className="mt-3" />
-                </Fade>
+          {
+            !isBooking ? (
+              <div className="grid">
+                <div className="grid-row justify-content-center text-center mb-6">
+                  <div className="grid-col-12">
+                    <Fade>
+                      <h2 className="text-dark fw-light">{t('footer.cta.title')}</h2>
+                    </Fade>
+                    <Fade delay={0.2}>
+                      <p className="text-muted fw-light">{t('footer.cta.description')}</p>
+                    </Fade>
+                    <Fade delay={0.4}>
+                      <Button
+                        as='link'
+                        to={'/booking'}
+                        label={t('footer.cta.button')}
+                        variant="primary"
+                        ghost={true}
+                        size="large"
+                        icon={
+                          {
+                            name: "arrow-right",
+                            position: "right",
+                            variant: "regular",
+                          }
+                        }
+                        className="mt-3" />
+                    </Fade>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+            ) : (
+              <div className="grid">
+                <div className="grid-row justify-content-center text-center mb-6">
+                  <div className="grid-col-12">
+                    <Fade>
+                      <h2 className="text-dark fw-light">¿Necesitas ayuda con tu reserva?</h2>
+                      </Fade>
+                    <Fade delay={0.2}>
+                        <div className="mt-5">
+                          <span>Contáctanos: </span>
+                          <span className='me-2 text-muted'>
+                            {import.meta.env.VITE_CALMA_PHONE_NUMBER }
+                          </span>|
+                          <span className='ms-2 text-muted'>
+                            {import.meta.env.VITE_CALMA_EMAIL }
+                          </span>
+                        </div>
+                      </Fade>
+                      <Fade>
+                        <p className='mb-0 text-muted'>o, escribenos sin salir de Calma</p>
+                      </Fade>
+                    <Fade delay={0.4}>
+                      <Button
+                        as='link'
+                        to={'/contact'}
+                        label={t('footer.cta.button')}
+                        variant="primary"
+                        ghost={true}
+                        size="large"
+                        icon={
+                          {
+                            name: "arrow-right",
+                            position: "right",
+                            variant: "regular",
+                          }
+                        }
+                        className="mt-3" />
+                    </Fade>
+                  </div>
+                </div>
+              </div>
+            )
+          }
 
           {/* Footer con columnas */}
           <div className="d-flex flex-direction-column flex-direction-lg-row align-items-start mb-3 px-3 mt-3 justify-content-space-between">

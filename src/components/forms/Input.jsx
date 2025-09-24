@@ -8,9 +8,12 @@ const Input = forwardRef(({
   type = 'text',
   value,
   onChange,
+  onBlur,
+  onFocus,
   placeholder = '',
   label,
   error,
+  success,
   name,
   className = '',
   classNameInput = '',
@@ -42,15 +45,33 @@ const Input = forwardRef(({
     }
   };
 
+  const handleBlur = (e) => {
+    onBlur?.(e);
+  };
+
+  const handleFocus = (e) => {
+    onFocus?.(e);
+  };
+
   const inputProps = {
     id,
     ref: type === 'textarea' ? textareaRef : ref,
     name,
-    value: type !== 'checkbox' && type !== 'file' ? value : undefined,
+    value: type !== 'checkbox' && type !== 'file' ? (value || '') : undefined,
     checked: type === 'checkbox' ? value : undefined,
     onChange: handleChange,
+    onBlur: handleBlur,
+    onFocus: handleFocus,
     placeholder: type !== 'checkbox' && type !== 'file' ? placeholder : undefined,
-    className: classNames('form-control', classNameInput, { 'has-error': !!error }),
+    className: classNames(
+      'form-control',
+      classNameInput,
+      {
+        'is-error': !!error,
+        'is-success': success && !error && value?.trim() // ✅ éxito real solo si hay valor
+      }
+    ),
+
     'aria-invalid': !!error,
     'aria-describedby': error ? `${id}-error` : undefined,
     ...props
@@ -64,17 +85,19 @@ const Input = forwardRef(({
         </label>
       )}
 
-      {type === 'textarea' ? (
-        <textarea {...inputProps} />
-      ) : (
-        <input type={type} {...inputProps} />
-      )}
+      <div className="d-flex flex-direction-column w-100 position-relative">
+        {type === 'textarea' ? (
+          <textarea {...inputProps} />
+        ) : (
+          <input type={type} {...inputProps} />
+        )}
 
-      {error && (
-        <span id={`${id}-error`} className={classNames('form-error fs-small text-danger mt-1', classNameError)}>
-          {error}
-        </span>
-      )}
+        {error && (
+          <span id={`${id}-error`} className={classNames('form-error fs-small text-danger mt-1 position-absolute', classNameError)}>
+            {error}
+          </span>
+        )}
+      </div>
     </div>
   );
 });
@@ -83,8 +106,8 @@ const Input = forwardRef(({
 // Componente PhoneNumber
 // =======================
 const countries = [
-  { value: "ni", code: "🇳🇮 +505", mask: "____-____", placeholder: "8128-5678" },
-  { value: "us", code: "🇺🇸 +1", mask: "(___) ___-____", placeholder: "(123) 456-7890" },
+  { value: "ni", code: "🇳🇮 +505", mask: "____-____", placeholder: "xxxx-xxxx" },
+  { value: "us", code: "🇺🇸 +1", mask: "(___) ___-____", placeholder: "(xxx) xxx-xxxx" },
 ];
 
 // Aplica máscara simple
@@ -147,16 +170,23 @@ const PhoneNumber = forwardRef(({ value = "", onChange, label, error, className,
             placeholder="Selecciona un país"
           />
         </div>
-        <div className="d-flex flex-direction-column flex-1">
+        <div className="d-flex flex-direction-column flex-1 position-relative">
           <input
             ref={ref}
             type="tel"
             value={value}
             onChange={handleInputChange}
             placeholder={selectedCountry.placeholder}
-            className={classNames("form-control", { "has-error": !!error })}
+            className={classNames(
+              "form-control",
+              {
+                "is-error": !!error,
+                "is-success": !error && value?.trim() // ✅ éxito solo si hay valor y no error
+              }
+            )}
           />
-          {error && <span className="form-error fs-small text-danger mt-1">{error}</span>}
+
+          {error && <span className="form-error fs-small text-danger mt-1 position-absolute">{error}</span>}
         </div>
       </div>
 

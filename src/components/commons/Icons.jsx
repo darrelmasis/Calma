@@ -15,7 +15,7 @@ export const Icons = {
   }
 }
 
-export const Icon = ({ name, variant = 'regular', duotone = 'regular', className, size = 'md', ref = null, dataName }) => {
+export const Icon = ({ name, variant = 'regular', duotone = 'regular', className, size = 'md', ref = null, dataName, animation = null }) => {
   const nameCleanaed = name
     .split('-')
     .map(w => w.charAt(0).toUpperCase() + w.slice(1))
@@ -38,7 +38,10 @@ export const Icon = ({ name, variant = 'regular', duotone = 'regular', className
   const componentClasses = classNames(
     'icon-wrapper',
     className,
-    `icon-wrapper-${size}`
+    `icon-wrapper-${size}`,
+    {
+      'icon-spin': animation === 'spin',
+    }
   )
 
   return (

@@ -1,7 +1,6 @@
 import { usePageTitle } from '@utils/utils'
 import Header from '../../components/layout/Header'
 import { Icon } from '../../components/commons/Icons'
-import { Hero } from '../../components/commons/Hero'
 import { Button } from '../../components/ui/Button'
 import { useNavigate } from 'react-router-dom'
 import { FadeInWhenVisible as Fade } from '../../components/commons/animations/FadeInWhenVisible'
@@ -110,7 +109,8 @@ const Home = () => {
           </Fade>
           <Fade delay={0.6}>
             <Button
-              onClick={goToServices}
+              as='link'
+              to="/services"
               variant="secondary"
               label={t('home.section_3.button')}
               size="large"

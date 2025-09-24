@@ -37,7 +37,7 @@ const Empty = () => {
           Para agendar una cita, primero debes elegir los servicios que deseas.
         </p>
         {/* CTA principal */}
-        <Button variant="primary" className="my-3" size='large' icon="compass" label={"Explorar servicios"} onClick={onExploreClick}/>
+        <Button variant="primary" as='link' to="/services" className="my-3" size='large' icon="compass" label="Explorar servicios" />
 
         {/* Enlace secundario */}
         <p className="fs-small text-muted">
