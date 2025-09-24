@@ -1,5 +1,6 @@
 import AddressCard from './address-card.svg?react';
 import AnglesUpDown from './angles-up-down.svg?react';
+import ArrowLeft from './arrow-left.svg?react';
 import ArrowRight from './arrow-right.svg?react';
 import ArrowUpRightFromSquare from './arrow-up-right-from-square.svg?react';
 import BagShopping from './bag-shopping.svg?react';
@@ -16,6 +17,7 @@ import ChevronUp from './chevron-up.svg?react';
 import ChildReaching from './child-reaching.svg?react';
 import CircleCheck from './circle-check.svg?react';
 import CircleInfo from './circle-info.svg?react';
+import CircleMinus from './circle-minus.svg?react';
 import CirclePlus from './circle-plus.svg?react';
 import CircleQuestion from './circle-question.svg?react';
 import Compass from './compass.svg?react';
@@ -64,6 +66,7 @@ import Xmark from './xmark.svg?react';
 export {
   AddressCard,
   AnglesUpDown,
+  ArrowLeft,
   ArrowRight,
   ArrowUpRightFromSquare,
   BagShopping,
@@ -80,6 +83,7 @@ export {
   ChildReaching,
   CircleCheck,
   CircleInfo,
+  CircleMinus,
   CirclePlus,
   CircleQuestion,
   Compass,
