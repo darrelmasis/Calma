@@ -5,8 +5,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "../ui/Button";
 import { useSentinel } from "../../hooks/useSentinel";
 import { useBookingValidation } from "../../hooks/useBookingValidation";
+import { useLang } from "../../i18n/LanguageContext";
 
 const Stepper = ({ children, formData, setFormData, onSubmit, isSubmitting }) => {
+  const { t } = useLang();
+  // Extraer los pasos del contenido
   const stepsContent = Children.toArray(children).find((child) => child.type === StepsContent);
   const steps = stepsContent ? Children.toArray(stepsContent.props.children) : [];
   const [activeStep, setActiveStep] = useState(0);
@@ -133,6 +136,7 @@ const Stepper = ({ children, formData, setFormData, onSubmit, isSubmitting }) =>
 const StepsContent = ({ children }) => <>{children}</>;
 
 const StepperActions = ({ activeStep, prevStep, nextStep, isLastStep, onSubmit, isSubmitting }) => {
+  const { t } = useLang();
   const [sentinelRef, isSticky] = useSentinel({ offset: -32 });
   const stickyPanelClasses = classNames(
     "stepper-actions d-flex max-wx-md-500 justify-content-center gap-3 position-sticky bottom-2 w-100 py-3 mt-5",
@@ -143,7 +147,7 @@ const StepperActions = ({ activeStep, prevStep, nextStep, isLastStep, onSubmit, 
     <>
       <div className={stickyPanelClasses}>
         <Button size="large" icon="arrow-left" variant="basic" disabled={activeStep === 0 || isSubmitting} onClick={prevStep} className="flex-1">
-          Atrás
+          {t('booking.prevButtonText')}
         </Button>
         <Button
 
@@ -159,7 +163,7 @@ const StepperActions = ({ activeStep, prevStep, nextStep, isLastStep, onSubmit, 
           onClick={!isSubmitting ? (isLastStep ? onSubmit : nextStep) : null}
           disabled={isSubmitting}
         >
-          {isLastStep ? "Confirmar Cita" : "Siguiente"}
+          {isLastStep ? t('booking.confirmButtonText') : t('booking.nextButtonText')}
         </Button>
       </div>
       <div ref={sentinelRef} style={{ height: 1 }} />

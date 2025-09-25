@@ -1,5 +1,6 @@
 import classNames from 'classnames'
 import { useState, useEffect } from 'react'
+import { useLang } from '../i18n/LanguageContext'
 
 const usePageTitle = pageTitle => {
   const appName = import.meta.env.VITE_APP_NAME || 'Calma'
@@ -58,13 +59,7 @@ const USD = ({ amount, currencySymbol = '$', size = 'regular', className, prefix
 }
 
 
-/**
- * Formatea una fecha según el formato deseado
- * @param {Date|string|number} date - La fecha a formatear
- * @param {"short"|"medium"|"long"|"full"} format - Tipo de formato
- * @param {string} locale - Código de localización, por defecto "es-ES"
- * @returns {string}
- */
+
 const formatDate = (date, format = "short", locale = "es-ES") => {
   if (!date) return "";
 

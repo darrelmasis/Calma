@@ -4,10 +4,12 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import { Button } from '../../components/ui/Button'
 import { useEffect } from 'react'
 import { useSelectedServices } from '../../hooks/useSelectedService'
+import { useLang } from '../../i18n/LanguageContext'
 
 
 const Success = () => {
-  usePageTitle('Reserva Exitosa')
+  const { t } = useLang()
+  usePageTitle(t('booking.success.title'))
   const navigate = useNavigate()
   const location = useLocation()
   const { clearServices, isLoaded } = useSelectedServices()
@@ -39,9 +41,9 @@ const Success = () => {
         location.state?.success && (
       <div className="d-flex flex-direction-column justify-content-center align-items-center text-center p-5">
         <span className="fs-display-2 mb-3">🎉</span>
-        <h3 className="fs-h3 mb-2">¡Tu reserva se ha realizado con éxito!</h3>
-        <p className="text-muted mb-4">
-          Te contactaremos pronto para confirmar los detalles.
+        <h3 className="fs-h3 mb-2">{t('booking.success.subtitle')}</h3>
+        <p className="text-muted mb-4 max-wx-500">
+          {t('booking.success.message')}
         </p>
 
         {/* CTA principal */}
@@ -50,7 +52,7 @@ const Success = () => {
           className="my-3"
           size="large"
           icon="left-to-bracket"
-          label="Regresar"
+          label={t('booking.success.buttonText')}
           onClick={goHome}
         />
       </div>

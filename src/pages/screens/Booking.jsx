@@ -6,14 +6,19 @@ import Header from "../../components/layout/Header";
 import Footer from "../../components/layout/Footer";
 import { useSelectedServices } from "../../hooks/useSelectedService";
 import { Input, PhoneNumber } from "../../components/forms/Input";
-import { USD, formatDate, formatTime } from "../../utils/utils";
+import { USD, formatTime } from "../../utils/utils";
 import axios from "axios";
 import { Icon } from "../../components/commons/Icons";
+import { usePageTitle } from '@utils/utils'
+import { useFormatDate } from "../../hooks/useFormatDate";
+
 
 const Booking = () => {
   const { t } = useLang();
   const navigate = useNavigate();
+  usePageTitle(t('booking.pageTitle'))
   const { servicesWithInfo, totalServices, totalPrice, isLoaded } = useSelectedServices();
+  const { formatDate } = useFormatDate();
 
   // Datos del formulario
   const [formData, setFormData] = useState({
@@ -39,23 +44,24 @@ const Booking = () => {
   // Prellenar mensaje con servicios seleccionados
   useEffect(() => {
     if (hasServices) {
-      setFormData(prev => ({ ...prev, message: servicesWithInfo }));
-      console.log(formData.message);
+      setFormData(prev => ({ ...prev, message: servicesWithInfo }))
 
     }
   }, [servicesWithInfo]);
 
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const environment = import.meta.env.VITE_ENV;
+  const apiUrl = environment === 'development' ? import.meta.env.VITE_API_DEV_URL : import.meta.env.VITE_API_PROD_URL;
 
   const handleSubmit = async () => {
     setIsLoading(true);
+    console.log(apiUrl);
 
-    console.log("Enviando datos de reserva:", formData);
 
     try {
       const payload = { ...formData };
-      const res = await axios.post("/api/send-mail", payload, {
+      const res = await axios.post(`${apiUrl}/api/send-mail`, payload, {
         headers: { "Content-Type": "application/json" },
       });
 
@@ -152,8 +158,8 @@ const Booking = () => {
                       <p className="fs-medium mt-0 text-muted">{t("booking.steps.personalData.subtitle")}</p>
                     </div>
                     <Input
-                      label="Nombre Completo"
-                      placeholder="¿Cómo te llamas?"
+                      label={t("booking.steps.personalData.nameInput.label")}
+                      placeholder={t("booking.steps.personalData.nameInput.placeholder")}
                       value={formData.name}
                       name="name"
                       onChange={(val) => {
@@ -169,8 +175,8 @@ const Booking = () => {
                       className="w-100"
                     />
                     <Input
-                      label="Correo Electrónico"
-                      placeholder="¿Cuál es tu correo?"
+                      label={t("booking.steps.personalData.emailInput.label")}
+                      placeholder={t("booking.steps.personalData.emailInput.placeholder")}
                       value={formData.email}
                       name="email"
                       onChange={(val) => {
@@ -186,7 +192,7 @@ const Booking = () => {
                     />
 
                     <PhoneNumber
-                      label="Número de teléfono"
+                      label={t("booking.steps.personalData.phoneInput.label")}
                       value={formData.phone}
                       onChange={(valObj) => {
                         setFormData(prev => ({
@@ -214,11 +220,12 @@ const Booking = () => {
                       <p className="fs-h3 my-0">{t("booking.steps.schedule.title")}</p>
                       <p className="fs-medium mt-0 text-muted">{t("booking.steps.schedule.subtitle")}</p>
                     </div>
-                    <div className="d-flex align-items-flex-start justify-content-space-between gap-1">
+                    <div className="d-flex align-items-flex-start flex-direction-column flex-direction-md-row justify-content-space-between gap-1">
                       <Input
                         className="w-100"
                         type="date"
-                        label="Fecha"
+                        label={t("booking.steps.schedule.dateInput.label")}
+                        placeholder={t("booking.steps.schedule.dateInput.placeholder")}
                         value={formData.date}
                         onChange={(val) => {
                           setFormData(prev => ({ ...prev, date: val }));
@@ -233,7 +240,8 @@ const Booking = () => {
                       <Input
                         className="w-100"
                         type="time"
-                        label="Hora"
+                        label={t("booking.steps.schedule.timeInput.label")}
+                        placeholder={t("booking.steps.schedule.timeInput.placeholder")}
                         value={formData.time}
                         onChange={(val) => {
                           setFormData(prev => ({ ...prev, time: val }));
@@ -248,10 +256,10 @@ const Booking = () => {
                     <div className="border-top"></div>
                     <Input
                       type="textarea"
-                      label="Mensaje (opcional)"
+                      label={t("booking.steps.schedule.messageInput.label")}
                       value={formData.notes}
                       name="notes"
-                      placeholder="Escribe aquí cualquier detalle adicional..."
+                      placeholder={t("booking.steps.schedule.messageInput.placeholder")}
                       onChange={(val) => setFormData(prev => ({ ...prev, notes: val }))}
                     />
                   </div>
@@ -263,12 +271,12 @@ const Booking = () => {
                 {({ formData }) => {
                   if (isLoading) {
                     return (
-                      <div className="d-flex flex-direction-column justify-content-center align-items-center flex-1 text-center max-wx-500 p-3 border rounded shadow-sm">
+                      <div className="d-flex flex-direction-column justify-content-center align-items-center flex-1 text-center max-wx-500 p-3 rounded shadow-sm">
                         <div className="d-flex flex-direction-column align-items-center justify-content-center">
                           <span className="fs-display-1">
                             <Icon name="spinner" animation="spin"/>
                           </span>
-                          <p className="fs-h3 mt-3">Enviando tu reserva...</p>
+                          <p className="fs-h3 mt-3">{t("booking.steps.confirmation.loadingText")}</p>
                         </div>
                       </div>
                     );
@@ -277,11 +285,11 @@ const Booking = () => {
                     <div className="d-flex flex-direction-column justify-content-center align-items-center flex-1 text-center max-wx-500 p-3">
                       <div className="d-flex flex-direction-column align-items-center justify-content-center">
                         <span className="fs-display-2">🥳</span>
-                        <p className="fs-h3 mt-3">{t("booking.steps.confirmation.title")}</p>
+                        <p className="fs-h3 mt-3">{t("booking.steps.final.title")}</p>
                       </div>
                       <div className="text-start">
-                        <p className="m-0 fs-lead text-center">{`Tu cita se agendará para el día ${formatDate(formData.date, "long")} a las ${formatTime(formData.time)}`}</p>
-                        <p className="text-center text-muted">{t("booking.steps.confirmation.details")}</p>
+                        <p className="m-0 fs-lead text-center">{`${t("booking.steps.final.confirmtext")} ${formatDate(formData.date, "long")} ${t("booking.steps.final.confirmtext2")} ${formatTime(formData.time)}`}</p>
+                        <p className="text-center text-muted">{t("booking.steps.final.details")}</p>
                         <p className="text-center text-muted fs-small">{`(${formData.prefix} ${formData.phone}) | (${formData.email})`}</p>
                       </div>
                     </div>

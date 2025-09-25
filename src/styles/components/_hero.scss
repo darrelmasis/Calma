@@ -5,15 +5,25 @@
 .hero {
   min-height: calc(100vh - 100px);
 
-  @include mq.screen('min', 'lg') {
-    min-height: calc(100vh - 100px);
-  }
-
   &-content {
-    margin-top: 7rem;
+    // margin-top: 7rem;
+    display: flex;
+    flex: 1;
+    justify-content: center;
 
-    @include mq.screen('min', 'lg') {
-      margin-top: 0;
+    & > div {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+
+      @include mq.screen('min', 'lg') {
+        text-align: left!important;
+        justify-content: flex-start!important;
+      align-items: flex-start!important;
+
+      }
     }
   }
 

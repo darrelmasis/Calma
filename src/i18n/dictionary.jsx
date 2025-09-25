@@ -1,5 +1,3 @@
-
-
 const currentYear = new Date().getFullYear();
 const copyrightName = import.meta.env.VITE_CALMA_NAME;
 const authors = import.meta.env.VITE_CALMA_AUTHOR;
@@ -31,8 +29,6 @@ export const dictionary = {
         title: "Servicios agregados",
         empty: "Tu bolsa está vacía",
         emptySubtitle: "Agrega servicios para reservar tu cita",
-        item: "Artículo",
-        items: "Artículos",
         total: "Total estimado",
         totalSubtitle: "servicio",
         clear: "Limpiar",
@@ -75,10 +71,14 @@ export const dictionary = {
           instagramTooltip: 'Síguenos en Instagram'
         }
       },
+      help: {
+        title: '¿Necesitas ayuda con tu reserva?',
+        contact: 'Contáctanos:',
+        subtitle: 'Estamos aquí para ayudarte con tu reserva'
+      },
       legal: {
         copyright: copyrightEs,
         subtitle: authorsEs
-
       }
     },
     home: {
@@ -86,11 +86,11 @@ export const dictionary = {
       heroSection: {
         title_1: 'Encuentra tu <span className="text-primary">Calma</span> interior',
         description: 'Descubre un espacio diseñado para tu bienestar y tranquilidad, donde cada servicio está pensado para restaurar tu equilibrio',
-        button_1: 'Descubir servicios',
+        button_1: 'Descubrir servicios',
         button_2: 'Paquetes disponibles'
       },
       section_2: {
-        title: '¿Porque Elegir Calma?',
+        title: '¿Por qué elegir Calma?',
         description: 'Nuestro enfoque holístico nos distingue',
         points: {
           p1: { title: 'Atención personalizada', description: 'Cada cliente recibe un tratamiento único adaptado a sus necesidades' },
@@ -188,7 +188,6 @@ export const dictionary = {
           }
         ]
 
-
       },
       section_2: {
         faq: {
@@ -196,7 +195,7 @@ export const dictionary = {
           items: [
             {
               question: "¿Puedo personalizar un paquete?",
-              answer: "Cada paquete puede ser personalizado a la necesidad del cliente ogrupo, Contáctanos para adaptar el paquete a tu necesidad."
+              answer: "Cada paquete puede ser personalizado a la necesidad del cliente o grupo. Contáctanos para adaptar el paquete a tu necesidad."
             },
             {
               question: "¿Debo reservar con anticipación?",
@@ -204,7 +203,7 @@ export const dictionary = {
             },
             {
               question: "¿Qué duración tiene cada paquete?",
-              answer: "Los paquetes son personalizados ya depende la necesidad del cliente se ajusta el tiempo necesario."
+              answer: "Los paquetes son personalizados, ya depende la necesidad del cliente se ajusta el tiempo necesario."
             }
           ]
         }
@@ -220,7 +219,7 @@ export const dictionary = {
           collapsed: '¡Descubre todos los servicios!'
         },
         static: '¡Ya viste todo!',
-        minimal: '¡Pocos pero especiales'
+        minimal: '¡Pocos pero especiales!'
       },
       section_1: {
         title: 'Servicios Disponibles',
@@ -326,12 +325,12 @@ export const dictionary = {
               lavado: {
                 name: 'Lavado y Tratamientos',
                 services: {
-                  lavadoExpress: { name: 'Lavado Express', description: 'Lavado rápido (1 shampuseada)' },
-                  lavadoProfundo: { name: 'Lavado Profundo', description: 'Lavado profundo (2 shampuseadas)' },
-                  lavadoMascarilla: { name: 'Lavado + Mascarilla', description: 'Lavado profundo (2 shampuseadas) + mascarilla' },
-                  lavadoAmpolla: { name: 'Lavado + Ampolla Tratamiento ', description: 'Lavado profundo (2 shampuseadas) + ampolla tratamiento ' },
+                  lavadoExpress: { name: 'Lavado Express', description: 'Lavado rápido (1 aplicación de champú)' },
+                  lavadoProfundo: { name: 'Lavado Profundo', description: 'Lavado profundo (2 aplicaciones de champú)' },
+                  lavadoMascarilla: { name: 'Lavado + Mascarilla', description: 'Lavado profundo (2 aplicaciones de champú) + mascarilla' },
+                  lavadoAmpolla: { name: 'Lavado + Ampolla Tratamiento ', description: 'Lavado profundo (2 aplicaciones de champú) + ampolla tratamiento ' },
                   relajanteExpress: { name: 'Relajante Express', description: 'Lavado profundo + ampolla tratamiento + masaje cuero cabelludo' },
-                  cabelloTratado: { name: 'Cabello Tratado', description: 'lavado profundo (2 shampuseadas) + mascarilla hidratante + ampolla tratamiento' },
+                  cabelloTratado: { name: 'Cabello Tratado', description: 'lavado profundo (2 aplicaciones de champú) + mascarilla hidratante + ampolla tratamiento' },
                   aplicacionTinta: { name: 'Aplicación de Tinte', description: 'Aplicación de tinte' }
                 }
               },
@@ -404,8 +403,16 @@ export const dictionary = {
     },
     booking: {
       pageTitle: 'Citas',
-      booking_p1: 'Descubre la experiencia de belleza y relajación que mereces',
-      booking_button: 'Reserva tu cita',
+      emptyBagTitle: 'Bolsa Vacía',
+      nextButtonText: 'Siguiente',
+      prevButtonText: 'Atrás',
+      confirmButtonText: 'Confirmar',
+      successMessage: '¡Gracias por reservar con nosotros! Te contactaremos pronto para confirmar los detalles de tu cita.',
+      errorMessage: 'Hubo un error al enviar tu reserva. Por favor, inténtalo de nuevo más tarde.',
+      emptyBagMessage: '¡Aún no has seleccionado ningún servicio!',
+      emptyBagMessageAlt: 'Para agendar una cita, primero debes elegir los servicios que deseas.',
+      emptyBagCta: 'Explorar servicios',
+      emptyBagLinktext: 'Solo quiero ponerme en contacto',
       steps: {
         welcome: {
           title: "¡Genial! Veamos lo que elegiste",
@@ -414,33 +421,50 @@ export const dictionary = {
         personalData: {
           title: "Tus datos para contactarte",
           subtitle: "Necesitamos algunos datos para agendar tus servicios",
-          fullNamePlaceholder: "Ej: María Pérez",
-          phonePlaceholder: "Ej: +505 8888 7777",
-          emailPlaceholder: "Ej: maria@email.com"
+          nameInput: { label: "Nombre Completo", placeholder: "¿Cómo te llamas?", errors: { required: "Nombre Obligatorio", tooShort: "Nombre muy corto" } },
+          emailInput: { label: "Correo Electrónico", placeholder: "¿Cuál es tu correo?", errors: { required: "Correo Electrónico Obligatorio", invalid: "Correo Electrónico Inválido" } },
+          phoneInput: { label: "Número de Teléfono", placeholder: "¿Cuál es tu número?", errors: { required: "Número de Teléfono Obligatorio", invalidUSA: "Número Inválido en EE.UU.", invalidNic: "Número Inválido en Nicaragua", invalid: "Número Inválido" } },
         },
         schedule: {
           title: "Escoge fecha y hora",
           subtitle: "Elige la fecha y hora que mejor te convenga y, si quieres, deja un mensaje extra para personalizar tu servicio",
-          datePlaceholder: "Selecciona la fecha",
-          timePlaceholder: "Selecciona la hora",
-          messagePlaceholder: "Escribe tu mensaje aquí..."
+          dateInput: { label: "Fecha", placeholder: "Selecciona una fecha", errors: { required: "Fecha Obligatoria", pastDate: "No puedes elegir una fecha pasada", weekend: "No trabajamos fines de semana" } },
+          timeInput: { label: "Hora", placeholder: "Selecciona una hora", errors: { required: "Hora Obligatoria", invalid: "Hora Inválida", pastTime: "No puedes elegir una hora pasada", requiredAnticipation: "Se requiere al menos 1 hora de anticipación", available: "Horario no disponible (8:00 AM - 6:00 PM)" } },
+          messageInput: { label: "Mensaje Adicional (Opcional)", placeholder: "¿Alguna indicación especial?" }
         },
         confirmation: {
-          title: "¡Ya casi!",
-          details: "Espera un mensaje de confirmación en tu correo electrónico o WhatsApp."
+          loadingText: "Enviando tu reserva...",
+          success: {
+            title: "¡Reserva enviada con éxito!",
+            details: "Nos pondremos en contacto contigo pronto para confirmar los detalles de tu cita."
+          },
+          error: {
+            title: "Error al enviar la reserva",
+            details: "Hubo un problema al enviar tu reserva. Por favor, inténtalo de nuevo más tarde."
+          },
+        },
+        final: {
+          title: "¡Casi terminamos!",
+          confirmtext: "Tu cita se agendará para el día",
+          confirmtext2: "a las",
+          details: "Espera un mensaje de confirmación en tu correo electrónico o WhatsApp.",
         },
         noServices: {
           title: "¡Oops! No seleccionaste ningún servicio",
           subtitle: "Parece que todavía no agregaste servicios a tu bolsa."
-        },
-        buttons: {
-          back: "Atrás",
-          next: "Siguiente",
-          continue: "Continuar",
-          send: "Enviar",
-          backToServices: "Volver a servicios",
-          sendMessageOnly: "Enviar solo un mensaje"
         }
+      },
+      success: {
+        title: 'Reserva Exitosa',
+        subtitle: '¡Tu reserva se ha realizado con éxito!',
+        message: '¡Gracias por reservar con nosotros! Te contactaremos pronto para confirmar los detalles de tu cita.',
+        buttonText: 'Volver al inicio'
+      },
+      failed: {
+        title: 'Error en la Reserva',
+        subtitle: 'Hubo un error al enviar tu reserva',
+        message: 'Hubo un problema al enviar tu reserva. Por favor, inténtalo de nuevo más tarde.',
+        buttonText: 'Volver al inicio'
       }
     },
     floatingButton: {
@@ -563,6 +587,11 @@ export const dictionary = {
           instagramTooltip: 'Follow us on Instagram'
         }
       },
+      help: {
+        title: 'Need help with your booking?',
+        contact: 'Contact us:',
+        subtitle: 'We are here to assist you with your booking'
+      },
       legal: {
         copyright: copyrightEn,
         subtitle: authorsEn
@@ -600,7 +629,7 @@ export const dictionary = {
         history_p3: 'Today, Calma is recognized for its commitment to wellness and dedication. Every corner reflects our attention to detail and our deep respect for those who visit us. Our purpose is to continue growing with the intention of expanding our services without losing the essence that defines us. Calma is more than a physical space; it is an invitation to reconnect with yourself, breathe deeply, and find your balance.',
         end_tag: 'Much Love,',
         owners: authors.replace(/y/g, '&'),
-        imageAlt: 'Imagen representativa de nuestra historia'
+        imageAlt: 'Representative image of our story'
       },
       section_2: {
         title: 'Who We Are?',
@@ -642,7 +671,7 @@ export const dictionary = {
             precio: "170",
             featured: true,
             featured_text: "Most Popular",
-            descripcion_corta: "Prepare for your special event with calm and confidence.",
+            descripcion_corta: "Prepare for your special event with confidence and relaxation.",
             servicios_incluidos: [
               "SPA shampoo & wash",
               "Professional blow-dry",
@@ -883,6 +912,118 @@ export const dictionary = {
       }
 
     },
+    booking: {
+      pageTitle: 'Appointments',
+      emptyBagTitle: 'Empty Bag',
+      nextButtonText: 'Next',
+      prevButtonText: 'Back',
+      confirmButtonText: 'Confirm',
+      successMessage: 'Thank you for booking with us! We will contact you soon to confirm the details of your appointment.',
+      errorMessage: 'There was an error submitting your booking. Please try again later.',
+      emptyBagMessage: 'You haven’t selected any services yet!',
+      emptyBagMessageAlt: 'To book an appointment, please choose your desired services first.',
+      emptyBagCta: 'Browse Services',
+      emptyBagLinktext: 'I just want to get in touch',
+      steps: {
+        welcome: {
+          title: "Great! Let’s review what you’ve selected",
+          subtitle: "Before booking, please review your chosen services"
+        },
+        personalData: {
+          title: "Your contact information",
+          subtitle: "We need some details to schedule your services",
+          nameInput: {
+            label: "Full Name",
+            placeholder: "What's your name?",
+            errors: {
+              required: "Name is required",
+              tooShort: "Name is too short"
+            }
+          },
+          emailInput: {
+            label: "Email Address",
+            placeholder: "What's your email?",
+            errors: {
+              required: "Email is required",
+              invalid: "Invalid email address"
+            }
+          },
+          phoneInput: {
+            label: "Phone Number",
+            placeholder: "What's your number?",
+            errors: {
+              required: "Phone number is required",
+              invalidUSA: "Invalid number in the USA",
+              invalidNic: "Invalid number in Nicaragua",
+              invalid: "Invalid number"
+            }
+          },
+        },
+        schedule: {
+          title: "Choose date and time",
+          subtitle: "Pick the date and time that works best for you and, if you want, leave an extra message to personalize your service",
+          dateInput: {
+            label: "Date",
+            placeholder: "Select a date",
+            errors: {
+              required: "Date is required",
+              pastDate: "You can't choose a past date",
+              weekend: "We don't work on weekends"
+            }
+          },
+          timeInput: {
+            label: "Time",
+            placeholder: "Select a time",
+            errors: {
+              required: "Time is required",
+              invalid: "Invalid time",
+              pastTime: "You can't choose a past time",
+              requiredAnticipation: "At least 1 hour notice is required",
+              available: "Time not available (8:00 AM - 6:00 PM)"
+            }
+          },
+          messageInput: {
+            label: "Additional Message (Optional)",
+            placeholder: "Any special instructions?"
+          }
+        },
+
+        confirmation: {
+          loadingText: "Submitting your booking...",
+          success: {
+            title: "Booking sent successfully!",
+            details: "We will contact you shortly to confirm your appointment details."
+          },
+          error: {
+            title: "Error sending booking",
+            details: "There was a problem submitting your booking. Please try again later."
+          },
+        },
+        final: {
+          title: "Almost done!",
+          confirmtext: "your appointment is scheduled for",
+          confirmtext2: "at",
+          details: "Expect a confirmation message via email or WhatsApp."
+        },
+        noServices: {
+          title: "Oops! You didn’t select any services",
+          subtitle: "It looks like you haven’t added any services to your bag yet."
+        }
+      },
+      success: {
+        title: 'Booking Successful',
+        subtitle: 'Your booking was completed successfully!',
+        message: 'Thank you for booking with us! We will contact you soon to confirm the details of your appointment.',
+        buttonText: 'Back to Home'
+      },
+      failed: {
+        title: 'Booking Error',
+        subtitle: 'There was an error with your booking',
+        message: 'There was a problem submitting your booking. Please try again later.',
+        buttonText: 'Back to Home'
+      }
+    },
+
     floatingButton: {
       whatsappButtonText: "Write to us on WhatsApp",
       bookingButtontext: "Book with us"

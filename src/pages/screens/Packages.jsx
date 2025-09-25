@@ -56,21 +56,17 @@ const Packages = () => {
       </section>
 
       <section className='py-6 bg-container'>
-        <div className="container">
-          <div className="grid">
-            <div className="grid-row">
-              <div className="grid-col-12">
+        <div className="container d-flex flex-direction-column align-items-center">
+
+              <div className="d-flex justify-content-center">
                 <Fade>
                   <h2 className="text-center text-primary fs-4 mb-6">
                     {t('packages.section_2.faq.title')}
                   </h2>
                 </Fade>
               </div>
-            </div>
 
-            <div className="grid-row">
-              <div className="grid-col-12">
-                <AccordionGroup>
+                <AccordionGroup className="w-100 max-wx-750 justify-content-center d-flex flex-direction-column">
                   {faqs.map((faq, i) => (
                     <Fade key={i}>
                       <Accordion title={faq.question}>
@@ -82,10 +78,6 @@ const Packages = () => {
                   ))}
                 </AccordionGroup>
 
-
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 

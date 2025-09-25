@@ -1,12 +1,13 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { Booking, Story, Home, NotFound, Packages, Services, Team, Empty, Success} from '../pages/Index'
 import ScrollTop from '../components/commons/ScrollTop'
-
+import { ScrollToHash } from '../utils/Scrollhash'
 const AppRoutes = () => {
 
   return (
     <>
       <ScrollTop />
+      <ScrollToHash />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Navigate to="/" replace />} />
