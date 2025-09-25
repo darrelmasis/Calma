@@ -1,6 +1,20 @@
 import nodemailer from 'nodemailer';
 
 export default async function handler(req, res) {
+  // --- CORS ---
+  res.setHeader("Access-Control-Allow-Origin", "*"); // ⚠️ en prod usa tu dominio en lugar de *
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  // Preflight
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+
+  if (req.method !== "POST") {
+    return res.status(405).json({ ok: false, message: "Método no permitido" });
+  }
+
   const { name, prefix, phone, email, date, time, notes, message } = req.body;
 
   if (!name || !email || !message) {
@@ -18,7 +32,7 @@ export default async function handler(req, res) {
       }
     });
 
-    // Construir servicios seleccionados de forma dinámica
+    // --- Render de servicios ---
     const renderServices = () => {
       let html = '';
       for (const categoryKey in message) {
@@ -29,7 +43,6 @@ export default async function handler(req, res) {
         html += `<div style="margin-bottom:15px;">
           <h4 style="margin:0; background:#f4f4f4; padding:5px 10px; border-radius:8px; color:#9F814D;">${categoryName}</h4>`;
 
-        // Agrupar por subcategoría
         const subCategories = {};
         services.forEach(s => {
           if (!subCategories[s.subCategoryName]) subCategories[s.subCategoryName] = [];
@@ -52,68 +65,67 @@ export default async function handler(req, res) {
       return html;
     };
 
-   const htmlContent = `
-  <div style="margin:0; padding:20px; background-color:#f4f4f4; font-family: Arial, sans-serif;">
-    <table width="100%" cellpadding="0" cellspacing="0" border="0">
-      <tr>
-        <td align="center">
-          <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:650px; background-color:#ffffff; border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.05);">
+    const htmlContent = `
+      <div style="margin:0; padding:20px; background-color:#f4f4f4; font-family: Arial, sans-serif;">
+        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td align="center">
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:650px; background-color:#ffffff; border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.05);">
 
-            <!-- Header -->
-            <tr>
-              <td align="center" style="background-color:#ffffff; color:#1A2029; padding:20px;">
-                <img src="https://res.cloudinary.com/darrelmasis/image/upload/c_thumb,w_100,g_face/v1758689242/svgviewer-png-output_cclztp.png" alt="Calma Nails & Spa" style="height:80px; margin-bottom:10px;" />
-                <h2 style="margin:0; font-size:22px;">Nueva Solicitud de Cita</h2>
-                <p style="margin:5px 0 0; font-size:14px; color:#485361">Un cliente ha enviado su solicitud de reserva</p>
-              </td>
-            </tr>
+                <!-- Header -->
+                <tr>
+                  <td align="center" style="background-color:#ffffff; color:#1A2029; padding:20px;">
+                    <img src="https://res.cloudinary.com/darrelmasis/image/upload/c_thumb,w_100,g_face/v1758689242/svgviewer-png-output_cclztp.png" alt="Calma Nails & Spa" style="height:80px; margin-bottom:10px;" />
+                    <h2 style="margin:0; font-size:22px;">Nueva Solicitud de Cita</h2>
+                    <p style="margin:5px 0 0; font-size:14px; color:#485361">Un cliente ha enviado su solicitud de reserva</p>
+                  </td>
+                </tr>
 
-            <!-- Contenido -->
-            <tr>
-              <td style="padding:20px;">
-                <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                  <tr>
-                    <!-- Detalles del cliente -->
-                    <td width="50%" valign="top" style="display:inline-block; width:100%; max-width:300px; background-color:#EEF2F5; border-radius:12px; padding:16px; box-sizing:border-box;">
-                      <h3 style="margin-top:0; color:#9F814D; font-size:18px;">Detalles del Cliente</h3>
-                      <p><strong>Nombre:</strong> ${name}</p>
-                      <p><strong>Teléfono:</strong> <a href="http://wa.me/${prefix}${phone.replace(/-/g,'')}" style="color:#1A2029; text-decoration:none;">${prefix} ${phone}</a></p>
-                      <p><strong>Email:</strong> ${email}</p>
-                      <p><strong>Notas:</strong> ${notes || 'Ninguna'}</p>
-                    </td>
+                <!-- Contenido -->
+                <tr>
+                  <td style="padding:20px;">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <!-- Detalles del cliente -->
+                        <td width="50%" valign="top" style="display:inline-block; width:100%; max-width:300px; background-color:#EEF2F5; border-radius:12px; padding:16px; box-sizing:border-box;">
+                          <h3 style="margin-top:0; color:#9F814D; font-size:18px;">Detalles del Cliente</h3>
+                          <p><strong>Nombre:</strong> ${name}</p>
+                          <p><strong>Teléfono:</strong> <a href="http://wa.me/${prefix}${phone.replace(/-/g,'')}" style="color:#1A2029; text-decoration:none;">${prefix} ${phone}</a></p>
+                          <p><strong>Email:</strong> ${email}</p>
+                          <p><strong>Notas:</strong> ${notes || 'Ninguna'}</p>
+                        </td>
 
-                    <!-- Detalles de la cita -->
-                    <td width="50%" valign="top" style="display:inline-block; width:100%; max-width:300px; background-color:#EEF2F5; border-radius:12px; padding:16px; box-sizing:border-box; margin-top:10px;">
-                      <h3 style="margin-top:0; color:#9F814D; font-size:18px;">Detalles de la Cita</h3>
-                      <p><strong>Fecha:</strong> ${date || 'No proporcionada'}</p>
-                      <p><strong>Hora:</strong> ${time || 'No proporcionada'}</p>
-                    </td>
-                  </tr>
-                </table>
+                        <!-- Detalles de la cita -->
+                        <td width="50%" valign="top" style="display:inline-block; width:100%; max-width:300px; background-color:#EEF2F5; border-radius:12px; padding:16px; box-sizing:border-box; margin-top:10px;">
+                          <h3 style="margin-top:0; color:#9F814D; font-size:18px;">Detalles de la Cita</h3>
+                          <p><strong>Fecha:</strong> ${date || 'No proporcionada'}</p>
+                          <p><strong>Hora:</strong> ${time || 'No proporcionada'}</p>
+                        </td>
+                      </tr>
+                    </table>
 
-                <!-- Servicios seleccionados -->
-                <div style="margin-top:20px;">
-                  <h3 style="color:#9F814D; margin-bottom:10px; font-size:18px;">📝 Servicios Seleccionados</h3>
-                  ${renderServices()}
-                </div>
-              </td>
-            </tr>
+                    <!-- Servicios seleccionados -->
+                    <div style="margin-top:20px;">
+                      <h3 style="color:#9F814D; margin-bottom:10px; font-size:18px;">📝 Servicios Seleccionados</h3>
+                      ${renderServices()}
+                    </div>
+                  </td>
+                </tr>
 
-            <!-- Footer -->
-            <tr>
-              <td align="center" style="background:#f4f4f4; padding:12px; font-size:12px; color:#666; border-top:1px solid #e0d8c0;">
-                Este correo ha sido enviado automáticamente desde la web de Calma Nails & Spa.<br/>
-                Enviado el: ${new Date().toLocaleString()}
-              </td>
-            </tr>
+                <!-- Footer -->
+                <tr>
+                  <td align="center" style="background:#f4f4f4; padding:12px; font-size:12px; color:#666; border-top:1px solid #e0d8c0;">
+                    Este correo ha sido enviado automáticamente desde la web de Calma Nails & Spa.<br/>
+                    Enviado el: ${new Date().toLocaleString()}
+                  </td>
+                </tr>
 
-          </table>
-        </td>
-      </tr>
-    </table>
-  </div>
-`;
-
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+    `;
 
     await transporter.sendMail({
       from: `"Calma Nails & Spa" <${process.env.MAIL_USER}>`,
