@@ -63,39 +63,20 @@ const Footer = () => {
                 <div className="grid-row justify-content-center text-center mb-6">
                   <div className="grid-col-12">
                     <Fade>
-                      <h2 className="text-dark fw-light">¿Necesitas ayuda con tu reserva?</h2>
+                      <h2 className="text-dark fw-light">{t('footer.help.title')}</h2>
                       </Fade>
                     <Fade delay={0.2}>
                         <div className="mt-5">
-                          <span>Contáctanos: </span>
+                          <span className='me-2'>{t('footer.help.contact')}</span>
                           <span className='me-2 text-muted'>
-                            {import.meta.env.VITE_CALMA_PHONE_NUMBER }
+                            {formatPhone(import.meta.env.VITE_CALMA_PHONE_NUMBER )}
                           </span>|
                           <span className='ms-2 text-muted'>
                             {import.meta.env.VITE_CALMA_EMAIL }
                           </span>
+                          <p className='mb-0 text-muted'>{t('footer.help.subtitle')}</p>
                         </div>
                       </Fade>
-                      <Fade>
-                        <p className='mb-0 text-muted'>o, escribenos sin salir de Calma</p>
-                      </Fade>
-                    <Fade delay={0.4}>
-                      <Button
-                        as='link'
-                        to={'/contact'}
-                        label={t('footer.cta.button')}
-                        variant="primary"
-                        ghost={true}
-                        size="large"
-                        icon={
-                          {
-                            name: "arrow-right",
-                            position: "right",
-                            variant: "regular",
-                          }
-                        }
-                        className="mt-3" />
-                    </Fade>
                   </div>
                 </div>
               </div>
@@ -177,11 +158,6 @@ const Footer = () => {
                   <li className='w-100'>
                     <a href="/team" className="text-muted">
                       {t('footer.columns.about.team')}
-                    </a>
-                  </li>
-                  <li className='w-100'>
-                    <a href="/blog" className="text-muted">
-                      {t('footer.columns.about.blog')}
                     </a>
                   </li>
                 </ul>
