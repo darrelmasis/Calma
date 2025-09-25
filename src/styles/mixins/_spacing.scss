@@ -16,13 +16,13 @@ $spacer-directions: (
   // eje vertical (top/bottom)
   'a': 'all',
   // todas las direcciones
-  'auto': 'auto', // margen automático
+  'auto': 'auto' // margen automático
 ) !default;
 
 // Propiedades aplicables
 $spacer-properties: (
   'margin': 'm',
-  'padding': 'p',
+  'padding': 'p'
 ) !default;
 
 // Mixin principal para generar utilidades de espaciado

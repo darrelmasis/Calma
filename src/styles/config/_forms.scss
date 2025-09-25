@@ -4,7 +4,7 @@
 $form-theme-colors: (
   primary: c.$golds,
   success: c.$greens,
-  danger: c.$reds,
+  danger: c.$reds
 );
 
 // Configuración de estados (niveles de tono)
@@ -12,18 +12,18 @@ $form-colors: (
   primary: (
     border: '400',
     background: '0',
-    text: '900',
+    text: '900'
   ),
   success: (
     border: '500',
     background: '50',
-    text: '900',
+    text: '900'
   ),
   danger: (
     border: '500',
     background: '50',
-    text: '900',
-  ),
+    text: '900'
+  )
 );
 
 // Dimensiones y comportamiento

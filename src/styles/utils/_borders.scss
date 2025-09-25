@@ -19,7 +19,7 @@ $border-style-colors: (
   'light': c.$light,
   'dark': c.$dark,
   'base-style': c.$border-color,
-  'white': #ffffff,
+  'white': #ffffff
 );
 
 $border-style: borders.$border-width borders.$border-style var(--border-color);

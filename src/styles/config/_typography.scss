@@ -62,7 +62,7 @@ $font-sizes: (
   //
   small: math.div($fs-base, $fs-ratio),
   // 12.8px → mejor subir a 14px si accesibilidad manda
-  xsmall: math.div($fs-base, math.pow($fs-ratio, 2)),
+  xsmall: math.div($fs-base, math.pow($fs-ratio, 2))
 ) !default;
 
 /* ============================
@@ -77,13 +77,13 @@ $font-weights: (
   semibold: 600,
   bold: 700,
   extra-bold: 800,
-  black: 900,
+  black: 900
 );
 
 $line-heights: (
   tight: 1.25,
   regular: 1.5,
-  relaxed: 1.8,
+  relaxed: 1.8
 );
 
 $line-height-base: map.get($line-heights, regular);
@@ -95,5 +95,5 @@ $title-line-height: map.get($line-heights, tight);
 $measure: (
   base: 65ch,
   short: 45ch,
-  long: 75ch,
+  long: 75ch
 );

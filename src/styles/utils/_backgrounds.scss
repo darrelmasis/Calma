@@ -19,7 +19,7 @@ $bg-colors-light: (
   'white': fn.getColor(c.$light-theme-colors, 'white'),
   'container': c.$container-bg,
   'body': c.$body-bg,
-  'transparent': 'transparent',
+  'transparent': 'transparent'
 );
 
 $color-palettes_bg: (
@@ -33,7 +33,7 @@ $color-palettes_bg: (
   'muted': color_bg.$grays,
   'light': color_bg.$lights,
   'dark': color_bg.$darks,
-  'neutral': color_bg.$neutrals,
+  'neutral': color_bg.$neutrals
 );
 
 @each $color, $value in $bg-colors-light {

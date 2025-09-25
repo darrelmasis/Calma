@@ -7,186 +7,186 @@ $flexbox-classes: (
   'display': (
     property: display,
     class: d,
-    values: inline inline-block block grid inline-grid flex inline-flex none,
+    values: inline inline-block block grid inline-grid flex inline-flex none
   ),
   'align-items': (
     property: align-items,
     class: align-items,
-    values: flex-start flex-end center baseline stretch,
+    values: flex-start flex-end center baseline stretch
   ),
   'justify-content': (
     property: justify-content,
     class: justify-content,
     values: flex-start flex-end center space-between space-around space-evenly
-      stretch,
+      stretch
   ),
   'flex-direction': (
     property: flex-direction,
     class: flex-direction,
-    values: row row-reverse column column-reverse,
+    values: row row-reverse column column-reverse
   ),
   'flex': (
     property: flex,
     class: flex,
-    values: 1 auto none,
+    values: 1 auto none
   ),
   'flex-wrap': (
     property: flex-wrap,
     class: flex-wrap,
-    values: nowrap wrap wrap-reverse,
+    values: nowrap wrap wrap-reverse
   ),
   'flex-grow': (
     property: flex-grow,
     class: flex-grow,
-    values: 0 1,
+    values: 0 1
   ),
   'flex-shrink': (
     property: flex-shrink,
     class: flex-shrink,
-    values: 0 1,
+    values: 0 1
   ),
   'flex-basis': (
     property: flex-basis,
     class: flex-basis,
     values: auto 0 25 50 75 100,
-    measurement: '%',
+    measurement: '%'
   ),
   'text-align': (
     property: text-align,
     class: text,
-    values: start end center justify,
+    values: start end center justify
   ),
   'text-decoration': (
     property: text-decoration,
     class: text-decoration,
-    values: underline none,
+    values: underline none
   ),
   'text-wrap': (
     property: text-wrap,
     class: text-wrap,
-    values: nowrap wrap balance pretty,
+    values: nowrap wrap balance pretty
   ),
   'text-overflow': (
     property: text-overflow,
     class: text-overflow,
-    values: clip ellipsis,
+    values: clip ellipsis
   ),
   'position': (
     property: position,
     class: position,
-    values: static relative absolute fixed sticky,
+    values: static relative absolute fixed sticky
   ),
   'z-index': (
     property: z-index,
     class: z-index,
-    values: 1 2 3 4 5 6 7 8 9 10 100 200 300 400 500 600 700 800 900,
+    values: 1 2 3 4 5 6 7 8 9 10 100 200 300 400 500 600 700 800 900
   ),
   'top': (
     property: top,
     class: top,
     values: -0.25 0 1 2 3 4 5 6 7 8 9 auto,
-    measurement: 'rem',
+    measurement: 'rem'
   ),
   'right': (
     property: right,
     class: right,
-    values: 0 auto,
+    values: 0 auto
   ),
   'left': (
     property: left,
     class: left,
-    values: 0 auto,
+    values: 0 auto
   ),
   'bottom': (
     property: bottom,
     class: bottom,
     values: -0.25 0 1 2 3 4 5 6 7 8 9 10 20 30 40 50 auto,
-    measurement: 'rem',
+    measurement: 'rem'
   ),
   'width': (
     property: width,
     class: w,
     values: 25 30 50 60 70 75 80 90 100 auto,
-    measurement: '%',
+    measurement: '%'
   ),
   'max-width': (
     property: max-width,
     class: mw,
     values: 300 500 800 1000,
-    measurement: 'px',
+    measurement: 'px'
   ),
   'height': (
     property: height,
     class: h,
     values: 25 50 75 100 auto fit-content,
-    measurement: '%',
+    measurement: '%'
   ),
   'height-dvh': (
     property: height,
     class: vh,
     values: 25 50 75 100 auto,
-    measurement: 'dvh',
+    measurement: 'dvh'
   ),
   'white-space': (
     property: white-space,
     class: white-space,
-    values: normal nowrap pre pre-wrap pre-line,
+    values: normal nowrap pre pre-wrap pre-line
   ),
   'overflow': (
     property: overflow,
     class: overflow,
-    values: visible hidden clip scroll auto,
+    values: visible hidden clip scroll auto
   ),
   'grid-gap': (
     property: gap,
     class: gap,
     values: 0 0.5 1 2 3 4 5,
-    measurement: 'rem',
+    measurement: 'rem'
   ),
   'order': (
     property: order,
     class: order,
-    values: 0 1 2 3 4 5 6 7 8 9 10,
+    values: 0 1 2 3 4 5 6 7 8 9 10
   ),
   'pointer-events': (
     property: pointer-events,
     class: pointer-events,
-    values: auto none,
+    values: auto none
   ),
   'user-select': (
     property: user-select,
     class: user-select,
-    values: auto none text all contain,
+    values: auto none text all contain
   ),
   'object-fit': (
     property: object-fit,
     class: object-fit,
-    values: fill contain cover none scale-down,
+    values: fill contain cover none scale-down
   ),
   'list-style': (
     property: list-style,
     class: list-style,
     values: none disc circle square decimal decimal-leading-zero lower-roman
-      upper-roman lower-g,
+      upper-roman lower-g
   ),
 
   'opacity': (
     property: opacity,
     class: opacity,
     values: 0 10 20 30 40 50 60 70 80 90 100,
-    measurement: '%',
+    measurement: '%'
   ),
   'visibility': (
     property: visibility,
     class: visibility,
-    values: visible hidden collapse,
+    values: visible hidden collapse
   ),
   'color': (
     property: color,
     class: color,
     values: inherit current transparent black white red blue green yellow gray
-      dark-gray light-gray,
-  ),
+      dark-gray light-gray
+  )
 );
 
 @each $property-name, $property-values in $flexbox-classes {

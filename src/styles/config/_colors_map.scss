@@ -39,7 +39,7 @@ $light-theme-colors: (
   'body-bg-alt': fn.getColor(c.$neutrals, '50'),
   'border-color': fn.getColor(c.$grays, '100'),
   'container-bg': fn.getColor(c.$neutrals, '0'),
-  'white': fn.getColor(c.$neutrals, '0'),
+  'white': fn.getColor(c.$neutrals, '0')
 );
 
 $primary: fn.getColor(

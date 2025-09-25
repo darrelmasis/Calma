@@ -19,7 +19,7 @@ $text-colors-light: (
   'white': fn.getColor(c.$light-theme-colors, 'white'),
   'container': c.$container-bg,
   'transparent': 'transparent',
-  'muted': c.$text-color-muted,
+  'muted': c.$text-color-muted
 );
 
 $color-palettes: (
@@ -33,7 +33,7 @@ $color-palettes: (
   'muted': color.$grays,
   'light': color.$lights,
   'dark': color.$darks,
-  'neutral': color.$neutrals,
+  'neutral': color.$neutrals
 );
 
 @each $color, $value in $text-colors-light {

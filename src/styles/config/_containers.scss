@@ -8,7 +8,7 @@ $containers: (
   md: 720px,
   lg: 960px,
   xl: 1200px,
-  xxl: 1320px,
+  xxl: 1320px
 );
 
 $container-padding-x: map.get(s.$spacers, 4); // 1rem
