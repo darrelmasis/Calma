@@ -41,7 +41,11 @@
   }
   &-overlay {
     &-end-transparent {
-      background: linear-gradient(90deg, rgba(255, 255, 255, 1) 30%, rgba(255, 255, 255, 0) 100%);
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.8) 30%, rgba(255, 255, 255, 0) 100%);
+
+      @include mq.screen('min', 'lg') {
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0.8) 30%, rgba(255, 255, 255, 0) 100%);
+      }
     }
     &-bottom-transparent {
       background: linear-gradient(0deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 1) 100%);
