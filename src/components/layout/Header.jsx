@@ -24,7 +24,9 @@ const Header = () => {
   }, [])
 
   return (
-    <header className={`header bg-container border-bottom position-sticky ${hideHeader ? 'hide' : ''}`}>
+    <header
+      className={`header bg-container border-bottom position-sticky ${hideHeader ? 'hide' : ''}`}
+    >
       <Navbar />
     </header>
   )

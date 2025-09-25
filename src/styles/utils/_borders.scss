@@ -6,7 +6,9 @@
 @use 'sass:map';
 
 $borders-directions: top, right, bottom, left, all, none;
-$borders-radius-corners: top-left, top-right, bottom-left, bottom-right, top, bottom, left, right, pill, circle, all;
+$borders-radius-corners:
+  top-left, top-right, bottom-left, bottom-right, top, bottom, left, right,
+  pill, circle, all;
 
 $border-style-colors: (
   'primary': c.$primary,
@@ -46,7 +48,11 @@ $border-style: borders.$border-width borders.$border-style var(--border-color);
 @each $direction in $borders-directions {
   @if $direction == 'all' {
     .border {
-      @include borders_mixins.border('all', borders.$border-width borders.$border-style map.get($border-style-colors, 'base-style'));
+      @include borders_mixins.border(
+        'all',
+        borders.$border-width borders.$border-style
+          map.get($border-style-colors, 'base-style')
+      );
     }
   } @else if $direction == 'none' {
     .border-none {
@@ -54,7 +60,11 @@ $border-style: borders.$border-width borders.$border-style var(--border-color);
     }
   } @else {
     .border-#{$direction} {
-      @include borders_mixins.border($direction, borders.$border-width borders.$border-style map.get($border-style-colors, 'base-style'));
+      @include borders_mixins.border(
+        $direction,
+        borders.$border-width borders.$border-style
+          map.get($border-style-colors, 'base-style')
+      );
     }
   }
 }
@@ -68,11 +78,17 @@ $border-style: borders.$border-width borders.$border-style var(--border-color);
       // Base mobile
       @if $direction == 'all' {
         .border-#{$color-name} {
-          @include borders_mixins.border('all', borders.$border-width borders.$border-style $color-value);
+          @include borders_mixins.border(
+            'all',
+            borders.$border-width borders.$border-style $color-value
+          );
         }
       } @else {
         .border-#{$direction}-#{$color-name} {
-          @include borders_mixins.border($direction, borders.$border-width borders.$border-style $color-value);
+          @include borders_mixins.border(
+            $direction,
+            borders.$border-width borders.$border-style $color-value
+          );
         }
       }
 
@@ -81,11 +97,17 @@ $border-style: borders.$border-width borders.$border-style var(--border-color);
         @include mq.screen(min, $bp-name) {
           @if $direction == 'all' {
             .border-#{$bp-name}-#{$color-name} {
-              @include borders_mixins.border('all', borders.$border-width borders.$border-style $color-value);
+              @include borders_mixins.border(
+                'all',
+                borders.$border-width borders.$border-style $color-value
+              );
             }
           } @else {
             .border-#{$direction}-#{$bp-name}-#{$color-name} {
-              @include borders_mixins.border($direction, borders.$border-width borders.$border-style $color-value);
+              @include borders_mixins.border(
+                $direction,
+                borders.$border-width borders.$border-style $color-value
+              );
             }
           }
         }

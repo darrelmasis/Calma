@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState } from 'react'
 import {
   useFloating,
   autoUpdate,
@@ -9,14 +9,21 @@ import {
   useHover,
   useInteractions,
   useMergeRefs,
-  FloatingPortal
-} from "@floating-ui/react";
+  FloatingPortal,
+} from '@floating-ui/react'
 
-export function Tooltip({ children, content, placement = "top" }) {
-  const [open, setOpen] = useState(false);
-  const arrowRef = useRef(null);
+export function Tooltip({ children, content, placement = 'top' }) {
+  const [open, setOpen] = useState(false)
+  const arrowRef = useRef(null)
 
-  const { refs, floatingStyles, context, middlewareData, strategy, placement: currentPlacement } = useFloating({
+  const {
+    refs,
+    floatingStyles,
+    context,
+    middlewareData,
+    strategy,
+    placement: currentPlacement,
+  } = useFloating({
     open,
     onOpenChange: setOpen,
     placement,
@@ -27,21 +34,21 @@ export function Tooltip({ children, content, placement = "top" }) {
       shift({ padding: 8 }),
       arrow({ element: arrowRef }),
     ],
-  });
+  })
 
   const { getReferenceProps, getFloatingProps } = useInteractions([
     useHover(context, { move: false }),
-  ]);
+  ])
 
-  const ref = useMergeRefs([refs.setReference, children.ref]);
+  const ref = useMergeRefs([refs.setReference, children.ref])
 
-  const side = currentPlacement.split("-")[0];
+  const side = currentPlacement.split('-')[0]
   const staticSide = {
-    top: "bottom",
-    bottom: "top",
-    left: "right",
-    right: "left",
-  }[side];
+    top: 'bottom',
+    bottom: 'top',
+    left: 'right',
+    right: 'left',
+  }[side]
 
   return (
     <>
@@ -54,7 +61,7 @@ export function Tooltip({ children, content, placement = "top" }) {
         <FloatingPortal>
           <div
             ref={refs.setFloating}
-            className="tooltip"
+            className='tooltip'
             data-show={open}
             style={{
               ...floatingStyles,
@@ -64,10 +71,9 @@ export function Tooltip({ children, content, placement = "top" }) {
             {...getFloatingProps()}
           >
             {content}
-
           </div>
         </FloatingPortal>
       )}
     </>
-  );
+  )
 }

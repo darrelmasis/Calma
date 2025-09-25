@@ -11,14 +11,23 @@ export const Icons = {
   brands: BrandsIcons,
   duotones: {
     regular: DuotonesRegularIcons,
-    solid: DuotonesSolidIcons
-  }
+    solid: DuotonesSolidIcons,
+  },
 }
 
-export const Icon = ({ name, variant = 'regular', duotone = 'regular', className, size = 'md', ref = null, dataName, animation = null }) => {
+export const Icon = ({
+  name,
+  variant = 'regular',
+  duotone = 'regular',
+  className,
+  size = 'md',
+  ref = null,
+  dataName,
+  animation = null,
+}) => {
   const nameCleanaed = name
     .split('-')
-    .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
     .join('')
 
   let IconComponent
@@ -46,7 +55,7 @@ export const Icon = ({ name, variant = 'regular', duotone = 'regular', className
 
   return (
     <span ref={ref} className={componentClasses} data-name={dataName || name}>
-      <IconComponent className="icon" />
+      <IconComponent className='icon' />
     </span>
   )
 }

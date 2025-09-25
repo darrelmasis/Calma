@@ -10,15 +10,15 @@ export const Radio = ({
   return (
     <label className={`form-radio ${className}`}>
       <input
-        type="radio"
+        type='radio'
         name={name}
         value={value}
         checked={checked}
         onChange={(e) => onChange(e.target.value)}
         {...props}
       />
-      <span className="radio-custom" />
-      {label && <span className="radio-label">{label}</span>}
+      <span className='radio-custom' />
+      {label && <span className='radio-label'>{label}</span>}
     </label>
   )
 }

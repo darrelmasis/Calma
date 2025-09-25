@@ -9,7 +9,7 @@ export const Textarea = ({
 }) => {
   return (
     <div className={`form-group ${className}`}>
-      {label && <label className="form-label">{label}</label>}
+      {label && <label className='form-label'>{label}</label>}
       <textarea
         value={value}
         onChange={(e) => onChange(e.target.value)}
@@ -17,7 +17,7 @@ export const Textarea = ({
         className={`form-control ${error ? 'has-error' : ''}`}
         {...props}
       />
-      {error && <span className="form-error">{error}</span>}
+      {error && <span className='form-error'>{error}</span>}
     </div>
   )
 }

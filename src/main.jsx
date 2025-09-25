@@ -8,7 +8,7 @@ import { SelectedServicesProvider } from './hooks/useSelectedService'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter basename="/">
+    <BrowserRouter basename='/'>
       <LanguageProvider>
         <SelectedServicesProvider>
           <App />

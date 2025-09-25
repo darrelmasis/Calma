@@ -33,7 +33,11 @@ $spacer-properties: (
     @each $dir, $dir-value in $spacer-directions {
       @each $size, $value in s.$spacers {
         // Genera el nombre de la clase
-        $class: if($dir == 'a', '#{$prefix}-#{$size}', '#{$prefix}#{$dir}-#{$size}');
+        $class: if(
+          $dir == 'a',
+          '#{$prefix}-#{$size}',
+          '#{$prefix}#{$dir}-#{$size}'
+        );
 
         // Genera las reglas CSS
         .#{$class} {

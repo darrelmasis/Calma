@@ -41,12 +41,19 @@
   $max-unitless: strip-unit($max);
 
   // Calcular pendiente e intercepto usando unidades consistentes (rem)
-  $slope: math.div(($max-unitless - $min-unitless), ($max-vw-rem - $min-vw-rem));
+  $slope: math.div(
+    ($max-unitless - $min-unitless),
+    ($max-vw-rem - $min-vw-rem)
+  );
   $base: $min-unitless - $slope * $min-vw-rem;
   $slope-vw: $slope * 100;
 
   // Retorna el clamp con unidades correctas
-  @return clamp(#{$min-unitless}rem, #{$base}rem + #{$slope-vw}vw, #{$max-unitless}rem);
+  @return clamp(
+    #{$min-unitless}rem,
+    #{$base}rem + #{$slope-vw}vw,
+    #{$max-unitless}rem
+  );
 }
 
 /**

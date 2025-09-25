@@ -14,10 +14,17 @@
   }
 }
 
-
 @mixin screen-between($min, $max) {
-  $min-val: if(map.has-key(bp.$breakpoints, $min), map.get(bp.$breakpoints, $min), $min);
-  $max-val: if(map.has-key(bp.$breakpoints, $max), map.get(bp.$breakpoints, $max), $max);
+  $min-val: if(
+    map.has-key(bp.$breakpoints, $min),
+    map.get(bp.$breakpoints, $min),
+    $min
+  );
+  $max-val: if(
+    map.has-key(bp.$breakpoints, $max),
+    map.get(bp.$breakpoints, $max),
+    $max
+  );
 
   @media screen and (min-width: $min-val) and (max-width: $max-val) {
     @content;

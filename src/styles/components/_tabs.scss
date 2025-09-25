@@ -76,7 +76,11 @@
 
   &-footer {
     // padding a todos los footers
-    background: linear-gradient(45deg, fn.getColor(pallette.$purples, '700'), fn.getColor(pallette.$golds, '400'));
+    background: linear-gradient(
+      45deg,
+      fn.getColor(pallette.$purples, '700'),
+      fn.getColor(pallette.$golds, '400')
+    );
     transition: all 0.3s ease;
     position: relative;
 
@@ -87,7 +91,11 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(-90deg, fn.getColor(pallette.$purples, '400'), fn.getColor(pallette.$golds, '500'));
+      background: linear-gradient(
+        -90deg,
+        fn.getColor(pallette.$purples, '400'),
+        fn.getColor(pallette.$golds, '500')
+      );
       opacity: 0;
       z-index: 0;
 
@@ -126,7 +134,8 @@
       gap: 0;
     }
 
-    &--static, &--minimal {
+    &--static,
+    &--minimal {
       background-color: fn.getColor(pallette.$neutrals, '50');
       color: colors.$text-color;
     }

@@ -42,9 +42,18 @@ $light-theme-colors: (
   'white': fn.getColor(c.$neutrals, '0'),
 );
 
-$primary: fn.getColor($light-theme-colors, 'primary'); // Color corporativo usado en botones principales
-$secondary: fn.getColor($light-theme-colors, 'secondary'); // Color corporativo secundario, utilizado en botones secundarios
-$tertiary: fn.getColor($light-theme-colors, 'tertiary'); // Color corporativo terciario, utilizado en botones terciarios
+$primary: fn.getColor(
+  $light-theme-colors,
+  'primary'
+); // Color corporativo usado en botones principales
+$secondary: fn.getColor(
+  $light-theme-colors,
+  'secondary'
+); // Color corporativo secundario, utilizado en botones secundarios
+$tertiary: fn.getColor(
+  $light-theme-colors,
+  'tertiary'
+); // Color corporativo terciario, utilizado en botones terciarios
 $danger: fn.getColor($light-theme-colors, 'danger');
 $warning: fn.getColor($light-theme-colors, 'warning');
 $success: fn.getColor($light-theme-colors, 'success');

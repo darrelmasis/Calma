@@ -1,0 +1,18 @@
+node_modules
+build
+dist
+coverage
+node_modules
+.vscode
+dist
+*.pdf
+fotospaginaweb
+*.zip
+Calma Images enhanced
+
+.vercel
+dev-dist
+Recursos
+
+.vercel
+.vite

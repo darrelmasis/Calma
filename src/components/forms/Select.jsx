@@ -37,30 +37,37 @@ export const Select = ({
 
   return (
     <div
-      className={classNames('custom-select', {
-        'is-open': isOpen,
-        'is-disabled': disabled,
-        'has-error': error,
-      }, className)}
+      className={classNames(
+        'custom-select',
+        {
+          'is-open': isOpen,
+          'is-disabled': disabled,
+          'has-error': error,
+        },
+        className
+      )}
       onClick={toggleDropdown}
       ref={selectRef}
     >
       <Button
         variant='primary'
         className={'custom-select-button justify-content-space-between'}
-        ariaLabel="Cambiar de Idioma"
+        ariaLabel='Cambiar de Idioma'
         ghost={true}
         label={selectedOption ? selectedOption.label : placeholder}
-        icon={
-          [
-            { name: 'language-alt', position: 'left', variant: "duotones", duotone: "regular" },
-            { name: 'angles-up-down', position: 'right', variant: "regular" }
-          ]
-        }
+        icon={[
+          {
+            name: 'language-alt',
+            position: 'left',
+            variant: 'duotones',
+            duotone: 'regular',
+          },
+          { name: 'angles-up-down', position: 'right', variant: 'regular' },
+        ]}
       />
 
       {isOpen && (
-        <ul className="custom-select-list border text-dark px-0 py-3 m-0 d-flex flex-direction-column rounded-all-sm">
+        <ul className='custom-select-list border text-dark px-0 py-3 m-0 d-flex flex-direction-column rounded-all-sm'>
           {options.map((opt) => (
             <li
               key={opt.value}

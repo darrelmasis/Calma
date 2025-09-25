@@ -42,7 +42,11 @@
 }
 
 .package-card-header {
-  background: linear-gradient(45deg, fn.getColor(pallette.$purples, '700'), fn.getColor(pallette.$golds, '300'));
+  background: linear-gradient(
+    45deg,
+    fn.getColor(pallette.$purples, '700'),
+    fn.getColor(pallette.$golds, '300')
+  );
 }
 
 .faq-item {

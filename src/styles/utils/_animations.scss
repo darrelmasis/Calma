@@ -14,7 +14,8 @@
 
 @mixin bounceIn($duration: 1s, $timing: ease, $infinite: false) {
   transform-origin: center;
-  animation: bounceIn $duration $timing #{if($infinite, 'infinite', '')} forwards;
+  animation: bounceIn $duration $timing #{if($infinite, 'infinite', '')}
+    forwards;
 }
 
 @keyframes bounceIn {
@@ -51,7 +52,8 @@
 
 @mixin bounceIcon($duration: 5s, $timing: ease, $infinite: false) {
   transform-origin: center;
-  animation: bounceIcon $duration $timing #{if($infinite, 'infinite', '')} forwards;
+  animation: bounceIcon $duration $timing #{if($infinite, 'infinite', '')}
+    forwards;
   animation-delay: 3s;
 }
 

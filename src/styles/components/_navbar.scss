@@ -276,7 +276,11 @@ body {
             &.active {
               font-weight: bold;
               background-color: #f5f2ed;
-              background-image: radial-gradient(circle, fn.getColor(palette.$golds, '50') 10%, fn.getColor(palette.$golds, '200') 90%);
+              background-image: radial-gradient(
+                circle,
+                fn.getColor(palette.$golds, '50') 10%,
+                fn.getColor(palette.$golds, '200') 90%
+              );
             }
           }
         }

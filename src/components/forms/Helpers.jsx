@@ -6,5 +6,4 @@ export const isEmpty = (value) =>
 
 export const getValidationClass = (error) => (error ? 'has-error' : '')
 
-export const isValidEmail = (email) =>
-  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+export const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)

@@ -4,7 +4,7 @@ import { Icon } from '../commons/Icons'
 import { Link } from 'react-router-dom'
 
 export const Button = ({
-  as = 'button',              // button | a | link
+  as = 'button', // button | a | link
   size = 'medium',
   variant = 'initial',
   ghost = false,
@@ -18,8 +18,8 @@ export const Button = ({
   autoFocus = false,
   type = 'button',
   ariaLabel,
-  to,                         // para Link
-  href,                       // para <a>
+  to, // para Link
+  href, // para <a>
   ...rest
 }) => {
   const hasChildren = React.Children.count(children) > 0
@@ -33,18 +33,20 @@ export const Button = ({
     duotone: 'regular',
     position: 'left',
     size: 'md',
-    animation: null
+    animation: null,
   }
 
   // Normalizamos el icon prop a un array de objetos
   let finalIcons = []
   if (icon) {
     if (Array.isArray(icon)) {
-      finalIcons = icon.map(ic => {
-        if (typeof ic === 'string') return { ...defaultIconProps, name: ic }
-        if (typeof ic === 'object') return { ...defaultIconProps, ...ic }
-        return null
-      }).filter(Boolean)
+      finalIcons = icon
+        .map((ic) => {
+          if (typeof ic === 'string') return { ...defaultIconProps, name: ic }
+          if (typeof ic === 'object') return { ...defaultIconProps, ...ic }
+          return null
+        })
+        .filter(Boolean)
     } else if (typeof icon === 'string') {
       finalIcons = [{ ...defaultIconProps, name: icon }]
     } else if (typeof icon === 'object' && icon.name) {
@@ -56,7 +58,7 @@ export const Button = ({
     if (!ic || !ic.name) return null
 
     const iconClasses = classNames('btn-icon', {
-      'icon-spin': ic.animation === 'spin'
+      'icon-spin': ic.animation === 'spin',
     })
 
     return (
@@ -78,7 +80,7 @@ export const Button = ({
         if (ic.position) return ic.position === pos
         return idx === 0 ? pos === 'left' : pos === 'right'
       })
-      .map(ic => renderIcon(ic))
+      .map((ic) => renderIcon(ic))
   }
 
   const buttonClasses = classNames(
@@ -88,7 +90,7 @@ export const Button = ({
     {
       'btn-square': isIconOnly,
       'btn-block': fullWidth,
-      'btn-link': as === 'link'
+      'btn-link': as === 'link',
     },
     className
   )
@@ -96,7 +98,9 @@ export const Button = ({
   const content = (
     <>
       {renderIconsByPosition('left')}
-      {hasChildren ? children : hasLabel && <span className="btn-label">{label}</span>}
+      {hasChildren
+        ? children
+        : hasLabel && <span className='btn-label'>{label}</span>}
       {renderIconsByPosition('right')}
     </>
   )

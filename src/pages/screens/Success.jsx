@@ -6,7 +6,6 @@ import { useEffect } from 'react'
 import { useSelectedServices } from '../../hooks/useSelectedService'
 import { useLang } from '../../i18n/LanguageContext'
 
-
 const Success = () => {
   const { t } = useLang()
   usePageTitle(t('booking.success.title'))
@@ -23,9 +22,9 @@ const Success = () => {
 
   useEffect(() => {
     if (isLoaded) {
-      clearServices("bell"); // Limpiar servicios seleccionados al cargar la página de éxito
+      clearServices('bell') // Limpiar servicios seleccionados al cargar la página de éxito
     }
-  },[]);
+  }, [])
 
   // Manejar botón regresar
 
@@ -37,27 +36,25 @@ const Success = () => {
   return (
     <div>
       <Header />
-      {
-        location.state?.success && (
-      <div className="d-flex flex-direction-column justify-content-center align-items-center text-center p-5">
-        <span className="fs-display-2 mb-3">🎉</span>
-        <h3 className="fs-h3 mb-2">{t('booking.success.subtitle')}</h3>
-        <p className="text-muted mb-4 max-wx-500">
-          {t('booking.success.message')}
-        </p>
+      {location.state?.success && (
+        <div className='d-flex flex-direction-column justify-content-center align-items-center text-center p-5'>
+          <span className='fs-display-2 mb-3'>🎉</span>
+          <h3 className='fs-h3 mb-2'>{t('booking.success.subtitle')}</h3>
+          <p className='text-muted mb-4 max-wx-500'>
+            {t('booking.success.message')}
+          </p>
 
-        {/* CTA principal */}
-        <Button
-          variant="success"
-          className="my-3"
-          size="large"
-          icon="left-to-bracket"
-          label={t('booking.success.buttonText')}
-          onClick={goHome}
-        />
-      </div>
-      )
-      }
+          {/* CTA principal */}
+          <Button
+            variant='success'
+            className='my-3'
+            size='large'
+            icon='left-to-bracket'
+            label={t('booking.success.buttonText')}
+            onClick={goHome}
+          />
+        </div>
+      )}
     </div>
   )
 }

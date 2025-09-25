@@ -26,7 +26,6 @@ export function useOfflineStatus() {
     window.addEventListener('offline', handleOffline)
     window.addEventListener('online', handleOnline)
 
-
     return () => {
       window.removeEventListener('offline', handleOffline)
       window.removeEventListener('online', handleOnline)

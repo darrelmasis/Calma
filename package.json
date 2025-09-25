@@ -15,6 +15,7 @@
     "process:images": "node ./scripts/optimized-images.js",
     "process:icons": "node ./scripts/process-icons.js",
     "build:local": "node ./scripts/run.js",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss,html}\"",
     "build": "vite build"
   },
   "dependencies": {
@@ -35,6 +36,7 @@
     "@vitejs/plugin-react-swc": "^4.1.0",
     "dotenv": "^17.2.2",
     "fs-extra": "^11.3.1",
+    "prettier": "^3.6.2",
     "sass": "^1.93.0",
     "sharp": "^0.34.3",
     "sitemap": "^8.0.0",

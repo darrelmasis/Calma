@@ -17,7 +17,8 @@ $flexbox-classes: (
   'justify-content': (
     property: justify-content,
     class: justify-content,
-    values: flex-start flex-end center space-between space-around space-evenly stretch,
+    values: flex-start flex-end center space-between space-around space-evenly
+      stretch,
   ),
   'flex-direction': (
     property: flex-direction,
@@ -58,7 +59,7 @@ $flexbox-classes: (
   'text-decoration': (
     property: text-decoration,
     class: text-decoration,
-    values: underline none
+    values: underline none,
   ),
   'text-wrap': (
     property: text-wrap,
@@ -165,7 +166,8 @@ $flexbox-classes: (
   'list-style': (
     property: list-style,
     class: list-style,
-    values: none disc circle square decimal decimal-leading-zero lower-roman upper-roman lower-g,
+    values: none disc circle square decimal decimal-leading-zero lower-roman
+      upper-roman lower-g,
   ),
 
   'opacity': (
@@ -182,7 +184,8 @@ $flexbox-classes: (
   'color': (
     property: color,
     class: color,
-    values: inherit current transparent black white red blue green yellow gray dark-gray light-gray,
+    values: inherit current transparent black white red blue green yellow gray
+      dark-gray light-gray,
   ),
 );
 
@@ -204,7 +207,9 @@ $flexbox-classes: (
     // Clases responsivas
     @each $breakpoint, $breakpoint-value in bp.$breakpoints {
       @if $breakpoint != xs {
-        $responsive-class-name: #{$property-class}-#{$breakpoint}-#{fn.escape-class($value)};
+        $responsive-class-name: #{$property-class}-#{$breakpoint}-#{fn.escape-class(
+            $value
+          )};
         @media (min-width: $breakpoint-value) {
           .#{$responsive-class-name} {
             @if $measurement {

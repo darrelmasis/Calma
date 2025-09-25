@@ -1,17 +1,17 @@
-@use "../mixins/buttons" as buttons_mixins;
-@use "../config/buttons" as vars;
-@use "../functions/buttons" as bf;
-@use "sass:map";
-@use "sass:list";
+@use '../mixins/buttons' as buttons_mixins;
+@use '../config/buttons' as vars;
+@use '../functions/buttons' as bf;
+@use 'sass:map';
+@use 'sass:list';
 
 .btn {
   @include buttons_mixins.button-initial(
-    map.get(vars.$button-theme-colors, "initial"),
-    bf.get-button-state("initial", "main"),
-    bf.get-button-state("initial", "main-hover"),
-    bf.get-button-state("initial", "main-active"),
-    bf.get-button-state("initial", "text-color"),
-    bf.get-button-state("initial", "border-color")
+    map.get(vars.$button-theme-colors, 'initial'),
+    bf.get-button-state('initial', 'main'),
+    bf.get-button-state('initial', 'main-hover'),
+    bf.get-button-state('initial', 'main-active'),
+    bf.get-button-state('initial', 'text-color'),
+    bf.get-button-state('initial', 'border-color')
   );
 
   --btn-padding: #{vars.$btn-padding-y} #{vars.$btn-padding-x};
@@ -116,7 +116,7 @@
       color: var(--btn-color);
     }
 
-    &[class*="ghost"] {
+    &[class*='ghost'] {
       color: var(--btn-color);
 
       &:hover {
@@ -141,22 +141,22 @@
   .btn-#{$theme} {
     @include buttons_mixins.button-variant(
       $color,
-      bf.get-button-state($theme, "main"),
-      bf.get-button-state($theme, "main-hover"),
-      bf.get-button-state($theme, "main-active"),
-      bf.get-button-state($theme, "text-color"),
-      bf.get-button-state($theme, "border-color")
+      bf.get-button-state($theme, 'main'),
+      bf.get-button-state($theme, 'main-hover'),
+      bf.get-button-state($theme, 'main-active'),
+      bf.get-button-state($theme, 'text-color'),
+      bf.get-button-state($theme, 'border-color')
     );
   }
 
   .btn-#{$theme}-ghost {
     @include buttons_mixins.button-ghost-variant(
       $color,
-      bf.get-button-state($theme, "main"),
-      bf.get-button-state($theme, "main-hover-ghost"),
-      bf.get-button-state($theme, "main-active-ghost"),
-      bf.get-button-state($theme, "text-color-ghost"),
-      bf.get-button-state($theme, "text-color-ghost-hover")
+      bf.get-button-state($theme, 'main'),
+      bf.get-button-state($theme, 'main-hover-ghost'),
+      bf.get-button-state($theme, 'main-active-ghost'),
+      bf.get-button-state($theme, 'text-color-ghost'),
+      bf.get-button-state($theme, 'text-color-ghost-hover')
     );
   }
 }

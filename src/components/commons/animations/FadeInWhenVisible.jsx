@@ -14,8 +14,8 @@ export const FadeInWhenVisible = ({
     <motion.div
       ref={ref}
       className={className}
-      initial="hidden"
-      animate={inView ? "visible" : "hidden"}
+      initial='hidden'
+      animate={inView ? 'visible' : 'hidden'}
       variants={{
         hidden: { opacity: 0, y: 30, scale: 1 },
         visible: {

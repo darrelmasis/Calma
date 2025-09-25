@@ -9,21 +9,27 @@ const Hero2 = ({
   title,
   subtitle,
   cta = null, // puede ser objeto o array
-  alignContent = 'center'
+  alignContent = 'center',
 }) => {
   // Normalización del CTA
   const normalizeCta = (ctaProp) => {
     const defaultCta = {
-      variant: "primary",
-      ariaLabel: "Call to Action",
-      label: "Get Started",
-      size: "xlarge",
-      icon: { name: "spa", size: "lg", variant: "duotones", duotone: "regular" },
-      onClick: null
+      variant: 'primary',
+      ariaLabel: 'Call to Action',
+      label: 'Get Started',
+      size: 'xlarge',
+      icon: {
+        name: 'spa',
+        size: 'lg',
+        variant: 'duotones',
+        duotone: 'regular',
+      },
+      onClick: null,
     }
 
     if (!ctaProp) return []
-    if (Array.isArray(ctaProp)) return ctaProp.map(btn => ({ ...defaultCta, ...btn }))
+    if (Array.isArray(ctaProp))
+      return ctaProp.map((btn) => ({ ...defaultCta, ...btn }))
     return [{ ...defaultCta, ...ctaProp }]
   }
 
@@ -36,37 +42,33 @@ const Hero2 = ({
       'hero-overlay-dark': overlayType === 'dark',
       'hero-overlay-light': overlayType === 'light',
       'hero-overlay-end-transparent': overlayType === 'end-transparent',
-      'hero-overlay-bottom-transparent': overlayType === 'bottom-transparent'
+      'hero-overlay-bottom-transparent': overlayType === 'bottom-transparent',
     }
   )
 
   // Clases del contenedor
-  const containerClasses = classNames(
-    'container position-relative d-flex',
-    {
-      'align-items-center justify-content-center text-center': alignContent === 'center',
-      'align-items-center justify-content-start text-start': alignContent === 'start'
-    }
-  )
+  const containerClasses = classNames('container position-relative d-flex', {
+    'align-items-center justify-content-center text-center':
+      alignContent === 'center',
+    'align-items-center justify-content-start text-start':
+      alignContent === 'start',
+  })
 
   // Clases del contenido
-  const contentClasses = classNames(
-    'd-flex flex-direction-column',
-    {
-      'align-items-center text-center': alignContent === 'center',
-      'align-items-flex-start text-start': alignContent === 'start'
-    }
-  )
+  const contentClasses = classNames('d-flex flex-direction-column', {
+    'align-items-center text-center': alignContent === 'center',
+    'align-items-flex-start text-start': alignContent === 'start',
+  })
 
   return (
-    <section className="hero bg-container position-relative d-flex overflow-hidden">
+    <section className='hero bg-container position-relative d-flex overflow-hidden'>
       {/* Imagen de fondo */}
       {background && (
-        <div className="hero-bg position-absolute bottom-0 end-0 w-100 h-100 pointer-events-none user-select-none">
+        <div className='hero-bg position-absolute bottom-0 end-0 w-100 h-100 pointer-events-none user-select-none'>
           <img
             src={background}
-            alt=""
-            className="hero-image object-fit-cover position-absolute top-0 start-0 w-100 h-100"
+            alt=''
+            className='hero-image object-fit-cover position-absolute top-0 start-0 w-100 h-100'
           />
         </div>
       )}
@@ -76,26 +78,28 @@ const Hero2 = ({
 
       {/* Contenido */}
       <div className={containerClasses}>
-        <div className="hero-content">
+        <div className='hero-content'>
           <div className={contentClasses}>
             {title && (
               <Fade>
-                <h1 className="hero-title mt-0">{title}</h1>
+                <h1 className='hero-title mt-0'>{title}</h1>
               </Fade>
             )}
 
             {subtitle && (
               <Fade delay={0.2}>
-                <p className="hero-subtitle fs-h5 max-wx-700 w-100">{subtitle}</p>
+                <p className='hero-subtitle fs-h5 max-wx-700 w-100'>
+                  {subtitle}
+                </p>
               </Fade>
             )}
 
             {ctas.length > 0 && (
-              <Fade delay={0.4} className="d-flex flex-wrap gap-2 mt-3">
+              <Fade delay={0.4} className='d-flex flex-wrap gap-2 mt-3'>
                 {ctas.map((btn, idx) => (
                   <Button
                     as='link'
-                    to={"/services"}
+                    to={'/services'}
                     key={idx}
                     onClick={btn.onClick}
                     variant={btn.variant}

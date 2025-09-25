@@ -4,7 +4,7 @@ import classNames from 'classnames'
 
 const opciones = [
   { value: 'es', label: 'Español' },
-  { value: 'en', label: 'English' }
+  { value: 'en', label: 'English' },
 ]
 
 export const LanguageSwitcher = ({ className = '' }) => {
@@ -13,7 +13,7 @@ export const LanguageSwitcher = ({ className = '' }) => {
 
   return (
     <Select
-      label=""
+      label=''
       options={opciones}
       value={lang}
       onChange={changeLanguage}

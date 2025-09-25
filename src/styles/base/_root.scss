@@ -16,8 +16,6 @@ $color-palettes_root: (
   'neutral': color.$neutrals,
 );
 
-
-
 :root {
   @include mixins.inject-css-variables(colors_map.$light-theme-colors);
   @include mixins.inject-nested-css-variables($color-palettes_root);

@@ -44,8 +44,6 @@ export const LanguageProvider = ({ children }) => {
     return JSON.stringify(result)
   }
 
-
-
   return (
     <LanguageContext.Provider value={{ lang, changeLanguage, t }}>
       {children}

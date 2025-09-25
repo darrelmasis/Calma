@@ -21,7 +21,10 @@
   --btn-border: #{btns.$btn-border-width} solid #{map.get($color-map, $border)};
 
   $bg: map.get($color-map, $bg);
-  $outline-color: color.change($bg, $alpha: 0.4); // Cambia la opacidad del color de fondo para el outline
+  $outline-color: color.change(
+    $bg,
+    $alpha: 0.4
+  ); // Cambia la opacidad del color de fondo para el outline
   --btn-outline: #{$outline-color};
 
   &:focus-visible {
@@ -29,7 +32,14 @@
   }
 }
 
-@mixin button-ghost-variant($color-map, $bg, $hover, $active, $text, $text-hover) {
+@mixin button-ghost-variant(
+  $color-map,
+  $bg,
+  $hover,
+  $active,
+  $text,
+  $text-hover
+) {
   --btn-bg: transparent;
   --btn-bg-hover: #{map.get($color-map, $hover)};
   --btn-bg-active: #{map.get($color-map, $active)};

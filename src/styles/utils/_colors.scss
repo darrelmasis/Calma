@@ -36,7 +36,6 @@ $color-palettes: (
   'neutral': color.$neutrals,
 );
 
-
 @each $color, $value in $text-colors-light {
   // Clase base (siempre aplica)
   .text-#{$color} {

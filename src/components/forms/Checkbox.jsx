@@ -8,13 +8,13 @@ export const Checkbox = ({
   return (
     <label className={`form-checkbox ${className}`}>
       <input
-        type="checkbox"
+        type='checkbox'
         checked={checked}
         onChange={(e) => onChange(e.target.checked)}
         {...props}
       />
-      <span className="checkbox-custom" />
-      {label && <span className="checkbox-label">{label}</span>}
+      <span className='checkbox-custom' />
+      {label && <span className='checkbox-label'>{label}</span>}
     </label>
   )
 }

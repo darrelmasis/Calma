@@ -50,7 +50,7 @@
   }
 
   &.icon-spin {
-    display: inline-block!important;
+    display: inline-block !important;
     animation: iconSpin 1s linear infinite; /* 2s de duración, infinito */
   }
 }
@@ -72,10 +72,10 @@
 }
 
 @keyframes iconSpin {
-    from {
-        transform:rotate(0turn);
-    }
-    to {
-        transform:rotate(1turn);
-    }
+  from {
+    transform: rotate(0turn);
+  }
+  to {
+    transform: rotate(1turn);
+  }
 }

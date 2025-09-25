@@ -5,7 +5,6 @@
   }
 }
 
-
 @mixin inject-nested-css-variables($map) {
   @each $prefix, $colors in $map {
     @each $key, $value in $colors {

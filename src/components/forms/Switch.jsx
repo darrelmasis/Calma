@@ -8,13 +8,13 @@ export const Switch = ({
   return (
     <label className={`form-switch ${className}`}>
       <input
-        type="checkbox"
+        type='checkbox'
         checked={checked}
         onChange={(e) => onChange(e.target.checked)}
         {...props}
       />
-      <span className="switch-slider" />
-      {label && <span className="switch-label">{label}</span>}
+      <span className='switch-slider' />
+      {label && <span className='switch-label'>{label}</span>}
     </label>
   )
 }

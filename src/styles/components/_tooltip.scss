@@ -1,4 +1,4 @@
-@use "../config/colors_map" as colors;
+@use '../config/colors_map' as colors;
 
 .tooltip {
   background-color: rgba(colors.$dark, 0.8);
@@ -10,7 +10,6 @@
   width: max-content;
   max-width: calc(100vw - 10px);
   backdrop-filter: blur(2px);
-
 
   &-arrow {
     position: absolute;

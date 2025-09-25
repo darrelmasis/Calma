@@ -1,5 +1,11 @@
 // Dropdown.jsx
-import React, { createContext, useContext, useRef, useState, useMemo } from "react";
+import React, {
+  createContext,
+  useContext,
+  useRef,
+  useState,
+  useMemo,
+} from 'react'
 import {
   useFloating,
   offset,
@@ -14,13 +20,13 @@ import {
   FloatingPortal,
   FloatingArrow,
   arrow,
-} from "@floating-ui/react";
+} from '@floating-ui/react'
 
-const DropdownContext = createContext(null);
+const DropdownContext = createContext(null)
 
 export const Dropdown = ({ children, closeOnClickOutside = true }) => {
-  const [open, setOpen] = useState(false);
-  const [arrowEl, setArrowEl] = useState(null);
+  const [open, setOpen] = useState(false)
+  const [arrowEl, setArrowEl] = useState(null)
 
   const middleware = useMemo(
     () => [
@@ -30,41 +36,41 @@ export const Dropdown = ({ children, closeOnClickOutside = true }) => {
       arrow({ element: arrowEl }),
     ],
     [arrowEl]
-  );
+  )
 
   const { x, y, strategy, refs, context } = useFloating({
     open,
     onOpenChange: setOpen,
-    placement: "bottom-end",
+    placement: 'bottom-end',
     middleware,
     whileElementsMounted: autoUpdate,
-  });
+  })
 
-  const click = useClick(context);
-  const dismiss = useDismiss(context, { outsidePress: closeOnClickOutside });
-  const role = useRole(context, { role: "listbox" });
+  const click = useClick(context)
+  const dismiss = useDismiss(context, { outsidePress: closeOnClickOutside })
+  const role = useRole(context, { role: 'listbox' })
 
-  const interactions = useInteractions([click, dismiss, role]);
+  const interactions = useInteractions([click, dismiss, role])
 
   const { isMounted, styles: transitionStyles } = useTransitionStyles(context, {
     duration: 150,
-    initial: { opacity: 0, transform: "scaleY(0.95)" },
-    open: { opacity: 1, transform: "scaleY(1)" },
-    close: { opacity: 0, transform: "scaleY(0.95)" },
+    initial: { opacity: 0, transform: 'scaleY(0.95)' },
+    open: { opacity: 1, transform: 'scaleY(1)' },
+    close: { opacity: 0, transform: 'scaleY(0.95)' },
     common: ({ side }) => ({
       transformOrigin: {
-        top: "bottom",
-        bottom: "top",
-        left: "right",
-        right: "left",
+        top: 'bottom',
+        bottom: 'top',
+        left: 'right',
+        right: 'left',
       }[side],
     }),
-  });
+  })
 
   const contextValue = {
     open,
     setOpen,
-    toggle: () => setOpen(prev => !prev),
+    toggle: () => setOpen((prev) => !prev),
     close: () => setOpen(false),
     refs,
     context,
@@ -75,30 +81,30 @@ export const Dropdown = ({ children, closeOnClickOutside = true }) => {
     isMounted,
     transitionStyles,
     setArrowEl,
-  };
+  }
 
   return (
     <DropdownContext.Provider value={contextValue}>
-      <div style={{ display: "inline-block", position: "relative" }}>
+      <div style={{ display: 'inline-block', position: 'relative' }}>
         {children}
       </div>
     </DropdownContext.Provider>
-  );
-};
+  )
+}
 
 export const DropdownTrigger = ({ children }) => {
-  const { refs, interactions } = useContext(DropdownContext);
+  const { refs, interactions } = useContext(DropdownContext)
 
   return (
     <div
       ref={refs.setReference}
       {...interactions.getReferenceProps()}
-      style={{ cursor: "pointer" }}
+      style={{ cursor: 'pointer' }}
     >
       {children}
     </div>
-  );
-};
+  )
+}
 
 export const DropdownContent = ({ children }) => {
   const {
@@ -111,23 +117,23 @@ export const DropdownContent = ({ children }) => {
     transitionStyles,
     context,
     setArrowEl,
-  } = useContext(DropdownContext);
+  } = useContext(DropdownContext)
 
-  if (!isMounted) return null;
+  if (!isMounted) return null
 
   return (
     <FloatingPortal>
       <div
         ref={refs.setFloating}
         {...interactions.getFloatingProps()}
-        className="dropdown-content bg-neutral-0 border rounded-all-md"
+        className='dropdown-content bg-neutral-0 border rounded-all-md'
         style={{
           position: strategy,
           top: y ?? 0,
           left: x ?? 0,
           ...transitionStyles,
-          willChange: "transform, opacity",
-          boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+          willChange: 'transform, opacity',
+          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
         }}
       >
         <FloatingArrow
@@ -136,12 +142,12 @@ export const DropdownContent = ({ children }) => {
           width={12}
           height={6}
           tipRadius={2}
-          fill="white"
-          stroke="#e8eaed"
+          fill='white'
+          stroke='#e8eaed'
           strokeWidth={1}
         />
         {children}
       </div>
     </FloatingPortal>
-  );
-};
+  )
+}
