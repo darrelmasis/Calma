@@ -26,12 +26,12 @@ const FloatingButton = () => {
   const optionButtonClasses = classNames({
     'option-button': true,
     show: showOptions,
-    hide: !showOptions,
+    hide: !showOptions
   })
 
   const mainButtonIconName = classNames({
     question: !switchIcon,
-    xmark: switchIcon,
+    xmark: switchIcon
   })
 
   const formatPhoneNumber = (num, countryCode = '505') => {

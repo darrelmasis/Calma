@@ -72,12 +72,12 @@ const Input = forwardRef(
         type !== 'checkbox' && type !== 'file' ? placeholder : undefined,
       className: classNames('form-control', classNameInput, {
         'is-error': !!error,
-        'is-success': success && !error && value?.trim(), // ✅ éxito real solo si hay valor
+        'is-success': success && !error && value?.trim() // ✅ éxito real solo si hay valor
       }),
 
       'aria-invalid': !!error,
       'aria-describedby': error ? `${id}-error` : undefined,
-      ...props,
+      ...props
     }
 
     return (
@@ -124,8 +124,8 @@ const countries = [
     value: 'us',
     code: '🇺🇸 +1',
     mask: '(___) ___-____',
-    placeholder: '(xxx) xxx-xxxx',
-  },
+    placeholder: '(xxx) xxx-xxxx'
+  }
 ]
 
 // Aplica máscara simple
@@ -176,7 +176,7 @@ const PhoneNumber = forwardRef(
           formatted: maskedValue, // número con máscara y prefijo
           raw, // solo dígitos
           prefix,
-          country: selectedCountry.value,
+          country: selectedCountry.value
         },
         e
       )
@@ -197,7 +197,7 @@ const PhoneNumber = forwardRef(
             <Select
               options={countries.map((c) => ({
                 value: c.value,
-                label: c.code,
+                label: c.code
               }))}
               value={selectedCountry.value}
               onChange={handleCountryChange}
@@ -214,7 +214,7 @@ const PhoneNumber = forwardRef(
               placeholder={selectedCountry.placeholder}
               className={classNames('form-control', {
                 'is-error': !!error,
-                'is-success': !error && value?.trim(), // ✅ éxito solo si hay valor y no error
+                'is-success': !error && value?.trim() // ✅ éxito solo si hay valor y no error
               })}
             />
 

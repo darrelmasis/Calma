@@ -25,9 +25,9 @@ export const FadeInWhenVisible = ({
           transition: {
             duration: 0.6,
             ease: 'easeOut',
-            delay,
-          },
-        },
+            delay
+          }
+        }
       }}
       {...props}
     >

@@ -5,7 +5,7 @@ export const useFormatDate = () => {
 
   const localeMap = {
     es: 'es-ES',
-    en: 'en-US',
+    en: 'en-US'
   }
 
   const formatDate = (date, format = 'short') => {
@@ -27,7 +27,7 @@ export const useFormatDate = () => {
         weekday: 'long',
         day: 'numeric',
         month: 'long',
-        year: 'numeric',
+        year: 'numeric'
       },
       full: {
         weekday: 'long',
@@ -36,8 +36,8 @@ export const useFormatDate = () => {
         year: 'numeric',
         hour: '2-digit',
         minute: '2-digit',
-        hour12: lang === 'en', // Inglés usa AM/PM, español 24h
-      },
+        hour12: lang === 'en' // Inglés usa AM/PM, español 24h
+      }
     }
 
     const options = optionsMap[format] || optionsMap.short

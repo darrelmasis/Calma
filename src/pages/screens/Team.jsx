@@ -61,7 +61,7 @@ const Team = () => {
                         <div
                           className='profile-card-image'
                           style={{
-                            '--mask-url': `url(/images/png/${expert.photo}-400.png)`,
+                            '--mask-url': `url(/images/png/${expert.photo}-400.png)`
                           }}
                         >
                           <div className='profile-card-image-wrapper bg-primary-100 position-relative rounded-circle overflow-hidden'>

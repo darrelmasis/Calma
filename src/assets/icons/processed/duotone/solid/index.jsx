@@ -125,5 +125,5 @@ export {
   TrashCan,
   Users,
   WifiExclamation,
-  Xmark,
+  Xmark
 }

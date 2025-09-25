@@ -11,8 +11,8 @@ export const ServicesData = {
       vip: 15,
       gel: 15.5,
       spaGel: 20,
-      vipGel: 24,
-    },
+      vipGel: 24
+    }
   },
   pedicure: {
     id: 'pedicure',
@@ -24,8 +24,8 @@ export const ServicesData = {
       vip: 16,
       gel: 16,
       spaGel: 21,
-      vipGel: 25,
-    },
+      vipGel: 25
+    }
   },
   acrilicas: {
     id: 'acrilicas',
@@ -39,8 +39,8 @@ export const ServicesData = {
       refill: 13,
       banoAcrilico: 14,
       rubber: 14,
-      poly: 22,
-    },
+      poly: 22
+    }
   },
   extras: {
     id: 'extras',
@@ -61,8 +61,8 @@ export const ServicesData = {
       reparacionUñas: { from: 2 },
       uñasExtraAcrilico: { from: 3 },
       retiroGel: { from: 3 },
-      retiroAcrilico: { from: 8 },
-    },
+      retiroAcrilico: { from: 8 }
+    }
   },
   cejasPestanas: {
     id: 'cejasPestanas',
@@ -74,8 +74,8 @@ export const ServicesData = {
       laminacionTinte: 24,
       tinteCejas: 8,
       levantamientoPestanas: 20,
-      extensionPestanas: 25,
-    },
+      extensionPestanas: 25
+    }
   },
   depilacion: {
     id: 'depilacion',
@@ -91,8 +91,8 @@ export const ServicesData = {
       mediaPierna: { from: 15 },
       piernaCompleta: { from: 20 },
       espalda: { from: 15 },
-      gluteos: { from: 10 },
-    },
+      gluteos: { from: 10 }
+    }
   },
   lavado: {
     id: 'lavado',
@@ -105,8 +105,8 @@ export const ServicesData = {
       lavadoAmpolla: 15,
       relajanteExpress: 20,
       cabelloTratado: 35,
-      aplicacionTinta: { from: 12 },
-    },
+      aplicacionTinta: { from: 12 }
+    }
   },
   estilismo: {
     id: 'estilismo',
@@ -120,8 +120,8 @@ export const ServicesData = {
       peinadoElaborado: { from: 23 },
       trenzas: { from: 8 },
       cortePuntas: { from: 6 },
-      corteEstilo: { from: 10 },
-    },
+      corteEstilo: { from: 10 }
+    }
   },
   spa: {
     id: 'spa',
@@ -130,8 +130,8 @@ export const ServicesData = {
     prices: {
       maderoterapia: 35,
       masajeRelajante: 25,
-      masajeProfundo: 25,
-    },
+      masajeProfundo: 25
+    }
   },
   facial: {
     id: 'facial',
@@ -142,8 +142,8 @@ export const ServicesData = {
       guaSha: 35,
       hydrafacial: 40,
       facialRefrescante: 35,
-      detoxEspalda: 35,
-    },
+      detoxEspalda: 35
+    }
   },
   maquillaje: {
     id: 'maquillaje',
@@ -151,8 +151,8 @@ export const ServicesData = {
     Icon: 'paintbrush-pencil',
     prices: {
       profesional: { from: 30 },
-      pestanas: 5,
-    },
+      pestanas: 5
+    }
   },
   manicureNinos: {
     id: 'manicure-ninos',
@@ -162,7 +162,7 @@ export const ServicesData = {
       regular: 4,
       gel: 8,
       regularPedi: 6,
-      gelPedi: 11,
-    },
-  },
+      gelPedi: 11
+    }
+  }
 }

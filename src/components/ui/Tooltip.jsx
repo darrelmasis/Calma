@@ -9,7 +9,7 @@ import {
   useHover,
   useInteractions,
   useMergeRefs,
-  FloatingPortal,
+  FloatingPortal
 } from '@floating-ui/react'
 
 export function Tooltip({ children, content, placement = 'top' }) {
@@ -22,7 +22,7 @@ export function Tooltip({ children, content, placement = 'top' }) {
     context,
     middlewareData,
     strategy,
-    placement: currentPlacement,
+    placement: currentPlacement
   } = useFloating({
     open,
     onOpenChange: setOpen,
@@ -32,12 +32,12 @@ export function Tooltip({ children, content, placement = 'top' }) {
       offset(8),
       flip({ padding: 8 }),
       shift({ padding: 8 }),
-      arrow({ element: arrowRef }),
-    ],
+      arrow({ element: arrowRef })
+    ]
   })
 
   const { getReferenceProps, getFloatingProps } = useInteractions([
-    useHover(context, { move: false }),
+    useHover(context, { move: false })
   ])
 
   const ref = useMergeRefs([refs.setReference, children.ref])
@@ -47,14 +47,14 @@ export function Tooltip({ children, content, placement = 'top' }) {
     top: 'bottom',
     bottom: 'top',
     left: 'right',
-    right: 'left',
+    right: 'left'
   }[side]
 
   return (
     <>
       {React.cloneElement(children, {
         ref,
-        ...getReferenceProps(),
+        ...getReferenceProps()
       })}
 
       {open && (
@@ -66,7 +66,7 @@ export function Tooltip({ children, content, placement = 'top' }) {
             style={{
               ...floatingStyles,
               position: strategy,
-              zIndex: 9999,
+              zIndex: 9999
             }}
             {...getFloatingProps()}
           >

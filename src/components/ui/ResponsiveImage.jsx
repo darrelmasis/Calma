@@ -6,7 +6,7 @@ const ResponsiveImage = ({
   sizes = [400, 800, 1200],
   type = 'jpg',
   className,
-  basePath = '/images',
+  basePath = '/images'
 }) => {
   // Caso SVG
   if (type === 'svg') {

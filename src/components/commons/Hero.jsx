@@ -37,7 +37,7 @@ export const Hero = () => {
                 name: 'spa',
                 size: 'lg',
                 variant: 'duotones',
-                duotone: 'regular',
+                duotone: 'regular'
               }}
             />
           </Fade>

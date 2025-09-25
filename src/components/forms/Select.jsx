@@ -9,7 +9,7 @@ export const Select = ({
   placeholder = 'Seleccionar',
   error,
   disabled = false,
-  className = '',
+  className = ''
 }) => {
   const [isOpen, setIsOpen] = useState(false)
   const selectRef = useRef(null)
@@ -42,7 +42,7 @@ export const Select = ({
         {
           'is-open': isOpen,
           'is-disabled': disabled,
-          'has-error': error,
+          'has-error': error
         },
         className
       )}
@@ -60,9 +60,9 @@ export const Select = ({
             name: 'language-alt',
             position: 'left',
             variant: 'duotones',
-            duotone: 'regular',
+            duotone: 'regular'
           },
-          { name: 'angles-up-down', position: 'right', variant: 'regular' },
+          { name: 'angles-up-down', position: 'right', variant: 'regular' }
         ]}
       />
 
@@ -72,7 +72,7 @@ export const Select = ({
             <li
               key={opt.value}
               className={classNames('custom-select-list-option', {
-                'is-selected': opt.value === value,
+                'is-selected': opt.value === value
               })}
               onClick={(e) => {
                 e.stopPropagation() // Evita que el clic cierre el menú antes de seleccionar

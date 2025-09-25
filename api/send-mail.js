@@ -1,24 +1,26 @@
-import nodemailer from 'nodemailer';
+import nodemailer from 'nodemailer'
 
 export default async function handler(req, res) {
   // --- CORS ---
-  res.setHeader("Access-Control-Allow-Origin", "*"); // ⚠️ en prod usa tu dominio en lugar de *
-  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader('Access-Control-Allow-Origin', '*') // ⚠️ en prod usa tu dominio en lugar de *
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
 
   // Preflight
-  if (req.method === "OPTIONS") {
-    return res.status(200).end();
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end()
   }
 
-  if (req.method !== "POST") {
-    return res.status(405).json({ ok: false, message: "Método no permitido" });
+  if (req.method !== 'POST') {
+    return res.status(405).json({ ok: false, message: 'Método no permitido' })
   }
 
-  const { name, prefix, phone, email, date, time, notes, message } = req.body;
+  const { name, prefix, phone, email, date, time, notes, message } = req.body
 
   if (!name || !email || !message) {
-    return res.status(400).json({ ok: false, message: 'Faltan datos obligatorios' });
+    return res
+      .status(400)
+      .json({ ok: false, message: 'Faltan datos obligatorios' })
   }
 
   try {
@@ -30,40 +32,41 @@ export default async function handler(req, res) {
         user: process.env.MAIL_USER,
         pass: process.env.MAIL_PASS
       }
-    });
+    })
 
     // --- Render de servicios ---
     const renderServices = () => {
-      let html = '';
+      let html = ''
       for (const categoryKey in message) {
-        const services = message[categoryKey];
-        if (!services.length) continue;
+        const services = message[categoryKey]
+        if (!services.length) continue
 
-        const categoryName = services[0].categoryName;
+        const categoryName = services[0].categoryName
         html += `<div style="margin-bottom:15px;">
-          <h4 style="margin:0; background:#f4f4f4; padding:5px 10px; border-radius:8px; color:#9F814D;">${categoryName}</h4>`;
+          <h4 style="margin:0; background:#f4f4f4; padding:5px 10px; border-radius:8px; color:#9F814D;">${categoryName}</h4>`
 
-        const subCategories = {};
-        services.forEach(s => {
-          if (!subCategories[s.subCategoryName]) subCategories[s.subCategoryName] = [];
-          subCategories[s.subCategoryName].push(s);
-        });
+        const subCategories = {}
+        services.forEach((s) => {
+          if (!subCategories[s.subCategoryName])
+            subCategories[s.subCategoryName] = []
+          subCategories[s.subCategoryName].push(s)
+        })
 
         for (const sub in subCategories) {
           html += `<div style="margin-left:15px; margin-top:5px;">
-            <strong>${sub}</strong>`;
-          subCategories[sub].forEach(service => {
+            <strong>${sub}</strong>`
+          subCategories[sub].forEach((service) => {
             html += `<div style="background:#fafafa; margin:5px 0; padding:8px 10px; border-radius:6px; font-size:14px; border:1px solid #e0d8c0;">
               ${service.serviceName}: ${service.serviceDescription} ($${service.servicePrice.toFixed(2)})
-            </div>`;
-          });
-          html += `</div>`;
+            </div>`
+          })
+          html += `</div>`
         }
 
-        html += `</div>`;
+        html += `</div>`
       }
-      return html;
-    };
+      return html
+    }
 
     const htmlContent = `
       <div style="margin:0; padding:20px; background-color:#f4f4f4; font-family: Arial, sans-serif;">
@@ -90,7 +93,7 @@ export default async function handler(req, res) {
                         <td width="50%" valign="top" style="display:inline-block; width:100%; max-width:300px; background-color:#EEF2F5; border-radius:12px; padding:16px; box-sizing:border-box;">
                           <h3 style="margin-top:0; color:#9F814D; font-size:18px;">Detalles del Cliente</h3>
                           <p><strong>Nombre:</strong> ${name}</p>
-                          <p><strong>Teléfono:</strong> <a href="http://wa.me/${prefix}${phone.replace(/-/g,'')}" style="color:#1A2029; text-decoration:none;">${prefix} ${phone}</a></p>
+                          <p><strong>Teléfono:</strong> <a href="http://wa.me/${prefix}${phone.replace(/-/g, '')}" style="color:#1A2029; text-decoration:none;">${prefix} ${phone}</a></p>
                           <p><strong>Email:</strong> ${email}</p>
                           <p><strong>Notas:</strong> ${notes || 'Ninguna'}</p>
                         </td>
@@ -125,22 +128,24 @@ export default async function handler(req, res) {
           </tr>
         </table>
       </div>
-    `;
+    `
 
     await transporter.sendMail({
       from: `"Calma Nails & Spa" <${process.env.MAIL_USER}>`,
       to: process.env.MAIL_TO || 'dmasis@monisa.com',
       subject: `📅 Nueva solicitud de cita de ${name}`,
       html: htmlContent
-    });
+    })
 
-    return res.status(200).json({ ok: true, message: 'Correo enviado correctamente' });
+    return res
+      .status(200)
+      .json({ ok: true, message: 'Correo enviado correctamente' })
   } catch (err) {
-    console.error('Error enviando correo:', err);
+    console.error('Error enviando correo:', err)
     return res.status(500).json({
       ok: false,
       message: 'Error al enviar correo',
       error: process.env.NODE_ENV === 'development' ? err.message : undefined
-    });
+    })
   }
 }

@@ -51,7 +51,7 @@ const Footer = () => {
                       icon={{
                         name: 'arrow-right',
                         position: 'right',
-                        variant: 'regular',
+                        variant: 'regular'
                       }}
                       className='mt-3'
                     />

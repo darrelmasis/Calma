@@ -11,8 +11,8 @@ export const Icons = {
   brands: BrandsIcons,
   duotones: {
     regular: DuotonesRegularIcons,
-    solid: DuotonesSolidIcons,
-  },
+    solid: DuotonesSolidIcons
+  }
 }
 
 export const Icon = ({
@@ -23,7 +23,7 @@ export const Icon = ({
   size = 'md',
   ref = null,
   dataName,
-  animation = null,
+  animation = null
 }) => {
   const nameCleanaed = name
     .split('-')
@@ -49,7 +49,7 @@ export const Icon = ({
     className,
     `icon-wrapper-${size}`,
     {
-      'icon-spin': animation === 'spin',
+      'icon-spin': animation === 'spin'
     }
   )
 

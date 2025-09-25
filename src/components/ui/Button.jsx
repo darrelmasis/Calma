@@ -33,7 +33,7 @@ export const Button = ({
     duotone: 'regular',
     position: 'left',
     size: 'md',
-    animation: null,
+    animation: null
   }
 
   // Normalizamos el icon prop a un array de objetos
@@ -58,7 +58,7 @@ export const Button = ({
     if (!ic || !ic.name) return null
 
     const iconClasses = classNames('btn-icon', {
-      'icon-spin': ic.animation === 'spin',
+      'icon-spin': ic.animation === 'spin'
     })
 
     return (
@@ -90,7 +90,7 @@ export const Button = ({
     {
       'btn-square': isIconOnly,
       'btn-block': fullWidth,
-      'btn-link': as === 'link',
+      'btn-link': as === 'link'
     },
     className
   )

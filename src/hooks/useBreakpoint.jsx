@@ -24,7 +24,7 @@ export function useDevice() {
     md: 768,
     lg: 992,
     xl: 1200,
-    xxl: 1400,
+    xxl: 1400
   }
 
   // Función para determinar el tipo de dispositivo
@@ -40,7 +40,7 @@ export function useDevice() {
     type:
       typeof window !== 'undefined'
         ? getDeviceType(window.innerWidth)
-        : 'mobile',
+        : 'mobile'
   }))
 
   useEffect(() => {

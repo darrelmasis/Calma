@@ -29,7 +29,7 @@ const Booking = () => {
     notes: '',
     date: '',
     time: '',
-    message: '',
+    message: ''
   })
 
   const hasServices = totalServices > 0
@@ -63,7 +63,7 @@ const Booking = () => {
     try {
       const payload = { ...formData }
       const res = await axios.post(`${apiUrl}/api/send-mail`, payload, {
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json' }
       })
 
       if (res.data.ok) {
@@ -76,7 +76,7 @@ const Booking = () => {
           date: '',
           time: '',
           notes: '',
-          message: '',
+          message: ''
         })
         navigate('/success', { state: { success: true } })
       } else {
@@ -186,7 +186,7 @@ const Booking = () => {
                   setFormData,
                   getField,
                   validateField,
-                  clearField,
+                  clearField
                 }) => (
                   <div className='d-flex flex-direction-column justify-content-center gap-2 flex-1 max-wx-500'>
                     <div className='d-flex align-items-center flex-direction-column justify-content-center text-center'>
@@ -242,7 +242,7 @@ const Booking = () => {
                         setFormData((prev) => ({
                           ...prev,
                           phone: valObj?.formatted || '',
-                          prefix: valObj?.prefix || '+505',
+                          prefix: valObj?.prefix || '+505'
                         }))
                         setTimeout(
                           () =>
@@ -276,7 +276,7 @@ const Booking = () => {
                   setFormData,
                   getField,
                   validateField,
-                  clearField,
+                  clearField
                 }) => (
                   <div className='d-flex flex-direction-column flex-1 gap-2 max-wx-500'>
                     <div className='d-flex align-items-center flex-direction-column justify-content-center text-center'>

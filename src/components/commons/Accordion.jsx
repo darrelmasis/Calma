@@ -8,7 +8,7 @@ export const Accordion = ({
   indice,
   indiceActivo,
   alAlternar,
-  className = '',
+  className = ''
 }) => {
   const estaActivo = indice === indiceActivo
 

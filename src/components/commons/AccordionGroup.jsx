@@ -21,7 +21,7 @@ export const AccordionGroup = ({ children, className }) => {
         const internoClonado = cloneElement(interno, {
           indice,
           indiceActivo,
-          alAlternar: manejarAlternar,
+          alAlternar: manejarAlternar
         })
         indice++
         return cloneElement(hijo, {}, internoClonado)
@@ -33,7 +33,7 @@ export const AccordionGroup = ({ children, className }) => {
       const clonado = cloneElement(hijo, {
         indice,
         indiceActivo,
-        alAlternar: manejarAlternar,
+        alAlternar: manejarAlternar
       })
       indice++
       return clonado

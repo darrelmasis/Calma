@@ -16,5 +16,5 @@ export {
   Booking,
   Team,
   Empty,
-  Success,
+  Success
 }

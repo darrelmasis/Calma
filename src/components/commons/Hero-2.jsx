@@ -9,7 +9,7 @@ const Hero2 = ({
   title,
   subtitle,
   cta = null, // puede ser objeto o array
-  alignContent = 'center',
+  alignContent = 'center'
 }) => {
   // Normalización del CTA
   const normalizeCta = (ctaProp) => {
@@ -22,9 +22,9 @@ const Hero2 = ({
         name: 'spa',
         size: 'lg',
         variant: 'duotones',
-        duotone: 'regular',
+        duotone: 'regular'
       },
-      onClick: null,
+      onClick: null
     }
 
     if (!ctaProp) return []
@@ -42,7 +42,7 @@ const Hero2 = ({
       'hero-overlay-dark': overlayType === 'dark',
       'hero-overlay-light': overlayType === 'light',
       'hero-overlay-end-transparent': overlayType === 'end-transparent',
-      'hero-overlay-bottom-transparent': overlayType === 'bottom-transparent',
+      'hero-overlay-bottom-transparent': overlayType === 'bottom-transparent'
     }
   )
 
@@ -51,13 +51,13 @@ const Hero2 = ({
     'align-items-center justify-content-center text-center':
       alignContent === 'center',
     'align-items-center justify-content-start text-start':
-      alignContent === 'start',
+      alignContent === 'start'
   })
 
   // Clases del contenido
   const contentClasses = classNames('d-flex flex-direction-column', {
     'align-items-center text-center': alignContent === 'center',
-    'align-items-flex-start text-start': alignContent === 'start',
+    'align-items-flex-start text-start': alignContent === 'start'
   })
 
   return (

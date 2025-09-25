@@ -7,7 +7,7 @@ export const sounds = {
   closePops: ['/sounds/close-pops.ogg'],
   dropBag: ['/sounds/drop-bag.ogg'],
   trashBag: ['/sounds/trash-bag.ogg'],
-  cleanShoppingBag: ['/sounds/clean-shopping-bag.ogg'],
+  cleanShoppingBag: ['/sounds/clean-shopping-bag.ogg']
 }
 
 // Instancias globales (singleton)
@@ -26,7 +26,7 @@ export const getSound = (sound, volume = 1) => {
     soundInstances[sound] = new Howl({
       src: sounds[sound],
       volume,
-      preload: true,
+      preload: true
     })
   }
 

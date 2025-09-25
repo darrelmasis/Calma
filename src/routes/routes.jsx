@@ -8,7 +8,7 @@ import {
   Services,
   Team,
   Empty,
-  Success,
+  Success
 } from '../pages/Index'
 import ScrollTop from '../components/commons/ScrollTop'
 import { ScrollToHash } from '../utils/Scrollhash'

@@ -14,7 +14,7 @@ import {
   useInteractions,
   FloatingPortal,
   FloatingArrow,
-  arrow,
+  arrow
 } from '@floating-ui/react'
 
 const PopoverContext = createContext(null)
@@ -22,7 +22,7 @@ const PopoverContext = createContext(null)
 export function Popover({
   children,
   placement = 'top-start',
-  triggerMode = 'click',
+  triggerMode = 'click'
 }) {
   const [open, setOpen] = useState(false)
   const arrowRef = useRef(null)
@@ -35,9 +35,9 @@ export function Popover({
       offset(8),
       flip(),
       shift({ padding: 8 }),
-      arrow({ element: arrowRef }),
+      arrow({ element: arrowRef })
     ],
-    whileElementsMounted: autoUpdate,
+    whileElementsMounted: autoUpdate
   })
 
   const { isMounted, styles: transitionStyles } = useTransitionStyles(context, {
@@ -50,14 +50,14 @@ export function Popover({
         top: 'bottom',
         bottom: 'top',
         left: 'right',
-        right: 'left',
-      }[side],
-    }),
+        right: 'left'
+      }[side]
+    })
   })
 
   const hover = useHover(context, {
     enabled: triggerMode === 'hover',
-    delay: { open: 0, close: 200 },
+    delay: { open: 0, close: 200 }
   })
   const click = useClick(context, { enabled: triggerMode === 'click' })
   const dismiss = useDismiss(context)
@@ -77,7 +77,7 @@ export function Popover({
         strategy,
         transitionStyles,
         context,
-        arrowRef,
+        arrowRef
       }}
     >
       {children}
@@ -92,14 +92,14 @@ export function PopoverTrigger({ children }) {
   if (typeof children === 'function') {
     return children(open, {
       ref: refs.setReference,
-      ...interactions.getReferenceProps(),
+      ...interactions.getReferenceProps()
     })
   }
 
   // Si es un elemento → clonamos y le pasamos props
   return React.cloneElement(children, {
     ref: refs.setReference,
-    ...interactions.getReferenceProps(),
+    ...interactions.getReferenceProps()
   })
 }
 
@@ -113,7 +113,7 @@ export function PopoverContent({ children, className }) {
     transitionStyles,
     interactions,
     context,
-    arrowRef,
+    arrowRef
   } = useContext(PopoverContext)
 
   if (!isMounted) return null
@@ -129,7 +129,7 @@ export function PopoverContent({ children, className }) {
           position: strategy,
           top: y ?? 0,
           left: x ?? 0,
-          ...transitionStyles,
+          ...transitionStyles
         }}
         {...interactions.getFloatingProps()}
       >

@@ -1,8 +1,8 @@
-import fs from 'fs';
-import dotenv from 'dotenv';
-dotenv.config({ quiet: true });
+import fs from 'fs'
+import dotenv from 'dotenv'
+dotenv.config({ quiet: true })
 
-const buildDate = new Date().toISOString().split('T')[0];
+const buildDate = new Date().toISOString().split('T')[0]
 
 const humansContent = `# humans.txt - ${process.env.VITE_CALMA_NAME}
 # This file gives credit to all contributors and provides basic info about the site.
@@ -34,7 +34,7 @@ Build Date: ${buildDate}
 
 /* THANKS */
 Thanks to all collaborators, designers, and supporters who helped bring the project to life.
-`;
+`
 
-fs.writeFileSync('public/humans.txt', humansContent);
-console.log('✅ humans.txt generado correctamente!');
+fs.writeFileSync('public/humans.txt', humansContent)
+console.log('✅ humans.txt generado correctamente!')

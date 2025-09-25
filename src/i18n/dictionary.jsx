@@ -16,10 +16,10 @@ export const dictionary = {
         history: 'Historia',
         services: 'Servicios',
         packages: 'Paquetes',
-        logoTooltip: 'Ir a la página de inicio',
+        logoTooltip: 'Ir a la página de inicio'
       },
       headerButton: {
-        book: 'Reservar',
+        book: 'Reservar'
       },
       dropdown: {
         text: 'Mi Bolsa',
@@ -31,52 +31,52 @@ export const dictionary = {
         clear: 'Limpiar',
         book: 'Agendar ahora!',
         exploreServices: 'Explorar Servicios',
-        clearTooltip: 'Eliminar todos los servicios seleccionados',
-      },
+        clearTooltip: 'Eliminar todos los servicios seleccionados'
+      }
     },
     footer: {
       cta: {
         title: '¡Agenda tu cita hoy!',
         description:
           'Reserva con nuestros especialistas en bienestar cuando y donde quieras',
-        button: '¡Reserva ahora!',
+        button: '¡Reserva ahora!'
       },
       columns: {
         contact: {
           title: 'Contacto',
           address: 'Iglesia La Merced, 1C N, 10v O, Granada',
-          addressTooltip: 'Ver ubicación en Google Maps',
+          addressTooltip: 'Ver ubicación en Google Maps'
         },
         nav: {
           title: 'Navegación',
           book: 'Agendar Cita',
           services: 'Servicios',
           history: 'Historia',
-          packages: 'Paquetes',
+          packages: 'Paquetes'
         },
         about: {
           title: 'Conócenos',
           who: '¿Quiénes somos?',
           team: 'Nuestro equipo',
-          blog: 'Blog',
+          blog: 'Blog'
         },
         social: {
           title: 'Social',
           facebook: 'Facebook',
           facebookTooltip: 'Síguenos en Facebook',
           instagram: 'Instagram',
-          instagramTooltip: 'Síguenos en Instagram',
-        },
+          instagramTooltip: 'Síguenos en Instagram'
+        }
       },
       help: {
         title: '¿Necesitas ayuda con tu reserva?',
         contact: 'Contáctanos:',
-        subtitle: 'Estamos aquí para ayudarte con tu reserva',
+        subtitle: 'Estamos aquí para ayudarte con tu reserva'
       },
       legal: {
         copyright: copyrightEs,
-        subtitle: authorsEs,
-      },
+        subtitle: authorsEs
+      }
     },
     home: {
       pageTitle: 'Inicio',
@@ -86,7 +86,7 @@ export const dictionary = {
         description:
           'Descubre un espacio diseñado para tu bienestar y tranquilidad, donde cada servicio está pensado para restaurar tu equilibrio',
         button_1: 'Descubrir servicios',
-        button_2: 'Paquetes disponibles',
+        button_2: 'Paquetes disponibles'
       },
       section_2: {
         title: '¿Por qué elegir Calma?',
@@ -95,32 +95,32 @@ export const dictionary = {
           p1: {
             title: 'Atención personalizada',
             description:
-              'Cada cliente recibe un tratamiento único adaptado a sus necesidades',
+              'Cada cliente recibe un tratamiento único adaptado a sus necesidades'
           },
           p2: {
             title: 'Ambiente Seguro',
             description:
-              'Creamos un entorno acogedor y seguro para que te sientas cómodo',
+              'Creamos un entorno acogedor y seguro para que te sientas cómodo'
           },
           p3: {
             title: 'Personal Experto',
             description:
-              'Nuestro equipo cuenta con amplia experiencia y formación especializada',
-          },
-        },
+              'Nuestro equipo cuenta con amplia experiencia y formación especializada'
+          }
+        }
       },
       section_3: {
         title: 'Comienza tu camino hacia la tranquilidad',
         description:
           'Descubre nuestros servicios y encuentra el que mejor se adapte a tus necesidades',
-        button: 'Descubrir Servicios',
-      },
+        button: 'Descubrir Servicios'
+      }
     },
     history: {
       pageTitle: 'Nuestra Historia',
       heroSection: {
         title: 'Equilibrio interior, brillo exterior',
-        subtitle: 'Un viaje de bienestar y dedicación',
+        subtitle: 'Un viaje de bienestar y dedicación'
       },
       section_1: {
         title: 'Nuestra Historia',
@@ -132,7 +132,7 @@ export const dictionary = {
           'Hoy, Calma es reconocida por su compromiso con el bienestar y su dedicación. Cada rincón refleja nuestra atención al detalle y el profundo respeto por quienes nos visitan. Nuestro propósito es seguir creciendo con la intención de expandir los servicios sin perder la esencia que nos define. Calma es más que un espacio físico; es una invitación a reconectar contigo, respirar profundo y encontrar tu equilibrio.',
         end_tag: 'Con Mucho Cariño,',
         owners: authors,
-        imageAlt: 'Imagen representativa de nuestra historia',
+        imageAlt: 'Imagen representativa de nuestra historia'
       },
       section_2: {
         title: '¿Quiénes Somos?',
@@ -141,8 +141,8 @@ export const dictionary = {
           'Crear experiencias de bienestar que nutran el cuerpo y la mente a través de servicios personalizados, en un entorno pensado para la relajación y la renovación interior.',
         missionTitle: 'Nuestra Misión',
         missionDescription:
-          'Ofrecer un espacio donde cada persona pueda reconectar con su calma interior mediante tratamientos y un servicio excepcional, siempre enfocados en el bienestar integral.',
-      },
+          'Ofrecer un espacio donde cada persona pueda reconectar con su calma interior mediante tratamientos y un servicio excepcional, siempre enfocados en el bienestar integral.'
+      }
     },
     packages: {
       pageTitle: 'Nuestros Paquetes',
@@ -170,8 +170,8 @@ export const dictionary = {
               'Mascarilla capilar',
               'Lavado línea SPA',
               'Secado + Estilizado',
-              'Facial o masaje a elección',
-            ],
+              'Facial o masaje a elección'
+            ]
           },
           {
             icono: 'champagne-glasses',
@@ -186,8 +186,8 @@ export const dictionary = {
               'Peinado elegante',
               'Preparación de piel VIP',
               'Maquillaje completo',
-              'Mini botella de champagne',
-            ],
+              'Mini botella de champagne'
+            ]
           },
           {
             icono: 'rings-wedding',
@@ -203,10 +203,10 @@ export const dictionary = {
               'Masaje relajante',
               'Tratamiento de cabello con mascarilla',
               'Depilación (facial o corporal)',
-              'Botella de champagne',
-            ],
-          },
-        ],
+              'Botella de champagne'
+            ]
+          }
+        ]
       },
       section_2: {
         faq: {
@@ -215,21 +215,21 @@ export const dictionary = {
             {
               question: '¿Puedo personalizar un paquete?',
               answer:
-                'Cada paquete puede ser personalizado a la necesidad del cliente o grupo. Contáctanos para adaptar el paquete a tu necesidad.',
+                'Cada paquete puede ser personalizado a la necesidad del cliente o grupo. Contáctanos para adaptar el paquete a tu necesidad.'
             },
             {
               question: '¿Debo reservar con anticipación?',
               answer:
-                'Sí, recomendamos reservar con anticipación para garantizar disponibilidad y coordinar fechas y horarios.',
+                'Sí, recomendamos reservar con anticipación para garantizar disponibilidad y coordinar fechas y horarios.'
             },
             {
               question: '¿Qué duración tiene cada paquete?',
               answer:
-                'Los paquetes son personalizados, ya depende la necesidad del cliente se ajusta el tiempo necesario.',
-            },
-          ],
-        },
-      },
+                'Los paquetes son personalizados, ya depende la necesidad del cliente se ajusta el tiempo necesario.'
+            }
+          ]
+        }
+      }
     },
     services: {
       pageTitle: 'Nuestros Servicios',
@@ -237,10 +237,10 @@ export const dictionary = {
       cardFooter: {
         expandable: {
           expanded: '¡Eso es todo por ahora!',
-          collapsed: '¡Descubre todos los servicios!',
+          collapsed: '¡Descubre todos los servicios!'
         },
         static: '¡Ya viste todo!',
-        minimal: '¡Pocos pero especiales!',
+        minimal: '¡Pocos pero especiales!'
       },
       section_1: {
         title: 'Servicios Disponibles',
@@ -258,161 +258,161 @@ export const dictionary = {
                 services: {
                   regular: {
                     name: 'Regular',
-                    description: 'Limpieza, esmalte regular',
+                    description: 'Limpieza, esmalte regular'
                   },
                   spa: {
                     name: 'SPA',
                     description:
-                      'Limpieza, masaje, guantes hidratantes, esmalte regular',
+                      'Limpieza, masaje, guantes hidratantes, esmalte regular'
                   },
                   vip: {
                     name: 'VIP',
                     description:
-                      'Limpieza, sal epsom, toallas calientes, masaje, parafina, esmalte regular',
+                      'Limpieza, sal epsom, toallas calientes, masaje, parafina, esmalte regular'
                   },
                   gel: { name: 'Gel', description: 'Limpieza, esmalte gel' },
                   spaGel: {
                     name: 'SPA Gel',
                     description:
-                      'Limpieza, masajes, guantes, hidratantes, esmalte gel',
+                      'Limpieza, masajes, guantes, hidratantes, esmalte gel'
                   },
                   vipGel: {
                     name: 'VIP Gel',
                     description:
-                      'Limpieza, sal epsom, toallas calientes, masaje, parafina, esmalte gel',
-                  },
-                },
+                      'Limpieza, sal epsom, toallas calientes, masaje, parafina, esmalte gel'
+                  }
+                }
               },
               pedicure: {
                 name: 'Pedicure',
                 services: {
                   regular: {
                     name: 'Regular',
-                    description: 'Limpieza, esmalte regular',
+                    description: 'Limpieza, esmalte regular'
                   },
                   spa: {
                     name: 'SPA',
                     description:
-                      'Limpieza profunda, Salt scrub, masaje, Mascarilla hidratante o toallas calientes y esmalte regular',
+                      'Limpieza profunda, Salt scrub, masaje, Mascarilla hidratante o toallas calientes y esmalte regular'
                   },
                   vip: {
                     name: 'VIP',
                     description:
-                      'Limpieza profunda, baño jelly, masaje y esmalte regular',
+                      'Limpieza profunda, baño jelly, masaje y esmalte regular'
                   },
                   gel: { name: 'Gel', description: 'Limpieza, esmalte gel' },
                   spaGel: {
                     name: 'SPA Gel',
                     description:
-                      'Limpieza profunda, Salt scrub, masaje, Mascarilla hidratante o toallas calientes y esmalte gel',
+                      'Limpieza profunda, Salt scrub, masaje, Mascarilla hidratante o toallas calientes y esmalte gel'
                   },
                   vipGel: {
                     name: 'VIP Gel',
                     description:
-                      'Limpieza profunda, baño jelly, masaje y esmalte gel',
-                  },
-                },
+                      'Limpieza profunda, baño jelly, masaje y esmalte gel'
+                  }
+                }
               },
               acrilicas: {
                 name: 'Acrílicas',
                 services: {
                   naturales: {
                     name: 'Naturales',
-                    description: 'Uñas acrílicas naturales',
+                    description: 'Uñas acrílicas naturales'
                   },
                   almond: {
                     name: 'Almond',
-                    description: 'Uñas acrílicas forma almendra',
+                    description: 'Uñas acrílicas forma almendra'
                   },
                   coffin: {
                     name: 'Coffin',
-                    description: 'Uñas acrílicas forma coffin',
+                    description: 'Uñas acrílicas forma coffin'
                   },
                   esculturales: {
                     name: 'Esculturales',
-                    description: 'Uñas esculturales',
+                    description: 'Uñas esculturales'
                   },
                   refill: {
                     name: 'Refill',
-                    description: 'Relleno de uñas acrílicas',
+                    description: 'Relleno de uñas acrílicas'
                   },
                   banoAcrilico: {
                     name: 'Baño Acrílico',
-                    description: 'Aplicación de baño acrílico',
+                    description: 'Aplicación de baño acrílico'
                   },
                   rubber: {
                     name: 'Rubber',
-                    description: 'Aplicación de rubber',
+                    description: 'Aplicación de rubber'
                   },
-                  poly: { name: 'Poly', description: 'Aplicación de poly gel' },
-                },
+                  poly: { name: 'Poly', description: 'Aplicación de poly gel' }
+                }
               },
               extras: {
                 name: 'Extras',
                 services: {
                   limpieza: {
                     name: 'Limpieza',
-                    description: 'Limpieza básica de uñas',
+                    description: 'Limpieza básica de uñas'
                   },
                   decoracion: {
                     name: 'Decoración',
-                    description: 'Decoración personalizada de uñas',
+                    description: 'Decoración personalizada de uñas'
                   },
                   gelCalcio: {
                     name: 'Gel Calcio',
-                    description: 'Aplicación de gel calcio',
+                    description: 'Aplicación de gel calcio'
                   },
                   extensionCalcio: {
                     name: 'Extensión Calcio',
-                    description: 'Extensión de uñas con gel calcio',
+                    description: 'Extensión de uñas con gel calcio'
                   },
                   gelFrio: {
                     name: 'Gel Frío',
-                    description: 'Aplicación de gel frío',
+                    description: 'Aplicación de gel frío'
                   },
                   topGelFrio: {
                     name: 'Top Gel Frío',
-                    description: 'Capa superior de gel frío',
+                    description: 'Capa superior de gel frío'
                   },
                   parafina: {
                     name: 'Parafina',
-                    description: 'Tratamiento de parafina',
+                    description: 'Tratamiento de parafina'
                   },
                   botasTermicas: {
                     name: 'Botas Térmicas',
-                    description: 'Tratamiento con botas térmicas',
+                    description: 'Tratamiento con botas térmicas'
                   },
                   guantesHidratantes: {
                     name: 'Guantes Hidratantes',
-                    description: 'Hidratación con guantes',
+                    description: 'Hidratación con guantes'
                   },
                   esmalteRegular: {
                     name: 'Esmalte Regular',
-                    description: 'Aplicación de esmalte regular',
+                    description: 'Aplicación de esmalte regular'
                   },
                   esmalteGel: {
                     name: 'Esmalte Gel',
-                    description: 'Aplicación de esmalte gel',
+                    description: 'Aplicación de esmalte gel'
                   },
                   reparacionUñas: {
                     name: 'Reparación',
-                    description: 'Reparación de uñas',
+                    description: 'Reparación de uñas'
                   },
                   uñasExtraAcrilico: {
                     name: 'Uñas Extra Acrílico',
-                    description: 'Uñas adicionales con acrílico',
+                    description: 'Uñas adicionales con acrílico'
                   },
                   retiroGel: {
                     name: 'Retiro Gel',
-                    description: 'Retiro de esmalte gel',
+                    description: 'Retiro de esmalte gel'
                   },
                   retiroAcrilico: {
                     name: 'Retiro Acrílico',
-                    description: 'Retiro de uñas acrílicas',
-                  },
-                },
-              },
-            },
+                    description: 'Retiro de uñas acrílicas'
+                  }
+                }
+              }
+            }
           },
           depilacion: {
             name: 'Depilación',
@@ -422,29 +422,29 @@ export const dictionary = {
                 services: {
                   laminacionCejas: {
                     name: 'Laminación Cejas',
-                    description: 'Tratamiento de laminación de cejas',
+                    description: 'Tratamiento de laminación de cejas'
                   },
                   laminacionDiseno: {
                     name: 'Laminación y Diseño',
-                    description: 'Laminación + diseño de cejas',
+                    description: 'Laminación + diseño de cejas'
                   },
                   laminacionTinte: {
                     name: 'Laminación y Tinte',
-                    description: 'Laminación + tinte de cejas',
+                    description: 'Laminación + tinte de cejas'
                   },
                   tinteCejas: {
                     name: 'Tinte de Cejas',
-                    description: 'Aplicación de tinte en cejas',
+                    description: 'Aplicación de tinte en cejas'
                   },
                   levantamientoPestanas: {
                     name: 'Levantamiento de Pestañas',
-                    description: 'Levantamiento de pestañas natural',
+                    description: 'Levantamiento de pestañas natural'
                   },
                   extensionPestanas: {
                     name: 'Extensión de Pestañas',
-                    description: 'Aplicación de extensión de pestañas',
-                  },
-                },
+                    description: 'Aplicación de extensión de pestañas'
+                  }
+                }
               },
               depilacion: {
                 name: 'Depilación',
@@ -452,40 +452,40 @@ export const dictionary = {
                   cejas: { name: 'Cejas', description: 'Depilación de cejas' },
                   bigote: {
                     name: 'Bigote',
-                    description: 'Depilación de bigote',
+                    description: 'Depilación de bigote'
                   },
                   axilas: {
                     name: 'Axilas',
-                    description: 'Depilación de axilas',
+                    description: 'Depilación de axilas'
                   },
                   bikini: { name: 'Bikini', description: 'Depilación bikini' },
                   fullBikini: {
                     name: 'Full Bikini',
-                    description: 'Depilación completa de bikini',
+                    description: 'Depilación completa de bikini'
                   },
                   brazos: {
                     name: 'Brazos',
-                    description: 'Depilación de brazos',
+                    description: 'Depilación de brazos'
                   },
                   mediaPierna: {
                     name: '1/2 Pierna',
-                    description: 'Depilación media pierna',
+                    description: 'Depilación media pierna'
                   },
                   piernaCompleta: {
                     name: 'Pierna Completa',
-                    description: 'Depilación pierna completa',
+                    description: 'Depilación pierna completa'
                   },
                   espalda: {
                     name: 'Espalda',
-                    description: 'Depilación de espalda',
+                    description: 'Depilación de espalda'
                   },
                   gluteos: {
                     name: 'Glúteos',
-                    description: 'Depilación de glúteos',
-                  },
-                },
-              },
-            },
+                    description: 'Depilación de glúteos'
+                  }
+                }
+              }
+            }
           },
           cabello: {
             name: 'Cabello',
@@ -495,37 +495,37 @@ export const dictionary = {
                 services: {
                   lavadoExpress: {
                     name: 'Lavado Express',
-                    description: 'Lavado rápido (1 aplicación de champú)',
+                    description: 'Lavado rápido (1 aplicación de champú)'
                   },
                   lavadoProfundo: {
                     name: 'Lavado Profundo',
-                    description: 'Lavado profundo (2 aplicaciones de champú)',
+                    description: 'Lavado profundo (2 aplicaciones de champú)'
                   },
                   lavadoMascarilla: {
                     name: 'Lavado + Mascarilla',
                     description:
-                      'Lavado profundo (2 aplicaciones de champú) + mascarilla',
+                      'Lavado profundo (2 aplicaciones de champú) + mascarilla'
                   },
                   lavadoAmpolla: {
                     name: 'Lavado + Ampolla Tratamiento ',
                     description:
-                      'Lavado profundo (2 aplicaciones de champú) + ampolla tratamiento ',
+                      'Lavado profundo (2 aplicaciones de champú) + ampolla tratamiento '
                   },
                   relajanteExpress: {
                     name: 'Relajante Express',
                     description:
-                      'Lavado profundo + ampolla tratamiento + masaje cuero cabelludo',
+                      'Lavado profundo + ampolla tratamiento + masaje cuero cabelludo'
                   },
                   cabelloTratado: {
                     name: 'Cabello Tratado',
                     description:
-                      'lavado profundo (2 aplicaciones de champú) + mascarilla hidratante + ampolla tratamiento',
+                      'lavado profundo (2 aplicaciones de champú) + mascarilla hidratante + ampolla tratamiento'
                   },
                   aplicacionTinta: {
                     name: 'Aplicación de Tinte',
-                    description: 'Aplicación de tinte',
-                  },
-                },
+                    description: 'Aplicación de tinte'
+                  }
+                }
               },
               estilismo: {
                 name: 'Estilismo',
@@ -533,32 +533,32 @@ export const dictionary = {
                   secado: { name: 'Secado', description: 'Secado de cabello' },
                   planchado: {
                     name: 'Planchado',
-                    description: 'Planchado de cabello',
+                    description: 'Planchado de cabello'
                   },
                   ondas: { name: 'Ondas', description: 'Ondas estilizadas' },
                   peinadoSencillo: {
                     name: 'Peinado Sencillo',
-                    description: 'Peinado básico',
+                    description: 'Peinado básico'
                   },
                   peinadoElaborado: {
                     name: 'Peinado Elaborado',
-                    description: 'Peinado elaborado',
+                    description: 'Peinado elaborado'
                   },
                   trenzas: {
                     name: 'Trenzas',
-                    description: 'Trenzas o trenzado',
+                    description: 'Trenzas o trenzado'
                   },
                   cortePuntas: {
                     name: 'Corte Puntas',
-                    description: 'Corte de puntas',
+                    description: 'Corte de puntas'
                   },
                   corteEstilo: {
                     name: 'Corte Estilo',
-                    description: 'Corte con estilo personalizado',
-                  },
-                },
-              },
-            },
+                    description: 'Corte con estilo personalizado'
+                  }
+                }
+              }
+            }
           },
           spa: {
             name: 'SPA',
@@ -568,47 +568,47 @@ export const dictionary = {
                 services: {
                   maderoterapia: {
                     name: 'Maderoterapia',
-                    description: 'Drenaje linfático',
+                    description: 'Drenaje linfático'
                   },
                   masajeRelajante: {
                     name: 'Masaje Relajante',
                     description:
-                      'Estimulación relajante, reducción de tensión muscular',
+                      'Estimulación relajante, reducción de tensión muscular'
                   },
                   masajeProfundo: {
                     name: 'Masaje Profundo',
                     description:
-                      'Masaje profundo terapéutico / Toallas calientes',
-                  },
-                },
+                      'Masaje profundo terapéutico / Toallas calientes'
+                  }
+                }
               },
               facial: {
                 name: 'Facial',
                 services: {
                   detoxGlow: {
                     name: 'Detox Glow',
-                    description: 'Tratamiento facial desintoxicante',
+                    description: 'Tratamiento facial desintoxicante'
                   },
                   guaSha: {
                     name: 'Gua Sha',
                     description:
-                      'Tratamiento de drenaje y desinflamación facial',
+                      'Tratamiento de drenaje y desinflamación facial'
                   },
                   hydrafacial: {
                     name: 'Hydrafacial',
-                    description: 'Hidratación facial profunda y piel radiante',
+                    description: 'Hidratación facial profunda y piel radiante'
                   },
                   facialRefrescante: {
                     name: 'Facial Refrescante',
-                    description: 'Tratamiento facial tonificante y escultural',
+                    description: 'Tratamiento facial tonificante y escultural'
                   },
                   detoxEspalda: {
                     name: 'Detox Espalda',
-                    description: 'Tratamiento desintoxicante de espalda',
-                  },
-                },
-              },
-            },
+                    description: 'Tratamiento desintoxicante de espalda'
+                  }
+                }
+              }
+            }
           },
           complementos: {
             name: 'Complementos',
@@ -619,15 +619,15 @@ export const dictionary = {
                   profesional: {
                     name: 'Profesional',
                     description:
-                      'Maquillaje profesional completo, personalizado para cualquier ocasión',
+                      'Maquillaje profesional completo, personalizado para cualquier ocasión'
                   },
                   pestanas: {
                     name: 'Pestañas',
-                    description: 'Aplicación de pestañas',
-                  },
-                },
-              },
-            },
+                    description: 'Aplicación de pestañas'
+                  }
+                }
+              }
+            }
           },
           ninos: {
             name: 'Niños',
@@ -637,26 +637,26 @@ export const dictionary = {
                 services: {
                   regular: {
                     name: 'Mani Regular',
-                    description: 'Limpieza y esmaltado básico',
+                    description: 'Limpieza y esmaltado básico'
                   },
                   gel: {
                     name: 'Mani Gel',
-                    description: 'Aplicación de gel para niños',
+                    description: 'Aplicación de gel para niños'
                   },
                   regularPedi: {
                     name: 'Pedi Regular',
-                    description: 'Limpieza básica de pies',
+                    description: 'Limpieza básica de pies'
                   },
                   gelPedi: {
                     name: 'Pedi Gel',
-                    description: 'Aplicación de gel en pies',
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
+                    description: 'Aplicación de gel en pies'
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     },
     booking: {
       pageTitle: 'Citas',
@@ -676,7 +676,7 @@ export const dictionary = {
       steps: {
         welcome: {
           title: '¡Genial! Veamos lo que elegiste',
-          subtitle: 'Antes de agendar, revisa tus servicios seleccionados',
+          subtitle: 'Antes de agendar, revisa tus servicios seleccionados'
         },
         personalData: {
           title: 'Tus datos para contactarte',
@@ -686,16 +686,16 @@ export const dictionary = {
             placeholder: '¿Cómo te llamas?',
             errors: {
               required: 'Nombre Obligatorio',
-              tooShort: 'Nombre muy corto',
-            },
+              tooShort: 'Nombre muy corto'
+            }
           },
           emailInput: {
             label: 'Correo Electrónico',
             placeholder: '¿Cuál es tu correo?',
             errors: {
               required: 'Correo Electrónico Obligatorio',
-              invalid: 'Correo Electrónico Inválido',
-            },
+              invalid: 'Correo Electrónico Inválido'
+            }
           },
           phoneInput: {
             label: 'Número de Teléfono',
@@ -704,9 +704,9 @@ export const dictionary = {
               required: 'Número de Teléfono Obligatorio',
               invalidUSA: 'Número Inválido en EE.UU.',
               invalidNic: 'Número Inválido en Nicaragua',
-              invalid: 'Número Inválido',
-            },
-          },
+              invalid: 'Número Inválido'
+            }
+          }
         },
         schedule: {
           title: 'Escoge fecha y hora',
@@ -718,8 +718,8 @@ export const dictionary = {
             errors: {
               required: 'Fecha Obligatoria',
               pastDate: 'No puedes elegir una fecha pasada',
-              weekend: 'No trabajamos fines de semana',
-            },
+              weekend: 'No trabajamos fines de semana'
+            }
           },
           timeInput: {
             label: 'Hora',
@@ -730,64 +730,64 @@ export const dictionary = {
               pastTime: 'No puedes elegir una hora pasada',
               requiredAnticipation:
                 'Se requiere al menos 1 hora de anticipación',
-              available: 'Horario no disponible (8:00 AM - 6:00 PM)',
-            },
+              available: 'Horario no disponible (8:00 AM - 6:00 PM)'
+            }
           },
           messageInput: {
             label: 'Mensaje Adicional (Opcional)',
-            placeholder: '¿Alguna indicación especial?',
-          },
+            placeholder: '¿Alguna indicación especial?'
+          }
         },
         confirmation: {
           loadingText: 'Enviando tu reserva...',
           success: {
             title: '¡Reserva enviada con éxito!',
             details:
-              'Nos pondremos en contacto contigo pronto para confirmar los detalles de tu cita.',
+              'Nos pondremos en contacto contigo pronto para confirmar los detalles de tu cita.'
           },
           error: {
             title: 'Error al enviar la reserva',
             details:
-              'Hubo un problema al enviar tu reserva. Por favor, inténtalo de nuevo más tarde.',
-          },
+              'Hubo un problema al enviar tu reserva. Por favor, inténtalo de nuevo más tarde.'
+          }
         },
         final: {
           title: '¡Casi terminamos!',
           confirmtext: 'Tu cita se agendará para el día',
           confirmtext2: 'a las',
           details:
-            'Espera un mensaje de confirmación en tu correo electrónico o WhatsApp.',
+            'Espera un mensaje de confirmación en tu correo electrónico o WhatsApp.'
         },
         noServices: {
           title: '¡Oops! No seleccionaste ningún servicio',
-          subtitle: 'Parece que todavía no agregaste servicios a tu bolsa.',
-        },
+          subtitle: 'Parece que todavía no agregaste servicios a tu bolsa.'
+        }
       },
       success: {
         title: 'Reserva Exitosa',
         subtitle: '¡Tu reserva se ha realizado con éxito!',
         message:
           '¡Gracias por reservar con nosotros! Te contactaremos pronto para confirmar los detalles de tu cita.',
-        buttonText: 'Volver al inicio',
+        buttonText: 'Volver al inicio'
       },
       failed: {
         title: 'Error en la Reserva',
         subtitle: 'Hubo un error al enviar tu reserva',
         message:
           'Hubo un problema al enviar tu reserva. Por favor, inténtalo de nuevo más tarde.',
-        buttonText: 'Volver al inicio',
-      },
+        buttonText: 'Volver al inicio'
+      }
     },
     floatingButton: {
       whatsappButtonText: 'Escribenos por WhatsApp',
-      bookingButtontext: 'Reserva con nosotros',
+      bookingButtontext: 'Reserva con nosotros'
     },
     team: {
       pageTitle: 'Nuestro Equipo',
       section_1: {
         title: '¡Nuestro Equipo está aquí!',
         description:
-          'Conoce a los profesionales que hacen posible nuestra misión',
+          'Conoce a los profesionales que hacen posible nuestra misión'
       },
       section_2: {
         profiles: {
@@ -796,46 +796,46 @@ export const dictionary = {
             role: 'Estilista de cabello, Especialista en depilación, Manicurista, Pedicurista',
             imageAlt: 'Foto de Auxiliadora Gazo',
             photo: 'agazo',
-            order: 4,
+            order: 4
           },
           jbermudez: {
             name: 'Joseling Bermúdez',
             role: 'Manicurista, Especialista en acrílico, Especialista en rubber polygel, Estilista de cabello, Especialista en depilación',
             imageAlt: 'Foto de Joseling Bermúdez',
             photo: 'jbermudez',
-            order: 6,
+            order: 6
           },
           sguadamuz: {
             name: 'Saida Guadamúz',
             role: 'Manicurista, Especialista en rubber, Pedicurista, Especialista en extracción',
             imageAlt: 'Foto de Saida Guadamúz',
             photo: 'sguadamuz',
-            order: 5,
+            order: 5
           },
           hrosales: {
             name: 'Haslly Rosales',
             role: 'Manicurista, Especialista en acrílico, Especialista en rubber, Pedicurista',
             imageAlt: 'Foto de Haslly Rosales',
             photo: 'hrosales',
-            order: 1,
+            order: 1
           },
           mduarte: {
             name: 'María Duarte',
             role: 'Administradora, Maquillista, Lashista, Especialista en estética facial',
             imageAlt: 'Foto de María Duarte',
             photo: 'mduarte',
-            order: 2,
+            order: 2
           },
           nguadamuz: {
             name: 'Nubia Guadamúz',
             role: 'Masajista, Tratamientos corporales',
             imageAlt: 'Foto de Nubia Guadamúz',
             photo: 'nguadamuz',
-            order: 3,
-          },
-        },
-      },
-    },
+            order: 3
+          }
+        }
+      }
+    }
   },
   en: {
     header: {
@@ -844,10 +844,10 @@ export const dictionary = {
         history: 'Our Story', // Más común para "Historia" en webs
         services: 'Services',
         packages: 'Packages',
-        logoTooltip: 'Go to homepage',
+        logoTooltip: 'Go to homepage'
       },
       headerButton: {
-        book: 'Book', // Mayúscula para consistencia en botones
+        book: 'Book' // Mayúscula para consistencia en botones
       },
       dropdown: {
         text: 'My Bag',
@@ -859,52 +859,52 @@ export const dictionary = {
         clear: 'Clear bag',
         book: 'Book Now!',
         exploreServices: 'Explore Services',
-        clearTooltip: 'Remove all selected services',
-      },
+        clearTooltip: 'Remove all selected services'
+      }
     },
     footer: {
       cta: {
         title: 'Book Your Appointment Today!',
         description:
           'Schedule your session with our wellness specialists anytime, anywhere',
-        button: 'Book Now!',
+        button: 'Book Now!'
       },
       columns: {
         contact: {
           title: 'Contact',
           address: 'Iglesia La Merced, 1C N, 10v O, Granada',
-          addressTooltip: 'View location on Google Maps',
+          addressTooltip: 'View location on Google Maps'
         },
         nav: {
           title: 'Navigation',
           book: 'Book Appointment',
           services: 'Services',
           history: 'Our Story',
-          packages: 'Packages',
+          packages: 'Packages'
         },
         about: {
           title: 'About Us',
           who: 'Who We Are',
           team: 'Our Team',
-          blog: 'Blog',
+          blog: 'Blog'
         },
         social: {
           title: 'Social',
           facebook: 'Facebook',
           facebookTooltip: 'Follow us on Facebook',
           instagram: 'Instagram',
-          instagramTooltip: 'Follow us on Instagram',
-        },
+          instagramTooltip: 'Follow us on Instagram'
+        }
       },
       help: {
         title: 'Need help with your booking?',
         contact: 'Contact us:',
-        subtitle: 'We are here to assist you with your booking',
+        subtitle: 'We are here to assist you with your booking'
       },
       legal: {
         copyright: copyrightEn,
-        subtitle: authorsEn,
-      },
+        subtitle: authorsEn
+      }
     },
     home: {
       pageTitle: 'Home',
@@ -913,7 +913,7 @@ export const dictionary = {
         description:
           'Discover a space designed for your wellness and peace, where every service is crafted to restore your balance',
         button_1: 'Explore Services',
-        button_2: 'View Packages',
+        button_2: 'View Packages'
       },
       section_2: {
         title: 'Why Choose Calma?',
@@ -922,26 +922,26 @@ export const dictionary = {
           p1: {
             title: 'Personalized Care',
             description:
-              'Each client receives a unique treatment tailored to their needs',
+              'Each client receives a unique treatment tailored to their needs'
           },
           p2: {
             title: 'Safe Environment',
             description:
-              'We create a welcoming, safe space so you feel comfortable',
+              'We create a welcoming, safe space so you feel comfortable'
           },
           p3: {
             title: 'Experienced staff',
             description:
-              'Our team has extensive experience and specialized training',
-          },
-        },
+              'Our team has extensive experience and specialized training'
+          }
+        }
       },
       section_3: {
         title: 'Start Your Journey to Tranquility',
         description:
           'Explore our services and find the perfect fit for your needs',
-        button: 'Explore Services',
-      },
+        button: 'Explore Services'
+      }
     },
     history: {
       pageTitle: 'Our Story',
@@ -955,7 +955,7 @@ export const dictionary = {
           'Today, Calma is recognized for its commitment to wellness and dedication. Every corner reflects our attention to detail and our deep respect for those who visit us. Our purpose is to continue growing with the intention of expanding our services without losing the essence that defines us. Calma is more than a physical space; it is an invitation to reconnect with yourself, breathe deeply, and find your balance.',
         end_tag: 'Much Love,',
         owners: authors.replace(/y/g, '&'),
-        imageAlt: 'Representative image of our story',
+        imageAlt: 'Representative image of our story'
       },
       section_2: {
         title: 'Who We Are?',
@@ -964,8 +964,8 @@ export const dictionary = {
           'We hope to achieve a wellness experience that nurture the body, and mind through personalized services, within a environment designed for relaxation and inner renewal',
         missionTitle: 'Our Mission',
         missionDescription:
-          'To offer a space where our clients can find their inner calm through treatments and exceptional service that prioritize wellness',
-      },
+          'To offer a space where our clients can find their inner calm through treatments and exceptional service that prioritize wellness'
+      }
     },
     packages: {
       pageTitle: 'Our Packages',
@@ -992,8 +992,8 @@ export const dictionary = {
               'Hair mask',
               'SPA shampoo & wash',
               'Blow-dry & styling',
-              'Facial or massage of choice',
-            ],
+              'Facial or massage of choice'
+            ]
           },
           {
             icono: 'champagne-glasses',
@@ -1009,8 +1009,8 @@ export const dictionary = {
               'Elegant hairstyle',
               'VIP skin prep',
               'Full makeup',
-              'Mini bottle of champagne',
-            ],
+              'Mini bottle of champagne'
+            ]
           },
           {
             icono: 'rings-wedding',
@@ -1026,10 +1026,10 @@ export const dictionary = {
               'Relaxing massage',
               'Hair treatment with mask',
               'Waxing (face or body)',
-              'Bottle of champagne',
-            ],
-          },
-        ],
+              'Bottle of champagne'
+            ]
+          }
+        ]
       },
       section_2: {
         faq: {
@@ -1038,21 +1038,21 @@ export const dictionary = {
             {
               question: 'Can I customize a package?',
               answer:
-                'Each package can be customized to accommodate the need of every client or group. Contact us to tailor the package to your needs.',
+                'Each package can be customized to accommodate the need of every client or group. Contact us to tailor the package to your needs.'
             },
             {
               question: 'Should I book in advanced?',
               answer:
-                'Yes, you should book in advanced to coordinate dates and times.',
+                'Yes, you should book in advanced to coordinate dates and times.'
             },
             {
               question: 'How long does each package last?',
               answer:
-                'Packages are personalized to meet the need of each client which makes the times adjustable.',
-            },
-          ],
-        },
-      },
+                'Packages are personalized to meet the need of each client which makes the times adjustable.'
+            }
+          ]
+        }
+      }
     },
     services: {
       pageTitle: 'Our Services',
@@ -1060,10 +1060,10 @@ export const dictionary = {
       cardFooter: {
         expandable: {
           expanded: 'That’s all for now!',
-          collapsed: 'Discover all services!',
+          collapsed: 'Discover all services!'
         },
         static: 'You’ve seen it all!',
-        minimal: 'Small but unique!',
+        minimal: 'Small but unique!'
       },
       section_1: {
         title: 'Available Services',
@@ -1081,91 +1081,91 @@ export const dictionary = {
                 services: {
                   regular: {
                     name: 'Regular',
-                    description: 'Cleaning, Regular polish',
+                    description: 'Cleaning, Regular polish'
                   },
                   spa: {
                     name: 'SPA',
                     description:
-                      'Cleaning, massage, Moisturizing gloves, regular polish',
+                      'Cleaning, massage, Moisturizing gloves, regular polish'
                   },
                   vip: {
                     name: 'VIP',
                     description:
-                      'Cleaning, Epsom salt, hot towels + massage, paraffin, regular polish',
+                      'Cleaning, Epsom salt, hot towels + massage, paraffin, regular polish'
                   },
                   gel: { name: 'Gel', description: 'Cleaning + gel polish' },
                   spaGel: {
                     name: 'SPA Gel',
                     description:
-                      'Cleaning, massage, Moisturizing gloves + gel polish',
+                      'Cleaning, massage, Moisturizing gloves + gel polish'
                   },
                   vipGel: {
                     name: 'VIP Gel',
                     description:
-                      'Cleaning, Epsom salt, hot towels + massage, paraffin, gel polish',
-                  },
-                },
+                      'Cleaning, Epsom salt, hot towels + massage, paraffin, gel polish'
+                  }
+                }
               },
               pedicure: {
                 name: 'Pedicure',
                 services: {
                   regular: {
                     name: 'Regular',
-                    description: 'Cleaning, Regular polish',
+                    description: 'Cleaning, Regular polish'
                   },
                   spa: {
                     name: 'SPA',
                     description:
-                      'Deep cleansing, salt scrub, massage, hydrating mask or hot towels, and regular polish',
+                      'Deep cleansing, salt scrub, massage, hydrating mask or hot towels, and regular polish'
                   },
                   vip: {
                     name: 'VIP',
                     description:
-                      'Deep cleansing, jelly bath, massage, and regular polish',
+                      'Deep cleansing, jelly bath, massage, and regular polish'
                   },
                   gel: { name: 'Gel', description: 'Cleaning + gel polish' },
                   spaGel: {
                     name: 'SPA Gel',
                     description:
-                      'Deep cleaning, salt scrub, massage, moisturizing mask or hot towels, gel polish',
+                      'Deep cleaning, salt scrub, massage, moisturizing mask or hot towels, gel polish'
                   },
                   vipGel: {
                     name: 'VIP Gel',
                     description:
-                      'Deep cleaning, jelly bath, massage, gel polish',
-                  },
-                },
+                      'Deep cleaning, jelly bath, massage, gel polish'
+                  }
+                }
               },
               acrilicas: {
                 name: 'Acrylics',
                 services: {
                   naturales: {
                     name: 'Natural',
-                    description: 'Natural acrylic nails',
+                    description: 'Natural acrylic nails'
                   },
                   almond: {
                     name: 'Almond',
-                    description: 'Almond-shaped acrylic nails',
+                    description: 'Almond-shaped acrylic nails'
                   },
                   coffin: {
                     name: 'Coffin',
-                    description: 'Coffin-shaped acrylic nails',
+                    description: 'Coffin-shaped acrylic nails'
                   },
                   esculturales: {
                     name: 'Sculpted',
-                    description: 'Sculpted acrylic nails',
+                    description: 'Sculpted acrylic nails'
                   },
                   refill: { name: 'Refill', description: 'Acrylic refill' },
                   banoAcrilico: {
                     name: 'Base Coat',
-                    description: 'Base application',
+                    description: 'Base application'
                   },
                   rubber: { name: 'Rubber', description: 'Rubber application' },
                   poly: {
                     name: 'Poly Gel',
-                    description: 'Poly Gel application',
-                  },
-                },
+                    description: 'Poly Gel application'
+                  }
+                }
               },
               extras: {
                 name: 'Extras',
@@ -1173,63 +1173,63 @@ export const dictionary = {
                   limpieza: { name: 'Cleaning', description: 'Nail cleaning' },
                   decoracion: {
                     name: 'Decoration',
-                    description: 'Nail decoration',
+                    description: 'Nail decoration'
                   },
                   gelCalcio: {
                     name: 'Calcium Gel',
-                    description: 'Calcium gel application',
+                    description: 'Calcium gel application'
                   },
                   extensionCalcio: {
                     name: 'Calcium Extension',
-                    description: 'Calcium gel extension',
+                    description: 'Calcium gel extension'
                   },
                   gelFrio: {
                     name: 'Cold Gel',
-                    description: 'Cold gel application',
+                    description: 'Cold gel application'
                   },
                   topGelFrio: {
                     name: 'Cold Gel Top',
-                    description: 'Cold gel topcoat',
+                    description: 'Cold gel topcoat'
                   },
                   parafina: {
                     name: 'Paraffin',
-                    description: 'Paraffin treatment',
+                    description: 'Paraffin treatment'
                   },
                   botasTermicas: {
                     name: 'Thermal Boots',
-                    description: 'Thermal boot treatment',
+                    description: 'Thermal boot treatment'
                   },
                   guantesHidratantes: {
                     name: 'Moisturizing Gloves',
-                    description: 'Hydrating glove treatment',
+                    description: 'Hydrating glove treatment'
                   },
                   esmalteRegular: {
                     name: 'Regular Polish',
-                    description: 'Regular nail polish application',
+                    description: 'Regular nail polish application'
                   },
                   esmalteGel: {
                     name: 'Gel Polish',
-                    description: 'Gel polish application',
+                    description: 'Gel polish application'
                   },
                   reparacionUñas: {
                     name: 'Nail Repair',
-                    description: 'Nail repair',
+                    description: 'Nail repair'
                   },
                   uñasExtraAcrilico: {
                     name: 'Extra Acrylic Nails',
-                    description: 'Additional acrylic nails',
+                    description: 'Additional acrylic nails'
                   },
                   retiroGel: {
                     name: 'Gel Removal',
-                    description: 'Gel polish removal',
+                    description: 'Gel polish removal'
                   },
                   retiroAcrilico: {
                     name: 'Acrylic Removal',
-                    description: 'Acrylic nail removal',
-                  },
-                },
-              },
-            },
+                    description: 'Acrylic nail removal'
+                  }
+                }
+              }
+            }
           },
           depilacion: {
             name: 'Waxing',
@@ -1239,29 +1239,29 @@ export const dictionary = {
                 services: {
                   laminacionCejas: {
                     name: 'Brow Lamination',
-                    description: 'Eyebrow lamination treatment',
+                    description: 'Eyebrow lamination treatment'
                   },
                   laminacionDiseno: {
                     name: 'Design Lamination',
-                    description: 'Eyebrow design  + lamination',
+                    description: 'Eyebrow design  + lamination'
                   },
                   laminacionTinte: {
                     name: 'Tint Lamination',
-                    description: 'Eyebrow lamination + tint',
+                    description: 'Eyebrow lamination + tint'
                   },
                   tinteCejas: {
                     name: 'Eyebrow Tint',
-                    description: 'Eyebrow tinting',
+                    description: 'Eyebrow tinting'
                   },
                   levantamientoPestanas: {
                     name: 'Lash Lift',
-                    description: 'Eyelash lifting',
+                    description: 'Eyelash lifting'
                   },
                   extensionPestanas: {
                     name: 'Lash Extensions',
-                    description: 'Eyelash extensions',
-                  },
-                },
+                    description: 'Eyelash extensions'
+                  }
+                }
               },
               depilacion: {
                 name: 'Wax',
@@ -1269,28 +1269,28 @@ export const dictionary = {
                   cejas: { name: 'Eyebrows', description: 'Eyebrow waxing' },
                   bigote: {
                     name: 'Upper Lip',
-                    description: 'Upper lip waxing',
+                    description: 'Upper lip waxing'
                   },
                   axilas: { name: 'Armpits', description: 'Armpit waxing' },
                   bikini: { name: 'Bikini', description: 'Bikini waxing' },
                   fullBikini: {
                     name: 'Full Bikini',
-                    description: 'Full bikini waxing',
+                    description: 'Full bikini waxing'
                   },
                   brazos: { name: 'Arms', description: 'Arm waxing' },
                   mediaPierna: {
                     name: '1/2 Leg',
-                    description: 'Half leg waxing',
+                    description: 'Half leg waxing'
                   },
                   piernaCompleta: {
                     name: 'Full Leg',
-                    description: 'Full leg waxing',
+                    description: 'Full leg waxing'
                   },
                   espalda: { name: 'Back', description: 'Back waxing' },
-                  gluteos: { name: 'Buttocks', description: 'Buttocks waxing' },
-                },
-              },
-            },
+                  gluteos: { name: 'Buttocks', description: 'Buttocks waxing' }
+                }
+              }
+            }
           },
           cabello: {
             name: 'Hair',
@@ -1300,37 +1300,37 @@ export const dictionary = {
                 services: {
                   lavadoExpress: {
                     name: 'Express Wash',
-                    description: 'Quick hair wash (1 shampoo application)',
+                    description: 'Quick hair wash (1 shampoo application)'
                   },
                   lavadoProfundo: {
                     name: 'Deep Wash',
                     description:
-                      'Deep cleansing hair wash (2 shampoo applications)',
+                      'Deep cleansing hair wash (2 shampoo applications)'
                   },
                   lavadoMascarilla: {
                     name: 'Wash + Mask',
                     description:
-                      'Hair wash + hydrating mask treatment (2 shampoo applications + mask)',
+                      'Hair wash + hydrating mask treatment (2 shampoo applications + mask)'
                   },
                   lavadoAmpolla: {
                     name: 'Wash serum capsule',
                     description:
-                      'Hair wash + serum capsule treatment (2 shampoo applications + ampoule)',
+                      'Hair wash + serum capsule treatment (2 shampoo applications + ampoule)'
                   },
                   relajanteExpress: {
                     name: 'Relaxing Express',
-                    description: 'Deep hair wash/serum capsule/scalp massage',
+                    description: 'Deep hair wash/serum capsule/scalp massage'
                   },
                   cabelloTratado: {
                     name: 'Treated Hair',
                     description:
-                      'Deep hair wash/hydrating hair mask/serum capsule treatment',
+                      'Deep hair wash/hydrating hair mask/serum capsule treatment'
                   },
                   aplicacionTinta: {
                     name: 'Dye Application',
-                    description: 'Hair dye application',
-                  },
-                },
+                    description: 'Hair dye application'
+                  }
+                }
               },
               estilismo: {
                 name: 'Styling',
@@ -1338,26 +1338,26 @@ export const dictionary = {
                   secado: { name: 'Blow Dry', description: 'Hair blow dry' },
                   planchado: {
                     name: 'Iron',
-                    description: 'Hair straightening with iron',
+                    description: 'Hair straightening with iron'
                   },
                   ondas: { name: 'Waves', description: 'Styling waves' },
                   peinadoSencillo: {
                     name: 'Simple Style',
-                    description: 'Simple hairstyle',
+                    description: 'Simple hairstyle'
                   },
                   peinadoElaborado: {
                     name: 'Elaborate Style',
-                    description: 'Complex hairstyle',
+                    description: 'Complex hairstyle'
                   },
                   trenzas: { name: 'Braids', description: 'Braiding hair' },
                   cortePuntas: { name: 'Trim', description: 'Hair trimming' },
                   corteEstilo: {
                     name: 'Style Cut',
-                    description: 'Complex haircut with styling',
-                  },
-                },
-              },
-            },
+                    description: 'Complex haircut with styling'
+                  }
+                }
+              }
+            }
           },
           spa: {
             name: 'SPA',
@@ -1367,45 +1367,45 @@ export const dictionary = {
                 services: {
                   maderoterapia: {
                     name: 'Wood Therapy',
-                    description: 'Sculpting / Lymphatic drainage massage',
+                    description: 'Sculpting / Lymphatic drainage massage'
                   },
                   masajeRelajante: {
                     name: 'Relaxing Massage',
                     description:
-                      'Gentle stroke treatment to reduce muscle tension',
+                      'Gentle stroke treatment to reduce muscle tension'
                   },
                   masajeProfundo: {
                     name: 'Deep Massage',
-                    description: 'Deep therapeutic massage / Hot towels',
-                  },
-                },
+                    description: 'Deep therapeutic massage / Hot towels'
+                  }
+                }
               },
               facial: {
                 name: 'Facial',
                 services: {
                   detoxGlow: {
                     name: 'Detox Glow',
-                    description: 'Detoxifying facial treatment',
+                    description: 'Detoxifying facial treatment'
                   },
                   guaSha: {
                     name: 'Gua Sha',
-                    description: 'Reduction of facial inflammation treatment',
+                    description: 'Reduction of facial inflammation treatment'
                   },
                   hydrafacial: {
                     name: 'Hydrafacial',
-                    description: 'Hydrating radiant skin treatment',
+                    description: 'Hydrating radiant skin treatment'
                   },
                   facialRefrescante: {
                     name: 'Refreshing Facial',
-                    description: 'Sculpting/tonifying facial treatment',
+                    description: 'Sculpting/tonifying facial treatment'
                   },
                   detoxEspalda: {
                     name: 'Back Detox',
-                    description: 'Deep back detoxification treatment',
-                  },
-                },
-              },
-            },
+                    description: 'Deep back detoxification treatment'
+                  }
+                }
+              }
+            }
           },
           complementos: {
             name: 'Add-ons',
@@ -1416,12 +1416,12 @@ export const dictionary = {
                   profesional: {
                     name: 'Professional',
                     description:
-                      'Professional makeup application for any occasion',
+                      'Professional makeup application for any occasion'
                   },
-                  pestanas: { name: 'Lashes', description: 'Lash application' },
-                },
-              },
-            },
+                  pestanas: { name: 'Lashes', description: 'Lash application' }
+                }
+              }
+            }
           },
           ninos: {
             name: 'Kids',
@@ -1431,26 +1431,26 @@ export const dictionary = {
                 services: {
                   regular: {
                     name: 'Regular Mani',
-                    description: 'General cleaning, regular polish',
+                    description: 'General cleaning, regular polish'
                   },
                   gel: {
                     name: 'Gel Mani',
-                    description: 'Cleaning + gel polish',
+                    description: 'Cleaning + gel polish'
                   },
                   regularPedi: {
                     name: 'Regular Pedi',
-                    description: 'General cleaning, regular polish',
+                    description: 'General cleaning, regular polish'
                   },
                   gelPedi: {
                     name: 'Gel Pedi',
-                    description: 'Cleaning + gel polish',
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
+                    description: 'Cleaning + gel polish'
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     },
     booking: {
       pageTitle: 'Appointments',
@@ -1470,7 +1470,7 @@ export const dictionary = {
       steps: {
         welcome: {
           title: 'Great! Let’s review what you’ve selected',
-          subtitle: 'Before booking, please review your chosen services',
+          subtitle: 'Before booking, please review your chosen services'
         },
         personalData: {
           title: 'Your contact information',
@@ -1480,16 +1480,16 @@ export const dictionary = {
             placeholder: "What's your name?",
             errors: {
               required: 'Name is required',
-              tooShort: 'Name is too short',
-            },
+              tooShort: 'Name is too short'
+            }
           },
           emailInput: {
             label: 'Email Address',
             placeholder: "What's your email?",
             errors: {
               required: 'Email is required',
-              invalid: 'Invalid email address',
-            },
+              invalid: 'Invalid email address'
+            }
           },
           phoneInput: {
             label: 'Phone Number',
@@ -1498,9 +1498,9 @@ export const dictionary = {
               required: 'Phone number is required',
               invalidUSA: 'Invalid number in the USA',
               invalidNic: 'Invalid number in Nicaragua',
-              invalid: 'Invalid number',
-            },
-          },
+              invalid: 'Invalid number'
+            }
+          }
         },
         schedule: {
           title: 'Choose date and time',
@@ -1512,8 +1512,8 @@ export const dictionary = {
             errors: {
               required: 'Date is required',
               pastDate: "You can't choose a past date",
-              weekend: "We don't work on weekends",
-            },
+              weekend: "We don't work on weekends"
+            }
           },
           timeInput: {
             label: 'Time',
@@ -1523,13 +1523,13 @@ export const dictionary = {
               invalid: 'Invalid time',
               pastTime: "You can't choose a past time",
               requiredAnticipation: 'At least 1 hour notice is required',
-              available: 'Time not available (8:00 AM - 6:00 PM)',
-            },
+              available: 'Time not available (8:00 AM - 6:00 PM)'
+            }
           },
           messageInput: {
             label: 'Additional Message (Optional)',
-            placeholder: 'Any special instructions?',
-          },
+            placeholder: 'Any special instructions?'
+          }
         },
 
         confirmation: {
@@ -1537,51 +1537,51 @@ export const dictionary = {
           success: {
             title: 'Booking sent successfully!',
             details:
-              'We will contact you shortly to confirm your appointment details.',
+              'We will contact you shortly to confirm your appointment details.'
           },
           error: {
             title: 'Error sending booking',
             details:
-              'There was a problem submitting your booking. Please try again later.',
-          },
+              'There was a problem submitting your booking. Please try again later.'
+          }
         },
         final: {
           title: 'Almost done!',
           confirmtext: 'your appointment is scheduled for',
           confirmtext2: 'at',
-          details: 'Expect a confirmation message via email or WhatsApp.',
+          details: 'Expect a confirmation message via email or WhatsApp.'
         },
         noServices: {
           title: 'Oops! You didn’t select any services',
           subtitle:
-            'It looks like you haven’t added any services to your bag yet.',
-        },
+            'It looks like you haven’t added any services to your bag yet.'
+        }
       },
       success: {
         title: 'Booking Successful',
         subtitle: 'Your booking was completed successfully!',
         message:
           'Thank you for booking with us! We will contact you soon to confirm the details of your appointment.',
-        buttonText: 'Back to Home',
+        buttonText: 'Back to Home'
       },
       failed: {
         title: 'Booking Error',
         subtitle: 'There was an error with your booking',
         message:
           'There was a problem submitting your booking. Please try again later.',
-        buttonText: 'Back to Home',
-      },
+        buttonText: 'Back to Home'
+      }
     },
 
     floatingButton: {
       whatsappButtonText: 'Write to us on WhatsApp',
-      bookingButtontext: 'Book with us',
+      bookingButtontext: 'Book with us'
     },
     team: {
       pageTitle: 'Our Team',
       section_1: {
         title: 'Our team of experts is here',
-        description: 'Meet the professionals who make our mission possible',
+        description: 'Meet the professionals who make our mission possible'
       },
       section_2: {
         profiles: {
@@ -1590,45 +1590,45 @@ export const dictionary = {
             role: 'Hair Stylist, Waxing Specialist, Nail Technician, Pedicurist',
             imageAlt: 'Photo of Auxiliadora Gazo',
             photo: 'agazo',
-            order: 4,
+            order: 4
           },
           jbermudez: {
             name: 'Joseling Bermúdez',
             role: 'Nail Technician, Acrylic Specialist, Rubber Polygel Specialist, Hair Stylist, Waxing Specialist',
             imageAlt: 'Photo of Joseling Bermúdez',
             photo: 'jbermudez',
-            order: 6,
+            order: 6
           },
           sguadamuz: {
             name: 'Saida Guadamúz',
             role: 'Nail Technician, Rubber Specialist, Pedicurist, Extraction Specialist',
             imageAlt: 'Photo of Saida Guadamúz',
             photo: 'sguadamuz',
-            order: 5,
+            order: 5
           },
           hrosales: {
             name: 'Haslly Rosales',
             role: 'Nail Technician, Acrylic Specialist, Rubber Specialist, Pedicurist',
             imageAlt: 'Photo of Haslly Rosales',
             photo: 'hrosales',
-            order: 1,
+            order: 1
           },
           mduarte: {
             name: 'María Duarte',
             role: 'Manager, Makeup Artist, Lash Technician, Facial Aesthetics Specialist',
             imageAlt: 'Photo of María Duarte',
             photo: 'mduarte',
-            order: 2,
+            order: 2
           },
           nguadamuz: {
             name: 'Nubia Guadamúz',
             role: 'Massage Therapist, Body Treatments',
             imageAlt: 'Photo of Nubia Guadamúz',
             photo: 'nguadamuz',
-            order: 3,
-          },
-        },
-      },
-    },
-  },
+            order: 3
+          }
+        }
+      }
+    }
+  }
 }

@@ -127,5 +127,5 @@ export {
   Users,
   Whatsapp,
   WifiExclamation,
-  Xmark,
+  Xmark
 }

@@ -12,7 +12,7 @@ const Stepper = ({
   formData,
   setFormData,
   onSubmit,
-  isSubmitting,
+  isSubmitting
 }) => {
   const { t } = useLang()
   // Extraer los pasos del contenido
@@ -60,18 +60,18 @@ const Stepper = ({
           {steps.map((step, index) => {
             const stepClasses = classNames('d-flex align-items-center flex-1', {
               'step-completed': index < activeStep,
-              'step-active': index === activeStep,
+              'step-active': index === activeStep
             })
             const indicatorClasses = classNames(
               'steps-indicator d-flex align-items-center rounded-circle-lg',
               {
                 'bg-primary text-white': index <= activeStep,
-                'bg-primary-50': index > activeStep,
+                'bg-primary-50': index > activeStep
               }
             )
             const connectorClasses = classNames('step-conector mx-2', {
               'step-conector-active': index < activeStep,
-              'bg-primary-50': index >= activeStep,
+              'bg-primary-50': index >= activeStep
             })
             const isCompleted = index < activeStep
 
@@ -92,7 +92,7 @@ const Stepper = ({
                           transition={{
                             type: 'spring',
                             stiffness: 300,
-                            damping: 20,
+                            damping: 20
                           }}
                         >
                           <Icon name='check' />
@@ -106,7 +106,7 @@ const Stepper = ({
                           transition={{
                             type: 'spring',
                             stiffness: 300,
-                            damping: 20,
+                            damping: 20
                           }}
                         >
                           {index + 1}
@@ -136,7 +136,7 @@ const Stepper = ({
               setFormData,
               getField,
               validateField,
-              clearField,
+              clearField
             })}
         </AnimatePresence>
       </div>
@@ -163,7 +163,7 @@ const StepperActions = ({
   nextStep,
   isLastStep,
   onSubmit,
-  isSubmitting,
+  isSubmitting
 }) => {
   const { t } = useLang()
   const [sentinelRef, isSticky] = useSentinel({ offset: -32 })
@@ -171,7 +171,7 @@ const StepperActions = ({
     'stepper-actions d-flex max-wx-md-500 justify-content-center gap-3 position-sticky bottom-2 w-100 py-3 mt-5',
     {
       'stepper-actions-sticky rounded-all-lg z-index-30 bg-white border':
-        isSticky,
+        isSticky
     }
   )
 
@@ -199,7 +199,7 @@ const StepperActions = ({
                 : 'arrow-right',
             position: 'right',
             animation: isSubmitting ? 'spin' : '',
-            variant: isSubmitting ? 'solid' : 'regular',
+            variant: isSubmitting ? 'solid' : 'regular'
           }}
           className={`flex-1 ${isLastStep ? 'btn btn-success' : 'btn btn-primary'}`}
           onClick={!isSubmitting ? (isLastStep ? onSubmit : nextStep) : null}
@@ -224,10 +224,10 @@ const Step = ({
   setFormData,
   getField,
   validateField,
-  clearField,
+  clearField
 }) => {
   const stepClasses = classNames('step w-100', className, {
-    'step-active': active,
+    'step-active': active
   })
 
   return (
@@ -244,7 +244,7 @@ const Step = ({
           setFormData,
           getField,
           validateField,
-          clearField,
+          clearField
         })}
       </div>
     </motion.div>

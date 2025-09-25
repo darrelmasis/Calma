@@ -18,7 +18,7 @@ const AddService = ({ categoryId, subCategoryId, serviceId, className }) => {
     : { name: 'circle-plus', color: 'text-muted' }
 
   const addServiceButtonClasses = classNames('add-service-button', className, {
-    added: isAdded,
+    added: isAdded
   })
 
   const iconRef = useRef(null)

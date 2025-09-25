@@ -14,7 +14,7 @@ export const useSentinel = ({ threshold = 0, offset = 0 } = {}) => {
       {
         root: null, // viewport
         threshold,
-        rootMargin: `0px 0px ${offset}px 0px`, // offset en px desde el bottom
+        rootMargin: `0px 0px ${offset}px 0px` // offset en px desde el bottom
       }
     )
 

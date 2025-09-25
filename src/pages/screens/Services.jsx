@@ -255,7 +255,7 @@ const Services = () => {
         })}
         {/* </div > */}
       </Fragment>
-    ),
+    )
   }))
 
   return (

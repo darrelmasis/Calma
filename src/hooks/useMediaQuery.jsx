@@ -6,7 +6,7 @@ const breakpoints = {
   md: 768,
   lg: 992,
   xl: 1200,
-  xxl: 1400,
+  xxl: 1400
 }
 
 // Convierte nombre de breakpoint o número a valor en px

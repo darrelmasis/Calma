@@ -9,11 +9,11 @@ export const SidebarMenuTabs = ({
   tabs,
   activeTab,
   setActiveTab,
-  viewAllButtonText,
+  viewAllButtonText
 }) => {
   const allTabs = [
     { id: 'all', label: viewAllButtonText, icon: 'table-columns' },
-    ...tabs.map((tab) => ({ id: tab.id, label: tab.label })),
+    ...tabs.map((tab) => ({ id: tab.id, label: tab.label }))
   ]
   const activeTabIndex = tabs.findIndex((tab) => tab.id === activeTab)
   const { t } = useLang()
@@ -41,10 +41,10 @@ export const SidebarMenuTabs = ({
                   name: tab.icon,
                   size: 'sm',
                   variant: 'duotones',
-                  duotone: 'regular',
+                  duotone: 'regular'
                 }}
                 className={classNames('text-wrap-nowrap', {
-                  'ghost-active': tab.id === activeTab,
+                  'ghost-active': tab.id === activeTab
                 })}
                 onClick={() => setActiveTab(tab.id)}
               />

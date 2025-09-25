@@ -4,7 +4,7 @@ import React, {
   useContext,
   useRef,
   useState,
-  useMemo,
+  useMemo
 } from 'react'
 import {
   useFloating,
@@ -19,7 +19,7 @@ import {
   useTransitionStyles,
   FloatingPortal,
   FloatingArrow,
-  arrow,
+  arrow
 } from '@floating-ui/react'
 
 const DropdownContext = createContext(null)
@@ -33,7 +33,7 @@ export const Dropdown = ({ children, closeOnClickOutside = true }) => {
       offset(8),
       flip(),
       shift({ padding: 8 }),
-      arrow({ element: arrowEl }),
+      arrow({ element: arrowEl })
     ],
     [arrowEl]
   )
@@ -43,7 +43,7 @@ export const Dropdown = ({ children, closeOnClickOutside = true }) => {
     onOpenChange: setOpen,
     placement: 'bottom-end',
     middleware,
-    whileElementsMounted: autoUpdate,
+    whileElementsMounted: autoUpdate
   })
 
   const click = useClick(context)
@@ -62,9 +62,9 @@ export const Dropdown = ({ children, closeOnClickOutside = true }) => {
         top: 'bottom',
         bottom: 'top',
         left: 'right',
-        right: 'left',
-      }[side],
-    }),
+        right: 'left'
+      }[side]
+    })
   })
 
   const contextValue = {
@@ -80,7 +80,7 @@ export const Dropdown = ({ children, closeOnClickOutside = true }) => {
     strategy,
     isMounted,
     transitionStyles,
-    setArrowEl,
+    setArrowEl
   }
 
   return (
@@ -116,7 +116,7 @@ export const DropdownContent = ({ children }) => {
     isMounted,
     transitionStyles,
     context,
-    setArrowEl,
+    setArrowEl
   } = useContext(DropdownContext)
 
   if (!isMounted) return null
@@ -133,7 +133,7 @@ export const DropdownContent = ({ children }) => {
           left: x ?? 0,
           ...transitionStyles,
           willChange: 'transform, opacity',
-          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
         }}
       >
         <FloatingArrow

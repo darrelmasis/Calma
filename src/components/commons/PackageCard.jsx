@@ -8,7 +8,7 @@ const PackageCard = ({
   descripcion,
   servicios,
   isFeatured,
-  featuredText,
+  featuredText
 }) => {
   const { t } = useLang()
   const currencySymbol = <span className='text-white fs-lead'>$</span>

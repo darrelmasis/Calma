@@ -5,7 +5,7 @@ export const HorizontalScroll = ({
   children,
   className,
   classNameContainer,
-  activeIndex,
+  activeIndex
 }) => {
   const scrollRef = useRef(null)
   const [showLeft, setShowLeft] = useState(false)
@@ -35,7 +35,7 @@ export const HorizontalScroll = ({
     const childCenter = child.offsetLeft + child.offsetWidth / 2
     el.scrollTo({
       left: childCenter - elCenter,
-      behavior: 'smooth',
+      behavior: 'smooth'
     })
   }
 

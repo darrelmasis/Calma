@@ -4,7 +4,7 @@ import React, {
   useContext,
   useState,
   useEffect,
-  useMemo,
+  useMemo
 } from 'react'
 import { useSound } from '../components/commons/SoundManager'
 import { ServicesData } from '../data/services'
@@ -124,7 +124,7 @@ export const SelectedServicesProvider = ({ children }) => {
           serviceName,
           serviceDescription,
           servicePrice,
-          subCategoryId,
+          subCategoryId
         }
       })
     })
@@ -142,7 +142,7 @@ export const SelectedServicesProvider = ({ children }) => {
         removeService,
         clearServices,
         getServicePrice,
-        isLoaded,
+        isLoaded
       }}
     >
       {children}

@@ -1,11 +1,11 @@
 // generate-robots.js
-import fs from 'fs';
-import path from 'path';
-import dotenv from 'dotenv';
+import fs from 'fs'
+import path from 'path'
+import dotenv from 'dotenv'
 
-dotenv.config({ quiet: true });
+dotenv.config({ quiet: true })
 
-const calmaUrl = process.env.VITE_CALMA_URL;
+const calmaUrl = process.env.VITE_CALMA_URL
 
 // Configuración básica
 const robotsConfig = {
@@ -13,41 +13,41 @@ const robotsConfig = {
   disallow: [
     // Rutas que NO quieres indexar
     '/admin',
-    '/private',
+    '/private'
   ],
   allow: [
     // Rutas que sí quieres indexar (opcional)
-    '/',
+    '/'
   ],
-  userAgent: '*', // Googlebot o * para todos
-};
+  userAgent: '*' // Googlebot o * para todos
+}
 
 // Genera el contenido del robots.txt
 const generateRobotsTxt = (config) => {
-  let content = `User-agent: ${config.userAgent}\n`;
+  let content = `User-agent: ${config.userAgent}\n`
 
   if (config.allow?.length) {
     config.allow.forEach((url) => {
-      content += `Allow: ${url}\n`;
-    });
+      content += `Allow: ${url}\n`
+    })
   }
 
   if (config.disallow?.length) {
     config.disallow.forEach((url) => {
-      content += `Disallow: ${url}\n`;
-    });
+      content += `Disallow: ${url}\n`
+    })
   }
 
   if (config.sitemap) {
-    content += `Sitemap: ${config.sitemap}\n`;
+    content += `Sitemap: ${config.sitemap}\n`
   }
 
-  return content;
-};
+  return content
+}
 
 // Escribir el archivo robots.txt en la carpeta public
-const robotsTxt = generateRobotsTxt(robotsConfig);
-const outputPath = path.join(process.cwd(), 'public', 'robots.txt');
+const robotsTxt = generateRobotsTxt(robotsConfig)
+const outputPath = path.join(process.cwd(), 'public', 'robots.txt')
 
-fs.writeFileSync(outputPath, robotsTxt);
-console.log('✅ robots.txt generado correctamente');
+fs.writeFileSync(outputPath, robotsTxt)
+console.log('✅ robots.txt generado correctamente')

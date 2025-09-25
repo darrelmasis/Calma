@@ -8,13 +8,13 @@ const VALIDATIONS = {
       return isStrict
         ? {
             state: 'error',
-            message: t('booking.steps.personalData.nameInput.errors.required'),
+            message: t('booking.steps.personalData.nameInput.errors.required')
           }
         : { state: 'normal' }
     if (value.trim().length < 5)
       return {
         state: 'error',
-        message: t('booking.steps.personalData.nameInput.errors.tooShort'),
+        message: t('booking.steps.personalData.nameInput.errors.tooShort')
       }
     return { state: 'success' }
   },
@@ -24,13 +24,13 @@ const VALIDATIONS = {
       return isStrict
         ? {
             state: 'error',
-            message: t('booking.steps.personalData.emailInput.errors.required'),
+            message: t('booking.steps.personalData.emailInput.errors.required')
           }
         : { state: 'normal' }
     if (!/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value))
       return {
         state: 'error',
-        message: t('booking.steps.personalData.emailInput.errors.invalid'),
+        message: t('booking.steps.personalData.emailInput.errors.invalid')
       }
     return { state: 'success' }
   },
@@ -40,7 +40,7 @@ const VALIDATIONS = {
       return isStrict
         ? {
             state: 'error',
-            message: t('booking.steps.personalData.phoneInput.errors.required'),
+            message: t('booking.steps.personalData.phoneInput.errors.required')
           }
         : { state: 'normal' }
 
@@ -50,17 +50,17 @@ const VALIDATIONS = {
     if (prefix === '+1' && !/^\d{10}$/.test(digits))
       return {
         state: 'error',
-        message: t('booking.steps.personalData.phoneInput.errors.invalidUSA'),
+        message: t('booking.steps.personalData.phoneInput.errors.invalidUSA')
       }
     if (prefix === '+505' && !/^\d{8}$/.test(digits))
       return {
         state: 'error',
-        message: t('booking.steps.personalData.phoneInput.errors.invalidNic'),
+        message: t('booking.steps.personalData.phoneInput.errors.invalidNic')
       }
     if (digits.length < 8 || digits.length > 15)
       return {
         state: 'error',
-        message: t('booking.steps.personalData.phoneInput.errors.invalid'),
+        message: t('booking.steps.personalData.phoneInput.errors.invalid')
       }
 
     return { state: 'success' }
@@ -71,7 +71,7 @@ const VALIDATIONS = {
       return isStrict
         ? {
             state: 'error',
-            message: t('booking.steps.schedule.dateInput.errors.required'),
+            message: t('booking.steps.schedule.dateInput.errors.required')
           }
         : { state: 'normal' }
 
@@ -89,12 +89,12 @@ const VALIDATIONS = {
         ? { state: 'success' }
         : {
             state: 'error',
-            message: t('booking.steps.schedule.dateInput.errors.pastDate'),
+            message: t('booking.steps.schedule.dateInput.errors.pastDate')
           }
     } catch (error) {
       return {
         state: 'error',
-        message: t('booking.steps.schedule.dateInput.errors.invalid'),
+        message: t('booking.steps.schedule.dateInput.errors.invalid')
       }
     }
   },
@@ -104,14 +104,14 @@ const VALIDATIONS = {
       return isStrict
         ? {
             state: 'error',
-            message: t('booking.steps.schedule.timeInput.errors.required'),
+            message: t('booking.steps.schedule.timeInput.errors.required')
           }
         : { state: 'normal' }
 
     if (!/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/.test(value)) {
       return {
         state: 'error',
-        message: t('booking.steps.schedule.timeInput.errors.invalid'),
+        message: t('booking.steps.schedule.timeInput.errors.invalid')
       }
     }
 
@@ -123,7 +123,7 @@ const VALIDATIONS = {
         if (selectedDateTime < now) {
           return {
             state: 'error',
-            message: t('booking.steps.schedule.timeInput.errors.pastTime'),
+            message: t('booking.steps.schedule.timeInput.errors.pastTime')
           }
         }
 
@@ -133,7 +133,7 @@ const VALIDATIONS = {
             state: 'error',
             message: t(
               'booking.steps.schedule.timeInput.errors.requiredAnticipation'
-            ),
+            )
           }
         }
       } catch {}
@@ -143,17 +143,17 @@ const VALIDATIONS = {
     if (hours < 8 || hours > 18) {
       return {
         state: 'error',
-        message: t('booking.steps.schedule.timeInput.errors.available'),
+        message: t('booking.steps.schedule.timeInput.errors.available')
       }
     }
 
     return { state: 'success' }
-  },
+  }
 }
 
 const STEP_FIELDS = {
   1: ['name', 'email', 'phone'],
-  2: ['date', 'time'],
+  2: ['date', 'time']
 }
 
 // Helper function para formatear hora
@@ -214,6 +214,6 @@ export const useBookingValidation = () => {
     validateStep,
     validateField,
     getField,
-    clearField,
+    clearField
   }
 }

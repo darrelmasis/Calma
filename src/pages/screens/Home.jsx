@@ -37,9 +37,9 @@ const Home = () => {
               name: 'spa',
               size: 'lg',
               variant: 'duotones',
-              duotone: 'regular',
-            },
-          },
+              duotone: 'regular'
+            }
+          }
         ]}
         alignContent='start'
       />
@@ -169,7 +169,7 @@ const Home = () => {
               label={t('home.section_3.button')}
               size='large'
               icon={{
-                name: 'spa',
+                name: 'spa'
               }}
             />
           </Fade>

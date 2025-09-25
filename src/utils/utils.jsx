@@ -27,7 +27,7 @@ const USD = ({
   currencySymbol = '$',
   size = 'regular',
   className,
-  prefix,
+  prefix
 }) => {
   const [isValidNumber, setIsValidNumber] = useState(true)
 
@@ -44,7 +44,7 @@ const USD = ({
     xsmall: 'fs-xsmall',
     small: 'fs-small',
     regular: 'fs-regular',
-    large: 'fs-h5 fw-bold',
+    large: 'fs-h5 fw-bold'
   }
 
   const containerClasses = classNames(
@@ -91,8 +91,8 @@ const formatDate = (date, format = 'short', locale = 'es-ES') => {
       month: 'long',
       year: 'numeric',
       hour: 'numeric',
-      minute: 'numeric',
-    },
+      minute: 'numeric'
+    }
   }
 
   const options = optionsMap[format] || optionsMap.short
