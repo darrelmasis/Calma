@@ -1,7 +1,7 @@
 // Componente Grupo Accordion
 import React, { useState, Children, cloneElement, isValidElement } from 'react';
 
-export const AccordionGroup = ({ children }) => {
+export const AccordionGroup = ({ children, className }) => {
   const [indiceActivo, establecerIndiceActivo] = useState(null);
 
   const manejarAlternar = (indice) => {
@@ -39,5 +39,7 @@ export const AccordionGroup = ({ children }) => {
     return hijo;
   });
 
-  return <div>{hijosClonados}</div>;
-};
+  const accordionGroupClases = `accordion-group ${className || ''}`;
+
+  return <div className={accordionGroupClases}>{hijosClonados}</div>;
+}
