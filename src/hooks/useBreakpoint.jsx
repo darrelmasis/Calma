@@ -30,8 +30,8 @@ export function useDevice() {
   // Función para determinar el tipo de dispositivo
   const getDeviceType = (width) => {
     if (width < BREAKPOINTS.md) return 'mobile' // hasta <768
-    if (width < BREAKPOINTS.lg) return 'tablet' // 768 - 991
-    return 'desktop' // >= 992
+    if (width < BREAKPOINTS.xl) return 'tablet' // 768 - 1199
+    return 'desktop' // >= 1200
   }
 
   // Estado inicial: ancho + tipo de dispositivo
