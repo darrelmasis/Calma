@@ -1,10 +1,20 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import classNames from 'classnames'
 import { Icon } from '../commons/Icons'
 import { Link } from 'react-router-dom'
+import { motion, useAnimation } from 'framer-motion'
+
+// Helper para obtener el valor anterior
+function usePrevious(value) {
+  const ref = useRef()
+  useEffect(() => {
+    ref.current = value
+  }, [value])
+  return ref.current
+}
 
 export const Button = ({
-  as = 'button', // button | a | link
+  as = 'button', // 'button' | 'a' | 'link'
   size = 'medium',
   variant = 'initial',
   ghost = false,
@@ -20,23 +30,28 @@ export const Button = ({
   ariaLabel,
   to, // para Link
   href, // para <a>
+  badge = null, // número o string
   ...rest
 }) => {
   const hasChildren = React.Children.count(children) > 0
   const hasLabel = Boolean(label)
   const isIconOnly = !hasLabel && !hasChildren
 
-  // Valores por defecto de un icono
+  // Para animar SOLO cuando el badge cambia
+  const prevBadge = usePrevious(badge)
+  const shouldAnimate = prevBadge !== undefined && prevBadge !== badge
+
+  // Normalización de íconos
   const defaultIconProps = {
     name: null,
     variant: 'regular',
     duotone: 'regular',
     position: 'left',
     size: 'md',
-    animation: null
+    animation: null,
+    className: ''
   }
 
-  // Normalizamos el icon prop a un array de objetos
   let finalIcons = []
   if (icon) {
     if (Array.isArray(icon)) {
@@ -56,11 +71,11 @@ export const Button = ({
 
   const renderIcon = (ic) => {
     if (!ic || !ic.name) return null
-
-    const iconClasses = classNames('btn-icon', {
-      'icon-spin': ic.animation === 'spin'
-    })
-
+    const iconClasses = classNames(
+      'btn-icon',
+      { 'icon-spin': ic.animation === 'spin' },
+      ic.className
+    )
     return (
       <Icon
         key={ic.name}
@@ -80,11 +95,12 @@ export const Button = ({
         if (ic.position) return ic.position === pos
         return idx === 0 ? pos === 'left' : pos === 'right'
       })
-      .map((ic) => renderIcon(ic))
+      .map(renderIcon)
   }
 
   const buttonClasses = classNames(
     'btn',
+    'position-relative',
     `btn-${size}`,
     `btn-${variant}${ghost ? '-ghost' : ''}`,
     {
@@ -102,17 +118,25 @@ export const Button = ({
         ? children
         : hasLabel && <span className='btn-label'>{label}</span>}
       {renderIconsByPosition('right')}
+
+      {/* Badge animado solo si el valor cambia */}
+      {badge != null && (
+        <BadgeAnimation value={badge}>
+          {typeof badge === 'number' ? badge : String(badge)}
+        </BadgeAnimation>
+      )}
     </>
   )
 
+  const commonProps = {
+    className: buttonClasses,
+    'aria-label': ariaLabel || (isIconOnly ? finalIcons[0]?.name : undefined),
+    ...rest
+  }
+
   if (as === 'a') {
     return (
-      <a
-        href={href}
-        className={buttonClasses}
-        aria-label={ariaLabel || (isIconOnly ? finalIcons[0]?.name : undefined)}
-        {...rest}
-      >
+      <a href={href} {...commonProps}>
         {content}
       </a>
     )
@@ -120,12 +144,7 @@ export const Button = ({
 
   if (as === 'link') {
     return (
-      <Link
-        to={to}
-        className={buttonClasses}
-        aria-label={ariaLabel || (isIconOnly ? finalIcons[0]?.name : undefined)}
-        {...rest}
-      >
+      <Link to={to} {...commonProps}>
         {content}
       </Link>
     )
@@ -135,13 +154,42 @@ export const Button = ({
     <button
       type={type}
       disabled={disabled}
-      className={buttonClasses}
       onClick={onClick}
       autoFocus={autoFocus}
-      aria-label={ariaLabel || (isIconOnly ? finalIcons[0]?.name : undefined)}
-      {...rest}
+      {...commonProps}
     >
       {content}
     </button>
+  )
+}
+
+const BadgeAnimation = ({ value, children }) => {
+  const controls = useAnimation()
+  const prevValue = useRef(value)
+
+  useEffect(() => {
+    if (prevValue.current !== value) {
+      // Reinicia la animación
+      controls.set({ scale: 0, opacity: 0 })
+      controls.start({
+        scale: [0, 1],
+        opacity: [0, 1],
+        transition: {
+          scale: { type: 'spring', stiffness: 600, damping: 12 },
+          opacity: { duration: 0.15 }
+        }
+      })
+      prevValue.current = value
+    }
+  }, [value, controls])
+
+  return (
+    <motion.span
+      className='btn-badge fs-small text-white bg-danger-400 border-white border-2 fw-bold'
+      initial={false}
+      animate={controls}
+    >
+      {children}
+    </motion.span>
   )
 }

@@ -4,11 +4,13 @@ import * as SolidIcons from '../../assets/icons/processed/solid/index'
 import * as BrandsIcons from '../../assets/icons/processed/brands/index'
 import * as DuotonesRegularIcons from '../../assets/icons/processed/duotone/regular/index'
 import * as DuotonesSolidIcons from '../../assets/icons/processed/duotone/solid/index'
+import * as FlagsIcons from '../../assets/icons/processed/flags/index'
 
 export const Icons = {
   regular: RegularIcons,
   solid: SolidIcons,
   brands: BrandsIcons,
+  flags: FlagsIcons,
   duotones: {
     regular: DuotonesRegularIcons,
     solid: DuotonesSolidIcons

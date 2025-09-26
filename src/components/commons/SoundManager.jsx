@@ -16,7 +16,36 @@ const soundInstances = {}
 // Instancia global del último sonido que se reprodujo
 let lastPlayedSound = null
 
-export const getSound = (sound, volume = 1) => {
+// Volumen predeterminado (ajusta según necesites)
+const DEFAULT_VOLUME = 0.7
+
+// Sistema de desbloqueo de audio
+let audioUnlocked = false
+
+const unlockAudio = () => {
+  if (audioUnlocked) return
+
+  // Intentar desbloquear con un sonido silencioso
+  const unlockSound = new Howl({
+    src: sounds.bell, // Usa un sonido que ya tienes
+    volume: 0.01, // Volumen casi inaudible
+    preload: true
+  })
+
+  try {
+    const id = unlockSound.play()
+    if (id) {
+      unlockSound.on('play', () => {
+        audioUnlocked = true
+        unlockSound.stop(id)
+      })
+    }
+  } catch (e) {
+    console.log('Audio unlock attempt failed, will retry on next interaction')
+  }
+}
+
+export const getSound = (sound, volume = DEFAULT_VOLUME) => {
   if (!sounds[sound]) {
     console.warn(`⚠️ El sonido "${sound}" no existe.`)
     return null
@@ -26,22 +55,46 @@ export const getSound = (sound, volume = 1) => {
     soundInstances[sound] = new Howl({
       src: sounds[sound],
       volume,
-      preload: true
+      preload: true,
+      // Manejo de errores
+      onloaderror: (id, error) => {
+        console.error(`❌ Error cargando el sonido "${sound}":`, error)
+      },
+      onplayerror: (id, error) => {
+        console.error(`❌ Error reproduciendo el sonido "${sound}":`, error)
+        // Intentar reproducir nuevamente después de un breve retraso
+        setTimeout(() => {
+          if (soundInstances[sound]) {
+            soundInstances[sound].play()
+          }
+        }, 100)
+      }
     })
+  } else {
+    // 👇 Actualiza el volumen incluso si ya existe la instancia
+    soundInstances[sound].volume(volume)
   }
 
   return soundInstances[sound]
 }
 
-// Hook para reproducir sonidos
-export const useSound = (sound = 'bell') => {
+// Hook actualizado
+export const useSound = (sound = 'bell', volume = DEFAULT_VOLUME) => {
   const play = () => {
-    const instance = getSound(sound)
+    // 👇 Desbloquear audio en cada interacción del usuario
+    unlockAudio()
+
+    const instance = getSound(sound, volume)
     if (!instance) return
 
-    // Detener el último sonido si existe
+    // Detener el último sonido si existe y es diferente
     if (lastPlayedSound && lastPlayedSound !== instance) {
       lastPlayedSound.stop()
+    }
+
+    // Si el mismo sonido ya está reproduciéndose, detenerlo para reiniciar
+    if (instance.playing()) {
+      instance.stop()
     }
 
     lastPlayedSound = instance

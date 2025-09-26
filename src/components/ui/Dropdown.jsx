@@ -21,18 +21,30 @@ import {
   FloatingArrow,
   arrow
 } from '@floating-ui/react'
+import { useDevice } from '../../hooks/useBreakpoint'
 
 const DropdownContext = createContext(null)
 
 export const Dropdown = ({ children, closeOnClickOutside = true }) => {
   const [open, setOpen] = useState(false)
   const [arrowEl, setArrowEl] = useState(null)
+  const { type, width } = useDevice()
+
+  const isTablet = type === 'tablet'
+  const isDesktop = type === 'desktop'
+  const isMobile = type === 'mobile'
+
+  const dropdownPosition = isDesktop
+    ? 'bottom-end'
+    : isTablet
+      ? 'bottom-end'
+      : 'bottom-end'
 
   const middleware = useMemo(
     () => [
-      offset(8),
+      offset({ mainAxis: 8, crossAxis: isMobile && 16 }),
       flip(),
-      shift({ padding: 8 }),
+      shift({ padding: 0 }),
       arrow({ element: arrowEl })
     ],
     [arrowEl]
@@ -41,7 +53,7 @@ export const Dropdown = ({ children, closeOnClickOutside = true }) => {
   const { x, y, strategy, refs, context } = useFloating({
     open,
     onOpenChange: setOpen,
-    placement: 'bottom-end',
+    placement: dropdownPosition,
     middleware,
     whileElementsMounted: autoUpdate
   })
@@ -53,7 +65,7 @@ export const Dropdown = ({ children, closeOnClickOutside = true }) => {
   const interactions = useInteractions([click, dismiss, role])
 
   const { isMounted, styles: transitionStyles } = useTransitionStyles(context, {
-    duration: 150,
+    duration: 100,
     initial: { opacity: 0, transform: 'scaleY(0.95)' },
     open: { opacity: 1, transform: 'scaleY(1)' },
     close: { opacity: 0, transform: 'scaleY(0.95)' },
@@ -106,7 +118,7 @@ export const DropdownTrigger = ({ children }) => {
   )
 }
 
-export const DropdownContent = ({ children }) => {
+export const DropdownContent = ({ children, className }) => {
   const {
     refs,
     interactions,
@@ -126,7 +138,7 @@ export const DropdownContent = ({ children }) => {
       <div
         ref={refs.setFloating}
         {...interactions.getFloatingProps()}
-        className='dropdown-content bg-neutral-0 border rounded-all-md'
+        className={`dropdown-content bg-neutral-0 border rounded-all-md ${className || ''}`}
         style={{
           position: strategy,
           top: y ?? 0,
@@ -139,8 +151,8 @@ export const DropdownContent = ({ children }) => {
         <FloatingArrow
           ref={setArrowEl}
           context={context}
-          width={12}
-          height={6}
+          width={16}
+          height={8}
           tipRadius={2}
           fill='white'
           stroke='#e8eaed'

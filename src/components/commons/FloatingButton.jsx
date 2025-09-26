@@ -2,17 +2,15 @@ import { useState, useRef, useEffect } from 'react'
 import { Button } from '../ui/Button'
 import { Icon } from './Icons'
 import classNames from 'classnames'
-import { CSSTransition, SwitchTransition } from 'react-transition-group'
-import { useNavigate } from 'react-router-dom'
+import { AnimatePresence, motion } from 'framer-motion'
 import { useLang } from '../../i18n/LanguageContext'
-import { sounds, useSound } from './SoundManager'
+import { useSound } from './SoundManager'
 import { useLocation } from 'react-router-dom'
 
 const FloatingButton = () => {
   const [showOptions, setShowOptions] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
   const [switchIcon, setSwitchIcon] = useState(false)
-  const navigate = useNavigate()
   const calmaPhoneNumber = import.meta.env.VITE_CALMA_PHONE_NUMBER
   const { t } = useLang()
   const containerRef = useRef(null) // <-- referencia al contenedor principal
@@ -45,21 +43,15 @@ const FloatingButton = () => {
   const handleMainButtonClick = () => {
     if (!showOptions) {
       openSound.play()
-      setTimeout(() => setShowOptions(true), 100)
+      setShowOptions(true)
+      setSwitchIcon(true)
+      setIsVisible(true)
     } else {
-      setTimeout(() => setShowOptions(false), 100)
       closeSound.play()
+      setShowOptions(false)
+      setSwitchIcon(false)
+      setTimeout(() => setIsVisible(false), 250) // da tiempo a la animación de salida
     }
-
-    switchIcon ? setSwitchIcon(false) : setSwitchIcon(true)
-
-    isVisible
-      ? setTimeout(() => setIsVisible(false), 500)
-      : setTimeout(() => setIsVisible(true), 100)
-  }
-
-  const handleBookingButton = () => {
-    navigate('/booking')
   }
 
   const handleWhatsappButton = () => {
@@ -77,11 +69,10 @@ const FloatingButton = () => {
     const handleClickOutside = (e) => {
       if (containerRef.current && !containerRef.current.contains(e.target)) {
         if (showOptionsRef.current) {
-          // ✅ ahora sí tiene el valor actual
           closeSound.play()
-          setTimeout(() => setShowOptions(false), 100)
+          setShowOptions(false)
           setSwitchIcon(false)
-          setTimeout(() => setIsVisible(false), 500)
+          setTimeout(() => setIsVisible(false), 250) // da tiempo a la animación de salida
         }
       }
     }
@@ -121,14 +112,34 @@ const FloatingButton = () => {
               </div>
               <div className={optionButtonClasses}>
                 <Button
-                  onClick={handleBookingButton}
+                  as='link'
+                  to={'/contact'}
+                  variant='info'
+                  className='option-button-wrapper booking-button p-0'
+                >
+                  <div className='grid-row grid-col-auto-1fr justify-content-center gap-0'>
+                    <div className='d-flex option-button-label align-items-center justify-content-center h-100 ms-3'>
+                      <p className='m-0 fs-medium white-space-nowrap'>
+                        {t('floatingButton.emailButtonText')}
+                      </p>
+                    </div>
+                    <div className='d-flex option-button-icon align-items-center justify-content-center'>
+                      <Icon name='messages' variant='regular' />
+                    </div>
+                  </div>
+                </Button>
+              </div>
+              <div className={optionButtonClasses}>
+                <Button
+                  as='link'
+                  to={'/booking'}
                   variant='primary'
                   className='option-button-wrapper booking-button p-0'
                 >
                   <div className='grid-row grid-col-auto-1fr justify-content-center gap-0'>
                     <div className='d-flex option-button-label align-items-center justify-content-center h-100 ms-3'>
                       <p className='m-0 fs-medium white-space-nowrap'>
-                        {t('floatingButton.bookingButtontext')}
+                        {t('floatingButton.bookingButtonText')}
                       </p>
                     </div>
                     <div className='d-flex option-button-icon align-items-center justify-content-center'>
@@ -148,21 +159,18 @@ const FloatingButton = () => {
             tabIndex={0}
             size='large'
           >
-            <SwitchTransition mode='out-in'>
-              <CSSTransition
+            <AnimatePresence mode='wait'>
+              <motion.div
                 key={mainButtonIconName}
-                timeout={100}
-                nodeRef={iconRef}
-                classNames='fade'
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.5 }}
+                transition={{ duration: 0.1 }}
+                className='d-flex align-items-center justify-content-center h-100'
               >
-                <Icon
-                  ref={iconRef}
-                  name={mainButtonIconName}
-                  variant='solid'
-                  size='lg'
-                />
-              </CSSTransition>
-            </SwitchTransition>
+                <Icon name={mainButtonIconName} variant='solid' size='lg' />
+              </motion.div>
+            </AnimatePresence>
           </Button>
         </div>
       </div>
