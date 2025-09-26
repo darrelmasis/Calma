@@ -3,13 +3,63 @@ import { memo } from 'react'
 import { useSelectedServices } from '../../hooks/useSelectedService'
 import { useLang } from '../../i18n/LanguageContext'
 import { useDevice } from '../../hooks/useBreakpoint'
-import { Dropdown, DropdownTrigger, DropdownContent } from '../ui/Dropdown'
+import {
+  Dropdown,
+  DropdownTrigger,
+  DropdownContent,
+  useDropdown // ✅ Usamos el hook seguro
+} from '../ui/Dropdown'
 import { Button } from '../ui/Button'
 import { USD } from '../../utils/utils'
 import { Icon } from '../commons/Icons'
 import { Tooltip } from '../ui/Tooltip'
 import { useNavigate } from 'react-router-dom'
 import classNames from 'classnames'
+import { size } from '@floating-ui/react'
+
+// ✅ Trigger separado (sin memo para que reaccione a `open`)
+const BagTrigger = ({
+  totalServices,
+  isMobile,
+  isTablet,
+  isDesktop,
+  label
+}) => {
+  const { open } = useDropdown() // ✅ Acceso seguro al estado
+
+  const icons = [
+    {
+      name: 'bag-shopping',
+      variant: open ? 'duotones' : 'regular',
+      duotone: 'regular',
+      position: 'left',
+      className: open ? 'text-primary' : '',
+      size: isMobile ? 'lg' : 'md'
+    }
+  ]
+
+  if (isTablet || isDesktop) {
+    icons.push({
+      name: 'chevron-down',
+      variant: 'regular',
+      position: 'right',
+      className: 'arrow-icon'
+    })
+  }
+
+  return (
+    <div className='navbar-dropdown-info position-relative d-flex justify-content-flex-end'>
+      <Button
+        variant='basic'
+        className='position-relative rounded-pill-md navbar-dropdown-trigger'
+        size={isMobile ? 'xlarge' : 'medium'}
+        icon={icons}
+        label={!isMobile && label}
+        badge={totalServices > 0 ? totalServices : null}
+      />
+    </div>
+  )
+}
 
 export const BagDropdown = memo(() => {
   const { t } = useLang()
@@ -37,41 +87,20 @@ export const BagDropdown = memo(() => {
   )
 
   const navigateToBooking = () => navigate('/booking')
-
-  // Definimos los iconos dinámicamente
-  const icons = [
-    {
-      name: 'bag-shopping',
-      variant: 'regular',
-      position: 'left'
-    }
-  ]
-
-  if (isTablet || isDesktop) {
-    icons.push({
-      name: 'chevron-down',
-      variant: 'regular',
-      position: 'right'
-    })
-  }
-
-  // Definimos el texto del botón dinámicamente
-  const label = t('header.dropdown.text')
+  const label = t('header.dropdown.text') // ✅ Movido aquí
 
   return (
     <div className='d-flex flex-1 justify-content-flex-end'>
-      <Dropdown position='bottom-end' offsetX={16}>
-        <DropdownTrigger className='w-100'>
-          <div className='navbar-dropdown-info position-relative d-flex justify-content-flex-end'>
-            <Button
-              variant='basic'
-              className='position-relative rounded-pill-md navbar-dropdown-trigger'
-              size={isMobile ? 'large' : 'medium'}
-              icon={icons}
-              label={!isMobile && label}
-              badge={totalServices > 0 ? totalServices : null}
-            />
-          </div>
+      <Dropdown position='bottom-end' offsetX={isMobile ? 16 : 0}>
+        <DropdownTrigger className='w-100 w-md-auto'>
+          {/* ✅ Pasamos todas las props necesarias */}
+          <BagTrigger
+            totalServices={totalServices}
+            isMobile={isMobile}
+            isTablet={isTablet}
+            isDesktop={isDesktop}
+            label={label}
+          />
         </DropdownTrigger>
         <DropdownContent>
           <div className={dropdownContentClasses}>
@@ -94,7 +123,7 @@ export const BagDropdown = memo(() => {
             ) : (
               <>
                 <div className='p-3'>
-                  <p className='text-center border-bottom pb-3 d-flex align-items-center justify-content-space-between mt-0'>
+                  <div className='text-center border-bottom pb-3 d-flex align-items-center justify-content-space-between mt-0'>
                     <p className='fs-h5 fs-md-regular d-flex align-items-center gap-0-5 m-0 text-muted'>
                       <Icon name='list-check' />
                       {t('header.dropdown.title')}
@@ -110,7 +139,7 @@ export const BagDropdown = memo(() => {
                         onClick={clearServices}
                       />
                     </Tooltip>
-                  </p>
+                  </div>
 
                   <div className='navbar-dropdown-services-added scrollbar-thin'>
                     {Object.entries(servicesWithInfo).map(

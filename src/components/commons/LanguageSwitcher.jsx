@@ -1,9 +1,46 @@
-import { useState, useEffect, useRef } from 'react'
+// src/components/LanguageSwitcher.jsx
+
+import { useState, useEffect, useRef, useContext, memo } from 'react'
 import { useLang } from '../../i18n/LanguageContext'
 import { Button } from '../ui/Button'
 import classNames from 'classnames'
-import { Dropdown, DropdownContent, DropdownTrigger } from '../ui/Dropdown'
+import {
+  Dropdown,
+  DropdownContent,
+  DropdownTrigger,
+  useDropdown
+} from '../ui/Dropdown'
 import { useDevice } from '../../hooks/useBreakpoint'
+
+// ✅ Componente TRIGGER definido fuera
+const LanguageTrigger = ({ selectedLabel, isDesktop }) => {
+  const { open } = useDropdown()
+
+  return (
+    <Button
+      label={selectedLabel}
+      size={!isDesktop ? 'xlarge' : 'medium'}
+      fullWidth={true}
+      icon={[
+        {
+          name: 'language-alt',
+          position: 'left',
+          variant: open ? 'duotones' : 'regular', // ✅ Ahora sí se actualiza
+          duotone: 'regular',
+          className: open ? 'text-primary me-1' : 'me-1'
+        },
+        {
+          name: 'chevron-down',
+          position: 'right',
+          variant: 'regular',
+          className: 'arrow-icon ms-1'
+        }
+      ]}
+      variant='basic'
+      className='language-switcher-trigger bg-transparent w-100 border border'
+    />
+  )
+}
 
 export const LanguageSwitcher = ({ className = '' }) => {
   const options = [
@@ -17,49 +54,31 @@ export const LanguageSwitcher = ({ className = '' }) => {
   const isDesktop = type === 'desktop'
 
   const selectedOption = options.find((opt) => opt.value === lang)
-
-  const classes = classNames(
-    'language-switcher d-flex w-100 justify-content-center',
-    className
-  )
+  const classes = classNames('language-switcher d-flex w-100', className)
 
   return (
     <div className={classes}>
       <Dropdown
-        position={isMobile ? 'bottom-center' : 'bottom-start'}
+        position={isMobile ? 'bottom-start' : 'bottom-start'}
         offsetX={0}
       >
         <DropdownTrigger className='w-100 w-lg-auto'>
-          <Button
-            label={selectedOption.label}
-            size={isMobile ? 'xlarge' : 'medium'}
-            fullWidth={true}
-            icon={[
-              {
-                name: 'language-alt',
-                position: 'left',
-                variant: 'duotones',
-                duotone: 'regular',
-                className: 'me-1'
-              },
-              {
-                name: 'chevron-down',
-                position: 'right',
-                variant: 'regular',
-                className: 'ms-1'
-              }
-            ]}
-            variant='basic'
-            className='language-switcher-trigger bg-transparent border-0'
+          {/* ✅ Pasamos props necesarias */}
+          <LanguageTrigger
+            selectedLabel={selectedOption.label}
+            isDesktop={isDesktop}
           />
         </DropdownTrigger>
-        <DropdownContent>
-          <ul className='list-unstyled m-0 p-3 d-flex'>
+        <DropdownContent
+          className={
+            isMobile ? 'fit-to-navbar' : isTablet ? 'fit-to-tablet-panel' : ''
+          }
+        >
+          <ul className='list-unstyled m-0 p-3 d-flex flex-column'>
             {options.map((opt) => {
               const flagIconName = opt.value === 'es' ? 'nicaragua' : 'eeuu'
               const isActive = opt.value === lang
 
-              // Definimos los íconos dinámicamente
               const icons = [
                 {
                   name: flagIconName,
@@ -81,9 +100,7 @@ export const LanguageSwitcher = ({ className = '' }) => {
                   <Button
                     className={classNames(
                       'language-switcher-option border-0 justify-content-flex-start',
-                      {
-                        active: isActive
-                      }
+                      { active: isActive }
                     )}
                     onClick={() => changeLanguage(opt.value)}
                     variant='basic'

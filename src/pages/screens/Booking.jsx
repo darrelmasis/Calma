@@ -96,7 +96,7 @@ const Booking = () => {
     <>
       <Header />
       <section className='bg-white py-5'>
-        <div className='container d-flex justify-content-center'>
+        <div className='container d-flex justify-content-center booking-section'>
           <Stepper
             formData={formData}
             setFormData={setFormData}

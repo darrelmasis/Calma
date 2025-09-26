@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react'
 import classNames from 'classnames'
+import { Icon } from './Icons'
 
 export const HorizontalScroll = ({
   children,
@@ -20,8 +21,8 @@ export const HorizontalScroll = ({
   const updateIndicators = () => {
     const el = scrollRef.current
     if (!el) return
-    setShowLeft(el.scrollLeft > 0)
-    setShowRight(el.scrollLeft + el.clientWidth < el.scrollWidth)
+    setShowLeft(el.scrollLeft > 8)
+    setShowRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 8)
   }
 
   // Centra el elemento activo
@@ -92,9 +93,9 @@ export const HorizontalScroll = ({
   }, [activeIndex])
 
   return (
-    <div className={classNames('horizontal-scroll', className)}>
-      {showLeft && <div className='scroll-indicator left' />}
-      {showRight && <div className='scroll-indicator right' />}
+    <div className={classNames('horizontal-scroll d-flex align-items-center flex-1 justify-content-center', className)}>
+      {showLeft && <div className='scroll-indicator left d-flex align-items-center'><Icon name='chevron-left' size='lg' className="text-primary" /></div>}
+      {showRight && <div className='scroll-indicator right d-flex align-items-center'><Icon name='chevron-right' size='lg' className="text-primary" /></div>}
 
       <div
         className={classNames('scroll-container', classNameContainer)}

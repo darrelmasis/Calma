@@ -2,6 +2,7 @@
 @use '../config/breakpoints' as bp;
 @use '../mixins/mediaqueries' as mq;
 @use '../functions/strings' as fn;
+@use 'sass:meta';
 
 $flexbox-classes: (
   'display': (
@@ -127,6 +128,12 @@ $flexbox-classes: (
     values: 25 50 75 100 auto,
     measurement: 'dvh'
   ),
+  'min-height': (
+    property: min-height,
+    class: min-vh,
+    values: 25 50 75 100 auto fit-content,
+    measurement: 'dvh'
+  ),
   'white-space': (
     property: white-space,
     class: white-space,
@@ -197,7 +204,7 @@ $flexbox-classes: (
   @each $value in map.get($property-values, values) {
     $class-name: #{$property-class}-#{fn.escape-class($value)};
     .#{$class-name} {
-      @if $measurement and type-of($value) == number {
+      @if $measurement and meta.type-of($value) == number {
         #{$property-property}: #{$value}#{$measurement};
       } @else {
         #{$property-property}: #{$value};
@@ -212,7 +219,7 @@ $flexbox-classes: (
           )};
         @media (min-width: $breakpoint-value) {
           .#{$responsive-class-name} {
-            @if $measurement and type-of($value) == number {
+            @if $measurement and meta.type-of($value) == number {
               #{$property-property}: #{$value}#{$measurement} !important;
             } @else {
               #{$property-property}: #{$value} !important;

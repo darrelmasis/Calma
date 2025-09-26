@@ -24,9 +24,9 @@ export const SidebarMenuTabs = ({
         <h3 className='text-center fs-h5 mb-3'>
           {t('services.section_1.tabsHeader')}
         </h3>
-        <div className='categories-menu mx-3'>
+        <div className='categories-menu mb-4 mb-md-0'>
           <HorizontalScroll
-            classNameContainer='d-flex flex-direction-xl-column mb-3 gap-2'
+            classNameContainer='d-flex flex-direction-xl-column gap-2'
             activeIndex={activeTabIndex + 1}
           >
             {allTabs.map((tab) => (
@@ -43,7 +43,7 @@ export const SidebarMenuTabs = ({
                   variant: 'duotones',
                   duotone: 'regular'
                 }}
-                className={classNames('text-wrap-nowrap', {
+                className={classNames('text-wrap-nowrap fs-h6 fs-md-medium', {
                   'ghost-active': tab.id === activeTab
                 })}
                 onClick={() => setActiveTab(tab.id)}

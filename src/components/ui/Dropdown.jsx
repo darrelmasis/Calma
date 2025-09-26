@@ -22,8 +22,9 @@ import {
   arrow
 } from '@floating-ui/react'
 import { useDevice } from '../../hooks/useBreakpoint'
+import classNames from 'classnames'
 
-const DropdownContext = createContext(null)
+export const DropdownContext = createContext(null)
 
 export const Dropdown = ({
   children,
@@ -100,17 +101,22 @@ export const Dropdown = ({
 
   return (
     <DropdownContext.Provider value={contextValue}>
-      <div className='d-flex flex-1 position-relative'>{children}</div>
+      {children}
     </DropdownContext.Provider>
   )
 }
 
 export const DropdownTrigger = ({ children, className }) => {
-  const { refs, interactions } = useContext(DropdownContext)
+  const { refs, interactions, open } = useContext(DropdownContext)
 
+  const triggerClasses = classNames(
+    'dropdown-trigger',
+    { open: open },
+    className
+  )
   return (
     <div
-      className={className}
+      className={triggerClasses}
       ref={refs.setReference}
       {...interactions.getReferenceProps()}
       style={{ cursor: 'pointer' }}
@@ -164,4 +170,13 @@ export const DropdownContent = ({ children, className }) => {
       </div>
     </FloatingPortal>
   )
+}
+
+
+export const useDropdown = () => {
+  const context = useContext(DropdownContext)
+  if (!context) {
+    throw new Error('useDropdown debe usarse dentro de un componente <Dropdown>')
+  }
+  return context
 }

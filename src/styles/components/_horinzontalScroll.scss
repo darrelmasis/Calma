@@ -10,6 +10,7 @@
     display: flex;
     gap: 0.5rem; // o el gap que quieras
     overflow-x: auto;
+    max-width: calc(100% - 2rem);
     scroll-behavior: smooth; // animación al hacer snap
     scrollbar-width: none; // Firefox
     -ms-overflow-style: none; // IE/Edge
@@ -33,26 +34,22 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 2rem;
+    width: 3rem;
     pointer-events: none;
     z-index: 2;
 
+
     &.left {
       left: 0;
-      background: linear-gradient(
-        to right,
-        rgba(255, 255, 255, 0.9),
-        transparent
-      );
+      background: linear-gradient(to right, rgba(255, 255, 255, 1) 30%, transparent 100%);
+
+      justify-content: flex-start;
     }
 
     &.right {
       right: 0;
-      background: linear-gradient(
-        to left,
-        rgba(255, 255, 255, 0.9),
-        transparent
-      );
+      background: linear-gradient(to left, rgba(255, 255, 255, 1) 30%, transparent 100%);
+      justify-content: flex-end;
     }
   }
 }

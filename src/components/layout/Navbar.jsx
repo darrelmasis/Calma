@@ -7,10 +7,10 @@ import { LanguageSwitcher } from '../commons/LanguageSwitcher'
 import { LogoCalma } from '../ui/LogoCalma'
 import { Icon } from '../commons/Icons'
 import classNames from 'classnames'
-import { useOfflineStatus } from '../../hooks/useOfflineStatus'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useDevice } from '../../hooks/useBreakpoint'
 import { BagDropdown } from '../ui/BagDropdown'
+import { usePWAInstall } from '../../hooks/usePWAInstall'
 
 export const Navbar = () => {
   const { t } = useLang()
@@ -18,7 +18,7 @@ export const Navbar = () => {
   const location = useLocation()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const prevPath = useRef(location.pathname)
-  const isOffline = useOfflineStatus()
+  const { isInstallable, promptInstall } = usePWAInstall()
 
   const { type } = useDevice()
 
@@ -73,10 +73,6 @@ export const Navbar = () => {
   const handleLinkClick = (path) => {
     navigate(path)
     if (!isDesktop) handleCloseMenu()
-  }
-
-  const navigateToBooking = () => {
-    navigate('/booking')
   }
 
   const handleOpenMenu = () => setIsMenuOpen(true)
@@ -142,6 +138,24 @@ export const Navbar = () => {
           />
         </motion.div>
       </AnimatePresence>
+    )
+  }
+
+  const PWAInstallButton = () => {
+    if (!isInstallable) return null
+    return (
+      <div className='d-flex align-items-center justify-content-center w-100'>
+        <Button
+          variant='success'
+          className='p-2'
+          fullWidth
+          onClick={promptInstall}
+          ariaLabel='Instalar aplicación'
+          size='medium'
+          label={t('header.mobileNavbar.installButtonText')}
+          icon='download'
+        />
+      </div>
     )
   }
 
@@ -243,30 +257,26 @@ export const Navbar = () => {
           <AnimatePresence>
             {isMenuOpen && (
               <motion.div
-                className='navbar-tablet-content p-3 border-top'
+                className='navbar-tablet-content p-3 border-top h-100'
                 initial={{ opacity: 0, x: '-100%' }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: '-100%' }}
                 transition={{ duration: 0.3 }}
               >
-                <ul className='navbar-links d-flex flex-direction-column'>
-                  {renderNavLinks(navLinks)}
-                  <div className='navbar-section'>
-                    <LanguageSwitcher />
+                <p className='text-center fs-h4 border-bottom m-0 pb-3 text-muted'>
+                  {t('header.mobileNavbar.title')}
+                </p>
+                <div className='d-flex my-5 flex-direction-column justify-content-space-between align-items-center flex-1'>
+                  <ul className='navbar-links d-flex flex-direction-column'>
+                    {renderNavLinks(navLinks)}
+                  </ul>
+                  <div className='d-flex flex-direction-column align-items-center gap-1 border-top w-100 pt-5'>
+                    <div className='w-100 d-flex flex-direction-column justify-content-center '>
+                      <LanguageSwitcher />
+                    </div>
+                    <PWAInstallButton />
                   </div>
-                </ul>
-
-                {isOffline && (
-                  <div className='d-flex align-items-center justify-content-center gap-2 mt-3'>
-                    <Icon
-                      name='wifi-exclamation'
-                      variant='duotones'
-                      duotone='solid'
-                      className='text-warning'
-                    />
-                    <span className='text-warning fs-small'>Modo offline</span>
-                  </div>
-                )}
+                </div>
               </motion.div>
             )}
           </AnimatePresence>
@@ -308,22 +318,41 @@ export const Navbar = () => {
             {/* </div> */}
           </div>
 
+          <AnimatePresence>
+            {isMenuOpen && (
+              <motion.div
+                className='navbar-overlay'
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.1 }}
+                onClick={handleCloseMenu}
+              />
+            )}
+          </AnimatePresence>
+
           {/* Mobile Menu Content */}
           <AnimatePresence>
             {isMenuOpen && (
               <motion.div
-                className='navbar-mobile-content p-3 border-top'
-                initial={{ opacity: 0, x: '100%' }}
+                className='navbar-mobile-content p-3 border-top h-100'
+                initial={{ opacity: 0, x: '-100%' }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: '100%' }}
+                exit={{ opacity: 0, x: '-100%' }}
                 transition={{ duration: 0.3 }}
               >
-                <div className='d-flex flex-direction-column justify-content-space-between align-items-center flex-1'>
+                <p className='text-center fs-h4 border-bottom m-0 pb-3 text-muted'>
+                  {t('header.mobileNavbar.title')}
+                </p>
+                <div className='d-flex my-5 flex-direction-column justify-content-space-between align-items-center flex-1'>
                   <ul className='navbar-links d-flex flex-direction-column'>
                     {renderNavLinks(navLinks)}
                   </ul>
-                  <div className='w-100 d-flex justify-content-center p-3'>
-                    <LanguageSwitcher />
+                  <div className='d-flex flex-direction-column align-items-center gap-1 border-top w-100 pt-5'>
+                    <div className='w-100 d-flex flex-direction-column justify-content-center '>
+                      <LanguageSwitcher />
+                    </div>
+                    <PWAInstallButton />
                   </div>
                 </div>
               </motion.div>

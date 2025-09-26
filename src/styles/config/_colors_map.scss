@@ -37,7 +37,7 @@ $light-theme-colors: (
   'text-color-muted': fn.getColor(c.$grays, '700'),
   'body-bg': fn.getColor(c.$lights, '50'),
   'body-bg-alt': fn.getColor(c.$neutrals, '50'),
-  'border-color': fn.getColor(c.$grays, '100'),
+  'border-color': fn.getColor(c.$grays, '200'),
   'container-bg': fn.getColor(c.$neutrals, '0'),
   'white': fn.getColor(c.$neutrals, '0')
 );

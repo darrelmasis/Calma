@@ -18,5 +18,23 @@
       right: auto;
       left: 0;
     }
+
+    //hacks para que el dropdown no se pase del navbar en mobile
+    &.fit-to-navbar {
+      width: calc(100% - 7.5rem);
+    }
+
+    &.fit-to-tablet-panel {
+      width: calc(300px - 2rem) !important;
+    }
   }
+}
+
+.arrow-icon {
+  transition: transform 0.3s ease;
+}
+
+.dropdown-trigger.open .arrow-icon {
+  transform: rotate(180deg);
+
 }

@@ -62,7 +62,8 @@ $button-theme-colors: (
   light: c.$lights,
   dark: c.$darks,
   initial: c.$neutrals,
-  basic: c.$grays // transparent: c.$grays,
+  basic: c.$grays,
+  basic2: c.$lights
 );
 
 $buttons-colors: (
@@ -182,5 +183,16 @@ $buttons-colors: (
     text-color-ghost: '900',
     text-color-ghost-hover: '900',
     border-color: '200'
+  ),
+  basic2: (
+    main: '0',
+    main-hover: '50',
+    main-hover-ghost: '200',
+    main-active: '200',
+    main-active-ghost: '200',
+    text-color: '900',
+    text-color-ghost: '900',
+    text-color-ghost-hover: '900',
+    border-color: '300'
   )
 );
