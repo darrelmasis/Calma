@@ -779,8 +779,9 @@ export const dictionary = {
       }
     },
     floatingButton: {
-      whatsappButtonText: 'Escribenos por WhatsApp',
-      bookingButtontext: 'Reserva con nosotros'
+      whatsappButtonText: 'Escríbenos por WhatsApp',
+      bookingButtonText: 'Reserva con nosotros',
+      emailButtonText: 'Escríbenos un correo'
     },
     team: {
       pageTitle: 'Nuestro Equipo',
@@ -1575,7 +1576,8 @@ export const dictionary = {
 
     floatingButton: {
       whatsappButtonText: 'Write to us on WhatsApp',
-      bookingButtontext: 'Book with us'
+      bookingButtonText: 'Book with us',
+      emailButtonText: 'Write to us via email'
     },
     team: {
       pageTitle: 'Our Team',
