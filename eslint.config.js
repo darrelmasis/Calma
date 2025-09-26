@@ -1,6 +1,7 @@
 import react from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
 import jsxA11y from 'eslint-plugin-jsx-a11y'
+import path from 'path'
 
 export default [
   {
@@ -25,9 +26,7 @@ export default [
       parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
-        ecmaFeatures: {
-          jsx: true
-        }
+        ecmaFeatures: { jsx: true }
       }
     },
 
@@ -38,7 +37,7 @@ export default [
     },
 
     rules: {
-      'no-unused-vars': 'warn', // advertencias opcionales
+      'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
       'no-console': 'warn',
       'react/prop-types': 'off'
     },
@@ -48,15 +47,15 @@ export default [
       'import/resolver': {
         alias: {
           map: [
-            ['@', './src'],
-            ['@assets', './src/assets'],
-            ['@components', './src/components'],
-            ['@features', './src/features'],
-            ['@hooks', './src/hooks'],
-            ['@pages', './src/pages'],
-            ['@routes', './src/routes'],
-            ['@styles', './src/styles'],
-            ['@utils', './src/utils']
+            ['@', path.resolve('./src')],
+            ['@assets', path.resolve('./src/assets')],
+            ['@components', path.resolve('./src/components')],
+            ['@features', path.resolve('./src/features')],
+            ['@hooks', path.resolve('./src/hooks')],
+            ['@pages', path.resolve('./src/pages')],
+            ['@routes', path.resolve('./src/routes')],
+            ['@styles', path.resolve('./src/styles')],
+            ['@utils', path.resolve('./src/utils')]
           ],
           extensions: ['.js', '.jsx']
         }
