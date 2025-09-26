@@ -12,3 +12,6 @@ Recursos
 
 .vercel
 .vite
+.env
+.env.local
+.env.*.local
