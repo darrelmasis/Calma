@@ -7,9 +7,6 @@
 @use 'sass:map';
 @use '../utils/animations' as animate;
 
-body {
-  // overflow-x: hidden !important;
-}
 
 .navbar {
   padding-block: 1rem;
@@ -145,7 +142,7 @@ body {
       max-width: 100%; // como es convención mobile-first por defecto utiliza 100% en pantallas más grandes se limita a 400px
       height: calc(100dvh - 100px);
       margin-bottom: 3rem;
-      background-color: rgb(255, 255, 255, 0.9);
+      background-color: rgb(255, 255, 255, 1);
       backdrop-filter: blur(10px);
       padding: 10rem 0;
       display: flex;
@@ -359,7 +356,6 @@ body {
     min-height: 36px;
   }
 
-
   &-dropdown-trigger {
     &:focus {
       background-color: var(--btn-bg-hover);
@@ -385,8 +381,6 @@ body.navbar-open {
 .navbar-desktop-cta-button .icon-wrapper > svg {
   @include animate.bounceIcon(5s, $infinite: true);
 }
-
-
 
 .navbar-desktop-dropdown-content-wrapper,
 .navbar-tablet-dropdown-content-wrapper {
