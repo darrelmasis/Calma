@@ -32,6 +32,10 @@ export const dictionary = {
         book: 'Agendar ahora!',
         exploreServices: 'Explorar Servicios',
         clearTooltip: 'Eliminar todos los servicios seleccionados'
+      },
+      mobileNavbar: {
+        title: 'Navegación',
+        installButtonText: 'Instalar App'
       }
     },
     footer: {
@@ -861,6 +865,10 @@ export const dictionary = {
         book: 'Book Now!',
         exploreServices: 'Explore Services',
         clearTooltip: 'Remove all selected services'
+      },
+      mobileNavbar: {
+        title: 'Navigation',
+        installButtonText: 'Install App'
       }
     },
     footer: {
