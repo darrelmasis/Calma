@@ -15,7 +15,7 @@ function getScrollParent(node) {
   return window
 }
 
-// Convierte valores CSS (px/rem/em) a px (maneja px, rem, em y valores numéricos)
+// Convierte valores CSS (px/rem/em) a px
 function toPx(value) {
   if (value == null) return 0
   if (typeof value === 'number') return value
@@ -30,7 +30,6 @@ function toPx(value) {
     const bodyFs = parseFloat(getComputedStyle(document.body).fontSize || 16)
     return parseFloat(v) * bodyFs
   }
-  // fallback: intentar parseFloat
   return parseFloat(v) || 0
 }
 
@@ -48,7 +47,7 @@ export function useSticky(ref, offset = 0) {
     if (!el) return
 
     const computed = getComputedStyle(el)
-    const topCss = computed.top // puede ser 'auto' o '16px' o '1rem'
+    const topCss = computed.top
     const bottomCss = computed.bottom
 
     const hasTop = topCss && topCss !== 'auto'
@@ -61,6 +60,12 @@ export function useSticky(ref, offset = 0) {
 
     const getViewportBounds = () => {
       if (parentIsWindow) {
+        if (window.visualViewport) {
+          return {
+            top: window.visualViewport.offsetTop,
+            bottom: window.visualViewport.offsetTop + window.visualViewport.height
+          }
+        }
         return { top: 0, bottom: window.innerHeight }
       }
       const r = scrollParent.getBoundingClientRect()
@@ -74,43 +79,52 @@ export function useSticky(ref, offset = 0) {
       let stuck = false
 
       if (hasTop) {
-        // Cuando está "pegado" con top, rect.top estará <= viewport.top + topPx
         stuck = rect.top <= viewport.top + topPx + offset
       } else if (hasBottom) {
-        // Cuando está "pegado" con bottom, rect.bottom estará >= viewport.bottom - bottomPx
         stuck = rect.bottom >= viewport.bottom - bottomPx - offset
       } else {
-        // fallback: asumir top = 0
         stuck = rect.top <= offset
       }
 
       setIsSticky(Boolean(stuck))
     }
 
-    // throttle via rAF
-    const onScroll = () => {
-      requestAnimationFrame(check)
-    }
+    const onScroll = () => requestAnimationFrame(check)
 
-    // inicial
+    // Ejecutar inicialmente
     check()
 
-    // listeners
     const parent = parentIsWindow ? window : scrollParent
     parent.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', onScroll)
 
-    // Resizes del elemento/scrollParent (re-evalúa)
-    if (typeof ResizeObserver !== 'undefined') {
-      roRef.current = new ResizeObserver(() => onScroll())
-      roRef.current.observe(el)
-      if (!parentIsWindow) roRef.current.observe(scrollParent)
+    // Manejadores para visualViewport (móviles modernos)
+    const handleViewportChange = () => check()
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', handleViewportChange)
+      window.visualViewport.addEventListener('scroll', handleViewportChange)
     }
 
+    // ResizeObserver para cambios de tamaño
+    if (typeof ResizeObserver !== 'undefined') {
+      roRef.current = new ResizeObserver(onScroll)
+      roRef.current.observe(el)
+      if (!parentIsWindow && scrollParent instanceof Element) {
+        roRef.current.observe(scrollParent)
+      }
+    }
+
+    // Cleanup
     return () => {
       parent.removeEventListener('scroll', onScroll)
       window.removeEventListener('resize', onScroll)
-      if (roRef.current) roRef.current.disconnect()
+      if (window.visualViewport) {
+        window.visualViewport.removeEventListener('resize', handleViewportChange)
+        window.visualViewport.removeEventListener('scroll', handleViewportChange)
+      }
+      if (roRef.current) {
+        roRef.current.disconnect()
+      }
     }
   }, [ref, offset])
 

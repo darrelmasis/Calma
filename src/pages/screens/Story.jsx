@@ -17,9 +17,9 @@ const History = () => {
         <div className='container'>
           <div className='grid'>
             <div className='grid-row mb-6'>
-              <div className='grid-col-12 grid-col-md-6'>
+              <div className='grid-col-12'>
                 <Fade className='border-bottom-primary border-3'>
-                  <h1>{t('history.section_1.title')}</h1>
+                  <h1 className='text-center'>{t('history.section_1.title')}</h1>
                 </Fade>
               </div>
             </div>

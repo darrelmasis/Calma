@@ -1,6 +1,7 @@
 .header {
   top: 0;
-  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  // transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  transition: all 0.3s ease-in-out;
   z-index: 100;
 
   &.hide {

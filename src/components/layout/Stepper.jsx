@@ -182,8 +182,6 @@ const StepperActions = ({
   const stickyRef = useRef(null)
   const isSticky = useSticky(stickyRef, 0)
 
-  console.log('isSticky', isSticky)
-
   const stickyPanelClasses = classNames(
     'stepper-actions d-flex max-wx-md-500 justify-content-center gap-3 position-sticky bottom-2 w-100 py-3 px-3',
     {

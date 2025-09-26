@@ -28,7 +28,7 @@ h4 {
   @include mixin.font-size(h4, $fluid: true);
 }
 h5 {
-  @include mixin.font-size(h5);
+  @include mixin.font-size(h5, $fluid: true);
 }
 h6 {
   @include mixin.font-size(h6);
