@@ -12,6 +12,7 @@ const sourceFolders = {
   regular: 'src/assets/icons/src/regular',
   solid: 'src/assets/icons/src/solid',
   brands: 'src/assets/icons/src/brands',
+  flags: 'src/assets/icons/src/flags',
   duotone: {
     solid: 'src/assets/icons/src/duotones/solid',
     regular: 'src/assets/icons/src/duotones/regular'
