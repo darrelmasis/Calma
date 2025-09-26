@@ -1,5 +1,7 @@
 @use 'sass:map';
 @use '../config/breakpoints' as bp;
+@use 'sass:meta';
+@use 'sass:math';
 
 // Description: This file contains mixins for media queries to handle responsive design.
 @mixin screen($type, $breakpoint) {
@@ -7,7 +9,12 @@
     @media screen and (#{$type}-width: map.get(bp.$breakpoints, $breakpoint)) {
       @content;
     }
-  } @else if type-of($breakpoint) ==number and unit($breakpoint) == 'px' {
+  } @else if
+    meta.type-of($breakpoint)
+    ==number and
+    math.unit($breakpoint) ==
+    'px'
+  {
     @media screen and (#{$type}-width: $breakpoint) {
       @content;
     }

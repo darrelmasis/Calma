@@ -1,5 +1,7 @@
 @use '../config/typography' as typo;
 @use '../functions/typography' as fn;
+@use '../config/breakpoints' as bp;
+@use '../mixins/mediaqueries' as mq;
 @use 'sass:meta';
 
 // Aplica tamaño desde mapa
@@ -18,11 +20,33 @@
 
 // Genera utilitarios fs-h1, fs-small, etc.
 @mixin generate-font-size-utilities($sizes: typo.$font-sizes) {
+  // 1. Clases base (no responsivas)
   @each $name, $size in $sizes {
     .fs-#{'' + $name} {
       font-size: $size;
-      @if ($name == 'display-1') or ($name == 'display-2') or($name == 'lead') {
+      @if ($name == 'display-1') or ($name == 'display-2') or ($name == 'lead')
+      {
         font-weight: fn.weight(light, typo.$font-weights);
+      }
+    }
+  }
+
+  // 2. Clases responsivas: .fs-md-h1, .fs-lg-h2, etc.
+  @each $bp-name, $bp-value in bp.$breakpoints {
+    // Saltamos 'xs' porque ya está cubierto por las clases base
+    @if $bp-name != xs {
+      @include mq.screen('min', $bp-name) {
+        @each $name, $size in $sizes {
+          .fs-#{$bp-name}-#{'' + $name} {
+            font-size: $size;
+            @if ($name == 'display-1') or
+              ($name == 'display-2') or
+              ($name == 'lead')
+            {
+              font-weight: fn.weight(light, typo.$font-weights);
+            }
+          }
+        }
       }
     }
   }
@@ -30,9 +54,23 @@
 
 // Pesos
 @mixin generate-font-weight-utilities($weights: typo.$font-weights) {
+  // 1. Clases base (no responsivas)
   @each $name, $weight in $weights {
     .fw-#{'' + $name} {
       font-weight: $weight;
+    }
+  }
+
+  // 2. Clases responsivas: .fw-md-bold, .fw-lg-light, etc.
+  @each $bp-name, $bp-value in bp.$breakpoints {
+    @if $bp-name != xs {
+      @include mq.screen('min', $bp-name) {
+        @each $name, $weight in $weights {
+          .fw-#{$bp-name}-#{'' + $name} {
+            font-weight: $weight;
+          }
+        }
+      }
     }
   }
 }

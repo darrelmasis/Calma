@@ -1,14 +1,20 @@
 @use '../config/containers' as container;
 @use 'mediaqueries' as mq;
 
-@mixin container-base($gutter: container.$container-padding-x) {
+@mixin container-base {
   box-sizing: border-box;
-  --gutter-x: #{$gutter};
   width: 100%;
-  padding-left: calc(var(--gutter-x) / 2);
-  padding-right: calc(var(--gutter-x) / 2);
   margin-left: auto;
   margin-right: auto;
+
+  // Loop de paddings responsivos
+  @each $breakpoint, $padding in container.$container-paddings {
+    @include mq.screen('min', $breakpoint) {
+      --gutter-x: #{$padding};
+      padding-left: calc(var(--gutter-x) / 2);
+      padding-right: calc(var(--gutter-x) / 2);
+    }
+  }
 }
 
 @mixin container-responsive {

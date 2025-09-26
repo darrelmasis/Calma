@@ -17,7 +17,7 @@ $flexbox-classes: (
   'justify-content': (
     property: justify-content,
     class: justify-content,
-    values: flex-start flex-end center space-between space-around space-evenly
+    values: flex-start flex-end center space-between space-around space-evenly normal
       stretch
   ),
   'flex-direction': (

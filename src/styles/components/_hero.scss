@@ -3,7 +3,10 @@
 @use '../config/colors_map' as c;
 
 .hero {
-  min-height: calc(100vh - 100px);
+  min-height: calc(100dvh - 100px);
+  @include mq.screen('min', 1920px) {
+    min-height: 40rem !important; // Altura mínima para pantallas super grandes
+  }
 
   &-content {
     // margin-top: 7rem;
@@ -42,7 +45,7 @@
     &-end-transparent {
       background: linear-gradient(
         0deg,
-        rgba(255, 255, 255, 0.8) 30%,
+        rgba(255, 255, 255, 1) 30%,
         rgba(255, 255, 255, 0) 100%
       );
 

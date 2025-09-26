@@ -1,13 +1,22 @@
+@use '../mixins/mediaqueries' as mq;
+
 .dropdown {
+  position: relative;
   &-content {
     position: absolute;
     top: 100%;
     right: 0;
-    min-width: 200px;
-    max-width: 300px;
+    width: calc(100% - 2rem);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     display: flex;
     flex-direction: column;
+
+    @include mq.screen('min', 'md') {
+      width: max-content;
+      min-width: 12rem;
+      right: auto;
+      left: 0;
+    }
   }
 }

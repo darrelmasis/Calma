@@ -1,6 +1,7 @@
 @use '../mixins/buttons' as buttons_mixins;
 @use '../config/buttons' as vars;
 @use '../functions/buttons' as bf;
+@use '../mixins/mediaqueries' as mq;
 @use 'sass:map';
 @use 'sass:list';
 
@@ -122,6 +123,25 @@
       &:hover {
         color: var(--btn-color-hover);
       }
+    }
+  }
+
+  .btn-badge {
+    position: absolute;
+    top: -5px;
+    left: 80%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    height: 24px;
+    padding: 0 6px;
+    border-radius: 9999px;
+    z-index: 1;
+
+    @include mq.screen('min', 'md') {
+      top: -10px;
+      left: 90%;
     }
   }
 }

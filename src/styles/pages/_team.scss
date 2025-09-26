@@ -103,7 +103,7 @@ $main-gradient: linear-gradient(90deg, white 50%, $headerColor 50%);
     }
 
     &-picture-alt {
-      mix-blend-mode: multiply; //
+      // mix-blend-mode: multiply; //
       transition: all 1s ease-in-out;
       // filter: grayscale(50%);
     }

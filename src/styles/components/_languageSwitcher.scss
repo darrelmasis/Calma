@@ -1,0 +1,22 @@
+@use '../functions/colors' as fn;
+@use '../config/colors' as palette;
+
+.language-switcher {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.language-switcher-trigger {
+  &:focus {
+    background-color: var(--btn-bg-hover);
+  }
+}
+
+.language-switcher-option {
+  &.active {
+    background-color: fn.getColor(palette.$neutrals, '100') !important;
+  }
+}

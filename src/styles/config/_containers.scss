@@ -1,7 +1,7 @@
 @use 'spacing' as s;
 @use 'sass:map';
 
-// Containers max-widths
+// Max-widths de containers
 $containers: (
   xs: 100%,
   sm: 540px,
@@ -11,4 +11,17 @@ $containers: (
   xxl: 1320px
 );
 
-$container-padding-x: map.get(s.$spacers, 4); // 1rem
+// Paddings laterales por breakpoint (usando tu escala $spacers)
+$container-paddings: (
+  xs: map.get(s.$spacers, 7),
+  // 1rem
+  sm: map.get(s.$spacers, 6),
+  // 1.5rem
+  md: map.get(s.$spacers, 5),
+  // 2rem
+  lg: map.get(s.$spacers, 7),
+  // 3rem
+  xl: map.get(s.$spacers, 4),
+  // 4rem
+  xxl: map.get(s.$spacers, 8) // 6rem
+);
