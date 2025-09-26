@@ -9,8 +9,6 @@ const Header = () => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY
 
-      console.log('currentScrollY', currentScrollY);
-
 
       if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
         setHideHeader(true) // Scroll hacia abajo
