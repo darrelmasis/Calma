@@ -318,11 +318,11 @@ export const Navbar = () => {
                 exit={{ opacity: 0, x: '100%' }}
                 transition={{ duration: 0.3 }}
               >
-                <div className='d-flex flex-direction-column align-items-center flex-1'>
+                <div className='d-flex flex-direction-column justify-content-space-between align-items-center flex-1'>
                   <ul className='navbar-links d-flex flex-direction-column'>
                     {renderNavLinks(navLinks)}
                   </ul>
-                  <div className='w-100 d-flex justify-content-center h-100'>
+                  <div className='w-100 d-flex justify-content-center p-3'>
                     <LanguageSwitcher />
                   </div>
                 </div>

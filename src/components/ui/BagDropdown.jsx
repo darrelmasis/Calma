@@ -60,9 +60,9 @@ export const BagDropdown = memo(() => {
 
   return (
     <div className='d-flex flex-1 justify-content-flex-end'>
-      <Dropdown>
-        <DropdownTrigger>
-          <div className='navbar-dropdown-info position-relative'>
+      <Dropdown position='bottom-end' offsetX={16}>
+        <DropdownTrigger className='w-100'>
+          <div className='navbar-dropdown-info position-relative d-flex justify-content-flex-end'>
             <Button
               variant='basic'
               className='position-relative rounded-pill-md navbar-dropdown-trigger'

@@ -25,24 +25,27 @@ import { useDevice } from '../../hooks/useBreakpoint'
 
 const DropdownContext = createContext(null)
 
-export const Dropdown = ({ children, closeOnClickOutside = true }) => {
+export const Dropdown = ({
+  children,
+  closeOnClickOutside = true,
+  position,
+  offsetX
+}) => {
   const [open, setOpen] = useState(false)
   const [arrowEl, setArrowEl] = useState(null)
-  const { type, width } = useDevice()
+  const { type } = useDevice()
 
   const isTablet = type === 'tablet'
   const isDesktop = type === 'desktop'
-  const isMobile = type === 'mobile'
 
-  const dropdownPosition = isDesktop
-    ? 'bottom-end'
-    : isTablet
-      ? 'bottom-end'
-      : 'bottom-end'
+  const dropdownPosition =
+    isDesktop || isTablet
+      ? position || 'bottom-end'
+      : position || 'bottom-center'
 
   const middleware = useMemo(
     () => [
-      offset({ mainAxis: 8, crossAxis: isMobile && 16 }),
+      offset({ mainAxis: 8, crossAxis: offsetX }),
       flip(),
       shift({ padding: 0 }),
       arrow({ element: arrowEl })
@@ -97,18 +100,17 @@ export const Dropdown = ({ children, closeOnClickOutside = true }) => {
 
   return (
     <DropdownContext.Provider value={contextValue}>
-      <div style={{ display: 'inline-block', position: 'relative' }}>
-        {children}
-      </div>
+      <div className='d-flex flex-1 position-relative'>{children}</div>
     </DropdownContext.Provider>
   )
 }
 
-export const DropdownTrigger = ({ children }) => {
+export const DropdownTrigger = ({ children, className }) => {
   const { refs, interactions } = useContext(DropdownContext)
 
   return (
     <div
+      className={className}
       ref={refs.setReference}
       {...interactions.getReferenceProps()}
       style={{ cursor: 'pointer' }}
