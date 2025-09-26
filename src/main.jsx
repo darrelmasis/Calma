@@ -6,11 +6,13 @@ import './styles/styles.scss'
 import { LanguageProvider } from './i18n/LanguageContext'
 import { SelectedServicesProvider } from './hooks/useSelectedService'
 import { PWAInstallProvider } from './hooks/usePWAInstall.jsx'
+import { Confetti } from './components/commons/Confetti.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter basename='/'>
       <LanguageProvider>
+        <Confetti confettiCount={50} speed={3} maxSize={12} shape='square' />
         <PWAInstallProvider>
           <SelectedServicesProvider>
             <App />
