@@ -17,8 +17,8 @@ $flexbox-classes: (
   'justify-content': (
     property: justify-content,
     class: justify-content,
-    values: flex-start flex-end center space-between space-around space-evenly normal
-      stretch
+    values: flex-start flex-end center space-between space-around space-evenly
+      normal stretch
   ),
   'flex-direction': (
     property: flex-direction,
@@ -197,10 +197,10 @@ $flexbox-classes: (
   @each $value in map.get($property-values, values) {
     $class-name: #{$property-class}-#{fn.escape-class($value)};
     .#{$class-name} {
-      @if $measurement {
-        #{$property-property}: #{$value}#{$measurement}; // Aplica unidad si existe
+      @if $measurement and type-of($value) == number {
+        #{$property-property}: #{$value}#{$measurement};
       } @else {
-        #{$property-property}: #{$value}; // Sin unidad
+        #{$property-property}: #{$value};
       }
     }
 
@@ -212,7 +212,7 @@ $flexbox-classes: (
           )};
         @media (min-width: $breakpoint-value) {
           .#{$responsive-class-name} {
-            @if $measurement {
+            @if $measurement and type-of($value) == number {
               #{$property-property}: #{$value}#{$measurement} !important;
             } @else {
               #{$property-property}: #{$value} !important;
