@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useLang } from '../../i18n/LanguageContext'
 import { useSound } from './SoundManager'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useSelectedServices } from '../../hooks/useSelectedService'
 
 const FloatingButton = () => {
@@ -23,6 +23,7 @@ const FloatingButton = () => {
   const isBookingPage = pathname === '/booking'
   const { totalServices } = useSelectedServices()
   const [hasServices, setHasServices] = useState(false)
+  const navigate = useNavigate()
 
   useEffect(() => {
     setHasServices(totalServices > 0)
@@ -67,6 +68,22 @@ const FloatingButton = () => {
   const handleWhatsappButton = () => {
     const whatsappLink = `https://wa.me/${formatPhoneNumber(calmaPhoneNumber)}`
     window.open(whatsappLink, '_blank', 'noopener,noreferrer')
+  }
+
+  const handleBookingButton = () => {
+    if (location.pathname !== '/empty' && location.pathname !== '/booking') {
+      setTimeout(() => {
+        navigate('/booking')
+      }, 400)
+    }
+
+    closeSound.play()
+
+    setShowOptions(false)
+    setSwitchIcon(false)
+    setTimeout(() => {
+      setIsVisible(false)
+    }, 250) // da tiempo a la animación de salida
   }
 
   // 🔹 Mantener el ref actualizado
@@ -141,10 +158,9 @@ const FloatingButton = () => {
               </div>
               <div className={optionButtonClasses}>
                 <Button
-                  as='link'
-                  to={'/booking'}
                   variant='primary'
                   className='option-button-wrapper booking-button p-0'
+                  onClick={handleBookingButton}
                 >
                   <div className='grid-row grid-col-auto-1fr justify-content-center gap-0'>
                     <div className='d-flex option-button-label align-items-center justify-content-center h-100 ms-3'>
