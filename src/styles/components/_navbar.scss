@@ -9,6 +9,11 @@
 
 .navbar {
   padding-block: 1rem;
+  transition: all 0.3s ease-in-out;
+
+  &.hide {
+    transform: translateY(-100%);
+  }
 
   &-desktop {
     width: 100%;
