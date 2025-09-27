@@ -15,9 +15,7 @@ const Packages = () => {
   usePageTitle(t('packages.pageTitle'))
 
   return (
-    <div>
-      <Header />
-
+    <>
       <section className='py-4 bg-neutral-0'>
         <div className='container'>
           <div className='grid'>
@@ -82,9 +80,7 @@ const Packages = () => {
           </AccordionGroup>
         </div>
       </section>
-
-      <Footer />
-    </div>
+    </>
   )
 }
 

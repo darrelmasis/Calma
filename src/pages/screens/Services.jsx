@@ -259,29 +259,24 @@ const Services = () => {
   }))
 
   return (
-    <div>
-      <Header />
-
-      <section className='bg-neutral-0 pb-5'>
-        <div className='container'>
-          <div className='grid gap-lg-3'>
-            {/* Encabezado arriba */}
-            <div className='grid-col-12 d-flex flex-direction-column align-items-center justify-content-center'>
-              <Fade>
-                <h1 className='text-center'>{t('services.section_1.title')}</h1>
-              </Fade>
-              <Fade>
-                <p className='text-center text-muted max-wx-750'>
-                  {t('services.section_1.description')}
-                </p>
-              </Fade>
-            </div>
+    <section className='bg-neutral-0 pb-5 min-vh-100'>
+      <div className='container'>
+        <div className='grid gap-lg-3'>
+          {/* Encabezado arriba */}
+          <div className='grid-col-12 d-flex flex-direction-column align-items-center justify-content-center'>
+            <Fade>
+              <h1 className='text-center'>{t('services.section_1.title')}</h1>
+            </Fade>
+            <Fade>
+              <p className='text-center text-muted max-wx-750'>
+                {t('services.section_1.description')}
+              </p>
+            </Fade>
           </div>
-          <Tabs tabs={tabs} />
         </div>
-      </section>
-      <Footer />
-    </div>
+        <Tabs tabs={tabs} />
+      </div>
+    </section>
   )
 }
 

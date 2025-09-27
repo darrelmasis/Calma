@@ -7,6 +7,8 @@ import { LanguageProvider } from './i18n/LanguageContext'
 import { SelectedServicesProvider } from './hooks/useSelectedService'
 import { PWAInstallProvider } from './hooks/usePWAInstall.jsx'
 import { Confetti } from './components/commons/Confetti.jsx'
+import Header from './components/layout/Header.jsx'
+import Footer from './components/layout/Footer.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -15,7 +17,9 @@ createRoot(document.getElementById('root')).render(
         <Confetti confettiCount={50} speed={3} maxSize={12} shape='square' />
         <PWAInstallProvider>
           <SelectedServicesProvider>
+            <Header />
             <App />
+            <Footer />
           </SelectedServicesProvider>
         </PWAInstallProvider>
       </LanguageProvider>

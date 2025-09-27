@@ -10,16 +10,16 @@ const History = () => {
   const { t } = useLang()
   usePageTitle(t('history.pageTitle'))
   return (
-    <div>
-      <Header />
-
+    <>
       <section className='py-4 bg-neutral-0'>
         <div className='container'>
           <div className='grid'>
             <div className='grid-row mb-6'>
               <div className='grid-col-12'>
                 <Fade className='border-bottom-primary border-3'>
-                  <h1 className='text-center'>{t('history.section_1.title')}</h1>
+                  <h1 className='text-center'>
+                    {t('history.section_1.title')}
+                  </h1>
                 </Fade>
               </div>
             </div>
@@ -132,8 +132,7 @@ const History = () => {
           </div>
         </div>
       </section>
-      <Footer />
-    </div>
+    </>
   )
 }
 export default History

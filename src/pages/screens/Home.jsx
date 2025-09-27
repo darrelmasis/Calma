@@ -20,7 +20,6 @@ const Home = () => {
 
   return (
     <>
-      <Header />
       <Hero2
         background='/images/webp/hero-bg-alt-1200.webp'
         overlayType='end-transparent'
@@ -55,11 +54,10 @@ const Home = () => {
             </h2>
           </Fade>
 
-          {/* <div className="grid mt-lg-6 mt-4 text-center"> */}
           <div className='grid-row justify-content-space-between w-100'>
             <div className='grid-col-12 grid-col-md-6 grid-col-lg-4 text-center my-lg-0 mb-3 py-3 py-lg-0'>
               <div className='card d-flex flex-direction-column align-items-center'>
-                <Fade delay={0.4}>
+                <Fade>
                   <span className='border-primary card-icon p-3 rounded-all-full d-inline-flex align-items-center justify-content-center'>
                     <Icon
                       name='heart'
@@ -85,7 +83,7 @@ const Home = () => {
 
             <div className='grid-col-12 grid-col-md-6 grid-col-lg-4 text-center my-lg-0 mb-3 py-3 py-lg-0'>
               <div className='card d-flex flex-direction-column align-items-center'>
-                <Fade delay={0.6}>
+                <Fade>
                   <span className='border-primary card-icon p-3 rounded-all-full d-inline-flex align-items-center justify-content-center'>
                     <Icon
                       name='shield'
@@ -111,7 +109,7 @@ const Home = () => {
 
             <div className='grid-col-12 grid-col-md-12 grid-col-lg-4 text-center my-lg-0 mb-3 py-3 py-lg-0'>
               <div className='card d-flex flex-direction-column align-items-center'>
-                <Fade delay={0.8}>
+                <Fade>
                   <span className='border-primary card-icon p-3 rounded-all-full d-inline-flex align-items-center justify-content-center'>
                     <Icon
                       name='users'
@@ -153,15 +151,15 @@ const Home = () => {
               className='text-secondary mb-3 fs-h1'
             />
           </Fade>
-          <Fade delay={0.2}>
+          <Fade>
             <h2 className='mb-3 text-secondary'>{t('home.section_3.title')}</h2>
           </Fade>
-          <Fade delay={0.4}>
+          <Fade>
             <p className='mb-6 text-secondary'>
               {t('home.section_3.description')}
             </p>
           </Fade>
-          <Fade delay={0.6}>
+          <Fade>
             <Button
               as='link'
               to='/services'
@@ -175,7 +173,6 @@ const Home = () => {
           </Fade>
         </div>
       </section>
-      <Footer />
     </>
   )
 }
