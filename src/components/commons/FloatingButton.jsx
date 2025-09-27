@@ -6,26 +6,36 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useLang } from '../../i18n/LanguageContext'
 import { useSound } from './SoundManager'
 import { useLocation } from 'react-router-dom'
+import { useSelectedServices } from '../../hooks/useSelectedService'
 
 const FloatingButton = () => {
   const [showOptions, setShowOptions] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
+
   const [switchIcon, setSwitchIcon] = useState(false)
   const calmaPhoneNumber = import.meta.env.VITE_CALMA_PHONE_NUMBER
   const { t } = useLang()
   const containerRef = useRef(null) // <-- referencia al contenedor principal
-  const iconRef = useRef(null)
   const closeSound = useSound('closePops', 0.5)
   const openSound = useSound('openPops', 0.5)
   const showOptionsRef = useRef(showOptions)
   const { pathname } = useLocation()
   const isBookingPage = pathname === '/booking'
+  const { totalServices } = useSelectedServices()
+  const [hasServices, setHasServices] = useState(false)
 
-  const optionButtonClasses = classNames({
-    'option-button': true,
-    show: showOptions,
-    hide: !showOptions
-  })
+  useEffect(() => {
+    setHasServices(totalServices > 0)
+  }, [totalServices])
+
+  const optionButtonClasses = classNames(
+    {
+      'option-button': true,
+      show: showOptions,
+      hide: !showOptions
+    },
+    'position-relative'
+  ) // para el punto rojo
 
   const mainButtonIconName = classNames({
     question: !switchIcon,
@@ -147,31 +157,39 @@ const FloatingButton = () => {
                     </div>
                   </div>
                 </Button>
+                {hasServices && (
+                  <span className='position-absolute top-0 right-0 red-dot rounded-all-sm border-white border-2 bg-danger-400'></span>
+                )}
               </div>
             </div>
           )}
 
-          <Button
-            className='floating-button-toggle rounded-all-full main-button'
-            variant='info'
-            onClick={handleMainButtonClick}
-            ariaLabel='Abrir burbujas de opciones'
-            tabIndex={0}
-            size='large'
-          >
-            <AnimatePresence mode='wait'>
-              <motion.div
-                key={mainButtonIconName}
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.5 }}
-                transition={{ duration: 0.1 }}
-                className='d-flex align-items-center justify-content-center h-100'
-              >
-                <Icon name={mainButtonIconName} variant='solid' size='lg' />
-              </motion.div>
-            </AnimatePresence>
-          </Button>
+          <div className='position-relative'>
+            <Button
+              className='floating-button-toggle rounded-all-full main-button'
+              variant='info'
+              onClick={handleMainButtonClick}
+              ariaLabel='Abrir burbujas de opciones'
+              tabIndex={0}
+              size='large'
+            >
+              <AnimatePresence mode='wait'>
+                <motion.div
+                  key={mainButtonIconName}
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.5 }}
+                  transition={{ duration: 0.1 }}
+                  className='d-flex align-items-center justify-content-center h-100'
+                >
+                  <Icon name={mainButtonIconName} variant='solid' size='lg' />
+                </motion.div>
+              </AnimatePresence>
+            </Button>
+            {hasServices && !isVisible && (
+              <span className='position-absolute top-0 right-0 red-dot rounded-all-sm border-white border-2 bg-danger-400'></span>
+            )}
+          </div>
         </div>
       </div>
     )

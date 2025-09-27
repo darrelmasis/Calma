@@ -160,3 +160,9 @@
     transform: scale(0);
   }
 }
+
+.red-dot {
+  width: 12px;
+  height: 12px;
+  background-color: c.$danger;
+}
