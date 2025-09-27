@@ -42,11 +42,19 @@ $color-palettes: (
     --text-#{$color}: #{$value};
     color: var(--text-#{$color});
   }
+  .text-#{$color}:visited {
+    --text-#{$color}: #{$value};
+    color: var(--text-#{$color});
+  }
+  .text-#{$color}:hover:visited {
+    --text-#{$color}: #{$value};
+    color: var(--text-#{$color});
+  }
 
   // Versiones responsive (usando tu mixin 'screen')
   @each $breakpoint, $breakpoint-value in bp.$breakpoints {
     @include mq.screen('min', $breakpoint) {
-      .bg-#{$color}-#{$breakpoint} {
+      .text-#{$color}-#{$breakpoint} {
         --text-#{$color}: #{$value};
         color: var(--text-#{$color});
       }
