@@ -36,8 +36,8 @@ const LanguageTrigger = ({ selectedLabel, isDesktop }) => {
           className: 'arrow-icon ms-1'
         }
       ]}
-      variant='basic'
-      className='language-switcher-trigger bg-transparent w-100 border border'
+      variant='basic2'
+      className='language-switcher-trigger bg-transparent w-100 border-0'
     />
   )
 }
