@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import classNames from 'classnames'
 import { Icon } from '../commons/Icons'
 import { Link } from 'react-router-dom'
@@ -164,30 +164,54 @@ export const Button = ({
 }
 
 const BadgeAnimation = ({ value, children }) => {
-  const controls = useAnimation()
-  const prevValue = useRef(value)
+  const [prevValue, setPrevValue] = useState(null)
+  const [shouldAnimate, setShouldAnimate] = useState(false)
 
   useEffect(() => {
-    if (prevValue.current !== value) {
-      // Reinicia la animación
-      controls.set({ scale: 0, opacity: 0 })
-      controls.start({
-        scale: [0, 1],
-        opacity: [0, 1],
-        transition: {
-          scale: { type: 'spring', stiffness: 600, damping: 12 },
-          opacity: { duration: 0.15 }
-        }
-      })
-      prevValue.current = value
+    // Si el valor actual no es válido, reseteamos y salimos
+    if (value == null || value <= 0) {
+      setPrevValue(value)
+      return
     }
-  }, [value, controls])
+
+    // Convertir a número
+    const currentNum = Number(value)
+    const prevNum = prevValue
+
+    let animate = false
+
+    // Caso 1: primera aparición (prevValue es null/undefined)
+    if (prevNum == null) {
+      animate = true
+    }
+    // Caso 2: ambos son números y el nuevo es mayor
+    else if (typeof prevNum === 'number' && !isNaN(prevNum) && currentNum > prevNum) {
+      animate = true
+    }
+
+    setShouldAnimate(animate)
+    setPrevValue(value)
+  }, [value])
+
+  // No renderizar si no hay valor válido
+  if (value == null || value <= 0) {
+    return null
+  }
 
   return (
     <motion.span
+      key={shouldAnimate ? `anim-${value}` : `static-${value}`}
       className='btn-badge fs-small text-white bg-danger-400 border-white border-2 fw-bold'
-      initial={false}
-      animate={controls}
+      initial={shouldAnimate ? { scale: 0, opacity: 0 } : false}
+      animate={{ scale: 1, opacity: 1 }}
+      transition={
+        shouldAnimate
+          ? {
+              scale: { type: 'spring', stiffness: 500, damping: 12, mass: 0.5 },
+              opacity: { duration: 0.15 }
+            }
+          : {}
+      }
     >
       {children}
     </motion.span>
