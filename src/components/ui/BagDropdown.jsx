@@ -112,7 +112,7 @@ const BagContent = ({
       ) : (
         <>
           <div className='p-3'>
-            <div className='text-center border-bottom pb-3 d-flex align-items-center justify-content-space-between mt-0'>
+            <div className='text-center border-bottom pb-3 d-flex align-items-center justify-content-space-between mt-0 mb-3'>
               <p className='fs-h5 fs-md-regular d-flex align-items-center gap-0-5 m-0 text-muted'>
                 <Icon name='list-check' />
                 {t('header.dropdown.title')}
@@ -130,13 +130,13 @@ const BagContent = ({
               </Tooltip>
             </div>
 
-            <div className='navbar-dropdown-services-added scrollbar-thin'>
+            <div className='navbar-dropdown-services-added d-flex flex-direction-column gap-1 scrollbar-thin'>
               {Object.entries(servicesWithInfo).map(([categoryId, items]) => (
                 <div key={categoryId}>
                   <div className='mb-3 fs-h6'>
                     {t(`services.section_1.category.${categoryId}.name`)}
                   </div>
-                  <ul className='navbar-dropdown-service-list mb-3 gap-0-5'>
+                  <ul className='navbar-dropdown-service-list gap-0-5'>
                     {items.map((service) => (
                       <li
                         className='navbar-dropdown-service-item rounded-all-sm d-flex align-items-center fs-medium'
