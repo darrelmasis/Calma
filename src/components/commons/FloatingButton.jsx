@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { Button } from '../ui/Button'
 import { Icon } from './Icons'
 import classNames from 'classnames'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, delay, motion } from 'framer-motion'
 import { useLang } from '../../i18n/LanguageContext'
 import { useSound } from './SoundManager'
 import { useLocation, useNavigate } from 'react-router-dom'
@@ -51,14 +51,14 @@ const FloatingButton = () => {
     return cleanNum
   }
 
-  const handleMainButtonClick = () => {
+  const handleMainButtonClick = (playButtonSound = true) => {
     if (!showOptions) {
-      openSound.play()
+      playButtonSound && openSound.play()
       setShowOptions(true)
       setSwitchIcon(true)
       setIsVisible(true)
     } else {
-      closeSound.play()
+      playButtonSound && closeSound.play()
       setShowOptions(false)
       setSwitchIcon(false)
       setTimeout(() => setIsVisible(false), 250) // da tiempo a la animación de salida
@@ -67,7 +67,12 @@ const FloatingButton = () => {
 
   const handleWhatsappButton = () => {
     const whatsappLink = `https://wa.me/${formatPhoneNumber(calmaPhoneNumber)}`
-    window.open(whatsappLink, '_blank', 'noopener,noreferrer')
+    setTimeout(
+      () => window.open(whatsappLink, '_blank', 'noopener,noreferrer'),
+      400
+    )
+
+    handleMainButtonClick()
   }
 
   const handleBookingButton = () => {
@@ -77,13 +82,17 @@ const FloatingButton = () => {
       }, 400)
     }
 
-    closeSound.play()
+    handleMainButtonClick()
+  }
 
-    setShowOptions(false)
-    setSwitchIcon(false)
-    setTimeout(() => {
-      setIsVisible(false)
-    }, 250) // da tiempo a la animación de salida
+  const handleContactButton = () => {
+    if (location.pathname !== '/empty' && location.pathname !== '/booking') {
+      setTimeout(() => {
+        navigate('/contact')
+      }, 400)
+    }
+
+    handleMainButtonClick()
   }
 
   // 🔹 Mantener el ref actualizado
@@ -113,6 +122,31 @@ const FloatingButton = () => {
     }
   }, [openSound])
 
+  // cerrar opciones al hacer scroll
+  useEffect(() => {
+    let executed = false
+
+    const handleScroll = () => {
+      if (!executed) {
+        isVisible && handleMainButtonClick(false)
+        executed = true
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, true)
+    return () => {
+      window.removeEventListener('scroll', handleScroll, true)
+    }
+  }, [isVisible])
+
+  const bounceVariants = {
+    idle: { y: 0 },
+    bounce: {
+      y: [0, -6, 0, -3, 0], // secuencia de rebote
+      transition: { duration: 0.6, repeat: Infinity, repeatDelay: 2 }
+    }
+  }
+
   return (
     !isBookingPage && (
       <div className={`floating-button z-index-10`} ref={containerRef}>
@@ -139,10 +173,9 @@ const FloatingButton = () => {
               </div>
               <div className={optionButtonClasses}>
                 <Button
-                  as='link'
-                  to={'/contact'}
                   variant='info'
                   className='option-button-wrapper booking-button p-0'
+                  onClick={handleContactButton}
                 >
                   <div className='grid-row grid-col-auto-1fr justify-content-center gap-0'>
                     <div className='d-flex option-button-label align-items-center justify-content-center h-100 ms-3'>
@@ -181,30 +214,47 @@ const FloatingButton = () => {
           )}
 
           <div className='position-relative'>
-            <Button
-              className='floating-button-toggle rounded-all-full main-button'
-              variant='info'
-              onClick={handleMainButtonClick}
-              ariaLabel='Abrir burbujas de opciones'
-              tabIndex={0}
-              size='large'
-            >
-              <AnimatePresence mode='wait'>
-                <motion.div
-                  key={mainButtonIconName}
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.5 }}
-                  transition={{ duration: 0.1 }}
-                  className='d-flex align-items-center justify-content-center h-100'
+            <AnimatePresence>
+              <motion.div
+                key='floating-button'
+                animate={{
+                  scale: 1,
+                  ...(hasServices && !isVisible
+                    ? bounceVariants.bounce
+                    : bounceVariants.idle)
+                }}
+                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+              >
+                <Button
+                  className='floating-button-toggle rounded-all-full main-button'
+                  variant='info'
+                  onClick={handleMainButtonClick}
+                  ariaLabel='Abrir burbujas de opciones'
+                  tabIndex={0}
+                  size='large'
                 >
-                  <Icon name={mainButtonIconName} variant='solid' size='lg' />
-                </motion.div>
-              </AnimatePresence>
-            </Button>
-            {hasServices && !isVisible && (
-              <span className='position-absolute top-0 right-0 red-dot rounded-all-sm border-white border-2 bg-danger-400'></span>
-            )}
+                  <AnimatePresence mode='wait'>
+                    <motion.div
+                      key={mainButtonIconName}
+                      initial={{ opacity: 0, scale: 0.5 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.5 }}
+                      transition={{ duration: 0.1 }}
+                      className='d-flex align-items-center justify-content-center h-100'
+                    >
+                      <Icon
+                        name={mainButtonIconName}
+                        variant='solid'
+                        size='lg'
+                      />
+                    </motion.div>
+                  </AnimatePresence>
+                </Button>
+                {hasServices && !isVisible && (
+                  <span className='position-absolute top-0 right-0 red-dot rounded-all-sm border-white border-2 bg-danger-400'></span>
+                )}
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
       </div>
