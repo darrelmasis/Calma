@@ -132,8 +132,8 @@ export const SelectedServicesProvider = ({ children }) => {
 
     if ('setAppBadge' in navigator) {
       if (totalServices > 0) {
-        // navigator.setAppBadge().catch(() => {}) // PUNTO GENÉRICO EN EL BADGE
-        navigator.setAppBadge(totalServices)
+        navigator.setAppBadge().catch(() => {}) // PUNTO GENÉRICO EN EL BADGE
+        // navigator.setAppBadge(totalServices)
       } else {
         navigator.clearAppBadge().catch(() => {})
       }
