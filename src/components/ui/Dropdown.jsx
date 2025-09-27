@@ -61,9 +61,9 @@ export const Dropdown = ({
     const handleScroll = () => {
       if (open) setOpen(false)
     }
-    window.addEventListener('scroll', handleScroll, true)
+    window.addEventListener('scroll', handleScroll)
     return () => {
-      window.removeEventListener('scroll', handleScroll, true)
+      window.removeEventListener('scroll', handleScroll)
     }
   }, [open, closeOnScroll])
 
