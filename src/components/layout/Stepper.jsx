@@ -9,10 +9,10 @@ import classNames from 'classnames'
 import { Icon } from '../commons/Icons'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '../ui/Button'
-import { useSentinel } from '../../hooks/useSentinel' // Eliminar
 import { useSticky } from '../../hooks/useSticky'
 import { useBookingValidation } from '../../hooks/useBookingValidation'
 import { useLang } from '../../i18n/LanguageContext'
+import { Link } from 'react-router-dom'
 
 const Stepper = ({
   children,
@@ -138,7 +138,7 @@ const Stepper = ({
         </div>
 
         {/* Contenido del paso */}
-        <div className='step-content position-relative w-100'>
+        <div className='step-content position-relative w-100 min-vh-80'>
           <AnimatePresence mode='wait'>
             {steps[activeStep] &&
               cloneElement(steps[activeStep], {
@@ -163,6 +163,13 @@ const Stepper = ({
         }}
         isSubmitting={isSubmitting}
       />
+
+      <Link
+        to='/services'
+        className='py-2 mt-3 fs-medium text-info text-decoration-none text-decoration-underline-hover'
+      >
+        {t('booking.wantToExplore')}
+      </Link>
     </div>
   )
 }
@@ -191,41 +198,35 @@ const StepperActions = ({
   )
 
   return (
-
-      <div className={stickyPanelClasses} ref={stickyRef}>
-        <Button
-          size='large'
-          icon='arrow-left'
-          variant='white'
-          disabled={activeStep === 0 || isSubmitting}
-          onClick={prevStep}
-          className='flex-1'
-        >
-          {t('booking.prevButtonText')}
-        </Button>
-        <Button
-          size='large'
-          variant='primary'
-          icon={{
-            name: isSubmitting
-              ? 'spinner'
-              : isLastStep
-                ? 'check'
-                : 'arrow-right',
-            position: 'right',
-            animation: isSubmitting ? 'spin' : '',
-            variant: isSubmitting ? 'solid' : 'regular'
-          }}
-          className={`flex-1 ${isLastStep ? 'btn btn-success' : 'btn btn-primary'}`}
-          onClick={!isSubmitting ? (isLastStep ? onSubmit : nextStep) : null}
-          disabled={isSubmitting}
-        >
-          {isLastStep
-            ? t('booking.confirmButtonText')
-            : t('booking.nextButtonText')}
-        </Button>
-      </div>
-
+    <div className={stickyPanelClasses} ref={stickyRef}>
+      <Button
+        size='large'
+        icon='arrow-left'
+        variant='basic2'
+        disabled={activeStep === 0 || isSubmitting}
+        onClick={prevStep}
+        className='flex-1'
+      >
+        {t('booking.prevButtonText')}
+      </Button>
+      <Button
+        size='large'
+        variant='primary'
+        icon={{
+          name: isSubmitting ? 'spinner' : isLastStep ? 'check' : 'arrow-right',
+          position: 'right',
+          animation: isSubmitting ? 'spin' : '',
+          variant: isSubmitting ? 'solid' : 'regular'
+        }}
+        className={`flex-1 ${isLastStep ? 'btn btn-success' : 'btn btn-primary'}`}
+        onClick={!isSubmitting ? (isLastStep ? onSubmit : nextStep) : null}
+        disabled={isSubmitting}
+      >
+        {isLastStep
+          ? t('booking.confirmButtonText')
+          : t('booking.nextButtonText')}
+      </Button>
+    </div>
   )
 }
 

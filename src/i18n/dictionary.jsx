@@ -31,6 +31,7 @@ export const dictionary = {
         clear: 'Limpiar',
         book: 'Agendar ahora!',
         exploreServices: 'Explorar Servicios',
+        keepExploring: 'Seguir explorando',
         clearTooltip: 'Eliminar todos los servicios seleccionados'
       },
       mobileNavbar: {
@@ -677,6 +678,7 @@ export const dictionary = {
         'Para agendar una cita, primero debes elegir los servicios que deseas.',
       emptyBagCta: 'Explorar servicios',
       emptyBagLinktext: 'Solo quiero ponerme en contacto',
+      wantToExplore: 'Quiero seguir explorando',
       steps: {
         welcome: {
           title: '¡Genial! Veamos lo que elegiste',
@@ -863,6 +865,7 @@ export const dictionary = {
         totalSubtitle: 'service',
         clear: 'Clear bag',
         book: 'Book Now!',
+        keepExploring: 'Keep Exploring',
         exploreServices: 'Explore Services',
         clearTooltip: 'Remove all selected services'
       },
@@ -1476,6 +1479,7 @@ export const dictionary = {
         'To book an appointment, please choose your desired services first.',
       emptyBagCta: 'Browse Services',
       emptyBagLinktext: 'I just want to get in touch',
+      wantToExplore: 'I want to keep exploring',
       steps: {
         welcome: {
           title: 'Great! Let’s review what you’ve selected',
