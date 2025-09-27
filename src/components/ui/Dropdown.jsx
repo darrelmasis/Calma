@@ -2,8 +2,8 @@
 import React, {
   createContext,
   useContext,
-  useRef,
   useState,
+  useEffect,
   useMemo
 } from 'react'
 import {
@@ -29,6 +29,7 @@ export const DropdownContext = createContext(null)
 export const Dropdown = ({
   children,
   closeOnClickOutside = true,
+  closeOnScroll = true,
   position,
   offsetX
 }) => {
@@ -53,6 +54,18 @@ export const Dropdown = ({
     ],
     [arrowEl]
   )
+
+  // 👇 cierre al hacer scroll
+  useEffect(() => {
+    if (!closeOnScroll) return
+    const handleScroll = () => {
+      if (open) setOpen(false)
+    }
+    window.addEventListener('scroll', handleScroll, true)
+    return () => {
+      window.removeEventListener('scroll', handleScroll, true)
+    }
+  }, [open, closeOnScroll])
 
   const { x, y, strategy, refs, context } = useFloating({
     open,
@@ -172,11 +185,12 @@ export const DropdownContent = ({ children, className }) => {
   )
 }
 
-
 export const useDropdown = () => {
   const context = useContext(DropdownContext)
   if (!context) {
-    throw new Error('useDropdown debe usarse dentro de un componente <Dropdown>')
+    throw new Error(
+      'useDropdown debe usarse dentro de un componente <Dropdown>'
+    )
   }
   return context
 }
