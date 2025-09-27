@@ -125,6 +125,21 @@ export const SelectedServicesProvider = ({ children }) => {
     return result
   }, [services, t])
 
+  /**API DE NAVIGATOR APP BADGE */
+
+  useEffect(() => {
+    if (!isLoaded) return // Evita ejecutar antes de cargar del localStorage
+
+    if ('setAppBadge' in navigator) {
+      if (totalServices > 0) {
+        // navigator.setAppBadge().catch(() => {}) // PUNTO GENÉRICO EN EL BADGE
+        navigator.setAppBadge(totalServices)
+      } else {
+        navigator.clearAppBadge().catch(() => {})
+      }
+    }
+  }, [totalServices, isLoaded])
+
   return (
     <SelectedServicesContext.Provider
       value={{
