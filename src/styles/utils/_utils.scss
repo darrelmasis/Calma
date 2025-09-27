@@ -60,7 +60,8 @@ $flexbox-classes: (
   'text-decoration': (
     property: text-decoration,
     class: text-decoration,
-    values: underline none
+    values: underline none,
+    hover-values: underline none
   ),
   'text-wrap': (
     property: text-wrap,
@@ -131,7 +132,7 @@ $flexbox-classes: (
   'min-height': (
     property: min-height,
     class: min-vh,
-    values: 25 50 75 100 auto fit-content,
+    values: 25 50 70 75 80 90 100 auto fit-content,
     measurement: 'dvh'
   ),
   'white-space': (
@@ -201,28 +202,63 @@ $flexbox-classes: (
   $property-class: map.get($property-values, class);
   $measurement: map.get($property-values, measurement);
 
-  @each $value in map.get($property-values, values) {
-    $class-name: #{$property-class}-#{fn.escape-class($value)};
-    .#{$class-name} {
-      @if $measurement and meta.type-of($value) == number {
-        #{$property-property}: #{$value}#{$measurement};
-      } @else {
-        #{$property-property}: #{$value};
+  // ➕ 1. Generar clases normales (siempre)
+  @if map.has-key($property-values, 'values') {
+    @each $value in map.get($property-values, 'values') {
+      $class-name: #{$property-class}-#{fn.escape-class($value)};
+      .#{$class-name} {
+        @if $measurement and meta.type-of($value) == number {
+          #{$property-property}: #{$value}#{$measurement};
+        } @else {
+          #{$property-property}: #{$value};
+        }
+      }
+
+      // Responsivas para clases normales
+      @each $breakpoint, $breakpoint-value in bp.$breakpoints {
+        @if $breakpoint != xs {
+          $responsive-class-name: #{$property-class}-#{$breakpoint}-#{fn.escape-class(
+              $value
+            )};
+          @media (min-width: $breakpoint-value) {
+            .#{$responsive-class-name} {
+              @if $measurement and meta.type-of($value) == number {
+                #{$property-property}: #{$value}#{$measurement} !important;
+              } @else {
+                #{$property-property}: #{$value} !important;
+              }
+            }
+          }
+        }
       }
     }
+  }
 
-    // Clases responsivas
-    @each $breakpoint, $breakpoint-value in bp.$breakpoints {
-      @if $breakpoint != xs {
-        $responsive-class-name: #{$property-class}-#{$breakpoint}-#{fn.escape-class(
-            $value
-          )};
-        @media (min-width: $breakpoint-value) {
-          .#{$responsive-class-name} {
-            @if $measurement and meta.type-of($value) == number {
-              #{$property-property}: #{$value}#{$measurement} !important;
-            } @else {
-              #{$property-property}: #{$value} !important;
+  // ➕ 2. Generar clases HOVER (solo si existe hover-values)
+  @if map.has-key($property-values, 'hover-values') {
+    @each $value in map.get($property-values, 'hover-values') {
+      $hover-class-name: #{$property-class}-#{fn.escape-class($value)}-hover;
+      .#{$hover-class-name}:hover {
+        @if $measurement and meta.type-of($value) == number {
+          #{$property-property}: #{$value}#{$measurement};
+        } @else {
+          #{$property-property}: #{$value};
+        }
+      }
+
+      // Responsivas para clases hover
+      @each $breakpoint, $breakpoint-value in bp.$breakpoints {
+        @if $breakpoint != xs {
+          $responsive-hover-class: #{$property-class}-#{$breakpoint}-#{fn.escape-class(
+              $value
+            )}-hover;
+          @media (min-width: $breakpoint-value) {
+            .#{$responsive-hover-class}:hover {
+              @if $measurement and meta.type-of($value) == number {
+                #{$property-property}: #{$value}#{$measurement} !important;
+              } @else {
+                #{$property-property}: #{$value} !important;
+              }
             }
           }
         }
@@ -230,7 +266,6 @@ $flexbox-classes: (
     }
   }
 }
-
 // Clase base
 .scrollbar-hidden {
   -ms-overflow-style: none; /* IE y Edge */
