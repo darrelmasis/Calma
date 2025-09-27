@@ -98,7 +98,7 @@ export const HorizontalScroll = ({
       {showRight && <div className='scroll-indicator right d-flex align-items-center'><Icon name='chevron-right' size='lg' className="text-primary" /></div>}
 
       <div
-        className={classNames('scroll-container', classNameContainer)}
+        className={classNames('scroll-container flex-1', classNameContainer)}
         ref={scrollRef}
         style={{ cursor: 'grab' }}
       >
