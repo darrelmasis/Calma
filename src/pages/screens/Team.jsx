@@ -1,11 +1,9 @@
 import { usePageTitle } from '@utils/utils'
-import Header from '../../components/layout/Header'
 import { Icon } from '../../components/commons/Icons'
 import { Hero } from '../../components/commons/Hero'
 import { Button } from '../../components/ui/Button'
 import { useNavigate } from 'react-router-dom'
 import { FadeInWhenVisible as Fade } from '../../components/commons/animations/FadeInWhenVisible'
-import Footer from '../../components/layout/Footer'
 import { useLang } from '../../i18n/LanguageContext'
 import { ResponsiveImage } from '../../components/ui/ResponsiveImage'
 
@@ -33,8 +31,6 @@ const Team = () => {
 
   return (
     <>
-      <Header />
-
       <section className='py-5 bg-white'>
         <div className='container'>
           <Fade className='d-flex flex-direction-column align-items-center justify-content-center text-center'>
@@ -100,7 +96,6 @@ const Team = () => {
           </Fade>
         </div>
       </section>
-      <Footer />
     </>
   )
 }
