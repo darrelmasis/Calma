@@ -168,7 +168,7 @@ export const Navbar = () => {
   }
 
   const PWAInstallButton = () => {
-    // if (!isInstallable) return null
+    if (!isInstallable) return null
     return (
       <div className='d-flex align-items-center justify-content-center w-100'>
         <Button
