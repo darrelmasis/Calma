@@ -1,10 +1,22 @@
 // SelectedServicesContext.jsx
-import { createContext, useContext, useState, useEffect, useMemo } from 'react'
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useMemo,
+  useCallback,
+  useRef
+} from 'react'
 import { useSound } from '../components/commons/SoundManager'
 import { ServicesData } from '../data/services'
 import { useLang } from '../i18n/LanguageContext'
+import { limitedToast as toast } from '../utils/toast'
+import { Icon } from '../components/commons/Icons'
 
 const LOCAL_STORAGE_KEY = 'selectedServices'
+const BAG_LIMIT = 5
+
 const SelectedServicesContext = createContext()
 
 export const SelectedServicesProvider = ({ children }) => {
@@ -12,41 +24,91 @@ export const SelectedServicesProvider = ({ children }) => {
   const removeSound = useSound('trashBag')
   const clearShoppingBagSound = useSound('cleanShoppingBag')
   const bellSound = useSound('bell')
+  const bagFullSound = useSound('bagFull')
+  const [showBagFull, setShowBagFull] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
-
   const { t } = useLang()
 
-  // Guardamos un objeto { categoryId: [{ subCategoryId, serviceId }] }
   const [services, setServices] = useState({})
+  const prevTotalRef = useRef(0)
 
+  // ✅ Carga inicial con protección contra componentes desmontados
   useEffect(() => {
+    let isMounted = true
     const stored = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || '{}')
-    setServices(stored)
-    setIsLoaded(true)
+    if (isMounted) {
+      setServices(stored)
+      setIsLoaded(true)
+    }
+    return () => {
+      isMounted = false
+    }
   }, [])
 
+  const calculateTotalServices = useCallback((servicesObj) => {
+    return Object.values(servicesObj).reduce((acc, arr) => acc + arr.length, 0)
+  }, [])
+
+  // ✅ getServicePrice como useCallback para evitar invalidar useMemo
+  const getServicePrice = useCallback((subCategoryId, serviceId) => {
+    const category = ServicesData[subCategoryId]
+    if (!category) return 0
+
+    const price = category.prices[serviceId]
+    if (!price) return 0
+
+    return typeof price === 'number' ? price : price.from || 0
+  }, [])
+
+  useEffect(() => {
+    if (showBagFull) {
+      toast(t('header.dropdown.fullBag'), {
+        duration: 3000,
+        icon: (
+          <Icon
+            name='circle-exclamation'
+            variant='regular'
+            className='text-warning-800'
+          />
+        ),
+        position: 'bottom-right',
+        className:
+          'rounded fs-medium fw-bold text-warning-800 bg-warning-50 border-warning-200'
+      })
+      bagFullSound.play()
+      setShowBagFull(false) // reset
+    }
+  }, [showBagFull, t, bagFullSound])
+
   // ➕ Agregar servicio
-  const addService = (categoryId, subCategoryId, serviceId) => {
-    setServices((prev) => {
-      const updated = { ...prev }
-      if (!updated[categoryId]) updated[categoryId] = []
+  const addService = useCallback(
+    (categoryId, subCategoryId, serviceId) => {
+      setServices((prev) => {
+        const currentTotal = calculateTotalServices(prev)
+        const isNewService = !prev[categoryId]?.some(
+          (s) => s.subCategoryId === subCategoryId && s.serviceId === serviceId
+        )
 
-      // Evitamos duplicados
-      const exists = updated[categoryId].some(
-        (s) => s.subCategoryId === subCategoryId && s.serviceId === serviceId
-      )
-      if (!exists) {
-        updated[categoryId].push({ subCategoryId, serviceId })
-      }
+        if (isNewService && currentTotal >= BAG_LIMIT) {
+          // ✅ Solo marca que queremos mostrar el error, sin efectos
+          setShowBagFull(true)
+          return prev
+        }
 
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updated))
-      return updated
-    })
-    addSound.play()
-  }
+        const updated = { ...prev }
+        if (!updated[categoryId]) updated[categoryId] = []
+        if (isNewService) {
+          updated[categoryId].push({ subCategoryId, serviceId })
+          localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updated))
+        }
+        return updated
+      })
+    },
+    [calculateTotalServices]
+  )
 
   // ➖ Eliminar servicio
-  const removeService = (categoryId, subCategoryId, serviceId) => {
+  const removeService = useCallback((categoryId, subCategoryId, serviceId) => {
     setServices((prev) => {
       const updated = { ...prev }
       if (updated[categoryId]) {
@@ -59,30 +121,33 @@ export const SelectedServicesProvider = ({ children }) => {
       }
       return updated
     })
-    removeSound.play()
-  }
+  }, [])
 
-  const clearServices = (sound = 'clear') => {
-    localStorage.removeItem(LOCAL_STORAGE_KEY)
-    setServices({})
-    if (sound === 'clear') clearShoppingBagSound.play()
-    if (sound === 'bell') bellSound.play()
-  }
+  // 🗑️ Limpiar servicios
+  const clearServices = useCallback(
+    (sound = 'clear') => {
+      setServices({})
+      localStorage.removeItem(LOCAL_STORAGE_KEY)
 
-  const totalServices = useMemo(
-    () => Object.values(services).reduce((acc, arr) => acc + arr.length, 0),
-    [services]
+      toast(t('notifications.clearedServices.title'), {
+        id: 'bag-cleared',
+        duration: 3000,
+        icon: <Icon name='check' className='text-success-800' />,
+        position: 'bottom-right',
+        className:
+          'rounded fs-medium fw-bold text-success-800 bg-success-50 border-success-200'
+      })
+
+      if (sound === 'clear') clearShoppingBagSound.play()
+      if (sound === 'bell') bellSound.play()
+    },
+    [t, clearShoppingBagSound, bellSound]
   )
 
-  const getServicePrice = (subCategoryId, serviceId) => {
-    const category = ServicesData[subCategoryId]
-    if (!category) return 0
-
-    const price = category.prices[serviceId]
-    if (!price) return 0
-
-    return typeof price === 'number' ? price : price.from || 0
-  }
+  const totalServices = useMemo(
+    () => calculateTotalServices(services),
+    [services, calculateTotalServices]
+  )
 
   const totalPrice = useMemo(() => {
     return Object.entries(services).reduce((acc, [categoryId, items]) => {
@@ -93,9 +158,8 @@ export const SelectedServicesProvider = ({ children }) => {
       )
       return acc + sum
     }, 0)
-  }, [services])
+  }, [services, getServicePrice])
 
-  // 🔎 Servicios con nombre, descripción y precio
   const servicesWithInfo = useMemo(() => {
     const result = {}
     Object.entries(services).forEach(([categoryId, items]) => {
@@ -123,17 +187,31 @@ export const SelectedServicesProvider = ({ children }) => {
       })
     })
     return result
-  }, [services, t])
+  }, [services, t, getServicePrice])
 
-  /**API DE NAVIGATOR APP BADGE */
-
+  // 🔊 Reproducir sonidos en respuesta a cambios reales (no dentro de setState)
   useEffect(() => {
-    if (!isLoaded) return // Evita ejecutar antes de cargar del localStorage
+    if (!isLoaded) return
+
+    const prevTotal = prevTotalRef.current
+    const newTotal = totalServices
+
+    if (newTotal > prevTotal) {
+      addSound.play()
+    } else if (newTotal < prevTotal) {
+      removeSound.play()
+    }
+
+    prevTotalRef.current = newTotal
+  }, [totalServices, isLoaded, addSound, removeSound])
+
+  // 📱 App Badge API
+  useEffect(() => {
+    if (!isLoaded) return
 
     if ('setAppBadge' in navigator) {
       if (totalServices > 0) {
-        // navigator.setAppBadge().catch(() => {}) // PUNTO GENÉRICO EN EL BADGE
-        navigator.setAppBadge(totalServices)
+        navigator.setAppBadge(totalServices).catch(() => {})
       } else {
         navigator.clearAppBadge().catch(() => {})
       }
@@ -143,15 +221,17 @@ export const SelectedServicesProvider = ({ children }) => {
   return (
     <SelectedServicesContext.Provider
       value={{
-        services, // { categoryId: [{ subCategoryId, serviceId }] }
-        servicesWithInfo, // nombres, descripciones y precios
+        services,
+        servicesWithInfo,
         totalServices,
         totalPrice,
         addService,
         removeService,
         clearServices,
         getServicePrice,
-        isLoaded
+        isLoaded,
+        BAG_LIMIT,
+        canAddMore: totalServices < BAG_LIMIT
       }}
     >
       {children}
@@ -159,4 +239,12 @@ export const SelectedServicesProvider = ({ children }) => {
   )
 }
 
-export const useSelectedServices = () => useContext(SelectedServicesContext)
+export const useSelectedServices = () => {
+  const context = useContext(SelectedServicesContext)
+  if (!context) {
+    throw new Error(
+      'useSelectedServices must be used within a SelectedServicesProvider'
+    )
+  }
+  return context
+}
