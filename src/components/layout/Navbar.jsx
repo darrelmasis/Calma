@@ -86,32 +86,6 @@ export const Navbar = () => {
     navigate('/')
   }
 
-  // En Navbar
-  const handleInstall = async () => {
-    const result = await promptInstall()
-
-    if (result.success) {
-      // ✅ Opción 1: Mostrar un TOAST (recomendado)
-      // showToast({
-      //   title: '¡App instalada!',
-      //   message: 'Ya puedes usarla desde tu dispositivo.',
-      //   type: 'success'
-      // })
-
-      new Notification('App instalada', { body: '...' })
-
-      // ✅ Opción 3: Guardar para notificar en la próxima sesión
-      localStorage.setItem('pwa-install-success', 'true')
-
-      setTimeout(() => {
-        new Notification('Gracias por instalar nuestra app!', {
-          body: 'Te avisaremos de las novedades.'
-        })
-        console.log('Notificación enviada')
-      }, 3000)
-    }
-  }
-
   const renderNavLinks = (links) => {
     return links.map((link) => {
       const isActive = link.path === location.pathname
@@ -175,7 +149,7 @@ export const Navbar = () => {
           variant='success'
           className='p-2'
           fullWidth
-          onClick={handleInstall}
+          onClick={promptInstall}
           ariaLabel='Instalar aplicación'
           size='medium'
           label={t('header.mobileNavbar.installButtonText')}
