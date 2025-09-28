@@ -19,6 +19,7 @@ import ChevronRight from './chevron-right.svg?react';
 import ChevronUp from './chevron-up.svg?react';
 import ChildReaching from './child-reaching.svg?react';
 import CircleCheck from './circle-check.svg?react';
+import CircleExclamation from './circle-exclamation.svg?react';
 import CircleInfo from './circle-info.svg?react';
 import CircleMinus from './circle-minus.svg?react';
 import CirclePlus from './circle-plus.svg?react';
@@ -28,10 +29,12 @@ import Download from './download.svg?react';
 import EarthAmericas from './earth-americas.svg?react';
 import EllipsisVertical from './ellipsis-vertical.svg?react';
 import Envelope from './envelope.svg?react';
+import Exclamation from './exclamation.svg?react';
 import EyeSlash from './eye-slash.svg?react';
 import Eye from './eye.svg?react';
 import Eyes from './eyes.svg?react';
 import FaceSmileRelaxed from './face-smile-relaxed.svg?react';
+import FaceWorried from './face-worried.svg?react';
 import Gem from './gem.svg?react';
 import Gift from './gift.svg?react';
 import HandHoldingBox from './hand-holding-box.svg?react';
@@ -89,6 +92,7 @@ export {
   ChevronUp,
   ChildReaching,
   CircleCheck,
+  CircleExclamation,
   CircleInfo,
   CircleMinus,
   CirclePlus,
@@ -98,10 +102,12 @@ export {
   EarthAmericas,
   EllipsisVertical,
   Envelope,
+  Exclamation,
   EyeSlash,
   Eye,
   Eyes,
   FaceSmileRelaxed,
+  FaceWorried,
   Gem,
   Gift,
   HandHoldingBox,
