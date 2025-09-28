@@ -2,7 +2,7 @@
 import { useEffect, useRef } from 'react'
 
 const defaultDateRanges = [
-  { start: '2025-09-28', end: '2025-10-01' } // ejemplo: del 26 al 27 de septiembre
+  { start: '2025-09-27', end: '2025-09-27' } // ejemplo: del 26 al 27 de septiembre
 ]
 
 export const Confetti = ({
