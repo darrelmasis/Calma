@@ -850,6 +850,11 @@ export const dictionary = {
       clearedServices: {
         title: 'Servicios eliminados'
       }
+    },
+    notFound: {
+      title: '404',
+      subtitle: 'Parece que la página que buscas no está disponible',
+      buttonText: 'Volver al inicio'
     }
   },
   en: {
@@ -1658,6 +1663,11 @@ export const dictionary = {
       clearedServices: {
         title: 'Services Removed'
       }
+    },
+    notFound: {
+      title: '404',
+      subtitle: 'It seems the page you are looking for is not available',
+      buttonText: 'Back to Home'
     }
   }
 }
