@@ -24,6 +24,7 @@ import CircleInfo from './circle-info.svg?react';
 import CircleMinus from './circle-minus.svg?react';
 import CirclePlus from './circle-plus.svg?react';
 import CircleQuestion from './circle-question.svg?react';
+import CircleXmark from './circle-xmark.svg?react';
 import Compass from './compass.svg?react';
 import Download from './download.svg?react';
 import EarthAmericas from './earth-americas.svg?react';
@@ -97,6 +98,7 @@ export {
   CircleMinus,
   CirclePlus,
   CircleQuestion,
+  CircleXmark,
   Compass,
   Download,
   EarthAmericas,
