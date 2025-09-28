@@ -5,27 +5,12 @@ import { Tooltip } from '../ui/Tooltip'
 import { useLang } from '../../i18n/LanguageContext'
 import { LanguageSwitcher } from '../commons/LanguageSwitcher'
 import { LogoCalma } from '../ui/LogoCalma'
-import { Icon } from '../commons/Icons'
-import classNames from 'classnames'
-import { motion, AnimatePresence } from 'framer-motion'
-import { useDevice } from '../../hooks/useBreakpoint'
 import { BagDropdown } from '../ui/BagDropdown'
-import { usePWAInstall } from '../../hooks/usePWAInstall'
 
 export const NavbarAlt = () => {
   const { t } = useLang()
   const navigate = useNavigate()
-  const location = useLocation()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const prevPath = useRef(location.pathname)
-  const { isInstallable, promptInstall } = usePWAInstall()
-
-  const { type } = useDevice()
-
-  const isMobile = type === 'mobile'
-  const isTablet = type === 'tablet'
-  const isDesktop = type === 'desktop'
-
   const handleLogoClick = () => {
     if (isMenuOpen) {
       handleCloseMenu()
