@@ -1,6 +1,7 @@
 @use '../config/borders' as borders;
 @use '../mixins/borders' as borders_mixins;
 @use '../config/colors_map' as c;
+@use '../config/colors' as pallette;
 @use '../config/breakpoints' as bp;
 @use '../mixins/mediaqueries' as mq;
 @use 'sass:map';
@@ -20,6 +21,19 @@ $border-style-colors: (
   'dark': c.$dark,
   'base-style': c.$border-color,
   'white': #ffffff
+);
+
+$border-semantic-palettes: (
+  'primary': pallette.$golds,
+  'danger': pallette.$reds,
+  'warning': pallette.$yellows,
+  'success': pallette.$greens,
+  'info': pallette.$blues,
+  'purple': pallette.$purples,
+  'wine': pallette.$wines,
+  'light': pallette.$lights,
+  'dark': pallette.$darks,
+  'neutral': pallette.$neutrals
 );
 
 $border-style: borders.$border-width borders.$border-style var(--border-color);
@@ -113,6 +127,63 @@ $border-style: borders.$border-width borders.$border-style var(--border-color);
         }
       }
     }
+  }
+}
+
+// -------------------------------
+// Bordes con paletas semánticas (500 por defecto)
+// -------------------------------
+
+// -------------------------------
+// Bordes semánticos con variantes de tono: .border-primary-100, .border-danger-500, etc.
+// -------------------------------
+@each $semantic-name, $palette in $border-semantic-palettes {
+  @each $shade, $color in $palette {
+    // Opcional: omitir '0' si no quieres el blanco (ej. border-primary-0)
+    // @if $shade != '0' {
+
+    @each $direction in $borders-directions {
+      @if $direction != 'none' {
+        // Clase base (mobile-first)
+        @if $direction == 'all' {
+          .border-#{$semantic-name}-#{$shade} {
+            @include borders_mixins.border(
+              'all',
+              borders.$border-width borders.$border-style $color
+            );
+          }
+        } @else {
+          .border-#{$direction}-#{$semantic-name}-#{$shade} {
+            @include borders_mixins.border(
+              $direction,
+              borders.$border-width borders.$border-style $color
+            );
+          }
+        }
+
+        // Responsive
+        @each $bp-name, $bp-size in bp.$breakpoints {
+          @include mq.screen(min, $bp-name) {
+            @if $direction == 'all' {
+              .border-#{$bp-name}-#{$semantic-name}-#{$shade} {
+                @include borders_mixins.border(
+                  'all',
+                  borders.$border-width borders.$border-style $color
+                );
+              }
+            } @else {
+              .border-#{$direction}-#{$bp-name}-#{$semantic-name}-#{$shade} {
+                @include borders_mixins.border(
+                  $direction,
+                  borders.$border-width borders.$border-style $color
+                );
+              }
+            }
+          }
+        }
+      }
+    }
+    // }
   }
 }
 
