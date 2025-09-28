@@ -196,10 +196,13 @@ export const SelectedServicesProvider = ({ children }) => {
     const prevTotal = prevTotalRef.current
     const newTotal = totalServices
 
-    if (newTotal > prevTotal) {
-      addSound.play()
-    } else if (newTotal < prevTotal) {
-      removeSound.play()
+    // ✅ Ignorar la carga inicial donde prevTotal es 0
+    if (prevTotal > 0) {
+      if (newTotal > prevTotal) {
+        addSound.play()
+      } else if (newTotal < prevTotal) {
+        removeSound.play()
+      }
     }
 
     prevTotalRef.current = newTotal
