@@ -1,8 +1,7 @@
-import React, { useRef } from 'react'
 import { Icon } from '../commons/Icons'
-import { CSSTransition, SwitchTransition } from 'react-transition-group'
 import { useSelectedServices } from '../../hooks/useSelectedService'
 import classNames from 'classnames'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const AddService = ({ categoryId, subCategoryId, serviceId, className }) => {
   const { services, addService, removeService } = useSelectedServices()
@@ -21,8 +20,6 @@ const AddService = ({ categoryId, subCategoryId, serviceId, className }) => {
     added: isAdded
   })
 
-  const iconRef = useRef(null)
-
   const toggleService = () => {
     if (isAdded) {
       removeService(categoryId, subCategoryId, serviceId)
@@ -33,21 +30,22 @@ const AddService = ({ categoryId, subCategoryId, serviceId, className }) => {
 
   return (
     <span className={addServiceButtonClasses} onClick={toggleService}>
-      <SwitchTransition mode='out-in'>
-        <CSSTransition
+      <AnimatePresence mode='wait' initial={false}>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.5 }}
+          transition={{ duration: 0.1 }}
           key={mainButtonIconName.name}
-          timeout={150}
-          nodeRef={iconRef}
-          classNames='add-service-fade'
+          className='d-flex align-items-center justify-content-center'
         >
           <Icon
-            ref={iconRef}
             dataName={mainButtonIconName.name}
             name={mainButtonIconName.name}
             className={`add-service-icon ${mainButtonIconName.color}`}
           />
-        </CSSTransition>
-      </SwitchTransition>
+        </motion.div>
+      </AnimatePresence>
     </span>
   )
 }

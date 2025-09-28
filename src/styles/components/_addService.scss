@@ -2,51 +2,6 @@
 @use '../config/colors' as pallette;
 @use '../functions/colors' as fn;
 
-.add-service-fade-enter {
-  animation: fade-in-scale 0.1s ease forwards;
-}
-.add-service-fade-exit {
-  animation: fade-out-scale 0.1s ease forwards;
-}
-
-@keyframes fade-in-scale {
-  0% {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes fade-out-scale {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-}
-
-/* AddService.css */
-.bounce-enter {
-  transform: scale(0.5);
-}
-.bounce-enter-active {
-  transform: scale(1.2);
-  transition: transform 300ms cubic-bezier(0.68, -0.55, 0.27, 1.55);
-}
-.bounce-exit {
-  transform: scale(1.2);
-}
-.bounce-exit-active {
-  transform: scale(1);
-  transition: transform 150ms ease-out;
-}
-
 .add-service-button {
   cursor: pointer;
 }
@@ -67,6 +22,7 @@
 }
 
 .add-service-icon {
+  font-size: 20px;
   transition: 0.3s ease;
 }
 
