@@ -189,20 +189,24 @@ export const SelectedServicesProvider = ({ children }) => {
     return result
   }, [services, t, getServicePrice])
 
-  // 🔊 Reproducir sonidos en respuesta a cambios reales (no dentro de setState)
+  const hasInitialized = useRef(false)
+
   useEffect(() => {
     if (!isLoaded) return
 
     const prevTotal = prevTotalRef.current
     const newTotal = totalServices
 
-    // ✅ Ignorar la carga inicial donde prevTotal es 0
-    if (prevTotal > 0) {
+    // ✅ Solo reproducir sonidos después de la primera renderización completa
+    if (hasInitialized.current) {
       if (newTotal > prevTotal) {
         addSound.play()
       } else if (newTotal < prevTotal) {
         removeSound.play()
       }
+    } else {
+      // ✅ Marcar como inicializado después de la primera carga
+      hasInitialized.current = true
     }
 
     prevTotalRef.current = newTotal
