@@ -842,6 +842,13 @@ export const dictionary = {
           }
         }
       }
+    },
+    notification: {
+      appInstalled: '¡App instalada exitosamente!',
+      thanksForInstalling: '¡Gracias por instalar nuestra app!',
+      mobileMessage:
+        'Ya puedes usar la app desde tu móvil, buscándonos en tu pantalla de inicio',
+      desktopMessage: 'Ya puedes usar la app desde tu escritorio'
     }
   },
   en: {
@@ -1643,6 +1650,11 @@ export const dictionary = {
           }
         }
       }
+    },
+    notification: {
+      appInstalled: 'App installed successfully!',
+      thanksForInstalling: 'Thank you for installing our app!',
+      message: 'You can now use the app from your device'
     }
   }
 }
