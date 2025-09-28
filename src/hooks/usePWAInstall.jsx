@@ -1,6 +1,8 @@
+// hooks/usePWAInstall.js
 import { createContext, useContext, useEffect, useState } from 'react'
 import { useDevice } from './useBreakpoint'
 import { useLang } from '../i18n/LanguageContext'
+import { useNotificationPermission } from './useNotificationPermission'
 
 const PWAInstallContext = createContext()
 
@@ -9,10 +11,11 @@ export function PWAInstallProvider({ children }) {
   const [isInstallable, setIsInstallable] = useState(false)
   const { type } = useDevice()
   const { t } = useLang()
-
   const isDesktop = type === 'desktop'
 
-  // Detectar evento beforeinstallprompt
+  const { isGranted, isSupported, requestPermission } =
+    useNotificationPermission()
+
   useEffect(() => {
     const handler = (e) => {
       e.preventDefault()
@@ -24,74 +27,46 @@ export function PWAInstallProvider({ children }) {
     return () => window.removeEventListener('beforeinstallprompt', handler)
   }, [])
 
-  const mobileMessage = t('notification.mobileMessage')
-  const desktopMessage = t('notification.desktopMessage')
-  const notificationMessage = isDesktop ? desktopMessage : mobileMessage
+  const showNotification = (title, body) => {
+    if (typeof Notification === 'undefined') return
 
-  // Mostrar notificación al instalar la app
-  useEffect(() => {
-    const handleAppInstalled = () => {
-      if (Notification.permission === 'granted') {
-        new Notification('¡Hola!', {
-          body: 'Esto es una prueba'
-        })
-        console.log('App instalada y notificación enviada.')
-      } else {
-        console.log('App instalada, pero sin permiso de notificaciones.')
-      }
+    if (Notification.permission === 'granted') {
+      new Notification(title, {
+        body: body,
+        icon: '/images/pwa/icon-192.png'
+      })
     }
+  }
 
-    window.addEventListener('appinstalled', handleAppInstalled)
-    return () => window.removeEventListener('appinstalled', handleAppInstalled)
-  }, [t, notificationMessage])
-
-  // Disparar instalación manualmente + pedir permiso de notificaciones
-  // Dentro de PWAInstallProvider
-
+  // En usePWAInstall (provider)
   const promptInstall = async () => {
-    if (!deferredPrompt) {
-      console.warn('No se puede instalar: deferredPrompt no disponible')
-      return
+    if (!deferredPrompt) return { success: false, reason: 'no_prompt' }
+
+    let notificationPermission = isGranted
+    if (!notificationPermission && isSupported) {
+      const result = await requestPermission()
+      notificationPermission = result === 'granted'
     }
 
-    // 1. Pedir permiso de notificaciones (si es necesario)
-    if (Notification.permission === 'default') {
-      const permission = await Notification.requestPermission()
-      console.log('Permiso de notificaciones:', permission)
-    }
-
-    // 2. Mostrar el popup de instalación
     deferredPrompt.prompt()
     const { outcome } = await deferredPrompt.userChoice
 
-    // Limpiar estado
     setDeferredPrompt(null)
     setIsInstallable(false)
 
-    console.log('Resultado de instalación:', outcome)
-    console.log('Permiso actual:', Notification.permission)
-
-    // 3. ✅ Mostrar notificación SOLO si el usuario aceptó Y tiene permiso
-    if (outcome === 'accepted' && Notification.permission === 'granted') {
-      try {
-        new Notification(`✅ ${t('notification.appInstalled')}`, {
-          body: isDesktop
-            ? t('notification.desktopMessage')
-            : t('notification.mobileMessage'),
-          icon: '/images/pwa/icon-192.png' // asegúrate de que exista
-        })
-        console.log('✅ Notificación de instalación mostrada')
-      } catch (err) {
-        console.error('❌ Error al crear notificación:', err)
+    if (outcome === 'accepted') {
+      return {
+        success: true,
+        hasNotificationPermission: notificationPermission,
+        outcome
       }
-    } else {
-      console.warn('No se muestra notificación. Motivo:', {
-        outcome,
-        permission: Notification.permission
-      })
     }
 
-    return outcome
+    return {
+      success: false,
+      hasNotificationPermission: notificationPermission,
+      outcome
+    }
   }
 
   return (
