@@ -32,7 +32,10 @@ export const dictionary = {
         book: 'Agendar ahora!',
         exploreServices: 'Explorar Servicios',
         keepExploring: 'Seguir explorando',
-        clearTooltip: 'Eliminar todos los servicios seleccionados'
+        clearTooltip: 'Eliminar todos los servicios seleccionados',
+        fullBag: '¡Tu bolsa está llena!',
+        addedService: 'servicio agregado',
+        addedServices: 'servicios agregados'
       },
       mobileNavbar: {
         title: 'Navegación',
@@ -843,12 +846,10 @@ export const dictionary = {
         }
       }
     },
-    notification: {
-      appInstalled: '¡App instalada exitosamente!',
-      thanksForInstalling: '¡Gracias por instalar nuestra app!',
-      mobileMessage:
-        'Ya puedes usar la app desde tu móvil, buscándonos en tu pantalla de inicio',
-      desktopMessage: 'Ya puedes usar la app desde tu escritorio'
+    notifications: {
+      clearedServices: {
+        title: 'Servicios eliminados'
+      }
     }
   },
   en: {
@@ -874,7 +875,10 @@ export const dictionary = {
         book: 'Book Now!',
         keepExploring: 'Keep Exploring',
         exploreServices: 'Explore Services',
-        clearTooltip: 'Remove all selected services'
+        clearTooltip: 'Remove all selected services',
+        fullBag: 'Your bag is full!',
+        addedService: 'Service added',
+        addedServices: 'Services added'
       },
       mobileNavbar: {
         title: 'Navigation',
@@ -1592,7 +1596,6 @@ export const dictionary = {
         buttonText: 'Back to Home'
       }
     },
-
     floatingButton: {
       whatsappButtonText: 'Write to us on WhatsApp',
       bookingButtonText: 'Book appointment',
@@ -1651,10 +1654,10 @@ export const dictionary = {
         }
       }
     },
-    notification: {
-      appInstalled: 'App installed successfully!',
-      thanksForInstalling: 'Thank you for installing our app!',
-      message: 'You can now use the app from your device'
+    notifications: {
+      clearedServices: {
+        title: 'Services Removed'
+      }
     }
   }
 }
