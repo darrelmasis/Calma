@@ -2,4 +2,72 @@
   min-height: calc(100vh - 100px);
   background-image: url('https://edteam-media.s3.amazonaws.com/web/utils/backgrounds/stars.png');
   background-position: center;
+  background-size: contain;
+}
+.text-glow {
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+.glow {
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+.not-found-title {
+  text-shadow: 0 0 16px rgba(255, 255, 255, 0.8);
+}
+.animate-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+
+  & .astronaut,
+  & .rope {
+    position: absolute;
+    animation: float 3s ease-in-out infinite;
+  }
+  & .astronaut {
+    top: 24px;
+    right: 48px;
+    width: 100px;
+    animation-delay: 1s;
+    z-index: 99;
+    filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.7));
+  }
+  & .rope {
+    top: -4px;
+    right: 0;
+    width: 100px;
+    animation-delay: 0s;
+  }
+
+  & .moon {
+    position: absolute;
+    top: 32px;
+    left: 32px;
+    width: 60px;
+    animation: rotate 60s linear infinite;
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translatey(0);
+  }
+  50% {
+    transform: translatey(-10px);
+  }
+  100% {
+    transform: translatey(0);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
