@@ -2,12 +2,13 @@
 import { Howl } from 'howler'
 
 export const sounds = {
-  bell: ['/sounds/bell.mp3', '/sounds/bell.ogg'],
+  bell: ['/sounds/bell.ogg'],
   openPops: ['/sounds/open-pops.ogg'],
   closePops: ['/sounds/close-pops.ogg'],
   dropBag: ['/sounds/drop-bag.ogg'],
   trashBag: ['/sounds/trash-bag.ogg'],
-  cleanShoppingBag: ['/sounds/clean-shopping-bag.ogg']
+  cleanShoppingBag: ['/sounds/clean-shopping-bag.ogg'],
+  bagFull: ['/sounds/bag-full.ogg']
 }
 
 // Instancias globales (singleton)
