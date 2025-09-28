@@ -59,40 +59,18 @@ export const LanguageSwitcher = ({ className = '' }) => {
 
   const handleChangeLanguage = (newLang) => {
     if (newLang === lang) {
-      toast(
+      toast.info(
         newLang === 'es'
           ? 'Ya estás en este idioma'
-          : 'You are already in this language',
-        {
-          duration: 2000,
-          icon: (
-            <Icon
-              name='language-alt'
-              variant='regular'
-              className='text-success-800'
-            />
-          ),
-          position: 'bottom-right',
-          className:
-            'rounded fs-medium fw-bold text-success-800 bg-success-50 border-success-200'
-        }
+          : 'You are already in this language'
       )
       return
     }
     changeLanguage(newLang)
-    toast(
+    toast.success(
       newLang === 'es'
         ? 'Idioma cambiado a Español'
-        : 'Language changed to English',
-      {
-        duration: 2000,
-        icon: (
-          <Icon name='check' variant='regular' className='text-success-800' />
-        ),
-        position: 'bottom-right',
-        className:
-          'rounded fs-medium fw-bold text-success-800 bg-success-50 border-success-200'
-      }
+        : 'Language changed to English'
     )
   }
 

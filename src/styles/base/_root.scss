@@ -1,6 +1,8 @@
 @use '../mixins/root' as mixins;
 @use '../config/colors_map' as colors_map;
 @use '../config/colors' as color;
+@use '../config/typography' as fs;
+@use '../config/borders' as borders;
 
 $color-palettes_root: (
   'primary': color.$golds,
@@ -19,4 +21,7 @@ $color-palettes_root: (
 :root {
   @include mixins.inject-css-variables(colors_map.$light-theme-colors);
   @include mixins.inject-nested-css-variables($color-palettes_root);
+  @include mixins.inject-css-variables(fs.$font-sizes, 'fs');
+  @include mixins.inject-css-variables(fs.$font-weights, 'fw');
+  @include mixins.inject-css-variables(borders.$border-radius-steps, 'radius');
 }

@@ -60,21 +60,10 @@ export const SelectedServicesProvider = ({ children }) => {
     return typeof price === 'number' ? price : price.from || 0
   }, [])
 
+  // ⚠ Mostrar toast cuando la bolsa está llena
   useEffect(() => {
     if (showBagFull) {
-      toast(t('header.dropdown.fullBag'), {
-        duration: 3000,
-        icon: (
-          <Icon
-            name='circle-exclamation'
-            variant='regular'
-            className='text-warning-800'
-          />
-        ),
-        position: 'bottom-right',
-        className:
-          'rounded fs-medium fw-bold text-warning-800 bg-warning-50 border-warning-200'
-      })
+      toast.warning(t('header.dropdown.fullBag'))
       bagFullSound.play()
       setShowBagFull(false) // reset
     }
@@ -129,14 +118,7 @@ export const SelectedServicesProvider = ({ children }) => {
       setServices({})
       localStorage.removeItem(LOCAL_STORAGE_KEY)
 
-      toast(t('notifications.clearedServices.title'), {
-        id: 'bag-cleared',
-        duration: 3000,
-        icon: <Icon name='check' className='text-success-800' />,
-        position: 'bottom-right',
-        className:
-          'rounded fs-medium fw-bold text-success-800 bg-success-50 border-success-200'
-      })
+      toast.success(t('notifications.clearedServices.title'))
 
       if (sound === 'clear') clearShoppingBagSound.play()
       if (sound === 'bell') bellSound.play()
