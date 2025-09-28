@@ -1,6 +1,5 @@
 // src/components/LanguageSwitcher.jsx
 
-import { useState, useEffect, useRef, useContext, memo } from 'react'
 import { useLang } from '../../i18n/LanguageContext'
 import { Button } from '../ui/Button'
 import classNames from 'classnames'
@@ -11,6 +10,8 @@ import {
   useDropdown
 } from '../ui/Dropdown'
 import { useDevice } from '../../hooks/useBreakpoint'
+import { limitedToast as toast } from '../../utils/toast'
+import { Icon } from './Icons'
 
 // ✅ Componente TRIGGER definido fuera
 const LanguageTrigger = ({ selectedLabel, isDesktop }) => {
@@ -55,6 +56,45 @@ export const LanguageSwitcher = ({ className = '' }) => {
 
   const selectedOption = options.find((opt) => opt.value === lang)
   const classes = classNames('language-switcher d-flex w-100', className)
+
+  const handleChangeLanguage = (newLang) => {
+    if (newLang === lang) {
+      toast(
+        newLang === 'es'
+          ? 'Ya estás en este idioma'
+          : 'You are already in this language',
+        {
+          duration: 2000,
+          icon: (
+            <Icon
+              name='language-alt'
+              variant='regular'
+              className='text-success-800'
+            />
+          ),
+          position: 'bottom-right',
+          className:
+            'rounded fs-medium fw-bold text-success-800 bg-success-50 border-success-200'
+        }
+      )
+      return
+    }
+    changeLanguage(newLang)
+    toast(
+      newLang === 'es'
+        ? 'Idioma cambiado a Español'
+        : 'Language changed to English',
+      {
+        duration: 2000,
+        icon: (
+          <Icon name='check' variant='regular' className='text-success-800' />
+        ),
+        position: 'bottom-right',
+        className:
+          'rounded fs-medium fw-bold text-success-800 bg-success-50 border-success-200'
+      }
+    )
+  }
 
   return (
     <div className={classes}>
@@ -102,7 +142,7 @@ export const LanguageSwitcher = ({ className = '' }) => {
                       'language-switcher-option border-0 justify-content-flex-start',
                       { active: isActive }
                     )}
-                    onClick={() => changeLanguage(opt.value)}
+                    onClick={() => handleChangeLanguage(opt.value)}
                     variant='basic'
                     icon={icons}
                     size={isMobile ? 'xlarge' : 'medium'}
