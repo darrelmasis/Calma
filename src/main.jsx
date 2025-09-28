@@ -15,7 +15,10 @@ createRoot(document.getElementById('root')).render(
     <BrowserRouter basename='/'>
       <LanguageProvider>
         <Confetti confettiCount={50} speed={3} maxSize={12} shape='square' />
-        <Toaster limit={3} containerStyle={{ bottom: 116, right: 24 }} />
+        <Toaster
+          limit={3}
+          containerStyle={{ bottom: 116, right: 24, zIndex: 9 }}
+        />
         <PWAInstallProvider>
           <SelectedServicesProvider>
             <Header />
