@@ -86,7 +86,7 @@ const FloatingButton = () => {
   }
 
   const handleContactButton = () => {
-    if (location.pathname !== '/empty' && location.pathname !== '/booking') {
+    if (location.pathname !== '/contact') {
       setTimeout(() => {
         navigate('/contact')
       }, 400)
