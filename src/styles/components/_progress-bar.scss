@@ -1,0 +1,21 @@
+@use '../config/colors_map' as c;
+@use '../config/colors' as pallette;
+@use '../functions/colors' as fn;
+
+.simple-progress {
+  width: 100%;
+  padding: 0.5rem 0;
+}
+
+.simple-progress-bar {
+  width: 100%;
+  height: 4px;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.simple-progress-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}

@@ -15,6 +15,7 @@ import { Icon } from '../commons/Icons'
 import { Tooltip } from '../ui/Tooltip'
 import { useNavigate, useLocation } from 'react-router-dom'
 import classNames from 'classnames'
+import SimpleProgressBar from './ProgressBar'
 
 const BagTrigger = ({
   totalServices,
@@ -96,7 +97,7 @@ const BagContent = ({
     <div className={dropdownContentClasses}>
       {totalServices === 0 ? (
         <div className='d-flex flex-direction-column align-items-center justify-content-center gap-1 p-3'>
-          <Icon name='inbox' size='lg' className='text-muted' />
+          <Icon name='face-worried' size='lg' className='text-muted' />
           <p className='fs-medium text-center text-muted m-0'>
             {t('header.dropdown.empty')}
           </p>
@@ -112,7 +113,7 @@ const BagContent = ({
       ) : (
         <>
           <div className='p-3'>
-            <div className='text-center border-bottom pb-3 d-flex align-items-center justify-content-space-between mt-0 mb-3'>
+            <div className='text-center d-flex align-items-center justify-content-space-between mt-0'>
               <p className='fs-h5 fs-md-regular d-flex align-items-center gap-0-5 m-0 text-muted'>
                 <Icon name='list-check' />
                 {t('header.dropdown.title')}
@@ -125,12 +126,12 @@ const BagContent = ({
                   size='medium'
                   icon='broom-wide'
                   variant='basic'
-                  onClick={clearServices}
+                  onClick={() => clearServices('clear')}
                 />
               </Tooltip>
             </div>
-
-            <div className='navbar-dropdown-services-added d-flex flex-direction-column gap-1 scrollbar-thin'>
+            <SimpleProgressBar />
+            <div className='navbar-dropdown-services-added mt-3 d-flex flex-direction-column gap-1 scrollbar-thin'>
               {Object.entries(servicesWithInfo).map(([categoryId, items]) => (
                 <div key={categoryId}>
                   <div className='mb-3 fs-h6'>
@@ -178,17 +179,10 @@ const BagContent = ({
             </div>
           </div>
 
-          <div className='bg-light-100 px-3 pt-2 pb-3 d-flex flex-direction-column gap-1'>
-            <div className='total-price text-end my-2 fs-medium d-flex align-items-flex-start justify-content-space-between'>
+          <div className='bg-light-100 px-3 pt-2 pb-3 d-flex flex-direction-column'>
+            <div className='total-price text-end my-3  fs-medium d-flex align-items-flex-start justify-content-space-between'>
               <div className='fs-h5 d-flex flex-direction-column align-items-flex-start'>
                 <span className='fw-bold'>{t('header.dropdown.total')}</span>
-                <span className='text-muted fs-small'>
-                  {`${totalServices} ${
-                    totalServices === 1
-                      ? t('header.dropdown.totalSubtitle')
-                      : t('header.dropdown.totalSubtitle') + 's'
-                  }`}
-                </span>
               </div>
               <USD
                 amount={totalPrice}
