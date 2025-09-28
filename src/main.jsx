@@ -9,12 +9,13 @@ import { PWAInstallProvider } from './hooks/usePWAInstall.jsx'
 import { Confetti } from './components/commons/Confetti.jsx'
 import Header from './components/layout/Header.jsx'
 import Footer from './components/layout/Footer.jsx'
-
+import { Toaster } from 'react-hot-toast'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter basename='/'>
       <LanguageProvider>
         <Confetti confettiCount={50} speed={3} maxSize={12} shape='square' />
+        <Toaster limit={3} containerStyle={{ bottom: 116, right: 24 }} />
         <PWAInstallProvider>
           <SelectedServicesProvider>
             <Header />
