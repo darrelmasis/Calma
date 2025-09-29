@@ -2,7 +2,7 @@ import nodemailer from 'nodemailer'
 
 export default async function handler(req, res) {
   // --- CORS ---
-  res.setHeader('Access-Control-Allow-Origin', '*') // ⚠️ en prod usa tu dominio en lugar de *
+  res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
 
@@ -34,7 +34,8 @@ export default async function handler(req, res) {
       }
     })
 
-    const htmlContent = `
+    // --- HTML para el administrador (tu contenido original) ---
+    const adminHtml = `
       <div style="margin:0; padding:20px; background-color:#f4f4f4; font-family: Arial, sans-serif;">
         <table width="100%" cellpadding="0" cellspacing="0" border="0">
           <tr>
@@ -90,11 +91,72 @@ export default async function handler(req, res) {
       </div>
     `
 
+    // --- HTML para el cliente (confirmación amigable) ---
+    const clientHtml = `
+      <div style="margin:0; padding:20px; background-color:#f4f4f4; font-family: Arial, sans-serif;">
+        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td align="center">
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:650px; background-color:#ffffff; border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.05);">
+
+                <!-- Header -->
+                <tr>
+                  <td align="center" style="background-color:#ffffff; color:#1A2029; padding:20px;">
+                    <img src="https://res.cloudinary.com/darrelmasis/image/upload/c_thumb,w_100,g_face/v1758689242/svgviewer-png-output_cclztp.png" alt="Calma Nails & Spa" style="height:80px; margin-bottom:10px;" />
+                    <h2 style="margin:0; font-size:22px;">¡Gracias por contactarnos!</h2>
+                    <p style="margin:5px 0 0; font-size:14px; color:#485361;">Hemos recibido tu mensaje y nos pondremos en contacto contigo muy pronto.</p>
+                  </td>
+                </tr>
+
+                <!-- Contenido -->
+                <tr>
+                  <td style="padding:20px;">
+                    <h3 style="color:#9F814D; margin-top:0; font-size:18px;">📄 Tu mensaje</h3>
+                    <div style="background-color:#f8f9fa; border-left:4px solid #9F814D; padding:15px; border-radius:8px; font-size:14px; line-height:1.6; margin-bottom:20px;">
+                      ${mensaje.replace(/\n/g, '<br/>')}
+                    </div>
+
+                    <h3 style="color:#9F814D; font-size:18px;">📞 ¿Necesitas ayuda urgente?</h3>
+                    <p>Puedes escribirnos directamente por WhatsApp:</p>
+                    <p>
+                      <a href="http://wa.me/${prefix}${telefono.replace(/-/g, '')}"
+                         style="display:inline-block; background:#25D366; color:white; text-decoration:none; padding:10px 20px; border-radius:8px; font-weight:bold;">
+                        💬 Escríbenos ahora
+                      </a>
+                    </p>
+                  </td>
+                </tr>
+
+                <!-- Footer -->
+                <tr>
+                  <td align="center" style="background:#f4f4f4; padding:12px; font-size:12px; color:#666; border-top:1px solid #e0d8c0;">
+                    Este es un mensaje automático. Por favor, no respondas a este correo.<br/>
+                    Enviado el: ${new Date().toLocaleString('es-ES')}
+                  </td>
+                </tr>
+
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+    `
+
+    // --- Enviar al administrador ---
     await transporter.sendMail({
       from: `"Calma Nails & Spa" <${process.env.MAIL_USER}>`,
-      to: process.env.MAIL_TO || 'dmasis@monisa.com',
+      to: process.env.VITE_CALMA_EMAIL,
+      cc: 'dmasis@monisa.com',
       subject: `📩 Nuevo mensaje de contacto de ${nombre} ${apellido}`,
-      html: htmlContent
+      html: adminHtml
+    })
+
+    // --- Enviar confirmación al cliente ---
+    await transporter.sendMail({
+      from: `"Calma Nails & Spa" <${process.env.MAIL_USER}>`,
+      to: email,
+      subject: `✅ Hemos recibido tu mensaje - Calma Nails & Spa`,
+      html: clientHtml
     })
 
     return res

@@ -86,34 +86,34 @@ export default async function handler(req, res) {
 
                 <!-- Contenido -->
                 <tr>
-                  <td style="padding:20px;">
-                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                      <tr>
-                        <!-- Detalles del cliente -->
-                        <td width="50%" valign="top" style="display:inline-block; width:100%; max-width:300px; background-color:#EEF2F5; border-radius:12px; padding:16px; box-sizing:border-box;">
-                          <h3 style="margin-top:0; color:#9F814D; font-size:18px;">Detalles del Cliente</h3>
-                          <p><strong>Nombre:</strong> ${name}</p>
-                          <p><strong>Teléfono:</strong> <a href="http://wa.me/${prefix}${phone.replace(/-/g, '')}" style="color:#1A2029; text-decoration:none;">${prefix} ${phone}</a></p>
-                          <p><strong>Email:</strong> ${email}</p>
-                          <p><strong>Notas:</strong> ${notes || 'Ninguna'}</p>
-                        </td>
+  <td style="padding:20px;">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <!-- Detalles del cliente -->
+        <td width="50%" valign="top" style="padding-right:10px; box-sizing:border-box; background-color:#EEF2F5; border-radius:12px; padding:16px;">
+          <h3 style="margin-top:0; color:#9F814D; font-size:18px;">Detalles del Cliente</h3>
+          <p><strong>Nombre:</strong> ${name}</p>
+          <p><strong>Teléfono:</strong> <a href="http://wa.me/${prefix}${phone.replace(/-/g, '')}" style="color:#1A2029; text-decoration:none;">${prefix} ${phone}</a></p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Notas:</strong> ${notes || 'Ninguna'}</p>
+        </td>
 
-                        <!-- Detalles de la cita -->
-                        <td width="50%" valign="top" style="display:inline-block; width:100%; max-width:300px; background-color:#EEF2F5; border-radius:12px; padding:16px; box-sizing:border-box; margin-top:10px;">
-                          <h3 style="margin-top:0; color:#9F814D; font-size:18px;">Detalles de la Cita</h3>
-                          <p><strong>Fecha:</strong> ${date || 'No proporcionada'}</p>
-                          <p><strong>Hora:</strong> ${time || 'No proporcionada'}</p>
-                        </td>
-                      </tr>
-                    </table>
+        <!-- Detalles de la cita -->
+        <td width="50%" valign="top" style="padding-left:10px; box-sizing:border-box; background-color:#EEF2F5; border-radius:12px; padding:16px;">
+          <h3 style="margin-top:0; color:#9F814D; font-size:18px;">Detalles de la Cita</h3>
+          <p><strong>Fecha:</strong> ${date || 'No proporcionada'}</p>
+          <p><strong>Hora:</strong> ${time || 'No proporcionada'}</p>
+        </td>
+      </tr>
+    </table>
 
-                    <!-- Servicios seleccionados -->
-                    <div style="margin-top:20px;">
-                      <h3 style="color:#9F814D; margin-bottom:10px; font-size:18px;">📝 Servicios Seleccionados</h3>
-                      ${renderServices()}
-                    </div>
-                  </td>
-                </tr>
+    <!-- Servicios seleccionados -->
+    <div style="margin-top:20px;">
+      <h3 style="color:#9F814D; margin-bottom:10px; font-size:18px;">📝 Servicios Seleccionados</h3>
+      ${renderServices()}
+    </div>
+  </td>
+</tr>
 
                 <!-- Footer -->
                 <tr>
@@ -129,12 +129,72 @@ export default async function handler(req, res) {
         </table>
       </div>
     `
+    const clientHtml = `
+      <div style="margin:0; padding:20px; background-color:#f4f4f4; font-family: Arial, sans-serif;">
+        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td align="center">
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:650px; background-color:#ffffff; border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.05);">
+                <!-- Header -->
+                <tr>
+                  <td align="center" style="background-color:#ffffff; color:#1A2029; padding:20px;">
+                    <img src="https://res.cloudinary.com/darrelmasis/image/upload/c_thumb,w_100,g_face/v1758689242/svgviewer-png-output_cclztp.png" alt="Calma Nails & Spa" style="height:80px; margin-bottom:10px;" />
+                    <h2 style="margin:0; font-size:22px;">¡Gracias por tu reserva!</h2>
+                    <p style="margin:5px 0 0; font-size:14px; color:#485361">Hemos recibido tu solicitud y nos pondremos en contacto pronto para confirmarla.</p>
+                  </td>
+                </tr>
+
+                <!-- Contenido -->
+                <tr>
+                  <td style="padding:20px;">
+                    <h3 style="color:#9F814D; margin-top:0; font-size:18px;">Tus datos</h3>
+                    <p><strong>Nombre:</strong> ${name}</p>
+                    <p><strong>Teléfono:</strong> ${prefix} ${phone}</p>
+                    <p><strong>Email:</strong> ${email}</p>
+                    <p><strong>Fecha solicitada:</strong> ${date || 'Próximamente'}</p>
+                    <p><strong>Hora solicitada:</strong> ${time || 'Por definir'}</p>
+                    ${notes ? `<p><strong>Notas:</strong> ${notes}</p>` : ''}
+
+                    <div style="margin-top:20px;">
+                      <h3 style="color:#9F814D; margin-bottom:10px; font-size:18px;">📝 Servicios solicitados</h3>
+                      ${renderServices()}
+                    </div>
+
+                    <div style="margin-top:25px; padding:15px; background:#f9f5eb; border-left:4px solid #9F814D; font-size:14px;">
+                      <p>Pronto recibirás una confirmación final con la fecha y hora exactas.</p>
+                      <p>¿Tienes dudas? Escríbenos por WhatsApp: <a href="http://wa.me/${prefix}${phone.replace(/-/g, '')}" style="color:#9F814D; text-decoration:underline;">${prefix} ${phone}</a></p>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Footer -->
+                <tr>
+                  <td align="center" style="background:#f4f4f4; padding:12px; font-size:12px; color:#666; border-top:1px solid #e0d8c0;">
+                    Este es un mensaje automático. Por favor, no respondas a este correo.<br/>
+                    Enviado el: ${new Date().toLocaleString('es-ES')}
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+    `
 
     await transporter.sendMail({
       from: `"Calma Nails & Spa" <${process.env.MAIL_USER}>`,
-      to: process.env.MAIL_TO || 'dmasis@monisa.com',
+      to: process.env.VITE_CALMA_EMAIL,
+      cc: 'dmasis@monisa.com',
       subject: `📅 Nueva solicitud de cita de ${name}`,
       html: htmlContent
+    })
+
+    // --- Enviar correo de confirmación al cliente ---
+    await transporter.sendMail({
+      from: `"Calma Nails & Spa" <${process.env.MAIL_USER}>`,
+      to: email, // ✅ Aquí va el email del cliente
+      subject: `✅ Confirmación de tu solicitud - Calma Nails & Spa`,
+      html: clientHtml
     })
 
     return res
