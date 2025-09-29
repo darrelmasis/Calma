@@ -97,7 +97,7 @@ const Contact = () => {
         </div>
         <form onSubmit={handleSubmit} className='contact-form'>
           <div className='d-flex flex-direction-column gap-2 mb-4 max-wx-500'>
-            <div className='d-flex flex-1 gap-2'>
+            <div className='d-flex flex-1 gap-2 flex-direction-column flex-direction-md-row'>
               <Input
                 label={t('contact.form.name.label')}
                 placeholder={t('contact.form.name.placeholder')}
