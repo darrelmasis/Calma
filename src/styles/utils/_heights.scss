@@ -1,0 +1,56 @@
+@use '../config/heights' as h;
+@use 'sass:map';
+@use '../config/breakpoints' as bp;
+@use '../mixins/mediaqueries' as mq;
+
+$h-classname: 'hx';
+
+// Generar clases responsivas
+@each $size-name, $size-value in h.$height-steps {
+  // Clases base mobile-first
+  .#{$h-classname}-#{$size-name} {
+    height: $size-value;
+  }
+
+  @each $bp-name, $bp-value in bp.$breakpoints {
+    @if $bp-name != 'xs' {
+      @include mq.screen(min, $bp-name) {
+        .#{$h-classname}-#{$bp-name}-#{$size-name} {
+          height: $size-value;
+        }
+      }
+    }
+  }
+}
+
+@each $size-name, $size-value in h.$max-height-steps {
+  .max-hx-#{$size-name} {
+    max-height: $size-value;
+  }
+
+  @each $bp-name, $bp-value in bp.$breakpoints {
+    @if $bp-name != 'xs' {
+      @include mq.screen(min, $bp-name) {
+        .max-hx-#{$bp-name}-#{$size-name} {
+          max-height: $size-value;
+        }
+      }
+    }
+  }
+}
+
+@each $size-name, $size-value in h.$max-height-steps {
+  .min-hx-#{$size-name} {
+    min-height: $size-value;
+  }
+
+  @each $bp-name, $bp-value in bp.$breakpoints {
+    @if $bp-name != 'xs' {
+      @include mq.screen(min, $bp-name) {
+        .min-hx-#{$bp-name}-#{$size-name} {
+          min-height: $size-value;
+        }
+      }
+    }
+  }
+}

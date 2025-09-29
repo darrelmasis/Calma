@@ -21,6 +21,8 @@ const Input = forwardRef(
       classNameInput = '',
       classNameLabel = '',
       classNameError = '',
+      textAreaClassName = '',
+      minHeight = 'auto', // exclusivo para textarea
       required = false,
       ...props
     },
@@ -36,10 +38,22 @@ const Input = forwardRef(
     useEffect(() => {
       if (type === 'textarea' && textareaRef.current) {
         textareaRef.current.style.height = 'auto' // reset
-        textareaRef.current.style.height =
-          textareaRef.current.scrollHeight + 2 + 'px'
+
+        const scrollHeight = textareaRef.current.scrollHeight + 2
+
+        // ✅ Calcular nueva altura considerando minHeight
+        let newHeight = scrollHeight
+
+        if (typeof minHeight === 'number') {
+          newHeight = Math.max(scrollHeight, minHeight)
+        }
+
+        // ✅ Aplicar límite máximo de 150px
+        newHeight = Math.min(newHeight, 150)
+
+        textareaRef.current.style.height = newHeight + 'px'
       }
-    }, [value, type])
+    }, [value, type, minHeight]) // ✅ Agregar minHeight a las dependencias
 
     const handleChange = (e) => {
       if (type === 'checkbox') {
@@ -70,11 +84,25 @@ const Input = forwardRef(
       onFocus: handleFocus,
       placeholder:
         type !== 'checkbox' && type !== 'file' ? placeholder : undefined,
-      className: classNames('form-control', classNameInput, {
-        'is-error': !!error,
-        'is-success': success && !error && value?.trim() // ✅ éxito real solo si hay valor
-      }),
-
+      className: classNames(
+        'form-control',
+        classNameInput,
+        {
+          'is-error': !!error,
+          'is-success': success && !error && value?.trim() // ✅ éxito real solo si hay valor
+        },
+        type === 'textarea' && textAreaClassName
+      ),
+      style:
+        type === 'textarea'
+          ? {
+              resize: 'none',
+              overflowY: 'auto',
+              // ✅ Aplicar minHeight inicial si es numérico
+              minHeight:
+                typeof minHeight === 'number' ? `${minHeight}px` : minHeight
+            }
+          : undefined,
       'aria-invalid': !!error,
       'aria-describedby': error ? `${id}-error` : undefined,
       ...props

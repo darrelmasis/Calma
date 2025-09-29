@@ -8,7 +8,8 @@ export const sounds = {
   dropBag: ['/sounds/drop-bag.ogg'],
   trashBag: ['/sounds/trash-bag.ogg'],
   cleanShoppingBag: ['/sounds/clean-shopping-bag.ogg'],
-  bagFull: ['/sounds/bag-full.ogg']
+  bagFull: ['/sounds/bag-full.ogg'],
+  toastNotify: ['/sounds/toast-notify.ogg']
 }
 
 // Instancias globales (singleton)

@@ -7,6 +7,7 @@ import { useLang } from '../../i18n/LanguageContext'
 import { ConfettiExplosion } from '../../components/commons/Confetti'
 import { useState } from 'react'
 import { FadeInWhenVisible as Fade } from '../../components/commons/animations/FadeInWhenVisible'
+import { useSound } from '../../components/commons/SoundManager'
 
 const Success = () => {
   const { t } = useLang()
@@ -14,25 +15,15 @@ const Success = () => {
   const location = useLocation()
   const { clearServices, isLoaded } = useSelectedServices()
   const [showExplosion, setShowExplosion] = useState(false)
+  const playSuccessSound = useSound('bell', 0.5)
 
   useEffect(() => {
     if (isLoaded) {
       setShowExplosion(true)
-      clearServices('bell') // Limpiar servicios seleccionados al cargar la página de éxito
+      clearServices() // Limpiar servicios seleccionados al cargar la página de éxito
+      playSuccessSound.play()
     }
   }, [])
-
-  useEffect(() => {
-    // Disparar la explosión al montar el componente
-    setShowExplosion(true)
-
-    // Limpiar después de la duración (debe coincidir con `duration`)
-    const timer = setTimeout(() => {
-      setShowExplosion(false)
-    }, 4000) // 3 segundos = duración de la explosión
-
-    return () => clearTimeout(timer)
-  }, []) // solo una vez al montar
 
   return (
     <div>

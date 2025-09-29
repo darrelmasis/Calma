@@ -7,11 +7,14 @@ import Booking from './screens/Booking'
 import Team from './screens/Team'
 import Empty from './screens/EmptyBag'
 import Success from './screens/Success'
+import Contact from './screens/Contact'
+
 export {
   Home,
   Services,
   Packages,
   NotFound,
+  Contact,
   Story,
   Booking,
   Team,

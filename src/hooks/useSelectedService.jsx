@@ -8,29 +8,24 @@ import {
   useCallback,
   useRef
 } from 'react'
-import { useSound } from '../components/commons/SoundManager'
 import { ServicesData } from '../data/services'
 import { useLang } from '../i18n/LanguageContext'
 import { limitedToast as toast } from '../utils/toast'
-import { Icon } from '../components/commons/Icons'
+import { useSound } from '../components/commons/SoundManager'
 
 const LOCAL_STORAGE_KEY = 'selectedServices'
-const BAG_LIMIT = 5
+const BAG_LIMIT = 6
 
 const SelectedServicesContext = createContext()
 
 export const SelectedServicesProvider = ({ children }) => {
-  const addSound = useSound('dropBag')
-  const removeSound = useSound('trashBag')
-  const clearShoppingBagSound = useSound('cleanShoppingBag')
-  const bellSound = useSound('bell')
-  const bagFullSound = useSound('bagFull')
   const [showBagFull, setShowBagFull] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
+  const removeSound = useSound('trashBag', 0.5)
+
   const { t } = useLang()
 
   const [services, setServices] = useState({})
-  const prevTotalRef = useRef(0)
 
   // ✅ Carga inicial con protección contra componentes desmontados
   useEffect(() => {
@@ -63,11 +58,10 @@ export const SelectedServicesProvider = ({ children }) => {
   // ⚠ Mostrar toast cuando la bolsa está llena
   useEffect(() => {
     if (showBagFull) {
-      toast.warning(t('header.dropdown.fullBag'))
-      bagFullSound.play()
+      toast.warning(t('header.dropdown.fullBag'), 'bagFull')
       setShowBagFull(false) // reset
     }
-  }, [showBagFull, t, bagFullSound])
+  }, [showBagFull, t])
 
   // ➕ Agregar servicio
   const addService = useCallback(
@@ -107,24 +101,18 @@ export const SelectedServicesProvider = ({ children }) => {
         )
         if (updated[categoryId].length === 0) delete updated[categoryId]
         localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updated))
+        removeSound.play()
       }
       return updated
     })
   }, [])
 
   // 🗑️ Limpiar servicios
-  const clearServices = useCallback(
-    (sound = 'clear') => {
-      setServices({})
-      localStorage.removeItem(LOCAL_STORAGE_KEY)
-
-      toast.success(t('notifications.clearedServices.title'))
-
-      if (sound === 'clear') clearShoppingBagSound.play()
-      if (sound === 'bell') bellSound.play()
-    },
-    [t, clearShoppingBagSound, bellSound]
-  )
+  const clearServices = useCallback(() => {
+    setServices({})
+    localStorage.removeItem(LOCAL_STORAGE_KEY)
+    toast.success(t('notifications.clearedServices.title'))
+  }, [t])
 
   const totalServices = useMemo(
     () => calculateTotalServices(services),
@@ -170,29 +158,6 @@ export const SelectedServicesProvider = ({ children }) => {
     })
     return result
   }, [services, t, getServicePrice])
-
-  const hasInitialized = useRef(false)
-
-  useEffect(() => {
-    if (!isLoaded) return
-
-    const prevTotal = prevTotalRef.current
-    const newTotal = totalServices
-
-    // ✅ Solo reproducir sonidos después de la primera renderización completa
-    if (hasInitialized.current) {
-      if (newTotal > prevTotal) {
-        addSound.play()
-      } else if (newTotal < prevTotal) {
-        removeSound.play()
-      }
-    } else {
-      // ✅ Marcar como inicializado después de la primera carga
-      hasInitialized.current = true
-    }
-
-    prevTotalRef.current = newTotal
-  }, [totalServices, isLoaded, addSound, removeSound])
 
   // 📱 App Badge API
   useEffect(() => {

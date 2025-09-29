@@ -855,6 +855,72 @@ export const dictionary = {
       title: '404',
       subtitle: 'Parece que la página que buscas no está disponible',
       buttonText: 'Volver al inicio'
+    },
+    contact: {
+      title: 'Contactanos',
+      subtitle:
+        'Nos encantaría saber de ti. Por favor, completa el siguiente formulario para ponerte en contacto con nosotros.',
+      form: {
+        name: {
+          label: 'Nombre Completo',
+          placeholder: '¿Cómo te llamas?'
+        },
+        lastName: {
+          label: 'Apellido',
+          placeholder: '¿Cuál es tu apellido?'
+        },
+        email: {
+          label: 'Correo Electrónico',
+          placeholder: '¿Cuál es tu correo?'
+        },
+        phone: {
+          label: 'Número de Teléfono',
+          placeholder: '¿Cuál es tu número?'
+        },
+        message: {
+          label: 'Mensaje',
+          placeholder: 'Escribe tu mensaje aquí...'
+        },
+        submitButton: 'Enviar Mensaje',
+        sendingButton: 'Enviando',
+        toast: {
+          success: {
+            title: 'Mensaje enviado',
+            description:
+              'Gracias por contactarnos. Te responderemos lo antes posible.'
+          },
+          error: {
+            title: 'Error al enviar',
+            description:
+              'Hubo un problema al enviar tu mensaje. Por favor, inténtalo de nuevo más tarde.'
+          },
+          validationFailed: 'Por favor, corrige los errores en el formulario'
+        },
+        errors: {
+          name: {
+            required: 'El nombre es requerido',
+            tooShort: 'El nombre debe tener al menos 2 caracteres'
+          },
+          lastName: {
+            required: 'El apellido es requerido',
+            tooShort: 'El apellido debe tener al menos 2 caracteres'
+          },
+          email: {
+            required: 'El email es requerido',
+            invalid: 'Ingresa un email válido'
+          },
+          phone: {
+            required: 'El teléfono es requerido',
+            invalidUSA: 'Teléfono USA debe tener 10 dígitos',
+            invalidNic: 'Teléfono Nicaragua debe tener 8 dígitos',
+            invalid: 'Teléfono inválido'
+          },
+          message: {
+            required: 'El mensaje es requerido',
+            tooShort: 'El mensaje debe tener al menos 10 caracteres'
+          }
+        }
+      }
     }
   },
   en: {
@@ -1668,6 +1734,72 @@ export const dictionary = {
       title: '404',
       subtitle: 'It seems the page you are looking for is not available',
       buttonText: 'Back to Home'
+    },
+    contact: {
+      title: 'Contact Us',
+      subtitle:
+        'We would love to hear from you! Please fill out the form below to get in touch with us.',
+      form: {
+        name: {
+          label: 'Full Name',
+          placeholder: 'What is your name?'
+        },
+        lastName: {
+          label: 'Last Name',
+          placeholder: 'What is your last name?'
+        },
+        email: {
+          label: 'Email Address',
+          placeholder: 'What is your email?'
+        },
+        phone: {
+          label: 'Phone Number',
+          placeholder: 'What is your phone number?'
+        },
+        message: {
+          label: 'Message',
+          placeholder: 'Write your message here...'
+        },
+        submitButton: 'Send Message',
+        sendingButton: 'Sending',
+        toast: {
+          success: {
+            title: 'Message sent',
+            description:
+              'Thank you for contacting us. We will get back to you as soon as possible.'
+          },
+          error: {
+            title: 'Error sending message',
+            description:
+              'There was a problem sending your message. Please try again later.'
+          },
+          validationFailed: 'Please correct the errors in the form'
+        },
+        errors: {
+          name: {
+            required: 'Name is required',
+            tooShort: 'Name must be at least 2 characters long'
+          },
+          lastName: {
+            required: 'Last name is required',
+            tooShort: 'Last name must be at least 2 characters long'
+          },
+          email: {
+            required: 'Email is required',
+            invalid: 'Please enter a valid email address'
+          },
+          phone: {
+            required: 'Phone number is required',
+            invalidUSA: 'USA phone number must have 10 digits',
+            invalidNic: 'Nicaragua phone number must have 8 digits',
+            invalid: 'Invalid phone number'
+          },
+          message: {
+            required: 'Message is required',
+            tooShort: 'Message must be at least 10 characters long'
+          }
+        }
+      }
     }
   }
 }

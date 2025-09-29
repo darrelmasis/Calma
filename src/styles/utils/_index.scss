@@ -8,6 +8,7 @@
 @forward 'responsiveImages';
 @forward 'widths';
 @forward 'scrollbar';
+@forward 'heights';
 
 @use '../mixins/grid' as grid_mixins;
 @use '../mixins/spacing' as spacing_mixins;

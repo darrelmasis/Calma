@@ -1,6 +1,6 @@
 import toast from 'react-hot-toast'
 import { Icon } from '../components/commons/Icons'
-import { color } from 'framer-motion'
+import { useSound } from '../components/commons/SoundManager'
 
 const MAX_TOASTS = 3
 const activeToastIds = []
@@ -54,12 +54,14 @@ const toastTypes = {
   }
 }
 
-const limitedToast = (message, options = {}) => {
+const limitedToast = (message, sound = 'toastNotify', options = {}) => {
   // Si ya hay 3 toasts, elimina el más antiguo
   if (activeToastIds.length >= MAX_TOASTS) {
     const oldestId = activeToastIds.shift()
     toast.dismiss(oldestId)
   }
+
+  const toastNotifySound = useSound(sound, 0.5)
 
   // Genera un ID único si no se proporciona
   const id = options.id || Math.random().toString(36).slice(2)
@@ -81,33 +83,35 @@ const limitedToast = (message, options = {}) => {
     }
   })
 
+  toastNotifySound.play()
+
   return toastId
 }
 
 // Métodos específicos para cada tipo
-limitedToast.success = (message, options = {}) => {
-  return limitedToast(message, {
+limitedToast.success = (message, sound = 'toastNotify', options = {}) => {
+  return limitedToast(message, sound, {
     ...toastTypes.success,
     ...options
   })
 }
 
-limitedToast.error = (message, options = {}) => {
-  return limitedToast(message, {
+limitedToast.error = (message, sound = 'toastNotify', options = {}) => {
+  return limitedToast(message, sound, {
     ...toastTypes.error,
     ...options
   })
 }
 
-limitedToast.warning = (message, options = {}) => {
-  return limitedToast(message, {
+limitedToast.warning = (message, sound = 'toastNotify', options = {}) => {
+  return limitedToast(message, sound, {
     ...toastTypes.warning,
     ...options
   })
 }
 
-limitedToast.info = (message, options = {}) => {
-  return limitedToast(message, {
+limitedToast.info = (message, sound = 'toastNotify', options = {}) => {
+  return limitedToast(message, sound, {
     ...toastTypes.info,
     ...options
   })

@@ -4,6 +4,7 @@ import {
   Story,
   Home,
   NotFound,
+  Contact,
   Packages,
   Services,
   Team,
@@ -24,6 +25,7 @@ const AppRoutes = () => {
         <Route path='/packages' element={<Packages />} />
         <Route path='/services' element={<Services />} />
         <Route path='/booking' element={<Booking />} />
+        <Route path='/contact' element={<Contact />} />
         <Route path='/team' element={<Team />} />
         <Route path='/empty' element={<Empty />} />
         <Route path='/success' element={<Success />} />

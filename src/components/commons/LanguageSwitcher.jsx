@@ -11,7 +11,6 @@ import {
 } from '../ui/Dropdown'
 import { useDevice } from '../../hooks/useBreakpoint'
 import { limitedToast as toast } from '../../utils/toast'
-import { Icon } from './Icons'
 
 // ✅ Componente TRIGGER definido fuera
 const LanguageTrigger = ({ selectedLabel, isDesktop }) => {

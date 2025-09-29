@@ -2,9 +2,11 @@ import { Icon } from '../commons/Icons'
 import { useSelectedServices } from '../../hooks/useSelectedService'
 import classNames from 'classnames'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useSound } from '../commons/SoundManager'
 
 const AddService = ({ categoryId, subCategoryId, serviceId, className }) => {
   const { services, addService, removeService } = useSelectedServices()
+  const playBagSound = useSound('dropBag', 0.5)
 
   // Comprobamos si el servicio ya fue agregado
   const isAdded =
@@ -25,6 +27,7 @@ const AddService = ({ categoryId, subCategoryId, serviceId, className }) => {
       removeService(categoryId, subCategoryId, serviceId)
     } else {
       addService(categoryId, subCategoryId, serviceId)
+      playBagSound.play()
     }
   }
 

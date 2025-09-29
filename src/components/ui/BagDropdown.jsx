@@ -16,6 +16,7 @@ import { Tooltip } from '../ui/Tooltip'
 import { useNavigate, useLocation } from 'react-router-dom'
 import classNames from 'classnames'
 import SimpleProgressBar from './ProgressBar'
+import { useSound } from '../commons/SoundManager'
 
 const BagTrigger = ({
   totalServices,
@@ -78,6 +79,13 @@ const BagContent = ({
       'navbar-mobile-dropdown-content-wrapper': isMobile
     }
   )
+  const removeSound = useSound('trashBag', 0.5)
+
+  const handleClearServices = () => {
+    clearServices()
+    removeSound.play()
+  }
+
   const location = useLocation()
   const navigate = useNavigate()
 
@@ -126,7 +134,7 @@ const BagContent = ({
                   size='medium'
                   icon='broom-wide'
                   variant='basic'
-                  onClick={() => clearServices('clear')}
+                  onClick={handleClearServices}
                 />
               </Tooltip>
             </div>
