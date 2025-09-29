@@ -5,7 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useSound } from '../commons/SoundManager'
 
 const AddService = ({ categoryId, subCategoryId, serviceId, className }) => {
-  const { services, addService, removeService } = useSelectedServices()
+  const { services, addService, removeService, canAddMore } =
+    useSelectedServices()
   const playBagSound = useSound('dropBag', 0.5)
 
   // Comprobamos si el servicio ya fue agregado
@@ -27,7 +28,7 @@ const AddService = ({ categoryId, subCategoryId, serviceId, className }) => {
       removeService(categoryId, subCategoryId, serviceId)
     } else {
       addService(categoryId, subCategoryId, serviceId)
-      playBagSound.play()
+      canAddMore && playBagSound.play()
     }
   }
 

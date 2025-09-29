@@ -4,15 +4,6 @@ import { Icon } from '../commons/Icons'
 import { Link } from 'react-router-dom'
 import { motion, useAnimation } from 'framer-motion'
 
-// Helper para obtener el valor anterior
-function usePrevious(value) {
-  const ref = useRef()
-  useEffect(() => {
-    ref.current = value
-  }, [value])
-  return ref.current
-}
-
 export const Button = ({
   as = 'button', // 'button' | 'a' | 'link'
   size = 'medium',
@@ -37,9 +28,10 @@ export const Button = ({
   const hasLabel = Boolean(label)
   const isIconOnly = !hasLabel && !hasChildren
 
-  // Para animar SOLO cuando el badge cambia
-  const prevBadge = usePrevious(badge)
-  const shouldAnimate = prevBadge !== undefined && prevBadge !== badge
+  const safeBadge = {
+    value: badge?.value ?? null,
+    status: badge?.status ?? null
+  }
 
   // Normalización de íconos
   const defaultIconProps = {
@@ -120,9 +112,9 @@ export const Button = ({
       {renderIconsByPosition('right')}
 
       {/* Badge animado solo si el valor cambia */}
-      {badge != null && (
-        <BadgeAnimation value={badge}>
-          {typeof badge === 'number' ? badge : String(badge)}
+      {safeBadge.value != null && (
+        <BadgeAnimation value={safeBadge.value} status={safeBadge.status}>
+          {safeBadge.value}
         </BadgeAnimation>
       )}
     </>
@@ -163,9 +155,20 @@ export const Button = ({
   )
 }
 
-const BadgeAnimation = ({ value, children }) => {
+const BadgeAnimation = ({ value, children, status }) => {
   const [prevValue, setPrevValue] = useState(null)
   const [shouldAnimate, setShouldAnimate] = useState(false)
+
+  const finalStatusClasses = classNames(
+    'btn-badge fs-small text-white border-white border-2 fw-bold',
+    {
+      'bg-danger-400': !status || status === 'normal',
+      'bg-success-400': status === 'success',
+      'bg-warning-400': status === 'warning',
+      'bg-info-400': status === 'info',
+      'bg-primary-400': status === 'primary'
+    }
+  )
 
   useEffect(() => {
     // Si el valor actual no es válido, reseteamos y salimos
@@ -185,7 +188,11 @@ const BadgeAnimation = ({ value, children }) => {
       animate = true
     }
     // Caso 2: ambos son números y el nuevo es mayor
-    else if (typeof prevNum === 'number' && !isNaN(prevNum) && currentNum > prevNum) {
+    else if (
+      typeof prevNum === 'number' &&
+      !isNaN(prevNum) &&
+      currentNum > prevNum
+    ) {
       animate = true
     }
 
@@ -201,7 +208,7 @@ const BadgeAnimation = ({ value, children }) => {
   return (
     <motion.span
       key={shouldAnimate ? `anim-${value}` : `static-${value}`}
-      className='btn-badge fs-small text-white bg-danger-400 border-white border-2 fw-bold'
+      className={finalStatusClasses}
       initial={shouldAnimate ? { scale: 0, opacity: 0 } : false}
       animate={{ scale: 1, opacity: 1 }}
       transition={

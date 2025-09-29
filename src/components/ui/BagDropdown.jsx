@@ -23,7 +23,9 @@ const BagTrigger = ({
   isMobile,
   isTablet,
   isDesktop,
-  label
+  label,
+  canAddMore,
+  BAG_LIMIT
 }) => {
   const { open } = useDropdown()
   const icons = [
@@ -54,7 +56,14 @@ const BagTrigger = ({
         size={isMobile ? 'xlarge' : 'medium'}
         icon={icons}
         label={!isMobile && label}
-        badge={totalServices > 0 ? totalServices : null}
+        badge={{
+          value: canAddMore
+            ? totalServices > 0
+              ? totalServices
+              : null
+            : 'Max',
+          status: canAddMore ? 'normal' : 'warning'
+        }}
       />
     </div>
   )
@@ -244,7 +253,9 @@ export const BagDropdown = memo(() => {
     servicesWithInfo,
     clearServices,
     removeService,
-    totalPrice
+    totalPrice,
+    canAddMore,
+    BAG_LIMIT
   } = useSelectedServices()
 
   const label = t('header.dropdown.text') // ✅ Movido aquí
@@ -260,6 +271,8 @@ export const BagDropdown = memo(() => {
             isTablet={isTablet}
             isDesktop={isDesktop}
             label={label}
+            canAddMore={canAddMore}
+            BAG_LIMIT={BAG_LIMIT}
           />
         </DropdownTrigger>
         <DropdownContent>
