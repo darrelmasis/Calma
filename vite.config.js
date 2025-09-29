@@ -15,7 +15,7 @@ export default defineConfig(({ mode }) => ({
     svgr({ svgrOptions: { icon: true } }),
     VitePWA({
       registerType: 'autoUpdate',
-      injectRegister: 'auto',
+      injectRegister: 'script',
       includeAssets: [
         '/favicon.ico',
         '/favicon.png',
@@ -95,9 +95,9 @@ export default defineConfig(({ mode }) => ({
         ]
       },
       workbox: {
-        skipWaiting: true,
-        clientsClaim: true,
-        navigateFallback: '/index.html',
+        skipWaiting: false,
+        clientsClaim: false,
+        navigateFallback: null,
         globPatterns: [
           '**/*.{js,css,html,xml,png,jpg,jpeg,svg,gif,woff2,json,ttf,ico,mp3,ogg,webp}'
         ],
@@ -122,7 +122,7 @@ export default defineConfig(({ mode }) => ({
         ]
       },
       devOptions: {
-        enabled: false, // activa SW en dev para probar
+        enabled: true, // activa SW en dev para probar
         type: 'module'
       }
     }),

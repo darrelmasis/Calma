@@ -5,20 +5,20 @@
 /* ============================
    Fuentes
    ============================ */
-@font-face {
-  font-family: 'Berkshire Swash';
-  src: url('../assets/fonts/Berkshire Swash/BerkshireSwash-Regular.ttf')
-    format('truetype');
-}
+
 @font-face {
   font-family: 'Manrope';
   src: url('../../assets/fonts/Manrope/Manrope-VariableFont_wght.ttf')
     format('truetype');
+  font-display: swap; /* Mejora la carga de la fuente */
+  font-weight: 100 900;
 }
 @font-face {
   font-family: 'Inter';
   src: url('../../assets/fonts/Inter/Inter-VariableFont_opsz,wght.ttf')
     format('truetype');
+  font-display: swap; /* Mejora la carga de la fuente */
+  font-weight: 100 900;
 }
 
 $font-family-base: 'Inter', system-ui, sans-serif !default;
