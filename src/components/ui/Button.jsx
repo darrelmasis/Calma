@@ -160,13 +160,13 @@ const BadgeAnimation = ({ value, children, status }) => {
   const [shouldAnimate, setShouldAnimate] = useState(false)
 
   const finalStatusClasses = classNames(
-    'btn-badge fs-small text-white border-white border-2 fw-bold',
+    'btn-badge fs-small border-white border-2 fw-bold',
     {
-      'bg-danger-400': !status || status === 'normal',
-      'bg-success-400': status === 'success',
-      'bg-warning-400': status === 'warning',
-      'bg-info-400': status === 'info',
-      'bg-primary-400': status === 'primary'
+      'bg-danger-400 text-white': !status || status === 'normal',
+      'bg-success-400 text-white': status === 'success',
+      'bg-warning-400 text-white': status === 'warning',
+      'bg-info-400 text-white': status === 'info',
+      'bg-primary-400 text-white': status === 'primary'
     }
   )
 
@@ -193,6 +193,8 @@ const BadgeAnimation = ({ value, children, status }) => {
       !isNaN(prevNum) &&
       currentNum > prevNum
     ) {
+      animate = true
+    } else if (value === 'Max') {
       animate = true
     }
 

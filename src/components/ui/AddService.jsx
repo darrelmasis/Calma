@@ -3,6 +3,8 @@ import { useSelectedServices } from '../../hooks/useSelectedService'
 import classNames from 'classnames'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useSound } from '../commons/SoundManager'
+import { limitedToast as toast } from '../../utils/toast'
+import { useEffect } from 'react'
 
 const AddService = ({ categoryId, subCategoryId, serviceId, className }) => {
   const { services, addService, removeService, canAddMore } =

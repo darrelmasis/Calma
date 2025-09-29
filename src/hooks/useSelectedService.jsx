@@ -58,10 +58,10 @@ export const SelectedServicesProvider = ({ children }) => {
   // ⚠ Mostrar toast cuando la bolsa está llena
   useEffect(() => {
     if (showBagFull) {
-      toast.warning(t('header.dropdown.fullBag'), 'bagFull')
+      toast.warning(t('header.dropdown.fullBag'), { sound: 'bagFull' })
       setShowBagFull(false) // reset
     }
-  }, [showBagFull, t])
+  }, [showBagFull])
 
   // ➕ Agregar servicio
   const addService = useCallback(

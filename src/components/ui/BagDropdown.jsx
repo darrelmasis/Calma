@@ -1,5 +1,5 @@
 // src/components/bag/BagDropdown.jsx
-import { memo } from 'react'
+import { memo, useEffect, useRef } from 'react'
 import { useSelectedServices } from '../../hooks/useSelectedService'
 import { useLang } from '../../i18n/LanguageContext'
 import { useDevice } from '../../hooks/useBreakpoint'

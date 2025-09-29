@@ -33,7 +33,10 @@ const Contact = () => {
 
     // Validar todo el formulario antes de enviar
     if (!validateForm(formData)) {
-      limitedToast.error(t('contact.form.toast.validationFailed'))
+      limitedToast.error(
+        t('contact.form.toast.validationFailed'),
+        'toastNotifyError'
+      )
       return
     }
 
@@ -95,8 +98,12 @@ const Contact = () => {
             {t('contact.subtitle')}
           </p>
         </div>
-        <form onSubmit={handleSubmit} className='contact-form'>
-          <div className='d-flex flex-direction-column gap-2 mb-4 max-wx-500'>
+        <form
+          onSubmit={handleSubmit}
+          className='contact-form d-flex flex-direction-column align-items-center'
+          noValidate
+        >
+          <div className='d-flex flex-direction-column gap-2 mb-5 max-wx-500'>
             <div className='d-flex flex-1 gap-2 flex-direction-column flex-direction-md-row'>
               <Input
                 label={t('contact.form.name.label')}
@@ -180,7 +187,7 @@ const Contact = () => {
             size='large'
             fullWidth
             disabled={isLoading}
-            className='submit-button'
+            className='submit-button mt-5'
           >
             {isLoading ? (
               <>
