@@ -1,6 +1,6 @@
 import toast from 'react-hot-toast'
 import { Icon } from '../components/commons/Icons'
-import { useSound } from '../components/commons/SoundManager'
+import { useSound } from '../components/commons/SoundManager' // usa una función en lugar de hook
 
 const MAX_TOASTS = 3
 const activeToastIds = []
@@ -23,7 +23,7 @@ const toastTypes = {
       color: 'var(--success-800)',
       borderColor: 'var(--success-200)'
     },
-    icon: <Icon name='circle-check' className='text-success-800' />
+    icon: <Icon name='circle-check' className='w-16 text-success-800' />
   },
   error: {
     style: {
@@ -32,7 +32,7 @@ const toastTypes = {
       color: 'var(--danger-800)',
       borderColor: 'var(--danger-200)'
     },
-    icon: <Icon name='circle-xmark' className='text-danger-800' />
+    icon: <Icon name='circle-xmark' className='w-16 text-danger-800' />
   },
   warning: {
     style: {
@@ -54,70 +54,68 @@ const toastTypes = {
   }
 }
 
-const limitedToast = (message, sound = 'toastNotify', options = {}) => {
-  // Si ya hay 3 toasts, elimina el más antiguo
+const limitedToast = (message, options = {}) => {
   if (activeToastIds.length >= MAX_TOASTS) {
     const oldestId = activeToastIds.shift()
     toast.dismiss(oldestId)
   }
 
-  const toastNotifySound = useSound(sound, 0.5)
-
-  // Genera un ID único si no se proporciona
   const id = options.id || Math.random().toString(36).slice(2)
-
-  // Agrega el nuevo ID
   activeToastIds.push(id)
 
-  // Muestra el toast
   const toastId = toast(message, {
     duration: 3000,
     position: 'bottom-right',
     ...options,
     id,
     onDismiss: (t) => {
-      // Elimina del array cuando se cierra
       const index = activeToastIds.indexOf(t.id)
       if (index > -1) activeToastIds.splice(index, 1)
       options.onDismiss?.(t)
     }
   })
 
-  toastNotifySound.play()
+  if (options.sound) {
+    useSound(options.sound, 0.5).play()
+  }
 
   return toastId
 }
 
-// Métodos específicos para cada tipo
-limitedToast.success = (message, sound = 'toastNotify', options = {}) => {
-  return limitedToast(message, sound, {
+// Métodos específicos
+limitedToast.success = (message, options = {}) => {
+  return limitedToast(message, {
     ...toastTypes.success,
+    sound: 'toastNotify',
     ...options
   })
 }
 
-limitedToast.error = (message, sound = 'toastNotify', options = {}) => {
-  return limitedToast(message, sound, {
+limitedToast.error = (message, options = {}) => {
+  return limitedToast(message, {
     ...toastTypes.error,
+    sound: 'toastNotifyError',
     ...options
   })
 }
 
-limitedToast.warning = (message, sound = 'toastNotify', options = {}) => {
-  return limitedToast(message, sound, {
+limitedToast.warning = (message, options = {}) => {
+  return limitedToast(message, {
     ...toastTypes.warning,
+    sound: 'toastNotify',
     ...options
   })
 }
 
-limitedToast.info = (message, sound = 'toastNotify', options = {}) => {
-  return limitedToast(message, sound, {
+limitedToast.info = (message, options = {}) => {
+  return limitedToast(message, {
     ...toastTypes.info,
+    sound: 'toastNotify',
     ...options
   })
 }
 
-// Re-exportar otros métodos de toast si los necesitas
+// Re-exportar utilidades
 limitedToast.dismiss = toast.dismiss
 limitedToast.remove = toast.remove
 limitedToast.promise = toast.promise
