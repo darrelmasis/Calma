@@ -15,7 +15,7 @@ const Booking = () => {
   const navigate = useNavigate()
   usePageTitle(t('booking.pageTitle'))
   const { servicesWithInfo, totalServices, totalPrice, isLoaded } =
-    useSelectedServices()
+    useSelectedServices() 
   const { formatDate } = useFormatDate()
 
   // Datos del formulario
@@ -56,7 +56,6 @@ const Booking = () => {
 
   const handleSubmit = async () => {
     setIsLoading(true)
-    console.log(apiUrl)
 
     try {
       const payload = { ...formData }

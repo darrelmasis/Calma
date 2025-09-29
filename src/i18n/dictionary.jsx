@@ -690,6 +690,7 @@ export const dictionary = {
         personalData: {
           title: 'Tus datos para contactarte',
           subtitle: 'Necesitamos algunos datos para agendar tus servicios',
+          toastError: 'Por favor, corrige los errores en el formulario',
           nameInput: {
             label: 'Nombre Completo',
             placeholder: '¿Cómo te llamas?',
@@ -1570,6 +1571,7 @@ export const dictionary = {
         personalData: {
           title: 'Your contact information',
           subtitle: 'We need some details to schedule your services',
+          toastError: 'Please correct the errors in the form',
           nameInput: {
             label: 'Full Name',
             placeholder: "What's your name?",

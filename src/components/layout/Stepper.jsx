@@ -13,6 +13,7 @@ import { useSticky } from '../../hooks/useSticky'
 import { useBookingValidation } from '../../hooks/useBookingValidation'
 import { useLang } from '../../i18n/LanguageContext'
 import { Link } from 'react-router-dom'
+import { limitedToast as toast } from '../../utils/toast'
 
 const Stepper = ({
   children,
@@ -44,6 +45,7 @@ const Stepper = ({
 
   const nextStep = () => {
     const isValid = validateStep(activeStep, formData)
+    !isValid && toast.error(t('booking.steps.personalData.toastError'))
     if (!isValid) return
 
     if (activeStep < steps.length - 1) {
