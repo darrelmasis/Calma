@@ -81,28 +81,36 @@ $flexbox-classes: (
   'z-index': (
     property: z-index,
     class: z-index,
-    values: 1 2 3 4 5 6 7 8 9 10 100 200 300 400 500 600 700 800 900
+    values: 1 2 3 4 5 6 7 8 9 10 100 200 300 400 500 600 700 800 900 9999
   ),
   'top': (
     property: top,
     class: top,
-    values: -0.25 0 1 2 3 4 5 6 7 8 9 auto,
+    values: -0.25 0.5 0 1 2 3 4 5 6 7 8 9 auto,
     measurement: 'rem'
   ),
   'right': (
     property: right,
     class: right,
-    values: 0 auto
+    values: 0 0.5 1 2 3 4 5 6 7 8 9 auto,
+    measurement: 'rem'
   ),
   'left': (
     property: left,
     class: left,
-    values: 0 auto
+    values: 0 1 2 3 4 5 6 7 8 9 auto,
+    measurement: 'rem'
   ),
   'bottom': (
     property: bottom,
     class: bottom,
     values: -0.25 0 1 2 3 4 5 6 7 8 9 10 20 30 40 50 auto,
+    measurement: 'rem'
+  ),
+  'margin': (
+    property: margin-inline,
+    class: mi,
+    values: 0 0.25 0.5 1 1.5 2 2.875 3 4 5 auto,
     measurement: 'rem'
   ),
   'width': (
