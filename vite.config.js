@@ -14,8 +14,8 @@ export default defineConfig(({ mode }) => ({
     react(),
     svgr({ svgrOptions: { icon: true } }),
     VitePWA({
-      registerType: 'autoUpdate',
-      injectRegister: 'script',
+      registerType: 'prompt',
+      // injectRegister: 'script',
       includeAssets: [
         '/favicon.ico',
         '/favicon.png',
