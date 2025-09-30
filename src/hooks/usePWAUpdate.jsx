@@ -1,15 +1,20 @@
+// src/hooks/usePWAUpdate.js
 import { useEffect, useState } from 'react'
 
 export function usePWAUpdate(updateSW, isMobile) {
   const [modalType, setModalType] = useState(null) // null | 'update' | 'info'
+  const [justUpdatedOnReload, setJustUpdatedOnReload] = useState(false)
 
-  // Detectar actualización disponible
   useEffect(() => {
+    if (typeof window === 'undefined') return
+
     const handler = () => {
       if (isMobile) {
         setModalType('update')
       } else {
-        localStorage.setItem('justUpdated', 'true')
+        try {
+          localStorage.setItem('justUpdated', 'true')
+        } catch (e) {}
         updateSW?.()
       }
     }
@@ -18,13 +23,27 @@ export function usePWAUpdate(updateSW, isMobile) {
     return () => window.removeEventListener('pwaUpdateAvailable', handler)
   }, [isMobile, updateSW])
 
-  // Mostrar modal de "info" después de la recarga (desktop)
   useEffect(() => {
-    if (localStorage.getItem('justUpdated') === 'true') {
+    if (typeof window === 'undefined') return
+
+    const wasUpdated = localStorage.getItem('justUpdated') === 'true'
+    if (!wasUpdated) return
+
+    // limpiamos el flag siempre
+    try {
       localStorage.removeItem('justUpdated')
+    } catch (e) {}
+
+    if (isMobile) {
+      // en mobile: no queremos el modal 'info', solo informar que hubo update
+      setJustUpdatedOnReload(true)
+    } else {
+      // en desktop sí mostramos el modal info
       setModalType('info')
     }
-  }, [])
+  }, [isMobile])
 
-  return { modalType, setModalType }
+  const clearJustUpdatedOnReload = () => setJustUpdatedOnReload(false)
+
+  return { modalType, setModalType, justUpdatedOnReload, clearJustUpdatedOnReload }
 }

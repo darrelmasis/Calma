@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import Modal, { ModalContext } from '../ui/Modal'
 import { useDevice } from '../../hooks/useBreakpoint'
 import { Icon } from './Icons'
@@ -10,29 +10,46 @@ export default function UpdatePrompt({ updateSW }) {
   const { type } = useDevice()
   const isMobile = type === 'mobile' || type === 'tablet'
 
-  // Hook centralizado
-  const { modalType, setModalType } = usePWAUpdate(updateSW, isMobile)
+  const { modalType, setModalType, justUpdatedOnReload, clearJustUpdatedOnReload } = usePWAUpdate(updateSW, isMobile)
 
   const handleShowToast = () => {
     toast.success('Calma se ha actualizado', {
       duration: 3000,
       sound: 'updateComplete',
-      delay: 0.5
+      delay: 1
     })
   }
 
-  // Botón de actualización
+  // Si detectamos que venimos de una actualización en mobile, mostramos toast al mount
+  useEffect(() => {
+    if (!justUpdatedOnReload) return
+    handleShowToast()
+    clearJustUpdatedOnReload()
+  }, [justUpdatedOnReload, clearJustUpdatedOnReload])
+
+  // Botón de actualización (dentro del modal 'update')
   const UpdateButton = () => {
     const { handleClose } = useContext(ModalContext)
 
     const handleClick = async () => {
       setRotate('spin')
       try {
+        // IMPORTANT: marcamos antes de llamar a updateSW() para que sobreviva al reload
+        try {
+          localStorage.setItem('justUpdated', 'true')
+        } catch (e) {}
         await updateSW?.()
+        // Nota: si updateSW provoca un reload inmediato, el código posterior puede no ejecutarse.
+        // En ese caso el hook detectará el flag en el nuevo mount y disparará el toast.
       } catch (err) {
         toast.error('No se pudo actualizar la aplicación')
+        // si hay error, limpiamos el flag para no mostrar toast por error
+        try {
+          localStorage.removeItem('justUpdated')
+        } catch (e) {}
       } finally {
-        handleShowToast()
+        // Mostrar toast inmediato en caso de que no haya reload automático (opcional para desktop)
+        if (!isMobile) handleShowToast()
         setTimeout(() => {
           setRotate(null)
           handleClose()
@@ -82,7 +99,13 @@ export default function UpdatePrompt({ updateSW }) {
           </Modal.Body>
 
           <Modal.Actions placement='center'>
-            <Modal.Action variant='success' size='large' onClick={handleShowToast}>
+            <Modal.Action
+              variant='success'
+              size='large'
+              onClick={() => {
+                handleShowToast()
+                setModalType(null)
+              }}>
               Continuar
             </Modal.Action>
           </Modal.Actions>
