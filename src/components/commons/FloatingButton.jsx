@@ -67,10 +67,7 @@ const FloatingButton = () => {
 
   const handleWhatsappButton = () => {
     const whatsappLink = `https://wa.me/${formatPhoneNumber(calmaPhoneNumber)}`
-    setTimeout(
-      () => window.open(whatsappLink, '_blank', 'noopener,noreferrer'),
-      400
-    )
+    setTimeout(() => window.open(whatsappLink, '_blank', 'noopener,noreferrer'), 400)
 
     handleMainButtonClick()
   }
@@ -154,16 +151,10 @@ const FloatingButton = () => {
           {isVisible && (
             <div className='floating-button-options'>
               <div className={optionButtonClasses}>
-                <Button
-                  onClick={handleWhatsappButton}
-                  variant='success'
-                  className='option-button-wrapper whatsapp-button p-0'
-                >
+                <Button onClick={handleWhatsappButton} variant='success' className='option-button-wrapper whatsapp-button p-0'>
                   <div className='grid-row grid-col-auto-1fr justify-content-center gap-0'>
                     <div className='d-flex option-button-label align-items-center justify-content-center h-100 ms-3'>
-                      <p className='m-0 fs-medium white-space-nowrap'>
-                        {t('floatingButton.whatsappButtonText')}
-                      </p>
+                      <p className='m-0 fs-medium white-space-nowrap'>{t('floatingButton.whatsappButtonText')}</p>
                     </div>
                     <div className='d-flex option-button-icon align-items-center justify-content-center'>
                       <Icon name='whatsapp' variant='brands' size='lg' />
@@ -172,16 +163,10 @@ const FloatingButton = () => {
                 </Button>
               </div>
               <div className={optionButtonClasses}>
-                <Button
-                  variant='info'
-                  className='option-button-wrapper booking-button p-0'
-                  onClick={handleContactButton}
-                >
+                <Button variant='info' className='option-button-wrapper booking-button p-0' onClick={handleContactButton}>
                   <div className='grid-row grid-col-auto-1fr justify-content-center gap-0'>
                     <div className='d-flex option-button-label align-items-center justify-content-center h-100 ms-3'>
-                      <p className='m-0 fs-medium white-space-nowrap'>
-                        {t('floatingButton.emailButtonText')}
-                      </p>
+                      <p className='m-0 fs-medium white-space-nowrap'>{t('floatingButton.emailButtonText')}</p>
                     </div>
                     <div className='d-flex option-button-icon align-items-center justify-content-center'>
                       <Icon name='messages' variant='regular' />
@@ -190,16 +175,10 @@ const FloatingButton = () => {
                 </Button>
               </div>
               <div className={optionButtonClasses}>
-                <Button
-                  variant='primary'
-                  className='option-button-wrapper booking-button p-0'
-                  onClick={handleBookingButton}
-                >
+                <Button variant='primary' className='option-button-wrapper booking-button p-0' onClick={handleBookingButton}>
                   <div className='grid-row grid-col-auto-1fr justify-content-center gap-0'>
                     <div className='d-flex option-button-label align-items-center justify-content-center h-100 ms-3'>
-                      <p className='m-0 fs-medium white-space-nowrap'>
-                        {t('floatingButton.bookingButtonText')}
-                      </p>
+                      <p className='m-0 fs-medium white-space-nowrap'>{t('floatingButton.bookingButtonText')}</p>
                     </div>
                     <div className='d-flex option-button-icon align-items-center justify-content-center'>
                       <Icon name='calendar-check' variant='regular' />
@@ -219,20 +198,16 @@ const FloatingButton = () => {
                 key='floating-button'
                 animate={{
                   scale: 1,
-                  ...(hasServices && !isVisible
-                    ? bounceVariants.bounce
-                    : bounceVariants.idle)
+                  ...(hasServices && !isVisible ? bounceVariants.bounce : bounceVariants.idle)
                 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-              >
+                transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
                 <Button
                   className='floating-button-toggle rounded-all-full main-button'
                   variant='info'
                   onClick={handleMainButtonClick}
                   ariaLabel='Abrir burbujas de opciones'
                   tabIndex={0}
-                  size='large'
-                >
+                  size='large'>
                   <AnimatePresence mode='wait'>
                     <motion.div
                       key={mainButtonIconName}
@@ -240,13 +215,8 @@ const FloatingButton = () => {
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.5 }}
                       transition={{ duration: 0.1 }}
-                      className='d-flex align-items-center justify-content-center h-100'
-                    >
-                      <Icon
-                        name={mainButtonIconName}
-                        variant='solid'
-                        size='lg'
-                      />
+                      className='d-flex align-items-center justify-content-center h-100'>
+                      <Icon name={mainButtonIconName} variant='solid' size='lg' />
                     </motion.div>
                   </AnimatePresence>
                 </Button>
