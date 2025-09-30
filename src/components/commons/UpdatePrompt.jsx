@@ -10,13 +10,13 @@ export default function UpdatePrompt({ updateSW }) {
   const { type } = useDevice()
   const isMobile = type === 'mobile' || type === 'tablet'
 
-  const { modalType, setModalType, justUpdatedOnReload, clearJustUpdatedOnReload } = usePWAUpdate(updateSW, isMobile)
+  const { modalType, setModalType, justUpdatedOnReload, clearJustUpdatedOnReload, FLAG_KEY } = usePWAUpdate(updateSW, isMobile)
 
   const handleShowToast = () => {
     toast.success('Calma se ha actualizado', {
       duration: 3000,
       sound: 'updateComplete',
-      delay: 1
+      delay: 1.5
     })
   }
 
@@ -34,22 +34,20 @@ export default function UpdatePrompt({ updateSW }) {
     const handleClick = async () => {
       setRotate('spin')
       try {
-        // IMPORTANT: marcamos antes de llamar a updateSW() para que sobreviva al reload
+        // Guardamos la fuente = mobile
         try {
-          localStorage.setItem('justUpdated', 'true')
+          localStorage.setItem(FLAG_KEY, JSON.stringify({ status: 'true', source: 'mobile' }))
         } catch (e) {}
+
         await updateSW?.()
-        // Nota: si updateSW provoca un reload inmediato, el código posterior puede no ejecutarse.
-        // En ese caso el hook detectará el flag en el nuevo mount y disparará el toast.
+        // Si updateSW hace reload inmediato, el toast saldrá al nuevo mount
       } catch (err) {
         toast.error('No se pudo actualizar la aplicación')
-        // si hay error, limpiamos el flag para no mostrar toast por error
         try {
-          localStorage.removeItem('justUpdated')
+          localStorage.removeItem(FLAG_KEY)
         } catch (e) {}
       } finally {
-        // Mostrar toast inmediato en caso de que no haya reload automático (opcional para desktop)
-        if (!isMobile) handleShowToast()
+        if (!isMobile) handleShowToast() // Desktop inmediato
         setTimeout(() => {
           setRotate(null)
           handleClose()
@@ -69,7 +67,6 @@ export default function UpdatePrompt({ updateSW }) {
       </Modal.Action>
     )
   }
-
   if (!modalType) return null
 
   return (

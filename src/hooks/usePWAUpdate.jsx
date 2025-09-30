@@ -5,6 +5,8 @@ export function usePWAUpdate(updateSW, isMobile) {
   const [modalType, setModalType] = useState(null) // null | 'update' | 'info'
   const [justUpdatedOnReload, setJustUpdatedOnReload] = useState(false)
 
+  const FLAG_KEY = 'justUpdated'
+
   useEffect(() => {
     if (typeof window === 'undefined') return
 
@@ -13,7 +15,7 @@ export function usePWAUpdate(updateSW, isMobile) {
         setModalType('update')
       } else {
         try {
-          localStorage.setItem('justUpdated', 'true')
+          localStorage.setItem(FLAG_KEY, JSON.stringify({ status: 'true', source: 'desktop' }))
         } catch (e) {}
         updateSW?.()
       }
@@ -26,24 +28,26 @@ export function usePWAUpdate(updateSW, isMobile) {
   useEffect(() => {
     if (typeof window === 'undefined') return
 
-    const wasUpdated = localStorage.getItem('justUpdated') === 'true'
-    if (!wasUpdated) return
-
-    // limpiamos el flag siempre
+    let data
     try {
-      localStorage.removeItem('justUpdated')
+      data = JSON.parse(localStorage.getItem(FLAG_KEY))
+    } catch {
+      data = null
+    }
+    if (!data || data.status !== 'true') return
+
+    try {
+      localStorage.removeItem(FLAG_KEY)
     } catch (e) {}
 
-    if (isMobile) {
-      // en mobile: no queremos el modal 'info', solo informar que hubo update
+    if (data.source === 'mobile') {
       setJustUpdatedOnReload(true)
-    } else {
-      // en desktop sí mostramos el modal info
+    } else if (data.source === 'desktop') {
       setModalType('info')
     }
-  }, [isMobile])
+  }, [])
 
   const clearJustUpdatedOnReload = () => setJustUpdatedOnReload(false)
 
-  return { modalType, setModalType, justUpdatedOnReload, clearJustUpdatedOnReload }
+  return { modalType, setModalType, justUpdatedOnReload, clearJustUpdatedOnReload, FLAG_KEY }
 }
