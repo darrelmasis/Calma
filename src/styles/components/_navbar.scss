@@ -115,10 +115,6 @@
         color: c.$primary;
         background-color: fn.getColor(palette.$golds, '50');
         border: 1px solid fn.getColor(palette.$golds, '300');
-
-        & > .icon-wrapper {
-          @include animate.bounceIn(0.4s);
-        }
       }
     }
 
@@ -143,9 +139,7 @@
       top: 100px;
       left: 0;
       width: 100%; // por defecto ocupa el máximo de ancho disponible
-      max-width: calc(
-        100% - 5.5rem
-      ); // como es convención mobile-first por defecto utiliza 100% en pantallas más grandes se limita a 400px
+      max-width: calc(100% - 5.5rem); // como es convención mobile-first por defecto utiliza 100% en pantallas más grandes se limita a 400px
       max-height: calc(100dvh - 100px);
       margin-bottom: 3rem;
       background-color: rgb(255, 255, 255, 1);
@@ -334,14 +328,6 @@ body.navbar-open {
   .navbar-mobile-content {
     max-width: 300px;
   }
-}
-
-.bounce-animation.navbar-desktop-cta-button .icon-wrapper svg {
-  @include animate.bounceIn(0.3s);
-}
-
-.navbar-desktop-cta-button .icon-wrapper > svg {
-  @include animate.bounceIcon(5s, $infinite: true);
 }
 
 .navbar-desktop-dropdown-content-wrapper,
