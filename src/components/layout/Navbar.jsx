@@ -92,22 +92,9 @@ export const Navbar = () => {
       const activeClass = classNames({ active: isActive })
       return (
         <li key={link.path} className={activeClass}>
-          <NavLink
-            className='navbar-link'
-            to={link.path}
-            onClick={() => handleLinkClick(link.path)}
-          >
-            {link.icon && (
-              <Icon
-                name={link.icon}
-                className='me-2'
-                duotone='regular'
-                variant={isActive ? 'duotones' : 'regular'}
-              />
-            )}
-            <span className='navbar-link-label white-space-nowrap'>
-              {link.label}
-            </span>
+          <NavLink className='navbar-link' to={link.path} onClick={() => handleLinkClick(link.path)}>
+            {link.icon && <Icon name={link.icon} className='me-2' duotone='regular' variant={isActive ? 'duotones' : 'regular'} />}
+            <span className='navbar-link-label white-space-nowrap'>{link.label}</span>
           </NavLink>
         </li>
       )
@@ -123,8 +110,7 @@ export const Navbar = () => {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.9 }}
           transition={{ duration: 0.2 }}
-          className='navbar-mobile-controls'
-        >
+          className='navbar-mobile-controls'>
           <Button
             variant='primary'
             ghost
@@ -168,24 +154,18 @@ export const Navbar = () => {
             {/* Left Section: Left Links + Language Switcher */}
             <div className='navbar-section d-flex align-items-center gap-4'>
               <LanguageSwitcher />
-              <ul className='navbar-links d-flex align-items-center m-0 justify-content-flex-end'>
-                {renderNavLinks(leftLinks)}
-              </ul>
+              <ul className='navbar-links d-flex align-items-center m-0 justify-content-flex-end'>{renderNavLinks(leftLinks)}</ul>
             </div>
 
             {/* Center: Logotipo de Calma */}
             <div className='navbar-brand'>
-              <Tooltip
-                content={t('header.links.logoTooltip')}
-                placement='bottom'
-              >
+              <Tooltip content={t('header.links.logoTooltip')} placement='bottom'>
                 <Button
                   variant='initial'
                   size='medium'
                   className='p-0 m-0 rounded-circle navbar-brand-btn border-0'
                   ariaLabel='Logo de calma | Inicio'
-                  onClick={handleLogoClick}
-                >
+                  onClick={handleLogoClick}>
                   <LogoCalma className='navbar-brand-logo' />
                 </Button>
               </Tooltip>
@@ -193,9 +173,7 @@ export const Navbar = () => {
 
             {/* Right Section: Right Links + Bag */}
             <div className='navbar-section d-flex align-items-center'>
-              <ul className='navbar-links d-flex align-items-center m-0'>
-                {renderNavLinks(rightLinks)}
-              </ul>
+              <ul className='navbar-links d-flex align-items-center m-0'>{renderNavLinks(rightLinks)}</ul>
               <div className='d-flex'>
                 <BagDropdown />
               </div>
@@ -210,26 +188,18 @@ export const Navbar = () => {
           <div className='container d-flex align-items-center'>
             {/* Right: Bag + Hamburger */}
             <div className='navbar-section flex-1 d-flex justify-content-flex-start'>
-              <MenuControlBtn
-                isMenuOpen={isMenuOpen}
-                handleCloseMenu={handleCloseMenu}
-                handleOpenMenu={handleOpenMenu}
-              />
+              <MenuControlBtn isMenuOpen={isMenuOpen} handleCloseMenu={handleCloseMenu} handleOpenMenu={handleOpenMenu} />
             </div>
 
             {/* Center: Logo */}
             <div className='navbar-brand flex-1 d-flex justify-content-center m-0'>
-              <Tooltip
-                content={t('header.links.logoTooltip')}
-                placement='bottom'
-              >
+              <Tooltip content={t('header.links.logoTooltip')} placement='bottom'>
                 <Button
                   variant='initial'
                   size='medium'
                   className='p-0 m-0 rounded-circle navbar-brand-btn border-0'
                   ariaLabel='Logo de calma | Inicio'
-                  onClick={handleLogoClick}
-                >
+                  onClick={handleLogoClick}>
                   <LogoCalma className='navbar-brand-logo' />
                 </Button>
               </Tooltip>
@@ -261,15 +231,10 @@ export const Navbar = () => {
                 initial={{ opacity: 0, x: '-100%' }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: '-100%' }}
-                transition={{ duration: 0.3 }}
-              >
-                <p className='text-center fs-h4 border-bottom m-0 pb-3 text-muted'>
-                  {t('header.mobileNavbar.title')}
-                </p>
+                transition={{ duration: 0.3 }}>
+                <p className='text-center fs-h4 border-bottom m-0 pb-3 text-muted'>{t('header.mobileNavbar.title')}</p>
                 <div className='d-flex my-5 flex-direction-column justify-content-space-between align-items-center flex-1'>
-                  <ul className='navbar-links d-flex flex-direction-column'>
-                    {renderNavLinks(navLinks)}
-                  </ul>
+                  <ul className='navbar-links d-flex flex-direction-column'>{renderNavLinks(navLinks)}</ul>
                   <div className='d-flex flex-direction-column align-items-center gap-1 border-top w-100 pt-5'>
                     <div className='w-100 d-flex flex-direction-column justify-content-center '>
                       <LanguageSwitcher />
@@ -290,24 +255,16 @@ export const Navbar = () => {
 
             {/* Right: Bag + Hamburger */}
             <div className='navbar-section flex-1 d-flex justify-content-flex-start'>
-              <MenuControlBtn
-                isMenuOpen={isMenuOpen}
-                handleCloseMenu={handleCloseMenu}
-                handleOpenMenu={handleOpenMenu}
-              />
+              <MenuControlBtn isMenuOpen={isMenuOpen} handleCloseMenu={handleCloseMenu} handleOpenMenu={handleOpenMenu} />
             </div>
             <div className='navbar-brand flex-1 d-flex justify-content-center m-0'>
-              <Tooltip
-                content={t('header.links.logoTooltip')}
-                placement='bottom'
-              >
+              <Tooltip content={t('header.links.logoTooltip')} placement='bottom'>
                 <Button
                   variant='initial'
                   size='medium'
                   className='p-0 m-0 rounded-circle navbar-brand-btn border-0'
                   ariaLabel='Logo de calma | Inicio'
-                  onClick={handleLogoClick}
-                >
+                  onClick={handleLogoClick}>
                   <LogoCalma className='navbar-brand-logo' />
                 </Button>
               </Tooltip>
@@ -339,15 +296,10 @@ export const Navbar = () => {
                 initial={{ opacity: 0, x: '-100%' }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: '-100%' }}
-                transition={{ duration: 0.3 }}
-              >
-                <p className='text-center fs-h4 border-bottom m-0 pb-3 text-muted'>
-                  {t('header.mobileNavbar.title')}
-                </p>
+                transition={{ duration: 0.3 }}>
+                <p className='text-center fs-h4 border-bottom m-0 pb-3 text-muted'>{t('header.mobileNavbar.title')}</p>
                 <div className='d-flex my-5 flex-direction-column justify-content-space-between align-items-center flex-1'>
-                  <ul className='navbar-links d-flex flex-direction-column'>
-                    {renderNavLinks(navLinks)}
-                  </ul>
+                  <ul className='navbar-links d-flex flex-direction-column'>{renderNavLinks(navLinks)}</ul>
                   <div className='d-flex flex-direction-column align-items-center gap-1 border-top w-100 pt-5'>
                     <div className='w-100 d-flex flex-direction-column justify-content-center '>
                       <LanguageSwitcher />
