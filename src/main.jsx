@@ -10,6 +10,23 @@ import { Confetti } from './components/commons/Confetti.jsx'
 import Header from './components/layout/Header.jsx'
 import Footer from './components/layout/Footer.jsx'
 import { Toaster } from 'react-hot-toast'
+
+import { registerSW } from 'virtual:pwa-register'
+
+let updateSW
+
+// registro del SW
+updateSW = registerSW({
+  onNeedRefresh() {
+    console.log('⚡ Nueva versión disponible')
+    // aquí puedes disparar un estado global o event bus para mostrar tu banner
+    window.dispatchEvent(new Event('pwaUpdateAvailable'))
+  },
+  onOfflineReady() {
+    console.log('✅ Listo para usar offline')
+  }
+})
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter basename='/'>
@@ -19,7 +36,7 @@ createRoot(document.getElementById('root')).render(
         <PWAInstallProvider>
           <SelectedServicesProvider>
             <Header />
-            <App />
+            <App updateSW={updateSW} />
             <Footer />
           </SelectedServicesProvider>
         </PWAInstallProvider>

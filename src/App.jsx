@@ -4,8 +4,9 @@ import { useSelectedServices } from './hooks/useSelectedService'
 import { useDynamicFavicon } from './hooks/useFavicon'
 import { useEffect } from 'react'
 import { useNotificationPermission } from './hooks/useNotificationPermission'
+import UpdatePrompt from './components/commons/UpdatePrompt.jsx'
 
-const App = () => {
+const App = ({ updateSW }) => {
   const { totalServices } = useSelectedServices()
   const showFaviconBadge = totalServices > 0
   useDynamicFavicon(showFaviconBadge)
@@ -22,7 +23,12 @@ const App = () => {
     }
   }, [isSupported, permission, requestPermission])
 
-  return <AppRoutes />
+  return (
+    <>
+      <AppRoutes />
+      <UpdatePrompt updateSW={updateSW} />
+    </>
+  )
 }
 
 export default App
