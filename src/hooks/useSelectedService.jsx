@@ -14,7 +14,7 @@ import { limitedToast as toast } from '../utils/toast'
 import { useSound } from '../components/commons/SoundManager'
 
 const LOCAL_STORAGE_KEY = 'selectedServices'
-const BAG_LIMIT = 10
+const BAG_LIMIT = 6
 
 const SelectedServicesContext = createContext()
 
