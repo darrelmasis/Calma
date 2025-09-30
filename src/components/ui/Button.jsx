@@ -164,7 +164,7 @@ const BadgeAnimation = ({ value, children, status }) => {
     {
       'bg-danger-400 text-white': !status || status === 'normal',
       'bg-success-400 text-white': status === 'success',
-      'bg-warning-400 text-white': status === 'warning',
+      'bg-warning-300 text-warning-800': status === 'warning',
       'bg-info-400 text-white': status === 'info',
       'bg-primary-400 text-white': status === 'primary'
     }
@@ -194,7 +194,7 @@ const BadgeAnimation = ({ value, children, status }) => {
       currentNum > prevNum
     ) {
       animate = true
-    } else if (value === 'Max') {
+    } else if (value === '!') {
       animate = true
     }
 

@@ -1,5 +1,5 @@
 // src/components/bag/BagDropdown.jsx
-import { memo, useEffect, useRef } from 'react'
+import { memo } from 'react'
 import { useSelectedServices } from '../../hooks/useSelectedService'
 import { useLang } from '../../i18n/LanguageContext'
 import { useDevice } from '../../hooks/useBreakpoint'
@@ -57,11 +57,7 @@ const BagTrigger = ({
         icon={icons}
         label={!isMobile && label}
         badge={{
-          value: canAddMore
-            ? totalServices > 0
-              ? totalServices
-              : null
-            : 'Max',
+          value: canAddMore ? (totalServices > 0 ? totalServices : null) : '!',
           status: canAddMore ? 'normal' : 'warning'
         }}
       />
