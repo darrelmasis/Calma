@@ -1,6 +1,5 @@
 // SoundManager.js
 import { Howl } from 'howler'
-import toast from 'react-hot-toast'
 
 export const sounds = {
   bell: ['/sounds/bell.ogg'],
@@ -11,7 +10,8 @@ export const sounds = {
   cleanShoppingBag: ['/sounds/clean-shopping-bag.ogg'],
   bagFull: ['/sounds/bag-full.ogg'],
   toastNotify: ['/sounds/toast-notify.ogg'],
-  toastNotifyError: ['/sounds/toast-notify-error.ogg']
+  toastNotifyError: ['/sounds/toast-notify-error.ogg'],
+  updateComplete: ['/sounds/update-complete.ogg']
 }
 
 // Instancias globales (singleton)
