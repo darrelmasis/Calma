@@ -1,44 +1,23 @@
-import { useEffect, useState, useContext } from 'react'
+import { useState, useContext } from 'react'
 import Modal, { ModalContext } from '../ui/Modal'
 import { useDevice } from '../../hooks/useBreakpoint'
 import { Icon } from './Icons'
 import { limitedToast as toast } from '../../utils/toast'
+import { usePWAUpdate } from '../../hooks/usePWAUpdate'
 
 export default function UpdatePrompt({ updateSW }) {
-  const [modalType, setModalType] = useState(null) // null | "update" | "info"
   const [rotate, setRotate] = useState(null)
-
   const { type } = useDevice()
   const isMobile = type === 'mobile' || type === 'tablet'
 
-  // Detectar actualización disponible
-  useEffect(() => {
-    const handler = () => {
-      if (isMobile) {
-        setModalType('update')
-      } else {
-        localStorage.setItem('justUpdated', 'true')
-        updateSW?.()
-      }
-    }
-
-    window.addEventListener('pwaUpdateAvailable', handler)
-    return () => window.removeEventListener('pwaUpdateAvailable', handler)
-  }, [isMobile, updateSW])
-
-  // Mostrar modal de "info" después de la recarga
-  useEffect(() => {
-    if (localStorage.getItem('justUpdated') === 'true') {
-      localStorage.removeItem('justUpdated')
-      setModalType('info')
-    }
-  }, [])
+  // Hook centralizado
+  const { modalType, setModalType } = usePWAUpdate(updateSW, isMobile)
 
   const handleShowToast = () => {
     toast.success('Calma se ha actualizado', {
       duration: 3000,
       sound: 'updateComplete',
-      delay: 1.5
+      delay: 1
     })
   }
 
@@ -50,8 +29,6 @@ export default function UpdatePrompt({ updateSW }) {
       setRotate('spin')
       try {
         await updateSW?.()
-        // marcar que ya se actualizó para que al recargar se muestre info
-        localStorage.setItem('justUpdated', 'true')
       } catch (err) {
         toast.error('No se pudo actualizar la aplicación')
       } finally {
