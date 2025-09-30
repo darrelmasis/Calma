@@ -3,6 +3,7 @@ import AnglesUpDown from './angles-up-down.svg?react';
 import ArrowLeft from './arrow-left.svg?react';
 import ArrowRight from './arrow-right.svg?react';
 import ArrowUpRightFromSquare from './arrow-up-right-from-square.svg?react';
+import ArrowsRotate from './arrows-rotate.svg?react';
 import BagShopping from './bag-shopping.svg?react';
 import BarsStaggered from './bars-staggered.svg?react';
 import Bars from './bars.svg?react';
@@ -25,6 +26,7 @@ import CircleMinus from './circle-minus.svg?react';
 import CirclePlus from './circle-plus.svg?react';
 import CircleQuestion from './circle-question.svg?react';
 import CircleXmark from './circle-xmark.svg?react';
+import CloudArrowDown from './cloud-arrow-down.svg?react';
 import Compass from './compass.svg?react';
 import Download from './download.svg?react';
 import EarthAmericas from './earth-americas.svg?react';
@@ -78,6 +80,7 @@ export {
   ArrowLeft,
   ArrowRight,
   ArrowUpRightFromSquare,
+  ArrowsRotate,
   BagShopping,
   BarsStaggered,
   Bars,
@@ -100,6 +103,7 @@ export {
   CirclePlus,
   CircleQuestion,
   CircleXmark,
+  CloudArrowDown,
   Compass,
   Download,
   EarthAmericas,
