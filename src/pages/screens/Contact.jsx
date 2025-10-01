@@ -2,15 +2,20 @@ import { useState } from 'react'
 import { useLang } from '../../i18n/LanguageContext'
 import { Input, PhoneNumber } from '../../components/forms/Input'
 import axios from 'axios'
-import { limitedToast } from '../../utils/toast'
+import { limitedToast as toast } from '../../utils/toast'
 import { Icon } from '../../components/commons/Icons'
 import { Button } from '../../components/ui/Button'
 import { useContactValidation } from '../../hooks/useContactValidation'
+import { useOfflineStatus } from '../../hooks/useOfflineStatus'
+import { useOutbox } from '../../context/OutboxContent'
+import { useNavigate } from 'react-router-dom'
 
 const Contact = () => {
   const { t } = useLang()
-  const { validateForm, validateField, getField, clearField } =
-    useContactValidation()
+  const { validateForm, validateField, getField, clearField } = useContactValidation()
+  const isOffline = useOfflineStatus()
+  const { addToQueue } = useOutbox()
+  const navigate = useNavigate()
 
   const [formData, setFormData] = useState({
     nombre: '',
@@ -22,54 +27,9 @@ const Contact = () => {
   })
 
   const [isLoading, setIsLoading] = useState(false)
+
   const environment = import.meta.env.VITE_ENV
-  const apiUrl =
-    environment === 'development'
-      ? import.meta.env.VITE_API_DEV_URL
-      : import.meta.env.VITE_API_PROD_URL
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-
-    // Validar todo el formulario antes de enviar
-    if (!validateForm(formData)) {
-      limitedToast.error(
-        t('contact.form.toast.validationFailed'),
-        'toastNotifyError'
-      )
-      return
-    }
-
-    setIsLoading(true)
-
-    try {
-      const payload = { ...formData }
-      const res = await axios.post(`${apiUrl}/api/contact`, payload, {
-        headers: { 'Content-Type': 'application/json' }
-      })
-
-      if (res.data.ok) {
-        limitedToast.success(t('contact.form.toast.success.title'))
-        setFormData({
-          nombre: '',
-          apellido: '',
-          telefono: '',
-          prefix: '+505',
-          email: '',
-          mensaje: ''
-        })
-      } else {
-        limitedToast.error(
-          res.data.message || t('contact.form.toast.error.title')
-        )
-      }
-    } catch (err) {
-      console.error(err)
-      limitedToast.error(t('contact.form.toast.error.title'))
-    } finally {
-      setIsLoading(false)
-    }
-  }
+  const apiUrl = environment === 'development' ? import.meta.env.VITE_API_DEV_URL : import.meta.env.VITE_API_PROD_URL
 
   const handleChange = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
@@ -83,10 +43,69 @@ const Contact = () => {
       telefono: valObj?.formatted || '',
       prefix: valObj?.prefix || '+505'
     }))
-    setTimeout(
-      () => validateField('telefono', valObj?.formatted || '', formData),
-      500
-    )
+    setTimeout(() => validateField('telefono', valObj?.formatted || '', formData), 500)
+  }
+
+  const clearForm = () => {
+    // Limpiar formulario
+    setFormData({
+      nombre: '',
+      apellido: '',
+      telefono: '',
+      prefix: '+505',
+      email: '',
+      mensaje: ''
+    })
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    if (!validateForm(formData)) {
+      toast.error(t('contact.form.toast.validationFailed'))
+      return
+    }
+
+    setIsLoading(true)
+    const payload = { ...formData }
+
+    try {
+      if (isOffline) {
+        await addToQueue(payload, 'contact')
+        // toast.warning('⚠️ Sin conexión. Tu mensaje se guardó en la bandeja de salida y se enviará automáticamente cuando haya conexión.')
+        clearForm()
+        setTimeout(() => {
+          navigate('/outbox', { state: { waiting: true, from: 'contact' } })
+        }, 3000)
+      } else {
+        const res = await axios.post(`${apiUrl}/api/contact`, payload, {
+          headers: { 'Content-Type': 'application/json' }
+        })
+
+        if (res.data.ok) {
+          toast.success(t('contact.form.toast.success.title'))
+          navigate('/success', { state: { success: true, from: 'contact' } })
+        } else {
+          throw new Error(res.data.message || 'Error al enviar mensaje')
+        }
+      }
+
+      // Limpiar formulario
+      clearForm()
+    } catch (err) {
+      console.error(err)
+      await addToQueue(payload, 'contact')
+      toast.warning(
+        '⚠️ No se pudo enviar el mensaje. Se guardó en la bandeja de salida y se enviará automáticamente cuando haya conexión.',
+        { delay: 5000 }
+      )
+      clearForm()
+      setTimeout(() => {
+        navigate('/outbox', { state: { waiting: true, from: 'contact' } })
+      }, 5000)
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -94,15 +113,9 @@ const Contact = () => {
       <div className='container d-flex justify-content-center flex-direction-column align-items-center'>
         <div className='mb-4'>
           <p className='fs-h3 my-0 text-center'>{t('contact.title')}</p>
-          <p className='fs-medium mt-0 text-muted text-center max-wx-400'>
-            {t('contact.subtitle')}
-          </p>
+          <p className='fs-medium mt-0 text-muted text-center max-wx-400'>{t('contact.subtitle')}</p>
         </div>
-        <form
-          onSubmit={handleSubmit}
-          className='contact-form d-flex flex-direction-column align-items-center'
-          noValidate
-        >
+        <form onSubmit={handleSubmit} className='contact-form d-flex flex-direction-column align-items-center' noValidate>
           <div className='d-flex flex-direction-column gap-2 mb-5 max-wx-500'>
             <div className='d-flex flex-1 gap-2 flex-direction-column flex-direction-md-row'>
               <Input
@@ -110,24 +123,19 @@ const Contact = () => {
                 placeholder={t('contact.form.name.placeholder')}
                 value={formData.nombre}
                 onChange={(val) => handleChange('nombre', val)}
-                onBlur={() =>
-                  validateField('nombre', formData.nombre, formData)
-                }
+                onBlur={() => validateField('nombre', formData.nombre, formData)}
                 onFocus={() => clearField('nombre')}
                 error={getField('nombre').message}
                 success={getField('nombre').state === 'success'}
                 required
                 className='w-100'
               />
-
               <Input
                 label={t('contact.form.lastName.label')}
                 placeholder={t('contact.form.lastName.placeholder')}
                 value={formData.apellido}
                 onChange={(val) => handleChange('apellido', val)}
-                onBlur={() =>
-                  validateField('apellido', formData.apellido, formData)
-                }
+                onBlur={() => validateField('apellido', formData.apellido, formData)}
                 onFocus={() => clearField('apellido')}
                 error={getField('apellido').message}
                 success={getField('apellido').state === 'success'}
@@ -154,9 +162,7 @@ const Contact = () => {
               label={t('contact.form.phone.label')}
               value={formData.telefono}
               onChange={handlePhoneChange}
-              onBlur={() =>
-                validateField('telefono', formData.telefono, formData)
-              }
+              onBlur={() => validateField('telefono', formData.telefono, formData)}
               onFocus={() => clearField('telefono')}
               error={getField('telefono').message}
               success={getField('telefono').state === 'success'}
@@ -169,9 +175,7 @@ const Contact = () => {
               placeholder={t('contact.form.message.placeholder')}
               value={formData.mensaje}
               onChange={(val) => handleChange('mensaje', val)}
-              onBlur={() =>
-                validateField('mensaje', formData.mensaje, formData)
-              }
+              onBlur={() => validateField('mensaje', formData.mensaje, formData)}
               onFocus={() => clearField('mensaje')}
               error={getField('mensaje').message}
               success={getField('mensaje').state === 'success'}
@@ -181,14 +185,7 @@ const Contact = () => {
             />
           </div>
 
-          <Button
-            type='submit'
-            variant='primary'
-            size='large'
-            fullWidth
-            disabled={isLoading}
-            className='submit-button mt-5'
-          >
+          <Button type='submit' variant='primary' size='large' fullWidth disabled={isLoading} className='submit-button mt-5'>
             {isLoading ? (
               <>
                 <Icon name='spinner' animation='spin' />

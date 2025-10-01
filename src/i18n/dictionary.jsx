@@ -1,3 +1,5 @@
+import { title } from 'framer-motion/client'
+
 const currentYear = new Date().getFullYear()
 const copyrightName = import.meta.env.VITE_CALMA_NAME
 const authors = import.meta.env.VITE_CALMA_AUTHOR
@@ -886,6 +888,16 @@ export const dictionary = {
     offlineStatus: {
       offline: 'Estas navegando sin conexión',
       online: '¡Estás de vuelta en línea!'
+    },
+    senders: {
+      outbox: {
+        title: 'Bandeja de salida',
+        screenTitle: 'Mensajes pendientes por enviar',
+        screenMessage:
+          'Parece que estás sin conexión. Los mensajes que envíes se guardarán localmente y se enviarán automáticamente cuando vuelvas a estar en línea.',
+        toastMessage: 'Mensaje guardado en la bandeja de salida',
+        toastSuccess: 'Mensaje enviado desde la bandeja de salida'
+      }
     }
   },
   en: {
@@ -1734,6 +1746,15 @@ export const dictionary = {
     offlineStatus: {
       offline: 'Houston, we have a problem...',
       online: 'You are back online!'
+    },
+    senders: {
+      outbox: {
+        title: 'Outbox',
+        screenTitle: 'Pending Messages to Send',
+        screenMessage: 'It seems you are offline. Messages you send will be saved locally and automatically sent when you are back online.',
+        toastMessage: 'Message saved to outbox',
+        toastSuccess: 'Message sent from outbox'
+      }
     }
   }
 }

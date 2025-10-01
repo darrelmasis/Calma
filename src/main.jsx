@@ -10,8 +10,10 @@ import { Confetti } from './components/commons/Confetti.jsx'
 import Header from './components/layout/Header.jsx'
 import Footer from './components/layout/Footer.jsx'
 import { Toaster } from 'react-hot-toast'
-
 import { registerSW } from 'virtual:pwa-register'
+import { OutboxProvider } from './context/OutboxContent.jsx'
+
+const apiUrl = import.meta.env.VITE_ENV === 'development' ? import.meta.env.VITE_API_DEV_URL : import.meta.env.VITE_API_PROD_URL
 
 let updateSW
 
@@ -33,13 +35,15 @@ createRoot(document.getElementById('root')).render(
       <LanguageProvider>
         <Confetti confettiCount={50} speed={3} maxSize={12} shape='square' />
         <Toaster containerStyle={{ bottom: 116, right: 24, zIndex: 9 }} />
-        <PWAInstallProvider>
-          <SelectedServicesProvider>
-            <Header />
-            <App updateSW={updateSW} />
-            <Footer />
-          </SelectedServicesProvider>
-        </PWAInstallProvider>
+        <OutboxProvider apiUrl={apiUrl}>
+          <PWAInstallProvider apiUrl={apiUrl}>
+            <SelectedServicesProvider>
+              <Header />
+              <App updateSW={updateSW} />
+              <Footer />
+            </SelectedServicesProvider>
+          </PWAInstallProvider>
+        </OutboxProvider>
       </LanguageProvider>
     </BrowserRouter>
   </StrictMode>

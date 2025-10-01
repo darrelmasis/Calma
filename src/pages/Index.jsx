@@ -8,16 +8,6 @@ import Team from './screens/Team'
 import Empty from './screens/EmptyBag'
 import Success from './screens/Success'
 import Contact from './screens/Contact'
+import Outbox from './screens/Outbox'
 
-export {
-  Home,
-  Services,
-  Packages,
-  NotFound,
-  Contact,
-  Story,
-  Booking,
-  Team,
-  Empty,
-  Success
-}
+export { Home, Services, Packages, NotFound, Contact, Story, Booking, Team, Empty, Success, Outbox }

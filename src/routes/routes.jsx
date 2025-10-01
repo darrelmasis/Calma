@@ -1,16 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
-import {
-  Booking,
-  Story,
-  Home,
-  NotFound,
-  Contact,
-  Packages,
-  Services,
-  Team,
-  Empty,
-  Success
-} from '../pages/Index'
+import { Booking, Story, Home, NotFound, Contact, Packages, Services, Team, Empty, Success, Outbox } from '../pages/Index'
 import ScrollTop from '../components/commons/ScrollTop'
 import { ScrollToHash } from '../utils/Scrollhash'
 const AppRoutes = () => {
@@ -29,6 +18,7 @@ const AppRoutes = () => {
         <Route path='/team' element={<Team />} />
         <Route path='/empty' element={<Empty />} />
         <Route path='/success' element={<Success />} />
+        <Route path='/outbox' element={<Outbox />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </>

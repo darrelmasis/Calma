@@ -4,25 +4,29 @@ import { Button } from '../../components/ui/Button'
 import { useEffect } from 'react'
 import { useSelectedServices } from '../../hooks/useSelectedService'
 import { useLang } from '../../i18n/LanguageContext'
-import { ConfettiExplosion } from '../../components/commons/Confetti'
 import { useState } from 'react'
 import { FadeInWhenVisible as Fade } from '../../components/commons/animations/FadeInWhenVisible'
 import { useSound } from '../../components/commons/SoundManager'
+import { Icon } from '../../components/commons/Icons'
+import { limitedToast as toast } from '../../utils/toast'
 
-const Success = () => {
+const Outbox = () => {
   const { t } = useLang()
-  usePageTitle(t('booking.success.title'))
+  usePageTitle(t('senders.outbox.title'))
   const location = useLocation()
   const { clearServices, isLoaded } = useSelectedServices()
-  const [showExplosion, setShowExplosion] = useState(false)
   const playSuccessSound = useSound('operationComplete')
-  const isAllowed = location.state?.success
+  const isAllowed = location.state?.waiting
+  const fromForm = location.state?.from
+
   useEffect(() => {
     if (isLoaded) {
-      if (isAllowed) {
-        setShowExplosion(true)
-        playSuccessSound.play()
+      if (isAllowed && fromForm === 'booking') {
+        // playSuccessSound.play()
         clearServices()
+      } else if (isAllowed && fromForm === 'contact') {
+        // playSuccessSound.play()
+        toast.success(t('senders.outbox.toastMessage'), { duration: 5000 })
       } else {
         // redirigir si no es permitido
         window.location.href = '/'
@@ -32,17 +36,21 @@ const Success = () => {
 
   return (
     <div className=''>
-      {showExplosion && <ConfettiExplosion origin={{ x: '50%', y: 160 }} onComplete={() => setShowExplosion(false)} />}
       <Fade className='d-flex flex-direction-column  align-items-center text-center py-5'>
-        <span className='fs-display-2 mb-3'>🎉</span>
-        <h3 className='fs-h3 mb-2'>{t('booking.success.subtitle')}</h3>
-        <p className='text-muted mb-4 max-wx-500'>{t('booking.success.message')}</p>
+        <span className='fs-display-2 mb-3'>
+          <Icon name='wifi-exclamation' variant='duotones' duotone='solid' className='text-warning-600' />
+        </span>
+        <h3 className='fs-h3 mb-2'>
+          <Icon name='inbox-out' className='me-3' />
+          <span>{t('senders.outbox.screenTitle')}</span>
+        </h3>
+        <p className='text-muted mb-4 max-wx-500'>{t('senders.outbox.screenMessage')}</p>
 
         {/* CTA principal */}
         <Button
           as='link'
           to='/'
-          variant='success'
+          variant='info'
           className='my-3'
           size='large'
           icon='left-to-bracket'
@@ -56,4 +64,4 @@ const Success = () => {
   )
 }
 
-export default Success
+export default Outbox

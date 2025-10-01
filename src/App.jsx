@@ -5,14 +5,14 @@ import { useDynamicFavicon } from './hooks/useFavicon'
 import { useEffect } from 'react'
 import { useNotificationPermission } from './hooks/useNotificationPermission'
 import UpdatePrompt from './components/commons/UpdatePrompt.jsx'
+import { sounds, getSound } from './components/commons/SoundManager'
 
 const App = ({ updateSW }) => {
   const { totalServices } = useSelectedServices()
   const showFaviconBadge = totalServices > 0
   useDynamicFavicon(showFaviconBadge)
 
-  const { permission, requestPermission, isSupported } =
-    useNotificationPermission()
+  const { permission, requestPermission, isSupported } = useNotificationPermission()
 
   useEffect(() => {
     // Solo intentamos pedir permiso si:
@@ -22,6 +22,12 @@ const App = ({ updateSW }) => {
       requestPermission()
     }
   }, [isSupported, permission, requestPermission])
+
+  useEffect(() => {
+    Object.keys(sounds).forEach((key) => {
+      getSound(key) // fuerza creación e inicio de carga
+    })
+  }, [])
 
   return (
     <>
