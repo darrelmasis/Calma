@@ -66,7 +66,7 @@ export const LanguageSwitcher = ({ className = '' }) => {
       return
     }
     changeLanguage(newLang)
-    toast.success(
+    toast.info(
       newLang === 'es'
         ? 'Idioma cambiado a Español'
         : 'Language changed to English'
