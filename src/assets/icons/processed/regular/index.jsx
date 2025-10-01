@@ -72,6 +72,7 @@ import TrashCan from './trash-can.svg?react';
 import Users from './users.svg?react';
 import Whatsapp from './whatsapp.svg?react';
 import WifiExclamation from './wifi-exclamation.svg?react';
+import Wifi from './wifi.svg?react';
 import Xmark from './xmark.svg?react';
 
 export {
@@ -149,5 +150,6 @@ export {
   Users,
   Whatsapp,
   WifiExclamation,
+  Wifi,
   Xmark
 };
