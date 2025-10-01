@@ -17,10 +17,8 @@ export default async function handler(req, res) {
 
   const { nombre, apellido, telefono, prefix, email, mensaje } = req.body
 
-  if (!nombre || !email || !mensaje) {
-    return res
-      .status(400)
-      .json({ ok: false, message: 'Faltan datos obligatorios' })
+  if (!nombre || !apellido || !telefono || !email || !mensaje) {
+    return res.status(400).json({ ok: false, message: 'Faltan datos obligatorios' })
   }
 
   try {
@@ -159,9 +157,7 @@ export default async function handler(req, res) {
       html: clientHtml
     })
 
-    return res
-      .status(200)
-      .json({ ok: true, message: 'Mensaje de contacto enviado correctamente' })
+    return res.status(200).json({ ok: true, message: 'Mensaje de contacto enviado correctamente' })
   } catch (err) {
     console.error('Error enviando correo de contacto:', err)
     return res.status(500).json({
