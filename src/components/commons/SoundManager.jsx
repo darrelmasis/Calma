@@ -11,7 +11,7 @@ export const sounds = {
   notifyError: ['/sounds/notify-error.ogg'],
   notifySuccess: ['/sounds/notify-success.ogg'],
   notifyWarning: ['/sounds/notify-warning.ogg'],
-  operationComplete: ['/sounds/operation-complete.ogg']
+  operationComplete: ['/sounds/operation-completed.ogg']
 }
 
 // Instancias globales (singleton)
