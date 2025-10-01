@@ -1,15 +1,17 @@
-import { useState, useEffect, useRef } from 'react'
-import { CSSTransition } from 'react-transition-group'
+import { useState, useEffect } from 'react'
 import { useOfflineStatus } from '../../hooks/useOfflineStatus'
+import { useLang } from '../../i18n/LanguageContext'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Icon } from '../commons/Icons'
+import { limitedToast as toast } from '../../utils/toast'
 
 const OfflineIndicator = () => {
   const isOffline = useOfflineStatus()
   const [showOffline, setShowOffline] = useState(false)
   const [showOnline, setShowOnline] = useState(false)
+  const [pendingOnline, setPendingOnline] = useState(false) // bandera para esperar
   const [isFirstLoad, setIsFirstLoad] = useState(true)
-
-  const offlineRef = useRef(null)
-  const onlineRef = useRef(null)
+  const { t } = useLang()
 
   useEffect(() => {
     if (isFirstLoad && !isOffline) {
@@ -18,67 +20,83 @@ const OfflineIndicator = () => {
     }
 
     if (isOffline) {
+      // Se fue la conexión
       setShowOnline(false)
+      setPendingOnline(false)
       setShowOffline(true)
-      document.body.classList.toggle('thinbar-open', isOffline)
-    } else if (showOffline) {
-      // Esperar a que offline desaparezca
-      setShowOffline(false)
+      document.body.classList.add('thinbar-open')
+      toast.warning(t('offlineStatus.offline'))
     } else {
-      // Offline ya oculto, mostrar online
-      setShowOnline(true)
-      setTimeout(() => setShowOnline(false), 3000) // online 3s
+      // Volvió la conexión
+      setShowOffline(false)
+
+      if (!isFirstLoad) {
+        // no mostramos online inmediatamente, esperamos a que offline termine
+        setPendingOnline(true)
+        toast.success(t('offlineStatus.online'))
+      } else {
+        document.body.classList.remove('thinbar-open')
+      }
     }
   }, [isOffline])
 
   return (
     <>
       {/* Offline */}
-      <CSSTransition
-        in={showOffline}
-        timeout={500}
-        classNames='network-status-offline'
-        unmountOnExit
-        nodeRef={offlineRef}
-        onExited={() => {
-          if (!isOffline) {
+      <AnimatePresence
+        onExitComplete={() => {
+          // cuando offline terminó de salir
+          if (pendingOnline) {
             setShowOnline(true)
-            setTimeout(() => {
-              document.body.classList.remove('thinbar-open')
+            setPendingOnline(false)
+
+            const timer = setTimeout(() => {
               setShowOnline(false)
-            }, 2000)
+              document.body.classList.remove('thinbar-open')
+            }, 3000)
+
+            return () => clearTimeout(timer)
           }
-        }}
-      >
-        <div
-          ref={offlineRef}
-          className='network-status-offline bg-warning-100 text-center fw-semibold py-3'
-        >
-          <div className='d-flex align-items-center text-warning justify-content-center'>
-            ¡Houston, tenemos un problema!
-          </div>
-        </div>
-      </CSSTransition>
+        }}>
+        {showOffline && (
+          <motion.div
+            key='offline-bar'
+            initial={{ opacity: 1, y: -48 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -48 }}
+            transition={{
+              duration: 0.5,
+              ease: [0.68, -0.55, 0.27, 1.55] // efecto "jalón" o rebote ligero
+            }}
+            className='network-status-offline bg-warning-100 text-center fw-semibold py-3'>
+            <div className='d-flex m-0 align-items-center text-warning-900 justify-content-center gap-1'>
+              <Icon name='wifi-exclamation' />
+              <span className='fw-light'>{t('offlineStatus.offline')}</span>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Online */}
-      <CSSTransition
-        in={showOnline}
-        timeout={500}
-        classNames='network-status-online'
-        unmountOnExit
-        nodeRef={onlineRef}
-        onExited={() => setIsFirstLoad(false)}
-      >
-        <div
-          ref={onlineRef}
-          className='network-status-online bg-success text-white text-center fw-semibold py-3'
-        >
-          <div className='d-flex align-items-center justify-content-center'>
-            <span className='online-check me-2'>✓</span>
-            ¡Estás de nuevo online! 🌐
-          </div>
-        </div>
-      </CSSTransition>
+      <AnimatePresence>
+        {showOnline && (
+          <motion.div
+            key='online-bar'
+            initial={{ opacity: 1, y: -48 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -48 }}
+            transition={{
+              duration: 0.5,
+              ease: [0.68, -0.55, 0.27, 1.55] // efecto "jalón" o rebote ligero
+            }}
+            className='network-status-online bg-success-100 text-white text-center py-3'>
+            <div className='d-flex m-0 align-items-center text-success-900 justify-content-center gap-1'>
+              <Icon name='wifi' />
+              <span className='fw-light'>{t('offlineStatus.online')}</span>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   )
 }
