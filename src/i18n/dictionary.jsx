@@ -45,8 +45,7 @@ export const dictionary = {
     footer: {
       cta: {
         title: '¡Agenda tu cita hoy!',
-        description:
-          'Reserva con nuestros especialistas en bienestar cuando y donde quieras',
+        description: 'Reserva con nuestros especialistas en bienestar cuando y donde quieras',
         button: '¡Reserva ahora!'
       },
       columns: {
@@ -89,8 +88,7 @@ export const dictionary = {
     home: {
       pageTitle: 'Inicio',
       heroSection: {
-        title_1:
-          'Encuentra tu <span className="text-primary">Calma</span> interior',
+        title_1: 'Encuentra tu <span className="text-primary">Calma</span> interior',
         description:
           'Descubre un espacio diseñado para tu bienestar y tranquilidad, donde cada servicio está pensado para restaurar tu equilibrio',
         button_1: 'Descubrir servicios',
@@ -102,25 +100,21 @@ export const dictionary = {
         points: {
           p1: {
             title: 'Atención personalizada',
-            description:
-              'Cada cliente recibe un tratamiento único adaptado a sus necesidades'
+            description: 'Cada cliente recibe un tratamiento único adaptado a sus necesidades'
           },
           p2: {
             title: 'Ambiente Seguro',
-            description:
-              'Creamos un entorno acogedor y seguro para que te sientas cómodo'
+            description: 'Creamos un entorno acogedor y seguro para que te sientas cómodo'
           },
           p3: {
             title: 'Personal Experto',
-            description:
-              'Nuestro equipo cuenta con amplia experiencia y formación especializada'
+            description: 'Nuestro equipo cuenta con amplia experiencia y formación especializada'
           }
         }
       },
       section_3: {
         title: 'Comienza tu camino hacia la tranquilidad',
-        description:
-          'Descubre nuestros servicios y encuentra el que mejor se adapte a tus necesidades',
+        description: 'Descubre nuestros servicios y encuentra el que mejor se adapte a tus necesidades',
         button: 'Descubrir Servicios'
       }
     },
@@ -159,8 +153,7 @@ export const dictionary = {
         description:
           'Descubre nuestros paquetes diseñados para ofrecer una experiencia de bienestar y relajación. Cada uno combina servicios para brindarte un momento único de renovación.',
         include_text: 'El Paquete Incluye',
-        group_optionaly_text:
-          'Todos nuestros paquetes tienen opciones de grupo',
+        group_optionaly_text: 'Todos nuestros paquetes tienen opciones de grupo',
         from_price_text: 'Desde',
 
         paquetes: [
@@ -170,8 +163,7 @@ export const dictionary = {
             precio: '150',
             featured: false,
             featured_text: '',
-            descripcion_corta:
-              'Renovación integral cuerpo y mente, ideal para cumpleaños o cualquier ocasión especial',
+            descripcion_corta: 'Renovación integral cuerpo y mente, ideal para cumpleaños o cualquier ocasión especial',
             servicios_incluidos: [
               'Manicure SPA (Gel o regular)',
               'Pedicure SPA (Gel o regular)',
@@ -227,13 +219,11 @@ export const dictionary = {
             },
             {
               question: '¿Debo reservar con anticipación?',
-              answer:
-                'Sí, recomendamos reservar con anticipación para garantizar disponibilidad y coordinar fechas y horarios.'
+              answer: 'Sí, recomendamos reservar con anticipación para garantizar disponibilidad y coordinar fechas y horarios.'
             },
             {
               question: '¿Qué duración tiene cada paquete?',
-              answer:
-                'Los paquetes son personalizados, ya depende la necesidad del cliente se ajusta el tiempo necesario.'
+              answer: 'Los paquetes son personalizados, ya depende la necesidad del cliente se ajusta el tiempo necesario.'
             }
           ]
         }
@@ -270,24 +260,20 @@ export const dictionary = {
                   },
                   spa: {
                     name: 'SPA',
-                    description:
-                      'Limpieza, masaje, guantes hidratantes, esmalte regular'
+                    description: 'Limpieza, masaje, guantes hidratantes, esmalte regular'
                   },
                   vip: {
                     name: 'VIP',
-                    description:
-                      'Limpieza, sal epsom, toallas calientes, masaje, parafina, esmalte regular'
+                    description: 'Limpieza, sal epsom, toallas calientes, masaje, parafina, esmalte regular'
                   },
                   gel: { name: 'Gel', description: 'Limpieza, esmalte gel' },
                   spaGel: {
                     name: 'SPA Gel',
-                    description:
-                      'Limpieza, masajes, guantes, hidratantes, esmalte gel'
+                    description: 'Limpieza, masajes, guantes, hidratantes, esmalte gel'
                   },
                   vipGel: {
                     name: 'VIP Gel',
-                    description:
-                      'Limpieza, sal epsom, toallas calientes, masaje, parafina, esmalte gel'
+                    description: 'Limpieza, sal epsom, toallas calientes, masaje, parafina, esmalte gel'
                   }
                 }
               },
@@ -300,24 +286,20 @@ export const dictionary = {
                   },
                   spa: {
                     name: 'SPA',
-                    description:
-                      'Limpieza profunda, Salt scrub, masaje, Mascarilla hidratante o toallas calientes y esmalte regular'
+                    description: 'Limpieza profunda, Salt scrub, masaje, Mascarilla hidratante o toallas calientes y esmalte regular'
                   },
                   vip: {
                     name: 'VIP',
-                    description:
-                      'Limpieza profunda, baño jelly, masaje y esmalte regular'
+                    description: 'Limpieza profunda, baño jelly, masaje y esmalte regular'
                   },
                   gel: { name: 'Gel', description: 'Limpieza, esmalte gel' },
                   spaGel: {
                     name: 'SPA Gel',
-                    description:
-                      'Limpieza profunda, Salt scrub, masaje, Mascarilla hidratante o toallas calientes y esmalte gel'
+                    description: 'Limpieza profunda, Salt scrub, masaje, Mascarilla hidratante o toallas calientes y esmalte gel'
                   },
                   vipGel: {
                     name: 'VIP Gel',
-                    description:
-                      'Limpieza profunda, baño jelly, masaje y esmalte gel'
+                    description: 'Limpieza profunda, baño jelly, masaje y esmalte gel'
                   }
                 }
               },
@@ -511,23 +493,19 @@ export const dictionary = {
                   },
                   lavadoMascarilla: {
                     name: 'Lavado + Mascarilla',
-                    description:
-                      'Lavado profundo (2 aplicaciones de champú) + mascarilla'
+                    description: 'Lavado profundo (2 aplicaciones de champú) + mascarilla'
                   },
                   lavadoAmpolla: {
                     name: 'Lavado + Ampolla Tratamiento ',
-                    description:
-                      'Lavado profundo (2 aplicaciones de champú) + ampolla tratamiento '
+                    description: 'Lavado profundo (2 aplicaciones de champú) + ampolla tratamiento '
                   },
                   relajanteExpress: {
                     name: 'Relajante Express',
-                    description:
-                      'Lavado profundo + ampolla tratamiento + masaje cuero cabelludo'
+                    description: 'Lavado profundo + ampolla tratamiento + masaje cuero cabelludo'
                   },
                   cabelloTratado: {
                     name: 'Cabello Tratado',
-                    description:
-                      'lavado profundo (2 aplicaciones de champú) + mascarilla hidratante + ampolla tratamiento'
+                    description: 'lavado profundo (2 aplicaciones de champú) + mascarilla hidratante + ampolla tratamiento'
                   },
                   aplicacionTinta: {
                     name: 'Aplicación de Tinte',
@@ -580,13 +558,11 @@ export const dictionary = {
                   },
                   masajeRelajante: {
                     name: 'Masaje Relajante',
-                    description:
-                      'Estimulación relajante, reducción de tensión muscular'
+                    description: 'Estimulación relajante, reducción de tensión muscular'
                   },
                   masajeProfundo: {
                     name: 'Masaje Profundo',
-                    description:
-                      'Masaje profundo terapéutico / Toallas calientes'
+                    description: 'Masaje profundo terapéutico / Toallas calientes'
                   }
                 }
               },
@@ -599,8 +575,7 @@ export const dictionary = {
                   },
                   guaSha: {
                     name: 'Gua Sha',
-                    description:
-                      'Tratamiento de drenaje y desinflamación facial'
+                    description: 'Tratamiento de drenaje y desinflamación facial'
                   },
                   hydrafacial: {
                     name: 'Hydrafacial',
@@ -626,8 +601,7 @@ export const dictionary = {
                 services: {
                   profesional: {
                     name: 'Profesional',
-                    description:
-                      'Maquillaje profesional completo, personalizado para cualquier ocasión'
+                    description: 'Maquillaje profesional completo, personalizado para cualquier ocasión'
                   },
                   pestanas: {
                     name: 'Pestañas',
@@ -672,13 +646,10 @@ export const dictionary = {
       nextButtonText: 'Siguiente',
       prevButtonText: 'Atrás',
       confirmButtonText: 'Confirmar',
-      successMessage:
-        '¡Gracias por reservar con nosotros! Te contactaremos pronto para confirmar los detalles de tu cita.',
-      errorMessage:
-        'Hubo un error al enviar tu reserva. Por favor, inténtalo de nuevo más tarde.',
+      successMessage: '¡Gracias por reservar con nosotros! Te contactaremos pronto para confirmar los detalles de tu cita.',
+      errorMessage: 'Hubo un error al enviar tu reserva. Por favor, inténtalo de nuevo más tarde.',
       emptyBagMessage: '¡Aún no has seleccionado ningún servicio!',
-      emptyBagMessageAlt:
-        'Para agendar una cita, primero debes elegir los servicios que deseas.',
+      emptyBagMessageAlt: 'Para agendar una cita, primero debes elegir los servicios que deseas.',
       emptyBagCta: 'Explorar servicios',
       emptyBagLinktext: 'Solo quiero ponerme en contacto',
       wantToExplore: 'Quiero seguir explorando',
@@ -720,8 +691,7 @@ export const dictionary = {
         },
         schedule: {
           title: 'Escoge fecha y hora',
-          subtitle:
-            'Elige la fecha y hora que mejor te convenga y, si quieres, deja un mensaje extra para personalizar tu servicio',
+          subtitle: 'Elige la fecha y hora que mejor te convenga y, si quieres, deja un mensaje extra para personalizar tu servicio',
           dateInput: {
             label: 'Fecha',
             placeholder: 'Selecciona una fecha',
@@ -738,8 +708,7 @@ export const dictionary = {
               required: 'Hora Obligatoria',
               invalid: 'Hora Inválida',
               pastTime: 'No puedes elegir una hora pasada',
-              requiredAnticipation:
-                'Se requiere al menos 1 hora de anticipación',
+              requiredAnticipation: 'Se requiere al menos 1 hora de anticipación',
               available: 'Horario no disponible (8:00 AM - 6:00 PM)'
             }
           },
@@ -752,21 +721,18 @@ export const dictionary = {
           loadingText: 'Enviando tu reserva...',
           success: {
             title: '¡Reserva enviada con éxito!',
-            details:
-              'Nos pondremos en contacto contigo pronto para confirmar los detalles de tu cita.'
+            details: 'Nos pondremos en contacto contigo pronto para confirmar los detalles de tu cita.'
           },
           error: {
             title: 'Error al enviar la reserva',
-            details:
-              'Hubo un problema al enviar tu reserva. Por favor, inténtalo de nuevo más tarde.'
+            details: 'Hubo un problema al enviar tu reserva. Por favor, inténtalo de nuevo más tarde.'
           }
         },
         final: {
           title: '¡Casi terminamos!',
           confirmtext: 'Tu cita se agendará para el día',
           confirmtext2: 'a las',
-          details:
-            'Espera un mensaje de confirmación en tu correo electrónico o WhatsApp.'
+          details: 'Espera un mensaje de confirmación en tu correo electrónico o WhatsApp.'
         },
         noServices: {
           title: '¡Oops! No seleccionaste ningún servicio',
@@ -776,15 +742,13 @@ export const dictionary = {
       success: {
         title: 'Reserva Exitosa',
         subtitle: '¡Tu reserva se ha realizado con éxito!',
-        message:
-          '¡Gracias por reservar con nosotros! Te contactaremos pronto para confirmar los detalles de tu cita.',
+        message: '¡Gracias por reservar con nosotros! Te contactaremos pronto para confirmar los detalles de tu cita.',
         buttonText: 'Volver al inicio'
       },
       failed: {
         title: 'Error en la Reserva',
         subtitle: 'Hubo un error al enviar tu reserva',
-        message:
-          'Hubo un problema al enviar tu reserva. Por favor, inténtalo de nuevo más tarde.',
+        message: 'Hubo un problema al enviar tu reserva. Por favor, inténtalo de nuevo más tarde.',
         buttonText: 'Volver al inicio'
       }
     },
@@ -797,8 +761,7 @@ export const dictionary = {
       pageTitle: 'Nuestro Equipo',
       section_1: {
         title: '¡Nuestro Equipo está aquí!',
-        description:
-          'Conoce a los profesionales que hacen posible nuestra misión'
+        description: 'Conoce a los profesionales que hacen posible nuestra misión'
       },
       section_2: {
         profiles: {
@@ -859,8 +822,7 @@ export const dictionary = {
     },
     contact: {
       title: 'Contactanos',
-      subtitle:
-        'Nos encantaría saber de ti. Por favor, completa el siguiente formulario para ponerte en contacto con nosotros.',
+      subtitle: 'Nos encantaría saber de ti. Por favor, completa el siguiente formulario para ponerte en contacto con nosotros.',
       form: {
         name: {
           label: 'Nombre Completo',
@@ -887,13 +849,11 @@ export const dictionary = {
         toast: {
           success: {
             title: 'Mensaje enviado',
-            description:
-              'Gracias por contactarnos. Te responderemos lo antes posible.'
+            description: 'Gracias por contactarnos. Te responderemos lo antes posible.'
           },
           error: {
             title: 'Error al enviar',
-            description:
-              'Hubo un problema al enviar tu mensaje. Por favor, inténtalo de nuevo más tarde.'
+            description: 'Hubo un problema al enviar tu mensaje. Por favor, inténtalo de nuevo más tarde.'
           },
           validationFailed: 'Por favor, corrige los errores en el formulario'
         },
@@ -922,6 +882,10 @@ export const dictionary = {
           }
         }
       }
+    },
+    offlineStatus: {
+      offline: 'Estas navegando sin conexión',
+      online: '¡Estás de vuelta en línea!'
     }
   },
   en: {
@@ -960,8 +924,7 @@ export const dictionary = {
     footer: {
       cta: {
         title: 'Book Your Appointment Today!',
-        description:
-          'Schedule your session with our wellness specialists anytime, anywhere',
+        description: 'Schedule your session with our wellness specialists anytime, anywhere',
         button: 'Book Now!'
       },
       columns: {
@@ -1005,8 +968,7 @@ export const dictionary = {
       pageTitle: 'Home',
       heroSection: {
         title_1: 'Find Your <span className="text-primary">Inner Calm</span>',
-        description:
-          'Discover a space designed for your wellness and peace, where every service is crafted to restore your balance',
+        description: 'Discover a space designed for your wellness and peace, where every service is crafted to restore your balance',
         button_1: 'Explore Services',
         button_2: 'View Packages'
       },
@@ -1016,25 +978,21 @@ export const dictionary = {
         points: {
           p1: {
             title: 'Personalized Care',
-            description:
-              'Each client receives a unique treatment tailored to their needs'
+            description: 'Each client receives a unique treatment tailored to their needs'
           },
           p2: {
             title: 'Safe Environment',
-            description:
-              'We create a welcoming, safe space so you feel comfortable'
+            description: 'We create a welcoming, safe space so you feel comfortable'
           },
           p3: {
             title: 'Experienced staff',
-            description:
-              'Our team has extensive experience and specialized training'
+            description: 'Our team has extensive experience and specialized training'
           }
         }
       },
       section_3: {
         title: 'Start Your Journey to Tranquility',
-        description:
-          'Explore our services and find the perfect fit for your needs',
+        description: 'Explore our services and find the perfect fit for your needs',
         button: 'Explore Services'
       }
     },
@@ -1079,8 +1037,7 @@ export const dictionary = {
             precio: '150',
             featured: false,
             featured_text: '',
-            descripcion_corta:
-              'Complete body and mind renewal, ideal for birthdays or special occasions.',
+            descripcion_corta: 'Complete body and mind renewal, ideal for birthdays or special occasions.',
             servicios_incluidos: [
               'SPA Manicure (Gel or regular)',
               'SPA Pedicure (Gel or regular)',
@@ -1096,8 +1053,7 @@ export const dictionary = {
             precio: '170',
             featured: true,
             featured_text: 'Most Popular',
-            descripcion_corta:
-              'Prepare for your special event with confidence and relaxation.',
+            descripcion_corta: 'Prepare for your special event with confidence and relaxation.',
             servicios_incluidos: [
               'SPA shampoo & wash',
               'Professional blow-dry',
@@ -1137,13 +1093,11 @@ export const dictionary = {
             },
             {
               question: 'Should I book in advanced?',
-              answer:
-                'Yes, you should book in advanced to coordinate dates and times.'
+              answer: 'Yes, you should book in advanced to coordinate dates and times.'
             },
             {
               question: 'How long does each package last?',
-              answer:
-                'Packages are personalized to meet the need of each client which makes the times adjustable.'
+              answer: 'Packages are personalized to meet the need of each client which makes the times adjustable.'
             }
           ]
         }
@@ -1180,24 +1134,20 @@ export const dictionary = {
                   },
                   spa: {
                     name: 'SPA',
-                    description:
-                      'Cleaning, massage, Moisturizing gloves, regular polish'
+                    description: 'Cleaning, massage, Moisturizing gloves, regular polish'
                   },
                   vip: {
                     name: 'VIP',
-                    description:
-                      'Cleaning, Epsom salt, hot towels + massage, paraffin, regular polish'
+                    description: 'Cleaning, Epsom salt, hot towels + massage, paraffin, regular polish'
                   },
                   gel: { name: 'Gel', description: 'Cleaning + gel polish' },
                   spaGel: {
                     name: 'SPA Gel',
-                    description:
-                      'Cleaning, massage, Moisturizing gloves + gel polish'
+                    description: 'Cleaning, massage, Moisturizing gloves + gel polish'
                   },
                   vipGel: {
                     name: 'VIP Gel',
-                    description:
-                      'Cleaning, Epsom salt, hot towels + massage, paraffin, gel polish'
+                    description: 'Cleaning, Epsom salt, hot towels + massage, paraffin, gel polish'
                   }
                 }
               },
@@ -1210,24 +1160,20 @@ export const dictionary = {
                   },
                   spa: {
                     name: 'SPA',
-                    description:
-                      'Deep cleansing, salt scrub, massage, hydrating mask or hot towels, and regular polish'
+                    description: 'Deep cleansing, salt scrub, massage, hydrating mask or hot towels, and regular polish'
                   },
                   vip: {
                     name: 'VIP',
-                    description:
-                      'Deep cleansing, jelly bath, massage, and regular polish'
+                    description: 'Deep cleansing, jelly bath, massage, and regular polish'
                   },
                   gel: { name: 'Gel', description: 'Cleaning + gel polish' },
                   spaGel: {
                     name: 'SPA Gel',
-                    description:
-                      'Deep cleaning, salt scrub, massage, moisturizing mask or hot towels, gel polish'
+                    description: 'Deep cleaning, salt scrub, massage, moisturizing mask or hot towels, gel polish'
                   },
                   vipGel: {
                     name: 'VIP Gel',
-                    description:
-                      'Deep cleaning, jelly bath, massage, gel polish'
+                    description: 'Deep cleaning, jelly bath, massage, gel polish'
                   }
                 }
               },
@@ -1399,18 +1345,15 @@ export const dictionary = {
                   },
                   lavadoProfundo: {
                     name: 'Deep Wash',
-                    description:
-                      'Deep cleansing hair wash (2 shampoo applications)'
+                    description: 'Deep cleansing hair wash (2 shampoo applications)'
                   },
                   lavadoMascarilla: {
                     name: 'Wash + Mask',
-                    description:
-                      'Hair wash + hydrating mask treatment (2 shampoo applications + mask)'
+                    description: 'Hair wash + hydrating mask treatment (2 shampoo applications + mask)'
                   },
                   lavadoAmpolla: {
                     name: 'Wash serum capsule',
-                    description:
-                      'Hair wash + serum capsule treatment (2 shampoo applications + ampoule)'
+                    description: 'Hair wash + serum capsule treatment (2 shampoo applications + ampoule)'
                   },
                   relajanteExpress: {
                     name: 'Relaxing Express',
@@ -1418,8 +1361,7 @@ export const dictionary = {
                   },
                   cabelloTratado: {
                     name: 'Treated Hair',
-                    description:
-                      'Deep hair wash/hydrating hair mask/serum capsule treatment'
+                    description: 'Deep hair wash/hydrating hair mask/serum capsule treatment'
                   },
                   aplicacionTinta: {
                     name: 'Dye Application',
@@ -1466,8 +1408,7 @@ export const dictionary = {
                   },
                   masajeRelajante: {
                     name: 'Relaxing Massage',
-                    description:
-                      'Gentle stroke treatment to reduce muscle tension'
+                    description: 'Gentle stroke treatment to reduce muscle tension'
                   },
                   masajeProfundo: {
                     name: 'Deep Massage',
@@ -1510,8 +1451,7 @@ export const dictionary = {
                 services: {
                   profesional: {
                     name: 'Professional',
-                    description:
-                      'Professional makeup application for any occasion'
+                    description: 'Professional makeup application for any occasion'
                   },
                   pestanas: { name: 'Lashes', description: 'Lash application' }
                 }
@@ -1553,13 +1493,10 @@ export const dictionary = {
       nextButtonText: 'Next',
       prevButtonText: 'Back',
       confirmButtonText: 'Confirm',
-      successMessage:
-        'Thank you for booking with us! We will contact you soon to confirm the details of your appointment.',
-      errorMessage:
-        'There was an error submitting your booking. Please try again later.',
+      successMessage: 'Thank you for booking with us! We will contact you soon to confirm the details of your appointment.',
+      errorMessage: 'There was an error submitting your booking. Please try again later.',
       emptyBagMessage: 'You haven’t selected any services yet!',
-      emptyBagMessageAlt:
-        'To book an appointment, please choose your desired services first.',
+      emptyBagMessageAlt: 'To book an appointment, please choose your desired services first.',
       emptyBagCta: 'Browse Services',
       emptyBagLinktext: 'I just want to get in touch',
       wantToExplore: 'I want to keep exploring',
@@ -1601,8 +1538,7 @@ export const dictionary = {
         },
         schedule: {
           title: 'Choose date and time',
-          subtitle:
-            'Pick the date and time that works best for you and, if you want, leave an extra message to personalize your service',
+          subtitle: 'Pick the date and time that works best for you and, if you want, leave an extra message to personalize your service',
           dateInput: {
             label: 'Date',
             placeholder: 'Select a date',
@@ -1633,13 +1569,11 @@ export const dictionary = {
           loadingText: 'Submitting your booking...',
           success: {
             title: 'Booking sent successfully!',
-            details:
-              'We will contact you shortly to confirm your appointment details.'
+            details: 'We will contact you shortly to confirm your appointment details.'
           },
           error: {
             title: 'Error sending booking',
-            details:
-              'There was a problem submitting your booking. Please try again later.'
+            details: 'There was a problem submitting your booking. Please try again later.'
           }
         },
         final: {
@@ -1650,22 +1584,19 @@ export const dictionary = {
         },
         noServices: {
           title: 'Oops! You didn’t select any services',
-          subtitle:
-            'It looks like you haven’t added any services to your bag yet.'
+          subtitle: 'It looks like you haven’t added any services to your bag yet.'
         }
       },
       success: {
         title: 'Booking Successful',
         subtitle: 'Your booking was completed successfully!',
-        message:
-          'Thank you for booking with us! We will contact you soon to confirm the details of your appointment.',
+        message: 'Thank you for booking with us! We will contact you soon to confirm the details of your appointment.',
         buttonText: 'Back to Home'
       },
       failed: {
         title: 'Booking Error',
         subtitle: 'There was an error with your booking',
-        message:
-          'There was a problem submitting your booking. Please try again later.',
+        message: 'There was a problem submitting your booking. Please try again later.',
         buttonText: 'Back to Home'
       }
     },
@@ -1739,8 +1670,7 @@ export const dictionary = {
     },
     contact: {
       title: 'Contact Us',
-      subtitle:
-        'We would love to hear from you! Please fill out the form below to get in touch with us.',
+      subtitle: 'We would love to hear from you! Please fill out the form below to get in touch with us.',
       form: {
         name: {
           label: 'Full Name',
@@ -1767,13 +1697,11 @@ export const dictionary = {
         toast: {
           success: {
             title: 'Message sent',
-            description:
-              'Thank you for contacting us. We will get back to you as soon as possible.'
+            description: 'Thank you for contacting us. We will get back to you as soon as possible.'
           },
           error: {
             title: 'Error sending message',
-            description:
-              'There was a problem sending your message. Please try again later.'
+            description: 'There was a problem sending your message. Please try again later.'
           },
           validationFailed: 'Please correct the errors in the form'
         },
@@ -1802,6 +1730,10 @@ export const dictionary = {
           }
         }
       }
+    },
+    offlineStatus: {
+      offline: 'Houston, we have a problem...',
+      online: 'You are back online!'
     }
   }
 }
