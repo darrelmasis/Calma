@@ -3,12 +3,7 @@ import { memo } from 'react'
 import { useSelectedServices } from '../../hooks/useSelectedService'
 import { useLang } from '../../i18n/LanguageContext'
 import { useDevice } from '../../hooks/useBreakpoint'
-import {
-  Dropdown,
-  DropdownTrigger,
-  DropdownContent,
-  useDropdown
-} from '../ui/Dropdown'
+import { Dropdown, DropdownTrigger, DropdownContent, useDropdown } from '../ui/Dropdown'
 import { Button } from '../ui/Button'
 import { USD } from '../../utils/utils'
 import { Icon } from '../commons/Icons'
@@ -18,15 +13,7 @@ import classNames from 'classnames'
 import SimpleProgressBar from './ProgressBar'
 import { useSound } from '../commons/SoundManager'
 
-const BagTrigger = ({
-  totalServices,
-  isMobile,
-  isTablet,
-  isDesktop,
-  label,
-  canAddMore,
-  BAG_LIMIT
-}) => {
+const BagTrigger = ({ totalServices, isMobile, isTablet, isDesktop, label, canAddMore, BAG_LIMIT }) => {
   const { open } = useDropdown()
   const icons = [
     {
@@ -65,30 +52,18 @@ const BagTrigger = ({
   )
 }
 
-const BagContent = ({
-  isDesktop,
-  isTablet,
-  isMobile,
-  totalServices,
-  t,
-  servicesWithInfo,
-  totalPrice,
-  clearServices,
-  removeService
-}) => {
-  const dropdownContentClasses = classNames(
-    'navbar-dropdown-wrapper rounded-all-md overflow-hidden',
-    {
-      'navbar-desktop-dropdown-content-wrapper': isDesktop,
-      'navbar-tablet-dropdown-content-wrapper': isTablet,
-      'navbar-mobile-dropdown-content-wrapper': isMobile
-    }
-  )
-  const removeSound = useSound('trashBag', 0.5)
+const BagContent = ({ isDesktop, isTablet, isMobile, totalServices, t, servicesWithInfo, totalPrice, clearServices, removeService }) => {
+  const dropdownContentClasses = classNames('navbar-dropdown-wrapper rounded-all-md overflow-hidden', {
+    'navbar-desktop-dropdown-content-wrapper': isDesktop,
+    'navbar-tablet-dropdown-content-wrapper': isTablet,
+    'navbar-mobile-dropdown-content-wrapper': isMobile
+  })
+  const clearItemsSound = useSound('clearItems')
+  const removeItemSound = useSound('removeItem')
 
   const handleClearServices = () => {
     clearServices()
-    removeSound.play()
+    clearItemsSound.play()
   }
 
   const location = useLocation()
@@ -111,15 +86,8 @@ const BagContent = ({
       {totalServices === 0 ? (
         <div className='d-flex flex-direction-column align-items-center justify-content-center gap-1 p-3'>
           <Icon name='face-worried' size='lg' className='text-muted' />
-          <p className='fs-medium text-center text-muted m-0'>
-            {t('header.dropdown.empty')}
-          </p>
-          <Button
-            variant='primary'
-            icon='compass'
-            ghost
-            onClick={handleGoToServices}
-          >
+          <p className='fs-medium text-center text-muted m-0'>{t('header.dropdown.empty')}</p>
+          <Button variant='primary' icon='compass' ghost onClick={handleGoToServices}>
             {t('header.dropdown.exploreServices')}
           </Button>
         </div>
@@ -131,58 +99,33 @@ const BagContent = ({
                 <Icon name='list-check' />
                 {t('header.dropdown.title')}
               </p>
-              <Tooltip
-                content={t('header.dropdown.clearTooltip')}
-                placement='bottom'
-              >
-                <Button
-                  size='medium'
-                  icon='broom-wide'
-                  variant='basic'
-                  onClick={handleClearServices}
-                />
+              <Tooltip content={t('header.dropdown.clearTooltip')} placement='bottom'>
+                <Button size='medium' icon='broom-wide' variant='basic' onClick={handleClearServices} />
               </Tooltip>
             </div>
             <SimpleProgressBar />
             <div className='navbar-dropdown-services-added mt-3 d-flex flex-direction-column gap-1 scrollbar-thin'>
               {Object.entries(servicesWithInfo).map(([categoryId, items]) => (
                 <div key={categoryId}>
-                  <div className='mb-3 fs-h6'>
-                    {t(`services.section_1.category.${categoryId}.name`)}
-                  </div>
+                  <div className='mb-3 fs-h6'>{t(`services.section_1.category.${categoryId}.name`)}</div>
                   <ul className='navbar-dropdown-service-list gap-0-5'>
                     {items.map((service) => (
                       <li
                         className='navbar-dropdown-service-item rounded-all-sm d-flex align-items-center fs-medium'
-                        key={`${categoryId}-${service.subCategoryId}-${service.id}`}
-                      >
+                        key={`${categoryId}-${service.subCategoryId}-${service.id}`}>
                         <div className='me-2 d-flex flex-direction-column flex-1'>
-                          <span className='mb-1'>
-                            {service.subCategoryName}
-                          </span>
-                          <span className='fs-small text-muted'>
-                            {service.serviceName}
-                          </span>
+                          <span className='mb-1'>{service.subCategoryName}</span>
+                          <span className='fs-small text-muted'>{service.serviceName}</span>
                         </div>
                         <span className='me-2'>
-                          <USD
-                            className='fs-medium fw-regular'
-                            amount={service.servicePrice}
-                            currencySymbol='$'
-                          />
+                          <USD className='fs-medium fw-regular' amount={service.servicePrice} currencySymbol='$' />
                         </span>
                         <Button
                           icon='trash-can'
                           size='small'
                           ghost
                           variant='danger'
-                          onClick={() =>
-                            removeService(
-                              categoryId,
-                              service.subCategoryId,
-                              service.id
-                            )
-                          }
+                          onClick={() => {removeService(categoryId, service.subCategoryId, service.id); removeItemSound.play()}}
                         />
                       </li>
                     ))}
@@ -197,35 +140,16 @@ const BagContent = ({
               <div className='fs-h5 d-flex flex-direction-column align-items-flex-start'>
                 <span className='fw-bold'>{t('header.dropdown.total')}</span>
               </div>
-              <USD
-                amount={totalPrice}
-                currencySymbol='$'
-                size='large'
-                prefix='~'
-              />
+              <USD amount={totalPrice} currencySymbol='$' size='large' prefix='~' />
             </div>
 
             <div className='navbar-dropdown-actions d-flex justify-content-space-between gap-1'>
               {location.pathname !== '/booking' ? (
-                <Button
-                  size='medium'
-                  icon='calendar-check'
-                  fullWidth
-                  variant='info'
-                  onClick={handleGoToBooking}
-                >
+                <Button size='medium' icon='calendar-check' fullWidth variant='info' onClick={handleGoToBooking}>
                   {t('header.dropdown.book')}
                 </Button>
               ) : (
-                <Button
-                  ghost
-                  className='bg-white'
-                  size='medium'
-                  icon='compass'
-                  fullWidth
-                  variant='primary'
-                  onClick={handleGoToServices}
-                >
+                <Button ghost className='bg-white' size='medium' icon='compass' fullWidth variant='primary' onClick={handleGoToServices}>
                   {t('header.dropdown.keepExploring')}
                 </Button>
               )}
@@ -244,15 +168,7 @@ export const BagDropdown = memo(() => {
   const isTablet = type === 'tablet'
   const isDesktop = type === 'desktop'
 
-  const {
-    totalServices,
-    servicesWithInfo,
-    clearServices,
-    removeService,
-    totalPrice,
-    canAddMore,
-    BAG_LIMIT
-  } = useSelectedServices()
+  const { totalServices, servicesWithInfo, clearServices, removeService, totalPrice, canAddMore, BAG_LIMIT } = useSelectedServices()
 
   const label = t('header.dropdown.text') // ✅ Movido aquí
 

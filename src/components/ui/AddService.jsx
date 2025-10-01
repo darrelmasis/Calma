@@ -3,23 +3,16 @@ import { useSelectedServices } from '../../hooks/useSelectedService'
 import classNames from 'classnames'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useSound } from '../commons/SoundManager'
-import { limitedToast as toast } from '../../utils/toast'
-import { useEffect } from 'react'
 
 const AddService = ({ categoryId, subCategoryId, serviceId, className }) => {
-  const { services, addService, removeService, canAddMore } =
-    useSelectedServices()
-  const playBagSound = useSound('dropBag', 0.5)
+  const { services, addService, removeService, canAddMore } = useSelectedServices()
+  const playBagSound = useSound('addItem')
+  const removeSound = useSound('removeItem')
 
   // Comprobamos si el servicio ya fue agregado
-  const isAdded =
-    services[categoryId]?.some(
-      (s) => s.subCategoryId === subCategoryId && s.serviceId === serviceId
-    ) || false
+  const isAdded = services[categoryId]?.some((s) => s.subCategoryId === subCategoryId && s.serviceId === serviceId) || false
 
-  const mainButtonIconName = isAdded
-    ? { name: 'circle-minus', color: 'text-danger' }
-    : { name: 'circle-plus', color: 'text-muted' }
+  const mainButtonIconName = isAdded ? { name: 'circle-minus', color: 'text-danger' } : { name: 'circle-plus', color: 'text-muted' }
 
   const addServiceButtonClasses = classNames('add-service-button', className, {
     added: isAdded
@@ -28,6 +21,7 @@ const AddService = ({ categoryId, subCategoryId, serviceId, className }) => {
   const toggleService = () => {
     if (isAdded) {
       removeService(categoryId, subCategoryId, serviceId)
+      removeSound.play()
     } else {
       addService(categoryId, subCategoryId, serviceId)
       canAddMore && playBagSound.play()
@@ -43,8 +37,7 @@ const AddService = ({ categoryId, subCategoryId, serviceId, className }) => {
           exit={{ opacity: 0, scale: 0.5 }}
           transition={{ duration: 0.1 }}
           key={mainButtonIconName.name}
-          className='d-flex align-items-center justify-content-center'
-        >
+          className='d-flex align-items-center justify-content-center'>
           <Icon
             dataName={mainButtonIconName.name}
             name={mainButtonIconName.name}

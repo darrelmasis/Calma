@@ -16,8 +16,8 @@ const FloatingButton = () => {
   const calmaPhoneNumber = import.meta.env.VITE_CALMA_PHONE_NUMBER
   const { t } = useLang()
   const containerRef = useRef(null) // <-- referencia al contenedor principal
-  const closeSound = useSound('closePops', 0.5)
-  const openSound = useSound('openPops', 0.5)
+  const closeSound = useSound('closeMenu')
+  const openSound = useSound('openMenu')
   const showOptionsRef = useRef(showOptions)
   const { pathname } = useLocation()
   const isBookingPage = pathname === '/booking'

@@ -2,16 +2,16 @@
 import { Howl } from 'howler'
 
 export const sounds = {
-  bell: ['/sounds/bell.ogg'],
-  openPops: ['/sounds/open-pops.ogg'],
-  closePops: ['/sounds/close-pops.ogg'],
-  dropBag: ['/sounds/drop-bag.ogg'],
-  trashBag: ['/sounds/trash-bag.ogg'],
-  cleanShoppingBag: ['/sounds/clean-shopping-bag.ogg'],
-  bagFull: ['/sounds/bag-full.ogg'],
-  toastNotify: ['/sounds/toast-notify.ogg'],
-  toastNotifyError: ['/sounds/toast-notify-error.ogg'],
-  updateComplete: ['/sounds/update-complete.ogg']
+  addItem: ['/sounds/add-item.ogg'],
+  removeItem: ['/sounds/remove-item.ogg'],
+  clearItems: ['/sounds/clear-items.ogg'],
+  openMenu: ['/sounds/open-menu.ogg'],
+  closeMenu: ['/sounds/close-menu.ogg'],
+  notifyInfo: ['/sounds/notify-info.ogg'],
+  notifyError: ['/sounds/notify-error.ogg'],
+  notifySuccess: ['/sounds/notify-success.ogg'],
+  notifyWarning: ['/sounds/notify-warning.ogg'],
+  operationComplete: ['/sounds/operation-complete.ogg']
 }
 
 // Instancias globales (singleton)
@@ -21,33 +21,7 @@ const soundInstances = {}
 let lastPlayedSound = null
 
 // Volumen predeterminado (ajusta según necesites)
-const DEFAULT_VOLUME = 0.7
-
-// Sistema de desbloqueo de audio
-let audioUnlocked = false
-
-const unlockAudio = () => {
-  if (audioUnlocked) return
-
-  // Intentar desbloquear con un sonido silencioso
-  const unlockSound = new Howl({
-    src: sounds.bell, // Usa un sonido que ya tienes
-    volume: 0.01, // Volumen casi inaudible
-    preload: true
-  })
-
-  try {
-    const id = unlockSound.play()
-    if (id) {
-      unlockSound.on('play', () => {
-        audioUnlocked = true
-        unlockSound.stop(id)
-      })
-    }
-  } catch (e) {
-    console.log('Audio unlock attempt failed, will retry on next interaction')
-  }
-}
+const DEFAULT_VOLUME = 0.5
 
 export const getSound = (sound, volume = DEFAULT_VOLUME) => {
   if (!sounds[sound]) {
@@ -83,11 +57,8 @@ export const getSound = (sound, volume = DEFAULT_VOLUME) => {
 }
 
 // Hook actualizado
-export const useSound = (sound = 'bell', volume = DEFAULT_VOLUME) => {
+export const useSound = (sound = 'notifyDefault', volume = DEFAULT_VOLUME) => {
   const play = () => {
-    // 👇 Desbloquear audio en cada interacción del usuario
-    unlockAudio()
-
     const instance = getSound(sound, volume)
     if (!instance) return
 

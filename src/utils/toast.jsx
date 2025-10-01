@@ -17,26 +17,26 @@ const toastTypes = {
   success: {
     style: { ...baseStyles, background: 'var(--success-50)', color: 'var(--success-800)', borderColor: 'var(--success-200)' },
     icon: <Icon name='circle-check' className='w-16 text-success-800' />,
-    sound: 'toastNotify'
+    sound: 'notifySuccess'
   },
   error: {
     style: { ...baseStyles, background: 'var(--danger-50)', color: 'var(--danger-800)', borderColor: 'var(--danger-200)' },
     icon: <Icon name='circle-xmark' className='w-16 text-danger-800' />,
-    sound: 'toastNotifyError'
+    sound: 'notifyError'
   },
   warning: {
     style: { ...baseStyles, background: 'var(--warning-50)', color: 'var(--warning-800)', borderColor: 'var(--warning-200)' },
     icon: <Icon name='circle-exclamation' className='text-warning-800' />,
-    sound: 'toastNotify'
+    sound: 'notifyWarning'
   },
   info: {
     style: { ...baseStyles, background: 'var(--info-50)', color: 'var(--info-800)', borderColor: 'var(--info-200)' },
     icon: <Icon name='circle-info' className='text-info-800' />,
-    sound: 'toastNotify'
+    sound: 'notifyInfo'
   }
 }
 
-const limitedToast = (message, options = {}) => {
+const limitedToast = (message, options = { sound: 'notifyInfo' }) => {
   if (activeToastIds.length >= MAX_TOASTS) {
     const oldestId = activeToastIds.shift()
     toast.dismiss(oldestId)
