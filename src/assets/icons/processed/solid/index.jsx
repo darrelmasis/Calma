@@ -45,6 +45,7 @@ import HandHoldingHeart from './hand-holding-heart.svg?react';
 import HandSparkles from './hand-sparkles.svg?react';
 import Heart from './heart.svg?react';
 import House from './house.svg?react';
+import InboxOut from './inbox-out.svg?react';
 import Inbox from './inbox.svg?react';
 import LanguageAlt from './language-alt.svg?react';
 import Language from './language.svg?react';
@@ -122,6 +123,7 @@ export {
   HandSparkles,
   Heart,
   House,
+  InboxOut,
   Inbox,
   LanguageAlt,
   Language,
