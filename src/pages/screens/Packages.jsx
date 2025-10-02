@@ -1,21 +1,25 @@
-import { usePageTitle } from '@utils/utils'
-import Header from '../../components/layout/Header'
-import Footer from '../../components/layout/Footer'
 import { FadeInWhenVisible as Fade } from '../../components/commons/animations/FadeInWhenVisible'
 import { useLang } from '../../i18n/LanguageContext'
 import PackageCard from '../../components/commons/PackageCard'
 import { Accordion } from '../../components/commons/Accordion' // <-- importamos el nuevo componente
 import { AccordionGroup } from '../../components/commons/AccordionGroup'
+import { SEO } from '../../components/SEO/SEO'
 
 const Packages = () => {
   const { t } = useLang()
   const packages = t('packages.section_1.paquetes', { returnObjects: true })
   const faqs = t('packages.section_2.faq.items', { returnObjects: true })
 
-  usePageTitle(t('packages.pageTitle'))
+  const packagesObj = t('packages', { returnObjects: true })
 
   return (
     <>
+      <SEO
+        title={packagesObj.pageTitle}
+        description={packagesObj.metaDescription}
+        keywords={packagesObj.metaKeywords}
+        ogDescription={packagesObj.metaDescription}
+      />
       <section className='py-4 bg-neutral-0'>
         <div className='container'>
           <div className='grid'>
@@ -38,8 +42,7 @@ const Packages = () => {
                 <div
                   key={index}
                   className='package-card-wrapper grid-col-12 grid-col-md-4 border rounded-all-sm bg-neutral-50'
-                  data-featured={pkg.featured}
-                >
+                  data-featured={pkg.featured}>
                   <PackageCard
                     icono={pkg.icono}
                     nombre={pkg.nombre_original}

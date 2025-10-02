@@ -5,12 +5,20 @@ import { FadeInWhenVisible as Fade } from '../../components/commons/animations/F
 import { useLang } from '../../i18n/LanguageContext'
 import { ResponsiveImage } from '../../components/ui/ResponsiveImage'
 import { Icon } from '../../components/commons/Icons'
+import { SEO } from '../../components/SEO/SEO'
 
 const History = () => {
   const { t } = useLang()
-  usePageTitle(t('history.pageTitle'))
+  const story = t('history', { returnObjects: true })
+
   return (
     <>
+      <SEO
+        title={story.pageTitle}
+        description={story.metaDescription}
+        keywords={story.metaKeywords}
+        ogDescription={story.metaDescription}
+      />
       <section className='py-4 bg-neutral-0'>
         <div className='container'>
           <div className='grid'>

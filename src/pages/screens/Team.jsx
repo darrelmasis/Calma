@@ -1,15 +1,11 @@
-import { usePageTitle } from '@utils/utils'
-import { Icon } from '../../components/commons/Icons'
-import { Hero } from '../../components/commons/Hero'
-import { Button } from '../../components/ui/Button'
-import { useNavigate } from 'react-router-dom'
 import { FadeInWhenVisible as Fade } from '../../components/commons/animations/FadeInWhenVisible'
 import { useLang } from '../../i18n/LanguageContext'
 import { ResponsiveImage } from '../../components/ui/ResponsiveImage'
+import { SEO } from '../../components/SEO/SEO'
 
 const Team = () => {
   const { t } = useLang()
-  usePageTitle(t('home.pageTitle'))
+  const team = t('home.pageTitle', { returnObjects: true })
 
   const experts = t('team.section_2.profiles', { returnObjects: true })
 
@@ -31,6 +27,12 @@ const Team = () => {
 
   return (
     <>
+      <SEO
+        title={team.pageTitle}
+        description={team.metaDescription}
+        keywords={team.metaKeywords}
+        ogDescription={team.metaDescription}
+      />
       <section className='py-5 bg-white'>
         <div className='container'>
           <Fade className='d-flex flex-direction-column align-items-center justify-content-center text-center'>
@@ -50,16 +52,14 @@ const Team = () => {
                 return (
                   <div
                     key={index}
-                    className='profile-card-wrapper justify-content-center grid-col-12 grid-col-md-4 grid-col-lg-2'
-                  >
+                    className='profile-card-wrapper justify-content-center grid-col-12 grid-col-md-4 grid-col-lg-2'>
                     <div className='profile-card rounded-all-lg bg-neutral-0 '>
                       <div className='rounded-bottom-lg profile-card-header w-100 d-flex align-items-center justify-content-center'>
                         <div
                           className='profile-card-image'
                           style={{
                             '--mask-url': `url(/images/png/${expert.photo}-400.png)`
-                          }}
-                        >
+                          }}>
                           <div className='profile-card-image-wrapper bg-primary-100 position-relative rounded-circle overflow-hidden'>
                             <ResponsiveImage
                               name={expert.photo}

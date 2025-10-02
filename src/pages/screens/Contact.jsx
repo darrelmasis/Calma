@@ -10,12 +10,15 @@ import { useContactValidation } from '../../hooks/useContactValidation'
 import { useOfflineStatus } from '../../hooks/useOfflineStatus'
 import { useOutbox } from '../../context/OutboxContent'
 import { useNavigate } from 'react-router-dom'
+import { SEO } from '../../components/SEO/SEO'
 
 const ENABLE_DEBUG = import.meta.env.VITE_DEBUG_CONTACT === 'true'
 
 const Contact = () => {
   const { t } = useLang()
-  const { validateForm, validateField, getField, clearField } = useContactValidation()
+  const contact = t('contact', { returnObjects: true })
+  const { validateForm, validateField, getField, clearField } =
+    useContactValidation()
   const isOffline = useOfflineStatus()
   const { addToQueue } = useOutbox()
   const navigate = useNavigate()
@@ -33,7 +36,10 @@ const Contact = () => {
   const timeoutRef = useRef(null)
 
   const environment = import.meta.env.VITE_ENV
-  const apiUrl = environment === 'development' ? import.meta.env.VITE_API_DEV_URL : import.meta.env.VITE_API_PROD_URL
+  const apiUrl =
+    environment === 'development'
+      ? import.meta.env.VITE_API_DEV_URL
+      : import.meta.env.VITE_API_PROD_URL
 
   useEffect(() => {
     return () => {
@@ -122,7 +128,8 @@ const Contact = () => {
     let handled = false
 
     try {
-      if (ENABLE_DEBUG) console.debug('handleSubmit: start', { isOffline, payload })
+      if (ENABLE_DEBUG)
+        console.debug('handleSubmit: start', { isOffline, payload })
 
       // Si estamos offline, guardamos directo en la cola
       if (isOffline) {
@@ -144,7 +151,9 @@ const Contact = () => {
 
       if (res.data?.ok) {
         // éxito
-        toast.success(t('contact.form.toast.success.title') || 'Mensaje enviado')
+        toast.success(
+          t('contact.form.toast.success.title') || 'Mensaje enviado'
+        )
         clearForm()
         handled = true
         navigate('/success', { state: { success: true, from: 'contact' } })
@@ -176,7 +185,10 @@ const Contact = () => {
           goToOutbox(5000)
         } catch (qErr) {
           console.error('Error guardando en outbox:', qErr)
-          toast.error(t('contact.form.toast.queueFail') || 'Error interno. Intenta nuevamente.')
+          toast.error(
+            t('contact.form.toast.queueFail') ||
+              'Error interno. Intenta nuevamente.'
+          )
         }
       }
     } finally {
@@ -185,96 +197,124 @@ const Contact = () => {
   }
 
   return (
-    <div className='bg-white py-5'>
-      <div className='container d-flex justify-content-center flex-direction-column align-items-center'>
-        <div className='mb-4'>
-          <p className='fs-h3 my-0 text-center'>{t('contact.title')}</p>
-          <p className='fs-medium mt-0 text-muted text-center max-wx-400'>{t('contact.subtitle')}</p>
-        </div>
+    <>
+      <SEO
+        title={contact.pageTitle}
+        description={contact.metaDescription}
+        keywords={contact.metaKeywords}
+        ogDescription={contact.metaDescription}
+        ogTitle={contact.pageTitle}
+      />
+      <div className='bg-white py-5'>
+        <div className='container d-flex justify-content-center flex-direction-column align-items-center'>
+          <div className='mb-4'>
+            <p className='fs-h3 my-0 text-center'>{t('contact.title')}</p>
+            <p className='fs-medium mt-0 text-muted text-center max-wx-400'>
+              {t('contact.subtitle')}
+            </p>
+          </div>
 
-        <form onSubmit={handleSubmit} className='contact-form d-flex flex-direction-column align-items-center' noValidate>
-          <div className='d-flex flex-direction-column gap-2 mb-5 max-wx-500'>
-            <div className='d-flex flex-1 gap-2 flex-direction-column flex-direction-md-row'>
+          <form
+            onSubmit={handleSubmit}
+            className='contact-form d-flex flex-direction-column align-items-center'
+            noValidate>
+            <div className='d-flex flex-direction-column gap-2 mb-5 max-wx-500'>
+              <div className='d-flex flex-1 gap-2 flex-direction-column flex-direction-md-row'>
+                <Input
+                  label={t('contact.form.name.label')}
+                  placeholder={t('contact.form.name.placeholder')}
+                  value={formData.nombre}
+                  onChange={(val) => handleChange('nombre', val)}
+                  onBlur={() =>
+                    validateField('nombre', formData.nombre, formData)
+                  }
+                  onFocus={() => clearField('nombre')}
+                  error={getField('nombre').message}
+                  success={getField('nombre').state === 'success'}
+                  required
+                  className='w-100'
+                />
+                <Input
+                  label={t('contact.form.lastName.label')}
+                  placeholder={t('contact.form.lastName.placeholder')}
+                  value={formData.apellido}
+                  onChange={(val) => handleChange('apellido', val)}
+                  onBlur={() =>
+                    validateField('apellido', formData.apellido, formData)
+                  }
+                  onFocus={() => clearField('apellido')}
+                  error={getField('apellido').message}
+                  success={getField('apellido').state === 'success'}
+                  required
+                  className='w-100'
+                />
+              </div>
+
               <Input
-                label={t('contact.form.name.label')}
-                placeholder={t('contact.form.name.placeholder')}
-                value={formData.nombre}
-                onChange={(val) => handleChange('nombre', val)}
-                onBlur={() => validateField('nombre', formData.nombre, formData)}
-                onFocus={() => clearField('nombre')}
-                error={getField('nombre').message}
-                success={getField('nombre').state === 'success'}
+                label={t('contact.form.email.label')}
+                placeholder={t('contact.form.email.placeholder')}
+                value={formData.email}
+                onChange={(val) => handleChange('email', val)}
+                onBlur={() => validateField('email', formData.email, formData)}
+                onFocus={() => clearField('email')}
+                error={getField('email').message}
+                success={getField('email').state === 'success'}
+                type='email'
                 required
                 className='w-100'
               />
-              <Input
-                label={t('contact.form.lastName.label')}
-                placeholder={t('contact.form.lastName.placeholder')}
-                value={formData.apellido}
-                onChange={(val) => handleChange('apellido', val)}
-                onBlur={() => validateField('apellido', formData.apellido, formData)}
-                onFocus={() => clearField('apellido')}
-                error={getField('apellido').message}
-                success={getField('apellido').state === 'success'}
-                required
+
+              <PhoneNumber
+                label={t('contact.form.phone.label')}
+                value={formData.telefono}
+                onChange={handlePhoneChange}
+                onBlur={() =>
+                  validateField('telefono', formData.telefono, formData)
+                }
+                onFocus={() => clearField('telefono')}
+                error={getField('telefono').message}
+                success={getField('telefono').state === 'success'}
                 className='w-100'
+              />
+
+              <Input
+                type='textarea'
+                label={t('contact.form.message.label')}
+                placeholder={t('contact.form.message.placeholder')}
+                value={formData.mensaje}
+                onChange={(val) => handleChange('mensaje', val)}
+                onBlur={() =>
+                  validateField('mensaje', formData.mensaje, formData)
+                }
+                onFocus={() => clearField('mensaje')}
+                error={getField('mensaje').message}
+                success={getField('mensaje').state === 'success'}
+                rows={5}
+                required
+                minHeight={120}
               />
             </div>
 
-            <Input
-              label={t('contact.form.email.label')}
-              placeholder={t('contact.form.email.placeholder')}
-              value={formData.email}
-              onChange={(val) => handleChange('email', val)}
-              onBlur={() => validateField('email', formData.email, formData)}
-              onFocus={() => clearField('email')}
-              error={getField('email').message}
-              success={getField('email').state === 'success'}
-              type='email'
-              required
-              className='w-100'
-            />
-
-            <PhoneNumber
-              label={t('contact.form.phone.label')}
-              value={formData.telefono}
-              onChange={handlePhoneChange}
-              onBlur={() => validateField('telefono', formData.telefono, formData)}
-              onFocus={() => clearField('telefono')}
-              error={getField('telefono').message}
-              success={getField('telefono').state === 'success'}
-              className='w-100'
-            />
-
-            <Input
-              type='textarea'
-              label={t('contact.form.message.label')}
-              placeholder={t('contact.form.message.placeholder')}
-              value={formData.mensaje}
-              onChange={(val) => handleChange('mensaje', val)}
-              onBlur={() => validateField('mensaje', formData.mensaje, formData)}
-              onFocus={() => clearField('mensaje')}
-              error={getField('mensaje').message}
-              success={getField('mensaje').state === 'success'}
-              rows={5}
-              required
-              minHeight={120}
-            />
-          </div>
-
-          <Button type='submit' variant='primary' size='large' fullWidth disabled={isLoading} className='submit-button mt-5'>
-            {isLoading ? (
-              <>
-                <Icon name='spinner' animation='spin' />
-                {t('contact.form.sendingButton')}
-              </>
-            ) : (
-              t('contact.form.submitButton')
-            )}
-          </Button>
-        </form>
+            <Button
+              type='submit'
+              variant='primary'
+              size='large'
+              fullWidth
+              disabled={isLoading}
+              className='submit-button mt-5'>
+              {isLoading ? (
+                <>
+                  <Icon name='spinner' animation='spin' />
+                  {t('contact.form.sendingButton')}
+                </>
+              ) : (
+                t('contact.form.submitButton')
+              )}
+            </Button>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 

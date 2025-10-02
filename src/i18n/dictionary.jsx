@@ -1,3 +1,5 @@
+import { meta } from 'eslint-plugin-react-hooks'
+
 const currentYear = new Date().getFullYear()
 const copyrightName = import.meta.env.VITE_CALMA_NAME
 const authors = import.meta.env.VITE_CALMA_AUTHOR
@@ -45,7 +47,8 @@ export const dictionary = {
     footer: {
       cta: {
         title: '¡Agenda tu cita hoy!',
-        description: 'Reserva con nuestros especialistas en bienestar cuando y donde quieras',
+        description:
+          'Reserva con nuestros especialistas en bienestar cuando y donde quieras',
         button: '¡Reserva ahora!'
       },
       columns: {
@@ -87,8 +90,14 @@ export const dictionary = {
     },
     home: {
       pageTitle: 'Inicio',
+      ogDescription:
+        'Descubre un espacio diseñado para tu bienestar y tranquilidad, donde cada servicio está pensado para restaurar tu equilibrio',
+      metaDescription:
+        'Descubre un espacio diseñado para tu bienestar y tranquilidad, donde cada servicio está pensado para restaurar tu equilibrio',
+      metaKeywords: 'bienestar, tranquilidad, equilibrio, servicios',
       heroSection: {
-        title_1: 'Encuentra tu <span className="text-primary">Calma</span> interior',
+        title_1:
+          'Encuentra tu <span className="text-primary">Calma</span> interior',
         description:
           'Descubre un espacio diseñado para tu bienestar y tranquilidad, donde cada servicio está pensado para restaurar tu equilibrio',
         button_1: 'Descubrir servicios',
@@ -100,26 +109,36 @@ export const dictionary = {
         points: {
           p1: {
             title: 'Atención personalizada',
-            description: 'Cada cliente recibe un tratamiento único adaptado a sus necesidades'
+            description:
+              'Cada cliente recibe un tratamiento único adaptado a sus necesidades'
           },
           p2: {
             title: 'Ambiente Seguro',
-            description: 'Creamos un entorno acogedor y seguro para que te sientas cómodo'
+            description:
+              'Creamos un entorno acogedor y seguro para que te sientas cómodo'
           },
           p3: {
             title: 'Personal Experto',
-            description: 'Nuestro equipo cuenta con amplia experiencia y formación especializada'
+            description:
+              'Nuestro equipo cuenta con amplia experiencia y formación especializada'
           }
         }
       },
       section_3: {
         title: 'Comienza tu camino hacia la tranquilidad',
-        description: 'Descubre nuestros servicios y encuentra el que mejor se adapte a tus necesidades',
+        description:
+          'Descubre nuestros servicios y encuentra el que mejor se adapte a tus necesidades',
         button: 'Descubrir Servicios'
       }
     },
     history: {
       pageTitle: 'Nuestra Historia',
+      ogDescription:
+        'Conoce la historia de Calma, un espacio creado para ofrecer bienestar y tranquilidad a través de servicios personalizados',
+      metaDescription:
+        'Explora la historia de Calma, un refugio de bienestar y tranquilidad.',
+      metaKeywords:
+        'historia, bienestar, tranquilidad, servicios personalizados',
       heroSection: {
         title: 'Equilibrio interior, brillo exterior',
         subtitle: 'Un viaje de bienestar y dedicación'
@@ -148,12 +167,18 @@ export const dictionary = {
     },
     packages: {
       pageTitle: 'Nuestros Paquetes',
+      ogDescription:
+        'Descubre nuestros paquetes diseñados para ofrecer una experiencia de bienestar y relajación, combinando servicios para brindarte un momento único de renovación',
+      metaDescription:
+        'Explora nuestros paquetes de bienestar, cada uno cuidadosamente diseñado para ofrecerte una experiencia completa de relajación y renovación.',
+      metaKeywords: 'paquetes, bienestar, relajación, servicios combinados',
       section_1: {
         title: 'Nuestros Paquetes',
         description:
           'Descubre nuestros paquetes diseñados para ofrecer una experiencia de bienestar y relajación. Cada uno combina servicios para brindarte un momento único de renovación.',
         include_text: 'El Paquete Incluye',
-        group_optionaly_text: 'Todos nuestros paquetes tienen opciones de grupo',
+        group_optionaly_text:
+          'Todos nuestros paquetes tienen opciones de grupo',
         from_price_text: 'Desde',
 
         paquetes: [
@@ -163,7 +188,8 @@ export const dictionary = {
             precio: '150',
             featured: false,
             featured_text: '',
-            descripcion_corta: 'Renovación integral cuerpo y mente, ideal para cumpleaños o cualquier ocasión especial',
+            descripcion_corta:
+              'Renovación integral cuerpo y mente, ideal para cumpleaños o cualquier ocasión especial',
             servicios_incluidos: [
               'Manicure SPA (Gel o regular)',
               'Pedicure SPA (Gel o regular)',
@@ -219,11 +245,13 @@ export const dictionary = {
             },
             {
               question: '¿Debo reservar con anticipación?',
-              answer: 'Sí, recomendamos reservar con anticipación para garantizar disponibilidad y coordinar fechas y horarios.'
+              answer:
+                'Sí, recomendamos reservar con anticipación para garantizar disponibilidad y coordinar fechas y horarios.'
             },
             {
               question: '¿Qué duración tiene cada paquete?',
-              answer: 'Los paquetes son personalizados, ya depende la necesidad del cliente se ajusta el tiempo necesario.'
+              answer:
+                'Los paquetes son personalizados, ya depende la necesidad del cliente se ajusta el tiempo necesario.'
             }
           ]
         }
@@ -231,6 +259,11 @@ export const dictionary = {
     },
     services: {
       pageTitle: 'Nuestros Servicios',
+      ogDescription:
+        'Explora nuestra variedad de servicios diseñados para tu bienestar, belleza y relajación, cada experiencia ha sido cuidadosamente pensada para armonizar cuerpo y mente',
+      metaDescription:
+        'Descubre la gama de servicios que ofrecemos en Calma Nails & Spa, desde manicuras hasta tratamientos de spa, todos orientados a realzar tu belleza y relajación.',
+      metaKeywords: 'servicios, bienestar, belleza, relajación, tratamientos',
       fromBadge: 'Desde',
       cardFooter: {
         expandable: {
@@ -260,20 +293,24 @@ export const dictionary = {
                   },
                   spa: {
                     name: 'SPA',
-                    description: 'Limpieza, masaje, guantes hidratantes, esmalte regular'
+                    description:
+                      'Limpieza, masaje, guantes hidratantes, esmalte regular'
                   },
                   vip: {
                     name: 'VIP',
-                    description: 'Limpieza, sal epsom, toallas calientes, masaje, parafina, esmalte regular'
+                    description:
+                      'Limpieza, sal epsom, toallas calientes, masaje, parafina, esmalte regular'
                   },
                   gel: { name: 'Gel', description: 'Limpieza, esmalte gel' },
                   spaGel: {
                     name: 'SPA Gel',
-                    description: 'Limpieza, masajes, guantes, hidratantes, esmalte gel'
+                    description:
+                      'Limpieza, masajes, guantes, hidratantes, esmalte gel'
                   },
                   vipGel: {
                     name: 'VIP Gel',
-                    description: 'Limpieza, sal epsom, toallas calientes, masaje, parafina, esmalte gel'
+                    description:
+                      'Limpieza, sal epsom, toallas calientes, masaje, parafina, esmalte gel'
                   }
                 }
               },
@@ -286,20 +323,24 @@ export const dictionary = {
                   },
                   spa: {
                     name: 'SPA',
-                    description: 'Limpieza profunda, Salt scrub, masaje, Mascarilla hidratante o toallas calientes y esmalte regular'
+                    description:
+                      'Limpieza profunda, Salt scrub, masaje, Mascarilla hidratante o toallas calientes y esmalte regular'
                   },
                   vip: {
                     name: 'VIP',
-                    description: 'Limpieza profunda, baño jelly, masaje y esmalte regular'
+                    description:
+                      'Limpieza profunda, baño jelly, masaje y esmalte regular'
                   },
                   gel: { name: 'Gel', description: 'Limpieza, esmalte gel' },
                   spaGel: {
                     name: 'SPA Gel',
-                    description: 'Limpieza profunda, Salt scrub, masaje, Mascarilla hidratante o toallas calientes y esmalte gel'
+                    description:
+                      'Limpieza profunda, Salt scrub, masaje, Mascarilla hidratante o toallas calientes y esmalte gel'
                   },
                   vipGel: {
                     name: 'VIP Gel',
-                    description: 'Limpieza profunda, baño jelly, masaje y esmalte gel'
+                    description:
+                      'Limpieza profunda, baño jelly, masaje y esmalte gel'
                   }
                 }
               },
@@ -493,19 +534,23 @@ export const dictionary = {
                   },
                   lavadoMascarilla: {
                     name: 'Lavado + Mascarilla',
-                    description: 'Lavado profundo (2 aplicaciones de champú) + mascarilla'
+                    description:
+                      'Lavado profundo (2 aplicaciones de champú) + mascarilla'
                   },
                   lavadoAmpolla: {
                     name: 'Lavado + Ampolla Tratamiento ',
-                    description: 'Lavado profundo (2 aplicaciones de champú) + ampolla tratamiento '
+                    description:
+                      'Lavado profundo (2 aplicaciones de champú) + ampolla tratamiento '
                   },
                   relajanteExpress: {
                     name: 'Relajante Express',
-                    description: 'Lavado profundo + ampolla tratamiento + masaje cuero cabelludo'
+                    description:
+                      'Lavado profundo + ampolla tratamiento + masaje cuero cabelludo'
                   },
                   cabelloTratado: {
                     name: 'Cabello Tratado',
-                    description: 'lavado profundo (2 aplicaciones de champú) + mascarilla hidratante + ampolla tratamiento'
+                    description:
+                      'lavado profundo (2 aplicaciones de champú) + mascarilla hidratante + ampolla tratamiento'
                   },
                   aplicacionTinta: {
                     name: 'Aplicación de Tinte',
@@ -558,11 +603,13 @@ export const dictionary = {
                   },
                   masajeRelajante: {
                     name: 'Masaje Relajante',
-                    description: 'Estimulación relajante, reducción de tensión muscular'
+                    description:
+                      'Estimulación relajante, reducción de tensión muscular'
                   },
                   masajeProfundo: {
                     name: 'Masaje Profundo',
-                    description: 'Masaje profundo terapéutico / Toallas calientes'
+                    description:
+                      'Masaje profundo terapéutico / Toallas calientes'
                   }
                 }
               },
@@ -575,7 +622,8 @@ export const dictionary = {
                   },
                   guaSha: {
                     name: 'Gua Sha',
-                    description: 'Tratamiento de drenaje y desinflamación facial'
+                    description:
+                      'Tratamiento de drenaje y desinflamación facial'
                   },
                   hydrafacial: {
                     name: 'Hydrafacial',
@@ -601,7 +649,8 @@ export const dictionary = {
                 services: {
                   profesional: {
                     name: 'Profesional',
-                    description: 'Maquillaje profesional completo, personalizado para cualquier ocasión'
+                    description:
+                      'Maquillaje profesional completo, personalizado para cualquier ocasión'
                   },
                   pestanas: {
                     name: 'Pestañas',
@@ -642,14 +691,19 @@ export const dictionary = {
     },
     booking: {
       pageTitle: 'Citas',
+      metaDescription:
+        'Reserva tu cita en Calma Nails & Spa, elige tus servicios y agenda una fecha y hora que te convenga',
       emptyBagTitle: 'Bolsa Vacía',
       nextButtonText: 'Siguiente',
       prevButtonText: 'Atrás',
       confirmButtonText: 'Confirmar',
-      successMessage: '¡Gracias por reservar con nosotros! Te contactaremos pronto para confirmar los detalles de tu cita.',
-      errorMessage: 'Hubo un error al enviar tu reserva. Por favor, inténtalo de nuevo más tarde.',
+      successMessage:
+        '¡Gracias por reservar con nosotros! Te contactaremos pronto para confirmar los detalles de tu cita.',
+      errorMessage:
+        'Hubo un error al enviar tu reserva. Por favor, inténtalo de nuevo más tarde.',
       emptyBagMessage: '¡Aún no has seleccionado ningún servicio!',
-      emptyBagMessageAlt: 'Para agendar una cita, primero debes elegir los servicios que deseas.',
+      emptyBagMessageAlt:
+        'Para agendar una cita, primero debes elegir los servicios que deseas.',
       emptyBagCta: 'Explorar servicios',
       emptyBagLinktext: 'Solo quiero ponerme en contacto',
       wantToExplore: 'Quiero seguir explorando',
@@ -691,7 +745,8 @@ export const dictionary = {
         },
         schedule: {
           title: 'Escoge fecha y hora',
-          subtitle: 'Elige la fecha y hora que mejor te convenga y, si quieres, deja un mensaje extra para personalizar tu servicio',
+          subtitle:
+            'Elige la fecha y hora que mejor te convenga y, si quieres, deja un mensaje extra para personalizar tu servicio',
           dateInput: {
             label: 'Fecha',
             placeholder: 'Selecciona una fecha',
@@ -708,7 +763,8 @@ export const dictionary = {
               required: 'Hora Obligatoria',
               invalid: 'Hora Inválida',
               pastTime: 'No puedes elegir una hora pasada',
-              requiredAnticipation: 'Se requiere al menos 1 hora de anticipación',
+              requiredAnticipation:
+                'Se requiere al menos 1 hora de anticipación',
               available: 'Horario no disponible (8:00 AM - 6:00 PM)'
             }
           },
@@ -721,18 +777,21 @@ export const dictionary = {
           loadingText: 'Enviando tu reserva...',
           success: {
             title: '¡Reserva enviada con éxito!',
-            details: 'Nos pondremos en contacto contigo pronto para confirmar los detalles de tu cita.'
+            details:
+              'Nos pondremos en contacto contigo pronto para confirmar los detalles de tu cita.'
           },
           error: {
             title: 'Error al enviar la reserva',
-            details: 'Hubo un problema al enviar tu reserva. Por favor, inténtalo de nuevo más tarde.'
+            details:
+              'Hubo un problema al enviar tu reserva. Por favor, inténtalo de nuevo más tarde.'
           }
         },
         final: {
           title: '¡Casi terminamos!',
           confirmtext: 'Tu cita se agendará para el día',
           confirmtext2: 'a las',
-          details: 'Espera un mensaje de confirmación en tu correo electrónico o WhatsApp.'
+          details:
+            'Espera un mensaje de confirmación en tu correo electrónico o WhatsApp.'
         },
         noServices: {
           title: '¡Oops! No seleccionaste ningún servicio',
@@ -742,13 +801,15 @@ export const dictionary = {
       success: {
         title: 'Reserva Exitosa',
         subtitle: '¡Tu reserva se ha realizado con éxito!',
-        message: '¡Gracias por reservar con nosotros! Te contactaremos pronto para confirmar los detalles de tu cita.',
+        message:
+          '¡Gracias por reservar con nosotros! Te contactaremos pronto para confirmar los detalles de tu cita.',
         buttonText: 'Volver al inicio'
       },
       failed: {
         title: 'Error en la Reserva',
         subtitle: 'Hubo un error al enviar tu reserva',
-        message: 'Hubo un problema al enviar tu reserva. Por favor, inténtalo de nuevo más tarde.',
+        message:
+          'Hubo un problema al enviar tu reserva. Por favor, inténtalo de nuevo más tarde.',
         buttonText: 'Volver al inicio'
       }
     },
@@ -759,9 +820,16 @@ export const dictionary = {
     },
     team: {
       pageTitle: 'Nuestro Equipo',
+      ogDescription:
+        'Conoce a los profesionales dedicados que forman el equipo de Calma, comprometidos con tu bienestar y satisfacción a través de servicios personalizados',
+      metaDescription:
+        'Descubre al equipo de expertos detrás de Calma Nails & Spa, cada uno dedicado a ofrecerte una experiencia de bienestar y belleza inigualable.',
+      metaKeywords:
+        'equipo, profesionales, bienestar, servicios personalizados, expertos',
       section_1: {
         title: '¡Nuestro Equipo está aquí!',
-        description: 'Conoce a los profesionales que hacen posible nuestra misión'
+        description:
+          'Conoce a los profesionales que hacen posible nuestra misión'
       },
       section_2: {
         profiles: {
@@ -816,13 +884,23 @@ export const dictionary = {
       }
     },
     notFound: {
+      pageTitle: 'Página No Encontrada',
+      metaDescription:
+        'La página que buscas no existe. Regresa a la página de inicio de Calma Nails & Spa.',
       title: '404',
       subtitle: 'Parece que la página que buscas no está disponible',
       buttonText: 'Volver al inicio'
     },
     contact: {
-      title: 'Contactanos',
-      subtitle: 'Nos encantaría saber de ti. Por favor, completa el siguiente formulario para ponerte en contacto con nosotros.',
+      pageTitle: 'Contáctanos',
+      title: 'Contáctanos',
+      ogDescription:
+        'Estamos aquí para ayudarte. Completa el formulario y nos pondremos en contacto contigo.',
+      metaDescription:
+        'Nos encantaría saber de ti. Completa el formulario y nos pondremos en contacto contigo.',
+      subtitle:
+        'Nos encantaría saber de ti. Por favor, completa el siguiente formulario para ponerte en contacto con nosotros.',
+      metaKeywords: 'contacto, formulario, atención al cliente',
       form: {
         name: {
           label: 'Nombre',
@@ -849,11 +927,13 @@ export const dictionary = {
         toast: {
           success: {
             title: 'Mensaje enviado',
-            description: 'Gracias por contactarnos. Te responderemos lo antes posible.'
+            description:
+              'Gracias por contactarnos. Te responderemos lo antes posible.'
           },
           error: {
             title: 'Error al enviar',
-            description: 'Hubo un problema al enviar tu mensaje. Por favor, inténtalo de nuevo más tarde.'
+            description:
+              'Hubo un problema al enviar tu mensaje. Por favor, inténtalo de nuevo más tarde.'
           },
           validationFailed: 'Por favor, corrige los errores en el formulario'
         },
@@ -897,6 +977,16 @@ export const dictionary = {
         toastSuccess: 'Mensaje enviado desde la bandeja de salida'
       }
     },
+    outbox: {
+      pageTitle: 'Bandeja de Salida',
+      metaDescription:
+        'Revisa y gestiona los mensajes que están pendientes de envío en tu bandeja de salida.'
+    },
+    success: {
+      pageTitle: 'Éxito',
+      metaDescription:
+        'Tu acción se ha completado con éxito. Gracias por confiar en Calma Nails & Spa.',
+    },
     seo: {
       lang: 'es',
       appName: 'Calma',
@@ -921,10 +1011,14 @@ export const dictionary = {
       },
       og: {
         title: 'Calma Nails & Spa',
-        description: 'En Calma Nails & Spa cuidamos tu belleza y bienestar con experiencias únicas.',
+        description:
+          'En Calma Nails & Spa cuidamos tu belleza y bienestar con experiencias únicas.',
         type: 'website',
         siteName: 'Calma Nails & Spa',
-        images: ['https://calma.salon/images/og/og-1200x630.png', 'https://calma.salon/images/og/og-800x800.png']
+        images: [
+          'https://calma.salon/images/og/og-1200x630.png',
+          'https://calma.salon/images/og/og-800x800.png'
+        ]
       },
       twitter: {
         card: 'summary_large_image',
@@ -932,7 +1026,8 @@ export const dictionary = {
         description: 'Relájate y resalta tu belleza en Calma Nails & Spa.',
         image: 'https://calma.salon/images/og/og-800x800.png'
       },
-      fallback: 'Tu navegador no admite JavaScript o JavaScript está deshabilitado.'
+      fallback:
+        'Tu navegador no admite JavaScript o JavaScript está deshabilitado.'
     }
   },
   en: {
@@ -971,7 +1066,8 @@ export const dictionary = {
     footer: {
       cta: {
         title: 'Book Your Appointment Today!',
-        description: 'Schedule your session with our wellness specialists anytime, anywhere',
+        description:
+          'Schedule your session with our wellness specialists anytime, anywhere',
         button: 'Book Now!'
       },
       columns: {
@@ -1013,9 +1109,16 @@ export const dictionary = {
     },
     home: {
       pageTitle: 'Home',
+      ogDescription:
+        'Discover a sanctuary for your beauty and wellness at Calma Nails & Spa. We offer manicure, pedicure, acrylic nails, eyelash treatments, waxing, and relaxing spa experiences. We also have services for children.',
+      metaDescription:
+        'At Calma Nails & Spa, we care for your beauty and wellness with manicure, pedicure, acrylic nails, eyelash treatments, waxing, and relaxing spa experiences. We also offer services for children.',
+      metaKeywords:
+        'manicure, pedicure, acrylic nails, eyelash treatments, waxing, hairstyling, spa, maderotherapy, gua sha, detox, relaxing massage, makeup, kids services, beauty salon, wellness',
       heroSection: {
         title_1: 'Find Your <span className="text-primary">Inner Calm</span>',
-        description: 'Discover a space designed for your wellness and peace, where every service is crafted to restore your balance',
+        description:
+          'Discover a space designed for your wellness and peace, where every service is crafted to restore your balance',
         button_1: 'Explore Services',
         button_2: 'View Packages'
       },
@@ -1025,26 +1128,36 @@ export const dictionary = {
         points: {
           p1: {
             title: 'Personalized Care',
-            description: 'Each client receives a unique treatment tailored to their needs'
+            description:
+              'Each client receives a unique treatment tailored to their needs'
           },
           p2: {
             title: 'Safe Environment',
-            description: 'We create a welcoming, safe space so you feel comfortable'
+            description:
+              'We create a welcoming, safe space so you feel comfortable'
           },
           p3: {
             title: 'Experienced staff',
-            description: 'Our team has extensive experience and specialized training'
+            description:
+              'Our team has extensive experience and specialized training'
           }
         }
       },
       section_3: {
         title: 'Start Your Journey to Tranquility',
-        description: 'Explore our services and find the perfect fit for your needs',
+        description:
+          'Explore our services and find the perfect fit for your needs',
         button: 'Explore Services'
       }
     },
     history: {
       pageTitle: 'Our Story',
+      ogDescription:
+        'Discover the journey of Calma Nails & Spa, a sanctuary born from a passion for wellness and beauty. Learn about our mission to provide personalized care in a tranquil environment.',
+      metaDescription:
+        'Learn about the origins of Calma Nails & Spa, our commitment to wellness, and how we strive to create a peaceful space for our clients.',
+      metaKeywords:
+        'our story, wellness journey, beauty salon, personalized care, tranquil space',
       section_1: {
         title: 'Our Story',
         history_p1:
@@ -1069,6 +1182,12 @@ export const dictionary = {
     },
     packages: {
       pageTitle: 'Our Packages',
+      ogDescription:
+        'Discover our wellness packages at Calma Nails & Spa, designed to provide a complete relaxation experience. Each package combines different services to offer you a unique moment of renewal.',
+      metaDescription:
+        'Explore our range of packages at Calma Nails & Spa, each designed to offer a comprehensive wellness and relaxation experience through a combination of services.',
+      metaKeywords:
+        'wellness packages, relaxation experience, spa packages, beauty treatments, complete wellness',
       section_1: {
         title: 'Our Packages',
         description:
@@ -1084,7 +1203,8 @@ export const dictionary = {
             precio: '150',
             featured: false,
             featured_text: '',
-            descripcion_corta: 'Complete body and mind renewal, ideal for birthdays or special occasions.',
+            descripcion_corta:
+              'Complete body and mind renewal, ideal for birthdays or special occasions.',
             servicios_incluidos: [
               'SPA Manicure (Gel or regular)',
               'SPA Pedicure (Gel or regular)',
@@ -1100,7 +1220,8 @@ export const dictionary = {
             precio: '170',
             featured: true,
             featured_text: 'Most Popular',
-            descripcion_corta: 'Prepare for your special event with confidence and relaxation.',
+            descripcion_corta:
+              'Prepare for your special event with confidence and relaxation.',
             servicios_incluidos: [
               'SPA shampoo & wash',
               'Professional blow-dry',
@@ -1140,11 +1261,13 @@ export const dictionary = {
             },
             {
               question: 'Should I book in advanced?',
-              answer: 'Yes, you should book in advanced to coordinate dates and times.'
+              answer:
+                'Yes, you should book in advanced to coordinate dates and times.'
             },
             {
               question: 'How long does each package last?',
-              answer: 'Packages are personalized to meet the need of each client which makes the times adjustable.'
+              answer:
+                'Packages are personalized to meet the need of each client which makes the times adjustable.'
             }
           ]
         }
@@ -1152,6 +1275,12 @@ export const dictionary = {
     },
     services: {
       pageTitle: 'Our Services',
+      ogDescription:
+        'Explore our variety of services at Calma Nails & Spa, designed for your well-being, beauty, and relaxation. Each experience is carefully crafted to harmonize body and mind.',
+      metaDescription:
+        'Discover the range of services offered at Calma Nails & Spa, from manicures to spa treatments, all aimed at enhancing your beauty and relaxation.',
+      metaKeywords:
+        'manicure, pedicure, acrylic nails, eyelash treatments, waxing, hairstyling, spa, maderotherapy, gua sha, detox, relaxing massage, makeup, kids services',
       fromBadge: 'From',
       cardFooter: {
         expandable: {
@@ -1181,20 +1310,24 @@ export const dictionary = {
                   },
                   spa: {
                     name: 'SPA',
-                    description: 'Cleaning, massage, Moisturizing gloves, regular polish'
+                    description:
+                      'Cleaning, massage, Moisturizing gloves, regular polish'
                   },
                   vip: {
                     name: 'VIP',
-                    description: 'Cleaning, Epsom salt, hot towels + massage, paraffin, regular polish'
+                    description:
+                      'Cleaning, Epsom salt, hot towels + massage, paraffin, regular polish'
                   },
                   gel: { name: 'Gel', description: 'Cleaning + gel polish' },
                   spaGel: {
                     name: 'SPA Gel',
-                    description: 'Cleaning, massage, Moisturizing gloves + gel polish'
+                    description:
+                      'Cleaning, massage, Moisturizing gloves + gel polish'
                   },
                   vipGel: {
                     name: 'VIP Gel',
-                    description: 'Cleaning, Epsom salt, hot towels + massage, paraffin, gel polish'
+                    description:
+                      'Cleaning, Epsom salt, hot towels + massage, paraffin, gel polish'
                   }
                 }
               },
@@ -1207,20 +1340,24 @@ export const dictionary = {
                   },
                   spa: {
                     name: 'SPA',
-                    description: 'Deep cleansing, salt scrub, massage, hydrating mask or hot towels, and regular polish'
+                    description:
+                      'Deep cleansing, salt scrub, massage, hydrating mask or hot towels, and regular polish'
                   },
                   vip: {
                     name: 'VIP',
-                    description: 'Deep cleansing, jelly bath, massage, and regular polish'
+                    description:
+                      'Deep cleansing, jelly bath, massage, and regular polish'
                   },
                   gel: { name: 'Gel', description: 'Cleaning + gel polish' },
                   spaGel: {
                     name: 'SPA Gel',
-                    description: 'Deep cleaning, salt scrub, massage, moisturizing mask or hot towels, gel polish'
+                    description:
+                      'Deep cleaning, salt scrub, massage, moisturizing mask or hot towels, gel polish'
                   },
                   vipGel: {
                     name: 'VIP Gel',
-                    description: 'Deep cleaning, jelly bath, massage, gel polish'
+                    description:
+                      'Deep cleaning, jelly bath, massage, gel polish'
                   }
                 }
               },
@@ -1392,15 +1529,18 @@ export const dictionary = {
                   },
                   lavadoProfundo: {
                     name: 'Deep Wash',
-                    description: 'Deep cleansing hair wash (2 shampoo applications)'
+                    description:
+                      'Deep cleansing hair wash (2 shampoo applications)'
                   },
                   lavadoMascarilla: {
                     name: 'Wash + Mask',
-                    description: 'Hair wash + hydrating mask treatment (2 shampoo applications + mask)'
+                    description:
+                      'Hair wash + hydrating mask treatment (2 shampoo applications + mask)'
                   },
                   lavadoAmpolla: {
                     name: 'Wash serum capsule',
-                    description: 'Hair wash + serum capsule treatment (2 shampoo applications + ampoule)'
+                    description:
+                      'Hair wash + serum capsule treatment (2 shampoo applications + ampoule)'
                   },
                   relajanteExpress: {
                     name: 'Relaxing Express',
@@ -1408,7 +1548,8 @@ export const dictionary = {
                   },
                   cabelloTratado: {
                     name: 'Treated Hair',
-                    description: 'Deep hair wash/hydrating hair mask/serum capsule treatment'
+                    description:
+                      'Deep hair wash/hydrating hair mask/serum capsule treatment'
                   },
                   aplicacionTinta: {
                     name: 'Dye Application',
@@ -1455,7 +1596,8 @@ export const dictionary = {
                   },
                   masajeRelajante: {
                     name: 'Relaxing Massage',
-                    description: 'Gentle stroke treatment to reduce muscle tension'
+                    description:
+                      'Gentle stroke treatment to reduce muscle tension'
                   },
                   masajeProfundo: {
                     name: 'Deep Massage',
@@ -1498,7 +1640,8 @@ export const dictionary = {
                 services: {
                   profesional: {
                     name: 'Professional',
-                    description: 'Professional makeup application for any occasion'
+                    description:
+                      'Professional makeup application for any occasion'
                   },
                   pestanas: { name: 'Lashes', description: 'Lash application' }
                 }
@@ -1536,14 +1679,19 @@ export const dictionary = {
     },
     booking: {
       pageTitle: 'Appointments',
+      metaDescription:
+        'Book your appointment at Calma Nails & Spa. Choose your services, select a date and time, and provide your contact information to schedule your visit.',
       emptyBagTitle: 'Empty Bag',
       nextButtonText: 'Next',
       prevButtonText: 'Back',
       confirmButtonText: 'Confirm',
-      successMessage: 'Thank you for booking with us! We will contact you soon to confirm the details of your appointment.',
-      errorMessage: 'There was an error submitting your booking. Please try again later.',
+      successMessage:
+        'Thank you for booking with us! We will contact you soon to confirm the details of your appointment.',
+      errorMessage:
+        'There was an error submitting your booking. Please try again later.',
       emptyBagMessage: 'You haven’t selected any services yet!',
-      emptyBagMessageAlt: 'To book an appointment, please choose your desired services first.',
+      emptyBagMessageAlt:
+        'To book an appointment, please choose your desired services first.',
       emptyBagCta: 'Browse Services',
       emptyBagLinktext: 'I just want to get in touch',
       wantToExplore: 'I want to keep exploring',
@@ -1585,7 +1733,8 @@ export const dictionary = {
         },
         schedule: {
           title: 'Choose date and time',
-          subtitle: 'Pick the date and time that works best for you and, if you want, leave an extra message to personalize your service',
+          subtitle:
+            'Pick the date and time that works best for you and, if you want, leave an extra message to personalize your service',
           dateInput: {
             label: 'Date',
             placeholder: 'Select a date',
@@ -1616,11 +1765,13 @@ export const dictionary = {
           loadingText: 'Submitting your booking...',
           success: {
             title: 'Booking sent successfully!',
-            details: 'We will contact you shortly to confirm your appointment details.'
+            details:
+              'We will contact you shortly to confirm your appointment details.'
           },
           error: {
             title: 'Error sending booking',
-            details: 'There was a problem submitting your booking. Please try again later.'
+            details:
+              'There was a problem submitting your booking. Please try again later.'
           }
         },
         final: {
@@ -1631,19 +1782,22 @@ export const dictionary = {
         },
         noServices: {
           title: 'Oops! You didn’t select any services',
-          subtitle: 'It looks like you haven’t added any services to your bag yet.'
+          subtitle:
+            'It looks like you haven’t added any services to your bag yet.'
         }
       },
       success: {
         title: 'Booking Successful',
         subtitle: 'Your booking was completed successfully!',
-        message: 'Thank you for booking with us! We will contact you soon to confirm the details of your appointment.',
+        message:
+          'Thank you for booking with us! We will contact you soon to confirm the details of your appointment.',
         buttonText: 'Back to Home'
       },
       failed: {
         title: 'Booking Error',
         subtitle: 'There was an error with your booking',
-        message: 'There was a problem submitting your booking. Please try again later.',
+        message:
+          'There was a problem submitting your booking. Please try again later.',
         buttonText: 'Back to Home'
       }
     },
@@ -1654,6 +1808,12 @@ export const dictionary = {
     },
     team: {
       pageTitle: 'Our Team',
+      ogDescription:
+        'Meet the dedicated professionals at Calma Nails & Spa who are committed to providing exceptional beauty and wellness services in a tranquil environment.',
+      metaDescription:
+        'Discover the team behind Calma Nails & Spa, a group of experienced and passionate individuals dedicated to enhancing your beauty and well-being.',
+      metaKeywords:
+        'our team, beauty professionals, wellness experts, spa team, dedicated staff',
       section_1: {
         title: 'Our team of experts is here',
         description: 'Meet the professionals who make our mission possible'
@@ -1711,13 +1871,22 @@ export const dictionary = {
       }
     },
     notFound: {
+      pageTitle: 'Page Not Found',
+      metaDescription:
+        'The page you are looking for does not exist. Return to the homepage of Calma Nails & Spa.',
       title: '404',
       subtitle: 'It seems the page you are looking for is not available',
       buttonText: 'Back to Home'
     },
     contact: {
       title: 'Contact Us',
-      subtitle: 'We would love to hear from you! Please fill out the form below to get in touch with us.',
+      ogDescription:
+        'Get in touch with Calma Nails & Spa for any inquiries or to book an appointment.',
+      metaDescription:
+        'Contact Calma Nails & Spa for personalized beauty and wellness services.',
+      subtitle:
+        'We would love to hear from you! Please fill out the form below to get in touch with us.',
+      metaKeywords: 'contact, formulario, atención al cliente',
       form: {
         name: {
           label: 'Name',
@@ -1744,11 +1913,13 @@ export const dictionary = {
         toast: {
           success: {
             title: 'Message sent',
-            description: 'Thank you for contacting us. We will get back to you as soon as possible.'
+            description:
+              'Thank you for contacting us. We will get back to you as soon as possible.'
           },
           error: {
             title: 'Error sending message',
-            description: 'There was a problem sending your message. Please try again later.'
+            description:
+              'There was a problem sending your message. Please try again later.'
           },
           validationFailed: 'Please correct the errors in the form'
         },
@@ -1786,10 +1957,21 @@ export const dictionary = {
       outbox: {
         title: 'Outbox',
         screenTitle: 'Pending Messages to Send',
-        screenMessage: 'It seems you are offline. Messages you send will be saved locally and automatically sent when you are back online.',
+        screenMessage:
+          'It seems you are offline. Messages you send will be saved locally and automatically sent when you are back online.',
         toastMessage: 'Message saved to outbox',
         toastSuccess: 'Message sent from outbox'
       }
+    },
+    outbox: {
+      pageTitle: 'Outbox',
+      metaDescription:
+        'View and manage your pending messages in the outbox. Messages will be sent automatically when you are back online.',
+    },
+    succes: {
+      pageTitle: 'Success',
+      metaDescription:
+        'Your action was completed successfully. Thank you for choosing Calma Nails & Spa.',
     },
     seo: {
       lang: 'en',
@@ -1815,10 +1997,14 @@ export const dictionary = {
       },
       og: {
         title: 'Calma Nails & Spa',
-        description: 'At Calma Nails & Spa we care for your beauty and wellness with unique experiences.',
+        description:
+          'At Calma Nails & Spa we care for your beauty and wellness with unique experiences.',
         type: 'website',
         siteName: 'Calma Nails & Spa',
-        images: ['https://calma.salon/images/og/og-1200x630.png', 'https://calma.salon/images/og/og-800x800.png']
+        images: [
+          'https://calma.salon/images/og/og-1200x630.png',
+          'https://calma.salon/images/og/og-800x800.png'
+        ]
       },
       twitter: {
         card: 'summary_large_image',

@@ -9,10 +9,11 @@ import { FadeInWhenVisible as Fade } from '../../components/commons/animations/F
 import { useSound } from '../../components/commons/SoundManager'
 import { Icon } from '../../components/commons/Icons'
 import { limitedToast as toast } from '../../utils/toast'
+import { SEO } from '../../components/SEO/SEO'
 
 const Outbox = () => {
   const { t } = useLang()
-  usePageTitle(t('senders.outbox.title'))
+  const outbox = t('senders.outbox.title', { returnObjects: true })
   const location = useLocation()
   const { clearServices, isLoaded } = useSelectedServices()
   const playSuccessSound = useSound('operationComplete')
@@ -35,7 +36,9 @@ const Outbox = () => {
   }, [isAllowed, isLoaded])
 
   return (
-    <div className=''>
+    <>
+      <SEO title={outbox.pageTitle} description={outbox.metaDescription} noIndex />
+      <div className=''>
       <Fade className='d-flex flex-direction-column  align-items-center text-center py-5'>
         <span className='fs-display-2 mb-3'>
           <Icon name='wifi-exclamation' variant='duotones' duotone='solid' className='text-warning-600' />
@@ -61,6 +64,7 @@ const Outbox = () => {
         <div className='w-100 d-block border-bottom max-wx-1000'></div>
       </div>
     </div>
+    </>
   )
 }
 

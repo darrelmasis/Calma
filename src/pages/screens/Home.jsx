@@ -6,10 +6,11 @@ import { FadeInWhenVisible as Fade } from '../../components/commons/animations/F
 import { useLang } from '../../i18n/LanguageContext'
 import { ResponsiveImage } from '../../components/ui/ResponsiveImage'
 import { Hero2 } from '../../components/commons/Hero-2'
+import { SEO } from '../../components/SEO/SEO'
 
 const Home = () => {
   const { t } = useLang()
-  usePageTitle(t('home.pageTitle'))
+  const home = t('home', { returnObjects: true })
 
   const navigate = useNavigate()
   const goToServices = () => {
@@ -18,6 +19,13 @@ const Home = () => {
 
   return (
     <>
+      <SEO
+        title={home.pageTitle}
+        description={home.metaDescription}
+        keywords={home.metaKeywords}
+        ogDescription={home.ogDescription}
+        ogTitle={home.pageTitle}
+      />
       <Hero2
         background='/images/webp/hero-bg-alt-1200.webp'
         overlayType='end-transparent'
@@ -41,10 +49,14 @@ const Home = () => {
         alignContent='start'
       />
       {/* <Hero /> */}
-      <section id='why' className='py-5 bg-neutral-0 d-flex align-items-center border-top'>
+      <section
+        id='why'
+        className='py-5 bg-neutral-0 d-flex align-items-center border-top'>
         <div className='container d-flex flex-direction-column align-items-center justify-content-center'>
           <Fade className='mb-5'>
-            <h2 className='text-primary mb-1 text-center'>{t('home.section_2.title')}</h2>
+            <h2 className='text-primary mb-1 text-center'>
+              {t('home.section_2.title')}
+            </h2>
           </Fade>
 
           <div className='grid-row justify-content-space-between w-100'>
@@ -52,10 +64,19 @@ const Home = () => {
               <div className='card d-flex flex-direction-column align-items-center'>
                 <Fade>
                   <span className='border-primary card-icon p-3 rounded-all-full d-inline-flex align-items-center justify-content-center'>
-                    <Icon name='heart' variant='regular' size='lg' className='text-primary' />
+                    <Icon
+                      name='heart'
+                      variant='regular'
+                      size='lg'
+                      className='text-primary'
+                    />
                   </span>
-                  <h3 className='card-title-hack fs-h4'>{t('home.section_2.points.p1.title')}</h3>
-                  <p className='text-muted wx-lg-350'>{t('home.section_2.points.p1.description')}</p>
+                  <h3 className='card-title-hack fs-h4'>
+                    {t('home.section_2.points.p1.title')}
+                  </h3>
+                  <p className='text-muted wx-lg-350'>
+                    {t('home.section_2.points.p1.description')}
+                  </p>
                   <ResponsiveImage
                     name='image-01'
                     alt='Masaje terapéutico en la espalda con una piedra calentada de forma ergonómica'
@@ -69,10 +90,19 @@ const Home = () => {
               <div className='card d-flex flex-direction-column align-items-center'>
                 <Fade>
                   <span className='border-primary card-icon p-3 rounded-all-full d-inline-flex align-items-center justify-content-center'>
-                    <Icon name='shield' variant='regular' size='lg' className='text-primary' />
+                    <Icon
+                      name='shield'
+                      variant='regular'
+                      size='lg'
+                      className='text-primary'
+                    />
                   </span>
-                  <h3 className='card-title-hack fs-h4'>{t('home.section_2.points.p2.title')}</h3>
-                  <p className='text-muted wx-lg-350'>{t('home.section_2.points.p2.description')}</p>
+                  <h3 className='card-title-hack fs-h4'>
+                    {t('home.section_2.points.p2.title')}
+                  </h3>
+                  <p className='text-muted wx-lg-350'>
+                    {t('home.section_2.points.p2.description')}
+                  </p>
                   <ResponsiveImage
                     name='image-02'
                     alt='Aplicación de cera depilatoria en el área del labio superior con un palito de madera'
@@ -86,10 +116,19 @@ const Home = () => {
               <div className='card d-flex flex-direction-column align-items-center'>
                 <Fade>
                   <span className='border-primary card-icon p-3 rounded-all-full d-inline-flex align-items-center justify-content-center'>
-                    <Icon name='users' variant='regular' size='lg' className='text-primary' />
+                    <Icon
+                      name='users'
+                      variant='regular'
+                      size='lg'
+                      className='text-primary'
+                    />
                   </span>
-                  <h3 className='card-title-hack fs-h4'>{t('home.section_2.points.p3.title')}</h3>
-                  <p className='text-muted wx-lg-350'>{t('home.section_2.points.p3.description')}</p>
+                  <h3 className='card-title-hack fs-h4'>
+                    {t('home.section_2.points.p3.title')}
+                  </h3>
+                  <p className='text-muted wx-lg-350'>
+                    {t('home.section_2.points.p3.description')}
+                  </p>
                   <ResponsiveImage
                     name='image-03'
                     alt='Aplicación de cera depilatoria en el área del labio superior con un palito de madera'
@@ -103,16 +142,26 @@ const Home = () => {
         </div>
       </section>
       {/* Special Section */}
-      <section id='how' className='bg-container d-flex align-items-center special-section'>
+      <section
+        id='how'
+        className='bg-container d-flex align-items-center special-section'>
         <div className='container text-center special-section-content'>
           <Fade>
-            <Icon name='spa' size='lg' variant='duotones' duotone='regular' className='text-secondary mb-3 fs-h1' />
+            <Icon
+              name='spa'
+              size='lg'
+              variant='duotones'
+              duotone='regular'
+              className='text-secondary mb-3 fs-h1'
+            />
           </Fade>
           <Fade>
             <h2 className='mb-3 text-secondary'>{t('home.section_3.title')}</h2>
           </Fade>
           <Fade>
-            <p className='mb-6 text-secondary'>{t('home.section_3.description')}</p>
+            <p className='mb-6 text-secondary'>
+              {t('home.section_3.description')}
+            </p>
           </Fade>
           <Fade>
             <Button

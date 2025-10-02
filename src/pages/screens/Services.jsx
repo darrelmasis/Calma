@@ -13,10 +13,11 @@ import { Icon } from '../../components/commons/Icons'
 import { CSSTransition } from 'react-transition-group'
 import { TruncateText } from '../../components/ui/ReadMore'
 import AddService from '../../components/ui/AddService'
+import { SEO } from '../../components/SEO/SEO'
 
 const Services = () => {
   const { t } = useLang()
-  usePageTitle(t('services.pageTitle'))
+  const services = t('services', { returnObjects: true })
   const categories = t('services.section_1.category', { returnObjects: true })
   const [isExpanded, setIsExpanded] = useState({})
   const refs = useRef({})
@@ -198,7 +199,14 @@ const Services = () => {
   }))
 
   return (
-    <section className='bg-neutral-0 pb-5 min-vh-100'>
+    <>
+      <SEO
+        title={services.pageTitle}
+        description={services.metaDescription}
+        keywords={services.metaKeywords}
+        ogDescription={services.metaDescription}
+      />
+      <section className='bg-neutral-0 pb-5 min-vh-100'>
       <div className='container'>
         <div className='grid gap-lg-3'>
           {/* Encabezado arriba */}
@@ -214,6 +222,7 @@ const Services = () => {
         <Tabs tabs={tabs} />
       </div>
     </section>
+    </>
   )
 }
 
