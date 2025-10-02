@@ -40,11 +40,7 @@ const Services = () => {
     const handleClickOutside = (event) => {
       if (!isExpanded) return
       const currentCardRef = cardRef.current[isExpanded]
-      if (
-        currentCardRef &&
-        currentCardRef.current &&
-        !currentCardRef.current.contains(event.target)
-      ) {
+      if (currentCardRef && currentCardRef.current && !currentCardRef.current.contains(event.target)) {
         setIsExpanded(null)
       }
     }
@@ -68,38 +64,21 @@ const Services = () => {
           const serviceItems = Object.entries(subcategory.services)
           const hasManyItems = serviceItems.length > 3
 
-          const menuCardClasses = classNames(
-            'menu-card grid-col-12 grid-col-md-6 grid-col-lg-4'
-          )
+          const menuCardClasses = classNames('menu-card grid-col-12 grid-col-md-6 grid-col-lg-4')
 
-          const isItemsExpanded = classNames(
-            'menu-card-items d-flex flex-direction-column gap-1'
-          )
+          const isItemsExpanded = classNames('menu-card-items d-flex flex-direction-column gap-1')
 
-          const menuCardContentClasses = classNames(
-            'menu-card-content pt-3 px-3',
-            { expanded: isExpanded === subCategoryId }
-          )
+          const menuCardContentClasses = classNames('menu-card-content pt-3 px-3', { expanded: isExpanded === subCategoryId })
 
           // Estructura normal para otras subcategorías
           return (
-            <Fade
-              key={`subcat-${subCategoryId}`}
-              className={menuCardClasses}
-              delay={0.2}
-            >
-              <div
-                ref={getCardRef(subCategoryId)}
-                className='menu-card-wrapper bg-neutral-50 rounded-all-sm d-flex flex-direction-column'
-              >
+            <Fade key={`subcat-${subCategoryId}`} className={menuCardClasses} delay={0.2}>
+              <div ref={getCardRef(subCategoryId)} className='menu-card-wrapper bg-neutral-50 rounded-all-sm d-flex flex-direction-column'>
                 <div className='menu-card-header rounded-top-sm overflow-hidden position-relative'>
                   <ResponsiveImage name={serviceData.image} />
                 </div>
                 <div className={menuCardContentClasses}>
-                  <div
-                    className='menu-card-title mb-3'
-                    data-name={subcategory.name.toLowerCase().replace(' ', '-')}
-                  >
+                  <div className='menu-card-title mb-3' data-name={subcategory.name.toLowerCase().replace(' ', '-')}>
                     <h4 className='text-primary-700 mt-2 mb-4 fs-h5 fw-semibold d-flex align-items-center'>
                       <Icon name={serviceData.Icon} className='me-2' />
                       <span>{subcategory.name}</span>
@@ -125,25 +104,18 @@ const Services = () => {
                     onExiting={() => {
                       const el = getRef(subCategoryId).current
                       if (el) el.style.maxHeight = '12.5rem'
-                    }}
-                  >
-                    <div
-                      ref={getRef(subCategoryId)}
-                      className={isItemsExpanded}
-                    >
+                    }}>
+                    <div ref={getRef(subCategoryId)} className={isItemsExpanded}>
                       {Object.entries(subcategory.services).map((item) => {
                         const serviceItem = item[1]
                         const serviceItemId = item[0]
-                        const serviceItemPrice =
-                          serviceData.prices[serviceItemId]
+                        const serviceItemPrice = serviceData.prices[serviceItemId]
 
                         // Detecta si el servicio es de tipo "from"
                         const isFrom = serviceItemPrice.hasOwnProperty('from')
 
                         return (
-                          <Fragment
-                            key={`service-${serviceItemId}-${subCategoryId}`}
-                          >
+                          <Fragment key={`service-${serviceItemId}-${subCategoryId}`}>
                             <div className='Service-wrapper'>
                               <div className='service d-flex align-items-center justify-content-space-between'>
                                 <span className='d-flex align-items-center flex-direction-row service-title fs-medium position-relative'>
@@ -155,19 +127,11 @@ const Services = () => {
                                       <span className='badge bg-warning-500 text-white fs-xsmall me-1 fw-semibold h-fit-content py-0'>
                                         {t('services.fromBadge')}
                                       </span>
-                                      <USD
-                                        className='fs-medium h-fit-content'
-                                        amount={serviceItemPrice.from}
-                                        currencySymbol='$'
-                                      />
+                                      <USD className='fs-medium h-fit-content' amount={serviceItemPrice.from} currencySymbol='$' />
                                     </>
                                   ) : (
                                     <>
-                                      <USD
-                                        className='fs-medium'
-                                        amount={serviceItemPrice}
-                                        currencySymbol='$'
-                                      />
+                                      <USD className='fs-medium' amount={serviceItemPrice} currencySymbol='$' />
                                     </>
                                   )}
                                 </span>
@@ -183,9 +147,7 @@ const Services = () => {
                                   text={serviceItem.description}
                                   popover={{ title: serviceItem.name }}
                                   maxLength={25}
-                                  className={
-                                    'd-inline fs-small text-muted service-partial-description p-0 m-0'
-                                  }
+                                  className={'d-inline fs-small text-muted service-partial-description p-0 m-0'}
                                 />
                               </div>
                             </div>
@@ -197,23 +159,14 @@ const Services = () => {
                 </div>
 
                 {serviceItems.length > 3 && (
-                  <div
-                    className='menu-card-footer'
-                    onClick={() => handleToggle(subCategoryId)}
-                  >
+                  <div className='menu-card-footer' onClick={() => handleToggle(subCategoryId)}>
                     <div className='menu-card-footer--expandable d-flex flex-direction-column'>
                       <span className='fs-medium'>
                         {isExpanded === subCategoryId
                           ? t('services.cardFooter.expandable.expanded')
                           : t('services.cardFooter.expandable.collapsed')}
                       </span>
-                      <Icon
-                        name={
-                          isExpanded === subCategoryId
-                            ? 'chevron-up'
-                            : 'chevron-down'
-                        }
-                      />
+                      <Icon name={isExpanded === subCategoryId ? 'chevron-up' : 'chevron-down'} />
                     </div>
                   </div>
                 )}
@@ -221,15 +174,8 @@ const Services = () => {
                 {serviceItems.length === 3 && (
                   <div className='menu-card-footer'>
                     <div className='menu-card-footer--static'>
-                      <span className='fs-medium'>
-                        {t('services.cardFooter.static')}
-                      </span>
-                      <Icon
-                        className='fs-h4'
-                        name='eyes'
-                        variant='duotones'
-                        duotone='regular'
-                      />
+                      <span className='fs-medium'>{t('services.cardFooter.static')}</span>
+                      <Icon className='fs-h4' name='eyes' variant='duotones' duotone='regular' />
                     </div>
                   </div>
                 )}
@@ -237,15 +183,8 @@ const Services = () => {
                 {serviceItems.length < 3 && (
                   <div className='menu-card-footer'>
                     <div className='menu-card-footer--minimal'>
-                      <span className='fs-medium'>
-                        {t('services.cardFooter.minimal')}
-                      </span>
-                      <Icon
-                        className='fs-h4'
-                        name='sparkles'
-                        variant='duotones'
-                        duotone='regular'
-                      />
+                      <span className='fs-medium'>{t('services.cardFooter.minimal')}</span>
+                      <Icon className='fs-h4' name='sparkles' variant='duotones' duotone='regular' />
                     </div>
                   </div>
                 )}
@@ -268,9 +207,7 @@ const Services = () => {
               <h1 className='text-center'>{t('services.section_1.title')}</h1>
             </Fade>
             <Fade>
-              <p className='text-center text-muted max-wx-750'>
-                {t('services.section_1.description')}
-              </p>
+              <p className='text-center text-muted max-wx-750'>{t('services.section_1.description')}</p>
             </Fade>
           </div>
         </div>
