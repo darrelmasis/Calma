@@ -1,24 +1,118 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { Booking, Story, Home, NotFound, Contact, Packages, Services, Team, Empty, Success, Outbox } from '../pages/Index'
+import {
+  Booking,
+  Story,
+  Home,
+  NotFound,
+  Contact,
+  Packages,
+  Services,
+  Team,
+  Empty,
+  Success,
+  Outbox
+} from '../pages/Index'
 import ScrollTop from '../components/commons/ScrollTop'
 import { ScrollToHash } from '../utils/Scrollhash'
+import Waiting from '../pages/screens/Waiting'
+import { hasCountdownFinished } from '../utils/Countdown'
+
+const ProtectedRoute = ({ children }) => {
+  if (!hasCountdownFinished()) {
+    return <Navigate to='/waiting' replace />
+  }
+  return children
+}
+
 const AppRoutes = () => {
   return (
     <>
       <ScrollTop />
       <ScrollToHash />
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path='/waiting' element={<Waiting />} />
+        {/* Rutas protegidas */}
+        <Route
+          path='/'
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
         <Route path='/home' element={<Navigate to='/' replace />} />
-        <Route path='/story' element={<Story />} />
-        <Route path='/packages' element={<Packages />} />
-        <Route path='/services' element={<Services />} />
-        <Route path='/booking' element={<Booking />} />
-        <Route path='/contact' element={<Contact />} />
-        <Route path='/team' element={<Team />} />
-        <Route path='/empty' element={<Empty />} />
-        <Route path='/success' element={<Success />} />
-        <Route path='/outbox' element={<Outbox />} />
+        <Route
+          path='/story'
+          element={
+            <ProtectedRoute>
+              <Story />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path='/packages'
+          element={
+            <ProtectedRoute>
+              <Packages />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path='/services'
+          element={
+            <ProtectedRoute>
+              <Services />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path='/booking'
+          element={
+            <ProtectedRoute>
+              <Booking />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path='/contact'
+          element={
+            <ProtectedRoute>
+              <Contact />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path='/team'
+          element={
+            <ProtectedRoute>
+              <Team />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path='/empty'
+          element={
+            <ProtectedRoute>
+              <Empty />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path='/success'
+          element={
+            <ProtectedRoute>
+              <Success />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path='/outbox'
+          element={
+            <ProtectedRoute>
+              <Outbox />
+            </ProtectedRoute>
+          }
+        />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </>

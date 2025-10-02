@@ -12,7 +12,7 @@ import { SEO } from '../../components/SEO/SEO'
 
 const Success = () => {
   const { t } = useLang()
-  const success = t('booking.success.title', { returnObjects: true })
+  const success = t('success', { returnObjects: true })
   const location = useLocation()
   const { clearServices, isLoaded } = useSelectedServices()
   const [showExplosion, setShowExplosion] = useState(false)
