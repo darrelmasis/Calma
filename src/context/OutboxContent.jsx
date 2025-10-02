@@ -1,7 +1,7 @@
 // src/context/OutboxContext.jsx
 import { createContext, useContext, useEffect, useState, useRef } from 'react'
 import axios from 'axios'
-import { getOutbox, removeFromOutbox, addToOutbox } from '../utils/outboxManager'
+import { getOutbox, removeFromOutbox, addToOutbox } from '../utils/OutboxManager'
 import { useOfflineStatus } from '../hooks/useOfflineStatus'
 import { limitedToast as toast } from '../utils/toast'
 import { useLang } from '../i18n/LanguageContext'
