@@ -15,10 +15,11 @@ const sitemap = new SitemapStream({ hostname: process.env.VITE_CALMA_URL })
 
 const links = [
   { url: '/', changefreq: 'daily', priority: 1.0 },
-  { url: '/history', changefreq: 'weekly', priority: 0.8 },
+  { url: '/story', changefreq: 'weekly', priority: 0.8 },
   { url: '/services', changefreq: 'weekly', priority: 0.8 },
   { url: '/packages', changefreq: 'monthly', priority: 0.7 },
   { url: '/booking', changefreq: 'monthly', priority: 0.6 },
+  { url: '/contact', changefreq: 'monthly', priority: 0.6 },
   { url: '/team', changefreq: 'monthly', priority: 0.5 }
 ]
 
