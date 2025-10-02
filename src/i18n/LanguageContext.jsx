@@ -44,11 +44,7 @@ export const LanguageProvider = ({ children }) => {
     return JSON.stringify(result)
   }
 
-  return (
-    <LanguageContext.Provider value={{ lang, changeLanguage, t }}>
-      {children}
-    </LanguageContext.Provider>
-  )
+  return <LanguageContext.Provider value={{ lang, changeLanguage, t }}>{children}</LanguageContext.Provider>
 }
 
 export const useLang = () => useContext(LanguageContext)

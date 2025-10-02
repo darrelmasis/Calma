@@ -92,11 +92,16 @@ export const SelectedServicesProvider = ({ children }) => {
   }, [])
 
   // 🗑️ Limpiar servicios
-  const clearServices = useCallback(() => {
-    setServices({})
-    localStorage.removeItem(LOCAL_STORAGE_KEY)
-    toast.success(t('notifications.clearedServices.title'), { delay: 1 })
-  }, [t])
+  const clearServices = useCallback(
+    (showToast = true) => {
+      setServices({})
+      localStorage.removeItem(LOCAL_STORAGE_KEY)
+      if (showToast) {
+        toast.success(t('notifications.clearedServices.title'), { delay: 1 })
+      }
+    },
+    [t]
+  )
 
   const totalServices = useMemo(() => calculateTotalServices(services), [services, calculateTotalServices])
 

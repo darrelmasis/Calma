@@ -3,12 +3,7 @@
 import { useLang } from '../../i18n/LanguageContext'
 import { Button } from '../ui/Button'
 import classNames from 'classnames'
-import {
-  Dropdown,
-  DropdownContent,
-  DropdownTrigger,
-  useDropdown
-} from '../ui/Dropdown'
+import { Dropdown, DropdownContent, DropdownTrigger, useDropdown } from '../ui/Dropdown'
 import { useDevice } from '../../hooks/useBreakpoint'
 import { limitedToast as toast } from '../../utils/toast'
 
@@ -58,39 +53,21 @@ export const LanguageSwitcher = ({ className = '' }) => {
 
   const handleChangeLanguage = (newLang) => {
     if (newLang === lang) {
-      toast.info(
-        newLang === 'es'
-          ? 'Ya estás en este idioma'
-          : 'You are already in this language'
-      )
+      toast.info(newLang === 'es' ? 'Ya estás en este idioma' : 'You are already in this language')
       return
     }
     changeLanguage(newLang)
-    toast.info(
-      newLang === 'es'
-        ? 'Idioma cambiado a Español'
-        : 'Language changed to English'
-    )
+    toast.info(newLang === 'es' ? 'Idioma cambiado a Español' : 'Language changed to English')
   }
 
   return (
     <div className={classes}>
-      <Dropdown
-        position={isMobile ? 'bottom-start' : 'bottom-start'}
-        offsetX={0}
-      >
+      <Dropdown position={isMobile ? 'bottom-start' : 'bottom-start'} offsetX={0}>
         <DropdownTrigger className='w-100 w-lg-auto'>
           {/* ✅ Pasamos props necesarias */}
-          <LanguageTrigger
-            selectedLabel={selectedOption.label}
-            isDesktop={isDesktop}
-          />
+          <LanguageTrigger selectedLabel={selectedOption.label} isDesktop={isDesktop} />
         </DropdownTrigger>
-        <DropdownContent
-          className={
-            isMobile ? 'fit-to-navbar' : isTablet ? 'fit-to-tablet-panel' : ''
-          }
-        >
+        <DropdownContent className={isMobile ? 'fit-to-navbar' : isTablet ? 'fit-to-tablet-panel' : ''}>
           <ul className='list-unstyled m-0 p-3 d-flex flex-column'>
             {options.map((opt) => {
               const flagIconName = opt.value === 'es' ? 'nicaragua' : 'eeuu'
@@ -115,10 +92,7 @@ export const LanguageSwitcher = ({ className = '' }) => {
               return (
                 <li key={opt.value} className='mb-0'>
                   <Button
-                    className={classNames(
-                      'language-switcher-option border-0 justify-content-flex-start',
-                      { active: isActive }
-                    )}
+                    className={classNames('language-switcher-option border-0 justify-content-flex-start', { active: isActive })}
                     onClick={() => handleChangeLanguage(opt.value)}
                     variant='basic'
                     icon={icons}
