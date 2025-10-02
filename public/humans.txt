@@ -19,12 +19,12 @@ Contribution: Scheduled appointments, collected content from owners, communicate
 
 /* SITE */
 Site: Calma Nails & Spa
-URL: https://calma-test.vercel.app
+URL: https://calma.salon
 Technologies: HTML5, CSS3, React, Vite, PWA, SCSS, Node.js, Express, Git, Github, Adobe Illustrator, Adobe Photoshop
 
 /* VERSION */
 Version: undefined
-Build Date: 2025-09-16
+Build Date: 2025-10-02
 
 /* THANKS */
 Thanks to all collaborators, designers, and supporters who helped bring the project to life.

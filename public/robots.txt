@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: /private
-Sitemap: https://calma-test.vercel.app/sitemap.xml
+Sitemap: https://calma.salon/sitemap.xml
