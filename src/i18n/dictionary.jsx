@@ -896,6 +896,43 @@ export const dictionary = {
         toastMessage: 'Mensaje guardado en la bandeja de salida',
         toastSuccess: 'Mensaje enviado desde la bandeja de salida'
       }
+    },
+    seo: {
+      lang: 'es',
+      appName: 'Calma',
+      name: 'Calma Nails & Spa',
+      shortName: 'Calma',
+      domain: 'calma.salon',
+      url: 'https://calma.salon',
+      description:
+        'En Calma Nails & Spa cuidamos tu belleza y bienestar con manicure, pedicure, uñas acrílicas, tratamientos de pestañas y depilación, además de relajantes experiencias de spa. También tenemos servicios para niños.',
+      keywords:
+        'manicure, pedicure, uñas acrílicas, laminación de pestañas, depilación, estilismo, spa, maderoterapia, gua sha, detox, relajante, maquillaje, servicios para niños, salón de belleza, bienestar',
+      author: 'Ariana y Stephanie Portillo',
+      robots: 'index, follow',
+      themeColor: '#ffffff',
+      charset: 'UTF-8',
+      viewport: 'width=device-width, initial-scale=1.0',
+      pwa: {
+        applicationName: 'Calma',
+        mobileWebAppCapable: 'yes',
+        appleMobileWebAppCapable: 'yes',
+        appleMobileWebAppStatusBarStyle: 'black-translucent'
+      },
+      og: {
+        title: 'Calma Nails & Spa',
+        description: 'En Calma Nails & Spa cuidamos tu belleza y bienestar con experiencias únicas.',
+        type: 'website',
+        siteName: 'Calma Nails & Spa',
+        images: ['https://calma.salon/images/og/og-1200x630.png', 'https://calma.salon/images/og/og-800x800.png']
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: 'Calma Nails & Spa',
+        description: 'Relájate y resalta tu belleza en Calma Nails & Spa.',
+        image: 'https://calma.salon/images/og/og-800x800.png'
+      },
+      fallback: 'Tu navegador no admite JavaScript o JavaScript está deshabilitado.'
     }
   },
   en: {
@@ -1753,6 +1790,43 @@ export const dictionary = {
         toastMessage: 'Message saved to outbox',
         toastSuccess: 'Message sent from outbox'
       }
+    },
+    seo: {
+      lang: 'en',
+      appName: 'Calma',
+      name: 'Calma Nails & Spa',
+      shortName: 'Calma',
+      domain: 'calma.salon',
+      url: 'https://calma.salon',
+      description:
+        'At Calma Nails & Spa we take care of your beauty and wellness with manicure, pedicure, acrylic nails, eyelash treatments, waxing, and relaxing spa experiences. We also offer services for kids.',
+      keywords:
+        'manicure, pedicure, acrylic nails, eyelash lamination, waxing, hairstyling, spa, wood therapy, gua sha, detox, relaxation, makeup, kids services, beauty salon, wellness',
+      author: 'Ariana & Stephanie Portillo',
+      robots: 'index, follow',
+      themeColor: '#ffffff',
+      charset: 'UTF-8',
+      viewport: 'width=device-width, initial-scale=1.0',
+      pwa: {
+        applicationName: 'Calma',
+        mobileWebAppCapable: 'yes',
+        appleMobileWebAppCapable: 'yes',
+        appleMobileWebAppStatusBarStyle: 'black-translucent'
+      },
+      og: {
+        title: 'Calma Nails & Spa',
+        description: 'At Calma Nails & Spa we care for your beauty and wellness with unique experiences.',
+        type: 'website',
+        siteName: 'Calma Nails & Spa',
+        images: ['https://calma.salon/images/og/og-1200x630.png', 'https://calma.salon/images/og/og-800x800.png']
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: 'Calma Nails & Spa',
+        description: 'Relax and enhance your beauty at Calma Nails & Spa.',
+        image: 'https://calma.salon/images/og/og-800x800.png'
+      },
+      fallback: 'Your browser does not support JavaScript or it is disabled.'
     }
   }
 }
