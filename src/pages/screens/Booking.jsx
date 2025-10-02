@@ -115,7 +115,6 @@ const Booking = () => {
         description={booking.metaDescription}
         noIndex
       />
-      {usePageTitle(t('booking.pageTitle'))}
       <section className='bg-white py-5'>
         <div className='container d-flex justify-content-center booking-section'>
           <Stepper
