@@ -1,5 +1,3 @@
-import { title } from 'framer-motion/client'
-
 const currentYear = new Date().getFullYear()
 const copyrightName = import.meta.env.VITE_CALMA_NAME
 const authors = import.meta.env.VITE_CALMA_AUTHOR
@@ -793,21 +791,21 @@ export const dictionary = {
             role: 'Manicurista, Especialista en acrílico, Especialista en rubber, Pedicurista',
             imageAlt: 'Foto de Haslly Rosales',
             photo: 'hrosales',
-            order: 1
+            order: 3
           },
           mduarte: {
             name: 'María Duarte',
             role: 'Administradora, Maquillista, Lashista, Especialista en estética facial',
             imageAlt: 'Foto de María Duarte',
             photo: 'mduarte',
-            order: 2
+            order: 1
           },
           nguadamuz: {
             name: 'Nubia Guadamúz',
             role: 'Masajista, Tratamientos corporales',
             imageAlt: 'Foto de Nubia Guadamúz',
             photo: 'nguadamuz',
-            order: 3
+            order: 2
           }
         }
       }
@@ -827,7 +825,7 @@ export const dictionary = {
       subtitle: 'Nos encantaría saber de ti. Por favor, completa el siguiente formulario para ponerte en contacto con nosotros.',
       form: {
         name: {
-          label: 'Nombre Completo',
+          label: 'Nombre',
           placeholder: '¿Cómo te llamas?'
         },
         lastName: {
@@ -1651,21 +1649,21 @@ export const dictionary = {
             role: 'Nail Technician, Acrylic Specialist, Rubber Specialist, Pedicurist',
             imageAlt: 'Photo of Haslly Rosales',
             photo: 'hrosales',
-            order: 1
+            order: 3
           },
           mduarte: {
             name: 'María Duarte',
             role: 'Manager, Makeup Artist, Lash Technician, Facial Aesthetics Specialist',
             imageAlt: 'Photo of María Duarte',
             photo: 'mduarte',
-            order: 2
+            order: 1
           },
           nguadamuz: {
             name: 'Nubia Guadamúz',
             role: 'Massage Therapist, Body Treatments',
             imageAlt: 'Photo of Nubia Guadamúz',
             photo: 'nguadamuz',
-            order: 3
+            order: 2
           }
         }
       }
@@ -1685,7 +1683,7 @@ export const dictionary = {
       subtitle: 'We would love to hear from you! Please fill out the form below to get in touch with us.',
       form: {
         name: {
-          label: 'Full Name',
+          label: 'Name',
           placeholder: 'What is your name?'
         },
         lastName: {
