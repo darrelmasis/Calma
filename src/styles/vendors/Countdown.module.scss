@@ -8,6 +8,52 @@
   font-family: 'Inter', Arial, sans-serif;
 }
 
+@media (max-width: 900px) {
+  .countdownRow {
+    gap: 1.2rem;
+  }
+  .timeNumber {
+    font-size: 3rem;
+    min-width: 80px;
+    width: 100px;
+    padding: 2rem 0.5rem;
+  }
+  .title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .countdownScreen {
+    padding: 1.5rem 0.5rem;
+    height: auto;
+    min-height: 100vh;
+  }
+  .countdownRow {
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+  }
+  .timeNumber {
+    font-size: 2.2rem;
+    min-width: 60px;
+    width: 70px;
+    padding: 1rem 0.2rem;
+  }
+  .title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  .timeLabel {
+    font-size: 1rem;
+  }
+  .message {
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+}
+
 .title {
   font-weight: 700;
   font-size: 2.5rem;
