@@ -2,7 +2,7 @@ import { useLang } from '../../i18n/LanguageContext'
 import { SEO } from '../../components/SEO/SEO'
 import { useNavigate } from 'react-router-dom'
 import { Countdown } from '../../components/commons/Countdown'
-import { COUNTDOWN_TARGET } from '../../utils/Countdown'
+import { COUNTDOWN_TARGET } from '../../utils/countdown'
 
 const Waiting = () => {
   const navigate = useNavigate()
