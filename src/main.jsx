@@ -15,7 +15,7 @@ import { OutboxProvider } from './context/OutboxContent.jsx'
 import { createHead, UnheadProvider } from '@unhead/react/client'
 import { useLocation } from 'react-router-dom'
 import Waiting from './pages/screens/Waiting'
-import { hasCountdownFinished } from './utils/Countdown'
+import { hasCountdownFinished } from './utils/countdown'
 import { Navigate } from 'react-router-dom'
 
 const apiUrl =
