@@ -15,7 +15,7 @@ import {
 import ScrollTop from '../components/commons/ScrollTop'
 import { ScrollToHash } from '../utils/Scrollhash'
 import Waiting from '../pages/screens/Waiting'
-import { hasCountdownFinished } from '../utils/Countdown'
+import { hasCountdownFinished } from '../utils/countdown'
 
 const ProtectedRoute = ({ children }) => {
   if (!hasCountdownFinished()) {
