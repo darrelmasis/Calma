@@ -1,6 +1,5 @@
 // src/components/Countdown.jsx
 import { useState, useEffect } from 'react'
-import styles from '../../styles/vendors/Countdown.module.scss'
 
 function formatTime(ms) {
   const totalSeconds = Math.floor(ms / 1000)
@@ -10,6 +9,15 @@ function formatTime(ms) {
   const seconds = totalSeconds % 60
   return { days, hours, minutes, seconds }
 }
+
+const TimeBlock = ({ value, label }) => (
+  <div className='d-flex flex-direction-column gap-1'>
+    <span className='fs-display-1 p-3 bg-light-100 rounded-all-sm time-marker text-primary'>
+      {value}
+    </span>
+    <div className='fs-lead text-muted'>{label}</div>
+  </div>
+)
 
 export const Countdown = ({ targetDate, onFinish }) => {
   const [timeLeft, setTimeLeft] = useState(() =>
@@ -30,38 +38,32 @@ export const Countdown = ({ targetDate, onFinish }) => {
   const { days, hours, minutes, seconds } = formatTime(timeLeft)
 
   return (
-    <div className={styles.countdownScreen}>
-      <h1 className={styles.title}>La web estará disponible en:</h1>
-      <div className={styles.countdownRow}>
-        {days > 0 && (
-          <div className={styles.timeBlock}>
-            <span className={styles.timeNumber + ' ' + styles.days}>
-              {days}
-            </span>
-            <div className={styles.timeLabel}>días</div>
+    <div className='container'>
+      <div className='w-100 d-flex flex-direction-column align-items-center justify-content-center min-vh-100 text-center p-4'>
+        <div className='d-flex flex-direction-column flex-direction-md-row gap-2 justify-content-space-between align-items-center mb-4'>
+
+          <div className='d-flex gap-2'>
+            <TimeBlock value={days} label='días' />
+            <TimeBlock
+              value={hours.toString().padStart(2, '0')}
+              label='horas'
+            />
           </div>
-        )}
-        <div className={styles.timeBlock}>
-          <span className={styles.timeNumber}>
-            {hours.toString().padStart(2, '0')}
-          </span>
-          <div className={styles.timeLabel}>horas</div>
+          <div className='d-flex gap-2'>
+            <TimeBlock
+              value={minutes.toString().padStart(2, '0')}
+              label='minutos'
+            />
+            <TimeBlock
+              value={seconds.toString().padStart(2, '0')}
+              label='segundos'
+            />
+          </div>
+
         </div>
-        <div className={styles.timeBlock}>
-          <span className={styles.timeNumber}>
-            {minutes.toString().padStart(2, '0')}
-          </span>
-          <div className={styles.timeLabel}>minutos</div>
-        </div>
-        <div className={styles.timeBlock}>
-          <span className={styles.timeNumber}>
-            {seconds.toString().padStart(2, '0')}
-          </span>
-          <div className={styles.timeLabel}>segundos</div>
-        </div>
-      </div>
-      <div className={styles.message}>
-        Gracias por tu paciencia. Estamos preparando algo especial para ti.
+        <p className='fs-lead text-muted'>
+          Gracias por tu paciencia. Estamos preparando algo especial para ti.
+        </p>
       </div>
     </div>
   )
