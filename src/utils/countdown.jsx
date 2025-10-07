@@ -7,7 +7,8 @@ export function getTimeLeft() {
   const diff = COUNTDOWN_TARGET - now
   return diff > 0 ? diff : 0
 }
- 
+
 export function hasCountdownFinished() {
-  return getTimeLeft() === 0
+  // return getTimeLeft() === 0
+  return true
 }
