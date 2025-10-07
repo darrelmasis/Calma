@@ -17,6 +17,7 @@ import { useLocation } from 'react-router-dom'
 import Waiting from './pages/screens/Waiting'
 import { hasCountdownFinished } from './utils/countdown'
 import { Navigate } from 'react-router-dom'
+import GlobalRipple from './components/ui/GlobalRipple'
 
 const apiUrl =
   import.meta.env.VITE_ENV === 'development'
@@ -47,7 +48,8 @@ const RootWrapper = () => {
           <Waiting />
         )
       ) : (
-        <>
+          <>
+            <GlobalRipple/>
           <Confetti confettiCount={50} speed={3} maxSize={12} shape='square' />
           <Toaster containerStyle={{ bottom: 116, right: 24, zIndex: 9 }} />
           <OutboxProvider apiUrl={apiUrl}>

@@ -1,0 +1,20 @@
+@use '../config/colors_map' as c;
+
+.global-ripple {
+  position: fixed;
+  pointer-events: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(c.$primary, 0.5);
+  transform: translate(-50%, -50%) scale(1);
+  animation: global-ripple-effect 0.6s ease-out;
+  z-index: 9999;
+}
+
+@keyframes global-ripple-effect {
+  to {
+    transform: translate(-50%, -50%) scale(5);
+    opacity: 0;
+  }
+}
