@@ -52,7 +52,7 @@ const History = () => {
                 </Fade>
               </div>
               <div className='grid-col-12 grid-col-md-6 text-end'>
-                <Fade delay={0} className='position-sticky top-1'>
+                <Fade delay={0} className='position-sticky top-5'>
                   <ResponsiveImage
                     name='history-right'
                     alt='Imagen de la historia'
