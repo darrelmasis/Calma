@@ -1,26 +1,53 @@
 <!doctype html>
-<html lang="es">
+<html lang="%VITE_DEFAULT_LANG%">
   <head>
+    <!-- Meta tags PWA -->
     <meta charset="UTF-8" />
-    <meta name="application-name" content="Calma" />
-    <meta name="author" content="%VITE_CALMA_AUTHOR%" />
+    <meta name="application-name" content="%VITE_APP_NAME%" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="%VITE_CALMA_DESCRIPTION%" />
+    <meta name="keywords" content="%VITE_CALMA_KEYWORDS%" />
+    <meta name="author" content="%VITE_CALMA_AUTHOR%" />
+    <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#ffffff" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-    <!-- Favicons -->
+    <!-- Favicon & Icons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <link rel="icon" href="/images/pwa/icon-48.png" type="image/png" sizes="48x48" />
+
+    <!-- Apple Touch Icons (iOS/iPadOS) -->
     <link rel="apple-touch-icon" href="/images/pwa/icon-120.png" sizes="120x120" />
     <link rel="apple-touch-icon" href="/images/pwa/icon-152.png" sizes="152x152" />
     <link rel="apple-touch-icon" href="/images/pwa/icon-167.png" sizes="167x167" />
     <link rel="apple-touch-icon" href="/images/pwa/icon-180.png" sizes="180x180" />
     <link rel="apple-touch-icon" href="/images/pwa/icon-512.png" sizes="512x512" />
     <link rel="apple-touch-icon" href="/images/pwa/icon-1024.png" sizes="1024x1024" />
-    <link rel="mask-icon" href="/images/pwa/icon-512.png" color="#ffffff" />
 
+    <!-- Open Graph / Facebook & Twitter -->
+    <meta property="og:locale" content="%VITE_DEFAULT_LANG%" />
+    <meta property="og:title" content="%VITE_CALMA_NAME%" />
+    <meta property="og:description" content="%VITE_CALMA_DESCRIPTION%" />
+    <meta property="og:image" content="%VITE_CALMA_URL%/images/og/og-1200x630.png" />
+    <meta property="og:image:alt" content="%VITE_CALMA_NAME%" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image" content="%VITE_CALMA_URL%/images/og/og-800x800.png" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="800" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="%VITE_CALMA_URL%" />
+    <meta property="og:site_name" content="%VITE_CALMA_NAME%" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="%VITE_CALMA_NAME%" />
+    <meta name="twitter:description" content="%VITE_CALMA_DESCRIPTION%" />
+    <meta name="twitter:image" content="%VITE_CALMA_URL%/images/og/og-800x800.png" />
+
+    <!-- Safari pinned tab -->
+    <link rel="mask-icon" href="/images/pwa/icon-512.png" color="#ffffff" />
     <title>Calma Nails & Spa</title>
   </head>
 
