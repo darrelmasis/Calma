@@ -987,6 +987,11 @@ export const dictionary = {
       metaDescription:
         'Tu acción se ha completado con éxito. Gracias por confiar en Calma Nails & Spa.',
     },
+    countDown: {
+      pageTitle: 'Lanzamiento Próximamente',
+      metaDescription:
+        'Estamos trabajando en algo especial. Mantente atento para más detalles sobre el lanzamiento de Calma Nails & Spa.',
+    },
     seo: {
       lang: 'es',
       appName: 'Calma',
