@@ -184,7 +184,6 @@ export default async function handler(req, res) {
     await transporter.sendMail({
       from: `"Calma Nails & Spa" <${process.env.MAIL_USER}>`,
       to: process.env.VITE_CALMA_EMAIL,
-      cc: 'dmasis@monisa.com',
       subject: `📅 Nueva solicitud de cita de ${name}`,
       html: htmlContent
     })
