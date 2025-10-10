@@ -15,7 +15,7 @@ export default function UpdatePrompt({ updateSW }) {
   const handleShowToast = () => {
     toast.success('Calma se ha actualizado', {
       duration: 3000,
-      sound: 'updateComplete',
+      sound: 'notifySuccess',
       delay: 1
     })
   }
