@@ -29,7 +29,6 @@ URL: ${process.env.VITE_CALMA_URL}
 Technologies: ${process.env.VITE_HUMANS_TECH}
 
 /* VERSION */
-Version: ${process.env.VITE_HUMANS_VERSION}
 Build Date: ${buildDate}
 
 /* THANKS */
