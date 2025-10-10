@@ -89,7 +89,7 @@ export const dictionary = {
       }
     },
     home: {
-      pageTitle: 'Inicio',
+      pageTitle: 'Calma – Tu espacio de bienestar y tranquilidad',
       ogDescription:
         'Descubre un espacio diseñado para tu bienestar y tranquilidad, donde cada servicio está pensado para restaurar tu equilibrio',
       metaDescription:
@@ -1113,7 +1113,7 @@ export const dictionary = {
       }
     },
     home: {
-      pageTitle: 'Home',
+      pageTitle: 'Calma – Your space for wellness and tranquility',
       ogDescription:
         'Discover a sanctuary for your beauty and wellness at Calma Nails & Spa. We offer manicure, pedicure, acrylic nails, eyelash treatments, waxing, and relaxing spa experiences. We also have services for children.',
       metaDescription:

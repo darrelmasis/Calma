@@ -33,7 +33,7 @@ export function SEO({ title, description, keywords, image, noIndex = false }) {
   // ✅ Configuración del head
   const headConfig = useMemo(() => {
     const config = {
-      title: title ? `${title} | ${appName}` : appName,
+      title: location.pathname === '/' ? title : title ? `${title} | ${appName}` : appName,
       meta: [
         { name: 'description', content: description || defaultDescription },
         { name: 'keywords', content: keywords },
