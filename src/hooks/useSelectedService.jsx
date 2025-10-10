@@ -1,5 +1,12 @@
 // SelectedServicesContext.jsx
-import { createContext, useContext, useState, useEffect, useMemo, useCallback } from 'react'
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useMemo,
+  useCallback
+} from 'react'
 import { ServicesData } from '../data/services'
 import { useLang } from '../i18n/LanguageContext'
 import { limitedToast as toast } from '../utils/toast'
@@ -58,7 +65,9 @@ export const SelectedServicesProvider = ({ children }) => {
     (categoryId, subCategoryId, serviceId) => {
       setServices((prev) => {
         const currentTotal = calculateTotalServices(prev)
-        const isNewService = !prev[categoryId]?.some((s) => s.subCategoryId === subCategoryId && s.serviceId === serviceId)
+        const isNewService = !prev[categoryId]?.some(
+          (s) => s.subCategoryId === subCategoryId && s.serviceId === serviceId
+        )
 
         if (isNewService && currentTotal >= BAG_LIMIT) {
           // ✅ Solo marca que queremos mostrar el error, sin efectos
@@ -83,7 +92,10 @@ export const SelectedServicesProvider = ({ children }) => {
     setServices((prev) => {
       const updated = { ...prev }
       if (updated[categoryId]) {
-        updated[categoryId] = updated[categoryId].filter((s) => !(s.subCategoryId === subCategoryId && s.serviceId === serviceId))
+        updated[categoryId] = updated[categoryId].filter(
+          (s) =>
+            !(s.subCategoryId === subCategoryId && s.serviceId === serviceId)
+        )
         if (updated[categoryId].length === 0) delete updated[categoryId]
         localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updated))
       }
@@ -92,22 +104,23 @@ export const SelectedServicesProvider = ({ children }) => {
   }, [])
 
   // 🗑️ Limpiar servicios
-  const clearServices = useCallback(
-    (showToast = true) => {
-      setServices({})
-      localStorage.removeItem(LOCAL_STORAGE_KEY)
-      if (showToast) {
-        toast.success(t('notifications.clearedServices.title'), { delay: 1 })
-      }
-    },
-    [t]
-  )
+  const clearServices = useCallback(() => {
+    setServices({})
+    localStorage.removeItem(LOCAL_STORAGE_KEY)
+  }, [t])
 
-  const totalServices = useMemo(() => calculateTotalServices(services), [services, calculateTotalServices])
+  const totalServices = useMemo(
+    () => calculateTotalServices(services),
+    [services, calculateTotalServices]
+  )
 
   const totalPrice = useMemo(() => {
     return Object.entries(services).reduce((acc, [categoryId, items]) => {
-      const sum = items.reduce((s, { subCategoryId, serviceId }) => s + getServicePrice(subCategoryId, serviceId), 0)
+      const sum = items.reduce(
+        (s, { subCategoryId, serviceId }) =>
+          s + getServicePrice(subCategoryId, serviceId),
+        0
+      )
       return acc + sum
     }, 0)
   }, [services, getServicePrice])
@@ -117,8 +130,12 @@ export const SelectedServicesProvider = ({ children }) => {
     Object.entries(services).forEach(([categoryId, items]) => {
       result[categoryId] = items.map(({ subCategoryId, serviceId }) => {
         const categoryName = t(`services.section_1.category.${categoryId}.name`)
-        const subCategoryName = t(`services.section_1.category.${categoryId}.subCategory.${subCategoryId}.name`)
-        const serviceName = t(`services.section_1.category.${categoryId}.subCategory.${subCategoryId}.services.${serviceId}.name`)
+        const subCategoryName = t(
+          `services.section_1.category.${categoryId}.subCategory.${subCategoryId}.name`
+        )
+        const serviceName = t(
+          `services.section_1.category.${categoryId}.subCategory.${subCategoryId}.services.${serviceId}.name`
+        )
         const serviceDescription = t(
           `services.section_1.category.${categoryId}.subCategory.${subCategoryId}.services.${serviceId}.description`
         )
@@ -173,7 +190,9 @@ export const SelectedServicesProvider = ({ children }) => {
 export const useSelectedServices = () => {
   const context = useContext(SelectedServicesContext)
   if (!context) {
-    throw new Error('useSelectedServices must be used within a SelectedServicesProvider')
+    throw new Error(
+      'useSelectedServices must be used within a SelectedServicesProvider'
+    )
   }
   return context
 }
