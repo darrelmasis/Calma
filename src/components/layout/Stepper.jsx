@@ -140,7 +140,7 @@ const Stepper = ({
         </div>
 
         {/* Contenido del paso */}
-        <div className='step-content position-relative w-100 min-vh-80'>
+        <div className='step-content position-relative w-100 min-vh-80 overflow-x-hidden'>
           <AnimatePresence mode='wait'>
             {steps[activeStep] &&
               cloneElement(steps[activeStep], {

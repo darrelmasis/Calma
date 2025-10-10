@@ -153,6 +153,11 @@ $flexbox-classes: (
     class: overflow,
     values: visible hidden clip scroll auto
   ),
+  'overflow-x': (
+    property: overflow-x,
+    class: overflow-x,
+    values: visible hidden clip scroll auto
+  ),
   'grid-gap': (
     property: gap,
     class: gap,
