@@ -4,7 +4,6 @@ dist
 coverage
 node_modules
 .vscode
-dist
 *.pdf
 fotospaginaweb
 *.zip

@@ -122,7 +122,7 @@ export default defineConfig(({ mode }) => ({
         ]
       },
       devOptions: {
-        enabled: true, // activa SW en dev para probar
+        enabled: false, // activa SW en dev para probar
         type: 'module'
       }
     }),
