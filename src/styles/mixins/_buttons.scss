@@ -12,13 +12,17 @@
   --btn-border: #{btns.$btn-border-width} solid #{map.get($color-map, $border)};
 }
 
-@mixin button-variant($color-map, $bg, $hover, $active, $text, $border: $text) {
+@mixin button-variant($color-map, $bg, $hover, $active, $text, $border, $disabled, $disabled-text, $disabled-border) {
   --btn-bg: #{map.get($color-map, $bg)};
   --btn-bg-hover: #{map.get($color-map, $hover)};
   --btn-bg-active: #{map.get($color-map, $active)};
   --btn-color: #{map.get($color-map, $text)};
   --btn-color-hover: #{map.get($color-map, $text)};
   --btn-border: #{btns.$btn-border-width} solid #{map.get($color-map, $border)};
+  --btn-bg-disabled: #{map.get($color-map, $disabled)};
+  --btn-color-disabled: #{map.get($color-map, $disabled-text)};
+  --btn-border-disabled:#{map.get($color-map, $disabled-border)};
+
 
   $bg: map.get($color-map, $bg);
   $outline-color: color.change(
@@ -29,6 +33,15 @@
 
   &:focus-visible {
     outline: 2px solid var(--dark);
+  }
+
+  &:disabled {
+    background-color: var(--btn-bg-disabled);
+    border-color: var(--btn-border-disabled);
+    color: var(--btn-color-disabled);
+    cursor: not-allowed;
+    pointer-events: none;
+    user-select: none;
   }
 }
 

@@ -7,7 +7,6 @@ import { Input, PhoneNumber } from '../../components/forms/Input'
 import { USD, formatTime } from '../../utils/utils'
 import axios from 'axios'
 import { Icon } from '../../components/commons/Icons'
-import { usePageTitle } from '@utils/utils'
 import { useFormatDate } from '../../hooks/useFormatDate'
 import { useOfflineStatus } from '../../hooks/useOfflineStatus'
 import { limitedToast as toast } from '../../utils/toast'
@@ -59,6 +58,8 @@ const Booking = () => {
       setFormData((prev) => ({ ...prev, message: servicesWithInfo }))
     }
   }, [servicesWithInfo])
+
+
 
   // Handle submit
   const handleSubmit = async () => {
@@ -116,7 +117,7 @@ const Booking = () => {
         noIndex
       />
       <section className='bg-white py-5'>
-        <div className='container d-flex justify-content-center booking-section'>
+        <div className='d-flex justify-content-center booking-section '>
           <Stepper
             formData={formData}
             setFormData={setFormData}

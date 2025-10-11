@@ -63,8 +63,6 @@
   }
 
   &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
     user-select: none;
     pointer-events: none;
   }
@@ -165,7 +163,10 @@
       bf.get-button-state($theme, 'main-hover'),
       bf.get-button-state($theme, 'main-active'),
       bf.get-button-state($theme, 'text-color'),
-      bf.get-button-state($theme, 'border-color')
+      bf.get-button-state($theme, 'border-color'),
+      bf.get-button-state($theme, 'disabled'),
+      bf.get-button-state($theme, 'disabled-text'),
+      bf.get-button-state($theme, 'disabled-border'),
     );
   }
 

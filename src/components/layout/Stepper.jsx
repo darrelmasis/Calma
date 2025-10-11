@@ -63,7 +63,7 @@ const Stepper = ({
 
   return (
     <div className='w-100 d-flex flex-direction-column align-items-center justify-content-space-between'>
-      <div className='d-flex flex-direction-column align-items-center w-100'>
+      <div className='d-flex flex-direction-column align-items-center w-100 container overflow-x-hidden'>
         {/* Header con indicadores */}
         <div className='stepper-header w-100 max-wx-md-700 mb-4'>
           <div className='d-flex justify-content-stretch w-100'>
@@ -140,7 +140,7 @@ const Stepper = ({
         </div>
 
         {/* Contenido del paso */}
-        <div className='step-content position-relative w-100 min-vh-80 overflow-x-hidden'>
+        <div className='step-content position-relative w-100 min-vh-80'>
           <AnimatePresence mode='wait'>
             {steps[activeStep] &&
               cloneElement(steps[activeStep], {
@@ -192,15 +192,18 @@ const StepperActions = ({
   const isSticky = useSticky(stickyRef, 0)
 
   const stickyPanelClasses = classNames(
-    'stepper-actions d-flex max-wx-md-500 justify-content-center gap-3 position-sticky bottom-2 w-100 py-3 px-3',
+    'stepper-actions d-flex max-wx-md-500 justify-content-center gap-1 position-sticky bottom-2 w-100 py-3 flex-1',
     {
-      'stepper-actions-sticky rounded-all-lg z-index-30 bg-light-100 border':
+      'stepper-actions-sticky rounded-all-lg z-index-30 bg-light-100 border px-3':
         isSticky
     }
   )
 
+  const stepperActionsContainerClasses = classNames('container position-sticky bottom-2 w-100')
+
   return (
-    <div className={stickyPanelClasses} ref={stickyRef}>
+    <div className={stepperActionsContainerClasses}>
+      <div className={stickyPanelClasses} ref={stickyRef}>
       <Button
         size='large'
         icon='arrow-left'
@@ -228,6 +231,7 @@ const StepperActions = ({
           ? t('booking.confirmButtonText')
           : t('booking.nextButtonText')}
       </Button>
+    </div>
     </div>
   )
 }
